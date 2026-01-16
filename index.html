@@ -11,6 +11,7 @@
             --class9-green: #2d7d32;
             --orange: #ff9800;
             --light-green: #e8f5e9;
+            --whatsapp-color: #25d366;
         }
 
         body {
@@ -78,29 +79,39 @@
             cursor: pointer;
             font-size: 15px;
             transition: 0.3s;
+            text-decoration: none;
         }
 
-        .btn-orange {
-            background-color: var(--orange);
-            color: white;
-        }
-
-        .btn-orange:hover {
-            background-color: #e68a00;
-        }
-
-        .btn-green {
-            background-color: var(--light-green);
-            color: #1b5e20;
-        }
-
-        .btn-green:hover {
-            background-color: #c8e6c9;
+        .btn-orange { background-color: var(--orange); color: white; }
+        .btn-green { background-color: var(--light-green); color: #1b5e20; }
+        
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: var(--whatsapp-color);
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
         }
 
     </style>
 </head>
 <body>
+
+    <a href="https://wa.me/8801734505869?text=আসসালামু আলাইকুম গালিব স্যার, আমি পরীক্ষার পাসওয়ার্ড নিতে চাই।" class="whatsapp-float" target="_blank">
+        💬
+    </a>
 
     <div class="header">গালিব একাডেমি 🎓</div>
 
@@ -112,7 +123,7 @@
         <div class="card" style="max-width: 400px; margin: 20px auto;">
             <h3>সাধারণ জ্ঞান কুইজ</h3>
             <p style="font-size: 13px; color: #666;">ফি: ২০ টাকা | সময়: ১০ মিনিট</p>
-            <button class="btn btn-orange" onclick="paymentInfo()">ফি জমা দিন (২০৳)</button>
+            <a href="https://wa.me/8801734505869?text=স্যার, আমি জিকে কুইজের জন্য ২০ টাকা পাঠিয়েছি।" class="btn btn-orange" target="_blank">ফি জমা দিন (২০৳)</a>
             <button class="btn btn-green" onclick="askPassword('GK', 'GK2026')">📝 পরীক্ষায় অংশ নাও</button>
         </div>
 
@@ -122,73 +133,41 @@
         <div class="grid">
             <div class="card">
                 <h3>কুরআন মাজিদ</h3>
-                <button class="btn btn-orange" onclick="paymentInfo()">ফি জমা দিন (২০৳)</button>
+                <a href="https://wa.me/8801734505869?text=স্যার, আমি ক্লাস ৮-এর কুরআন মাজিদ পরীক্ষার জন্য ২০ টাকা পাঠিয়েছি।" class="btn btn-orange" target="_blank">ফি জমা দিন (২০৳)</a>
                 <button class="btn btn-green" onclick="askPassword('কুরআন মাজিদ', 'আলহামদুলিল্লাহ')">📝 পরীক্ষা দাও</button>
             </div>
+            
             <div class="card">
                 <h3>আকাইদ ও ফিকাহ</h3>
-                <button class="btn btn-orange" onclick="paymentInfo()">ফি জমা দিন (২০৳)</button>
+                <a href="https://wa.me/8801734505869?text=স্যার, আমি ক্লাস ৮-এর আকাইদ ও ফিকাহ পরীক্ষার জন্য ২০ টাকা পাঠিয়েছি।" class="btn btn-orange" target="_blank">ফি জমা দিন (২০৳)</a>
                 <button class="btn btn-green" onclick="askPassword('আকাইদ ও ফিকাহ', 'সুবহানাল্লাহ')">📝 পরীক্ষা দাও</button>
             </div>
-            <div class="card">
-                <h3>আরবি ১ম পত্র</h3>
-                <button class="btn btn-orange" onclick="paymentInfo()">ফি জমা দিন (২০৳)</button>
-                <button class="btn btn-green" onclick="askPassword('আরবি ১ম পত্র', 'আল্লাহু আকবার')">📝 পরীক্ষা দাও</button>
+
             </div>
-            <div class="card">
-                <h3>আরবি ২য় পত্র</h3>
-                <button class="btn btn-orange" onclick="paymentInfo()">ফি জমা দিন (২০৳)</button>
-                <button class="btn btn-green" onclick="askPassword('আরবি ২য় পত্র', 'বিসমিল্লাহ')">📝 পরীক্ষা দাও</button>
-            </div>
-        </div>
 
         <div class="section-title" style="background-color: var(--class9-green);">
             📗 নবম শ্রেণি (Class 9) - পরীক্ষাসমূহ
         </div>
         <div class="grid">
             <div class="card">
-                <h3>কুরআন মাজিদ</h3>
-                <button class="btn btn-orange" onclick="paymentInfo()">ফি জমা দিন (২০৳)</button>
-                <button class="btn btn-green" onclick="askPassword('কুরআন মাজিদ', 'আলহামদুলিল্লাহ')">📝 পরীক্ষা দাও</button>
-            </div>
-            <div class="card">
-                <h3>আকাইদ ও ফিকাহ</h3>
-                <button class="btn btn-orange" onclick="paymentInfo()">ফি জমা দিন (২০৳)</button>
-                <button class="btn btn-green" onclick="askPassword('আকাইদ ও ফিকাহ', 'সুবহানাল্লাহ')">📝 পরীক্ষা দাও</button>
-            </div>
-            <div class="card">
                 <h3>হাদিস শরীফ</h3>
-                <button class="btn btn-orange" onclick="paymentInfo()">ফি জমা দিন (২০৳)</button>
+                <a href="https://wa.me/8801734505869?text=স্যার, আমি ক্লাস ৯-এর হাদিস শরীফ পরীক্ষার জন্য ২০ টাকা পাঠিয়েছি।" class="btn btn-orange" target="_blank">ফি জমা দিন (২০৳)</a>
                 <button class="btn btn-green" onclick="askPassword('হাদিস শরীফ', 'হযরত মুহাম্মদ(সা)')">📝 পরীক্ষা দাও</button>
             </div>
-            <div class="card">
-                <h3>আরবি ১ম পত্র</h3>
-                <button class="btn btn-orange" onclick="paymentInfo()">ফি জমা দিন (২০৳)</button>
-                <button class="btn btn-green" onclick="askPassword('আরবি ১ম পত্র', 'আল্লাহু আকবার')">📝 পরীক্ষা দাও</button>
             </div>
-            <div class="card">
-                <h3>আরবি ২য় পত্র</h3>
-                <button class="btn btn-orange" onclick="paymentInfo()">ফি জমা দিন (২০৳)</button>
-                <button class="btn btn-green" onclick="askPassword('আরবি ২য় পত্র', 'বিসমিল্লাহ')">📝 পরীক্ষা দাও</button>
-            </div>
-        </div>
 
     </div>
 
     <div class="footer">গালিব একাডেমি 🎓</div>
 
     <script>
-        function paymentInfo() {
-            alert("নগদ (Personal): ০১৭৩৪৫০৫৮৬৯\nফি: ২০ টাকা পাঠিয়ে হোয়াটসঅ্যাপে পাসওয়ার্ড সংগ্রহ করুন।");
-        }
-
         function askPassword(subject, correctPass) {
             let userPass = prompt(subject + " পরীক্ষার পাসওয়ার্ড দিন:");
             if (userPass === correctPass) {
                 alert("পাসওয়ার্ড সঠিক! আপনার পরীক্ষা শুরু হচ্ছে।");
                 // এখানে আপনার পরীক্ষার লিঙ্ক যোগ করতে পারেন
             } else if (userPass !== null) {
-                alert("ভুল পাসওয়ার্ড! অনুগ্রহ করে সঠিক পাসওয়ার্ড দিয়ে চেষ্টা করুন।");
+                alert("ভুল পাসওয়ার্ড! পেমেন্ট করে হোয়াটসঅ্যাপ থেকে পাসওয়ার্ড সংগ্রহ করুন।");
             }
         }
     </script>
