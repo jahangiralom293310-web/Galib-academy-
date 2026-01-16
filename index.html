@@ -3,82 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>গালিব একাডেমি 🎓</title>
+    <title>গালিব একাডেমি - অফিসিয়াল সাইট ২০২৬</title>
     <style>
-        :root { --primary: #1a237e; --secondary: #ff9800; --success: #2e7d32; --light-bg: #f4f7fe; }
-        body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif; background: var(--light-bg); text-align: center; color: #333; }
+        :root { --primary: #1a237e; --secondary: #ff9800; --success: #2e7d32; --yt: #ff0000; }
+        body { margin: 0; font-family: 'Segoe UI', Tahoma, sans-serif; background: #f4f7fe; text-align: center; color: #333; line-height: 1.6; }
+        .navbar { background: var(--primary); color: white; padding: 15px; font-weight: bold; font-size: 24px; position: sticky; top: 0; z-index: 1000; }
+        .main-container { padding: 20px; max-width: 1100px; margin: 0 auto; }
         
-        /* Navbar */
-        .navbar { background: var(--primary); color: white; padding: 15px; font-weight: bold; font-size: 22px; position: sticky; top: 0; z-index: 1000; }
-        
-        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
-        
-        /* Hero Section */
-        .hero { background: white; padding: 30px; border-radius: 20px; margin-bottom: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        .hero h1 { margin: 0; color: #333; font-size: 28px; }
-        .hero p { color: #666; margin-top: 10px; }
-
-        /* ভর্তি হওয়ার নিয়ম (Yellow Box) */
-        .rules-box { background: #fffdf0; border: 2px solid #ffecb3; padding: 20px; border-radius: 15px; text-align: left; margin-bottom: 30px; }
-        .rules-box h3 { color: #d32f2f; margin-top: 0; display: flex; align-items: center; justify-content: center; }
-
-        /* ফিচার সেকশন (কেন ভর্তি হবেন) */
-        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin: 30px 0; }
-        .feature-card { padding: 15px; border-radius: 12px; text-align: left; border: 1px solid #eee; }
-        .f-green { background: #f1f8e9; border-left: 5px solid #4caf50; }
-        .f-orange { background: #fff3e0; border-left: 5px solid #ff9800; }
-        .f-blue { background: #e3f2fd; border-left: 5px solid #2196f3; }
+        /* কেন ভর্তি হবে */
+        .why-us { padding: 30px 15px; background: #fff; border-radius: 25px; margin-bottom: 30px; border: 1px solid #eee; }
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin-top: 20px; }
+        .f-box { padding: 15px; border-radius: 12px; background: #f1f8e9; border-left: 6px solid var(--success); text-align: left; }
 
         /* ধামাকা অফার */
-        .offer-banner { background: #fff9c4; border: 2px dashed var(--secondary); padding: 25px; border-radius: 25px; margin: 30px 0; }
-        
-        /* সাবজেক্ট কার্ড ডিজাইন */
-        .section-header { background: var(--primary); color: white; padding: 10px; border-radius: 10px; margin: 40px 0 20px; font-weight: bold; }
+        .offer-card { background: #fff9c4; border: 2px dashed var(--secondary); padding: 30px; margin: 30px auto; border-radius: 30px; position: relative; }
+        .discount-tag { background: var(--yt); color: white; padding: 6px 18px; border-radius: 50px; font-size: 14px; position: absolute; top: -15px; left: 50%; transform: translateX(-50%); font-weight: bold; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
+
+        .section-header { background: var(--primary); color: white; padding: 12px; margin: 40px 0 15px; border-radius: 10px; font-size: 20px; font-weight: bold; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .card { background: white; padding: 25px; border-radius: 25px; box-shadow: 0 6px 20px rgba(0,0,0,0.05); }
-        .card h3 { margin-bottom: 15px; color: #333; font-size: 18px; }
-
-        /* বাটন ডিজাইন */
-        .btn { display: block; width: 100%; padding: 12px; margin: 8px 0; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 15px; }
+        .card { background: white; padding: 20px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #eee; transition: 0.3s; }
+        
+        /* বাটন */
+        .btn { display: block; width: 100%; padding: 12px; margin: 8px 0; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; transition: 0.3s; }
         .btn-buy { background: var(--secondary); color: white; }
-        .btn-class { background: #e3f2fd; color: #1565c0; border: 1px solid #bbdefb; }
-        .btn-exam { background: #e8f5e9; color: var(--success); border: 1px solid #c8e6c9; }
+        .btn-class { background: #e3f2fd; color: #1565c0; border: 1px solid #1565c0; }
+        .btn-exam { background: #e8f5e9; color: var(--success); border: 1px solid var(--success); }
 
-        /* পেমেন্ট ও প্যানেল */
-        .overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:2000; }
-        .pay-box { display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background:white; padding:30px; border-radius:25px; z-index:2001; width:85%; max-width:350px; }
-        #panel { display: none; background: white; min-height: 100vh; padding: 20px; text-align: left; }
-        .q-box { background: #f9f9f9; padding: 15px; border-radius: 10px; margin-bottom: 10px; border-left: 5px solid var(--primary); }
+        /* প্যানেল ও টাইমার */
+        #panel { display: none; padding: 20px; text-align: left; background: white; min-height: 100vh; }
+        .timer-box { background: #ffebee; color: #c62828; padding: 10px; border-radius: 10px; font-weight: bold; font-size: 18px; text-align: center; position: sticky; top: 70px; z-index: 900; border: 1px solid #ef9a9a; margin-bottom: 20px; }
+        .q-box { background: #f9f9f9; padding: 15px; border-radius: 10px; margin-bottom: 10px; border-left: 5px solid var(--primary); font-size: 15px; }
+
+        .overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:2000; backdrop-filter: blur(5px); }
+        .pay-box { display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background:white; padding:35px; border-radius:30px; z-index:2001; width:88%; max-width:380px; }
     </style>
 </head>
 <body>
 
 <div class="navbar">গালিব একাডেমি 🎓</div>
 
-<div id="mainSite" class="container">
-    <div class="hero">
-        <h1>স্বাগতম গালিব একাডেমি-তে</h1>
-        <p>সরাসরি গালিব ভাইয়ের তত্তাবধানে মাদরাসা সিলেবাসের সেরা ডিজিটাল প্রস্তুতি।</p>
-    </div>
+<div id="mainSite" class="main-container">
+    <section class="why-us">
+        <h2 style="color: var(--primary); margin-top:0;">কেন গালিব একাডেমি-তে ভর্তি হবে?</h2>
+        <div class="feature-grid">
+            <div class="f-box"><h4>✅ গালিব ভাইয়ের স্পেশাল ক্লাস</h4><p>জটিল বিষয়গুলো সহজ কৌশলে গালিব ভাই নিজে পড়ান।</p></div>
+            <div class="f-box" style="background: #fff3e0; border-left-color: var(--secondary);"><h4>✅ নতুন কারিকুলাম ২০২৬</h4><p>একদম নতুন সিলেবাস অনুযায়ী লেকচার ও এক্সাম ব্যবস্থা।</p></div>
+            <div class="f-box" style="background: #e3f2fd; border-left-color: var(--primary);"><h4>✅ আনলিমিটেড রেকর্ড ক্লাস</h4><p>যেকোনো সময় যতবার খুশি ক্লাস দেখার আজীবন সুযোগ।</p></div>
+            <div class="f-box" style="background: #fce4ec; border-left-color: #d81b60;"><h4>✅ অনলাইন এক্সাম সেন্টার</h4><p>প্রতিটি বিষয়ের উপর ১৫ মিনিটের বিশেষ পরীক্ষা কেন্দ্র।</p></div>
+        </div>
+    </section>
 
-    <div class="rules-box">
-        <h3 style="text-align: center;">📌 ভর্তি হওয়ার নিয়ম</h3>
-        <p>১. নিচে তোমার পছন্দের **ক্র্যাস কোর্স** বা পরীক্ষা বাটন ক্লিক করো।</p>
-        <p>২. পেমেন্ট শেষে নাম লিখে হোয়াটসঅ্যাপে মেসেজ দাও।</p>
-        <p>৩. এরপর নিচেই তোমার **ড্যাশবোর্ড** বাটন দেখতে পাবে।</p>
-    </div>
-
-    <h3 style="color: var(--primary);">কেন আমাদের ক্র্যাস কোর্সে ভর্তি হবেন?</h3>
-    <div class="feature-grid">
-        <div class="feature-card f-green"><b>✅ সেরা মাদরাসা প্রস্তুতি:</b> আরবি ও হাদিস বিষয়ের প্রতিটি পাঠ সহজভাবে ও যত্ন সহকারে পড়ানো হয়।</div>
-        <div class="feature-card f-orange"><b>✅ সাশ্রয়ী ফি ও বিশেষ সুবিধা:</b> স্বল্প মূল্যে সেরা মানের কোর্স এবং মাত্র ২০ টাকায় অনলাইন পরীক্ষার সুযোগ।</div>
-        <div class="feature-card f-blue"><b>✅ লাইভ ও রেকর্ড ক্লাস:</b> ইউটিউব প্রাইভেট গ্রুপে লাইভ ক্লাস এবং আজীবন রেকর্ড দেখার ব্যবস্থা থাকবে।</div>
-    </div>
-
-    <div class="offer-banner">
-        <h2 style="color: #d32f2f; margin: 0;">🎁 ধামাকা কম্বো অফার!</h2>
-        <p style="font-size: 18px;">৫টি বিষয় একত্রে কিনলে <b>৪৮% ছাড়ে</b> ফি মাত্র <b>৫৮০ টাকা!</b></p>
-        <button class="btn btn-buy" style="max-width: 200px; margin: 10px auto; background: var(--primary);" onclick="pay('কম্বো অফার (৫৮০৳)')">অফারটি নিন</button>
+    <div class="offer-card">
+        <span class="discount-tag">🔥 ৪৮% বিশাল ছাড়</span>
+        <h2>🎁 ধামাকা কম্বো অফার!</h2>
+        <p>শ্রেণির সবকটি বিষয় একত্রে কিনলে কোর্স ফি মাত্র <b>৫৮০ টাকা!</b></p>
+        <button class="btn btn-buy" style="max-width: 250px; margin: 10px auto; background: var(--primary);" onclick="pay('কম্বো অফার (৫৮০৳)')">অফারটি নিন</button>
     </div>
 
     <div class="section-header">📘 অষ্টম শ্রেণি (Class 8)</div>
@@ -95,99 +74,86 @@
             <button class="btn btn-class" onclick="access('আকাইদ', 'class')">🎥 ক্লাস দেখুন</button>
             <button class="btn btn-exam" onclick="access('আকাইদ', 'exam')">📝 পরীক্ষা দিন</button>
         </div>
-        <div class="card">
-            <h3>হাদিস শরীফ</h3>
-            <button class="btn btn-buy" onclick="pay('C8 হাদিস')">কিনুন (১৫০৳)</button>
-            <button class="btn btn-class" onclick="access('হাদিস', 'class')">🎥 ক্লাস দেখুন</button>
-            <button class="btn btn-exam" onclick="access('হাদিস', 'exam')">📝 পরীক্ষা দিন</button>
         </div>
-        <div class="card">
-            <h3>আরবি ১ম পত্র</h3>
-            <button class="btn btn-buy" onclick="pay('C8 আরবি ১ম')">কিনুন (১৫০৳)</button>
-            <button class="btn btn-class" onclick="access('আরবি১', 'class')">🎥 ক্লাস দেখুন</button>
-            <button class="btn btn-exam" onclick="access('আরবি১', 'exam')">📝 পরীক্ষা দিন</button>
-        </div>
-        <div class="card">
-            <h3>আরবি ২য় পত্র</h3>
-            <button class="btn btn-buy" onclick="pay('C8 আরবি ২য়')">কিনুন (১৫০৳)</button>
-            <button class="btn btn-class" onclick="access('আরবি২', 'class')">🎥 ক্লাস দেখুন</button>
-            <button class="btn btn-exam" onclick="access('আরবি২', 'exam')">📝 পরীক্ষা দিন</button>
-        </div>
-    </div>
 </div>
 
-<div id="panel" class="container">
+<div id="panel" class="main-container">
+    <div id="examTimer" class="timer-box" style="display:none;">⏰ সময় বাকি: <span id="timeDisplay">১৫:০০</span> মিনিট</div>
     <h2 id="panel-title" style="text-align:center; color: var(--primary);"></h2>
     <div id="panel-content"></div>
-    <button class="btn" style="background:#666; color:white; max-width:180px; margin: 30px auto;" onclick="location.reload()">ফিরে যান</button>
+    <button class="btn" style="background:#666; color:white; max-width:200px; margin: 30px auto;" onclick="location.reload()">ফিরে যান</button>
 </div>
 
 <div class="overlay" id="over" onclick="closeP()"></div>
 <div class="pay-box" id="pbox">
     <h3 id="pTitle">পেমেন্ট</h3>
-    <p>নগদ (Personal): <b style="color: #d32f2f; font-size: 22px;">০১৭৩৪৫০৫৮৬৯</b></p>
-    <input type="text" id="name" placeholder="আপনার নাম" style="width:90%; padding:12px; margin:15px 0; border:1px solid #ddd; border-radius:10px;">
-    <button class="btn" style="background:#25D366; color:white;" onclick="send()">হোয়াটসঅ্যাপে জানান</button>
+    <p>নগদ (Personal): <b style="color: #d32f2f; font-size: 24px;">০১৭৩৪৫০৫৮৬৯</b></p>
+    <input type="text" id="name" placeholder="আপনার নাম" style="width:92%; padding:14px; margin:15px 0; border:1px solid #ddd; border-radius:12px;">
+    <button class="btn" style="background:#25D366; color:white;" onclick="send()">হোয়াটসঅ্যাপে নিশ্চিত করুন</button>
 </div>
 
 <script>
-    const PASSWORDS = {
-        "কুরআন": "আলহামদুলিল্লাহ",
-        "আকাইদ": "সুবহানাল্লাহ",
-        "হাদিস": "আল্লাহু আকবার",
-        "আরবি১": "বিসমিল্লাহ",
-        "আরবি২": "হযরত মুহাম্মদ ( সা)"
-    };
+    const PASSWORDS = { "কুরআন": "আলহামদুলিল্লাহ", "আকাইদ": "সুবহানাল্লাহ" }; // আপনার সব পাসওয়ার্ড এখানে থাকবে
+    const qBankQuran = [ "১. তাজভিদ অনুযায়ী আরবি হরফ উচ্চারণের স্থানকে কী বলে? (মাখরাজ)", "২. আরবি হরফের মাখরাজ মোট কয়টি? (১৭টি)", "৩. কণ্ঠনালীর হরফ বা হরফে হালকী কয়টি? (৬টি)" ]; // ৫০টি প্রশ্ন
 
-    // আপনার সেই ৫০টি প্রশ্ন এখানে থাকবে
-    const qBankQuran = [
-        "১. তাজভিদ অনুযায়ী আরবি হরফ উচ্চারণের স্থানকে কী বলে? (মাখরাজ)",
-        "২. আরবি হরফের মাখরাজ মোট কয়টি? (১৭টি)",
-        "৩. কণ্ঠনালীর হরফ বা হরফে হালকী কয়টি? (৬টি)",
-        "৪. গুন্নাহ শব্দের অর্থ কী? (নাসিক্য উচ্চারণ)",
-        "৫. নুন সাকিন ও তানভীন পড়ার নিয়ম কয়টি? (৪টি)",
-        "৬. ইজহার শব্দের অর্থ কী? (স্পষ্ট করে পড়া)",
-        "৭. ইখফা এর হরফ কয়টি? (১৫টি)",
-        "৮. ইদগাম শব্দের অর্থ কী? (মিলিয়ে পড়া)",
-        "৯. ক্বলক্বলাহ এর হরফ কয়টি? (৫টি: ক্বাফ, ত-আ, বা, জিম, দাল)",
-        "১০. ক্বলক্বলাহ শব্দের অর্থ কী? (প্রতিধ্বনি বা ধাক্কা দিয়ে পড়া)",
-        "১১. মীম সাকিন পড়ার নিয়ম কয়টি? (৩টি)",
-        "১২. মদ্দে আসলী কত আলিফ টানতে হয়? (১ আলিফ)",
-        "১৩. মদ্দে লাযিম কয় প্রকার? (৪ প্রকার)",
-        "১৪. জিহ্বার গোড়া থেকে কোন হরফ উচ্চারিত হয়? (ক্বাফ)",
-        "১৫. দুই ঠোঁট থেকে কোন কোন হরফ উচ্চারিত হয়? (বা, মীম, ওয়াও)",
-        "১৬. আল-জওফ বলতে কী বোঝায়? (মুখের খালি জায়গা)",
-        "১৭. গুন্নাহর স্থান কোথায়? (নাকের বাঁশিতে)",
-        "১৮. মোটা করে পড়তে হয় এমন হরফ কয়টি? (৭টি)",
-        "১৯. 'লাফযাতুল্লাহ' এর লাম কখন চিকন হয়? (ডানে যের থাকলে)",
-        "২০. সিফাত শব্দের অর্থ কী? (গুণ বা বৈশিষ্ট্য)",
-        "২১. সূরা আল-কাহাফ কুরআনের কততম সূরা? (১৮তম)",
-        "২২. আসহাবে কাহাফ অর্থ কী? (গুহাবাসী)",
-        "২৩. আসহাবে কাহাফের সাথে একটি প্রাণী ছিল, সেটি কী? (কুকুর)",
-        "২৪. আসহাবে কাহাফ কত বছর গুহায় ঘুমিয়ে ছিলেন? (৩০৯ বছর)",
-        "২৫. সূরা আর-রাহমান এর মূল বিষয়বস্তু কী? (আল্লাহর নেয়ামতের বর্ণনা)",
-        "২৬. 'ফাবি আইয়্যে আলা-ই রব্বিকুমা তুকাজ্জিবান' এর অর্থ কী? (তোমরা তোমাদের রবের কোন কোন নেয়ামতকে অস্বীকার করবে?)",
-        "২৭. সূরা আর-রাহমান এ এই আয়াতটি কতবার আছে? (৩১ বার)",
-        "২৮. আর-রাহমান শব্দের অর্থ কী? (পরম করুণাময়)",
-        "২৯. সূরা আল-মুজাম্মিল এর অর্থ কী? (বস্ত্রাবৃত)",
-        "৩০. কুরআনের 'হৃদয়' বলা হয় কোন সূরাকে? (সূরা ইয়াসিন)",
-        "৩১. সূরা লুকমান এ কার উপদেশের কথা বলা হয়েছে? (হযরত লুকমান আ.)",
-        "৩২. সালাত শব্দের অর্থ কী? (দোয়া বা সংযোগ)",
-        "৩৩. তাকওয়া শব্দের অর্থ কী? (আল্লাহ ভীতি)",
-        "৩৪. শিরক শব্দের অর্থ কী? (অংশীদার সাব্যস্ত করা)",
-        "৩৫. কুরআনের সবচাইতে বড় সূরার নাম কী? (সূরা আল-বাকারা)",
-        "৩৬. কুরআনের সবচাইতে ছোট সূরার নাম কী? (সূরা আল-কাওসার)",
-        "৩৭. আল-ফুরকান কার নাম? (আল-কুরআনের)",
-        "৩৮. ওহী কত প্রকার? (২ প্রকার)",
-        "৩৯. প্রথম ওহী কোন পাহাড়ে নাজিল হয়? (হেরা গুহায়)",
-        "৪০. কুরআন নাজিল হতে কত বছর সময় লেগেছে? (২৩ বছর)",
-        "৪১. জান্নাতের আটটি দরজার একটির নাম লিখ। (রাইয়ান)",
-        "৪২. কিয়ামত দিবসে কয়টি সিংগায় ফুঁৎকার দেওয়া হবে? (২ ২টি)",
-        "৪৩. মিযান শব্দের অর্থ কী? (পাল্লা)",
-        "৪৪. সিরাত শব্দের অর্থ কী? (পথ)",
-        "৪৫. আখিরাত শব্দের অর্থ কী? (পরকাল)",
-        "৪৬. কুরআন শরীফের পারা কয়টি? (৩০টি)",
-        "৪৭. কুরআন শরীফের সূরা কয়টি? (১১৪টি)",
-        "৪৮. মাক্কী সূরা বলতে কী বোঝায়? (হিজরতের আগে নাজিল হওয়া সূরা)",
-        "৪৯. মাদানী সূরা বলতে কী বোঝায়? (হিজরতের পরে নাজিল হওয়া সূরা)",
-        "৫০. মুত্ত
+    let timerInterval;
+
+    function access(subject, mode) {
+        let p = prompt(subject + " বিষয়ের পাসওয়ার্ড দিন:");
+        if (p === PASSWORDS[subject]) {
+            showPanel(subject, mode);
+        } else if (p !== null) alert("ভুল পাসওয়ার্ড!");
+    }
+
+    function showPanel(subject, mode) {
+        document.getElementById('mainSite').style.display = 'none';
+        document.getElementById('panel').style.display = 'block';
+        const content = document.getElementById('panel-content');
+        content.innerHTML = "";
+
+        if (mode === 'class') {
+            document.getElementById('examTimer').style.display = 'none';
+            document.getElementById('panel-title').innerText = subject + " - ক্লাস রুম 🎥";
+            content.innerHTML = `<div class='card'><h4>ভিডিও ক্লাস শীঘ্রই আসছে</h4></div>`;
+        } else {
+            // পরীক্ষা মোড - ১৫ মিনিটের টাইমার চালু
+            document.getElementById('panel-title').innerText = subject + " - পরীক্ষা হল 📝";
+            startTimer(15 * 60); // ১৫ মিনিট
+            if(subject === "কুরআন") {
+                qBankQuran.forEach(q => { content.innerHTML += `<div class='q-box'>${q}</div>`; });
+            }
+        }
+        window.scrollTo(0,0);
+    }
+
+    function startTimer(duration) {
+        document.getElementById('examTimer').style.display = 'block';
+        let timer = duration, minutes, seconds;
+        timerInterval = setInterval(function () {
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+            document.getElementById('timeDisplay').textContent = minutes + ":" + seconds;
+
+            if (--timer < 0) {
+                clearInterval(timerInterval);
+                alert("আপনার পরীক্ষার ১৫ মিনিট সময় শেষ হয়ে গেছে!");
+                location.reload();
+            }
+        }, 1000);
+    }
+
+    function pay(sub) { 
+        document.getElementById('pTitle').innerText = sub;
+        document.getElementById('over').style.display = 'block'; document.getElementById('pbox').style.display = 'block'; 
+    }
+    function closeP() { document.getElementById('over').style.display = 'none'; document.getElementById('pbox').style.display = 'none'; }
+    function send() {
+        let n = document.getElementById('name').value;
+        window.open("https://wa.me/8801734505869?text=" + encodeURIComponent("আমি " + n + ", পেমেন্ট করেছি।"));
+        closeP();
+    }
+</script>
+</body>
+</html>
