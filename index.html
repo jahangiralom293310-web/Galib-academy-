@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>গালিব একাডেমি - ক্র্যাস কোর্স অফিসিয়াল সাইট</title>
+    <title>গালিব একাডেমি - ক্র্যাস কোর্স</title>
     <style>
         :root { --primary: #1a237e; --secondary: #ff9800; --success: #2e7d32; --yt: #ff0000; }
         body { margin: 0; font-family: 'Segoe UI', Tahoma, sans-serif; background: #f4f7fe; text-align: center; color: #333; line-height: 1.6; }
-        .navbar { background: var(--primary); color: white; padding: 15px; font-weight: bold; font-size: 24px; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .navbar { background: var(--primary); color: white; padding: 15px; font-weight: bold; font-size: 24px; position: sticky; top: 0; z-index: 1000; }
         .hero { padding: 40px 20px; background: white; border-bottom: 5px solid var(--secondary); }
         .yt-badge { background: var(--yt); color: white; padding: 8px 20px; border-radius: 50px; font-size: 14px; display: inline-block; margin-top: 10px; font-weight: bold; }
 
@@ -21,7 +21,7 @@
         .instructions { background: #fffde7; padding: 25px; margin: 25px auto; max-width: 900px; border-radius: 20px; border: 2px solid var(--secondary); text-align: left; }
         
         /* ড্যাশবোর্ড বাটন */
-        .dashboard-btn { background: #e8f5e9; padding: 20px; margin: 20px auto; max-width: 800px; border-radius: 15px; border: 3px solid var(--success); cursor: pointer; display: none; transition: 0.3s; }
+        .dashboard-btn { background: #e8f5e9; padding: 20px; margin: 20px auto; max-width: 800px; border-radius: 15px; border: 3px solid var(--success); cursor: pointer; display: none; }
         .dashboard-panel { display: none; background: white; padding: 30px; margin: 20px auto; max-width: 1000px; border-radius: 25px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
 
         .section-header { background: var(--primary); color: white; padding: 12px; margin: 40px auto 10px; max-width: 1000px; border-radius: 10px; font-size: 20px; font-weight: bold; }
@@ -49,6 +49,13 @@
         <div class="yt-badge">📺 YouTube Private Group Live Class</div>
     </div>
 
+    <div class="instructions">
+        <h2 style="text-align: center; color: var(--primary);">📌 ভর্তি হওয়ার নিয়ম</h2>
+        <p>১. নিচে তোমার পছন্দের **ক্র্যাস কোর্স** বা পরীক্ষা বাটন ক্লিক করো।</p>
+        <p>২. পেমেন্ট শেষে নাম লিখে হোয়াটসঅ্যাপে মেসেজ দাও।</p>
+        <p>৩. এরপর নিচেই তোমার **ড্যাশবোর্ড** বাটন দেখতে পাবে।</p>
+    </div>
+
     <section class="why-us">
         <h2 style="color: var(--primary); margin-bottom: 30px;">কেন আমাদের ক্র্যাস কোর্সে ভর্তি হবেন?</h2>
         <div class="feature-grid">
@@ -58,27 +65,67 @@
             </div>
             <div class="f-box" style="background: #fff3e0; border-left-color: var(--secondary);">
                 <h4>✅ সাশ্রয়ী ফি ও বিশেষ সুবিধা</h4>
-                <p style="margin:0;">মাদরাসার ৫টি গুরুত্বপূর্ণ বিষয় একত্রে কিনলে বড় ছাড়!</p>
+                <p style="margin:0;">স্বল্প মূল্যে সেরা মানের কোর্স এবং মাত্র ২০ টাকায় অনলাইন পরীক্ষার সুযোগ।</p>
             </div>
             <div class="f-box" style="background: #e3f2fd; border-left-color: var(--primary);">
                 <h4>✅ লাইভ ও রেকর্ড ক্লাস</h4>
-                <p style="margin:0;">লাইভ ক্লাস মিস করলেও রেকর্ড ক্লাস দেখার ব্যবস্থা আজীবন থাকবে।</p>
+                <p style="margin:0;">ইউটিউব প্রাইভেট গ্রুপে লাইভ ক্লাস এবং আজীবন রেকর্ড দেখার ব্যবস্থা থাকবে।</p>
             </div>
         </div>
     </section>
 
-    <div class="instructions">
-        <h2 style="text-align: center; color: var(--primary);">📌 ভর্তি হওয়ার সহজ নিয়ম</h2>
-        <p>১. নিচের তালিকা থেকে তোমার পছন্দের **ক্র্যাস কোর্স** নির্বাচন করো।</p>
-        <p>২. 'কোর্স কিনুন' বাটনে ক্লিক করে টাকা পাঠিয়ে হোয়াটসঅ্যাপে মেসেজ দাও।</p>
-        <p>৩. আমি কনফার্ম করলেই তোমার **ড্যাশবোর্ড** বাটনটি চালু হবে।</p>
-    </div>
-
     <div id="dashLink" class="dashboard-btn" onclick="showDashboard()">
-        <h3 style="margin:0; color: var(--success);">📖 আপনার ক্র্যাস কোর্স ড্যাশবোর্ড এখানে</h3>
+        <h3 style="margin:0; color: var(--success);">📖 আপনার স্টুডেন্ট ড্যাশবোর্ড এখানে</h3>
         <p style="margin:5px 0 0 0;">সব ক্লাস ও পরীক্ষা দেখতে এখানে ক্লিক করো</p>
     </div>
 
     <div class="section-header">📘 অষ্টম শ্রেণি (Class 8)</div>
     <div class="container">
-        <div class="card"><h3>আরবি ১ম ক্র্যাস কোর্স</h3><button class="btn btn-buy" onclick="pay('C8 আরবি ১ম ক্র্যাস কোর্স')">কোর্স কিনুন (১৫০৳)</button><button class="
+        <div class="card"><h3>আরবি ১ম ক্র্যাস কোর্স</h3><button class="btn btn-buy" onclick="pay('C8 আরবি ১ম ক্র্যাস কোর্স')">কোর্স কিনুন (১৫০৳)</button><button class="btn btn-exam" onclick="pay('C8 আরবি ১ম Exam')">পরীক্ষা (২০৳)</button></div>
+        <div class="card"><h3>আরবি ২য় ক্র্যাস কোর্স</h3><button class="btn btn-buy" onclick="pay('C8 আরবি ২য় ক্র্যাস কোর্স')">কোর্স কিনুন (১৫০৳)</button><button class="btn btn-exam" onclick="pay('C8 আরবি ২য় Exam')">পরীক্ষা (২০৳)</button></div>
+        <div class="card"><h3>হাদিস ক্র্যাস কোর্স</h3><button class="btn btn-buy" onclick="pay('C8 হাদিস ক্র্যাস কোর্স')">কোর্স কিনুন (১৫০৳)</button><button class="btn btn-exam" onclick="pay('C8 হাদিস Exam')">পরীক্ষা (২০৳)</button></div>
+    </div>
+</div>
+
+<div id="dashboard" class="dashboard-panel">
+    <h2 style="color: var(--primary);">শিক্ষার্থী ড্যাশবোর্ড 🎓</h2>
+    <div class="section-header" style="background: var(--yt);">🎥 রেকর্ড ক্লাস (YouTube)</div>
+    <div class="container">
+        <div class="card" style="width: 180px;"><h4>রেকর্ড ক্লাস</h4><button class="btn btn-record" onclick="window.open('YT_LINK')">দেখুন</button></div>
+    </div>
+    <div class="section-header" style="background: var(--success);">📝 লাইভ ও পরীক্ষা</div>
+    <div class="container">
+        <div class="card" style="width: 250px;"><h4>সরাসরি লাইভ ক্লাস</h4><button class="btn btn-exam" onclick="window.open('LIVE_LINK')">যোগ দিন</button></div>
+    </div>
+    <button class="btn" style="background:#888; color:white; max-width: 150px; margin: 30px auto;" onclick="hideDashboard()">মূল পাতায় ফিরুন</button>
+</div>
+
+<div class="overlay" id="over" onclick="closeP()"></div>
+<div class="pay-box" id="pbox">
+    <h3 id="pTitle">পেমেন্ট</h3>
+    <p>নগদ (Personal):<br><b style="font-size: 22px; color: #d32f2f;">০১৭৩৪৫০৫৮৬৯</b></p>
+    <input type="text" id="name" placeholder="আপনার নাম লিখুন" style="width:90%; padding:14px; margin-bottom:15px; border:1px solid #ddd; border-radius:12px;">
+    <button class="btn" style="background:#25D366; color:white;" onclick="send()">হোয়াটসঅ্যাপে নিশ্চিত করুন</button>
+</div>
+
+<script>
+    let currentSub = "";
+    function pay(sub) { 
+        currentSub = sub; 
+        document.getElementById('pTitle').innerText = sub; 
+        document.getElementById('over').style.display = 'block'; 
+        document.getElementById('pbox').style.display = 'block'; 
+    }
+    function closeP() { document.getElementById('over').style.display = 'none'; document.getElementById('pbox').style.display = 'none'; }
+    function send() { 
+        let n = document.getElementById('name').value; 
+        if(!n) return alert("নাম লিখুন"); 
+        window.open("https://wa.me/8801734505869?text=" + encodeURIComponent("আমি " + n + ", '" + currentSub + "' এর জন্য পেমেন্ট করেছি।")); 
+        document.getElementById('dashLink').style.display = 'block'; // পেমেন্ট শেষে ড্যাশবোর্ড বাটন দেখাবে
+        closeP();
+    }
+    function showDashboard() { document.getElementById('mainSite').style.display = 'none'; document.getElementById('dashboard').style.display = 'block'; window.scrollTo(0,0); }
+    function hideDashboard() { document.getElementById('dashboard').style.display = 'none'; document.getElementById('mainSite').style.display = 'block'; window.scrollTo(0,0); }
+</script>
+</body>
+</html>
