@@ -7,21 +7,26 @@
     <style>
         :root { --primary: #1a237e; --secondary: #ff9800; --success: #2e7d32; }
         body { margin: 0; font-family: 'Segoe UI', Tahoma, sans-serif; background: #f4f7fe; text-align: center; color: #333; }
-        .navbar { background: var(--primary); color: white; padding: 15px; font-weight: bold; font-size: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .navbar { background: var(--primary); color: white; padding: 15px; font-weight: bold; font-size: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
         .hero { padding: 50px 20px; background: white; border-bottom: 2px solid #ddd; }
         .yt-badge { background: #ff0000; color: white; padding: 5px 15px; border-radius: 20px; font-size: 14px; display: inline-block; margin-top: 10px; }
-        .exam-info { background: #fff3e0; padding: 25px; margin: 25px auto; max-width: 900px; border-radius: 20px; border-left: 6px solid var(--secondary); text-align: left; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; padding: 30px 15px; }
-        .card { background: white; border-radius: 25px; width: 310px; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee; transition: 0.3s; }
-        .card h3 { color: var(--primary); font-size: 22px; margin-bottom: 15px; border-bottom: 2px solid #f0f0f0; padding-bottom: 10px; }
-        .btn { display: block; width: 100%; padding: 13px; margin: 10px 0; border: none; border-radius: 12px; font-weight: bold; font-size: 16px; cursor: pointer; transition: 0.3s; }
+        
+        .section-title { margin-top: 40px; color: var(--primary); font-size: 28px; border-bottom: 3px solid var(--secondary); display: inline-block; padding-bottom: 5px; }
+        
+        .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; }
+        .card { background: white; border-radius: 20px; width: 280px; padding: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); border: 1px solid #eee; transition: 0.3s; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(0,0,0,0.1); }
+        .card h3 { color: var(--primary); font-size: 18px; margin-bottom: 15px; height: 50px; display: flex; align-items: center; justify-content: center; }
+        
+        .btn { display: block; width: 100%; padding: 12px; margin: 8px 0; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; transition: 0.2s; }
         .btn-buy { background: var(--secondary); color: white; }
         .btn-exam { background: var(--success); color: white; }
-        .why-us { padding: 60px 20px; background: #fff; margin-top: 40px; }
-        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; max-width: 1100px; margin: 0 auto; }
-        .f-box { padding: 30px; border-radius: 20px; background: #f8fbff; border: 1px solid #ddecff; text-align: left; }
+        .btn:active { transform: scale(0.95); }
+
+        .full-package { background: #fffde7; padding: 30px; margin: 40px auto; max-width: 900px; border-radius: 25px; border: 2px dashed var(--secondary); }
+        
         .overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); backdrop-filter: blur(5px); z-index:1000; }
-        .pay-box { display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background:white; padding:35px; border-radius:30px; z-index:1001; width:90%; max-width:380px; box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
+        .pay-box { display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background:white; padding:30px; border-radius:25px; z-index:1001; width:85%; max-width:350px; }
     </style>
 </head>
 <body>
@@ -30,31 +35,31 @@
 
 <div class="hero">
     <h1>স্বাগতম গালিব একাডেমি-তে</h1>
-    <p>সরাসরি গালিব ভাইয়ের তত্তাবধানে মাদরাসা সিলেবাসের সেরা প্রস্তুতি।</p>
+    <p>সরাসরি গালিব ভাইয়ের তত্তাবধানে একাডেমিক ও মাদরাসা সিলেবাসের সেরা প্রস্তুতি।</p>
     <div class="yt-badge">📺 YouTube Private Group Live</div>
 </div>
 
-<div class="exam-info">
-    <h4 style="margin-top:0; color: #e65100; font-size: 20px;">📝 পরীক্ষা দেওয়ার নিয়ম:</h4>
-    <p style="margin-bottom:0; font-size: 16px;">কাঙ্ক্ষিত বিষয়ের <b>'পরীক্ষা দিন'</b> বাটনে ক্লিক করে পেমেন্ট করুন। এরপর হোয়াটসঅ্যাপে মেসেজ দিলে আপনাকে <b>প্রশ্নপত্রের লিংক</b> পাঠিয়ে দেওয়া হবে।</p>
-</div>
-
+<h2 class="section-title">মাদরাসা বিষয়সমূহ</h2>
 <div class="container">
-    <div class="card"><h3>আরবি ১ম পত্র</h3><button class="btn btn-buy" onclick="pay('আরবি ১ম পত্র', 'কোর্স')">কোর্স কিনুন (১৫০৳)</button><button class="btn btn-exam" onclick="pay('আরবি ১ম পত্র', 'পরীক্ষা')">পরীক্ষা দিন (১০৳)</button></div>
-    <div class="card"><h3>আরবি ২য় পত্র</h3><button class="btn btn-buy" onclick="pay('আরবি ২য় পত্র', 'কোর্স')">কোর্স কিনুন (১৫০৳)</button><button class="btn btn-exam" onclick="pay('আরবি ২য় পত্র', 'পরীক্ষা')">পরীক্ষা দিন (১০৳)</button></div>
-    <div class="card"><h3>হাদিস শরীফ</h3><button class="btn btn-buy" onclick="pay('হাদিস শরীফ', 'কোর্স')">কোর্স কিনুন (১৫০৳)</button><button class="btn btn-exam" onclick="pay('হাদিস শরীফ', 'পরীক্ষা')">পরীক্ষা দিন (১০৳)</button></div>
-    <div class="card"><h3>কুরআন ও তাজভিদ</h3><button class="btn btn-buy" onclick="pay('কুরআন ও তাজভিদ', 'কোর্স')">কোর্স কিনুন (১৫০৳)</button><button class="btn btn-exam" onclick="pay('কুরআন ও তাজভিদ', 'পরীক্ষা')">পরীক্ষা দিন (১০৳)</button></div>
-    <div class="card"><h3>আকাইদ ও ফিকাহ</h3><button class="btn btn-buy" onclick="pay('আকাইদ ও ফিকাহ', 'কোর্স')">কোর্স কিনুন (১৫০৳)</button><button class="btn btn-exam" onclick="pay('আকাইদ ও ফিকাহ', 'পরীক্ষা')">পরীক্ষা দিন (১০৳)</button></div>
+    <div class="card"><h3>আরবি ১ম পত্র</h3><button class="btn btn-buy" onclick="pay('আরবি ১ম পত্র', 'কোর্স')">কোর্স কিনুন (১৫০৳)</button><button class="btn btn-exam" onclick="pay('আরবি ১ম পত্র', 'পরীক্ষা')">পরীক্ষা দিন (২০৳)</button></div>
+    <div class="card"><h3>আরবি ২য় পত্র</h3><button class="btn btn-buy" onclick="pay('আরবি ২য় পত্র', 'কোর্স')">কোর্স কিনুন (১৫০৳)</button><button class="btn btn-exam" onclick="pay('আরবি ২য় পত্র', 'পরীক্ষা')">পরীক্ষা দিন (২০৳)</button></div>
+    <div class="card"><h3>হাদিস শরীফ</h3><button class="btn btn-buy" onclick="pay('হাদিস শরীফ', 'কোর্স')">কোর্স কিনুন (১৫০৳)</button><button class="btn btn-exam" onclick="pay('হাদিস শরীফ', 'পরীক্ষা')">পরীক্ষা দিন (২০৳)</button></div>
+    <div class="card"><h3>কুরআন ও তাজভিদ</h3><button class="btn btn-buy" onclick="pay('কুরআন ও তাজভিদ', 'কোর্স')">কোর্স কিনুন (১৫০৳)</button><button class="btn btn-exam" onclick="pay('কুরআন ও তাজভিদ', 'পরীক্ষা')">পরীক্ষা দিন (২০৳)</button></div>
+    <div class="card"><h3>আকাইদ ও ফিকাহ</h3><button class="btn btn-buy" onclick="pay('আকাইদ ও ফিকাহ', 'কোর্স')">কোর্স কিনুন (১৫০৳)</button><button class="btn btn-exam" onclick="pay('আকাইদ ও ফিকাহ', 'পরীক্ষা')">পরীক্ষা দিন (২০৳)</button></div>
 </div>
 
-<section class="why-us">
-    <h2>কেন গালিব একাডেমিতে ভর্তি হবেন?</h2>
-    <div class="feature-grid">
-        <div class="f-box"><h4>📺 ইউটিউব প্রাইভেট লাইভ</h4><p>বাফারিং ছাড়া ক্লাস এবং আজীবন রেকর্ড দেখার সুবিধা।</p></div>
-        <div class="f-box"><h4>🎓 গালিব ভাইয়ের ক্লাস</h4><p>আমি নিজেই প্রতিটি বিষয়ের ক্লাস নিই এবং সহজ করে বুঝিয়ে দিই।</p></div>
-        <div class="f-box"><h4>📝 নিয়মিত পরীক্ষা</h4><p>প্রতিটি বিষয়ের ওপর নিয়মিত অনলাইন পরীক্ষা ও মূল্যায়নের ব্যবস্থা।</p></div>
-    </div>
-</section>
+<h2 class="section-title">জেনারেল একাডেমি</h2>
+<div class="container">
+    <div class="card"><h3>অষ্টম শ্রেণী (Class 8)</h3><button class="btn btn-buy" onclick="pay('Class 8', 'কোর্স')">কোর্স কিনুন (১৫০৳)</button><button class="btn btn-exam" onclick="pay('Class 8', 'পরীক্ষা')">পরীক্ষা দিন (২০৳)</button></div>
+    <div class="card"><h3>নবম শ্রেণী (Class 9)</h3><button class="btn btn-buy" onclick="pay('Class 9', 'কোর্স')">কোর্স কিনুন (১৫০৳)</button><button class="btn btn-exam" onclick="pay('Class 9', 'পরীক্ষা')">পরীক্ষা দিন (২০৳)</button></div>
+    <div class="card"><h3>দশম শ্রেণী (Class 10)</h3><button class="btn btn-buy" onclick="pay('Class 10', 'কোর্স')">কোর্স কিনুন (১৫০৳)</button><button class="btn btn-exam" onclick="pay('Class 10', 'পরীক্ষা')">পরীক্ষা দিন (২০৳)</button></div>
+</div>
+
+<div class="full-package">
+    <h2 style="color: var(--secondary); margin-top: 0;">🎁 ধামাকা অফার!</h2>
+    <p style="font-size: 18px;">মাদরাসার ৫টি কোর্স একত্রে কিনলে ফি মাত্র <b>৫৮০ টাকা!</b></p>
+    <button class="btn btn-buy" style="max-width: 300px; margin: 0 auto;" onclick="pay('সবগুলো মাদরাসা কোর্স একত্রে', 'কম্বো অফার')">অফারটি নিন</button>
+</div>
 
 <div class="overlay" id="over" onclick="closeP()"></div>
 <div class="pay-box" id="pbox">
@@ -66,12 +71,20 @@
 
 <script>
     let currentSub = "";
-    function pay(sub, type) { currentSub = sub + " " + type; document.getElementById('pTitle').innerText = "পেমেন্ট: " + currentSub; document.getElementById('over').style.display = 'block'; document.getElementById('pbox').style.display = 'block'; }
-    function closeP() { document.getElementById('over').style.display = 'none'; document.getElementById('pbox').style.display = 'none'; }
+    function pay(sub, type) { 
+        currentSub = sub + " " + type; 
+        document.getElementById('pTitle').innerText = "পেমেন্ট: " + currentSub; 
+        document.getElementById('over').style.display = 'block'; 
+        document.getElementById('pbox').style.display = 'block'; 
+    }
+    function closeP() { 
+        document.getElementById('over').style.display = 'none'; 
+        document.getElementById('pbox').style.display = 'none'; 
+    }
     function send() { 
         let n = document.getElementById('name').value; 
         if(!n) return alert("নাম লিখুন"); 
-        let msg = "আসসালামু আলাইকুম গালিব ভাই, আমি " + n + ", আপনার গালিব একাডেমিতে " + currentSub + " এর জন্য পেমেন্ট করেছি।";
+        let msg = "আসসালামু আলাইকুম গালিব ভাই, আমি " + n + ", গালিব একাডেমিতে '" + currentSub + "' এর জন্য পেমেন্ট করেছি।";
         window.open("https://wa.me/8801734505869?text=" + encodeURIComponent(msg)); 
     }
 </script>
