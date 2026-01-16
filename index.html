@@ -120,67 +120,57 @@
         window.open("https://wa.me/8801734505869?text=" + encodeURIComponent(msg)); 
     }
 </script>
-</body>
-</html><div id="dashboard" class="dashboard-content">
-    <h2 style="color: var(--primary); margin-bottom: 10px;">🎓 গালিব একাডেমি স্টুডেন্ট প্যানেল</h2>
-    <p style="color: #666; margin-bottom: 30px;">আসসালামু আলাইকুম! তোমার কোর্সের সব কন্টেন্ট এখানে সাজানো আছে।</p>
-    
-    <div class="container">
-        <div class="card" style="width: 250px; border-top: 5px solid #ff0000;">
-            <h4 style="margin-bottom: 5px;">🔴 লাইভ ক্লাস</h4>
-            <p style="font-size: 13px; color: #777;">সরাসরি ক্লাসে যোগ দাও</p>
-            <button class="btn" style="background: #ff0000; color: white;" onclick="window.open('YOUR_LIVE_LINK')">এখনই যোগ দাও</button>
-        </div>
 
-        <div class="card" style="width: 250px; border-top: 5px solid #1a237e;">
-            <h4 style="margin-bottom: 5px;">🎥 রেকর্ড ক্লাস</h4>
-            <p style="font-size: 13px; color: #777;">আগের সব ক্লাস ইউটিউবে দেখো</p>
-            <button class="btn" style="background: #1a237e; color: white;" onclick="window.open('YOUR_YOUTUBE_PLAYLIST_LINK')">ক্লাসগুলো দেখো</button>
-        </div>
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>গালিব একাডেমি - স্টুডেন্ট প্যানেল</title>
+    <style>
+        :root { --primary: #1a237e; --secondary: #ff9800; --success: #2e7d32; }
+        body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #f4f7fe; text-align: center; color: #333; }
+        .navbar { background: var(--primary); color: white; padding: 15px; font-weight: bold; font-size: 24px; position: sticky; top: 0; z-index: 100; }
+        
+        .dashboard-content { display: none; background: white; padding: 25px; margin: 20px auto; max-width: 1000px; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .section-header { background: #e3f2fd; padding: 12px; margin: 20px auto 10px; max-width: 900px; border-radius: 12px; color: var(--primary); font-size: 20px; font-weight: bold; border-left: 6px solid var(--primary); text-align: left; }
+        
+        .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; padding: 15px; }
+        .card { background: white; border-radius: 15px; width: 180px; padding: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid #eee; }
+        .card h4 { font-size: 15px; margin: 0 0 10px 0; color: #333; height: 40px; }
+        
+        .btn { display: block; width: 100%; padding: 10px; margin: 5px 0; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 14px; }
+        .btn-record { background: #ff0000; color: white; } /* ইউটিউব রেড কালার */
+        .btn-live { background: var(--success); color: white; }
+        
+        .dash-toggle { background: #e8f5e9; padding: 15px; margin: 20px; border-radius: 15px; border: 2px solid var(--success); cursor: pointer; display: inline-block; }
+    </style>
+</head>
+<body>
 
-        <div class="card" style="width: 250px; border-top: 5px solid #2e7d32;">
-            <h4 style="margin-bottom: 5px;">📝 অনলাইন পরীক্ষা</h4>
-            <p style="font-size: 13px; color: #777;">নিজেকে যাচাই করো</p>
-            <button class="btn btn-exam" onclick="window.open('YOUR_EXAM_LINK')">পরীক্ষা শুরু করো</button>
-        </div>
-    </div>
+<div class="navbar">গালিব একাডেমি</div>
 
-    <div style="margin-top: 20px; padding: 15px; background: #f0f4ff; border-radius: 15px;">
-        <h4 style="margin: 0 0 10px 0;">📚 ক্লাস নোট ও রুটিন</h4>
-        <button class="btn" style="background: #555; color: white; max-width: 200px; margin: 0 auto;" onclick="window.open('YOUR_PDF_LINK')">ডাউনলোড পিডিএফ</button>
-    </div>
-
-    <button class="btn" style="background:#ddd; max-width: 150px; margin: 30px auto 0;" onclick="hideDashboard()">মূল পাতায় ফিরুন</button>
-</div><div id="dashboard" class="dashboard-content">
-    <h2 style="color: var(--primary); margin-bottom: 10px;">🎓 গালিব একাডেমি স্টুডেন্ট প্যানেল</h2>
-    <p style="color: #666; margin-bottom: 30px;">আসসালামু আলাইকুম! তোমার কোর্সের সব কন্টেন্ট এখানে সাজানো আছে।</p>
-    
-    <div class="container">
-        <div class="card" style="width: 250px; border-top: 5px solid #ff0000;">
-            <h4 style="margin-bottom: 5px;">🔴 লাইভ ক্লাস</h4>
-            <p style="font-size: 13px; color: #777;">সরাসরি ক্লাসে যোগ দাও</p>
-            <button class="btn" style="background: #ff0000; color: white;" onclick="window.open('YOUR_LIVE_LINK')">এখনই যোগ দাও</button>
-        </div>
-
-        <div class="card" style="width: 250px; border-top: 5px solid #1a237e;">
-            <h4 style="margin-bottom: 5px;">🎥 রেকর্ড ক্লাস</h4>
-            <p style="font-size: 13px; color: #777;">আগের সব ক্লাস ইউটিউবে দেখো</p>
-            <button class="btn" style="background: #1a237e; color: white;" onclick="window.open('YOUR_YOUTUBE_PLAYLIST_LINK')">ক্লাসগুলো দেখো</button>
-        </div>
-
-        <div class="card" style="width: 250px; border-top: 5px solid #2e7d32;">
-            <h4 style="margin-bottom: 5px;">📝 অনলাইন পরীক্ষা</h4>
-            <p style="font-size: 13px; color: #777;">নিজেকে যাচাই করো</p>
-            <button class="btn btn-exam" onclick="window.open('YOUR_EXAM_LINK')">পরীক্ষা শুরু করো</button>
-        </div>
-    </div>
-
-    <div style="margin-top: 20px; padding: 15px; background: #f0f4ff; border-radius: 15px;">
-        <h4 style="margin: 0 0 10px 0;">📚 ক্লাস নোট ও রুটিন</h4>
-        <button class="btn" style="background: #555; color: white; max-width: 200px; margin: 0 auto;" onclick="window.open('YOUR_PDF_LINK')">ডাউনলোড পিডিএফ</button>
-    </div>
-
-    <button class="btn" style="background:#ddd; max-width: 150px; margin: 30px auto 0;" onclick="hideDashboard()">মূল পাতায় ফিরুন</button>
+<div id="dashLink" class="dash-toggle" onclick="showDashboard()" style="display:none;">
+    <h3 style="margin:0; color: var(--success);">📖 আপনার সব ক্লাসের ড্যাশবোর্ড এখানে</h3>
+    <p style="margin:5px 0 0 0;">(রেকর্ড ক্লাস ও পরীক্ষার লিঙ্ক)</p>
 </div>
+
+<div id="dashboard" class="dashboard-content">
+    <h2 style="color: var(--primary);">শিক্ষার্থী ড্যাশবোর্ড 🎓</h2>
+    <p>নিচের বাটন থেকে তোমার পছন্দের বিষয়ের রেকর্ড ক্লাস দেখো:</p>
+
+    <div class="section-header">🎥 বিষয়ভিত্তিক রেকর্ড ক্লাস (YouTube)</div>
+    <div class="container">
+        <div class="card">
+            <h4>আরবি ১ম পত্র</h4>
+            <button class="btn btn-record" onclick="window.open('ARABI_1_LINK')">রেকর্ড ক্লাস</button>
+        </div>
+        <div class="card">
+            <h4>আরবি ২য় পত্র</h4>
+            <button class="btn btn-record" onclick="window.open('ARABI_2_LINK')">রেকর্ড ক্লাস</button>
+        </div>
+        <div class="card">
+            <h4>হাদিস শরীফ</h4>
+            <button class="btn btn-record" onclick="window.open('HAD
 
 
