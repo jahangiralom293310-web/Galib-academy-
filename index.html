@@ -5,80 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>গালিব একাডেমি</title>
     <style>
-        body { margin: 0; font-family: 'Arial', sans-serif; background: #f4f7f6; text-align: center; }
-        .nav { background: #1a237e; color: white; padding: 15px; font-weight: bold; font-size: 20px; }
-        .hero { padding: 30px; background: white; border-bottom: 3px solid #1a237e; }
-        .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; }
-        .card { background: white; border-radius: 15px; width: 280px; padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border-top: 5px solid #1a237e; }
-        .sub-title { font-size: 22px; color: #1a237e; font-weight: bold; margin-bottom: 10px; }
-        .price { font-size: 20px; color: #2e7d32; font-weight: bold; margin: 10px 0; }
-        .btn { background: #ff9800; color: white; border: none; padding: 12px; width: 100%; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 10px; }
+        /* জেনারেল স্টাইল */
+        body { margin: 0; font-family: 'Segoe UI', Tahoma, sans-serif; background-color: #f0f2f5; text-align: center; color: #333; }
+        
+        /* নেভিগেশন */
+        .navbar { background: #1a237e; color: white; padding: 15px; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        
+        /* হিরো সেকশন */
+        .hero { padding: 50px 20px; background: white; border-bottom: 5px solid #1a237e; }
+        .hero h1 { font-size: 2.5rem; color: #1a237e; margin: 0; }
+        .hero p { font-size: 1.1rem; color: #555; margin: 10px 0; }
+        .yt-badge { background: #FF0000; color: white; padding: 5px 12px; border-radius: 5px; font-size: 13px; display: inline-block; margin-top: 10px; }
+
+        /* কোর্স কার্ড গ্রিড */
+        .course-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 30px 10px; }
+        .course-card { background: white; border-radius: 20px; width: 300px; padding: 25px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-top: 5px solid #1a237e; position: relative; overflow: hidden; }
+        
+        .sub-title { font-size: 22px; color: #1a237e; font-weight: bold; margin-bottom: 15px; }
+        .price-tag { font-size: 18px; color: #2e7d32; font-weight: bold; margin: 10px 0; }
+        
+        .btn { background: #ff9800; color: white; border: none; padding: 12px; width: 100%; border-radius: 10px; font-weight: bold; cursor: pointer; margin-top: 10px; font-size: 16px; transition: 0.3s; }
+        .btn:hover { background: #e68a00; }
         .btn-exam { background: #2e7d32; }
-        /* পেমেন্ট বক্স */
-        .overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:10; }
-        .pay-box { display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background:white; padding:25px; border-radius:15px; z-index:11; width:80%; max-width:320px; }
+        .btn-exam:hover { background: #1b5e20; }
+
+        /* কেন ভর্তি হবেন সেকশন - নতুন ডিজাইন */
+        .why-us { padding: 60px 20px; background: #ffffff; border-top: 1px solid #ddd; }
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto; }
+        .f-card { padding: 30px; border-radius: 20px; background: #f8f9fa; border-bottom: 5px solid #1a237e; text-align: left; transition: 0.3s; }
+        .f-card h3 { color: #1a237e; margin-top: 10px; }
+
+        /* পেমেন্ট পপআপ */
+        .overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:2000; }
+        .pay-box { display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background:white; padding:30px; border-radius:25px; z-index:2001; width:85%; max-width:350px; }
     </style>
 </head>
 <body>
 
-<div class="nav">গালিব একাডেমি</div>
-
-<div class="hero">
-    <h1>গালিব একাডেমি</h1>
-    <p>আমি নিজেই সব ক্লাস নেই। ইউটিউব প্রাইভেট গ্রুপে লাইভ ক্লাস।</p>
+<div class="navbar">
+    <div style="font-size: 24px; font-weight: bold;">গালিব একাডেমি</div>
 </div>
 
-<h2 style="margin-top:20px;">সাবজেক্ট ভিত্তিক পরীক্ষা ও কোর্স</h2>
+<header class="hero">
+    <h1>গালিব একাডেমি</h1>
+    <p>ইউটিউব প্রাইভেট গ্রুপে লাইভ ক্লাস ও পূর্ণাঙ্গ মাদরাসা সিলেবাস প্রস্তুতি</p>
+    <div class="yt-badge">📺 YouTube Private Group Live</div>
+</header>
 
-<div class="container">
-    <div class="card">
+<h2 style="margin-top:40px; color: #1a237e;">আমাদের বিষয়ভিত্তিক কোর্স ও পরীক্ষা</h2>
+
+<div class="course-container">
+    <div class="course-card">
         <div class="sub-title">আরবি ১ম পত্র</div>
-        <div class="price">কোর্স ফি: ১৫০ টাকা</div>
+        <div class="price-tag">কোর্স ফি: ১৫০ টাকা</div>
         <button class="btn" onclick="pay('আরবি ১ম পত্র', 'কোর্স')">কোর্স কিনুন</button>
         <button class="btn btn-exam" onclick="pay('আরবি ১ম পত্র', 'পরীক্ষা')">পরীক্ষা দিন (১০৳)</button>
     </div>
 
-    <div class="card">
+    <div class="course-card">
         <div class="sub-title">আরবি ২য় পত্র</div>
-        <div class="price">কোর্স ফি: ১৫০ টাকা</div>
+        <div class="price-tag">কোর্স ফি: ১৫০ টাকা</div>
         <button class="btn" onclick="pay('আরবি ২য় পত্র', 'কোর্স')">কোর্স কিনুন</button>
-        <button class="btn btn-exam" onclick="pay('আরবি ২য় পত্র', 'পরীক্ষা')">পরীক্ষা দিন (১০৳)</button>
-    </div>
-
-    <div class="card">
-        <div class="sub-title">হাদিস শরীফ</div>
-        <div class="price">কোর্স ফি: ১৫০ টাকা</div>
-        <button class="btn" onclick="pay('হাদিস শরীফ', 'কোর্স')">কোর্স কিনুন</button>
-        <button class="btn btn-exam" onclick="pay('হাদিস শরীফ', 'পরীক্ষা')">পরীক্ষা দিন (১০৳)</button>
-    </div>
-</div>
-
-<div class="overlay" id="over" onclick="closeP()"></div>
-<div class="pay-box" id="pbox">
-    <h3 id="pTitle">পেমেন্ট</h3>
-    <p>নগদ (Send Money):<br><b>০১৭৩৪৫০৫৮৬৯</b></p>
-    <input type="text" id="name" placeholder="আপনার নাম" style="width:90%; padding:10px; margin-bottom:10px;">
-    <button class="btn" style="background:#25D366;" onclick="send()">হোয়াটসঅ্যাপে জানান</button>
-</div>
-
-<script>
-    let currentSub = "";
-    function pay(sub, type) {
-        currentSub = sub + " " + type;
-        document.getElementById('pTitle').innerText = currentSub;
-        document.getElementById('over').style.display = 'block';
-        document.getElementById('pbox').style.display = 'block';
-    }
-    function closeP() {
-        document.getElementById('over').style.display = 'none';
-        document.getElementById('pbox').style.display = 'none';
-    }
-    function send() {
-        let n = document.getElementById('name').value;
-        if(!n) return alert("নাম দিন");
-        window.open("https://wa.me/8801734505869?text=আমি " + n + ", " + currentSub + " এর জন্য পেমেন্ট করেছি।");
-    }
-</script>
-
-</body>
-</html>
+        <button class="btn btn-exam" onclick="pay('আর
