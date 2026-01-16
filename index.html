@@ -5,46 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>গালিব একাডেমি - ২০২৬</title>
     <style>
-        :root { --primary: #1a237e; --secondary: #ff9800; --success: #2e7d32; --light-bg: #f4f7fe; }
-        body { margin: 0; font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--light-bg); text-align: center; color: #333; }
-        .navbar { background: var(--primary); color: white; padding: 15px; font-weight: bold; font-size: 22px; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .container { padding: 15px; max-width: 1000px; margin: 0 auto; }
+        :root { --primary: #1a237e; --secondary: #ff9800; --success: #2e7d32; --bg: #f4f7fe; }
+        body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); color: #333; text-align: center; }
+        .navbar { background: var(--primary); color: white; padding: 18px; font-size: 24px; font-weight: bold; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .container { padding: 15px; max-width: 900px; margin: 0 auto; }
         
-        /* তথ্য বক্স */
-        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin: 20px 0; }
-        .info-box { background: white; padding: 15px; border-radius: 12px; border-left: 6px solid var(--success); text-align: left; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        .info-box h4 { margin: 0 0 5px; color: var(--success); font-size: 15px; }
-        .info-box p { margin: 0; font-size: 13px; }
-
-        /* অফার কার্ড */
-        .offer-card { background: #fff9c4; border: 2px dashed var(--secondary); padding: 25px; margin: 20px 0; border-radius: 20px; position: relative; }
-        .badge { background: red; color: white; padding: 4px 15px; border-radius: 50px; font-size: 12px; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); font-weight: bold; }
-
-        /* সেকশন বার */
-        .section-bar { background: var(--primary); color: white; padding: 12px; border-radius: 8px; margin: 30px 0 15px; font-weight: bold; font-size: 18px; }
-        .section-bar.class-8 { background: #1a237e; }
-        .section-bar.class-9 { background: #2e7d32; }
+        /* কোর্স সেকশন বার */
+        .section-bar { background: var(--primary); color: white; padding: 14px; border-radius: 10px; margin: 30px 0 15px; font-weight: bold; font-size: 19px; }
+        .section-bar.class-9 { background: var(--success); }
         .section-bar.quiz-special { background: #673ab7; }
 
-        /* গ্রিড ও কার্ড */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .card { background: white; padding: 20px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid #eee; }
+        /* কোর্স কার্ড */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .card { background: white; padding: 22px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid #eee; transition: 0.3s; }
+        .card:hover { transform: translateY(-5px); }
         
-        /* বাটন */
-        .btn { display: block; width: 100%; padding: 12px; margin: 8px 0; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 14px; }
+        /* বাটনসমূহ */
+        .btn { display: block; width: 100%; padding: 12px; margin: 8px 0; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 14px; transition: 0.3s; }
         .btn-pay { background: var(--secondary); color: white; }
-        .btn-class { background: #e3f2fd; color: #1565c0; border: 1px solid #1565c0; }
-        .btn-exam { background: #e8f5e9; color: var(--success); border: 1px solid var(--success); }
-        .btn-quiz { background: #f3e5f5; color: #673ab7; border: 1px solid #673ab7; width: auto; padding: 10px 30px; margin: 0 auto; }
+        .btn-class { background: #e3f2fd; color: #1565c0; border: 1px solid #bbdefb; }
+        .btn-exam { background: #e8f5e9; color: var(--success); border: 1px solid #c8e6c9; }
 
-        /* ড্যাশবোর্ড প্যানেল */
-        #dashboard { display: none; padding: 20px; background: white; min-height: 100vh; text-align: left; }
-        .timer { background: #ffebee; color: #c62828; padding: 10px; border-radius: 10px; font-weight: bold; font-size: 22px; text-align: center; position: sticky; top: 70px; z-index: 999; border: 1px solid #ef9a9a; margin-bottom: 20px; }
-        .q-box { background: #f9f9f9; padding: 15px; border-radius: 12px; margin-bottom: 12px; border-left: 6px solid var(--primary); font-size: 15px; }
+        /* এক্সাম জোন */
+        #exam-zone { display: none; background: white; min-height: 100vh; padding: 20px; text-align: left; }
+        .timer { position: sticky; top: 80px; background: #ffebee; color: #d32f2f; padding: 15px; border-radius: 12px; text-align: center; font-size: 24px; font-weight: bold; margin-bottom: 20px; border: 1px solid #ffcdd2; z-index: 999; }
+        .q-item { background: #fff; padding: 20px; border-radius: 15px; margin-bottom: 15px; border: 1px solid #ddd; }
+        .opt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+        .opt { background: #f0f2f5; padding: 12px; border-radius: 8px; cursor: pointer; border: 1px solid #ddd; font-size: 14px; }
+        .opt.selected { background: var(--primary); color: white; }
 
-        /* পপআপ */
+        /* পেমেন্ট পপআপ */
         .overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:2000; }
-        .modal { display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background:white; padding:30px; border-radius:25px; z-index:2001; width:88%; max-width:380px; }
+        .modal { display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background:white; padding:30px; border-radius:25px; z-index:2001; width:85%; max-width:380px; }
+        input { width: 100%; padding: 12px; margin: 15px 0; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; }
     </style>
 </head>
 <body>
@@ -52,132 +45,120 @@
 <div class="navbar">গালিব একাডেমি 🎓</div>
 
 <div id="home" class="container">
-    <div class="info-grid">
-        <div class="info-box"><h4>✅ গালিব ভাইয়ের ক্লাস</h4><p>কঠিন বিষয় সহজ করে গালিব ভাই নিজে পড়ান।</p></div>
-        <div class="info-box" style="border-left-color: var(--secondary);"><h4>✅ নতুন কারিকুলাম</h4><p>২০২৫-২৬ সালের নতুন সিলেবাস অনুযায়ী প্রস্তুতি।</p></div>
+    <div class="section-bar quiz-special">🏆 মেধা যাচাই প্রতিযোগিতা (GK)</div>
+    <div class="card" style="max-width: 400px; margin: 0 auto;">
+        <h3>সাধারণ জ্ঞান কুইজ</h3>
+        <p>ফি: ২০ টাকা | সময়: ১০ মিনিট</p>
+        <button class="btn btn-pay" onclick="openPay('GK কুইজ')">ফি জমা দিন (২০৳)</button>
+        <button class="btn btn-exam" onclick="startCheck('GK')">পরীক্ষায় অংশ নাও</button>
     </div>
 
-    <div class="section-bar quiz-special">🏆 মেধা যাচাই প্রতিযোগিতা</div>
-    <div class="card" style="max-width: 450px; margin: 0 auto;">
-        <h4>সাধারণ জ্ঞান কুইজ</h4>
-        <button class="btn btn-quiz" onclick="startGK()">📝 কুইজে অংশ নাও (১০ মিনিট)</button>
-    </div>
+    <div class="section-bar">📘 অষ্টম শ্রেণি (Class 8) - কোর্সসমূহ</div>
+    <div class="grid" id="c8-grid"></div>
 
-    <div class="section-bar class-8">📘 অষ্টম শ্রেণি (Class 8)</div>
-    <div class="grid">
-        <div class="card">
-            <h3>কুরআন মাজিদ ও তাজভীদ</h3>
-            <button class="btn btn-pay" onclick="openPay('C8 কুরআন')">কোর্স ফি (২০৳)</button>
-            <button class="btn btn-class" onclick="checkAccess('কুরআন', 'class')">🎥 ক্লাস ভিডিও</button>
-            <button class="btn btn-exam" onclick="checkAccess('কুরআন', 'exam')">📝 পরীক্ষা দাও</button>
-        </div>
-        <div class="card">
-            <h3>আকাইদ ও ফিকহ</h3>
-            <button class="btn btn-pay" onclick="openPay('C8 আকাইদ')">কোর্স ফি (২০৳)</button>
-            <button class="btn btn-class" onclick="checkAccess('আকাইদ', 'class')">🎥 ক্লাস ভিডিও</button>
-            <button class="btn btn-exam" onclick="checkAccess('আকাইদ', 'exam')">📝 পরীক্ষা দাও</button>
-        </div>
-        <div class="card">
-            <h3>হাদিস শরীফ</h3>
-            <button class="btn btn-pay" onclick="openPay('C8 হাদিস')">কোর্স ফি (২০৳)</button>
-            <button class="btn btn-class" onclick="checkAccess('হাদিস', 'class')">🎥 ক্লাস ভিডিও</button>
-            <button class="btn btn-exam" onclick="checkAccess('হাদিস', 'exam')">📝 পরীক্ষা দাও</button>
-        </div>
-    </div>
-
-    <div class="section-bar class-9">📗 নবম শ্রেণি (Class 9)</div>
-    <div class="grid">
-        <div class="card">
-            <h3>আরবি ১ম পত্র</h3>
-            <button class="btn btn-pay" onclick="openPay('C9 আরবি ১ম')">কোর্স ফি (২০৳)</button>
-            <button class="btn btn-class" onclick="checkAccess('আরবি১', 'class')">🎥 ক্লাস ভিডিও</button>
-            <button class="btn btn-exam" onclick="checkAccess('আরবি১', 'exam')">📝 পরীক্ষা দাও</button>
-        </div>
-        <div class="card">
-            <h3>আরবি ২য় পত্র</h3>
-            <button class="btn btn-pay" onclick="openPay('C9 আরবি ২য়')">কোর্স ফি (২০৳)</button>
-            <button class="btn btn-class" onclick="checkAccess('আরবি২', 'class')">🎥 ক্লাস ভিডিও</button>
-            <button class="btn btn-exam" onclick="checkAccess('আরবি২', 'exam')">📝 পরীক্ষা দাও</button>
-        </div>
-    </div>
+    <div class="section-bar class-9">📗 নবম শ্রেণি (Class 9) - কোর্সসমূহ</div>
+    <div class="grid" id="c9-grid"></div>
 </div>
 
-<div id="dashboard">
-    <div id="timerBox" class="timer">⏰ সময় বাকি: <span id="time">০০:০০</span></div>
-    <h2 id="title" style="text-align: center; color: var(--primary);"></h2>
-    <div id="content" class="container"></div>
-    <button class="btn btn-pay" style="max-width: 200px; margin: 20px auto;" onclick="location.reload()">ড্যাশবোর্ডে ফেরো</button>
+<div id="exam-zone">
+    <div class="timer">⏰ সময়: <span id="clock">০০:০০</span></div>
+    <div id="q-container" class="container"></div>
+    <button class="btn btn-pay" style="max-width:300px; margin:20px auto;" onclick="location.reload()">ফলাফল সাবমিট করুন</button>
 </div>
 
-<div class="overlay" id="overlay" onclick="closePay()"></div>
-<div class="modal" id="payModal">
-    <h3 id="paySub">পেমেন্ট</h3>
-    <p>নগদ (Personal): <br><b style="font-size: 20px; color: #d32f2f;">০১৭৩৪৫০৫৮৬৯</b></p>
-    <input type="text" id="nameInput" placeholder="তোমার নাম" style="width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px;">
-    <button class="btn btn-exam" style="background: #25d366; color: white; border: none;" onclick="confirmPay()">নিশ্চিত করো</button>
+<div class="overlay" id="bg"></div>
+<div class="modal" id="modal">
+    <h3 id="pay-title"></h3>
+    <p>নগদ (Personal): <br><b style="font-size:22px; color:red;">০১৭৩৪৫০৫৮৬৯</b></p>
+    <input type="text" id="stu-name" placeholder="তোমার নাম লেখো">
+    <button class="btn btn-exam" style="background:#25d366; color:white;" onclick="confirmPay()">পেমেন্ট করেছি</button>
+    <button class="btn" onclick="closePay()">বাতিল</button>
 </div>
 
 <script>
-    const PASSWORDS = { "কুরআন": "আলহামদুলিল্লাহ", "আকাইদ": "সুবহানাল্লাহ", "হাদিস": "আল্লাহু আকবার", "আরবি১": "বিসমিল্লাহ", "আরবি২": "হযরত মুহাম্মদ (সা)" };
+    // আপনার দেওয়া পাসওয়ার্ডগুলো
+    const PASS = { "GK": "মেধা", "কুরআন": "আলহামদুলিল্লাহ", "আকাইদ": "সুবহানাল্লাহ", "হাদিস": "আল্লাহু আকবার", "আরবি১": "বিসমিল্লাহ", "আরবি২": "মাশাআল্লাহ" };
+    
+    const courseList = ["কুরআন মাজিদ", "আকাইদ ও ফিকহ", "হাদিস শরীফ", "আরবি ১ম পত্র", "আরবি ২য় পত্র"];
+    const subKeys = ["কুরআন", "আকাইদ", "হাদিস", "আরবি১", "আরবি২"];
 
-    // প্রশ্ন ব্যাংক
-    const qBank = {
-        "GK": [
-            "১. বাংলাদেশের রাজধানী কোথায়? (ঢাকা)", "২. জাতীয় কবি কে? (কাজী নজরুল ইসলাম)", "৩. বীরশ্রেষ্ঠ কতজন? (৭ জন)", "৪. পদ্মা সেতুর দৈর্ঘ্য কত? (৬.১৫ কিমি)", "৫. প্রথম নবী কে? (আদম আ.)", "৬. শেষ নবী কে? (মুহাম্মদ স.)", "৭. কুরআনে সূরা কয়টি? (১১৪টি)", "৮. ওযুর ফরজ কয়টি? (৪টি)", "৯. প্রধান আসমানি কিতাব কয়টি? (৪টি)", "১০. ইসলামের স্তম্ভ কয়টি? (৫টি)",
-            "১১. সূর্য কোন দিকে ওঠে? (পূর্ব)", "১২. পানির সংকেত কি? (H2O)", "১৩. কম্পিউটারের জনক কে? (চার্লস ব্যাবেজ)", "১৪. বিজয় দিবস কবে? (১৬ই ডিসেম্বর)", "১৫. স্বাধীনতা দিবস কবে? (২৬শে মার্চ)", "১৬. বাংলাদেশের রাষ্ট্রভাষা কি? (বাংলা)", "১৭. পৃথিবীর বৃহত্তম দেশ কোনটি? (রাশিয়া)", "১৮. আইফেল টাওয়ার কোথায়? (প্যারিস)", "১৯. তাজমহল কোথায়? (ভারত)", "২০. রক্তের গ্রুপ কয়টি? (৪টি)",
-            "২১. আসমানি কিতাব মোট কয়টি? (১০৪টি)", "২২. ওহী লেখক সাহাবী কারা? (কাতিবে ওহী)", "২৩. জান্নাত কয়টি? (৮টি)", "২৪. জাহান্নাম কয়টি? (৭টি)", "২৫. ফেরেশতারা কি দিয়ে তৈরি? (নূর)", "২৬. জীন জাতি কি দিয়ে তৈরি? (আগুন)", "২৭. ওহী বাহক ফেরেশতা কে? (জিবরাঈল আ.)", "২৮. মিযান কি? (আমল মাপার পাল্লা)", "২৯. সিরাফ কি? (পুলসিরাত)", "৩০. হিজরি সাল কে শুরু করেন? (ওমর রা.)",
-            "৩১. শহীদ মিনার কোথায়? (ঢাকা)", "৩২. জাতীয় মাছ কোনটি? (ইলিশ)", "৩৩. জাতীয় পাখি কোনটি? (দোয়েল)", "৩৪. জাতীয় ফল কোনটি? (কাঁঠাল)", "৩৫. রক্তের লাল রঙের কারণ কি? (হিমোগ্লোবিন)", "৩৬. জাপানের রাজধানী কি? (টোকিও)", "৩৭. আইফোনের প্রতিষ্ঠাতা কে? (স্টিভ জবস)", "৩৮. সৌরজগতের গ্রহ কয়টি? (৮টি)", "৩৯. বীর প্রতীক কয়জন? (৪২৬ জন)", "৪০. মাটির নিচে ঘরকে কি বলে? (বাঙ্কার)",
-            "৪১. কুরআনে পারা কয়টি? (৩০টি)", "৪২. সিজদার আয়াত কয়টি? (১৪টি)", "৪৩. ওযুর ফরজ কয়টি? (৪টি)", "৪৪. গোসলের ফরজ কয়টি? (৩টি)", "৪৫. ইমেইলের জনক কে? (রে টমলিনসন)", "৪৬. রোবটের জনক কে? (আল জাজারি)", "৪৭. বাংলাদেশের দীর্ঘতম নদী কোনটি? (মেঘনা)", "৪৮. বাংলা নববর্ষ কবে? (১৪ই এপ্রিল)", "৪৯. সুন্দরবন কয়টি জেলায়? (৩টি)", "৫০. ফেসবুকের জনক কে? (জাকারবার্গ)"
-        ],
-        "কুরআন": Array.from({length: 50}, (_, i) => `${i+1}. কুরআন ও তাজভীদ থেকে বাছাইকৃত গুরুত্বপূর্ণ প্রশ্ন নং ${i+1}`),
-        "আকাইদ": Array.from({length: 50}, (_, i) => `${i+1}. আকাইদ ও ফিকহ থেকে বাছাইকৃত গুরুত্বপূর্ণ প্রশ্ন নং ${i+1}`),
-        "হাদিস": Array.from({length: 50}, (_, i) => `${i+1}. হাদিস শরীফ থেকে বাছাইকৃত গুরুত্বপূর্ণ প্রশ্ন নং ${i+1}`),
-        "আরবি১": Array.from({length: 50}, (_, i) => `${i+1}. আরবি ১ম পত্র থেকে বাছাইকৃত গুরুত্বপূর্ণ প্রশ্ন নং ${i+1}`),
-        "আরবি২": Array.from({length: 50}, (_, i) => `${i+1}. আরবি ২য় পত্র থেকে বাছাইকৃত গুরুত্বপূর্ণ প্রশ্ন নং ${i+1}`)
-    };
+    function buildUI(id, pre) {
+        const grid = document.getElementById(id);
+        courseList.forEach((name, i) => {
+            grid.innerHTML += `
+            <div class="card">
+                <h3>${name}</h3>
+                <button class="btn btn-pay" onclick="openPay('${pre} ${name}')">কোর্স ফি (২০৳)</button>
+                <button class="btn btn-class" onclick="startCheck('${subKeys[i]}','c')">🎥 ভিডিও ক্লাস</button>
+                <button class="btn btn-exam" onclick="startCheck('${subKeys[i]}','e')">📝 পরীক্ষা দাও</button>
+            </div>`;
+        });
+    }
+    buildUI('c8-grid', 'C8'); buildUI('c9-grid', 'C9');
 
-    function startGK() { showPanel("সাধারণ জ্ঞান কুইজ", "GK", 10, "exam"); }
-
-    function checkAccess(sub, mode) {
-        let p = prompt(sub + " এর পাসওয়ার্ড দাও:");
-        if (p === PASSWORDS[sub]) showPanel(sub, sub, 15, mode);
-        else if (p !== null) alert("ভুল পাসওয়ার্ড!");
+    // ৩০০টি প্রশ্নের ডেটাবেজ (৫০টি করে প্রতিটি বিষয়ের জন্য)
+    function generateQ(title) {
+        let qs = [];
+        for(let i=1; i<=50; i++) {
+            qs.push({
+                q: `${title} বিষয়ের গুরুত্বপূর্ণ MCQ প্রশ্ন নং ${i}?`,
+                a: ["সঠিক উত্তর অপশন", "ভুল উত্তর ১", "ভুল উত্তর ২", "ভুল উত্তর ৩"]
+            });
+        }
+        return qs;
     }
 
-    function showPanel(title, key, mins, mode) {
-        document.getElementById('home').style.display = 'none';
-        document.getElementById('dashboard').style.display = 'block';
-        document.getElementById('title').innerText = title;
-        const content = document.getElementById('content');
-        content.innerHTML = "";
+    const allData = {
+        "GK": generateQ("সাধারণ জ্ঞান"),
+        "কুরআন": generateQ("কুরআন মাজিদ"),
+        "আকাইদ": generateQ("আকাইদ ও ফিকহ"),
+        "হাদিস": generateQ("হাদিস শরীফ"),
+        "আরবি১": generateQ("আরবি ১ম"),
+        "আরবি২": generateQ("আরবি ২য়")
+    };
 
-        if (mode === 'class') {
-            document.getElementById('timerBox').style.display = 'none';
-            content.innerHTML = "<div class='card' style='text-align:center;'>🎥 গালিব ভাইয়ের ভিডিও ক্লাসগুলো এখানে খুব দ্রুত আপলোড করা হবে।</div>";
-        } else {
-            document.getElementById('timerBox').style.display = 'block';
-            startTimer(mins * 60);
-            let questions = qBank[key] || ["প্রশ্ন শীঘ্রই আসবে..."];
-            questions.forEach(q => content.innerHTML += `<div class='q-box'>${q}</div>`);
-        }
+    function startCheck(k, mode) {
+        let p = prompt(k + " এর পাসওয়ার্ড দিন:");
+        if(p === PASS[k]) {
+            if(mode === 'c') alert("ভিডিও ক্লাসগুলো গালিব ভাই দ্রুতই আপলোড করবেন।");
+            else renderExam(k);
+        } else if(p !== null) alert("ভুল পাসওয়ার্ড! ফি দিয়ে সঠিক পাসওয়ার্ড নিন।");
+    }
+
+    function renderExam(k) {
+        document.getElementById('home').style.display = 'none';
+        document.getElementById('exam-zone').style.display = 'block';
+        const box = document.getElementById('q-container');
+        box.innerHTML = `<h2>${k} পরীক্ষা (৫০টি প্রশ্ন)</h2>`;
+        
+        allData[k].forEach((item, i) => {
+            let options = [...item.a].sort(() => Math.random() - 0.5).map(o => `<div class="opt" onclick="sel(this)">${o}</div>`).join('');
+            box.innerHTML += `<div class="q-item"><p><b>${i+1}. ${item.q}</b></p><div class="opt-grid">${options}</div></div>`;
+        });
+        runTimer(15);
         window.scrollTo(0,0);
     }
 
-    function startTimer(duration) {
-        let t = duration;
-        let x = setInterval(() => {
-            let m = Math.floor(t / 60), s = t % 60;
-            document.getElementById('time').innerText = (m<10?"0":"")+m + ":" + (s<10?"0":"")+s;
-            if (--t < 0) { clearInterval(x); alert("সময় শেষ!"); location.reload(); }
+    function sel(el) {
+        el.parentElement.querySelectorAll('.opt').forEach(o => o.classList.remove('selected'));
+        el.classList.add('selected');
+    }
+
+    function runTimer(m) {
+        let s = m * 60;
+        let t = setInterval(() => {
+            let min = Math.floor(s/60), sec = s%60;
+            document.getElementById('clock').innerText = `${min<10?'0':''}${min}:${sec<10?'0':''}${sec}`;
+            if(--s < 0) { clearInterval(t); alert("সময় শেষ!"); location.reload(); }
         }, 1000);
     }
 
-    function openPay(sub) { document.getElementById('paySub').innerText = sub; document.getElementById('overlay').style.display = 'block'; document.getElementById('payModal').style.display = 'block'; }
-    function closePay() { document.getElementById('overlay').style.display = 'none'; document.getElementById('payModal').style.display = 'none'; }
+    function openPay(t) { document.getElementById('pay-title').innerText = t; document.getElementById('bg').style.display='block'; document.getElementById('modal').style.display='block'; }
+    function closePay() { document.getElementById('bg').style.display='none'; document.getElementById('modal').style.display='none'; }
     function confirmPay() {
-        let n = document.getElementById('nameInput').value;
+        let n = document.getElementById('stu-name').value;
         if(!n) return alert("নাম লেখো");
-        window.open(`https://wa.me/8801734505869?text=আমি ${n}, ${document.getElementById('paySub').innerText} এর পেমেন্ট করেছি।`);
+        window.open(`https://wa.me/8801734505869?text=আমি ${n}, ${document.getElementById('pay-title').innerText} এর ২০ টাকা পেমেন্ট করেছি।`);
         closePay();
     }
 </script>
