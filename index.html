@@ -3,42 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>গালিব একাডেমি - অফিসিয়াল সাইট</title>
+    <title>গালিব একাডেমি - ক্র্যাস কোর্স অফিসিয়াল সাইট</title>
     <style>
         :root { --primary: #1a237e; --secondary: #ff9800; --success: #2e7d32; --yt: #ff0000; }
-        body { margin: 0; font-family: 'Segoe UI', Tahoma, sans-serif; background: #f0f2f5; text-align: center; color: #333; line-height: 1.6; }
+        body { margin: 0; font-family: 'Segoe UI', Tahoma, sans-serif; background: #f4f7fe; text-align: center; color: #333; line-height: 1.6; }
         
         /* Navigation */
-        .navbar { background: var(--primary); color: white; padding: 15px; font-weight: bold; font-size: 26px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); position: sticky; top: 0; z-index: 1000; }
+        .navbar { background: var(--primary); color: white; padding: 15px; font-weight: bold; font-size: 24px; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         
         /* Hero Section */
-        .hero { padding: 50px 20px; background: white; border-bottom: 5px solid var(--secondary); }
-        .yt-badge { background: var(--yt); color: white; padding: 8px 20px; border-radius: 50px; font-size: 14px; display: inline-block; margin-top: 15px; font-weight: bold; }
+        .hero { padding: 40px 20px; background: white; border-bottom: 5px solid var(--secondary); }
+        .yt-badge { background: var(--yt); color: white; padding: 8px 20px; border-radius: 50px; font-size: 14px; display: inline-block; margin-top: 10px; font-weight: bold; }
 
-        /* Instruction Section */
-        .instructions { background: #fff; padding: 30px 20px; margin: 20px auto; max-width: 900px; border-radius: 20px; border-left: 8px solid var(--secondary); text-align: left; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .instructions h2 { color: var(--primary); margin-top: 0; text-align: center; }
+        /* Why Join Us Section */
+        .why-us { padding: 40px 15px; background: #fff; }
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto; }
+        .f-box { padding: 20px; border-radius: 15px; background: #f1f8e9; border-left: 6px solid var(--success); text-align: left; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .f-box h4 { margin: 0 0 10px 0; color: var(--success); font-size: 19px; }
 
-        /* Dashboard Style */
-        .dashboard-btn { background: #e8f5e9; padding: 20px; margin: 20px auto; max-width: 800px; border-radius: 15px; border: 3px solid var(--success); cursor: pointer; display: none; }
-        .dashboard-panel { display: none; background: white; padding: 30px; margin: 20px auto; max-width: 1000px; border-radius: 25px; box-shadow: 0 15px 40px rgba(0,0,0,0.15); }
+        /* Instructions Section */
+        .instructions { background: #fffde7; padding: 25px; margin: 25px auto; max-width: 900px; border-radius: 20px; border: 2px solid var(--secondary); text-align: left; }
+        .instructions h2 { color: var(--primary); margin-top: 0; text-align: center; font-size: 22px; }
 
-        /* Course Grid */
-        .section-header { background: var(--primary); color: white; padding: 12px; margin: 40px auto 15px; max-width: 1000px; border-radius: 10px; font-size: 22px; }
+        /* Dashboard Button Style */
+        .dashboard-btn { background: #e8f5e9; padding: 20px; margin: 20px auto; max-width: 800px; border-radius: 15px; border: 3px solid var(--success); cursor: pointer; display: none; transition: 0.3s; }
+        .dashboard-btn:hover { background: #c8e6c9; }
+        
+        /* Dashboard Panel Style */
+        .dashboard-panel { display: none; background: white; padding: 30px; margin: 20px auto; max-width: 1000px; border-radius: 25px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
+
+        /* Class Sections */
+        .section-header { background: var(--primary); color: white; padding: 12px; margin: 40px auto 10px; max-width: 1000px; border-radius: 10px; font-size: 20px; font-weight: bold; }
         .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 10px; }
-        .card { background: white; border-radius: 20px; width: 280px; padding: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.06); border: 1px solid #eee; }
-        .card h3 { color: var(--primary); font-size: 18px; margin-bottom: 15px; border-bottom: 2px solid #f0f0f0; padding-bottom: 10px; }
+        .card { background: white; border-radius: 20px; width: 280px; padding: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); border: 1px solid #eee; transition: 0.3s; }
+        .card:hover { transform: translateY(-5px); }
+        .card h3 { color: var(--primary); font-size: 17px; border-bottom: 1px solid #f0f0f0; padding-bottom: 10px; margin-bottom: 15px; }
         
         /* Buttons */
-        .btn { display: block; width: 100%; padding: 12px; margin: 10px 0; border: none; border-radius: 10px; font-weight: bold; font-size: 16px; cursor: pointer; transition: 0.3s; text-decoration: none; }
+        .btn { display: block; width: 100%; padding: 12px; margin: 8px 0; border: none; border-radius: 10px; font-weight: bold; font-size: 15px; cursor: pointer; transition: 0.2s; }
         .btn-buy { background: var(--secondary); color: white; }
         .btn-exam { background: var(--success); color: white; }
         .btn-record { background: var(--yt); color: white; }
-        .btn:hover { opacity: 0.9; transform: scale(1.02); }
 
         /* Payment Popup */
-        .overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); backdrop-filter: blur(5px); z-index:2000; }
-        .pay-box { display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background:white; padding:35px; border-radius:30px; z-index:2001; width:90%; max-width:400px; }
+        .overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); backdrop-filter: blur(5px); z-index:2000; }
+        .pay-box { display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background:white; padding:35px; border-radius:30px; z-index:2001; width:88%; max-width:380px; }
     </style>
 </head>
 <body>
@@ -48,108 +57,3 @@
 <div id="mainSite">
     <div class="hero">
         <h1>স্বাগতম গালিব একাডেমি-তে</h1>
-        <p>সরাসরি গালিব ভাইয়ের তত্তাবধানে মাদরাসা সিলেবাসের সেরা ডিজিটাল প্রস্তুতি।</p>
-        <div class="yt-badge">📺 YouTube Private Group Live Class</div>
-    </div>
-
-    <div class="instructions">
-        <h2>📌 ভর্তি হওয়ার সহজ নিয়ম</h2>
-        <p>১. নিচের তালিকা থেকে তোমার বিষয় পছন্দ করো।</p>
-        <p>২. <b>'কোর্স কিনুন'</b> বাটনে ক্লিক করে দেওয়া নাম্বারে টাকা পাঠাও।</p>
-        <p>৩. টাকা পাঠানোর পর তোমার নাম লিখে হোয়াটসঅ্যাপে মেসেজ দাও।</p>
-        <p>৪. আমি কনফার্ম করলেই তোমার <b>ড্যাশবোর্ড</b> চালু হয়ে যাবে।</p>
-    </div>
-
-    <div id="dashLink" class="dashboard-btn" onclick="showDashboard()">
-        <h3 style="margin:0; color: var(--success);">🔓 আপনার ড্যাশবোর্ড আনলক হয়েছে!</h3>
-        <p style="margin:5px 0 0 0;">এখানে ক্লিক করে সব ক্লাস ও পরীক্ষা দেখুন</p>
-    </div>
-
-    <div class="section-header">📘 অষ্টম শ্রেণি (Class 8)</div>
-    <div class="container">
-        <div class="card"><h3>আরবি ১ম পত্র</h3><button class="btn btn-buy" onclick="pay('Class 8 আরবি ১ম', 'কোর্স')">কোর্স কিনুন (১৫০৳)</button><button class="btn btn-exam" onclick="pay('Class 8 আরবি ১ম', 'পরীক্ষা')">পরীক্ষা দিন (২০৳)</button></div>
-        <div class="card"><h3>আরবি ২য় পত্র</h3><button class="btn btn-buy" onclick="pay('Class 8 আরবি ২য়', 'কোর্স')">কোর্স কিনুন (১৫০৳)</button><button class="btn btn-exam" onclick="pay('Class 8 আরবি ২য়', 'পরীক্ষা')">পরীক্ষা দিন (২০৳)</button></div>
-        <div class="card"><h3>হাদিস শরীফ</h3><button class="btn btn-buy" onclick="pay('Class 8 হাদিস', 'কোর্স')">কোর্স কিনুন (১৫০৳)</button><button class="btn btn-exam" onclick="pay('Class 8 হাদিস', 'পরীক্ষা')">পরীক্ষা দিন (২০৳)</button></div>
-        <div class="card"><h3>কুরআন ও তাজভিদ</h3><button class="btn btn-buy" onclick="pay('Class 8 কুরআন', 'কোর্স')">কোর্স কিনুন (১৫০৳)</button><button class="btn btn-exam" onclick="pay('Class 8 কুরআন', 'পরীক্ষা')">পরীক্ষা দিন (২০৳)</button></div>
-        <div class="card"><h3>আকাইদ ও ফিকাহ</h3><button class="btn btn-buy" onclick="pay('Class 8 আকাইদ', 'কোর্স')">কোর্স কিনুন (১৫০৳)</button><button class="btn btn-exam" onclick="pay('Class 8 আকাইদ', 'পরীক্ষা')">পরীক্ষা দিন (২০৳)</button></div>
-    </div>
-
-    <div style="background: #fffde7; padding: 40px 20px; margin: 40px auto; max-width: 900px; border-radius: 30px; border: 2px dashed var(--secondary);">
-        <h2 style="color: var(--secondary); margin: 0;">🎁 ধামাকা কম্বো অফার!</h2>
-        <p style="font-size: 18px;">যেকোনো শ্রেণির ৫টি বিষয় একত্রে কিনলে ফি মাত্র <b>৫৮০ টাকা!</b></p>
-        <button class="btn btn-buy" style="max-width: 350px; margin: 20px auto; background: var(--primary);" onclick="pay('৫টি বিষয় একত্রে', 'কম্বো অফার')">অফারটি গ্রহণ করুন</button>
-    </div>
-</div>
-
-<div id="dashboard" class="dashboard-panel">
-    <h2 style="color: var(--primary);">শিক্ষার্থী ড্যাশবোর্ড 🎓</h2>
-    <p>তুমি যে বিষয়গুলোতে ভর্তি হয়েছ সেগুলোর রেকর্ড ক্লাস নিচে পাবে:</p>
-    
-    <div class="section-header" style="background: var(--yt);">🎥 বিষয়ভিত্তিক রেকর্ড ক্লাস (YouTube)</div>
-    <div class="container">
-        <div class="card" style="width: 180px;"><h4>আরবি ১ম</h4><button class="btn btn-record" onclick="window.open('YOUR_YT_LINK_1')">দেখুন</button></div>
-        <div class="card" style="width: 180px;"><h4>আরবি ২য়</h4><button class="btn btn-record" onclick="window.open('YOUR_YT_LINK_2')">দেখুন</button></div>
-        <div class="card" style="width: 180px;"><h4>হাদিস শরীফ</h4><button class="btn btn-record" onclick="window.open('YOUR_YT_LINK_3')">দেখুন</button></div>
-        <div class="card" style="width: 180px;"><h4>কুরআন</h4><button class="btn btn-record" onclick="window.open('YOUR_YT_LINK_4')">দেখুন</button></div>
-        <div class="card" style="width: 180px;"><h4>আকাইদ</h4><button class="btn btn-record" onclick="window.open('YOUR_YT_LINK_5')">দেখুন</button></div>
-    </div>
-
-    <div class="section-header" style="background: var(--success);">📝 লাইভ ও পরীক্ষা</div>
-    <div class="container">
-        <div class="card" style="width: 300px;"><h4>সরাসরি লাইভ ক্লাস</h4><button class="btn btn-exam" onclick="window.open('LIVE_LINK')">যোগ দিন</button></div>
-        <div class="card" style="width: 300px;"><h4>অনলাইন পরীক্ষা</h4><button class="btn btn-buy" onclick="window.open('EXAM_LINK')">পরীক্ষা দিন</button></div>
-    </div>
-
-    <button class="btn" style="background:#888; color:white; max-width: 200px; margin: 30px auto;" onclick="hideDashboard()">মূল পাতায় ফিরুন</button>
-</div>
-
-<div class="overlay" id="over" onclick="closeP()"></div>
-<div class="pay-box" id="pbox">
-    <h3 id="pTitle" style="color: var(--primary); margin-top: 0;">পেমেন্ট করুন</h3>
-    <p style="background: #fff9c4; padding: 10px; border-radius: 10px;">নগদ (Personal):<br><b style="font-size: 24px; color: #d32f2f;">০১৭৩৪৫০৫৮৬৯</b></p>
-    <input type="text" id="userName" placeholder="আপনার নাম লিখুন" style="width:90%; padding:14px; margin-bottom:15px; border:1px solid #ddd; border-radius:12px; font-size: 16px;">
-    <button class="btn" style="background:#25D366; color:white;" onclick="sendToWhatsApp()">হোয়াটসঅ্যাপে নিশ্চিত করুন</button>
-</div>
-
-<script>
-    let currentSub = "";
-
-    function pay(sub, type) { 
-        currentSub = sub + " " + type; 
-        document.getElementById('pTitle').innerText = "পেমেন্ট: " + currentSub; 
-        document.getElementById('over').style.display = 'block'; 
-        document.getElementById('pbox').style.display = 'block'; 
-    }
-
-    function closeP() { 
-        document.getElementById('over').style.display = 'none'; 
-        document.getElementById('pbox').style.display = 'none'; 
-    }
-
-    function sendToWhatsApp() { 
-        let name = document.getElementById('userName').value; 
-        if(!name) { alert("দয়া করে আপনার নাম লিখুন"); return; }
-        
-        let message = `আসসালামু আলাইকুম গালিব ভাই, আমি ${name}, গালিব একাডেমিতে '${currentSub}' এর জন্য টাকা পাঠিয়েছি। অনুগ্রহ করে আমাকে এক্সেস দিন।`;
-        window.open("https://wa.me/8801734505869?text=" + encodeURIComponent(message)); 
-        
-        // ডেমো হিসেবে ড্যাশবোর্ড বাটন দেখানো
-        document.getElementById('dashLink').style.display = 'block';
-        closeP();
-    }
-
-    function showDashboard() {
-        document.getElementById('mainSite').style.display = 'none';
-        document.getElementById('dashboard').style.display = 'block';
-        window.scrollTo(0,0);
-    }
-
-    function hideDashboard() {
-        document.getElementById('dashboard').style.display = 'none';
-        document.getElementById('mainSite').style.display = 'block';
-        window.scrollTo(0,0);
-    }
-</script>
-
-</body>
-</html>
