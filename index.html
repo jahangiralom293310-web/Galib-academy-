@@ -8,20 +8,23 @@
         :root { --primary: #1a237e; --secondary: #ff9800; --success: #2e7d32; }
         body { margin: 0; font-family: 'Segoe UI', Tahoma, sans-serif; background: #f4f7fe; text-align: center; color: #333; }
         .navbar { background: var(--primary); color: white; padding: 15px; font-weight: bold; font-size: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
-        .hero { padding: 50px 20px; background: white; border-bottom: 2px solid #ddd; }
+        .hero { padding: 40px 20px; background: white; }
         .yt-badge { background: #ff0000; color: white; padding: 5px 15px; border-radius: 20px; font-size: 14px; display: inline-block; margin-top: 10px; }
         
-        .section-title { margin-top: 40px; color: var(--primary); font-size: 28px; border-bottom: 3px solid var(--secondary); display: inline-block; padding-bottom: 5px; }
-        
+        /* কেন আমাদের কোর্স কিনবেন - হাইলাইট সেকশন */
+        .why-us { padding: 40px 15px; background: #fff; margin-bottom: 20px; }
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto; }
+        .f-box { padding: 20px; border-radius: 15px; background: #f0f4ff; border-left: 5px solid var(--primary); text-align: left; }
+        .f-box h4 { margin: 0 0 10px 0; color: var(--primary); font-size: 18px; }
+
+        .section-title { margin-top: 40px; color: var(--primary); font-size: 26px; font-weight: bold; }
         .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; }
-        .card { background: white; border-radius: 20px; width: 280px; padding: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); border: 1px solid #eee; transition: 0.3s; }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(0,0,0,0.1); }
-        .card h3 { color: var(--primary); font-size: 18px; margin-bottom: 15px; height: 50px; display: flex; align-items: center; justify-content: center; }
+        .card { background: white; border-radius: 20px; width: 280px; padding: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); border: 1px solid #eee; }
+        .card h3 { color: var(--primary); font-size: 18px; height: 40px; }
         
-        .btn { display: block; width: 100%; padding: 12px; margin: 8px 0; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; transition: 0.2s; }
+        .btn { display: block; width: 100%; padding: 12px; margin: 8px 0; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; }
         .btn-buy { background: var(--secondary); color: white; }
         .btn-exam { background: var(--success); color: white; }
-        .btn:active { transform: scale(0.95); }
 
         .full-package { background: #fffde7; padding: 30px; margin: 40px auto; max-width: 900px; border-radius: 25px; border: 2px dashed var(--secondary); }
         
@@ -36,10 +39,28 @@
 <div class="hero">
     <h1>স্বাগতম গালিব একাডেমি-তে</h1>
     <p>সরাসরি গালিব ভাইয়ের তত্তাবধানে একাডেমিক ও মাদরাসা সিলেবাসের সেরা প্রস্তুতি।</p>
-    <div class="yt-badge">📺 YouTube Private Group Live</div>
+    <div class="yt-badge">📺 YouTube Private Group Live Class</div>
 </div>
 
-<h2 class="section-title">মাদরাসা বিষয়সমূহ</h2>
+<section class="why-us">
+    <h2 style="color: var(--primary); margin-bottom: 25px;">আমাদের কোর্সের বৈশিষ্ট্যসমূহ</h2>
+    <div class="feature-grid">
+        <div class="f-box">
+            <h4>✅ সরাসরি গালিব ভাইয়ের ক্লাস</h4>
+            <p style="font-size: 14px; margin:0;">আমি প্রতিটি ক্লাস নিজেই নিই, তাই কঠিন বিষয়গুলো গল্পের মতো সহজে শিখতে পারবে।</p>
+        </div>
+        <div class="f-box">
+            <h4>✅ ইউটিউব প্রাইভেট লাইভ ক্লাস</h4>
+            <p style="font-size: 14px; margin:0;">লাইভ ক্লাসে সরাসরি প্রশ্ন করার সুযোগ এবং পরে যতবার খুশি রেকর্ড দেখার সুবিধা।</p>
+        </div>
+        <div class="f-box">
+            <h4>✅ নিয়মিত ২০ টাকার পরীক্ষা</h4>
+            <p style="font-size: 14px; margin:0;">প্রতিটি অধ্যায় শেষে নিজেকে যাচাই করতে অনলাইন পরীক্ষার ব্যবস্থা।</p>
+        </div>
+    </div>
+</section>
+
+<h2 class="section-title">🕌 মাদরাসা বিষয়সমূহ</h2>
 <div class="container">
     <div class="card"><h3>আরবি ১ম পত্র</h3><button class="btn btn-buy" onclick="pay('আরবি ১ম পত্র', 'কোর্স')">কোর্স কিনুন (১৫০৳)</button><button class="btn btn-exam" onclick="pay('আরবি ১ম পত্র', 'পরীক্ষা')">পরীক্ষা দিন (২০৳)</button></div>
     <div class="card"><h3>আরবি ২য় পত্র</h3><button class="btn btn-buy" onclick="pay('আরবি ২য় পত্র', 'কোর্স')">কোর্স কিনুন (১৫০৳)</button><button class="btn btn-exam" onclick="pay('আরবি ২য় পত্র', 'পরীক্ষা')">পরীক্ষা দিন (২০৳)</button></div>
@@ -48,45 +69,6 @@
     <div class="card"><h3>আকাইদ ও ফিকাহ</h3><button class="btn btn-buy" onclick="pay('আকাইদ ও ফিকাহ', 'কোর্স')">কোর্স কিনুন (১৫০৳)</button><button class="btn btn-exam" onclick="pay('আকাইদ ও ফিকাহ', 'পরীক্ষা')">পরীক্ষা দিন (২০৳)</button></div>
 </div>
 
-<h2 class="section-title">জেনারেল একাডেমি</h2>
+<h2 class="section-title">🏫 জেনারেল একাডেমি</h2>
 <div class="container">
-    <div class="card"><h3>অষ্টম শ্রেণী (Class 8)</h3><button class="btn btn-buy" onclick="pay('Class 8', 'কোর্স')">কোর্স কিনুন (১৫০৳)</button><button class="btn btn-exam" onclick="pay('Class 8', 'পরীক্ষা')">পরীক্ষা দিন (২০৳)</button></div>
-    <div class="card"><h3>নবম শ্রেণী (Class 9)</h3><button class="btn btn-buy" onclick="pay('Class 9', 'কোর্স')">কোর্স কিনুন (১৫০৳)</button><button class="btn btn-exam" onclick="pay('Class 9', 'পরীক্ষা')">পরীক্ষা দিন (২০৳)</button></div>
-    <div class="card"><h3>দশম শ্রেণী (Class 10)</h3><button class="btn btn-buy" onclick="pay('Class 10', 'কোর্স')">কোর্স কিনুন (১৫০৳)</button><button class="btn btn-exam" onclick="pay('Class 10', 'পরীক্ষা')">পরীক্ষা দিন (২০৳)</button></div>
-</div>
-
-<div class="full-package">
-    <h2 style="color: var(--secondary); margin-top: 0;">🎁 ধামাকা অফার!</h2>
-    <p style="font-size: 18px;">মাদরাসার ৫টি কোর্স একত্রে কিনলে ফি মাত্র <b>৫৮০ টাকা!</b></p>
-    <button class="btn btn-buy" style="max-width: 300px; margin: 0 auto;" onclick="pay('সবগুলো মাদরাসা কোর্স একত্রে', 'কম্বো অফার')">অফারটি নিন</button>
-</div>
-
-<div class="overlay" id="over" onclick="closeP()"></div>
-<div class="pay-box" id="pbox">
-    <h3 id="pTitle">পেমেন্ট করুন</h3>
-    <p>নগদ (Send Money):<br><b style="font-size: 22px; color: #d32f2f;">০১৭৩৪৫০৫৮৬৯</b></p>
-    <input type="text" id="name" placeholder="আপনার নাম" style="width:90%; padding:12px; margin-bottom:15px; border:1px solid #ddd; border-radius:10px;">
-    <button class="btn" style="background:#25D366; color:white;" onclick="send()">হোয়াটসঅ্যাপে নিশ্চিত করুন</button>
-</div>
-
-<script>
-    let currentSub = "";
-    function pay(sub, type) { 
-        currentSub = sub + " " + type; 
-        document.getElementById('pTitle').innerText = "পেমেন্ট: " + currentSub; 
-        document.getElementById('over').style.display = 'block'; 
-        document.getElementById('pbox').style.display = 'block'; 
-    }
-    function closeP() { 
-        document.getElementById('over').style.display = 'none'; 
-        document.getElementById('pbox').style.display = 'none'; 
-    }
-    function send() { 
-        let n = document.getElementById('name').value; 
-        if(!n) return alert("নাম লিখুন"); 
-        let msg = "আসসালামু আলাইকুম গালিব ভাই, আমি " + n + ", গালিব একাডেমিতে '" + currentSub + "' এর জন্য পেমেন্ট করেছি।";
-        window.open("https://wa.me/8801734505869?text=" + encodeURIComponent(msg)); 
-    }
-</script>
-</body>
-</html>
+    <div class="card"><h3>অষ্টম শ্রেণী (Class 8)</h3><button class="btn btn-buy" onclick
