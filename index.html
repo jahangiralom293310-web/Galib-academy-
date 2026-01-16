@@ -6,30 +6,33 @@
     <title>গালিব একাডেমি</title>
     <style>
         :root { --primary: #1a237e; --secondary: #ff9800; --success: #2e7d32; }
-        body { margin: 0; font-family: 'Segoe UI', Tahoma, sans-serif; background: #f4f7fe; text-align: center; color: #333; }
+        body { margin: 0; font-family: 'Segoe UI', Tahoma, sans-serif; background: #f4f7fe; text-align: center; color: #333; line-height: 1.6; }
         .navbar { background: var(--primary); color: white; padding: 15px; font-weight: bold; font-size: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
         .hero { padding: 40px 20px; background: white; }
-        .yt-badge { background: #ff0000; color: white; padding: 5px 15px; border-radius: 20px; font-size: 14px; display: inline-block; margin-top: 10px; }
+        .hero h1 { color: var(--primary); margin: 0; }
+        .yt-badge { background: #ff0000; color: white; padding: 5px 15px; border-radius: 20px; font-size: 14px; display: inline-block; margin-top: 10px; font-weight: bold; }
         
-        /* কেন আমাদের কোর্স কিনবেন - হাইলাইট সেকশন */
-        .why-us { padding: 40px 15px; background: #fff; margin-bottom: 20px; }
+        /* কেন আমাদের কোর্স কিনবেন - হাইলাইট */
+        .why-us { padding: 40px 15px; background: #fff; margin-bottom: 20px; border-bottom: 1px solid #eee; }
         .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto; }
-        .f-box { padding: 20px; border-radius: 15px; background: #f0f4ff; border-left: 5px solid var(--primary); text-align: left; }
-        .f-box h4 { margin: 0 0 10px 0; color: var(--primary); font-size: 18px; }
+        .f-box { padding: 25px; border-radius: 15px; background: #f0f4ff; border-left: 6px solid var(--primary); text-align: left; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
+        .f-box h4 { margin: 0 0 10px 0; color: var(--primary); font-size: 19px; }
 
-        .section-title { margin-top: 40px; color: var(--primary); font-size: 26px; font-weight: bold; }
-        .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; }
-        .card { background: white; border-radius: 20px; width: 280px; padding: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); border: 1px solid #eee; }
-        .card h3 { color: var(--primary); font-size: 18px; height: 40px; }
+        .section-title { margin-top: 50px; color: var(--primary); font-size: 28px; font-weight: bold; border-bottom: 3px solid var(--secondary); display: inline-block; padding-bottom: 5px; }
+        .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 30px 15px; }
+        .card { background: white; border-radius: 20px; width: 280px; padding: 25px; box-shadow: 0 8px 25px rgba(0,0,0,0.06); border: 1px solid #eee; transition: 0.3s; }
+        .card:hover { transform: translateY(-5px); }
+        .card h3 { color: var(--primary); font-size: 20px; margin-bottom: 20px; border-bottom: 1px solid #f0f0f0; padding-bottom: 10px; }
         
-        .btn { display: block; width: 100%; padding: 12px; margin: 8px 0; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; }
+        .btn { display: block; width: 100%; padding: 13px; margin: 10px 0; border: none; border-radius: 12px; font-weight: bold; font-size: 16px; cursor: pointer; transition: 0.2s; }
         .btn-buy { background: var(--secondary); color: white; }
         .btn-exam { background: var(--success); color: white; }
+        .btn:active { transform: scale(0.96); }
 
-        .full-package { background: #fffde7; padding: 30px; margin: 40px auto; max-width: 900px; border-radius: 25px; border: 2px dashed var(--secondary); }
+        .full-package { background: #fffde7; padding: 40px 20px; margin: 50px auto; max-width: 900px; border-radius: 30px; border: 2px dashed var(--secondary); box-shadow: 0 10px 30px rgba(255, 152, 0, 0.1); }
         
         .overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); backdrop-filter: blur(5px); z-index:1000; }
-        .pay-box { display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background:white; padding:30px; border-radius:25px; z-index:1001; width:85%; max-width:350px; }
+        .pay-box { display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background:white; padding:35px; border-radius:30px; z-index:1001; width:88%; max-width:380px; text-align: center; }
     </style>
 </head>
 <body>
@@ -43,19 +46,19 @@
 </div>
 
 <section class="why-us">
-    <h2 style="color: var(--primary); margin-bottom: 25px;">আমাদের কোর্সের বৈশিষ্ট্যসমূহ</h2>
+    <h2 style="color: var(--primary); margin-bottom: 30px; font-size: 26px;">কেন আমাদের কোর্স কিনবেন?</h2>
     <div class="feature-grid">
         <div class="f-box">
-            <h4>✅ সরাসরি গালিব ভাইয়ের ক্লাস</h4>
-            <p style="font-size: 14px; margin:0;">আমি প্রতিটি ক্লাস নিজেই নিই, তাই কঠিন বিষয়গুলো গল্পের মতো সহজে শিখতে পারবে।</p>
+            <h4>🎯 সরাসরি গালিব ভাইয়ের গাইডলাইন</h4>
+            <p style="margin:0;">আমি প্রতিটি ক্লাস নিজেই নিই, তাই ছাত্ররা জটিল বিষয়গুলো সবচেয়ে সহজ পদ্ধতিতে শিখতে পারে।</p>
         </div>
         <div class="f-box">
-            <h4>✅ ইউটিউব প্রাইভেট লাইভ ক্লাস</h4>
-            <p style="font-size: 14px; margin:0;">লাইভ ক্লাসে সরাসরি প্রশ্ন করার সুযোগ এবং পরে যতবার খুশি রেকর্ড দেখার সুবিধা।</p>
+            <h4>🎥 লাইভ ও আজীবন রেকর্ড সুবিধা</h4>
+            <p style="margin:0;">ইউটিউব প্রাইভেট লাইভ ক্লাস হবে। লাইভ মিস করলেও রেকর্ড ক্লাস আজীবন দেখার সুযোগ থাকবে।</p>
         </div>
         <div class="f-box">
-            <h4>✅ নিয়মিত ২০ টাকার পরীক্ষা</h4>
-            <p style="font-size: 14px; margin:0;">প্রতিটি অধ্যায় শেষে নিজেকে যাচাই করতে অনলাইন পরীক্ষার ব্যবস্থা।</p>
+            <h4>📝 ২০ টাকার অনলাইন পরীক্ষা</h4>
+            <p style="margin:0;">প্রতিটি বিষয় শেষে মাত্র ২০ টাকায় পরীক্ষা দিয়ে নিজের প্রস্তুতি যাচাই করার সুব্যবস্থা।</p>
         </div>
     </div>
 </section>
@@ -71,4 +74,18 @@
 
 <h2 class="section-title">🏫 জেনারেল একাডেমি</h2>
 <div class="container">
-    <div class="card"><h3>অষ্টম শ্রেণী (Class 8)</h3><button class="btn btn-buy" onclick
+    <div class="card"><h3>অষ্টম শ্রেণী (Class 8)</h3><button class="btn btn-buy" onclick="pay('Class 8', 'কোর্স')">কোর্স কিনুন (১৫০৳)</button><button class="btn btn-exam" onclick="pay('Class 8', 'পরীক্ষা')">পরীক্ষা দিন (২০৳)</button></div>
+    <div class="card"><h3>নবম শ্রেণী (Class 9)</h3><button class="btn btn-buy" onclick="pay('Class 9', 'কোর্স')">কোর্স কিনুন (১৫০৳)</button><button class="btn btn-exam" onclick="pay('Class 9', 'পরীক্ষা')">পরীক্ষা দিন (২০৳)</button></div>
+    <div class="card"><h3>দশম শ্রেণী (Class 10)</h3><button class="btn btn-buy" onclick="pay('Class 10', 'কোর্স')">কোর্স কিনুন (১৫০৳)</button><button class="btn btn-exam" onclick="pay('Class 10', 'পরীক্ষা')">পরীক্ষা দিন (২০৳)</button></div>
+</div>
+
+<div class="full-package">
+    <h2 style="color: var(--secondary); margin-top: 0; font-size: 30px;">🎁 ধামাকা কম্বো অফার!</h2>
+    <p style="font-size: 20px;">মাদরাসার ৫টি বিষয় একত্রে কিনলে ৭৫০ টাকার পরিবর্তে ফি মাত্র <b>৫৮০ টাকা!</b></p>
+    <button class="btn btn-buy" style="max-width: 350px; margin: 20px auto; background: var(--primary);" onclick="pay('সবগুলো মাদরাসা কোর্স একত্রে', 'কম্বো অফার')">অফারটি গ্রহণ করুন</button>
+</div>
+
+<div class="overlay" id="over" onclick="closeP()"></div>
+<div class="pay-box" id="pbox">
+    <h3 id="pTitle" style="color: var(--primary); margin-top: 0;">পেমেন্ট করুন</h3>
+    <div style="background: #fdf2f2; padding: 1
