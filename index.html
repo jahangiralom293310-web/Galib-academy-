@@ -3,502 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>গালিব একাডেমি - ২০২৬</title>
+    <title>Galib Academy | পরীক্ষা কেন্দ্র</title>
     <style>
-        :root { --primary: #1a237e; --secondary: #ff9800; --success: #2e7d32; --bg: #f4f7fe; }
-        body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); color: #333; text-align: center; }
-        .navbar { background: var(--primary); color: white; padding: 18px; font-size: 24px; font-weight: bold; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .container { padding: 15px; max-width: 900px; margin: 0 auto; }
-        
-        /* কোর্স সেকশন বার */
-        .section-bar { background: var(--primary); color: white; padding: 14px; border-radius: 10px; margin: 30px 0 15px; font-weight: bold; font-size: 19px; }
-        .section-bar.class-9 { background: var(--success); }
-        .section-bar.quiz-special { background: #673ab7; }
-
-        /* কোর্স কার্ড */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .card { background: white; padding: 22px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid #eee; transition: 0.3s; }
-        .card:hover { transform: translateY(-5px); }
-        
-        /* বাটনসমূহ */
-        .btn { display: block; width: 100%; padding: 12px; margin: 8px 0; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 14px; transition: 0.3s; }
-        .btn-pay { background: var(--secondary); color: white; }
-        .btn-class { background: #e3f2fd; color: #1565c0; border: 1px solid #bbdefb; }
-        .btn-exam { background: #e8f5e9; color: var(--success); border: 1px solid #c8e6c9; }
-
-        /* এক্সাম জোন */
-        #exam-zone { display: none; background: white; min-height: 100vh; padding: 20px; text-align: left; }
-        .timer { position: sticky; top: 80px; background: #ffebee; color: #d32f2f; padding: 15px; border-radius: 12px; text-align: center; font-size: 24px; font-weight: bold; margin-bottom: 20px; border: 1px solid #ffcdd2; z-index: 999; }
-        .q-item { background: #fff; padding: 20px; border-radius: 15px; margin-bottom: 15px; border: 1px solid #ddd; }
-        .opt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
-        .opt { background: #f0f2f5; padding: 12px; border-radius: 8px; cursor: pointer; border: 1px solid #ddd; font-size: 14px; }
-        .opt.selected { background: var(--primary); color: white; }
-
-        /* পেমেন্ট পপআপ */
-        .overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:2000; }
-        .modal { display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background:white; padding:30px; border-radius:25px; z-index:2001; width:85%; max-width:380px; }
-        input { width: 100%; padding: 12px; margin: 15px 0; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; }
+        :root { --primary: #1a5276; --secondary: #1d8348; --accent: #f39c12; }
+        body { font-family: 'SolaimanLipi', Arial, sans-serif; background: #f0f3f4; margin: 0; padding: 10px; }
+        .container { max-width: 900px; margin: auto; background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 25px rgba(0,0,0,0.1); }
+        .header { text-align: center; border-bottom: 4px solid var(--primary); padding-bottom: 15px; margin-bottom: 20px; }
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; margin-bottom: 25px; }
+        .card { background: #fff; border: 1px solid #ddd; padding: 15px; border-radius: 10px; text-align: center; transition: 0.3s; }
+        .card:hover { border-color: var(--primary); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .btn { background: var(--primary); color: white; padding: 12px; border: none; border-radius: 5px; cursor: pointer; width: 100%; font-weight: bold; font-size: 16px; margin-top: 10px; }
+        .btn-exam { background: var(--secondary); height: 50px; font-size: 18px; margin-top: 30px; }
+        input[type="password"] { width: 90%; padding: 10px; margin-top: 10px; border: 1px solid #ccc; border-radius: 5px; text-align: center; }
+        .timer { position: sticky; top: 0; background: #fff; padding: 10px; font-size: 22px; color: #e74c3c; font-weight: bold; border: 2px solid #e74c3c; border-radius: 50px; display: inline-block; margin-bottom: 20px; }
+        #exam-section, #result-section { display: none; text-align: center; }
+        .question-box { text-align: left; background: #f9f9f9; padding: 15px; margin-bottom: 15px; border-radius: 8px; border-left: 5px solid var(--primary); }
     </style>
 </head>
 <body>
 
-<div class="navbar">গালিব একাডেমি 🎓</div>
+<div class="container">
+    <div id="main-dashboard">
+        <div class="header">
+            <h1>গালিব একাডেমি (Galib Academy)</h1>
+            <p>সহিহ শিক্ষা ও সঠিক মূল্যায়নের নির্ভরযোগ্য মাধ্যম</p>
+        </div>
 
-<div id="home" class="container">
-    <div class="section-bar quiz-special">🏆 মেধা যাচাই প্রতিযোগিতা (GK)</div>
-    <div class="card" style="max-width: 400px; margin: 0 auto;">
-        <h3>সাধারণ জ্ঞান কুইজ</h3>
-        <p>ফি: ২০ টাকা | সময়: ১০ মিনিট</p>
-        <button class="btn btn-pay" onclick="openPay('GK কুইজ')">ফি জমা দিন (২০৳)</button>
-        <button class="btn btn-exam" onclick="startCheck('GK')">পরীক্ষায় অংশ নাও</button>
+        <div class="info-grid">
+            <div class="card" style="background: #e8f4f8;">
+                <h3>কেন আমাদের এখানে পরীক্ষা দেবেন?</h3>
+                <p>সরাসরি গালিব স্যারের তত্ত্বাবধান, বিষয়ভিত্তিক মানসম্মত প্রশ্ন এবং তাৎক্ষণিক মেধা যাচাইয়ের সুযোগ।</p>
+            </div>
+            <div class="card" style="background: #e9f7ef;">
+                <h3>পরীক্ষার নিয়ম ও ফি</h3>
+                <p>ফি: <b>২০ টাকা</b> | নগদ: <b>০১৭৩৪৫০৫৮৬৯</b><br>পেমেন্ট করে হোয়াটসঅ্যাপে পাসওয়ার্ড সংগ্রহ করুন।</p>
+            </div>
+        </div>
+
+        <h2 style="color: var(--primary);">১ম ভাগ: একাডেমিক পরীক্ষা (৫০ নম্বর)</h2>
+        <div class="info-grid">
+            <div class="card">
+                <h3>ক্লাস ৮</h3>
+                <select id="sub-8" style="width: 100%; padding: 8px;">
+                    <option value="কুরআন মাজিদ ও তাজভিদ">কুরআন মাজিদ ও তাজভিদ</option>
+                    <option value="আকাইদ ও ফিকাহ">আকাইদ ও ফিকাহ</option>
+                    <option value="আরবি ১ম">আরবি ১ম</option>
+                    <option value="আরবি ২য়">আরবি ২য়</option>
+                </select>
+                <input type="password" id="pass-8" placeholder="পাসওয়ার্ড দিন">
+                <button class="btn" onclick="checkAccess(8)">পরীক্ষা শুরু</button>
+            </div>
+
+            <div class="card">
+                <h3>ক্লাস ৯</h3>
+                <select id="sub-9" style="width: 100%; padding: 8px;">
+                    <option value="কুরআন মাজিদ ও তাজভিদ">কুরআন মাজিদ ও তাজভিদ</option>
+                    <option value="আকাইদ ও ফিকাহ">আকাইদ ও ফিকাহ</option>
+                    <option value="হাদিস শরীফ">হাদিস শরীফ</option>
+                    <option value="আরবি ১ম">আরবি ১ম</option>
+                    <option value="আরবি ২য়">আরবি ২য়</option>
+                </select>
+                <input type="password" id="pass-9" placeholder="পাসওয়ার্ড দিন">
+                <button class="btn" onclick="checkAccess(9)">পরীক্ষা শুরু</button>
+            </div>
+        </div>
+
+        <h2 style="color: var(--secondary); margin-top: 30px;">২য় ভাগ: সাধারণ জ্ঞান কুইজ</h2>
+        <div class="card" style="max-width: 400px; margin: auto;">
+            <h3>জিকে কুইজ প্রতিযোগিতা</h3>
+            <p>প্রশ্ন: ৫০টি | সময়: ১০ মিনিট</p>
+            <input type="password" id="pass-gk" placeholder="পাসওয়ার্ড দিন">
+            <button class="btn" style="background: var(--secondary);" onclick="checkAccess('gk')">কুইজ শুরু</button>
+        </div>
     </div>
 
-    <div class="section-bar">📘 অষ্টম শ্রেণি (Class 8) - কোর্সসমূহ</div>
-    <div class="grid" id="c8-grid"></div>
+    <div id="exam-section">
+        <div class="timer" id="timer-display">সময় বাকি: ১০:০০</div>
+        <h2 id="current-exam-title"></h2>
+        <hr>
+        <div id="questions-container"></div>
+        <button class="btn btn-exam" onclick="finishExam()">সাবমিট করুন</button>
+    </div>
 
-    <div class="section-bar class-9">📗 নবম শ্রেণি (Class 9) - কোর্সসমূহ</div>
-    <div class="grid" id="c9-grid"></div>
-</div>
-
-<div id="exam-zone">
-    <div class="timer">⏰ সময়: <span id="clock">০০:০০</span></div>
-    <div id="q-container" class="container"></div>
-    <button class="btn btn-pay" style="max-width:300px; margin:20px auto;" onclick="location.reload()">ফলাফল সাবমিট করুন</button>
-</div>
-
-<div class="overlay" id="bg"></div>
-<div class="modal" id="modal">
-    <h3 id="pay-title"></h3>
-    <p>নগদ (Personal): <br><b style="font-size:22px; color:red;">০১৭৩৪৫০৫৮৬৯</b></p>
-    <input type="text" id="stu-name" placeholder="তোমার নাম লেখো">
-    <button class="btn btn-exam" style="background:#25d366; color:white;" onclick="confirmPay()">পেমেন্ট করেছি</button>
-    <button class="btn" onclick="closePay()">বাতিল</button>
+    <div id="result-section">
+        <h2 style="color: var(--secondary);">পরীক্ষা সম্পন্ন হয়েছে!</h2>
+        <div style="font-size: 50px; margin: 20px 0;" id="final-score">০</div>
+        <p>আপনার এই রেজাল্টটি স্ক্রিনশট দিয়ে দ্রুত গালিব স্যারের হোয়াটসঅ্যাপে পাঠান।</p>
+        <button class="btn" onclick="location.reload()">ফিরে যান</button>
+    </div>
 </div>
 
 <script>
-    // আপনার দেওয়া পাসওয়ার্ডগুলো
-    const PASS = { "GK": "মেধা", "কুরআন": "আলহামদুলিল্লাহ", "আকাইদ": "সুবহানাল্লাহ", "হাদিস": "আল্লাহু আকবার", "আরবি১": "বিসমিল্লাহ", "আরবি২": "মাশাআল্লাহ" };
-    
-    const courseList = ["কুরআন মাজিদ", "আকাইদ ও ফিকহ", "হাদিস শরীফ", "আরবি ১ম পত্র", "আরবি ২য় পত্র"];
-    const subKeys = ["কুরআন", "আকাইদ", "হাদিস", "আরবি১", "আরবি২"];
-
-    function buildUI(id, pre) {
-        const grid = document.getElementById(id);
-        courseList.forEach((name, i) => {
-            grid.innerHTML += `
-            <div class="card">
-                <h3>${name}</h3>
-                <button class="btn btn-pay" onclick="openPay('${pre} ${name}')">কোর্স ফি (২০৳)</button>
-                <button class="btn btn-class" onclick="startCheck('${subKeys[i]}','c')">🎥 ভিডিও ক্লাস</button>
-                <button class="btn btn-exam" onclick="startCheck('${subKeys[i]}','e')">📝 পরীক্ষা দাও</button>
-            </div>`;
-        });
-    }
-    buildUI('c8-grid', 'C8'); buildUI('c9-grid', 'C9');
-
-    // ৩০০টি প্রশ্নের ডেটাবেজ (৫০টি করে প্রতিটি বিষয়ের জন্য)
-    function generateQ(title) {
-        let qs = [];
-        for(let i=1; i<=50; i++) {
-            qs.push({
-                q: `${title} বিষয়ের গুরুত্বপূর্ণ MCQ প্রশ্ন নং ${i}?`,
-                a: ["সঠিক উত্তর অপশন", "ভুল উত্তর ১", "ভুল উত্তর ২", "ভুল উত্তর ৩"]
-            });
-        }
-        return qs;
-    }
-
-    const allData = {
-        "GK": generateQ("সাধারণ জ্ঞান"),
-        "কুরআন": generateQ("কুরআন মাজিদ"),
-        "আকাইদ": generateQ("আকাইদ ও ফিকহ"),
-        "হাদিস": generateQ("হাদিস শরীফ"),
-        "আরবি১": generateQ("আরবি ১ম"),
-        "আরবি২": generateQ("আরবি ২য়")
+    const passConfig = {
+        "কুরআন মাজিদ ও তাজভিদ": "আলহামদুলিল্লাহ",
+        "আকাইদ ও ফিকাহ": "সুবহানাল্লাহ",
+        "আরবি ১ম": "আল্লাহু আকবার",
+        "আরবি ২য়": "বিসমিল্লাহ",
+        "হাদিস শরীফ": "হযরত মুহাম্মদ(সা)",
+        "gk": "GK2026"
     };
 
-    function startCheck(k, mode) {
-        let p = prompt(k + " এর পাসওয়ার্ড দিন:");
-        if(p === PASS[k]) {
-            if(mode === 'c') alert("ভিডিও ক্লাসগুলো গালিব ভাই দ্রুতই আপলোড করবেন।");
-            else renderExam(k);
-        } else if(p !== null) alert("ভুল পাসওয়ার্ড! ফি দিয়ে সঠিক পাসওয়ার্ড নিন।");
-    }
+    let score = 0;
+    let timerInterval;
 
-    function renderExam(k) {
-        document.getElementById('home').style.display = 'none';
-        document.getElementById('exam-zone').style.display = 'block';
-        const box = document.getElementById('q-container');
-        box.innerHTML = `<h2>${k} পরীক্ষা (৫০টি প্রশ্ন)</h2>`;
+    function checkAccess(type) {
+        let selectedSub, userPass;
         
-        allData[k].forEach((item, i) => {
-            let options = [...item.a].sort(() => Math.random() - 0.5).map(o => `<div class="opt" onclick="sel(this)">${o}</div>`).join('');
-            box.innerHTML += `<div class="q-item"><p><b>${i+1}. ${item.q}</b></p><div class="opt-grid">${options}</div></div>`;
-        });
-        runTimer(15);
-        window.scrollTo(0,0);
-    }
-
-    function sel(el) {
-        el.parentElement.querySelectorAll('.opt').forEach(o => o.classList.remove('selected'));
-        el.classList.add('selected');
-    }
-
-    function runTimer(m) {
-        let s = m * 60;
-        let t = setInterval(() => {
-            let min = Math.floor(s/60), sec = s%60;
-            document.getElementById('clock').innerText = `${min<10?'0':''}${min}:${sec<10?'0':''}${sec}`;
-            if(--s < 0) { clearInterval(t); alert("সময় শেষ!"); location.reload(); }
-        }, 1000);
-    }
-
-    function openPay(t) { document.getElementById('pay-title').innerText = t; document.getElementById('bg').style.display='block'; document.getElementById('modal').style.display='block'; }
-    function closePay() { document.getElementById('bg').style.display='none'; document.getElementById('modal').style.display='none'; }
-    function confirmPay() {
-        let n = document.getElementById('stu-name').value;
-        if(!n) return alert("নাম লেখো");
-        window.open(`https://wa.me/8801734505869?text=আমি ${n}, ${document.getElementById('pay-title').innerText} এর ২০ টাকা পেমেন্ট করেছি।`);
-        closePay();
-    }
-</script>
-</body>
-</html><!DOCTYPE html>
-<html lang="bn">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>গালিব একাডেমি - ২০২৬</title>
-    <style>
-        :root { --primary: #1a237e; --secondary: #ff9800; --success: #2e7d32; --bg: #f4f7fe; }
-        body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); color: #333; text-align: center; }
-        .navbar { background: var(--primary); color: white; padding: 18px; font-size: 24px; font-weight: bold; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .container { padding: 15px; max-width: 950px; margin: 0 auto; }
-        
-        /* কেন ভর্তি হবে সেকশন */
-        .why-join { background: white; padding: 25px; border-radius: 20px; margin: 20px 0; border: 2px dashed var(--secondary); text-align: left; }
-        .why-join h2 { color: var(--primary); margin-top: 0; text-align: center; }
-        .feature-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 15px; }
-        .feature-item { background: #fff8e1; padding: 10px; border-radius: 10px; border-left: 5px solid var(--secondary); font-weight: 500; }
-
-        .section-bar { background: var(--primary); color: white; padding: 14px; border-radius: 10px; margin: 30px 0 15px; font-weight: bold; font-size: 19px; }
-        .section-bar.class-9 { background: var(--success); }
-        .section-bar.quiz-special { background: #673ab7; }
-
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .card { background: white; padding: 22px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid #eee; transition: 0.3s; }
-        .card:hover { transform: translateY(-5px); }
-        
-        .btn { display: block; width: 100%; padding: 12px; margin: 8px 0; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 14px; transition: 0.3s; }
-        .btn-pay { background: var(--secondary); color: white; }
-        .btn-class { background: #e3f2fd; color: #1565c0; border: 1px solid #bbdefb; }
-        .btn-exam { background: #e8f5e9; color: var(--success); border: 1px solid #c8e6c9; }
-
-        #exam-zone { display: none; background: white; min-height: 100vh; padding: 20px; text-align: left; }
-        .timer { position: sticky; top: 80px; background: #ffebee; color: #d32f2f; padding: 15px; border-radius: 12px; text-align: center; font-size: 24px; font-weight: bold; margin-bottom: 20px; border: 1px solid #ffcdd2; z-index: 999; }
-        .q-item { background: #fff; padding: 20px; border-radius: 15px; margin-bottom: 15px; border: 1px solid #ddd; }
-        .opt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
-        .opt { background: #f0f2f5; padding: 12px; border-radius: 8px; cursor: pointer; border: 1px solid #ddd; font-size: 14px; }
-        .opt.selected { background: var(--primary); color: white; }
-
-        .overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:2000; }
-        .modal { display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background:white; padding:30px; border-radius:25px; z-index:2001; width:85%; max-width:380px; }
-        input { width: 100%; padding: 12px; margin: 15px 0; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; }
-    </style>
-</head>
-<body>
-
-<div class="navbar">গালিব একাডেমি 🎓</div>
-
-<div id="home" class="container">
-    
-    <div class="why-join">
-        <h2>কেন গালিব একাডেমিতে ভর্তি হবে? ✨</h2>
-        <div class="feature-list">
-            <div class="feature-item">✅ গালিব ভাইয়ের স্পেশাল ভিডিও ক্লাস।</div>
-            <div class="feature-item">✅ মাত্র ২০ টাকায় প্রতিটি বিষয়ের পূর্ণাঙ্গ কোর্স।</div>
-            <div class="feature-item">✅ প্রতিটি অধ্যায় শেষে মেধা যাচাই পরীক্ষার সুযোগ।</div>
-            <div class="feature-item">✅ আরবি ব্যাকরণ ও কুরআন খুব সহজে শেখার নিশ্চয়তা।</div>
-            <div class="feature-item">✅ ঘরে বসেই মানসম্মত দ্বীনি শিক্ষা অর্জন।</div>
-            <div class="feature-item">✅ সরাসরি হোয়াটসঅ্যাপে গালিব ভাইয়ের সাথে কথা বলা।</div>
-        </div>
-    </div>
-
-    <div class="section-bar quiz-special">🏆 মেধা যাচাই প্রতিযোগিতা (GK)</div>
-    <div class="card" style="max-width: 400px; margin: 0 auto;">
-        <h3>সাধারণ জ্ঞান কুইজ</h3>
-        <p>ফি: ২০ টাকা | সময়: ১০ মিনিট</p>
-        <button class="btn btn-pay" onclick="openPay('GK কুইজ')">ফি জমা দিন (২০৳)</button>
-        <button class="btn btn-exam" onclick="startCheck('GK')">পরীক্ষায় অংশ নাও</button>
-    </div>
-
-    <div class="section-bar">📘 অষ্টম শ্রেণি (Class 8) - কোর্সসমূহ</div>
-    <div class="grid" id="c8-grid"></div>
-
-    <div class="section-bar class-9">📗 নবম শ্রেণি (Class 9) - কোর্সসমূহ</div>
-    <div class="grid" id="c9-grid"></div>
-</div>
-
-<div id="exam-zone">
-    <div class="timer">⏰ সময়: <span id="clock">০০:০০</span></div>
-    <div id="q-container" class="container"></div>
-    <button class="btn btn-pay" style="max-width:300px; margin:20px auto;" onclick="location.reload()">ফলাফল সাবমিট করুন</button>
-</div>
-
-<div class="overlay" id="bg"></div>
-<div class="modal" id="modal">
-    <h3 id="pay-title"></h3>
-    <p>নগদ (Personal): <br><b style="font-size:22px; color:red;">০১৭৩৪৫০৫৮৬৯</b></p>
-    <input type="text" id="stu-name" placeholder="তোমার নাম লেখো">
-    <button class="btn btn-exam" style="background:#25d366; color:white;" onclick="confirmPay()">পেমেন্ট করেছি</button>
-    <button class="btn" onclick="closePay()">বাতিল</button>
-</div>
-
-<script>
-    const PASS = { "GK": "মেধা", "কুরআন": "আলহামদুলিল্লাহ", "আকাইদ": "সুবহানাল্লাহ", "হাদিস": "আল্লাহু আকবার", "আরবি১": "বিসমিল্লাহ", "আরবি২": "মাশাআল্লাহ" };
-    const courseList = ["কুরআন মাজিদ", "আকাইদ ও ফিকহ", "হাদিস শরীফ", "আরবি ১ম পত্র", "আরবি ২য় পত্র"];
-    const subKeys = ["কুরআন", "আকাইদ", "হাদিস", "আরবি১", "আরবি২"];
-
-    function buildUI(id, pre) {
-        const grid = document.getElementById(id);
-        courseList.forEach((name, i) => {
-            grid.innerHTML += `
-            <div class="card">
-                <h3>${name}</h3>
-                <button class="btn btn-pay" onclick="openPay('${pre} ${name}')">কোর্স ফি (২০৳)</button>
-                <button class="btn btn-class" onclick="startCheck('${subKeys[i]}','c')">🎥 ভিডিও ক্লাস</button>
-                <button class="btn btn-exam" onclick="startCheck('${subKeys[i]}','e')">📝 পরীক্ষা দাও</button>
-            </div>`;
-        });
-    }
-    buildUI('c8-grid', 'C8'); buildUI('c9-grid', 'C9');
-
-    function generateQ(title) {
-        let qs = [];
-        for(let i=1; i<=50; i++) {
-            qs.push({
-                q: `${title} বিষয়ের গুরুত্বপূর্ণ MCQ প্রশ্ন নং ${i}?`,
-                a: ["সঠিক উত্তর", "ভুল উত্তর ১", "ভুল উত্তর ২", "ভুল উত্তর ৩"]
-            });
+        if(type === 'gk') {
+            selectedSub = "gk";
+            userPass = document.getElementById('pass-gk').value;
+        } else {
+            selectedSub = document.getElementById('sub-'+type).value;
+            userPass = document.getElementById('pass-'+type).value;
         }
-        return qs;
-    }
 
-    const allData = { "GK": generateQ("সাধারণ জ্ঞান"), "কুরআন": generateQ("কুরআন"), "আকাইদ": generateQ("আকাইদ"), "হাদিস": generateQ("হাদিস"), "আরবি১": generateQ("আরবি১"), "আরবি২": generateQ("আরবি২") };
-
-    function startCheck(k, mode) {
-        let p = prompt(k + " এর পাসওয়ার্ড দিন:");
-        if(p === PASS[k]) {
-            if(mode === 'c') alert("ভিডিও ক্লাসগুলো গালিব ভাই দ্রুতই আপলোড করবেন। ইনশাআল্লাহ!");
-            else renderExam(k);
-        } else if(p !== null) alert("ভুল পাসওয়ার্ড! ফি দিয়ে পাসওয়ার্ড সংগ্রহ করো।");
-    }
-
-    function renderExam(k) {
-        document.getElementById('home').style.display = 'none';
-        document.getElementById('exam-zone').style.display = 'block';
-        const box = document.getElementById('q-container');
-        box.innerHTML = `<h2>${k} পরীক্ষা (৫০টি প্রশ্ন)</h2>`;
-        allData[k].forEach((item, i) => {
-            let options = [...item.a].sort(() => Math.random() - 0.5).map(o => `<div class="opt" onclick="sel(this)">${o}</div>`).join('');
-            box.innerHTML += `<div class="q-item"><p><b>${i+1}. ${item.q}</b></p><div class="opt-grid">${options}</div></div>`;
-        });
-        runTimer(15);
-        window.scrollTo(0,0);
-    }
-
-    function sel(el) {
-        el.parentElement.querySelectorAll('.opt').forEach(o => o.classList.remove('selected'));
-        el.classList.add('selected');
-    }
-
-    function runTimer(m) {
-        let s = m * 60;
-        let t = setInterval(() => {
-            let min = Math.floor(s/60), sec = s%60;
-            document.getElementById('clock').innerText = `${min<10?'0':''}${min}:${sec<10?'0':''}${sec}`;
-            if(--s < 0) { clearInterval(t); alert("সময় শেষ!"); location.reload(); }
-        }, 1000);
-    }
-
-    function openPay(t) { document.getElementById('pay-title').innerText = t; document.getElementById('bg').style.display='block'; document.getElementById('modal').style.display='block'; }
-    function closePay() { document.getElementById('bg').style.display='none'; document.getElementById('modal').style.display='none'; }
-    function confirmPay() {
-        let n = document.getElementById('stu-name').value;
-        if(!n) return alert("নাম লেখো");
-        window.open(`https://wa.me/8801734505869?text=আমি ${n}, ${document.getElementById('pay-title').innerText} এর ২০ টাকা পেমেন্ট করেছি। আমাকে পাসওয়ার্ড দিন।`);
-        closePay();
-    }
-</script>
-</body>
-</html> <!DOCTYPE html>
-<html lang="bn">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>গালিব একাডেমি - ২০২৬</title>
-    <style>
-        :root { --primary: #1a237e; --secondary: #ff9800; --success: #2e7d32; --bg: #f4f7fe; }
-        body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); color: #333; text-align: center; }
-        .navbar { background: var(--primary); color: white; padding: 18px; font-size: 24px; font-weight: bold; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .container { padding: 15px; max-width: 950px; margin: 0 auto; }
-        
-        /* কেন ভর্তি হবে সেকশন */
-        .why-join { background: white; padding: 25px; border-radius: 20px; margin: 20px 0; border: 2px dashed var(--secondary); text-align: left; }
-        .why-join h2 { color: var(--primary); margin-top: 0; text-align: center; }
-        .feature-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 15px; }
-        .feature-item { background: #fff8e1; padding: 10px; border-radius: 10px; border-left: 5px solid var(--secondary); font-weight: 500; }
-
-        .section-bar { background: var(--primary); color: white; padding: 14px; border-radius: 10px; margin: 30px 0 15px; font-weight: bold; font-size: 19px; }
-        .section-bar.class-9 { background: var(--success); }
-        .section-bar.quiz-special { background: #673ab7; }
-
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .card { background: white; padding: 22px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid #eee; transition: 0.3s; }
-        .card:hover { transform: translateY(-5px); }
-        
-        .btn { display: block; width: 100%; padding: 12px; margin: 8px 0; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 14px; transition: 0.3s; }
-        .btn-pay { background: var(--secondary); color: white; }
-        .btn-class { background: #e3f2fd; color: #1565c0; border: 1px solid #bbdefb; }
-        .btn-exam { background: #e8f5e9; color: var(--success); border: 1px solid #c8e6c9; }
-
-        #exam-zone { display: none; background: white; min-height: 100vh; padding: 20px; text-align: left; }
-        .timer { position: sticky; top: 80px; background: #ffebee; color: #d32f2f; padding: 15px; border-radius: 12px; text-align: center; font-size: 24px; font-weight: bold; margin-bottom: 20px; border: 1px solid #ffcdd2; z-index: 999; }
-        .q-item { background: #fff; padding: 20px; border-radius: 15px; margin-bottom: 15px; border: 1px solid #ddd; }
-        .opt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
-        .opt { background: #f0f2f5; padding: 12px; border-radius: 8px; cursor: pointer; border: 1px solid #ddd; font-size: 14px; }
-        .opt.selected { background: var(--primary); color: white; }
-
-        .overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:2000; }
-        .modal { display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background:white; padding:30px; border-radius:25px; z-index:2001; width:85%; max-width:380px; }
-        input { width: 100%; padding: 12px; margin: 15px 0; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; }
-    </style>
-</head>
-<body>
-
-<div class="navbar">গালিব একাডেমি 🎓</div>
-
-<div id="home" class="container">
-    
-    <div class="why-join">
-        <h2>কেন গালিব একাডেমিতে ভর্তি হবে? ✨</h2>
-        <div class="feature-list">
-            <div class="feature-item">✅ গালিব ভাইয়ের স্পেশাল ভিডিও ক্লাস।</div>
-            <div class="feature-item">✅ মাত্র ২০ টাকায় প্রতিটি বিষয়ের পূর্ণাঙ্গ কোর্স।</div>
-            <div class="feature-item">✅ প্রতিটি অধ্যায় শেষে মেধা যাচাই পরীক্ষার সুযোগ।</div>
-            <div class="feature-item">✅ আরবি ব্যাকরণ ও কুরআন খুব সহজে শেখার নিশ্চয়তা।</div>
-            <div class="feature-item">✅ ঘরে বসেই মানসম্মত দ্বীনি শিক্ষা অর্জন।</div>
-            <div class="feature-item">✅ সরাসরি হোয়াটসঅ্যাপে গালিব ভাইয়ের সাথে কথা বলা।</div>
-        </div>
-    </div>
-
-    <div class="section-bar quiz-special">🏆 মেধা যাচাই প্রতিযোগিতা (GK)</div>
-    <div class="card" style="max-width: 400px; margin: 0 auto;">
-        <h3>সাধারণ জ্ঞান কুইজ</h3>
-        <p>ফি: ২০ টাকা | সময়: ১০ মিনিট</p>
-        <button class="btn btn-pay" onclick="openPay('GK কুইজ')">ফি জমা দিন (২০৳)</button>
-        <button class="btn btn-exam" onclick="startCheck('GK')">পরীক্ষায় অংশ নাও</button>
-    </div>
-
-    <div class="section-bar">📘 অষ্টম শ্রেণি (Class 8) - কোর্সসমূহ</div>
-    <div class="grid" id="c8-grid"></div>
-
-    <div class="section-bar class-9">📗 নবম শ্রেণি (Class 9) - কোর্সসমূহ</div>
-    <div class="grid" id="c9-grid"></div>
-</div>
-
-<div id="exam-zone">
-    <div class="timer">⏰ সময়: <span id="clock">০০:০০</span></div>
-    <div id="q-container" class="container"></div>
-    <button class="btn btn-pay" style="max-width:300px; margin:20px auto;" onclick="location.reload()">ফলাফল সাবমিট করুন</button>
-</div>
-
-<div class="overlay" id="bg"></div>
-<div class="modal" id="modal">
-    <h3 id="pay-title"></h3>
-    <p>নগদ (Personal): <br><b style="font-size:22px; color:red;">০১৭৩৪৫০৫৮৬৯</b></p>
-    <input type="text" id="stu-name" placeholder="তোমার নাম লেখো">
-    <button class="btn btn-exam" style="background:#25d366; color:white;" onclick="confirmPay()">পেমেন্ট করেছি</button>
-    <button class="btn" onclick="closePay()">বাতিল</button>
-</div>
-
-<script>
-    const PASS = { "GK": "মেধা", "কুরআন": "আলহামদুলিল্লাহ", "আকাইদ": "সুবহানাল্লাহ", "হাদিস": "আল্লাহু আকবার", "আরবি১": "বিসমিল্লাহ", "আরবি২": "মাশাআল্লাহ" };
-    const courseList = ["কুরআন মাজিদ", "আকাইদ ও ফিকহ", "হাদিস শরীফ", "আরবি ১ম পত্র", "আরবি ২য় পত্র"];
-    const subKeys = ["কুরআন", "আকাইদ", "হাদিস", "আরবি১", "আরবি২"];
-
-    function buildUI(id, pre) {
-        const grid = document.getElementById(id);
-        courseList.forEach((name, i) => {
-            grid.innerHTML += `
-            <div class="card">
-                <h3>${name}</h3>
-                <button class="btn btn-pay" onclick="openPay('${pre} ${name}')">কোর্স ফি (২০৳)</button>
-                <button class="btn btn-class" onclick="startCheck('${subKeys[i]}','c')">🎥 ভিডিও ক্লাস</button>
-                <button class="btn btn-exam" onclick="startCheck('${subKeys[i]}','e')">📝 পরীক্ষা দাও</button>
-            </div>`;
-        });
-    }
-    buildUI('c8-grid', 'C8'); buildUI('c9-grid', 'C9');
-
-    function generateQ(title) {
-        let qs = [];
-        for(let i=1; i<=50; i++) {
-            qs.push({
-                q: `${title} বিষয়ের গুরুত্বপূর্ণ MCQ প্রশ্ন নং ${i}?`,
-                a: ["সঠিক উত্তর", "ভুল উত্তর ১", "ভুল উত্তর ২", "ভুল উত্তর ৩"]
-            });
+        if (userPass === passConfig[selectedSub]) {
+            startExam(selectedSub === 'gk' ? "সাধারণ জ্ঞান কুইজ" : selectedSub);
+        } else {
+            alert("ভুল পাসওয়ার্ড! পেমেন্ট করে সঠিক পাসওয়ার্ড নিন।");
         }
-        return qs;
     }
 
-    const allData = { "GK": generateQ("সাধারণ জ্ঞান"), "কুরআন": generateQ("কুরআন"), "আকাইদ": generateQ("আকাইদ"), "হাদিস": generateQ("হাদিস"), "আরবি১": generateQ("আরবি১"), "আরবি২": generateQ("আরবি২") };
-
-    function startCheck(k, mode) {
-        let p = prompt(k + " এর পাসওয়ার্ড দিন:");
-        if(p === PASS[k]) {
-            if(mode === 'c') alert("ভিডিও ক্লাসগুলো গালিব ভাই দ্রুতই আপলোড করবেন। ইনশাআল্লাহ!");
-            else renderExam(k);
-        } else if(p !== null) alert("ভুল পাসওয়ার্ড! ফি দিয়ে পাসওয়ার্ড সংগ্রহ করো।");
+    function startExam(title) {
+        document.getElementById('main-dashboard').style.display = 'none';
+        document.getElementById('exam-section').style.display = 'block';
+        document.getElementById('current-exam-title').innerText = title;
+        
+        loadQuestions();
+        startTimer(600); // ১০ মিনিট
     }
 
-    function renderExam(k) {
-        document.getElementById('home').style.display = 'none';
-        document.getElementById('exam-zone').style.display = 'block';
-        const box = document.getElementById('q-container');
-        box.innerHTML = `<h2>${k} পরীক্ষা (৫০টি প্রশ্ন)</h2>`;
-        allData[k].forEach((item, i) => {
-            let options = [...item.a].sort(() => Math.random() - 0.5).map(o => `<div class="opt" onclick="sel(this)">${o}</div>`).join('');
-            box.innerHTML += `<div class="q-item"><p><b>${i+1}. ${item.q}</b></p><div class="opt-grid">${options}</div></div>`;
-        });
-        runTimer(15);
-        window.scrollTo(0,0);
+    function loadQuestions() {
+        const container = document.getElementById('questions-container');
+        let html = '';
+        // এখানে ৫০টি ডামি প্রশ্ন তৈরি করা হলো
+        for (let i = 1; i <= 50; i++) {
+            html += `
+                <div class="question-box">
+                    <p><b>${i}. আপনার বিষয়ভিত্তিক প্রশ্ন এখানে থাকবে?</b></p>
+                    <label><input type="radio" name="q${i}" value="correct"> ক) সঠিক উত্তর</label><br>
+                    <label><input type="radio" name="q${i}" value="wrong"> খ) ভুল উত্তর</label><br>
+                    <label><input type="radio" name="q${i}" value="wrong"> গ) ভুল উত্তর</label>
+                </div>`;
+        }
+        container.innerHTML = html;
     }
 
-    function sel(el) {
-        el.parentElement.querySelectorAll('.opt').forEach(o => o.classList.remove('selected'));
-        el.classList.add('selected');
-    }
-
-    function runTimer(m) {
-        let s = m * 60;
-        let t = setInterval(() => {
-            let min = Math.floor(s/60), sec = s%60;
-            document.getElementById('clock').innerText = `${min<10?'0':''}${min}:${sec<10?'0':''}${sec}`;
-            if(--s < 0) { clearInterval(t); alert("সময় শেষ!"); location.reload(); }
+    function startTimer(duration) {
+        let timer = duration, minutes, seconds;
+        timerInterval = setInterval(() => {
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+            document.getElementById('timer-display').textContent = `সময় বাকি: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            if (--timer < 0) {
+                clearInterval(timerInterval);
+                finishExam();
+            }
         }, 1000);
     }
 
-    function openPay(t) { document.getElementById('pay-title').innerText = t; document.getElementById('bg').style.display='block'; document.getElementById('modal').style.display='block'; }
-    function closePay() { document.getElementById('bg').style.display='none'; document.getElementById('modal').style.display='none'; }
-    function confirmPay() {
-        let n = document.getElementById('stu-name').value;
-        if(!n) return alert("নাম লেখো");
-        window.open(`https://wa.me/8801734505869?text=আমি ${n}, ${document.getElementById('pay-title').innerText} এর ২০ টাকা পেমেন্ট করেছি। আমাকে পাসওয়ার্ড দিন।`);
-        closePay();
+    function finishExam() {
+        clearInterval(timerInterval);
+        const qContainer = document.getElementById('questions-container');
+        const selectedOptions = qContainer.querySelectorAll('input[type="radio"]:checked');
+        
+        score = 0;
+        selectedOptions.forEach(opt => {
+            if (opt.value === 'correct') score++;
+        });
+
+        document.getElementById('exam-section').style.display = 'none';
+        document.getElementById('result-section').style.display = 'block';
+        document.getElementById('final-score').innerText = `স্কোর: ${score} / ৫০`;
     }
 </script>
+
 </body>
 </html>
-
-
