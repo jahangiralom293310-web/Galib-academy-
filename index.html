@@ -3,209 +3,279 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galib Academy | অনলাইন পরীক্ষা ২০২৬</title>
+    <title>Galib Academy | মেগা পরীক্ষা ২০২৬</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         :root { --primary: #1a237e; --secondary: #2e7d32; --accent: #ff9800; --bg: #f4f7f9; }
-        body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); margin: 0; padding: 0; color: #333; }
-        .header { background: linear-gradient(135deg, var(--primary), #3949ab); color: white; padding: 30px 15px; text-align: center; border-bottom: 5px solid var(--accent); }
-        .container { max-width: 850px; margin: auto; padding: 20px; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); margin: 0; padding: 0; }
+        .header { background: linear-gradient(135deg, var(--primary), #3949ab); color: white; padding: 30px; text-align: center; border-bottom: 5px solid var(--accent); }
+        .container { max-width: 900px; margin: auto; padding: 20px; }
         .card { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); margin-bottom: 20px; }
-        .input-group { margin-bottom: 12px; }
-        .input-group label { display: block; margin-bottom: 5px; font-weight: bold; }
-        .input-group input { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px; }
-        .class-card { background: white; padding: 20px; border-radius: 12px; text-align: center; border-bottom: 4px solid #ddd; }
-        .btn { display: block; width: 100%; padding: 12px; margin-top: 10px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; text-decoration: none; text-align: center; }
+        .btn { display: block; width: 100%; padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; text-align: center; text-decoration: none; margin-top: 10px; }
         .btn-exam { background: var(--secondary); color: white; }
-        #exam-section, #result-section { display: none; background: white; padding: 25px; border-radius: 15px; }
-        .timer-sticky { position: sticky; top: 0; background: white; padding: 10px; border-bottom: 2px solid var(--primary); display: flex; justify-content: space-between; align-items: center; z-index: 100; }
-        .q-box { background: #f9f9f9; padding: 15px; border-radius: 10px; margin-bottom: 15px; border: 1px solid #eee; }
+        .timer-sticky { position: sticky; top: 0; background: white; padding: 15px; border-bottom: 3px solid var(--primary); display: flex; justify-content: space-between; z-index: 1000; font-weight: bold; }
+        .q-box { background: #fff; padding: 20px; border-radius: 10px; margin-bottom: 15px; border: 1px solid #ddd; }
         .hidden { display: none; }
+        #certificate-template { width: 600px; height: 450px; padding: 40px; text-align: center; border: 15px solid var(--primary); background: #fff; position: absolute; left: -9999px; }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <h1>গালিব একাডেমি (Galib Academy)</h1>
-        <p>শ্রেণিভিত্তিক মেধা যাচাই ও কুরআন প্রতিযোগিতা ২০২৬</p>
+<div class="header">
+    <h1>গালিব একাডেমি (Galib Academy)</h1>
+    <p>অনলাইন মেধা যাচাই ও তাজভিদ প্রতিযোগিতা ২০২৬</p>
+</div>
+
+<div class="container" id="reg-area">
+    <div class="card">
+        <h3 style="text-align:center;">রেজিস্ট্রেশন ফরম</h3>
+        <input type="text" id="s-name" placeholder="নাম" style="width:100%; padding:12px; margin-bottom:10px; border-radius:8px; border:1px solid #ccc; box-sizing:border-box;">
+        <input type="number" id="s-roll" placeholder="রোল" style="width:100%; padding:12px; margin-bottom:10px; border-radius:8px; border:1px solid #ccc; box-sizing:border-box;">
+        <input type="text" id="s-madrasa" placeholder="মাদ্রাসা" style="width:100%; padding:12px; margin-bottom:10px; border-radius:8px; border:1px solid #ccc; box-sizing:border-box;">
+        <button class="btn btn-exam" onclick="saveInfo()">পরবর্তী ধাপ</button>
     </div>
+</div>
 
-    <div class="container" id="reg-area">
-        <div class="card">
-            <h2 style="text-align:center;">শিক্ষার্থীর তথ্য</h2>
-            <div class="input-group"><label>নাম:</label><input type="text" id="s-name" placeholder="পুরো নাম"></div>
-            <div class="input-group"><label>মোবাইল নম্বর:</label><input type="number" id="s-phone" placeholder="০১৭XXXXXXXX"></div>
-            <div class="input-group"><label>রোল নম্বর:</label><input type="number" id="s-roll" placeholder="ক্লাস রোল"></div>
-            <div class="input-group"><label>মাদ্রাসার নাম:</label><input type="text" id="s-madrasa" placeholder="মাদ্রাসার নাম"></div>
-            <button class="btn btn-exam" onclick="saveInfo()">তথ্য জমা দিন</button>
-        </div>
+<div class="container hidden" id="class-selection">
+    <h2 style="text-align:center;">আপনার ক্লাস নির্বাচন করুন</h2>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+        <button class="btn btn-exam" onclick="checkAccess('q6')">৬ষ্ঠ শ্রেণি</button>
+        <button class="btn btn-exam" onclick="checkAccess('q7')">৭ম শ্রেণি</button>
+        <button class="btn btn-exam" onclick="checkAccess('q8')">৮ম শ্রেণি</button>
+        <button class="btn btn-exam" onclick="checkAccess('q9')">৯ম শ্রেণি</button>
     </div>
+</div>
 
-    <div class="container hidden" id="class-selection">
-        <h2 style="text-align: center;">বিভাগ নির্বাচন করুন</h2>
-        <div class="grid">
-            <div class="class-card"><h3>৬ষ্ঠ শ্রেণি</h3><button class="btn btn-exam" onclick="checkAccess('q6')">শুরু করুন</button></div>
-            <div class="class-card"><h3>৭ম শ্রেণি</h3><button class="btn btn-exam" onclick="checkAccess('q7')">শুরু করুন</button></div>
-            <div class="class-card"><h3>৮ম শ্রেণি</h3><button class="btn btn-exam" onclick="checkAccess('q8')">শুরু করুন</button></div>
-            <div class="class-card"><h3>৯ম শ্রেণি</h3><button class="btn btn-exam" onclick="checkAccess('q9')">শুরু করুন</button></div>
-            <div class="class-card" style="grid-column: 1 / -1; background: #e8f5e9;"><h3>সাধারণ মেধা যাচাই (সবার জন্য)</h3><button class="btn btn-exam" style="background:#4527a0;" onclick="checkAccess('general')">শুরু করুন</button></div>
-        </div>
+<div class="container hidden" id="exam-section">
+    <div class="timer-sticky">
+        <span id="st-display"></span>
+        <span id="exam-timer" style="color:red; font-size:22px;">১০:০০</span>
     </div>
+    <div id="questions-list"></div>
+    <button class="btn btn-exam" onclick="submitExam()">পরীক্ষা জমা দিন</button>
+</div>
 
-    <div class="container" id="exam-section">
-        <div class="timer-sticky">
-            <span id="display-info" style="font-size:13px;"></span>
-            <span id="exam-timer" style="color:red; font-size: 20px; font-weight:bold;">৩০:০০</span>
-        </div>
-        <form id="quiz-form">
-            <div id="questions-list"></div>
-            <button type="button" class="btn btn-exam" onclick="submitExam()">পরীক্ষা সাবমিট করুন</button>
-        </form>
+<div class="container hidden" id="result-section">
+    <div class="card" style="text-align:center;">
+        <h2 style="color:var(--secondary);">আলহামদুলিল্লাহ, ফলাফল!</h2>
+        <div id="final-score" style="font-size:35px; font-weight:bold; margin:20px;"></div>
+        <button class="btn btn-exam" onclick="generateCertificate()" style="background:#007bff;">সনদ ডাউনলোড করুন</button>
+        <a id="wa-send" href="#" target="_blank" class="btn" style="background:#25d366; color:white;">স্যারকে রেজাল্ট পাঠান</a>
     </div>
+</div>
 
-    <div class="container" id="result-section">
-        <div class="card" style="text-align:center;">
-            <h2>আলহামদুলিল্লাহ, পরীক্ষা শেষ!</h2>
-            <div id="final-score" style="font-size:30px; margin:20px 0; color:var(--secondary);"></div>
-            <a id="wa-send" href="#" target="_blank" class="btn" style="background:#25d366; color:white;">গালিব স্যারকে রেজাল্ট পাঠান</a>
-            <button class="btn" style="background:#666; color:white;" onclick="location.reload()">আবার শুরু করুন</button>
-        </div>
+<div id="certificate-template">
+    <h1 style="color:#1a237e;">গালিব একাডেমি</h1>
+    <h2>সাফল্যের সনদপত্র</h2>
+    <p style="font-size:20px;">এই মর্মে প্রত্যয়ন করা যাচ্ছে যে,</p>
+    <h3 id="cert-name" style="font-size:28px; color:#ff9800;"></h3>
+    <p style="font-size:18px;">মাদ্রাসা: <span id="cert-m"></span>, রোল: <span id="cert-r"></span></p>
+    <p>অনলাইন মেধা যাচাই ২০২৬-এ অংশগ্রহণ করে ৩০ এর মধ্যে <span id="cert-s"></span> নম্বর পেয়ে উত্তীর্ণ হয়েছে।</p>
+    <div style="margin-top:50px; display:flex; justify-content:space-between;">
+        <span>তারিখ: ২৫/০১/২০২৬</span>
+        <span style="border-top:2px solid #000;">পরিচালক স্বাক্ষর</span>
     </div>
+</div>
 
-    <script>
-        let studentData = {};
-        const validPasswords = ["আলহামদুলিল্লাহ", "বিসমিল্লাহ", "সুবহানাল্লাহ", "আল্লাহু আকবার"];
+<script>
+    let studentData = {};
+    const validPass = ["Pass10", "Galib20", "Exam26"];
 
-        function saveInfo() {
-            const name = document.getElementById('s-name').value;
-            const phone = document.getElementById('s-phone').value;
-            const roll = document.getElementById('s-roll').value;
-            const madrasa = document.getElementById('s-madrasa').value;
-            if(!name || !phone || !roll || !madrasa) { alert("সব তথ্য দিন!"); return; }
-            studentData = { name, phone, roll, madrasa };
-            document.getElementById('reg-area').classList.add('hidden');
-            document.getElementById('class-selection').classList.remove('hidden');
+    function saveInfo() {
+        const n = document.getElementById('s-name').value;
+        const r = document.getElementById('s-roll').value;
+        const m = document.getElementById('s-madrasa').value;
+        if(!n || !r || !m) { alert("সব পূরণ করুন"); return; }
+        studentData = { name: n, roll: r, madrasa: m };
+        document.getElementById('reg-area').classList.add('hidden');
+        document.getElementById('class-selection').classList.remove('hidden');
+    }
+
+    function checkAccess(t) {
+        if(validPass.includes(prompt("পাসওয়ার্ড দিন:"))) startExam(t);
+        else alert("ভুল পাসওয়ার্ড!");
+    }
+
+    const questionsDB = {
+        "q6": [
+            {q: "মাখরাজ মোট কয়টি?", o: ["১৫টি", "১৭টি", "১৯টি", "২১টি"], a: "১৭টি"},
+            {q: "তাজভিদ শব্দের অর্থ কী?", o: ["সুন্দর করা", "মুখস্থ করা", "দ্রুত পড়া", "থামা"], a: "সুন্দর করা"},
+            {q: "হলকের হরফ কয়টি?", o: ["৪টি", "৬টি", "৮টি", "১০টি"], a: "৬টি"},
+            {q: "কলকলাহর হরফ কয়টি?", o: ["৫টি", "৬টি", "৭টি", "৮টি"], a: "৫টি"},
+            {q: "ইকলাব শব্দের অর্থ কী?", o: ["বদলানো", "গোপন করা", "স্পষ্ট করা", "মিলানো"], a: "বদলানো"},
+            {q: "জিহ্বার আগা থেকে মাখরাজ কয়টি?", o: ["৩টি", "৫টি", "৪টি", "৬টি"], a: "৫টি"},
+            {q: "নুনে কুতনী কাকে বলে?", o: ["ছোট নুন", "বড় নুন", "যযম নুন", "পেশ"], a: "ছোট নুন"},
+            {q: "মাদ্দে আসলী কত আলিফ টানতে হয়?", o: ["১ আলিফ", "৩ আলিফ", "৪ আলিফ", "৫ আলিফ"], a: "১ আলিফ"},
+            {q: "তানভীন কাকে বলে?", o: ["২ যবর, ২ যের, ২ পেশ", "যযম", "হরকত", "মাদ্দ"], a: "২ যবর, ২ যের, ২ পেশ"},
+            {q: "গুন্নাহ করার স্থান কোনটি?", o: ["নাক", "মুখ", "গলা", "ঠোঁট"], a: "নাক"},
+            {q: "মাদ্দে লাযিম কয় প্রকার?", o: ["২ প্রকার", "৪ প্রকার", "৬ প্রকার", "৮ প্রকার"], a: "৪ প্রকার"},
+            {q: "সাকতাহ শব্দের অর্থ কী?", o: ["দম না ছেড়ে থামা", "দম ছেড়ে থামা", "না থামা", "দ্রুত পড়া"], a: "দম না ছেড়ে থামা"},
+            {q: "ইখফার হরফ কয়টি?", o: ["১০টি", "১২টি", "১৫টি", "১৭টি"], a: "১৫টি"},
+            {q: "ইদগাম শব্দের অর্থ কী?", o: ["মিলিয়ে পড়া", "স্পষ্ট করা", "টেনে পড়া", "গোপন করা"], a: "মিলিয়ে পড়া"},
+            {q: "মীম সাকিন পড়ার নিয়ম কয়টি?", o: ["২টি", "৩টি", "৪টি", "৫টি"], a: "৩টি"},
+            {q: "কুরআনে রুকু সংখ্যা কত?", o: ["৫৪০", "৫৫৬", "৫৫৪", "৫৬০"], a: "৫৫৬"},
+            {q: "হুরূফে শামসিয়া কয়টি?", o: ["১০টি", "১২টি", "১৪টি", "১৬টি"], a: "১৪টি"},
+            {q: "আল্লাহ শব্দের লাম কখন চিকন হয়?", o: ["যবর থাকলে", "পেশ থাকলে", "যের থাকলে", "সব সময়"], a: "যের থাকলে"},
+            {q: "সিফাতে লাযিমাহ কাকে বলে?", o: ["স্থায়ী গুণ", "অস্থায়ী গুণ", "মাঝে মাঝে হয়", "সুর"], a: "স্থায়ী গুণ"},
+            {q: "মাদ্দে লীন এর হরফ কয়টি?", o: ["২টি", "৩টি", "৪টি", "৫টি"], a: "২টি"},
+            {q: "তারকীক শব্দের অর্থ কী?", o: ["মোটা করা", "চিকন করা", "স্পষ্ট করা", "টানা"], a: "চিকন করা"},
+            {q: "মাদ্দে আরজি কত আলিফ টানতে হয়?", o: ["১ আলিফ", "৩ আলিফ", "৪ আলিফ", "৫ আলিফ"], a: "৩ আলিফ"},
+            {q: "ওয়াকফ শব্দের অর্থ কী?", o: ["থামা", "শুরু করা", "না থামা", "মিলিয়ে পড়া"], a: "থামা"},
+            {q: "সিফাত মোট কতটি?", o: ["১৭টি", "১৮টি", "১৯টি", "২০টি"], a: "১৭টি"},
+            {q: "তাজভিদ অনুযায়ী কুরআন পড়া কী?", o: ["সুন্নত", "ওয়াজিব", "মুস্তাহাব", "মাকরূহ"], a: "ওয়াজিব"},
+            {q: "ইখফা শব্দের অর্থ কী?", o: ["গোপন করা", "স্পষ্ট করা", "বদলানো", "মিলানো"], a: "গোপন করা"},
+            {q: "মাদ্দে মুনফাসিল কত আলিফ?", o: ["১ আলিফ", "৩ আলিফ", "৪ আলিফ", "৫ আলিফ"], a: "৩ আলিফ"},
+            {q: "কলকলাহর হরফগুলো কী কী?", o: ["ক্বতবা জাদিন", "আলিফ বা তা", "লাম মীম", "সবগুলো"], a: "ক্বতবা জাদিন"},
+            {q: "মাদ্দে মুত্তাসিল কত আলিফ?", o: ["১ আলিফ", "৩ আলিফ", "৪ আলিফ", "৫ আলিফ"], a: "৪ আলিফ"},
+            {q: "তাজভিদ শাস্ত্রের মৌলিক উৎস কী?", o: ["হাদীস", "কুরআন", "ইজমা", "কিয়াস"], a: "কুরআন"}
+        ],
+        "q7": [
+            {q: "রাসূল (সা.) এর দুধমাতার নাম কী?", o: ["হালিমা (রা)", "আমিনা", "খাদিজা", "ফাতিমা"], a: "হালিমা (রা)"},
+            {q: "ইসলামের প্রথম জিহাদ কোনটি?", o: ["বদর", "উহুদ", "খন্দক", "খায়বর"], a: "বদর"},
+            {q: "জান্নাতের সুসংবাদপ্রাপ্ত সাহাবী কতজন?", o: ["৫ জন", "১০ জন", "১৫ জন", "২০ জন"], a: "১০ জন"},
+            {q: "কুরআনের দীর্ঘতম সূরা কোনটি?", o: ["বাকারা", "আলে ইমরান", "নিসা", "মায়েদা"], a: "বাকারা"},
+            {q: "ইসলামের স্তম্ভ কয়টি?", o: ["৩টি", "৪টি", "৫টি", "৬টি"], a: "৫টি"},
+            {q: "কুরআনের প্রাণ বলা হয় কোন সূরাকে?", o: ["ইয়াসিন", "রহমান", "বাকারা", "ইখলাস"], a: "ইয়াসিন"},
+            {q: "পবিত্র কুরআন প্রথম কোথায় নাযিল হয়?", o: ["মক্কা", "মদীনা", "হেরা গুহায়", "তুর পাহাড়ে"], a: "হেরা গুহায়"},
+            {q: "মাদ্দে লীন এর হরফ কয়টি?", o: ["২টি", "৩টি", "৪টি", "৫টি"], a: "২টি"},
+            {q: "বিসমিল্লাহ নেই কোন সূরায়?", o: ["নামল", "তওবা", "নাস", "বাকারা"], a: "তওবা"},
+            {q: "হজ কোন মাসে পালন করা হয়?", o: ["রমজান", "শাওয়াল", "জিলকদ", "জিলহজ"], a: "জিলহজ"},
+            {q: "মাদ্দে আসলী কত আলিফ টানতে হয়?", o: ["১ আলিফ", "৩ আলিফ", "৪ আলিফ", "৫ আলিফ"], a: "১ আলিফ"},
+            {q: "মাখরাজ শব্দের অর্থ কী?", o: ["বের হওয়ার স্থান", "থামার স্থান", "বসার স্থান", "পড়ার স্থান"], a: "বের হওয়ার স্থান"},
+            {q: "সিফাতে লাযিমাহ কয় প্রকার?", o: ["২ প্রকার", "৩ প্রকার", "৪ প্রকার", "৫ প্রকার"], a: "২ প্রকার"},
+            {q: "ইদগামে বা-গুন্নাহর হরফ কয়টি?", o: ["২টি", "৩টি", "৪টি", "৫টি"], a: "৪টি"},
+            {q: "নুন সাকিন পড়ার নিয়ম কয়টি?", o: ["২টি", "৩টি", "৪টি", "৫টি"], a: "৪টি"},
+            {q: "ইকলাব এর হরফ কোনটি?", o: ["বা", "তা", "সা", "জিম"], a: "বা"},
+            {q: "মাদ্দে আরজি হয় কোথায়?", o: ["শব্দের মাঝে", "আয়াতের শেষে", "শুরুতে", "সবখানে"], a: "আয়াতের শেষে"},
+            {q: "খাড় যবর থাকলে কত আলিফ টানতে হয়?", o: ["১ আলিফ", "২ আলিফ", "৩ আলিফ", "৪ আলিফ"], a: "১ আলিফ"},
+            {q: "র যবর হলে কেমন পড়তে হয়?", o: ["চিকন", "মোটা", "স্পষ্ট", "গোপন"], a: "মোটা"},
+            {q: "বিশ্বর বৃহত্তম মহাসাগর কোনটি?", o: ["আটলান্টিক", "প্রশান্ত", "ভারত", "উত্তর"], a: "প্রশান্ত"},
+            {q: "বাংলাদেশের জাতীয় পশু কোনটি?", o: ["রয়েল বেঙ্গল টাইগার", "সিংহ", "হাতি", "হরিণ"], a: "রয়েল বেঙ্গল টাইগার"},
+            {q: "কুরআনে মোট সেজদা কয়টি?", o: ["১২টি", "১৪টি", "১৫টি", "১৬টি"], a: "১৪টি"},
+            {q: "উম্মুল কুরআন কোন সূরা?", o: ["সূরা ফাতেহা", "সূরা বাকারা", "সূরা ইখলাস", "সূরা নাস"], a: "সূরা ফাতেহা"},
+            {q: "ইসলামের প্রথম খলিফা কে?", o: ["আবু বকর (রা)", "ওমর (রা)", "উসমান (রা)", "আলী (রা)"], a: "আবু বকর (রা)"},
+            {q: "সালাত শব্দের অর্থ কী?", o: ["দোয়া", "শান্তি", "রহমত", "সবগুলো"], a: "সবগুলো"},
+            {q: "ইদগাম অর্থ কী?", o: ["স্পষ্ট করা", "গোপন করা", "মিলিয়ে পড়া", "বদলানো"], a: "মিলিয়ে পড়া"},
+            {q: "জিহ্বার গোড়া থেকে কোন হরফ উচ্চারিত হয়?", o: ["ক্বাফ", "লাম", "নুন", "র"], a: "ক্বাফ"},
+            {q: "মাদ্দে মুত্তাসিল কত আলিফ?", o: ["৪ আলিফ", "১ আলিফ", "২ আলিফ", "৩ আলিফ"], a: "৪ আলিফ"},
+            {q: "কলকলাহর হরফগুলো কী কী?", o: ["ক্বতবা জাদিন", "আলিফ বা তা", "লাম মীম", "সবগুলো"], a: "ক্বতবা জাদিন"},
+            {q: "হলক অর্থ কী?", o: ["কণ্ঠনালী", "জিহ্বা", "ঠোঁট", "নাক"], a: "কণ্ঠনালী"}
+        ],
+        "q8": [
+            {q: "হুরূফে শামসিয়া কয়টি?", o: ["১৪টি", "১০টি", "১২টি", "১৬টি"], a: "১৪টি"},
+            {q: "মাদ্দে লাযিম কয় প্রকার?", o: ["৪ প্রকার", "২ প্রকার", "৩ প্রকার", "৫ প্রকার"], a: "৪ প্রকার"},
+            {q: "ইদগামে বেলা গুন্নাহর হরফ কয়টি?", o: ["২টি", "৪টি", "৬টি", "৮টি"], a: "২টি"},
+            {q: "মাদ্দে মুনফাসিল কত আলিফ?", o: ["৩ আলিফ", "১ আলিফ", "২ আলিফ", "৪ আলিফ"], a: "৩ আলিফ"},
+            {q: "সিফাতে মুতাদাদদাহ কাকে বলে?", o: ["বিপরীতমুখী গুণ", "স্থায়ী গুণ", "অস্থায়ী গুণ", "সুর"], a: "বিপরীতমুখী গুণ"},
+            {q: "জিহ্বার মধ্যখান থেকে কোন হরফ বের হয়?", o: ["জিম", "কাফ", "লাম", "নুন"], a: "জিম"},
+            {q: "তাজভিদ শাস্ত্রের প্রবর্তক কে?", o: ["রাসূল (সা.)", "আবু বকর (রা)", "উসমান (রা)", "আলী (রা)"], a: "রাসূল (সা.)"},
+            {q: "আল্লাহ শব্দের লাম মোটা হয় কখন?", o: ["যবর বা পেশ থাকলে", "যের থাকলে", "সাকিন থাকলে", "সব সময়"], a: "যবর বা পেশ থাকলে"},
+            {q: "মাদ্দে লীন কয়টি?", o: ["২টি", "৩টি", "৪টি", "৫টি"], a: "২টি"},
+            {q: "নুনে কুতনী কখন পড়তে হয়?", o: ["দুই আয়াতের মিলের সময়", "শুরুতে", "শেষে", "মাঝে"], a: "দুই আয়াতের মিলের সময়"},
+            {q: "হুদায়বিয়ার সন্ধি কত হিজরিতে হয়?", o: ["৬ হিজরি", "৫ হিজরি", "৪ হিজরি", "৭ হিজরি"], a: "৬ হিজরি"},
+            {q: "উহুদ যুদ্ধে মুসলিম সেনাপতি কে ছিলেন?", o: ["রাসূল (সা.)", "হামজা (রা)", "আলী (রা)", "খালিদ (রা)"], a: "রাসূল (সা.)"},
+            {q: "প্রথম কুরআন লেখক কে?", o: ["যায়েদ বিন সাবিত", "ওমর (রা)", "আলী (রা)", "উসমান (রা)"], a: "যায়েদ বিন সাবিত"},
+            {q: "বাংলাদেশের জাতীয় কবির নাম কী?", o: ["নজরুল", "রবীন্দ্রনাথ", "জসীমউদ্দীন", "জীবনানন্দ"], a: "নজরুল"},
+            {q: "পৃথিবীর বৃহত্তম মহাদেশ কোনটি?", o: ["এশিয়া", "আফ্রিকা", "ইউরোপ", "আমেরিকা"], a: "এশিয়া"},
+            {q: "বাংলাদেশের বিজয় দিবস কবে?", o: ["১৬ ডিসেম্বর", "২১ ফেব্রুয়ারি", "২৬ মার্চ", "১৪ ডিসেম্বর"], a: "১৬ ডিসেম্বর"},
+            {q: "কুরআনের মোট আয়াত সংখ্যা কত?", o: ["৬২৩৬", "৬৬৬৬", "৬০০০", "৬৫০০"], a: "৬২৩৬"},
+            {q: "ইসলামের দ্বিতীয় খলিফা কে?", o: ["ওমর (রা)", "আবু বকর (রা)", "উসমান (রা)", "আলী (রা)"], a: "ওমর (রা)"},
+            {q: "হাজরে আসওয়াদ কোন রঙের পাথর?", o: ["কালো", "সাদা", "লাল", "সবুজ"], a: "কালো"},
+            {q: "সবচেয়ে বেশি হাদিস বর্ণনা করেছেন কে?", o: ["আবু হুরায়রা (রা)", "আবু বকর (রা)", "আয়েশা (রা)", "ওমর (রা)"], a: "আবু হুরায়রা (রা)"},
+            {q: "মক্বার বিজয়ের সাল কোনটি?", o: ["৮ হিজরি", "৬ হিজরি", "৭ হিজরি", "৯ হিজরি"], a: "৮ হিজরি"},
+            {q: "কুরআনের কোন সূরাকে উম্মুল কিতাব বলা হয়?", o: ["সূরা ফাতেহা", "সূরা বাকারা", "সূরা ইখলাস", "সূরা ইয়াসিন"], a: "সূরা ফাতেহা"},
+            {q: "মাদ্দে আরজি কত আলিফ টানতে হয়?", o: ["৩ আলিফ", "১ আলিফ", "২ আলিফ", "৪ আলিফ"], a: "৩ আলিফ"},
+            {q: "হলকের হরফ কয়টি?", o: ["৬টি", "৪টি", "৫টি", "৭টি"], a: "৬টি"},
+            {q: "গুন্নাহ করার স্থান কোনটি?", o: ["নাসিকা", "মুখ", "গলা", "ঠোঁট"], a: "নাসিকা"},
+            {q: "ইদগামে বেলা গুন্নাহর হরফ কয়টি?", o: ["২টি", "৩টি", "৪টি", "৫টি"], a: "২টি"},
+            {q: "কলকলাহর হরফ কয়টি?", o: ["৫টি", "৬টি", "৭টি", "৮টি"], a: "৫টি"},
+            {q: "ওয়াকফ শব্দের অর্থ কী?", o: ["থামা", "শুরু করা", "না থামা", "মিলা করা"], a: "থামা"},
+            {q: "মাদ্দে আসলী কত আলিফ?", o: ["১ আলিফ", "২ আলিফ", "৩ আলিফ", "৪ আলিফ"], a: "১ আলিফ"},
+            {q: "তাজভিদ শিক্ষা করা কী?", o: ["ফরজে আইন", "ফরজে কেফায়া", "সুন্নত", "ওয়াজিব"], a: "ফরজে আইন"}
+        ],
+        "q9": [
+            {q: "মীম সাকিন পড়ার নিয়ম কয়টি?", o: ["৩টি", "২টি", "৪টি", "৫টি"], a: "৩টি"},
+            {q: "মাদ্দে লাযিম কালমী মুসাক্কাল কত আলিফ?", o: ["৪ আলিফ", "১ আলিফ", "২ আলিফ", "৩ আলিফ"], a: "৪ আলিফ"},
+            {q: "সাকতাহ কুরআনে কয়টি স্থানে আছে?", o: ["৪টি", "২টি", "৩টি", "৫টি"], a: "৪টি"},
+            {q: "হুরূফে কামারিয়া কয়টি?", o: ["১৪টি", "১০টি", "১২টি", "১৬টি"], a: "১৪টি"},
+            {q: "আশারায়ে মুবাশশারা কতজন?", o: ["১০ জন", "৫ জন", "৭ জন", "১২ জন"], a: "১০ জন"},
+            {q: "খলিফা উসমান (রা) এর উপাধি কী?", o: ["জুন-নুরাইন", "ফারুক", "সিদ্দিক", "আসাদুল্লাহ"], a: "জুন-নুরাইন"},
+            {q: "মদীনার পূর্ব নাম কী ছিল?", o: ["ইয়াসরিব", "তায়েফ", "মক্কা", "খায়বর"], a: "ইয়াসরিব"},
+            {q: "কুরআনের প্রথম নাযিলকৃত সূরা কোনটি?", o: ["সূরা আলাক", "সূরা ফাতেহা", "সূরা বাকারা", "সূরা ইখলাস"], a: "সূরা আলাক"},
+            {q: "যুলফিকার কার তলোয়ারের নাম?", o: ["আলী (রা)", "ওমর (রা)", "খালিদ (রা)", "হামজা (রা)"], a: "আলী (রা)"},
+            {q: "ইসলামের স্তম্ভ কয়টি?", o: ["৫টি", "৩টি", "৪টি", "৬টি"], a: "৫টি"},
+            {q: "বাংলাদেশের জাতীয় ফুল কোনটি?", o: ["শাপলা", "গোলাপ", "বেলী", "জবা"], a: "শাপলা"},
+            {q: "মাখরাজ মোট কয়টি?", o: ["১৭টি", "১৫টি", "১৯টি", "২১টি"], a: "১৭টি"},
+            {q: "তাজভিদ শব্দের অর্থ কী?", o: ["সুন্দর করা", "মুখস্থ করা", "দ্রুত পড়া", "থামা"], a: "সুন্দর করা"},
+            {q: "কলকলাহর হরফ কয়টি?", o: ["৫টি", "৬টি", "৪টি", "৭টি"], a: "৫টি"},
+            {q: "ইদগামে বা-গুন্নাহর হরফ কয়টি?", o: ["৪টি", "২টি", "৬টি", "৮টি"], a: "৪টি"},
+            {q: "ইখফার হরফ কয়টি?", o: ["১৫টি", "১০টি", "১২টি", "১৭টি"], a: "১৫টি"},
+            {q: "মাদ্দে মুত্তাসিল কত আলিফ?", o: ["৪ আলিফ", "১ আলিফ", "২ আলিফ", "৩ আলিফ"], a: "৪ আলিফ"},
+            {q: "মাদ্দে মুনফাসিল কত আলিফ?", o: ["৩ আলিফ", "১ আলিফ", "২ আলিফ", "৪ আলিফ"], a: "৩ আলিফ"},
+            {q: "গুন্নাহ করার স্থান কোনটি?", o: ["নাক", "মুখ", "গলা", "ঠোঁট"], a: "নাক"},
+            {q: "আল্লাহ শব্দের লাম কখন চিকন হয়?", o: ["যের থাকলে", "যবর থাকলে", "পেশ থাকলে", "সব সময়"], a: "যের থাকলে"},
+            {q: "সিফাতে লাযিমাহ কাকে বলে?", o: ["স্থায়ী গুণ", "অস্থায়ী গুণ", "মাঝে মাঝে হয়", "সুর"], a: "স্থায়ী গুণ"},
+            {q: "মাদ্দে লীন এর হরফ কয়টি?", o: ["২টি", "৩টি", "৪টি", "৫টি"], a: "২টি"},
+            {q: "তারকীক শব্দের অর্থ কী?", o: ["চিকন করা", "মোটা করা", "স্পষ্ট করা", "টানা"], a: "চিকন করা"},
+            {q: "মাদ্দে আরজি কত আলিফ টানতে হয়?", o: ["৩ আলিফ", "১ আলিফ", "২ আলিফ", "৪ আলিফ"], a: "৩ আলিফ"},
+            {q: "ওয়াকফ শব্দের অর্থ কী?", o: ["থামা", "শুরু করা", "না থামা", "মিলিয়ে পড়া"], a: "থামা"},
+            {q: "সিফাত মোট কতটি?", o: ["১৭টি", "১৮টি", "১৯টি", "২০টি"], a: "১৭টি"},
+            {q: "তাজভিদ অনুযায়ী কুরআন পড়া কী?", o: ["ওয়াজিব", "সুন্নত", "মুস্তাহাব", "মাকরূহ"], a: "ওয়াজিব"},
+            {q: "ইখফা শব্দের অর্থ কী?", o: ["গোপন করা", "স্পষ্ট করা", "বদলানো", "মিলানো"], a: "গোপন করা"},
+            {q: "ইকলাব শব্দের অর্থ কী?", o: ["বদলানো", "গোপন করা", "স্পষ্ট করা", "মিলানো"], a: "বদলানো"},
+            {q: "তাজভিদ শাস্ত্রের মৌলিক উৎস কী?", o: ["কুরআন", "হাদীস", "ইজমা", "কিয়াস"], a: "কুরআন"}
+        ]
+    };
+
+    function startExam(type) {
+        document.getElementById('class-selection').classList.add('hidden');
+        document.getElementById('exam-section').classList.remove('hidden');
+        document.getElementById('st-display').innerText = studentData.name;
+        const list = document.getElementById('questions-list');
+        const qs = questionsDB[type].sort(() => 0.5 - Math.random());
+        list.innerHTML = qs.map((item, i) => `
+            <div class="q-box">
+                <p><b>${i+1}. ${item.q}</b></p>
+                ${item.o.map(opt => `<label style="display:block; margin:8px 0;"><input type="radio" name="q${i}" value="${opt}"> ${opt}</label>`).join('')}
+                <input type="hidden" id="ans${i}" value="${item.a}">
+            </div>
+        `).join('');
+        window.qCount = qs.length;
+        let sec = 600;
+        window.timer = setInterval(() => {
+            sec--;
+            let m = Math.floor(sec/60); let s = sec%60;
+            document.getElementById('exam-timer').innerText = `${m}:${s<10?'0':''}${s}`;
+            if(sec <= 0) submitExam();
+        }, 1000);
+    }
+
+    function submitExam() {
+        clearInterval(window.timer);
+        let score = 0;
+        for(let i=0; i<window.qCount; i++) {
+            const sel = document.querySelector(`input[name="q${i}"]:checked`);
+            if(sel && sel.value === document.getElementById(`ans${i}`).value) score++;
         }
+        window.finalScore = score;
+        document.getElementById('exam-section').classList.add('hidden');
+        document.getElementById('result-section').classList.remove('hidden');
+        document.getElementById('final-score').innerText = `স্কোর: ${score} / ৩০`;
+        document.getElementById('wa-send').href = `https://wa.me/8801734505869?text=নাম: ${studentData.name}, রোল: ${studentData.roll}, মাদ্রাসা: ${studentData.madrasa}, স্কোর: ${score}/৩০`;
+    }
 
-        function checkAccess(type) {
-            let pass = prompt("পাসওয়ার্ড দিন:");
-            if(validPasswords.includes(pass)) startExam(type);
-            else alert("ভুল পাসওয়ার্ড!");
-        }
-
-        const questionsDB = {
-            "general": [
-                {q: "রাসূল (সা.) কত সালে জন্মগ্রহণ করেন?", o: ["৫৭০ খ্রিঃ", "৫৭১ খ্রিঃ", "৬১০ খ্রিঃ", "৬২২ খ্রিঃ"], a: "৫৭০ খ্রিঃ"},
-                {q: "ইসলামের প্রথম যুদ্ধের নাম কী?", o: ["উহুদ", "বদর", "খন্দক", "খায়বর"], a: "বদর"},
-                {q: "জাতীয় সংসদের আসন সংখ্যা কত?", o: ["৩০০", "৩৩০", "৩৫০", "৪০০"], a: "৩৫০"},
-                {q: "বাংলাদেশের জাতীয় কবির নাম কী?", o: ["রবীন্দ্রনাথ", "নজরুল", "জীবনানন্দ", "জসীমউদ্দীন"], a: "নজরুল"},
-                {q: "সূর্যের নিকটতম গ্রহ কোনটি?", o: ["পৃথিবী", "বুধ", "শুক্র", "মঙ্গল"], a: "বুধ"},
-                {q: "কুরআনের প্রাণ বলা হয় কোন সূরাকে?", o: ["ইয়াসিন", "আর-রহমান", "বাকারা", "মুলক"], a: "ইয়াসিন"},
-                {q: "বিশ্বের বৃহত্তম মহাসাগর কোনটি?", o: ["আটলান্টিক", "প্রশান্ত", "ভারত", "উত্তর"], a: "প্রশান্ত"},
-                {q: "বাংলাদেশের প্রথম রাষ্ট্রপতি কে?", o: ["বঙ্গবন্ধু শেখ মুজিবুর রহমান", "সৈয়দ নজরুল ইসলাম", "তাজউদ্দীন আহমদ", "এম এ জি ওসমানী"], a: "বঙ্গবন্ধু শেখ মুজিবুর রহমান"},
-                {q: "সবচেয়ে বড় সূরা কোনটি?", o: ["ইখলাস", "বাকারাহ", "নিসা", "আলে ইমরান"], a: "বাকারাহ"},
-                {q: "হাজরে আসওয়াদ অর্থ কী?", o: ["সাদা পাথর", "কালো পাথর", "লাল পাথর", "স্বচ্ছ পাথর"], a: "কালো পাথর"},
-                {q: "প্রথম কুরআন নাযিল হয় কোথায়?", o: ["সাওর গুহায়", "হেরা গুহায়", "তায়েফ", "জাবালে নুর"], a: "হেরা গুহায়"},
-                {q: "সবচেয়ে ছোট সূরা কোনটি?", o: ["আসর", "কাওসার", "ইখলাস", "নাস"], a: "কাওসার"},
-                {q: "ইসলামের প্রথম খলিফা কে?", o: ["ওমর (রা)", "উসমান (রা)", "আবু বকর (রা)", "আলী (রা)"], a: "আবু বকর (রা)"},
-                {q: "আল্লাহর গুনবাচক নাম কয়টি?", o: ["৭৭টি", "৯৯টি", "১১০টি", "১০১টি"], a: "৯৯টি"},
-                {q: "জান্নাতের চাবি কোনটি?", o: ["রোজা", "নামাজ", "হজ", "যাকাত"], a: "নামাজ"},
-                {q: "প্রথম আযান দেন কে?", o: ["বেলাল (রা)", "আবু বকর (রা)", "ওমর (রা)", "আলী (রা)"], a: "বেলাল (রা)"},
-                {q: "কুরআনে বিসমিল্লাহ নেই কোন সূরায়?", o: ["নামল", "তওবা", "নাস", "বাকারা"], a: "তওবা"},
-                {q: "হিজরি সন কে প্রবর্তন করেন?", o: ["আবু বকর (রা)", "ওমর (রা)", "উসমান (রা)", "আলী (রা)"], a: "ওমর (রা)"},
-                {q: "কুরআনের মোট সূরার সংখ্যা কত?", o: ["১১০টি", "১১৪টি", "১১৫টি", "১২০টি"], a: "১১৪টি"},
-                {q: "মিরাজ কোন মাসে হয়েছিল?", o: ["রজব", "শাবান", "রমজান", "মহররম"], a: "রজব"},
-                {q: "বাংলাদেশের বিজয় দিবস কবে?", o: ["২১ ফেব্রুয়ারি", "২৬ মার্চ", "১৬ ডিসেম্বর", "১৫ আগস্ট"], a: "১৬ ডিসেম্বর"},
-                {q: "ইসলামের স্তম্ভ কয়টি?", o: ["৩টি", "৪টি", "৫টি", "৬টি"], a: "৫টি"},
-                {q: "প্রথম ইসলাম গ্রহণকারী নারী কে?", o: ["আয়েশা (রা)", "খাদিজা (রা)", "ফাতিমা (রা)", "সুমাইয়া (রা)"], a: "খাদিজা (রা)"},
-                {q: "যাকাত ফরয হয় কত হিজরিতে?", o: ["১ হিজরি", "২ হিজরি", "৩ হিজরি", "৪ হিজরি"], a: "২ হিজরি"},
-                {q: "কুরআনের শ্রেষ্ঠ আয়াত কোনটি?", o: ["সুরা ফাতেহা", "আয়াতুল কুরসি", "সুরা ইখলাস", "সুরা রহমান"], a: "আয়াতুল কুরসি"},
-                {q: "আসাদুল্লাহ কার উপাধি?", o: ["হামজা (রা)", "আলী (রা)", "খালিদ", "ওমর (রা)"], a: "আলী (রা)"},
-                {q: "আশারায়ে মুবাশশারা কতজন?", o: ["৫ জন", "৭ জন", "১০ জন", "১২ জন"], a: "১০ জন"},
-                {q: "ফারুক কার উপাধি?", o: ["আবু বকর (রা)", "ওমর (রা)", "উসমান (রা)", "আলী (রা)"], a: "ওমর (রা)"},
-                {q: "কুরআনে রুকু সংখ্যা কত?", o: ["৫৪০", "৫৫৬", "৫০০", "৫৫৮"], a: "৫৫৬"},
-                {q: "হজ কোন মাসে পালন করা হয়?", o: ["রমজান", "শাওয়াল", "জিলকদ", "জিলহজ"], a: "জিলহজ"}
-            ],
-            "q6": [
-                {q: "তাজভিদ শব্দের অর্থ কী?", o: ["সুন্দর করা", "মুখস্থ করা", "দ্রুত পড়া", "আস্তে পড়া"], a: "সুন্দর করা"},
-                {q: "মাখরাজ মোট কয়টি?", o: ["১৫টি", "১৭টি", "১৯টি", "২১টি"], a: "১৭টি"},
-                {q: "হরকতের উচ্চারণ কেমন করতে হয়?", o: ["টেনে", "তাড়াতাড়ি", "গোপন করে", "থামিয়ে"], a: "তাড়াতাড়ি"},
-                {q: "মাদ্দে আসলী কত আলিফ টানতে হয়?", o: ["১ আলিফ", "২ আলিফ", "৩ আলিফ", "৪ আলিফ"], a: "১ আলিফ"},
-                {q: "যযম যুক্ত নুনকে কী বলা হয়?", o: ["নুন সাকিন", "মীম সাকিন", "তানভীন", "গুন্নাহ"], a: "নুন সাকিন"},
-                {q: "ইকলাব শব্দের অর্থ কী?", o: ["স্পষ্ট করা", "বদলানো", "মিলিয়ে পড়া", "গোপন করা"], a: "বদলানো"},
-                {q: "কলকলাহর হরফ কয়টি?", o: ["৩টি", "৪টি", "৫টি", "৬টি"], a: "৫টি"},
-                {q: "ইদগাম শব্দের অর্থ কী?", o: ["থামা", "মিলিয়ে পড়া", "স্পষ্ট করা", "টানা"], a: "মিলিয়ে পড়া"},
-                {q: "ইখফা শব্দের অর্থ কী?", o: ["স্পষ্ট করা", "গোপন করা", "বদলানো", "টেনে পড়া"], a: "গোপন করা"},
-                {q: "ইখফার হরফ মোট কয়টি?", o: ["১০টি", "১২টি", "১৫টি", "১৭টি"], a: "১৫টি"},
-                {q: "আল্লাহ শব্দের লাম কখন চিকন হয়?", o: ["যবর থাকলে", "পেশ থাকলে", "যের থাকলে", "সব সময়"], a: "যের থাকলে"},
-                {q: "মাদ্দে মুনফাসিল কত আলিফ টানতে হয়?", o: ["১ আলিফ", "২ আলিফ", "৩ আলিফ", "৪ আলিফ"], a: "৩ আলিফ"},
-                {q: "ওয়াকফ শব্দের অর্থ কী?", o: ["শুরু করা", "থামা", "মিলা করা", "দ্রুত পড়া"], a: "থামা"},
-                {q: "তানভীন কাকে বলে?", o: ["দুই যবর, দুই যের, দুই পেশ", "যযম", "হরকত", "মাদ্দ"], a: "দুই যবর, দুই যের, দুই পেশ"},
-                {q: "গুন্নাহ করার স্থান কোনটি?", o: ["নাক", "মুখ", "গলা", "ঠোঁট"], a: "নাক"},
-                {q: "মাদ্দে লাযিম কয় প্রকার?", o: ["২ প্রকার", "৩ প্রকার", "৪ প্রকার", "৫ প্রকার"], a: "৪ প্রকার"},
-                {q: "সাকতাহ শব্দের অর্থ কী?", o: ["দম না ছেড়ে থামা", "দম ছেড়ে থামা", "না থামা", "দ্রুত পড়া"], a: "দম না ছেড়ে থামা"},
-                {q: "মীম সাকিন পড়ার নিয়ম কয়টি?", o: ["২টি", "৩টি", "৪টি", "৫টি"], a: "৩টি"},
-                {q: "ইদগামে বেলা গুন্নাহর হরফ কয়টি?", o: ["২টি", "৪টি", "৬টি", "৮টি"], a: "২টি"},
-                {q: "তাজভিদ শাস্ত্রের মৌলিক উৎস কী?", o: ["হাদীস", "কুরআন", "ইজমা", "কিয়াস"], a: "কুরআন"},
-                {q: "সিফাতে লাযিমাহ কাকে বলে?", o: ["স্থায়ী গুণ", "অস্থায়ী গুণ", "মাঝে মাঝে হয়", "সুর দেওয়া"], a: "স্থায়ী গুণ"},
-                {q: "কুরআনে রুকু সংখ্যা মোট কতটি?", o: ["৫৪০টি", "৫৫৬টি", "৫৮০টি", "৬০০টি"], a: "৫৫৬টি"},
-                {q: "তারকীক শব্দের অর্থ কী?", o: ["মোটা করা", "চিকন করা", "স্পষ্ট করা", "থামা"], a: "চিকন করা"},
-                {q: "মাদ্দে লীন এর হরফ কয়টি?", o: ["২টি", "৩টি", "৪টি", "৫টি"], a: "২টি"},
-                {q: "জিহ্বার আগা থেকে মাখরাজ কয়টি?", o: ["৩টি", "৪টি", "৫টি", "৬টি"], a: "৫টি"},
-                {q: "হুরূফে শামসিয়া কয়টি?", o: ["১০টি", "১২টি", "১৪টি", "১৬টি"], a: "১৪টি"},
-                {q: "কুরআনের শ্রেষ্ঠ আয়াত কোনটি?", o: ["সূরা ফাতেহা", "আয়াতুল কুরসি", "সূরা ইখলাস", "সূরা রহমান"], a: "আয়াতুল কুরসি"},
-                {q: "কুরআন সংকলন করেন কোন খলিফা?", o: ["আবু বকর (রা)", "ওমর (রা)", "উসমান (রা)", "আলী (রা)"], a: "উসমান (রা)"},
-                {q: "পবিত্র কুরআন প্রথম কোথায় নাযিল হয়?", o: ["মক্কা", "মদীনা", "হেরা গুহায়", "তুর পাহাড়ে"], a: "হেরা গুহায়"},
-                {q: "তাজভিদ অনুযায়ী কুরআন পড়া কী?", o: ["সুন্নত", "ওয়াজিব", "মুস্তাহাব", "মাকরূহ"], a: "ওয়াজিব"}
-            ],
-            "q7": [], "q8": [], "q9": []
-        };
-        // কুরআন ও তাজভিদ প্রশ্নগুলো সব শ্রেণিতে কপি করা হলো
-        questionsDB.q7 = [...questionsDB.q6];
-        questionsDB.q8 = [...questionsDB.q6];
-        questionsDB.q9 = [...questionsDB.q6];
-
-        function startExam(type) {
-            document.getElementById('class-selection').classList.add('hidden');
-            document.getElementById('exam-section').style.display = 'block';
-            document.getElementById('display-info').innerHTML = `নাম: ${studentData.name} | রোল: ${studentData.roll}<br>মোবাইল: ${studentData.phone}`;
-            
-            const list = document.getElementById('questions-list');
-            const questions = questionsDB[type].sort(() => Math.random() - 0.5);
-            
-            list.innerHTML = questions.map((item, i) => `
-                <div class="q-box">
-                    <p><b>${i+1}. ${item.q}</b></p>
-                    ${item.o.sort(() => Math.random() - 0.5).map(opt => `
-                        <label style="display:block; margin:8px 0; cursor:pointer;"><input type="radio" name="q${i}" value="${opt}"> ${opt}</label>
-                    `).join('')}
-                    <input type="hidden" id="ans${i}" value="${item.a}">
-                </div>
-            `).join('');
-            
-            window.qCount = questions.length;
-            let sec = 1800; // ৩০ মিনিট
-            window.timer = setInterval(() => {
-                sec--;
-                let m = Math.floor(sec/60); let s = sec%60;
-                document.getElementById('exam-timer').innerText = `${m}:${s<10?'0':''}${s}`;
-                if(sec <= 0) { clearInterval(window.timer); submitExam(); }
-            }, 1000);
-        }
-
-        function submitExam() {
-            clearInterval(window.timer);
-            let score = 0;
-            for(let i=0; i<window.qCount; i++) {
-                const sel = document.querySelector(`input[name="q${i}"]:checked`);
-                if(sel && sel.value === document.getElementById(`ans${i}`).value) score++;
-            }
-            document.getElementById('exam-section').style.display = 'none';
-            document.getElementById('result-section').style.display = 'block';
-            document.getElementById('final-score').innerText = `আপনার স্কোর: ${score} / ${window.qCount}`;
-            const resultText = `গালিব একাডেমি রেজাল্ট:%0Aনাম: ${studentData.name}%0Aফোন: ${studentData.phone}%0Aরোল: ${studentData.roll}%0Aমাদ্রাসা: ${studentData.madrasa}%0Aস্কোর: ${score}/${window.qCount}`;
-            document.getElementById('wa-send').href = `https://wa.me/8801734505869?text=${resultText}`;
-        }
-    </script>
+    function generateCertificate() {
+        document.getElementById('cert-name').innerText = studentData.name;
+        document.getElementById('cert-m').innerText = studentData.madrasa;
+        document.getElementById('cert-r').innerText = studentData.roll;
+        document.getElementById('cert-s').innerText = window.finalScore;
+        html2canvas(document.getElementById('certificate-template')).then(canvas => {
+            let link = document.createElement('a');
+            link.download = studentData.name + '_Cert.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        });
+    }
+</script>
 </body>
 </html>
