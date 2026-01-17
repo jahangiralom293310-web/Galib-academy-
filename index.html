@@ -10,54 +10,94 @@
             --secondary: #6a3ab2;
             --accent: #ff9800;
             --whatsapp: #25d366;
+            --highlight: #fff3e0;
         }
         body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f7f6; margin: 0; padding: 0; text-align: center; color: #333; }
-        .header { background: var(--primary); color: white; padding: 25px; font-size: 26px; font-weight: bold; border-bottom: 5px solid var(--accent); }
-        .intro-box { background: #e8f0fe; padding: 15px; margin: 10px auto; max-width: 900px; border-radius: 8px; font-size: 16px; color: #1e2a5a; line-height: 1.6; }
+        .header { background: var(--primary); color: white; padding: 25px; font-size: 28px; font-weight: bold; border-bottom: 5px solid var(--accent); }
+        
+        /* হাইলাইটেড লক্ষ্য ও পুরস্কার সেকশন */
+        .mission-box { 
+            background: var(--highlight); 
+            border: 2px dashed var(--accent); 
+            padding: 20px; 
+            margin: 20px auto; 
+            max-width: 850px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .mission-box h2 { color: var(--primary); margin-top: 0; font-size: 22px; text-decoration: underline; }
+        .mission-box p { font-size: 17px; line-height: 1.6; color: #444; font-weight: 500; }
+        .prize-tag { 
+            display: inline-block; 
+            margin-top: 10px; 
+            background: #ff5722; 
+            color: white; 
+            padding: 8px 20px; 
+            border-radius: 50px; 
+            font-weight: bold; 
+            font-size: 18px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
         .container { max-width: 900px; margin: auto; padding: 20px; }
         
         .timer-box { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 25px; border: 2px solid var(--secondary); }
-        #countdown { font-size: 28px; color: #e74c3c; font-weight: bold; margin-top: 10px; }
+        #countdown { font-size: 30px; color: #e74c3c; font-weight: bold; margin-top: 10px; }
+        
         .rules-box { background: #fff; padding: 25px; border-radius: 10px; text-align: left; border-left: 8px solid var(--accent); margin-bottom: 25px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
         .rules-box h3 { color: var(--primary); margin-top: 0; border-bottom: 1px solid #eee; padding-bottom: 10px; }
-        
-        .btn { display: inline-block; width: 90%; padding: 15px; margin: 10px 0; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 18px; text-decoration: none; transition: 0.3s; }
-        .btn-orange { background: var(--accent); color: white; }
-        .btn-green { background: #e8f5e9; color: #1b5e20; border: 1px solid #1b5e20; }
+        .rules-box li { margin-bottom: 12px; font-size: 16px; }
+
+        .btn { display: inline-block; width: 95%; padding: 18px; margin: 10px 0; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 19px; text-decoration: none; transition: 0.3s; }
+        .btn-orange { background: var(--accent); color: white; box-shadow: 0 4px 0 #cc7a00; }
+        .btn-orange:active { transform: translateY(4px); box-shadow: none; }
+        .btn-green { background: #e8f5e9; color: #1b5e20; border: 2px solid #1b5e20; }
         .btn-green:disabled { background: #eee; color: #999; border: 1px solid #ccc; cursor: not-allowed; }
 
         #exam-section { display: none; text-align: left; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
         .question { margin-bottom: 25px; padding: 15px; border-bottom: 1px solid #f0f0f0; }
         .question p { font-size: 18px; font-weight: bold; color: var(--primary); margin-bottom: 12px; }
-        .options label { display: block; background: #f9f9f9; padding: 10px; margin: 5px 0; border-radius: 5px; cursor: pointer; }
+        .options label { display: block; background: #f9f9f9; padding: 12px; margin: 8px 0; border-radius: 8px; cursor: pointer; border: 1px solid #eee; }
         
-        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 20px; right: 20px; background: var(--whatsapp); color: white; border-radius: 50px; display: flex; align-items: center; justify-content: center; font-size: 30px; text-decoration: none; box-shadow: 2px 2px 10px #999; z-index: 1000; }
+        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 20px; right: 20px; background: var(--whatsapp); color: white; border-radius: 50px; display: flex; align-items: center; justify-content: center; font-size: 35px; text-decoration: none; box-shadow: 2px 5px 15px rgba(0,0,0,0.2); z-index: 1000; }
     </style>
 </head>
 <body>
 
     <div class="header">গালিব একাডেমি (Galib Academy)</div>
 
-    <div class="intro-box">
-        <b>আমাদের লক্ষ্য:</b> শিক্ষার্থীদের মেধা বিকাশ এবং সৃজনশীল চিন্তা বৃদ্ধিতে সহায়তা করা। গালিব একাডেমির মাধ্যমে আমরা শিক্ষার্থীদের মাঝে জ্ঞানের আলো ছড়িয়ে দিতে চাই। এই প্রতিযোগিতা ক্লাস ৬ষ্ঠ থেকে ১০ম শ্রেণির শিক্ষার্থীদের জন্য বিশেষভাবে আয়োজিত।
-    </div>
+    <div class="container">
+        <div class="mission-box">
+            <h2>🎯 আমাদের লক্ষ্য</h2>
+            <p>
+                শিক্ষার্থীদের মেধা বিকাশ এবং সৃজনশীল চিন্তা বৃদ্ধিতে সহায়তা করাই গালিব একাডেমির প্রধান উদ্দেশ্য। 
+                ধর্মীয় ও জাগতিক জ্ঞানের সমন্বয়ে নিজেকে যোগ্য নাগরিক হিসেবে গড়ে তোলার এই এক অনন্য সুযোগ। 
+                এই প্রতিযোগিতা ক্লাস <b>৬ষ্ঠ থেকে ১০ম শ্রেণির</b> শিক্ষার্থীদের জন্য।
+            </p>
+            <div class="prize-tag">🎁 বিজয়ীদের জন্য রয়েছে আকর্ষণীয় পুরস্কার সামগ্রী!</div>
+        </div>
 
-    <div class="container" id="main-page">
         <div class="timer-box">
             <h3>🏆 অনলাইন মেধা যাচাই প্রতিযোগিতা ২০২৬</h3>
             <p>পরীক্ষা শুরু হতে বাকি:</p>
             <div id="countdown">লোড হচ্ছে...</div>
-            <p style="font-size: 14px; color: #666; margin-top: 10px;">তারিখ: ৩০ জানুয়ারি | সময়: সন্ধ্যা ৭:০০ টা</p>
+            <p style="font-size: 15px; color: #666; margin-top: 10px; font-weight: bold;">তারিখ: ৩০ জানুয়ারি | সময়: সন্ধ্যা ৭:০০ টা</p>
         </div>
 
         <div class="rules-box">
             <h3>📝 পরীক্ষার নিয়মাবলী:</h3>
             <ul>
-                <li>১. শ্রেণি: <b>৬ষ্ঠ থেকে ১০ম</b>।</li>
-                <li>২. পেমেন্ট নম্বর (নগদ): <b>০১৭৩৪৫০৫৮৬৯</b> (ফি ২০ টাকা)।</li>
-                <li>৩. পেমেন্ট পরীক্ষা শুরু হওয়ার ১০ মিনিট আগে পর্যন্ত করা যাবে।</li>
-                <li>৪. মোট ৫০টি প্রশ্ন থাকবে এবং সময় মাত্র ১০ মিনিট।</li>
-                <li>৫. <b>পাসওয়ার্ড হোয়াটসঅ্যাপ থেকে সংগ্রহ করুন।</b></li>
+                <li>✅ শ্রেণি: <b>৬ষ্ঠ থেকে ১০ম</b>।</li>
+                <li>✅ পেমেন্ট নম্বর (নগদ/বিকাশ): <b>০১৭৩৪৫০৫৮৬৯</b> (ফি ২০ টাকা)।</li>
+                <li>✅ পেমেন্ট পরীক্ষা শুরু হওয়ার ১০ মিনিট আগে পর্যন্ত গ্রহণ করা হবে।</li>
+                <li>✅ মোট প্রশ্ন সংখ্যা: <b>৫০টি</b> | সময়: <b>১০ মিনিট</b>।</li>
+                <li>✅ পেমেন্ট শেষে নিচের বাটন থেকে হোয়াটসঅ্যাপে পাসওয়ার্ড সংগ্রহ করুন।</li>
             </ul>
         </div>
 
@@ -67,19 +107,20 @@
     </div>
 
     <div class="container" id="exam-section">
-        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--primary); padding-bottom: 10px;">
-            <span style="font-weight: bold;">মেধা যাচাই কুইজ</span>
-            <span id="exam-timer" style="color: red; font-weight: bold; font-size: 20px;">সময়: ১০:০০</span>
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--primary); padding-bottom: 15px; margin-bottom: 20px;">
+            <span style="font-weight: bold; font-size: 20px; color: var(--primary);">মেধা যাচাই কুইজ</span>
+            <span id="exam-timer" style="color: red; font-weight: bold; font-size: 22px; background: #ffebee; padding: 5px 15px; border-radius: 5px;">সময়: ১০:০০</span>
         </div>
         <form id="quiz-form">
             <div id="questions-list"></div>
-            <button type="button" class="btn btn-orange" style="background: green; width: 100%;" onclick="submitExam()">পরীক্ষা শেষ করুন</button>
+            <button type="button" class="btn btn-orange" style="background: #2e7d32; width: 100%; box-shadow: 0 4px 0 #1b5e20;" onclick="submitExam()">পরীক্ষা সাবমিট করুন</button>
         </form>
     </div>
 
     <a href="https://wa.me/8801734505869" class="whatsapp-float" target="_blank">💬</a>
 
     <script>
+        // ৩০ জানুয়ারি ২০২৬ সন্ধ্যা ৭টা
         const examDate = new Date("Jan 30, 2026 19:00:00").getTime();
 
         const countdownFunc = setInterval(function() {
@@ -95,12 +136,13 @@
 
             if (distance < 0) {
                 clearInterval(countdownFunc);
-                document.getElementById("countdown").innerHTML = "পরীক্ষা শুরু হয়েছে!";
+                document.getElementById("countdown").innerHTML = "পরীক্ষা লাইভ হয়েছে!";
                 document.getElementById("start-btn").disabled = false;
-                document.getElementById("start-btn").innerHTML = "📝 পরীক্ষায় অংশ নাও";
+                document.getElementById("start-btn").innerHTML = "📝 এখনই পরীক্ষায় অংশ নাও";
             }
         }, 1000);
 
+        // ৫০টি প্রশ্নের ডেটাবেস
         const questionsDB = [
             // ১-১০: হযরত মুহাম্মদ (সা.)
             {q: "১. রাসূল (সা.) কত সালে জন্মগ্রহণ করেন?", o: ["৫৭০ খ্রিঃ", "৫৭১ খ্রিঃ", "৬১০ খ্রিঃ", "৬২২ খ্রিঃ"], a: "৫৭০ খ্রিঃ"},
@@ -164,16 +206,17 @@
         ];
 
         function checkAccess() {
-            let pass = prompt("পরীক্ষার পাসওয়ার্ড দিন:");
+            let pass = prompt("পরীক্ষার পাসওয়ার্ডটি লিখুন:");
             if(pass === "বিসমিল্লাহ") {
                 startExam();
             } else {
-                alert("ভুল পাসওয়ার্ড! পেমেন্ট করে হোয়াটসঅ্যাপ থেকে পাসওয়ার্ড সংগ্রহ করুন।");
+                alert("ভুল পাসওয়ার্ড! হোয়াটসঅ্যাপে গালিব স্যারের সাথে যোগাযোগ করুন।");
             }
         }
 
         function startExam() {
             document.getElementById('main-page').style.display = 'none';
+            document.querySelector('.mission-box').style.display = 'none';
             document.getElementById('exam-section').style.display = 'block';
             loadQuestions();
             startExamTimer(600); // ১০ মিনিট
@@ -217,7 +260,7 @@
                 const selected = document.querySelector(`input[name="q${index}"]:checked`);
                 if(selected && selected.value === item.a) score++;
             });
-            alert(`পরীক্ষা সম্পন্ন! আপনার প্রাপ্ত স্কোর: ${score} / ৫০\nফলাফলটি স্ক্রিনশট দিয়ে গালিব স্যারকে পাঠান।`);
+            alert(`পরীক্ষা সম্পন্ন!\nপ্রাপ্ত স্কোর: ${score} / ৫০\n\nস্ক্রিনশটটি গালিব স্যারকে পাঠান।`);
             location.reload();
         }
     </script>
