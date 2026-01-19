@@ -6,20 +6,49 @@
     <title>Galib Academy | অনলাইন পরীক্ষা ২০২৬</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
-        :root { --primary: #1a237e; --secondary: #2e7d32; --accent: #ff9800; --bg: #f4f7f9; }
-        body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); margin: 0; padding: 0; }
-        .header { background: linear-gradient(135deg, var(--primary), #3949ab); color: white; padding: 25px; text-align: center; border-bottom: 5px solid var(--accent); }
+        :root { --primary: #1a237e; --secondary: #2e7d32; --accent: #ff9800; --bg: #f4f7f9; --gold: #c5a059; --error: #d32f2f; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); margin: 0; padding: 0; color: #333; }
+        
+        /* UI Styles */
+        .header { background: linear-gradient(135deg, var(--primary), #3949ab); color: white; padding: 30px; text-align: center; border-bottom: 5px solid var(--accent); }
         .container { max-width: 800px; margin: auto; padding: 20px; }
-        .card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-bottom: 20px; }
-        .btn { display: block; width: 100%; padding: 14px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; text-align: center; font-size: 16px; transition: 0.3s; margin-top: 10px; text-decoration: none; }
+        .card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        
+        .btn { display: block; width: 100%; padding: 14px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; text-align: center; font-size: 16px; transition: 0.3s; margin-top: 10px; text-decoration: none; box-sizing: border-box; }
         .btn-exam { background: var(--secondary); color: white; }
+        .btn-exam:hover { background: #1b5e20; transform: translateY(-2px); }
         .btn-wa { background: #25d366; color: white; }
-        .q-box { background: #fdfdfd; padding: 20px; border-radius: 10px; margin-bottom: 15px; border: 1px solid #eee; }
-        .option-label { display: block; padding: 10px; margin: 5px 0; background: #f9f9f9; border-radius: 5px; cursor: pointer; border: 1px solid #ddd; }
-        .option-label:hover { background: #f0f0f0; }
+        
+        .q-box { background: #fff; padding: 20px; border-radius: 10px; margin-bottom: 15px; border: 1px solid #eee; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .option-label { display: block; padding: 12px; margin: 8px 0; background: #f9f9f9; border-radius: 6px; cursor: pointer; border: 1px solid #ddd; transition: 0.2s; }
+        .option-label:hover { background: #e8f5e9; border-color: var(--secondary); }
+        
         .hidden { display: none; }
-        input[type="text"], input[type="number"], input[type="password"] { width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 6px; border: 1px solid #ccc; box-sizing: border-box; }
-        #certificate-template { width: 800px; height: 600px; padding: 50px; text-align: center; border: 20px double var(--primary); background: #fffdf5; position: absolute; left: -9999px; }
+        input[type="text"], input[type="number"], input[type="password"] { width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 6px; border: 1px solid #ccc; box-sizing: border-box; font-size: 16px; }
+        
+        .sticky-bar { background:#fff; position:sticky; top:0; padding:15px; border-bottom:3px solid var(--primary); z-index:100; display:flex; justify-content:space-between; font-weight: bold; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+
+        /* Review Styles */
+        .correct-ans { color: #2e7d32; font-weight: bold; margin-top: 5px; }
+        .wrong-ans { color: #d32f2f; font-weight: bold; }
+
+        /* Premium Certificate Style with Watermark */
+        #certificate-template { 
+            width: 800px; height: 600px; padding: 50px; text-align: center; 
+            border: 20px double var(--gold); background: #fff; 
+            position: absolute; left: -9999px; box-sizing: border-box;
+            background-image: radial-gradient(circle, #fdfbf7 20%, #ffffff 100%);
+            overflow: hidden;
+        }
+        #certificate-template::before {
+            content: 'GALIB ACADEMY';
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 80px; font-weight: 900;
+            color: rgba(0, 0, 0, 0.03); z-index: 0; white-space: nowrap;
+        }
+        .cert-header { font-size: 50px; color: var(--primary); margin-bottom: 5px; font-weight: bold; z-index: 1; position: relative; }
+        .cert-body { z-index: 1; position: relative; }
     </style>
 </head>
 <body>
@@ -27,12 +56,17 @@
 <div class="header">
     <h1>গালিব একাডেমি (Galib Academy)</h1>
     <p>অনলাইন মেধা যাচাই পরীক্ষা - ২০২৬</p>
+    <small>পরিচালক: গালিব আল সিয়াম</small>
 </div>
 
 <div class="container" id="step-1">
     <div class="card">
-        <h2 style="text-align:center;">নির্দেশনা</h2>
-        <p>নগদ পেমেন্ট (<b>০১৭৩৪৫০৫৮৬৯</b>) করে আপনার নাম ও রোল দিয়ে হোয়াটসঅ্যাপ থেকে পাসওয়ার্ড সংগ্রহ করুন।</p>
+        <h2 style="text-align:center; color: var(--primary);">পরীক্ষার্থী নির্দেশিকা</h2>
+        <p>আসসালামু আলাইকুম। গালিব একাডেমির অনলাইন পরীক্ষায় অংশ নিতে নিচের ধাপগুলো অনুসরণ করুন:</p>
+        <ul style="text-align: left; line-height: 1.8;">
+            <li>নির্ধারিত ফি নগদ পেমেন্ট করুন: <b>০১৭৩৪৫০৫৮৬৯</b></li>
+            <li>পেমেন্ট করার পর হোয়াটসঅ্যাপে নাম ও রোল দিয়ে পাসওয়ার্ড সংগ্রহ করুন।</li>
+        </ul>
         <button class="btn btn-exam" onclick="goStep(2)">রেজিস্ট্রেশন শুরু করুন</button>
         <a href="https://wa.me/8801734505869" class="btn btn-wa">পাসওয়ার্ডের জন্য মেসেজ দিন</a>
     </div>
@@ -40,8 +74,8 @@
 
 <div class="container hidden" id="step-2">
     <div class="card">
-        <h3>শিক্ষার্থী তথ্য</h3>
-        <input type="text" id="s-name" placeholder="আপনার পূর্ণ নাম">
+        <h3 style="color: var(--primary);">শিক্ষার্থীর তথ্য প্রদান করুন</h3>
+        <input type="text" id="s-name" placeholder="আপনার পূর্ণ নাম (বাংলায়)">
         <input type="number" id="s-roll" placeholder="রোল নম্বর">
         <input type="text" id="s-madrasa" placeholder="মাদ্রাসার নাম">
         <button class="btn btn-exam" onclick="saveInfo()">পরবর্তী ধাপ</button>
@@ -50,7 +84,7 @@
 
 <div class="container hidden" id="step-3">
     <div class="card">
-        <h3>ক্লাস নির্বাচন করুন</h3>
+        <h3 style="text-align:center;">আপনার ক্লাস নির্বাচন করুন</h3>
         <button class="btn btn-exam" onclick="selectClass('q6')">৬ষ্ঠ শ্রেণি</button>
         <button class="btn btn-exam" onclick="selectClass('q7')">৭ম শ্রেণি</button>
         <button class="btn btn-exam" onclick="selectClass('q8')">৮ম শ্রেণি</button>
@@ -67,9 +101,9 @@
 </div>
 
 <div class="container hidden" id="exam-area">
-    <div style="background:#fff; position:sticky; top:0; padding:15px; border-bottom:2px solid var(--primary); z-index:100; display:flex; justify-content:space-between;">
+    <div class="sticky-bar">
         <span id="h-name"></span>
-        <span id="timer-box" style="color:red; font-weight:bold;">১০:০০</span>
+        <span id="timer-box" style="color:red;">সময় বাকি - ১০:০০</span>
     </div>
     <div id="qs-container" style="margin-top:20px;"></div>
     <button class="btn btn-exam" onclick="submitExam()">পরীক্ষা সাবমিট করুন</button>
@@ -77,61 +111,38 @@
 
 <div class="container hidden" id="result-area">
     <div class="card" style="text-align:center;">
-        <h2 style="color:var(--secondary);">ফলাফল</h2>
-        <div id="score-text" style="font-size:35px; font-weight:bold; margin:20px;"></div>
-        <button class="btn btn-exam" onclick="downloadCert()">সনদ ডাউনলোড করুন</button>
-        <a id="wa-share" href="#" target="_blank" class="btn btn-wa">স্যারকে রেজাল্ট পাঠান</a>
+        <h2 style="color:var(--secondary);">আলহামদুলিল্লাহ, পরীক্ষা সম্পন্ন হয়েছে!</h2>
+        <div id="score-text" style="font-size:26px; font-weight:bold; margin:20px; color: var(--primary);"></div>
+        <button class="btn btn-exam" onclick="downloadCert()">সাফল্যের সনদ ডাউনলোড করুন</button>
+        <a id="wa-share" href="#" target="_blank" class="btn btn-wa">শিক্ষককে ফলাফল পাঠান</a>
+        <hr style="margin: 30px 0;">
+        <h3 style="color: var(--accent);">আপনার উত্তরপত্র যাচাই করুন</h3>
+        <div id="review-container" style="text-align: left;"></div>
     </div>
 </div>
 
 <div id="certificate-template">
-    <h1 style="font-size: 50px; color: #1a237e;">গালিব একাডেমি</h1>
-    <h2>সাফল্যের সনদপত্র</h2>
-    <p style="font-size:22px; margin-top:40px;">এই মর্মে প্রত্যয়ন করা যাচ্ছে যে, <b><span id="ct-name"></span></b></p>
-    <p style="font-size:20px;">মাদ্রাসা: <span id="ct-m"></span>, রোল: <span id="ct-r"></span></p>
-    <p style="font-size:20px;">তিনি অনলাইন পরীক্ষায় ৩০-এ <b><span id="ct-s"></span></b> পেয়ে উত্তীর্ণ হয়েছেন।</p>
-    <div style="margin-top:80px; display:flex; justify-content:space-between; padding: 0 50px;">
-        <div><p>২৭/০১/২০২৬</p><p style="border-top:1px solid #000; width: 100px;">তারিখ</p></div>
-        <div><p><b>গালিব আল সিয়াম</b></p><p style="border-top:1px solid #000; width: 140px;">পরিচালক স্বাক্ষর</p></div>
+    <div class="cert-body">
+        <div style="width: 80px; height: 80px; border: 2px solid var(--gold); border-radius: 50%; margin: 0 auto 10px; line-height: 80px; color: var(--gold); font-weight: bold;">GA</div>
+        <h1 class="cert-header">গালিব একাডেমি</h1>
+        <h2 style="color: #2e7d32; font-size: 30px; margin-top: 5px;">সাফল্যের সনদপত্র</h2>
+        <p style="font-size:22px; margin-top:30px;">এই মর্মে প্রত্যয়ন করা যাচ্ছে যে,</p>
+        <h2 style="font-size: 38px; border-bottom: 2px solid #333; display: inline-block; padding: 0 30px; margin: 10px 0;"><span id="ct-name"></span></h2>
+        <p style="font-size:20px;">মাদ্রাসা: <span id="ct-m"></span>, রোল: <span id="ct-r"></span></p>
+        <p style="font-size:22px;">তিনি ২০২৬ সালের অনলাইন মেধা যাচাই পরীক্ষায় ৩০-এ <b><span id="ct-s"></span></b> নম্বর পেয়ে উত্তীর্ণ হয়েছেন।</p>
+        <div style="margin-top:50px; display:flex; justify-content:space-between; padding: 0 50px;">
+            <div style="text-align:center;"><p>১৯/০১/২০২৬</p><p style="border-top:2px solid #000; width: 120px;">তারিখ</p></div>
+            <div style="text-align:center;"><p><b>গালিব আল সিয়াম</b></p><p style="border-top:2px solid #000; width: 150px;">পরিচালক স্বাক্ষর</p></div>
+        </div>
     </div>
 </div>
 
 <script>
     let studentData = {};
     let selectedClass = "";
+    let currentQuestions = [];
     const validPasses = ["বিসমিল্লাহ", "আলহামদুলিল্লাহ", "সুবহানাল্লাহ", "আল্লাহু আকবর"];
     const adminCode = "GalibAdmin";
-
-    function shuffle(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-        }
-        return array;
-    }
-
-    function goStep(s) {
-        document.querySelectorAll('.container').forEach(c => c.classList.add('hidden'));
-        const el = document.getElementById('step-' + s) || document.getElementById(s);
-        el.classList.remove('hidden');
-    }
-
-    function saveInfo() {
-        studentData = {
-            n: document.getElementById('s-name').value,
-            r: document.getElementById('s-roll').value,
-            m: document.getElementById('s-madrasa').value
-        };
-        if(!studentData.n || !studentData.r) alert("সব তথ্য দিন"); else goStep(3);
-    }
-
-    function selectClass(c) { selectedClass = c; goStep(4); }
-
-    function checkPass() {
-        const p = document.getElementById('exam-pass').value.trim();
-        if(p === adminCode || validPasses.includes(p)) startExam();
-        else alert("ভুল পাসওয়ার্ড!");
-    }
 
     const examDB = {
         "q6": [
@@ -159,7 +170,7 @@
             {q: "মাদ্দে আরজি কত আলিফ টানতে হয়?", o: ["৩ আলিফ", "১ আলিফ", "৪ আলিফ", "৫ আলিফ"], a: "৩ আলিফ"},
             {q: "ওয়াকফ শব্দের অর্থ কী?", o: ["থামা", "শুরু করা", "না থামা", "মিলিয়ে পড়া"], a: "থামা"},
             {q: "সিফাত মোট কতটি?", o: ["১৭টি", "১৮টি", "১৯টি", "২০টি"], a: "১৭টি"},
-            {q: "তাজভিদ অনুযায়ী কুরআন পড়া কী?", o: ["ওয়াজিব", "সুন্নত", "মুস্তাহাব", "মাকরূহ"], a: "ওয়াজিব"},
+            {q: "তাজভিদ অনুযায়ী কুরআন পড়া কী?", o: ["ওয়াজিব", "সুन्नत", "মুস্তাহাব", "মাকরূহ"], a: "ওয়াজিব"},
             {q: "ইখফা শব্দের অর্থ কী?", o: ["গোপন করা", "স্পষ্ট করা", "বদলানো", "মিলানো"], a: "গোপন করা"},
             {q: "মাদ্দে মুনফাসিল কত আলিফ?", o: ["৩ আলিফ", "১ আলিফ", "৪ আলিফ", "৫ আলিফ"], a: "৩ আলিফ"},
             {q: "কলকলাহর হরফগুলো কী কী?", o: ["ক্বতবা জাদিন", "আলিফ বা তা", "লাম মীম", "সবগুলো"], a: "ক্বতবা জাদিন"},
@@ -167,7 +178,7 @@
             {q: "তাজভিদ শাস্ত্রের মৌলিক উৎস কী?", o: ["কুরআন", "হাদীস", "ইজমা", "কিয়াস"], a: "কুরআন"}
         ],
         "q7": [
-            {q: "রাসূল (সা.) এর দুধমাতার নাম কী?", o: ["হালিমা (রা)", "আমিনা", "খাদিজা", "ফাতিমা"], a: "হালিমা (রা)"},
+            {q: "রাসূল (সা.) এর দুধমাতার নাম কী?", o: ["হალიমা (রা)", "আমিনা", "খাদিজা", "ফাতিমা"], a: "হალიমা (রা)"},
             {q: "ইসলামের প্রথম জিহাদ কোনটি?", o: ["বদর", "উহুদ", "খন্দক", "খায়বর"], a: "বদর"},
             {q: "জান্নাতের সুসংবাদপ্রাপ্ত সাহাবী কতজন?", o: ["১০ জন", "৫ জন", "১৫ জন", "২০ জন"], a: "১০ জন"},
             {q: "কুরআনের দীর্ঘতম সূরা কোনটি?", o: ["বাকারা", "আলে ইমরান", "নিসা", "মায়েদা"], a: "বাকারা"},
@@ -188,7 +199,7 @@
             {q: "র যবর হলে কেমন পড়তে হয়?", o: ["মোটা", "চিকন", "স্পষ্ট", "গোপন"], a: "মোটা"},
             {q: "বিশ্বের বৃহত্তম মহাসাগর কোনটি?", o: ["প্রশান্ত", "আটলান্টিক", "ভারত", "উত্তর"], a: "প্রশান্ত"},
             {q: "বাংলাদেশের জাতীয় পশু কোনটি?", o: ["রয়েল বেঙ্গল টাইগার", "সিংহ", "হাতি", "হরিণ"], a: "রয়েল বেঙ্গল টাইগার"},
-            {q: "কুরআনে মোট সেজদা কয়টি?", o: ["১৪টি", "১২টি", "১৫টি", "১৬টি"], a: "১৪টি"},
+            {q: "কুরআনে মোট সেজদা কয়টি?", o: ["14টি", "12টি", "15টি", "16টি"], a: "14টি"},
             {q: "উম্মুল কুরআন কোন সূরা?", o: ["সূরা ফাতেহা", "সূরা বাকারা", "সূরা ইখলাস", "সূরা নাস"], a: "সূরা ফাতেহা"},
             {q: "ইসলামের প্রথম খলিফা কে?", o: ["আবু বকর (রা)", "ওমর (রা)", "উসমান (রা)", "আলী (রা)"], a: "আবু বকর (রা)"},
             {q: "সালাত শব্দের অর্থ কী?", o: ["সবগুলো", "দোয়া", "শান্তি", "রহমত"], a: "সবগুলো"},
@@ -214,7 +225,7 @@
             {q: "প্রথম কুরআন লেখক কে?", o: ["যায়েদ বিন সাবিত", "ওমর (রা)", "আলী (রা)", "উসমান (রা)"], a: "যায়েদ বিন সাবিত"},
             {q: "বাংলাদেশের জাতীয় কবির নাম কী?", o: ["নজরুল", "রবীন্দ্রনাথ", "জসীমউদ্দীন", "জীবনানন্দ"], a: "নজরুল"},
             {q: "পৃথিবীর বৃহত্তম মহাদেশ কোনটি?", o: ["এশিয়া", "আফ্রিকা", "ইউরোপ", "আমেরিকা"], a: "এশিয়া"},
-            {q: "বাংলাদেশের বিজয় দিবস কবে?", o: ["১৬ ডিসেম্বর", "২১ ফেব্রুয়ারি", "২৬ মার্চ", "১৪ ডিসেম্বর"], a: "১৬ ডিসেম্বর"},
+            {q: "বাংলাদেশের বিজয় দিবস কবে?", o: ["১৬ ডিসেম্বর", "২১ ফেব্রুয়ারি", "২৬ মার্চ", "১৪ ডিসেম্বর"], a: "১৬ ডিসেম্বর"},
             {q: "কুরআনের মোট আয়াত সংখ্যা কত?", o: ["৬২৩৬", "৬৬৬৬", "৬০০০", "৬৫০০"], a: "৬২৩৬"},
             {q: "ইসলামের দ্বিতীয় খলিফা কে?", o: ["ওমর (রা)", "আবু বকর (রা)", "উসমান (রা)", "আলী (রা)"], a: "ওমর (রা)"},
             {q: "হাজরে আসওয়াদ কোন রঙের পাথর?", o: ["কালো", "সাদা", "লাল", "সবুজ"], a: "কালো"},
@@ -228,7 +239,7 @@
             {q: "কলকলাহর হরফ কয়টি?", o: ["৫টি", "৬টি", "৭টি", "৮টি"], a: "৫টি"},
             {q: "ওয়াকফ শব্দের অর্থ কী?", o: ["থামা", "শুরু করা", "না থামা", "মিলা করা"], a: "থামা"},
             {q: "মাদ্দে আসলী কত আলিফ?", o: ["১ আলিফ", "২ আলিফ", "৩ আলিফ", "৪ আলিফ"], a: "১ আলিফ"},
-            {q: "তাজভিদ শিক্ষা করা কী?", o: ["ফরজে আইন", "ফরজে কেফায়া", "সুন্নত", "ওয়াজিব"], a: "ফরজে আইন"}
+            {q: "তাজভিদ শিক্ষা করা কী?", o: ["ফরজে আইন", "ফরজে কেফায়া", "সুन्नत", "ওয়াজিব"], a: "ফরজে আইন"}
         ],
         "q9": [
             {q: "২০২৬ পাঠ্যবই অনুযায়ী 'আল-ফিকহ' এর অর্থ?", o: ["গভীর জ্ঞান", "মুখস্থ", "পড়া", "লেখা"], a: "গভীর জ্ঞান"},
@@ -264,41 +275,75 @@
         ]
     };
 
+    function goStep(s) {
+        document.querySelectorAll('.container').forEach(c => c.classList.add('hidden'));
+        document.getElementById(typeof s === 'string' ? s : 'step-' + s).classList.remove('hidden');
+        window.scrollTo(0,0);
+    }
+
+    function saveInfo() {
+        studentData = {
+            n: document.getElementById('s-name').value,
+            r: document.getElementById('s-roll').value,
+            m: document.getElementById('s-madrasa').value
+        };
+        if(!studentData.n || !studentData.r) alert("অনুগ্রহ করে সঠিক তথ্য দিন"); else goStep(3);
+    }
+
+    function selectClass(c) { selectedClass = c; goStep(4); }
+
+    function checkPass() {
+        const p = document.getElementById('exam-pass').value.trim();
+        if(p === adminCode || validPasses.includes(p)) startExam();
+        else alert("ভুল পাসওয়ার্ড!");
+    }
+
     function startExam() {
         goStep('exam-area');
         document.getElementById('h-name').innerText = "পরীক্ষার্থী: " + studentData.n;
-        const list = document.getElementById('qs-container');
-        let qs = shuffle([...examDB[selectedClass]]);
-        list.innerHTML = qs.map((item, i) => {
-            let opts = shuffle([...item.o]);
+        currentQuestions = [...examDB[selectedClass]].sort(() => Math.random() - 0.5);
+        
+        document.getElementById('qs-container').innerHTML = currentQuestions.map((item, i) => {
+            let opts = [...item.o].sort(() => Math.random() - 0.5);
             return `
                 <div class="q-box">
                     <p><b>${i+1}. ${item.q}</b></p>
                     ${opts.map(o => `<label class="option-label"><input type="radio" name="q${i}" value="${o}"> ${o}</label>`).join('')}
-                    <input type="hidden" id="ans${i}" value="${item.a}">
                 </div>
             `;
         }).join('');
+        
         let time = 600;
         window.intv = setInterval(() => {
             time--;
             let m = Math.floor(time/60), s = time%60;
-            document.getElementById('timer-box').innerText = `${m}:${s<10?'0':''}${s}`;
-            if(time <= 0) submitExam();
+            document.getElementById('timer-box').innerText = `সময় বাকি - ${m}:${s<10?'0':''}${s}`;
+            if(time <= 0) { clearInterval(window.intv); submitExam(); }
         }, 1000);
     }
 
     function submitExam() {
         clearInterval(window.intv);
         let s = 0;
-        for(let i=0; i<30; i++) {
-            const r = document.querySelector(`input[name="q${i}"]:checked`);
-            if(r && r.value === document.getElementById(`ans${i}`).value) s++;
-        }
+        let reviewHTML = "";
+        currentQuestions.forEach((item, i) => {
+            const sel = document.querySelector(`input[name="q${i}"]:checked`);
+            const isC = sel && sel.value === item.a;
+            if(isC) s++;
+            reviewHTML += `
+                <div class="q-box" style="border-left: 5px solid ${isC ? 'green' : 'red'};">
+                    <p><b>${item.q}</b></p>
+                    <p>আপনার উত্তর: <span class="${isC ? 'correct-ans' : 'wrong-ans'}">${sel ? sel.value : 'উত্তর দেননি'}</span></p>
+                    ${!isC ? `<p class="correct-ans">সঠিক উত্তর: ${item.a}</p>` : ''}
+                </div>
+            `;
+        });
+
         window.finalScore = s;
         goStep('result-area');
-        document.getElementById('score-text').innerText = `স্কোর: ${s}/৩০`;
-        document.getElementById('wa-share').href = `https://wa.me/8801734505869?text=নাম: ${studentData.n}, রোল: ${studentData.r}, স্কোর: ${s}/৩০`;
+        document.getElementById('score-text').innerHTML = `আপনার স্কোর: ${s} / ৩০`;
+        document.getElementById('review-container').innerHTML = reviewHTML;
+        document.getElementById('wa-share').href = `https://wa.me/8801734505869?text=${encodeURIComponent('নাম: '+studentData.n+', স্কোর: '+s+'/৩০')}`;
     }
 
     function downloadCert() {
@@ -306,10 +351,17 @@
         document.getElementById('ct-m').innerText = studentData.m;
         document.getElementById('ct-r').innerText = studentData.r;
         document.getElementById('ct-s').innerText = window.finalScore;
-        html2canvas(document.getElementById('certificate-template')).then(c => {
-            let a = document.createElement('a'); a.download = 'Cert.png'; a.href = c.toDataURL(); a.click();
+        html2canvas(document.getElementById('certificate-template'), {scale: 2}).then(canvas => {
+            let link = document.createElement('a');
+            link.download = `Certificate_${studentData.n}.png`;
+            link.href = canvas.toDataURL();
+            link.click();
         });
     }
+
+    window.onbeforeunload = function() {
+        if (!document.getElementById('exam-area').classList.contains('hidden')) return "পরীক্ষা চলছে!";
+    };
 </script>
 </body>
 </html>
