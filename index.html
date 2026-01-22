@@ -3,298 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>গালিব একাডেমি | অনলাইন পরীক্ষা ২০২৬</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <title>Galib Academy | Under Maintenance</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #1a237e; --secondary: #2e7d32; --accent: #ff9800; --bg: #f4f7f9; --gold: #c5a059; }
-        body { font-family: 'Segoe UI', Arial, 'SolaimanLipi', sans-serif; background: var(--bg); margin: 0; padding: 0; color: #333; line-height: 1.6; }
-        .header { background: linear-gradient(135deg, var(--primary), #3949ab); color: white; padding: 30px 10px; text-align: center; border-bottom: 5px solid var(--accent); }
-        .container { max-width: 800px; margin: auto; padding: 20px; }
-        .card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 20px; border-top: 4px solid var(--primary); }
-        .notice-board { background: #fff3e0; border-left: 5px solid var(--accent); padding: 15px; margin-bottom: 20px; font-size: 14px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        .btn { display: block; width: 100%; padding: 14px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; text-align: center; font-size: 16px; transition: 0.3s; margin-top: 10px; text-decoration: none; box-sizing: border-box; }
-        .btn-exam { background: var(--secondary); color: white; }
-        .btn-exam:hover { background: #1b5e20; transform: translateY(-2px); }
-        .btn-wa { background: #25d366; color: white; }
-        .q-box { background: #fdfdfd; padding: 20px; border-radius: 10px; margin-bottom: 15px; border: 1px solid #eee; }
-        .option-label { display: block; padding: 12px; margin: 8px 0; background: #f9f9f9; border-radius: 6px; cursor: pointer; border: 1px solid #ddd; transition: 0.2s; }
-        .option-label:hover { background: #e8f5e9; border-color: var(--secondary); }
-        .hidden { display: none; }
-        input, select { width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 6px; border: 1px solid #ccc; box-sizing: border-box; font-size: 16px; }
-        .sticky-bar { background:#fff; position:sticky; top:0; padding:12px; border-bottom:3px solid var(--primary); z-index:100; display:flex; justify-content:space-between; font-weight: bold; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        #certificate-template { width: 800px; height: 600px; padding: 50px; text-align: center; border: 20px double var(--gold); background: #fff; position: absolute; left: -9999px; box-sizing: border-box; }
-        .payment-info { color: #d32f2f; font-weight: bold; text-align: center; margin-bottom: 15px; font-size: 18px; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            background: #050505;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: white;
+        }
+
+        /* অ্যানিমেটেড ব্যাকগ্রাউন্ড কণা (Particles) */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, #111 0%, #000 100%);
+            z-index: -1;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: twinkle var(--duration) infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .main-card {
+            position: relative;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 60px 30px;
+            border-radius: 40px;
+            text-align: center;
+            max-width: 650px;
+            width: 90%;
+            box-shadow: 0 0 80px rgba(0, 0, 0, 0.5);
+            transition: 0.5s;
+        }
+
+        .main-card:hover {
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 100px rgba(99, 102, 241, 0.2);
+        }
+
+        .logo-text {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #ff00cc, #3333ff, #22ff00);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientText 5s linear infinite;
+        }
+
+        @keyframes gradientText {
+            to { background-position: 200% center; }
+        }
+
+        .badge {
+            background: linear-gradient(90deg, #6366f1, #a855f7);
+            padding: 6px 20px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #ccc;
+            margin-bottom: 30px;
+        }
+
+        .thank-you-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 20px;
+            font-style: italic;
+            color: #a855f7;
+            border: 1px solid rgba(168, 85, 247, 0.2);
+        }
+
+        .floating-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
     </style>
 </head>
 <body>
 
-<div class="header">
-    <h1>গালিব একাডেমি (Galib Academy)</h1>
-    <p>অনলাইন মেধা যাচাই পরীক্ষা - ২০২৬</p>
-    <small>পরিচালক ও একমাত্র শিক্ষক: গালিব আল সিয়াম</small>
-</div>
+    <div class="particles" id="particles"></div>
 
-<div class="container" id="step-1">
-    <div class="notice-board">
-        <b>⚠️ গুরুত্বপূর্ণ নিয়মাবলী:</b>
-        <ul>
-            <li>২০ টাকা (নগদ: <b>০১৭৩৪৫০৫৮৬৯</b>) সেন্ড মানি করে হোয়াটসঅ্যাপ থেকে পাসওয়ার্ড নিন।</li>
-            <li><b>এক পাসওয়ার্ডে কেবলমাত্র একবার পরীক্ষা দেওয়া যাবে।</b></li>
-            <li>একজন শিক্ষার্থী সপ্তাহে মাত্র একবার পরীক্ষা দিতে পারবে।</li>
-            <li>পরীক্ষা দেওয়ার ১৫ দিনের মধ্যে পুরস্কার ঘোষণা করা হবে। তবে কর্তৃপক্ষ তারিখ পরিবর্তনের অধিকার রাখেন।</li>
-            <li>ফলাফল পাঠানোর সময় অবশ্যই সার্টিফিকেটের <b>স্ক্রিনশট</b> সংযুক্ত করবেন।</li>
-        </ul>
-    </div>
-
-    <div class="card">
-        <h3 style="text-align:center; color: var(--primary);">পরীক্ষার্থীর তথ্য</h3>
-        <p class="payment-info">নগদ (Send Money): ০১৭৩৪৫০৫৮৬৯</p>
+    <div class="main-card">
+        <div class="floating-icon">🚀</div>
+        <div class="badge">নতুন রূপে আসছি</div>
+        <h1 class="logo-text">Galib Academy</h1>
         
-        <input type="text" id="s-name" placeholder="আপনার পূর্ণ নাম (বাংলায়)">
-        <input type="number" id="s-roll" placeholder="রোল নম্বর">
-        <input type="text" id="s-madrasa" placeholder="মাদ্রাসার নাম/প্রতিষ্ঠানের নাম">
+        <h2>সাময়িক বিরতি</h2>
         
-        <select id="class-select">
-            <option value="">বিষয় ও শ্রেণী নির্বাচন করুন...</option>
-            <option value="q10_ssc">SSC ২০২৬ - কুরআন ও তাজভীদ</option>
-            <option value="m10_ssc">SSC ২০২৬ - গণিত</option>
-            <option value="q6">৬ষ্ঠ শ্রেণী - কুরআন ও তাজভীদ</option>
-            <option value="m6">৬ষ্ঠ শ্রেণী - গণিত</option>
-            <option value="q7">৭ম শ্রেণী - কুরআন ও তাজভীদ</option>
-            <option value="m7">৭ম শ্রেণী - গণিত</option>
-            <option value="q8">৮ম শ্রেণী - কুরআন ও তাজভীদ</option>
-            <option value="m8">৮ম শ্রেণী - গণিত</option>
-            <option value="q9">৯ম শ্রেণী - কুরআন ও তাজভীদ</option>
-            <option value="m9">৯ম শ্রেণী - গণিত</option>
-        </select>
-        
-        <input type="password" id="exam-pass" placeholder="পাসওয়ার্ড দিন (সংগৃহীত)">
-        <button class="btn btn-exam" onclick="validateAccess()">পরীক্ষা শুরু করুন</button>
-    </div>
-</div>
+        <p>
+            সাম্প্রতিক কিছু কারণে গালিব একাডেমীর ওয়েবসাইট ডেভেলপমেন্ট ও কার্যক্রম আপাতত বন্ধ রাখা হয়েছে। আপনার ধৈর্যের জন্য আমরা কৃতজ্ঞ। 
+            <br>
+            <strong>পরবর্তীতে আবার পরীক্ষা শুরু হলে সরাসরি এখানে সব আপডেট পাবেন।</strong>
+        </p>
 
-<div class="container hidden" id="exam-area">
-    <div class="sticky-bar"><span id="h-name"></span><span id="timer-box" style="color:red;">সময়: ১০:০০</span></div>
-    <div id="qs-container"></div>
-    <button class="btn btn-exam" onclick="submitExam()">জমা দিন (Submit)</button>
-</div>
-
-<div class="container hidden" id="result-area">
-    <div class="card" style="text-align:center;">
-        <h2 id="score-text" style="color: var(--secondary);"></h2>
-        <p>ভেরিফিকেশন কোড: <b id="v-code" style="color:red;"></b></p>
-        <div style="background: #e8f5e9; padding: 15px; border-radius: 8px; margin: 15px 0; border: 1px dashed var(--secondary);">
-            <p>✅ <b>ধাপ ১:</b> "সনদ ডাউনলোড করুন" বাটনে ক্লিক করুন।</p>
-            <p>📸 <b>ধাপ ২:</b> ডাউনলোড করা সনদের স্ক্রিনশট নিন।</p>
-            <p>💬 <b>ধাপ ৩:</b> নিচের সবুজ বাটনে ক্লিক করে স্ক্রিনশটটি স্যারকে পাঠান।</p>
-        </div>
-        <button class="btn btn-exam" onclick="downloadCert()">সনদ ডাউনলোড করুন</button>
-        <a id="wa-share" href="#" target="_blank" class="btn btn-wa">ফলাফল ও স্ক্রিনশট স্যারকে পাঠান</a>
-    </div>
-</div>
-
-<div id="certificate-template">
-    <h1 style="font-size:50px; color:#1a237e; margin-bottom: 5px;">গালিব একাডেমি</h1>
-    <h3 style="color: #666; margin: 0;">অনলাইন শিক্ষা ও মেধা যাচাই কেন্দ্র</h3>
-    <h2 style="color: var(--gold); border: 2px solid var(--gold); display: inline-block; padding: 10px 30px; margin-top: 20px;">সাফল্যের সনদপত্র</h2>
-    <p style="font-size:24px; margin-top:40px;">এই মর্মে প্রত্যয়ন করা যাচ্ছে যে, <br><b><span id="ct-name" style="font-size: 36px; color: #1a237e;"></span></b></p>
-    <p style="font-size:18px;">রোল নম্বর: <span id="ct-r"></span> | প্রতিষ্ঠান: <span id="ct-m"></span></p>
-    <p style="font-size:20px;">তিনি ২০২৬ সালের <b><span id="ct-class"></span></b> পরীক্ষায় অংশগ্রহণ করে <br>৩০ এর মধ্যে <b><span id="ct-s"></span></b> স্কোর অর্জন করেছেন।</p>
-    <div style="margin-top:60px; display:flex; justify-content:space-around; font-size: 18px;">
-        <span>ইস্যুর তারিখ: <span id="ct-date"></span></span>
-        <div style="text-align:center;">
-            <p style="margin:0; border-top: 2px solid #333; width: 200px; padding-top: 5px;"><b>গালিব আল সিয়াম</b></p>
-            <small>পরিচালক ও শিক্ষক, গালিব একাডেমি</small>
+        <div class="thank-you-box">
+            গালিব একাডেমীর সাথে থাকার জন্য আপনাদের একান্ত ধন্যবাদ। ❤️
         </div>
     </div>
-</div>
 
-<script>
-    const _0xAdmin = "Z2FsaWJhZG1pbg=="; 
-    const _0xPass = ["YmlzbWlsbGFo", "YWxoYW1kdWxpbGxhaA==", "c3ViaGFuYWxsYWg=", "YWxsYWh1YWtiYXI="]; 
-    
-    // প্রশ্ন ব্যাংক (Database) - ৩৩০+ প্রশ্ন লোড করা হয়েছে
-    const examDB = {
-        "q10_ssc": [
-            {q: "কুরআন মাজিদে মোট রুকু সংখ্যা কত?", o: ["৫৫৬", "৫৪০", "৬৬৬", "৫০০"], a: "৫৫৬"},
-            {q: "তাজভীদ শব্দের আভিধানিক অর্থ কি?", o: ["সুন্দর করা", "পড়া", "মিলানো", "থামা"], a: "সুন্দর করা"},
-            {q: "মাখরাজ মোট কয়টি?", o: ["১৭টি", "১৫টি", "১৯টি", "২১টি"], a: "১৭টি"},
-            {q: "মাদ কত প্রকার?", o: ["২ প্রকার", "৩ প্রকার", "৪ প্রকার", "৫ প্রকার"], a: "২ প্রকার"},
-            {q: "ওয়াজিব গুন্নাহ কখন হয়?", o: ["নুন ও মীমে তাশদীদ হলে", "যযম হলে", "পেশ হলে", "যের হলে"], a: "নুন ও মীমে তাশদীদ হলে"},
-            {q: "ইকলাব এর হরফ কয়টি?", o: ["১টি", "২টি", "৩টি", "৪টি"], a: "১টি"},
-            {q: "কুরআনে মোট সিজদাহ কয়টি?", o: ["১৪টি", "১৫টি", "১২টি", "১৩টি"], a: "১৪টি"},
-            {q: "মাদ্দে আসলী কত আলিফ?", o: ["১ আলিফ", "৩ আলিফ", "৪ আলিফ", "২ আলিফ"], a: "১ আলিফ"},
-            {q: "ইদগামে বেলা গুন্নাহর হরফ কয়টি?", o: ["২টি", "৪টি", "৬টি", "৩টি"], a: "২টি"},
-            {q: "সবচেয়ে বড় সূরা কোনটি?", o: ["সূরা বাকারা", "সূরা নিসা", "সূরা ইমরান", "সূরা মায়েদা"], a: "সূরা বাকারা"},
-            {q: "কুরআনের হৃৎপিণ্ড বলা হয় কোন সূরাকে?", o: ["সূরা ইয়াসিন", "সূরা ফাতেহা", "সূরা আর-রহমান", "সূরা ইখলাস"], a: "সূরা ইয়াসিন"},
-            {q: "হলকের হরফ কয়টি?", o: ["৬টি", "৪টি", "৫টি", "১০টি"], a: "৬টি"},
-            {q: "মাদ্দে মুত্তাসিল কত আলিফ?", o: ["৪ আলিফ", "৩ আলিফ", "১ আলিফ", "৫ আলিফ"], a: "৪ আলিফ"},
-            {q: "কুরআনে মোট মানজিল কয়টি?", o: ["৭টি", "১৪টি", "৩০টি", "১৫টি"], a: "৭টি"},
-            {q: "কলকলাহর হরফ কয়টি?", o: ["৫টি", "৬টি", "৭টি", "৪টি"], a: "৫টি"},
-            {q: "কোন সূরায় বিসমিল্লাহ নেই?", o: ["সূরা তওবা", "সূরা নামল", "সূরা ফীল", "সূরা নাস"], a: "সূরা তওবা"},
-            {q: "মীম সাকিন পড়ার নিয়ম কয়টি?", o: ["৩টি", "৪টি", "৫টি", "২টি"], a: "৩টি"},
-            {q: "মাক্কী সূরা কয়টি?", o: ["৮৬টি", "২৮টি", "৯৬টি", "৭০টি"], a: "৮৬টি"},
-            {q: "মাদানী সূরা কয়টি?", o: ["২৮টি", "৮৬টি", "৩০টি", "২০টি"], a: "২৮টি"},
-            {q: "কুরআন নাযিল হতে কত সময় লেগেছে?", o: ["২৩ বছর", "২২ বছর", "২৫ বছর", "২০ বছর"], a: "২৩ বছর"},
-            {q: "মাদ্দে লাজিম হারফী কয় প্রকার?", o: ["২ প্রকার", "৪ প্রকার", "৩ প্রকার", "১ প্রকার"], a: "২ প্রকার"},
-            {q: "তানভীন কাকে বলে?", o: ["২ যবর, ২ যের, ২ পেশ", "এক যবর", "যযম", "তাশদীদ"], a: "২ যবর, ২ যের, ২ পেশ"},
-            {q: "সিফাতে লাযিমা কয়টি?", o: ["১৭টি", "১৮টি", "১০টি", "৭টি"], a: "১৭টি"},
-            {q: "সূরা নামলে বিসমিল্লাহ কতবার?", o: ["২ বার", "১ বার", "৩ বার", "৪ বার"], a: "২ বার"},
-            {q: "কুরআনের প্রথম হাফেজ কে?", o: ["মুহাম্মদ সা.", "হযরত ওসমান রা.", "হযরত আলী রা.", "আবু বকর রা."], a: "মুহাম্মদ সা."},
-            {q: "মাদ্দে আরজি কত আলিফ?", o: ["৩ আলিফ", "১ আলিফ", "৪ আলিফ", "৫ আলিফ"], a: "৩ আলিফ"},
-            {q: "ইখফার হরফ কয়টি?", o: ["১৫টি", "১৬টি", "১০টি", "১৪টি"], a: "১৫টি"},
-            {q: "আল্লাহ শব্দের লাম কখন মোটা হয়?", o: ["ডানে যবর/পেশ থাকলে", "যের থাকলে", "সবসময়", "কখনোই না"], a: "ডানে যবর/পেশ থাকলে"},
-            {q: "কুরআনের শেষ সূরা কোনটি?", o: ["সূরা নাস", "সূরা ফালাক", "সূরা ইখলাস", "সূরা কাফিরুন"], a: "সূরা নাস"},
-            {q: "তাজভীদ অনুযায়ী কুরআন পড়া কি?", o: ["ওয়াজিব", "সুন্নত", "নফল", "মাকরূহ"], a: "ওয়াজিব"}
-        ],
-        "m10_ssc": [
-            {q: "sin²θ + cos²θ = কত?", o: ["১", "০", "-১", "২"], a: "১"},
-            {q: "log₂ 32 এর মান কত?", o: ["৫", "৪", "৬", "১০"], a: "৫"},
-            {q: "বর্গের ক্ষেত্রফল কী?", o: ["বাহু²", "২×বাহু", "৪×বাহু", "বাহু³"], a: "বাহু²"},
-            {q: "π এর মান কত?", o: ["৩.১৪১৬", "৩.১৪", "৩.১৫", "৩.১২"], a: "৩.১৪১৬"},
-            {q: "sec²θ - tan²θ = কত?", o: ["১", "০", "-১", "২"], a: "১"},
-            {q: "tan 45° এর মান কত?", o: ["১", "০", "√৩", "১/√৩"], a: "১"},
-            {q: "ত্রিভুজের তিন কোণের সমষ্টি কত?", o: ["১৮০°", "৩৬০°", "৯০°", "১২০°"], a: "১৮০°"},
-            {q: "বৃত্তের ক্ষেত্রফল সূত্র কোনটি?", o: ["πr²", "2πr", "πd", "r²"], a: "πr²"},
-            {q: "সমকোণী ত্রিভুজের বৃহত্তম বাহু কোনটি?", o: ["অতিভুজ", "লম্ব", "ভূমি", "উচ্চতা"], a: "অতিভুজ"},
-            {q: "১০০০ এর ১০% কত?", o: ["১০০", "১০", "১", "৫০০"], a: "১০০"},
-            {q: "সেটের সংযোগ চিহ্ন কোনটি?", o: ["∪", "∩", "⊂", "∈"], a: "∪"},
-            {q: "একটি সমকোণের মান কত?", o: ["৯০°", "১৮০°", "৬০°", "৪৫°"], a: "৯০°"},
-            {q: "sin 30° এর মান কত?", o: ["১/২", "√৩/২", "১", "০"], a: "১/২"},
-            {q: "x² - 5x + 6 এর উৎপাদক কোনটি?", o: ["(x-2)(x-3)", "(x+2)(x+3)", "(x-1)(x-6)", "x-5"], a: "(x-2)(x-3)"},
-            {q: "বৃত্তস্থ চতুর্ভুজের বিপরীত কোণদ্বয়ের সমষ্টি কত?", o: ["১৮০°", "৩৬০°", "৯০°", "২৭০°"], a: "১৮০°"},
-            {q: "cos 0° এর মান কত?", o: ["১", "০", "১/২", "অসংজ্ঞায়িত"], a: "১"},
-            {q: "৫ এর ঘন কত?", o: ["১২৫", "২৫", "১৫", "৫০"], a: "১২৫"},
-            {q: "সবচেয়ে ছোট মৌলিক সংখ্যা কোনটি?", o: ["২", "১", "৩", "০"], a: "২"},
-            {q: "৪ এর বর্গমূল কত?", o: ["২", "৪", "১৬", "৮"], a: "২"},
-            {q: "log₅ 125 = ?", o: ["৩", "৫", "২৫", "২"], a: "৩"},
-            {q: "বৃত্তের ব্যাস ব্যাসার্ধের কত গুণ?", o: ["২ গুণ", "৩ গুণ", "৪ গুণ", "অর্ধেক"], a: "২ গুণ"},
-            {q: "f(x) = x²-4 হলে f(2) কত?", o: ["০", "৪", "-৪", "৮"], a: "০"},
-            {q: "রম্বসের ক্ষেত্রফল সূত্র কি?", o: ["১/২ × কর্ণদ্বয়ের গুণফল", "দৈর্ঘ্য × প্রস্থ", "ভূমি × উচ্চতা", "বাহু²"], a: "১/২ × কর্ণদ্বয়ের গুণফল"},
-            {q: "বিন্দু কয়টি মাত্রা বিশিষ্ট?", o: ["০টি", "১টি", "২টি", "৩টি"], a: "০টি"},
-            {q: "১০ জন লোক একটি কাজ ৫ দিনে করলে ১ জন কত দিনে করবে?", o: ["৫০ দিনে", "১০ দিনে", "৫ দিনে", "২৫ দিনে"], a: "৫০ দিনে"},
-            {q: "x + y = 6, x - y = 2 হলে x এর মান কত?", o: ["৪", "৩", "৫", "২"], a: "৪"},
-            {q: "সুষম ষড়ভুজের একটি কোণ কত?", o: ["১২০°", "৬০°", "৯০°", "১০৮°"], a: "১২০°"},
-            {q: "মূলবিন্দুর স্থানাঙ্ক কত?", o: ["(০,০)", "(১,১)", "(০,১)", "(১,০)"], a: "(০,০)"},
-            {q: "ঘনকের কয়টি তল থাকে?", o: ["৬টি", "৪টি", "৮টি", "১২টি"], a: "৬টি"},
-            {q: "৮১ এর বর্গমূল কত?", o: ["৯", "৭", "৮", "১০"], a: "৯"}
-        ],
-        // বাকি ক্যাটাগরিগুলো (q6-m9) একই ভাবে SSC এর লেভেলে প্রশ্ন যুক্ত আছে।
-        "q6": [ {q: "মাখরাজ কয়টি?", o: ["১৭টি", "১৫টি", "১৯টি", "২১টি"], a: "১৭টি"}, {q: "মাদ কয়টি?", o: ["৩টি", "৪টি", "৫টি", "২টি"], a: "৩টি"} /* ... */ ],
-        "m6": [ {q: "১ ডজন কতটি?", o: ["১২টি", "১০টি", "১৪টি", "২০টি"], a: "১২টি"}, {q: "৫ এর বর্গ কত?", o: ["২৫", "১৫", "১০", "২০"], a: "২৫"} /* ... */ ],
-        // ৭ম, ৮ম, ৯ম শ্রেণীর জন্যও একইভাবে SSC এর ডেটা থেকে প্রশ্ন জেনারেট হবে।
-    };
-    
-    // অটোমেটিক ডাটা ফিলিং (যাতে আপনার প্রশ্ন লিখতে না হয়)
-    ["q6", "q7", "q8", "q9"].forEach(k => { if(!examDB[k]) examDB[k] = examDB["q10_ssc"]; });
-    ["m6", "m7", "m8", "m9"].forEach(k => { if(!examDB[k]) examDB[k] = examDB["m10_ssc"]; });
-
-    let studentData = {}; 
-    let selectedClassID = ""; 
-    let currentQuestions = [];
-
-    function validateAccess() {
-        const name = document.getElementById('s-name').value.trim();
-        const roll = document.getElementById('s-roll').value;
-        const madrasa = document.getElementById('s-madrasa').value.trim();
-        const pass = document.getElementById('exam-pass').value.trim().toLowerCase();
-        selectedClassID = document.getElementById('class-select').value;
-
-        if(!name || !roll || !madrasa || !selectedClassID || !pass) {
-            alert("অনুগ্রহ করে সব তথ্য এবং পাসওয়ার্ড দিন!");
-            return;
+    <script>
+        // ব্যাকগ্রাউন্ডে নক্ষত্র তৈরির ছোট স্ক্রিপ্ট
+        const particles = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            const size = Math.random() * 3 + 'px';
+            star.style.width = size;
+            star.style.height = size;
+            star.style.top = Math.random() * 100 + '%';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.setProperty('--duration', Math.random() * 3 + 2 + 's');
+            particles.appendChild(star);
         }
+    </script>
 
-        const encodedPass = btoa(pass);
-
-        // Admin Bypass
-        if(encodedPass === _0xAdmin) {
-            proceedToExam(name, roll, madrasa);
-            return;
-        }
-
-        // Student Password & Once per Week Check
-        if(!_0xPass.includes(encodedPass)) {
-            alert("ভুল পাসওয়ার্ড! ২০ টাকা সেন্ড মানি করে সঠিক পাসওয়ার্ড সংগ্রহ করুন।");
-            return;
-        }
-
-        const lastUsed = localStorage.getItem('galib_exam_' + roll);
-        if(lastUsed) {
-            const diff = (Date.now() - parseInt(lastUsed)) / (1000 * 60 * 60 * 24);
-            if(diff < 7) {
-                alert("আপনি এই সপ্তাহে একবার পরীক্ষা দিয়েছেন। ১ পাসওয়ার্ড ১ বার এবং সপ্তাহে একবারের বেশি সুযোগ নেই।");
-                return;
-            }
-        }
-
-        proceedToExam(name, roll, madrasa);
-    }
-
-    function proceedToExam(name, roll, madrasa) {
-        studentData = { n: name, r: roll, m: madrasa, c: document.getElementById('class-select').options[document.getElementById('class-select').selectedIndex].text };
-        document.getElementById('step-1').classList.add('hidden');
-        document.getElementById('exam-area').classList.remove('hidden');
-        document.getElementById('h-name').innerText = "পরীক্ষার্থী: " + studentData.n;
-
-        let db = examDB[selectedClassID] || examDB["q10_ssc"];
-        currentQuestions = [...db].sort(() => Math.random() - 0.5).slice(0, 30);
-        
-        document.getElementById('qs-container').innerHTML = currentQuestions.map((q, i) => `
-            <div class="q-box">
-                <p><b>${i+1}. ${q.q}</b></p>
-                ${q.o.map(o => `<label class="option-label"><input type="radio" name="q${i}" value="${o}"> ${o}</label>`).join('')}
-            </div>`).join('');
-
-        let sec = 600;
-        window.itv = setInterval(() => {
-            sec--;
-            let m = Math.floor(sec/60), s = sec%60;
-            document.getElementById('timer-box').innerText = `সময়: ${m}:${s<10?'0':''}${s}`;
-            if(sec <= 0) submitExam();
-        }, 1000);
-    }
-
-    function submitExam() {
-        clearInterval(window.itv);
-        let score = 0;
-        currentQuestions.forEach((q, i) => {
-            const r = document.querySelector(`input[name="q${i}"]:checked`);
-            if(r && r.value === q.a) score++;
-        });
-
-        window.finalScore = score;
-        const vCode = "GA-" + (parseInt(studentData.r) + score * 21) + "-2026";
-        
-        // Save Lock (Admin বাদে)
-        if(btoa(document.getElementById('exam-pass').value.toLowerCase()) !== _0xAdmin) {
-            localStorage.setItem('galib_exam_' + studentData.r, Date.now().toString());
-        }
-
-        document.getElementById('exam-area').classList.add('hidden');
-        document.getElementById('result-area').classList.remove('hidden');
-        document.getElementById('score-text').innerText = `আপনার স্কোর: ${score} / ৩০`;
-        document.getElementById('v-code').innerText = vCode;
-
-        const msg = `ফলাফল - গালিব একাডেমি%0Aনাম: ${studentData.n}%0Aরোল: ${studentData.r}%0Aবিষয়: ${studentData.c}%0Aস্কোর: ${score}/৩০%0Aকোড: ${vCode}%0A(সার্টিফিকেটের স্ক্রিনশট নিচে দিচ্ছি স্যার)`;
-        document.getElementById('wa-share').href = `https://wa.me/8801734505869?text=${msg}`;
-    }
-
-    function downloadCert() {
-        document.getElementById('ct-name').innerText = studentData.n;
-        document.getElementById('ct-r').innerText = studentData.r;
-        document.getElementById('ct-m').innerText = studentData.m;
-        document.getElementById('ct-class').innerText = studentData.c;
-        document.getElementById('ct-s').innerText = window.finalScore;
-        document.getElementById('ct-date').innerText = new Date().toLocaleDateString('bn-BD');
-
-        html2canvas(document.getElementById('certificate-template'), {scale: 2}).then(c => {
-            let a = document.createElement('a');
-            a.download = `Galib_Academy_${studentData.r}.png`;
-            a.href = c.toDataURL();
-            a.click();
-        });
-    }
-</script>
 </body>
 </html>
