@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galib Academy | Under Maintenance</title>
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <title>Galib Academy | New Era</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #6366f1;
             --secondary: #a855f7;
-            --accent: #22ff00;
-            --bg-dark: #0a0a0c;
+            --accent: #00f2fe;
+            --bg-dark: #030014;
         }
 
         * {
@@ -28,171 +28,160 @@
             align-items: center;
             overflow: hidden;
             color: white;
+            perspective: 1000px;
         }
 
-        /* অ্যানিমেটেড ব্যাকগ্রাউন্ড মেশ */
-        .bg-mesh {
+        /* ডাইনামিক ব্যাকগ্রাউন্ড */
+        .background {
             position: absolute;
             width: 100%;
             height: 100%;
-            background: 
-                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.15) 0px, transparent 50%);
-            z-index: -2;
-        }
-
-        /* স্পার্কল কণা */
-        #particles-js {
-            position: absolute;
-            width: 100%;
-            height: 100%;
+            overflow: hidden;
             z-index: -1;
+            background: radial-gradient(circle at center, #0a0a2e 0%, #030014 100%);
         }
 
-        .main-card {
+        .blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            filter: blur(120px);
+            border-radius: 50%;
+            z-index: -1;
+            animation: move 25s infinite alternate linear;
+            opacity: 0.4;
+        }
+
+        @keyframes move {
+            from { transform: translate(-10%, -10%) rotate(0deg); }
+            to { transform: translate(50%, 50%) rotate(360deg); }
+        }
+
+        /* মেইন কার্ড ডিজাইন */
+        .container {
             position: relative;
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(30px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 50px 40px;
-            border-radius: 30px;
+            border-radius: 40px;
+            padding: 70px 40px;
             text-align: center;
-            max-width: 600px;
             width: 90%;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            animation: fadeIn 1.5s ease-out;
+            max-width: 650px;
+            box-shadow: 0 40px 120px rgba(0, 0, 0, 0.6), 
+                        inset 0 0 20px rgba(255, 255, 255, 0.05);
+            transform-style: preserve-3d;
+            transition: 0.5s ease;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .container:hover {
+            transform: translateY(-10px) rotateX(2deg);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .logo-box {
-            margin-bottom: 20px;
+        /* লোগো সেকশন */
+        .logo-container {
+            margin-bottom: 25px;
         }
 
         .logo-text {
-            font-family: 'Poppins', sans-serif;
-            font-size: 3rem;
+            font-size: 4rem;
             font-weight: 700;
-            letter-spacing: -1px;
-            background: linear-gradient(to right, #fff 20%, #a855f7 50%, #6366f1 80%);
-            background-size: 200% auto;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            background: linear-gradient(to bottom, #fff, #888);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: shine 4s linear infinite;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
         }
 
-        @keyframes shine {
-            to { background-position: 200% center; }
-        }
-
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            background: rgba(99, 102, 241, 0.1);
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            padding: 5px 15px;
+        .academy-badge {
+            display: inline-block;
+            background: linear-gradient(90deg, #6366f1, #a855f7);
+            padding: 8px 25px;
             border-radius: 100px;
-            font-size: 0.85rem;
-            color: #818cf8;
-            margin-bottom: 20px;
-            font-weight: 500;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 35px;
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
+            animation: bounce 2s infinite ease-in-out;
         }
 
-        .badge span {
-            width: 8px;
-            height: 8px;
-            background: var(--accent);
-            border-radius: 50%;
-            margin-right: 8px;
-            box-shadow: 0 0 10px var(--accent);
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(0.95); opacity: 0.7; }
-            70% { transform: scale(1.1); opacity: 1; }
-            100% { transform: scale(0.95); opacity: 0.7; }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
         }
 
         h2 {
-            font-size: 1.8rem;
-            font-weight: 500;
-            margin-bottom: 15px;
-            color: #f3f4f6;
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #fff;
         }
 
         p {
-            font-size: 1.05rem;
-            line-height: 1.7;
-            color: #9ca3af;
-            margin-bottom: 30px;
+            font-size: 1.2rem;
+            color: #b0b0b0;
+            line-height: 1.8;
+            max-width: 500px;
+            margin: 0 auto 40px;
         }
 
-        .info-footer {
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            font-size: 0.9rem;
-            color: #6b7280;
+        /* ইন্টারেক্টিভ কন্টাক্ট বার */
+        .footer-info {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 20px;
+            border: 1px dashed rgba(255, 255, 255, 0.1);
         }
 
-        .highlight {
-            color: var(--secondary);
+        .footer-info span {
+            display: block;
+            color: var(--accent);
             font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 5px;
         }
 
-        /* রেসপন্সিভ মোবাইল এডজাস্টমেন্ট */
-        @media (max-width: 480px) {
-            .logo-text { font-size: 2.2rem; }
-            .main-card { padding: 40px 20px; }
+        .footer-info p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+            color: #888;
+        }
+
+        /* রেসপন্সিভ */
+        @media (max-width: 600px) {
+            .logo-text { font-size: 2.5rem; }
+            h2 { font-size: 1.5rem; }
+            .container { padding: 40px 20px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="bg-mesh"></div>
-    <div id="particles-js"></div>
+    <div class="background">
+        <div class="blob"></div>
+    </div>
 
-    <div class="main-card">
-        <div class="badge">
-            <span></span> শীঘ্রই ফিরছি
-        </div>
+    <div class="container">
+        <div class="academy-badge">NEXT-GEN LEARNING</div>
         
-        <div class="logo-box">
+        <div class="logo-container">
             <h1 class="logo-text">Galib Academy</h1>
         </div>
         
-        <h2>আমাদের কাজ চলছে...</h2>
+        <h2>আরবি শিক্ষার নতুন দিগন্ত</h2>
         
         <p>
-            আমরা গালিব একাডেমীর ওয়েবসাইটটিকে আরও সহজ ও উন্নত করছি। খুব শীঘ্রই আপনি এখানে আপনার প্রিয় <span class="highlight">আরবি কোর্স এবং অনলাইন পরীক্ষাগুলো</span> দিতে পারবেন।
+            আমরা কাজ করছি একটি আধুনিক লার্নিং সিস্টেম নিয়ে। যেখানে আপনি পাবেন <strong>অ্যাডভান্সড আরবি কোর্স</strong> এবং <strong>লাইভ এক্সাম সিস্টেম</strong>।
         </p>
 
-        <div class="info-footer">
-            ধৈর্য ধরার জন্য ধন্যবাদ | Galib Academy 2026
+        <div class="footer-info">
+            <span>বর্তমানে সাইট ডেভেলপমেন্ট চলছে</span>
+            <p>আপডেটের জন্য নজর রাখুন। গালিব একাডেমীর সাথে থাকার জন্য ধন্যবাদ।</p>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script>
-        particlesJS("particles-js", {
-            "particles": {
-                "number": { "value": 80 },
-                "color": { "value": "#ffffff" },
-                "shape": { "type": "circle" },
-                "opacity": { "value": 0.2 },
-                "size": { "value": 2 },
-                "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.1, "width": 1 },
-                "move": { "enable": true, "speed": 1 }
-            },
-            "interactivity": {
-                "events": { "onhover": { "enable": true, "mode": "grab" } }
-            }
-        });
-    </script>
 </body>
 </html>
