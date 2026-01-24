@@ -3,174 +3,212 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galib Academy | The Masterclass</title>
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;700&family=Poppins:wght@900&display=swap" rel="stylesheet">
+    <title>Galib Academy | The Ultimate Vision</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;600;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #00f2fe;
-            --secondary: #4facfe;
-            --bg: #020205;
-        }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
+        
         body {
-            background: var(--bg);
+            background: #000;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
             font-family: 'Hind Siliguri', sans-serif;
-            perspective: 1500px;
-        }
-
-        /* ডাইনামিক অরোরা ব্যাকগ্রাউন্ড */
-        .aurora {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: radial-gradient(circle at 20% 30%, rgba(0, 242, 254, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 70%, rgba(79, 172, 254, 0.15) 0%, transparent 50%);
-            filter: blur(120px);
-            animation: moveAurora 15s infinite alternate;
-        }
-
-        @keyframes moveAurora {
-            from { transform: scale(1) rotate(0deg); }
-            to { transform: scale(1.3) rotate(10deg); }
-        }
-
-        /* প্রিমিয়াম কন্টেইনার */
-        .master-card {
-            position: relative;
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(50px);
-            -webkit-backdrop-filter: blur(50px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 80px;
-            padding: 100px 60px;
-            text-align: center;
-            max-width: 850px;
-            width: 95%;
-            box-shadow: 0 100px 200px rgba(0, 0, 0, 0.9);
-            transform-style: preserve-3d;
-            transition: transform 0.2s ease;
-        }
-
-        /* লোগো অ্যানিমেশন */
-        .brand-text {
-            font-family: 'Poppins', sans-serif;
-            font-size: clamp(3rem, 12vw, 6.5rem);
-            font-weight: 900;
-            line-height: 0.85;
-            letter-spacing: -4px;
-            margin-bottom: 25px;
-            background: linear-gradient(180deg, #fff 30%, rgba(255, 255, 255, 0.1) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.2));
-        }
-
-        .tag-pill {
-            display: inline-block;
-            padding: 6px 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 100px;
-            font-size: 0.75rem;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 6px;
-            margin-bottom: 40px;
-        }
-
-        h2 {
-            font-size: 2.4rem;
-            font-weight: 300;
-            color: #efefef;
-            margin-bottom: 25px;
-            letter-spacing: 1px;
-        }
-
-        .desc {
-            font-size: 1.25rem;
-            color: #888;
-            max-width: 550px;
-            margin: 0 auto 60px;
-            line-height: 1.8;
-        }
-
-        /* ইন্টারেক্টিভ বাটন */
-        .btn-action {
-            padding: 22px 65px;
-            background: #fff;
-            color: #000;
-            border-radius: 100px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            text-decoration: none;
-            display: inline-block;
-            transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1);
-            box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1);
-        }
-
-        .btn-action:hover {
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 30px 60px rgba(0, 242, 254, 0.3);
-            background: var(--primary);
             color: #fff;
         }
 
-        /* ফুটার */
-        .footer {
-            margin-top: 60px;
-            font-size: 0.8rem;
-            color: #333;
+        /* ইন্টারেক্টিভ ক্যানভাস */
+        #fluid-canvas {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1;
+            filter: contrast(1.2) brightness(1.1);
+        }
+
+        /* আল্ট্রা-মডার্ন ইন্টারফেস */
+        .interface {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            mix-blend-mode: difference; /* এটি ব্যাকগ্রাউন্ডের সাথে রঙের জাদুকরী খেলা দেখাবে */
+        }
+
+        .logo-box {
+            margin-bottom: 30px;
+            animation: emerge 2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes emerge {
+            from { opacity: 0; transform: translateY(50px) scale(0.9); filter: blur(10px); }
+            to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+        }
+
+        .brand-main {
+            font-family: 'Syncopate', sans-serif;
+            font-size: clamp(3rem, 15vw, 8rem);
+            font-weight: 700;
+            line-height: 0.8;
+            letter-spacing: -5px;
+            text-transform: uppercase;
+            color: #fff;
+        }
+
+        .brand-sub {
+            font-size: 1.2rem;
+            letter-spacing: 15px;
+            text-transform: uppercase;
+            color: #888;
+            margin-top: 10px;
+            display: block;
+        }
+
+        .content-card {
+            margin-top: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #ccc;
+            margin-bottom: 40px;
+        }
+
+        /* নিওন বাটন */
+        .portal-btn {
+            background: transparent;
+            color: #fff;
+            border: 1px solid #fff;
+            padding: 20px 50px;
+            font-size: 1rem;
             letter-spacing: 5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.5s;
+            position: relative;
+        }
+
+        .portal-btn:hover {
+            background: #fff;
+            color: #000;
+            box-shadow: 0 0 50px rgba(255, 255, 255, 0.8);
+        }
+
+        /* ফুটার বার */
+        .system-footer {
+            position: absolute;
+            bottom: 40px;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            color: #444;
+            z-index: 10;
         }
     </style>
 </head>
 <body>
 
-    <div class="aurora"></div>
+    <canvas id="fluid-canvas"></canvas>
 
-    <div class="master-card" id="card">
-        <div class="tag-pill">Premium Academy</div>
-        
-        <h1 class="brand-text">Galib<br>Academy</h1>
-        
-        <h2>একটি শ্রেষ্ঠত্বের সূচনা।</h2>
-        
-        <p class="desc">
-            আমরা শিক্ষার সংজ্ঞা বদলে দিচ্ছি। নতুন ও আধুনিক আরবি শিক্ষা ব্যবস্থার জন্য গালিব একাডেমীর সাথেই থাকুন।
-        </p>
+    <div class="interface">
+        <div class="logo-box">
+            <h1 class="brand-main">GALIB</h1>
+            <span class="brand-sub">ACADEMY</span>
+        </div>
 
-        <a href="#" class="btn-action">Stay Tuned</a>
+        <div class="content-card">
+            <h2>একটি অসীম যাত্রা শুরু হচ্ছে।</h2>
+            <p>আমরা আরবি শিক্ষা ও অনলাইন পরীক্ষার অভিজ্ঞতাকে শিল্পের পর্যায়ে নিয়ে যাচ্ছি। আপনার জন্য অপেক্ষা করছে বিস্ময়কর কিছু।</p>
+            <button class="portal-btn">Launch Soon</button>
+        </div>
+    </div>
 
-        <div class="footer">SINCE 2026 | BUILT FOR EXCELLENCE</div>
+    <div class="system-footer">
+        <span>EST. 2026</span>
+        <span>REDEFINING EDUCATION</span>
+        <span>VERSION 4.0 ALPHA</span>
     </div>
 
     <script>
-        const card = document.getElementById('card');
-        
-        // অ্যাডভান্সড ৩ডি টিল্ট ইফেক্ট
-        document.addEventListener('mousemove', (e) => {
-            const xAxis = (window.innerWidth / 2 - e.clientX) / 30;
-            const yAxis = (window.innerHeight / 2 - e.clientY) / 30;
-            card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+        const canvas = document.getElementById('fluid-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height, particles = [];
+
+        function init() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+            particles = [];
+            for (let i = 0; i < 150; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 2;
+                this.vy = (Math.random() - 0.5) * 2;
+                this.size = Math.random() * 2 + 1;
+                this.color = `rgba(${Math.random() * 100 + 150}, ${Math.random() * 100 + 150}, 255, ${Math.random() * 0.5})`;
+            }
+            update(mouse) {
+                let dx = mouse.x - this.x;
+                let dy = mouse.y - this.y;
+                let dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 200) {
+                    this.vx -= dx / 500;
+                    this.vy -= dy / 500;
+                }
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > width || this.y < 0 || this.y > height) this.reset();
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+        }
+
+        let mouse = { x: -1000, y: -1000 };
+        window.addEventListener('mousemove', e => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
         });
 
-        // মাউস সরিয়ে নিলে রিসেট হবে
-        document.addEventListener('mouseleave', () => {
-            card.style.transform = `rotateY(0deg) rotateX(0deg)`;
-            card.style.transition = "transform 0.5s ease";
-        });
+        function animate() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, width, height);
+            particles.forEach(p => {
+                p.update(mouse);
+                p.draw();
+            });
+            requestAnimationFrame(animate);
+        }
 
-        document.addEventListener('mouseenter', () => {
-            card.style.transition = "none";
-        });
+        window.addEventListener('resize', init);
+        init();
+        animate();
     </script>
 </body>
 </html>
