@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galib Academy | New Era</title>
+    <title>Galib Academy | The Future of Learning</title>
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #6366f1;
-            --secondary: #a855f7;
-            --accent: #00f2fe;
-            --bg-dark: #030014;
+            --primary: #00d2ff;
+            --secondary: #3a7bd5;
+            --bg: #050505;
         }
 
         * {
@@ -21,165 +20,154 @@
 
         body {
             font-family: 'Hind Siliguri', sans-serif;
-            background-color: var(--bg-dark);
+            background: var(--bg);
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            color: white;
-            perspective: 1000px;
+            color: #fff;
         }
 
-        /* ডাইনামিক ব্যাকগ্রাউন্ড */
-        .background {
+        /* অরোরা ব্যাকগ্রাউন্ড এফেক্ট */
+        .aurora-bg {
             position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            overflow: hidden;
+            background: radial-gradient(circle at 20% 30%, rgba(58, 123, 213, 0.15) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, rgba(0, 210, 255, 0.1) 0%, transparent 40%);
             z-index: -1;
-            background: radial-gradient(circle at center, #0a0a2e 0%, #030014 100%);
+            filter: blur(100px);
+            animation: drift 20s infinite alternate;
         }
 
-        .blob {
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            filter: blur(120px);
-            border-radius: 50%;
-            z-index: -1;
-            animation: move 25s infinite alternate linear;
-            opacity: 0.4;
+        @keyframes drift {
+            from { transform: scale(1); }
+            to { transform: scale(1.2); }
         }
 
-        @keyframes move {
-            from { transform: translate(-10%, -10%) rotate(0deg); }
-            to { transform: translate(50%, 50%) rotate(360deg); }
-        }
-
-        /* মেইন কার্ড ডিজাইন */
-        .container {
+        /* কার্ড ডিজাইন */
+        .glass-box {
             position: relative;
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(30px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(25px);
             border-radius: 40px;
-            padding: 70px 40px;
+            padding: 80px 40px;
             text-align: center;
+            max-width: 700px;
             width: 90%;
-            max-width: 650px;
-            box-shadow: 0 40px 120px rgba(0, 0, 0, 0.6), 
-                        inset 0 0 20px rgba(255, 255, 255, 0.05);
-            transform-style: preserve-3d;
-            transition: 0.5s ease;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .container:hover {
-            transform: translateY(-10px) rotateX(2deg);
+        .glass-box:hover {
+            background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 100px rgba(58, 123, 213, 0.1);
         }
 
-        /* লোগো সেকশন */
-        .logo-container {
-            margin-bottom: 25px;
+        /* প্রিমিয়াম লোগো টেক্সট */
+        .logo-wrap {
+            margin-bottom: 20px;
         }
 
         .logo-text {
-            font-size: 4rem;
+            font-size: 4.5rem;
             font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: -2px;
-            background: linear-gradient(to bottom, #fff, #888);
+            letter-spacing: -3px;
+            line-height: 1;
+            background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0.4) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
         }
 
-        .academy-badge {
-            display: inline-block;
-            background: linear-gradient(90deg, #6366f1, #a855f7);
-            padding: 8px 25px;
-            border-radius: 100px;
-            font-size: 0.9rem;
+        .tagline {
+            font-size: 0.8rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 40px;
             font-weight: 600;
-            margin-bottom: 35px;
-            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
-            animation: bounce 2s infinite ease-in-out;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
+            opacity: 0.8;
         }
 
         h2 {
             font-size: 2.2rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: #fff;
+            font-weight: 400;
+            margin-bottom: 25px;
+            background: linear-gradient(90deg, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         p {
-            font-size: 1.2rem;
-            color: #b0b0b0;
+            font-size: 1.1rem;
+            color: #777;
             line-height: 1.8;
-            max-width: 500px;
-            margin: 0 auto 40px;
+            margin-bottom: 40px;
+            max-width: 80%;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        /* ইন্টারেক্টিভ কন্টাক্ট বার */
-        .footer-info {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 20px;
-            border: 1px dashed rgba(255, 255, 255, 0.1);
-        }
-
-        .footer-info span {
-            display: block;
-            color: var(--accent);
-            font-weight: 600;
+        /* গ্লোয়িং বাটন */
+        .waitlist-btn {
+            padding: 16px 40px;
+            background: #fff;
+            color: #000;
+            border-radius: 100px;
+            font-weight: 700;
+            text-decoration: none;
             font-size: 1rem;
-            margin-bottom: 5px;
+            transition: 0.3s;
+            display: inline-block;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
         }
 
-        .footer-info p {
-            font-size: 0.95rem;
-            margin-bottom: 0;
-            color: #888;
+        .waitlist-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 50px rgba(255, 255, 255, 0.4);
+        }
+
+        /* ছোট ডিটেইলস */
+        .footer-note {
+            margin-top: 50px;
+            font-size: 0.8rem;
+            color: #333;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            padding-top: 30px;
         }
 
         /* রেসপন্সিভ */
         @media (max-width: 600px) {
-            .logo-text { font-size: 2.5rem; }
-            h2 { font-size: 1.5rem; }
-            .container { padding: 40px 20px; }
+            .logo-text { font-size: 2.8rem; }
+            h2 { font-size: 1.6rem; }
+            .glass-box { padding: 50px 20px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="background">
-        <div class="blob"></div>
-    </div>
+    <div class="aurora-bg"></div>
 
-    <div class="container">
-        <div class="academy-badge">NEXT-GEN LEARNING</div>
-        
-        <div class="logo-container">
+    <div class="glass-box">
+        <div class="tagline">Establishing Excellence</div>
+        <div class="logo-wrap">
             <h1 class="logo-text">Galib Academy</h1>
         </div>
         
-        <h2>আরবি শিক্ষার নতুন দিগন্ত</h2>
+        <h2>আরবি শিক্ষার এক নতুন অভিজ্ঞতা আসছে</h2>
         
         <p>
-            আমরা কাজ করছি একটি আধুনিক লার্নিং সিস্টেম নিয়ে। যেখানে আপনি পাবেন <strong>অ্যাডভান্সড আরবি কোর্স</strong> এবং <strong>লাইভ এক্সাম সিস্টেম</strong>।
+            আমরা একটি পাওয়ারফুল ই-লার্নিং ইকোসিস্টেম তৈরি করছি। আপনার শেখার যাত্রা আরও সহজ ও ফলপ্রসূ করতে <span style="color: #fff;">আরবি কোর্স ও অ্যাডভান্সড পরীক্ষা</span> নিয়ে ফিরছি খুব দ্রুত।
         </p>
 
-        <div class="footer-info">
-            <span>বর্তমানে সাইট ডেভেলপমেন্ট চলছে</span>
-            <p>আপডেটের জন্য নজর রাখুন। গালিব একাডেমীর সাথে থাকার জন্য ধন্যবাদ।</p>
+        <a href="#" class="waitlist-btn">শীঘ্রই দেখা হচ্ছে</a>
+
+        <div class="footer-note">
+            &copy; 2026 GALIB ACADEMY | DEFINING MODERN ARABIC LEARNING
         </div>
     </div>
 
