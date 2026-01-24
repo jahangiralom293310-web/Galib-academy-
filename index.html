@@ -3,190 +3,207 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galib Academy | Next-Gen Learning</title>
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;600;700&display=swap" rel="stylesheet">
+    <title>Galib Academy | Cinematic Experience</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;700&family=Orbitron:wght@400;900&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Hind Siliguri', sans-serif;
-            background: #00020a;
+            background: #000;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
+            font-family: 'Hind Siliguri', sans-serif;
             color: white;
         }
 
-        /* ক্যানভাস ব্যাকগ্রাউন্ড */
-        #particles-js {
+        /* ক্যানভাস (3D ব্যাকগ্রাউন্ড) */
+        #starfield {
             position: absolute;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             z-index: 1;
         }
 
-        /* আল্ট্রা গ্লাস কার্ড */
-        .premium-card {
+        /* মেইন ইন্টারফেস */
+        .content-wrapper {
             position: relative;
             z-index: 10;
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 40px;
-            padding: 80px 40px;
             text-align: center;
-            max-width: 650px;
-            width: 90%;
-            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.8);
-            transform-style: preserve-3d;
-            animation: floating 6s ease-in-out infinite;
+            perspective: 1000px;
         }
 
-        @keyframes floating {
-            0%, 100% { transform: translateY(0) rotateX(0); }
-            50% { transform: translateY(-20px) rotateX(2deg); }
+        .glass-frame {
+            background: rgba(255, 255, 255, 0.01);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 80px 60px;
+            border-radius: 20px;
+            box-shadow: 0 0 100px rgba(0, 0, 0, 0.5);
+            transform: rotateX(10deg);
+            animation: cardFloat 5s ease-in-out infinite alternate;
         }
 
-        /* লোগো অ্যানিমেশন */
-        .brand-name {
-            font-size: clamp(2.5rem, 8vw, 4.2rem);
-            font-weight: 700;
-            letter-spacing: -2px;
-            background: linear-gradient(to bottom, #fff 30%, rgba(255, 255, 255, 0.2) 100%);
+        @keyframes cardFloat {
+            from { transform: rotateX(10deg) translateY(0); }
+            to { transform: rotateX(5deg) translateY(-20px); }
+        }
+
+        .brand-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 5rem;
+            font-weight: 900;
+            letter-spacing: 15px;
+            text-transform: uppercase;
+            background: linear-gradient(to bottom, #fff 20%, rgba(255,255,255,0));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 20px rgba(255,255,255,0.3));
         }
 
-        .status-badge {
-            display: inline-flex;
+        .status-container {
+            display: flex;
             align-items: center;
-            gap: 8px;
-            background: rgba(99, 102, 241, 0.1);
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            padding: 8px 20px;
-            border-radius: 100px;
-            font-size: 0.8rem;
-            color: #818cf8;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            background: #22ff00;
-            border-radius: 50%;
-            box-shadow: 0 0 15px #22ff00;
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(0.8); opacity: 0.5; }
-            50% { transform: scale(1.2); opacity: 1; }
-            100% { transform: scale(0.8); opacity: 0.5; }
-        }
-
-        h2 {
-            font-size: 2rem;
-            font-weight: 300;
-            margin-bottom: 25px;
-            color: #ccc;
-        }
-
-        p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #888;
+            justify-content: center;
+            gap: 15px;
             margin-bottom: 40px;
         }
 
-        /* প্রিমিয়াম বাটন */
-        .glow-btn {
-            position: relative;
-            padding: 18px 45px;
-            background: transparent;
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 15px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            overflow: hidden;
-            transition: 0.4s;
-            text-decoration: none;
+        .line {
+            width: 50px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #fff);
         }
 
-        .glow-btn:hover {
+        .status-text {
+            font-size: 0.9rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: #aaa;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            font-weight: 300;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+        .description {
+            font-size: 1.15rem;
+            color: #888;
+            max-width: 500px;
+            margin: 0 auto 50px;
+            line-height: 2;
+        }
+
+        /* ডাইনামিক বাটন */
+        .btn-portal {
+            padding: 15px 50px;
+            background: transparent;
             border: 1px solid #fff;
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+            color: #fff;
+            font-size: 1rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.5s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-portal:hover {
             background: #fff;
             color: #000;
+            box-shadow: 0 0 50px rgba(255, 255, 255, 0.6);
         }
 
-        .footer-info {
-            margin-top: 50px;
-            font-size: 0.8rem;
-            color: #444;
-            letter-spacing: 4px;
+        @media (max-width: 768px) {
+            .brand-logo { font-size: 2.5rem; letter-spacing: 5px; }
+            .glass-frame { padding: 40px 20px; }
         }
     </style>
 </head>
 <body>
 
-    <div id="particles-js"></div>
+    <canvas id="starfield"></canvas>
 
-    <div class="premium-card">
-        <div class="status-badge">
-            <div class="status-dot"></div> Under Evolution
+    <div class="content-wrapper">
+        <div class="glass-frame">
+            <div class="status-container">
+                <div class="line"></div>
+                <span class="status-text">System Reboot</span>
+                <div class="line" style="transform: rotate(180deg);"></div>
+            </div>
+
+            <h1 class="brand-logo">Galib</h1>
+            <h1 class="brand-logo" style="margin-top: -30px; font-size: 3rem;">Academy</h1>
+            
+            <h2>নতুনত্বের অপেক্ষায়...</h2>
+            
+            <p class="description">
+                আমরা আমাদের ডিজিটাল অবকাঠামো পুনরায় সাজাচ্ছি। আরবি শিক্ষা ও উন্নত পরীক্ষার অভিজ্ঞতায় আপনি হতে যাচ্ছেন আমাদের অংশীদার।
+            </p>
+
+            <button class="btn-portal">Enter Academy</button>
         </div>
-        
-        <h1 class="brand-name">Galib Academy</h1>
-        
-        <h2>একটি আধুনিক পরিবর্তনের পথে...</h2>
-        
-        <p>
-            আমরা গালিব একাডেমীর ওয়েবসাইটটিকে ঢেলে সাজাচ্ছি। আরবি শিক্ষা ও পরীক্ষার এক নিরবিচ্ছিন্ন ডিজিটাল অভিজ্ঞতা নিয়ে খুব দ্রুত ফিরছি।
-        </p>
-
-        <a href="#" class="glow-btn">কানেক্টেড থাকুন</a>
-
-        <div class="footer-info">EST. 2026 | GALIB ACADEMY</div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        particlesJS("particles-js", {
-            "particles": {
-                "number": { "value": 100, "density": { "enable": true, "value_area": 800 } },
-                "color": { "value": "#ffffff" },
-                "shape": { "type": "circle" },
-                "opacity": { "value": 0.5, "random": true },
-                "size": { "value": 3, "random": true },
-                "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.2, "width": 1 },
-                "move": { "enable": true, "speed": 2, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": {
-                    "onhover": { "enable": true, "mode": "grab" },
-                    "onclick": { "enable": true, "mode": "push" },
-                    "resize": true
-                },
-                "modes": {
-                    "grab": { "distance": 200, "line_linked": { "opacity": 0.5 } }
+        const canvas = document.getElementById('starfield');
+        const ctx = canvas.getContext('2d');
+
+        let width, height, stars = [];
+        const numStars = 1000;
+        const speed = 2;
+
+        function init() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+            stars = [];
+            for (let i = 0; i < numStars; i++) {
+                stars.push({
+                    x: Math.random() * width - width / 2,
+                    y: Math.random() * height - height / 2,
+                    z: Math.random() * width,
+                    o: Math.random()
+                });
+            }
+        }
+
+        function draw() {
+            ctx.fillStyle = "black";
+            ctx.fillRect(0, 0, width, height);
+
+            for (let i = 0; i < numStars; i++) {
+                let star = stars[i];
+                star.z -= speed;
+
+                if (star.z <= 0) {
+                    star.z = width;
+                    star.x = Math.random() * width - width / 2;
+                    star.y = Math.random() * height - height / 2;
                 }
-            },
-            "retina_detect": true
-        });
+
+                const x = (star.x / star.z) * width + width / 2;
+                const y = (star.y / star.z) * height + height / 2;
+                const s = (1 - star.z / width) * 3;
+
+                ctx.fillStyle = `rgba(255, 255, 255, ${star.o})`;
+                ctx.beginPath();
+                ctx.arc(x, y, s, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            requestAnimationFrame(draw);
+        }
+
+        window.addEventListener('resize', init);
+        init();
+        draw();
     </script>
 </body>
 </html>
