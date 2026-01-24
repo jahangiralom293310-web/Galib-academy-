@@ -4,8 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galib Academy | Under Maintenance</title>
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #a855f7;
+            --accent: #22ff00;
+            --bg-dark: #0a0a0c;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -14,7 +21,7 @@
 
         body {
             font-family: 'Hind Siliguri', sans-serif;
-            background: #050505;
+            background-color: var(--bg-dark);
             height: 100vh;
             display: flex;
             justify-content: center;
@@ -23,145 +30,169 @@
             color: white;
         }
 
-        /* অ্যানিমেটেড ব্যাকগ্রাউন্ড কণা (Particles) */
-        .particles {
+        /* অ্যানিমেটেড ব্যাকগ্রাউন্ড মেশ */
+        .bg-mesh {
             position: absolute;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at center, #111 0%, #000 100%);
-            z-index: -1;
+            background: 
+                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.15) 0px, transparent 50%);
+            z-index: -2;
         }
 
-        .star {
+        /* স্পার্কল কণা */
+        #particles-js {
             position: absolute;
-            background: white;
-            border-radius: 50%;
-            opacity: 0.5;
-            animation: twinkle var(--duration) infinite;
-        }
-
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.2); }
+            width: 100%;
+            height: 100%;
+            z-index: -1;
         }
 
         .main-card {
             position: relative;
             background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 60px 30px;
-            border-radius: 40px;
+            padding: 50px 40px;
+            border-radius: 30px;
             text-align: center;
-            max-width: 650px;
+            max-width: 600px;
             width: 90%;
-            box-shadow: 0 0 80px rgba(0, 0, 0, 0.5);
-            transition: 0.5s;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1.5s ease-out;
         }
 
-        .main-card:hover {
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 0 100px rgba(99, 102, 241, 0.2);
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .logo-box {
+            margin-bottom: 20px;
         }
 
         .logo-text {
-            font-size: 3.5rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
             font-weight: 700;
-            background: linear-gradient(45deg, #ff00cc, #3333ff, #22ff00);
+            letter-spacing: -1px;
+            background: linear-gradient(to right, #fff 20%, #a855f7 50%, #6366f1 80%);
             background-size: 200% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: gradientText 5s linear infinite;
+            animation: shine 4s linear infinite;
         }
 
-        @keyframes gradientText {
+        @keyframes shine {
             to { background-position: 200% center; }
         }
 
         .badge {
-            background: linear-gradient(90deg, #6366f1, #a855f7);
-            padding: 6px 20px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 25px;
-            display: inline-block;
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+            display: inline-flex;
+            align-items: center;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            padding: 5px 15px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            color: #818cf8;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .badge span {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            margin-right: 8px;
+            box-shadow: 0 0 10px var(--accent);
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.7; }
+            70% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.7; }
         }
 
         h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: #fff;
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+            color: #f3f4f6;
         }
 
         p {
-            font-size: 1.15rem;
-            line-height: 1.8;
-            color: #ccc;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #9ca3af;
             margin-bottom: 30px;
         }
 
-        .thank-you-box {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 15px;
-            border-radius: 20px;
-            font-style: italic;
-            color: #a855f7;
-            border: 1px solid rgba(168, 85, 247, 0.2);
+        .info-footer {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.9rem;
+            color: #6b7280;
         }
 
-        .floating-icon {
-            font-size: 40px;
-            margin-bottom: 10px;
-            animation: float 3s ease-in-out infinite;
+        .highlight {
+            color: var(--secondary);
+            font-weight: 600;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+        /* রেসপন্সিভ মোবাইল এডজাস্টমেন্ট */
+        @media (max-width: 480px) {
+            .logo-text { font-size: 2.2rem; }
+            .main-card { padding: 40px 20px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="particles" id="particles"></div>
+    <div class="bg-mesh"></div>
+    <div id="particles-js"></div>
 
     <div class="main-card">
-        <div class="floating-icon">🚀</div>
-        <div class="badge">নতুন রূপে আসছি</div>
-        <h1 class="logo-text">Galib Academy</h1>
+        <div class="badge">
+            <span></span> শীঘ্রই ফিরছি
+        </div>
         
-        <h2>সাময়িক বিরতি</h2>
+        <div class="logo-box">
+            <h1 class="logo-text">Galib Academy</h1>
+        </div>
+        
+        <h2>আমাদের কাজ চলছে...</h2>
         
         <p>
-            সাম্প্রতিক কিছু কারণে গালিব একাডেমীর ওয়েবসাইট ডেভেলপমেন্ট ও কার্যক্রম আপাতত বন্ধ রাখা হয়েছে। আপনার ধৈর্যের জন্য আমরা কৃতজ্ঞ। 
-            <br>
-            <strong>পরবর্তীতে আবার পরীক্ষা শুরু হলে সরাসরি এখানে সব আপডেট পাবেন।</strong>
+            আমরা গালিব একাডেমীর ওয়েবসাইটটিকে আরও সহজ ও উন্নত করছি। খুব শীঘ্রই আপনি এখানে আপনার প্রিয় <span class="highlight">আরবি কোর্স এবং অনলাইন পরীক্ষাগুলো</span> দিতে পারবেন।
         </p>
 
-        <div class="thank-you-box">
-            গালিব একাডেমীর সাথে থাকার জন্য আপনাদের একান্ত ধন্যবাদ। ❤️
+        <div class="info-footer">
+            ধৈর্য ধরার জন্য ধন্যবাদ | Galib Academy 2026
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // ব্যাকগ্রাউন্ডে নক্ষত্র তৈরির ছোট স্ক্রিপ্ট
-        const particles = document.getElementById('particles');
-        for (let i = 0; i < 50; i++) {
-            const star = document.createElement('div');
-            star.className = 'star';
-            const size = Math.random() * 3 + 'px';
-            star.style.width = size;
-            star.style.height = size;
-            star.style.top = Math.random() * 100 + '%';
-            star.style.left = Math.random() * 100 + '%';
-            star.style.setProperty('--duration', Math.random() * 3 + 2 + 's');
-            particles.appendChild(star);
-        }
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 80 },
+                "color": { "value": "#ffffff" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.2 },
+                "size": { "value": 2 },
+                "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.1, "width": 1 },
+                "move": { "enable": true, "speed": 1 }
+            },
+            "interactivity": {
+                "events": { "onhover": { "enable": true, "mode": "grab" } }
+            }
+        });
     </script>
-
 </body>
 </html>
