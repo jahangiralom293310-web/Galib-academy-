@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galib Academy | Redefining Education</title>
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;600;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+    <title>Galib Academy | Code to Future</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <style>
         :root {
-            --glow-color: #6366f1;
-            --accent-color: #22ff00;
+            --primary-glow: #00e676; /* Bright Green */
+            --secondary-glow: #00bcd4; /* Cyan */
+            --bg-dark: #0d1117; /* GitHub Dark BG */
         }
 
         * {
@@ -19,176 +20,210 @@
 
         body {
             font-family: 'Hind Siliguri', sans-serif;
-            background: #020205;
+            background: var(--bg-dark);
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            color: white;
+            color: #e6e6e6;
         }
 
-        /* 3D এনিমেটেড গ্রিড ব্যাকগ্রাউন্ড */
-        .bg-container {
+        /* অ্যানিমেটেড কোড রেইন ব্যাকগ্রাউন্ড */
+        .code-rain-bg {
             position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            perspective: 1000px;
+            overflow: hidden;
             z-index: -1;
-            background: radial-gradient(circle at center, #0a0a20 0%, #000 100%);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1.2rem;
+            color: var(--primary-glow);
+            text-shadow: 0 0 5px var(--primary-glow);
         }
 
-        .grid {
+        .code-line {
             position: absolute;
-            width: 200%;
-            height: 200%;
-            top: -50%;
-            left: -50%;
-            background-image: 
-                linear-gradient(rgba(99, 102, 241, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(99, 102, 241, 0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            transform: rotateX(60deg);
-            animation: grid-move 20s linear infinite;
+            white-space: nowrap;
+            opacity: 0;
+            animation: code-flow linear infinite;
         }
 
-        @keyframes grid-move {
-            from { transform: rotateX(60deg) translateY(0); }
-            to { transform: rotateX(60deg) translateY(50px); }
+        @keyframes code-flow {
+            0% { transform: translateY(-100%); opacity: 0; }
+            5% { opacity: 1; }
+            95% { opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
         }
 
         /* মেইন কন্টেইনার */
-        .hero-card {
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(40px);
-            -webkit-backdrop-filter: blur(40px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 50px;
-            padding: 80px 50px;
+        .main-content {
+            background: rgba(18, 26, 34, 0.7); /* Translucent Dark BG */
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(40, 44, 52, 0.5);
+            border-radius: 20px;
+            padding: 60px 40px;
             text-align: center;
-            max-width: 800px;
+            max-width: 700px;
             width: 90%;
-            position: relative;
-            box-shadow: 0 0 100px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            animation: fadeInScale 1s ease-out forwards;
         }
 
-        /* এনিমেটেড বর্ডার লাইট */
-        .hero-card::before {
-            content: '';
-            position: absolute;
-            top: -2px; left: -2px; right: -2px; bottom: -2px;
-            background: linear-gradient(45deg, var(--glow-color), transparent, var(--accent-color), transparent);
-            z-index: -1;
-            border-radius: 52px;
-            animation: border-dance 4s linear infinite;
-            opacity: 0.3;
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
         }
 
-        @keyframes border-dance {
-            0% { filter: hue-rotate(0deg); }
-            100% { filter: hue-rotate(360deg); }
+        .badge {
+            display: inline-block;
+            background: rgba(0, 230, 118, 0.1);
+            border: 1px solid var(--primary-glow);
+            color: var(--primary-glow);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 30px;
+            animation: pulse-glow 2s infinite alternate;
+        }
+
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 5px var(--primary-glow); }
+            100% { box-shadow: 0 0 20px var(--primary-glow); }
         }
 
         .logo-title {
-            font-family: 'Syncopate', sans-serif;
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-size: clamp(2.5rem, 8vw, 4rem);
             font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: -4px;
-            margin-bottom: 10px;
-            color: #fff;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #fff, #aaa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: text-reveal 1.5s ease-out forwards;
         }
 
-        .sub-text {
-            font-size: 0.9rem;
-            letter-spacing: 10px;
-            text-transform: uppercase;
-            color: var(--accent-color);
-            margin-bottom: 40px;
-            display: block;
-            font-weight: 700;
+        @keyframes text-reveal {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         h2 {
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-            background: linear-gradient(to right, #fff, #888);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: #c9d1d9;
+            margin-bottom: 25px;
+            animation: text-reveal 1.8s ease-out forwards;
         }
 
         p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: #aaa;
+            font-size: 1.1rem;
+            color: #8b949e;
+            line-height: 1.7;
             margin-bottom: 40px;
-            max-width: 600px;
+            max-width: 550px;
             margin-left: auto;
             margin-right: auto;
+            animation: text-reveal 2.1s ease-out forwards;
         }
 
-        /* ইন্টারেক্টিভ এলিমেন্ট */
-        .loading-bar {
-            width: 200px;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.1);
-            margin: 0 auto;
+        .cta-button {
+            display: inline-block;
+            background: var(--primary-glow);
+            color: var(--bg-dark);
+            padding: 15px 35px;
             border-radius: 10px;
-            overflow: hidden;
-            position: relative;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px var(--primary-glow);
+            animation: text-reveal 2.4s ease-out forwards;
         }
 
-        .loading-progress {
-            position: absolute;
-            width: 50%;
-            height: 100%;
-            background: var(--glow-color);
-            box-shadow: 0 0 15px var(--glow-color);
-            animation: progress-anim 2s ease-in-out infinite;
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 0 25px var(--primary-glow), 0 0 50px var(--secondary-glow);
         }
 
-        @keyframes progress-anim {
-            0% { left: -50%; }
-            100% { left: 100%; }
-        }
-
-        .footer-tag {
-            margin-top: 50px;
-            font-size: 0.75rem;
-            color: #444;
-            letter-spacing: 2px;
+        .footer-text {
+            margin-top: 40px;
+            font-size: 0.8rem;
+            color: #4a5568;
+            letter-spacing: 1px;
+            animation: text-reveal 2.7s ease-out forwards;
         }
 
         /* রেসপন্সিভ */
         @media (max-width: 600px) {
-            .hero-card { padding: 50px 20px; border-radius: 30px; }
-            .sub-text { letter-spacing: 5px; font-size: 0.7rem; }
+            .main-content { padding: 40px 20px; }
+            .logo-title { font-size: 2.5rem; }
+            h2 { font-size: 1.4rem; }
+            p { font-size: 0.95rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="bg-container">
-        <div class="grid"></div>
-    </div>
+    <div class="code-rain-bg" id="codeRain"></div>
 
-    <div class="hero-card">
-        <span class="sub-text">Under Construction</span>
+    <div class="main-content">
+        <div class="badge">💻 ডিজিটাল লার্নিংয়ের নতুন যুগ</div>
+        
         <h1 class="logo-title">Galib Academy</h1>
         
-        <h2>একটি বৈপ্লবিক পরিবর্তন আসছে</h2>
+        <h2>আমাদের প্ল্যাটফর্ম আপগ্রেড করা হচ্ছে</h2>
         
         <p>
-            আমরা তৈরি করছি ডিজিটাল লার্নিংয়ের নতুন মানদণ্ড। আপনার <span style="color: #fff;">আরবি শিক্ষা এবং অনলাইন মূল্যায়ন</span> হবে আরও দ্রুত ও আধুনিক।
+            আরবি ভাষার প্রতিটি nuance বোঝার জন্য আমরা তৈরি করছি একটি ইন্টারেক্টিভ ও আধুনিক ই-লার্নিং অভিজ্ঞতা। 
+            শীঘ্রই ফিরে আসছি আরও উন্নত <span style="color: #fff;">কোর্স এবং লাইভ পরীক্ষার ব্যবস্থা</span> নিয়ে।
         </p>
 
-        <div class="loading-bar">
-            <div class="loading-progress"></div>
-        </div>
+        <a href="#" class="cta-button">আমাদের সাথে থাকুন</a>
 
-        <div class="footer-tag">EST. 2026 | UNLOCKING KNOWLEDGE</div>
+        <div class="footer-text">
+            Galib Academy &copy; 2026 | Powered by Innovation
+        </div>
     </div>
+
+    <script>
+        // কোড রেইন অ্যানিমেশন
+        const codeRain = document.getElementById('codeRain');
+        const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+-=[]{}|;:,.<>?';
+
+        function createCodeLine() {
+            const line = document.createElement('div');
+            line.classList.add('code-line');
+            
+            // র্যান্ডম টেক্সট
+            let text = '';
+            for (let i = 0; i < 30; i++) {
+                text += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            line.textContent = text;
+
+            line.style.left = Math.random() * 100 + 'vw';
+            line.style.animationDuration = Math.random() * 10 + 5 + 's'; // 5 থেকে 15 সেকেন্ড
+            line.style.animationDelay = Math.random() * 5 + 's'; // 0 থেকে 5 সেকেন্ড
+            line.style.fontSize = Math.random() * 0.8 + 0.6 + 'rem'; // 0.6 থেকে 1.4rem
+
+            codeRain.appendChild(line);
+
+            // লাইনটি শেষ হলে সরিয়ে ফেলা
+            line.addEventListener('animationend', () => {
+                line.remove();
+            });
+        }
+
+        // প্রতি অল্প সময় পর পর নতুন লাইন তৈরি
+        setInterval(createCodeLine, 200); 
+        // প্রাথমিক কিছু লাইন তৈরি
+        for (let i = 0; i < 50; i++) {
+            createCodeLine();
+        }
+    </script>
 
 </body>
 </html>
