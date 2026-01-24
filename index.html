@@ -3,15 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galib Academy | Code to Future</title>
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <title>Galib Academy | Next-Gen Learning</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-glow: #00e676; /* Bright Green */
-            --secondary-glow: #00bcd4; /* Cyan */
-            --bg-dark: #0d1117; /* GitHub Dark BG */
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -20,210 +14,179 @@
 
         body {
             font-family: 'Hind Siliguri', sans-serif;
-            background: var(--bg-dark);
+            background: #00020a;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            color: #e6e6e6;
+            color: white;
         }
 
-        /* অ্যানিমেটেড কোড রেইন ব্যাকগ্রাউন্ড */
-        .code-rain-bg {
+        /* ক্যানভাস ব্যাকগ্রাউন্ড */
+        #particles-js {
             position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
-            overflow: hidden;
-            z-index: -1;
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 1.2rem;
-            color: var(--primary-glow);
-            text-shadow: 0 0 5px var(--primary-glow);
+            z-index: 1;
         }
 
-        .code-line {
-            position: absolute;
-            white-space: nowrap;
-            opacity: 0;
-            animation: code-flow linear infinite;
-        }
-
-        @keyframes code-flow {
-            0% { transform: translateY(-100%); opacity: 0; }
-            5% { opacity: 1; }
-            95% { opacity: 1; }
-            100% { transform: translateY(100vh); opacity: 0; }
-        }
-
-        /* মেইন কন্টেইনার */
-        .main-content {
-            background: rgba(18, 26, 34, 0.7); /* Translucent Dark BG */
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(40, 44, 52, 0.5);
-            border-radius: 20px;
-            padding: 60px 40px;
+        /* আল্ট্রা গ্লাস কার্ড */
+        .premium-card {
+            position: relative;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 40px;
+            padding: 80px 40px;
             text-align: center;
-            max-width: 700px;
+            max-width: 650px;
             width: 90%;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-            animation: fadeInScale 1s ease-out forwards;
+            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.8);
+            transform-style: preserve-3d;
+            animation: floating 6s ease-in-out infinite;
         }
 
-        @keyframes fadeInScale {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
+        @keyframes floating {
+            0%, 100% { transform: translateY(0) rotateX(0); }
+            50% { transform: translateY(-20px) rotateX(2deg); }
         }
 
-        .badge {
-            display: inline-block;
-            background: rgba(0, 230, 118, 0.1);
-            border: 1px solid var(--primary-glow);
-            color: var(--primary-glow);
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            margin-bottom: 30px;
-            animation: pulse-glow 2s infinite alternate;
-        }
-
-        @keyframes pulse-glow {
-            0% { box-shadow: 0 0 5px var(--primary-glow); }
-            100% { box-shadow: 0 0 20px var(--primary-glow); }
-        }
-
-        .logo-title {
-            font-size: clamp(2.5rem, 8vw, 4rem);
+        /* লোগো অ্যানিমেশন */
+        .brand-name {
+            font-size: clamp(2.5rem, 8vw, 4.2rem);
             font-weight: 700;
             letter-spacing: -2px;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #fff, #aaa);
+            background: linear-gradient(to bottom, #fff 30%, rgba(255, 255, 255, 0.2) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: text-reveal 1.5s ease-out forwards;
+            margin-bottom: 15px;
         }
 
-        @keyframes text-reveal {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            color: #818cf8;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #22ff00;
+            border-radius: 50%;
+            box-shadow: 0 0 15px #22ff00;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(0.8); opacity: 0.5; }
         }
 
         h2 {
-            font-size: 1.8rem;
-            font-weight: 400;
-            color: #c9d1d9;
+            font-size: 2rem;
+            font-weight: 300;
             margin-bottom: 25px;
-            animation: text-reveal 1.8s ease-out forwards;
+            color: #ccc;
         }
 
         p {
             font-size: 1.1rem;
-            color: #8b949e;
-            line-height: 1.7;
+            line-height: 1.8;
+            color: #888;
             margin-bottom: 40px;
-            max-width: 550px;
-            margin-left: auto;
-            margin-right: auto;
-            animation: text-reveal 2.1s ease-out forwards;
         }
 
-        .cta-button {
-            display: inline-block;
-            background: var(--primary-glow);
-            color: var(--bg-dark);
-            padding: 15px 35px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 700;
+        /* প্রিমিয়াম বাটন */
+        .glow-btn {
+            position: relative;
+            padding: 18px 45px;
+            background: transparent;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
             font-size: 1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 15px var(--primary-glow);
-            animation: text-reveal 2.4s ease-out forwards;
+            font-weight: 600;
+            cursor: pointer;
+            overflow: hidden;
+            transition: 0.4s;
+            text-decoration: none;
         }
 
-        .cta-button:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 0 25px var(--primary-glow), 0 0 50px var(--secondary-glow);
+        .glow-btn:hover {
+            border: 1px solid #fff;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+            background: #fff;
+            color: #000;
         }
 
-        .footer-text {
-            margin-top: 40px;
+        .footer-info {
+            margin-top: 50px;
             font-size: 0.8rem;
-            color: #4a5568;
-            letter-spacing: 1px;
-            animation: text-reveal 2.7s ease-out forwards;
-        }
-
-        /* রেসপন্সিভ */
-        @media (max-width: 600px) {
-            .main-content { padding: 40px 20px; }
-            .logo-title { font-size: 2.5rem; }
-            h2 { font-size: 1.4rem; }
-            p { font-size: 0.95rem; }
+            color: #444;
+            letter-spacing: 4px;
         }
     </style>
 </head>
 <body>
 
-    <div class="code-rain-bg" id="codeRain"></div>
+    <div id="particles-js"></div>
 
-    <div class="main-content">
-        <div class="badge">💻 ডিজিটাল লার্নিংয়ের নতুন যুগ</div>
+    <div class="premium-card">
+        <div class="status-badge">
+            <div class="status-dot"></div> Under Evolution
+        </div>
         
-        <h1 class="logo-title">Galib Academy</h1>
+        <h1 class="brand-name">Galib Academy</h1>
         
-        <h2>আমাদের প্ল্যাটফর্ম আপগ্রেড করা হচ্ছে</h2>
+        <h2>একটি আধুনিক পরিবর্তনের পথে...</h2>
         
         <p>
-            আরবি ভাষার প্রতিটি nuance বোঝার জন্য আমরা তৈরি করছি একটি ইন্টারেক্টিভ ও আধুনিক ই-লার্নিং অভিজ্ঞতা। 
-            শীঘ্রই ফিরে আসছি আরও উন্নত <span style="color: #fff;">কোর্স এবং লাইভ পরীক্ষার ব্যবস্থা</span> নিয়ে।
+            আমরা গালিব একাডেমীর ওয়েবসাইটটিকে ঢেলে সাজাচ্ছি। আরবি শিক্ষা ও পরীক্ষার এক নিরবিচ্ছিন্ন ডিজিটাল অভিজ্ঞতা নিয়ে খুব দ্রুত ফিরছি।
         </p>
 
-        <a href="#" class="cta-button">আমাদের সাথে থাকুন</a>
+        <a href="#" class="glow-btn">কানেক্টেড থাকুন</a>
 
-        <div class="footer-text">
-            Galib Academy &copy; 2026 | Powered by Innovation
-        </div>
+        <div class="footer-info">EST. 2026 | GALIB ACADEMY</div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // কোড রেইন অ্যানিমেশন
-        const codeRain = document.getElementById('codeRain');
-        const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+-=[]{}|;:,.<>?';
-
-        function createCodeLine() {
-            const line = document.createElement('div');
-            line.classList.add('code-line');
-            
-            // র্যান্ডম টেক্সট
-            let text = '';
-            for (let i = 0; i < 30; i++) {
-                text += chars.charAt(Math.floor(Math.random() * chars.length));
-            }
-            line.textContent = text;
-
-            line.style.left = Math.random() * 100 + 'vw';
-            line.style.animationDuration = Math.random() * 10 + 5 + 's'; // 5 থেকে 15 সেকেন্ড
-            line.style.animationDelay = Math.random() * 5 + 's'; // 0 থেকে 5 সেকেন্ড
-            line.style.fontSize = Math.random() * 0.8 + 0.6 + 'rem'; // 0.6 থেকে 1.4rem
-
-            codeRain.appendChild(line);
-
-            // লাইনটি শেষ হলে সরিয়ে ফেলা
-            line.addEventListener('animationend', () => {
-                line.remove();
-            });
-        }
-
-        // প্রতি অল্প সময় পর পর নতুন লাইন তৈরি
-        setInterval(createCodeLine, 200); 
-        // প্রাথমিক কিছু লাইন তৈরি
-        for (let i = 0; i < 50; i++) {
-            createCodeLine();
-        }
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 100, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#ffffff" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.5, "random": true },
+                "size": { "value": 3, "random": true },
+                "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.2, "width": 1 },
+                "move": { "enable": true, "speed": 2, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": { "enable": true, "mode": "grab" },
+                    "onclick": { "enable": true, "mode": "push" },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": { "distance": 200, "line_linked": { "opacity": 0.5 } }
+                }
+            },
+            "retina_detect": true
+        });
     </script>
-
 </body>
 </html>
