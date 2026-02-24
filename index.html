@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galib Academy | The Future of Arabic Learning</title>
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;700&family=Montserrat:wght@900&display=swap" rel="stylesheet">
+    <title>ডিজিটাল সংযম - Galib Academy</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         :root {
-            --primary-color: #00e676; /* Bright Green */
-            --secondary-color: #00bcd4; /* Cyan */
-            --text-light: #e0e0e0;
-            --text-dark: #333;
-            --bg-dark-overlay: rgba(0, 0, 0, 0.7); /* Darker overlay for text readability */
+            --primary: #fbbf24;
+            --secondary: #0ea5e9;
+            --bg: #020617;
+            --card-bg: rgba(255, 255, 255, 0.05);
         }
 
         * {
@@ -22,186 +24,234 @@
 
         body {
             font-family: 'Hind Siliguri', sans-serif;
-            background-color: #000; /* Fallback background */
-            height: 100vh;
+            background-color: var(--bg);
+            color: #f8fafc;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
-            color: var(--text-light);
+            min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        /* কাস্টম ব্যাকগ্রাউন্ড ইমেজ */
-        .background-image {
-            position: absolute;
+        /* অ্যানিমেটেড ব্যাকগ্রাউন্ড */
+        .background {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('https://image.pollinations.ai/prompt/Modern%20tech,%20Islamic%20architecture,%20calligraphy,%20futuristic,%20luxury%20design,%20Galib%20Academy'); /* আপনার জেনারেট করা ছবির URL */
-            background-size: cover;
-            background-position: center;
-            filter: brightness(0.6) contrast(1.2); /* ছবির উজ্জ্বলতা ও কন্ট্রাস্ট কমানো */
-            z-index: -2; /* Ensure it's behind everything */
-            animation: bg-zoom 20s infinite alternate; /* হালকা জুম অ্যানিমেশন */
-        }
-
-        @keyframes bg-zoom {
-            from { transform: scale(1); }
-            to { transform: scale(1.1); }
-        }
-
-        /* ব্যাকগ্রাউন্ডের উপর হালকা ডার্ক ওভারলে */
-        .background-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.8) 100%);
             z-index: -1;
+            background: radial-gradient(circle at 50% 50%, #1e293b 0%, #020617 100%);
         }
 
-        /* গ্লাস মরফিজম কার্ড */
-        .glass-card {
-            position: relative;
-            background: rgba(255, 255, 255, 0.05); /* হালকা স্বচ্ছ সাদা */
-            backdrop-filter: blur(30px); /* মূল গ্লাস ইফেক্ট */
-            -webkit-backdrop-filter: blur(30px);
-            border: 1px solid rgba(255, 255, 255, 0.15); /* হালকা বর্ডার */
-            border-radius: 40px;
-            padding: 80px 50px;
+        .cube {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(251, 191, 36, 0.2);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            from { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            to { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* মেইন কার্ড */
+        .poster-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            width: 95%;
+            max-width: 650px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
             text-align: center;
-            max-width: 700px;
-            width: 90%;
-            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.6); /* গভীর শ্যাডো */
-            animation: slide-in 1.2s ease-out forwards; /* কার্ড আসার অ্যানিমেশন */
+            position: relative;
+            animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        @keyframes slide-in {
-            from { opacity: 0; transform: translateY(50px) scale(0.9); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
-        /* লোগো এবং টাইপোগ্রাফি */
-        .logo-text {
-            font-family: 'Montserrat', sans-serif;
-            font-size: clamp(3rem, 10vw, 5rem);
-            font-weight: 900;
-            line-height: 1;
-            margin-bottom: 15px;
-            background: linear-gradient(45deg, #ffffff, #aaaaaa);
+        .header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(to right, #fbbf24, #f59e0b);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-            animation: text-glow 2s infinite alternate; /* টেক্সট গ্লো অ্যানিমেশন */
-        }
-
-        @keyframes text-glow {
-            from { text-shadow: 0 0 10px rgba(255, 255, 255, 0.1); }
-            to { text-shadow: 0 0 30px rgba(255, 255, 255, 0.4); }
-        }
-
-        .tagline {
-            font-size: 0.9rem;
-            letter-spacing: 8px;
-            text-transform: uppercase;
-            color: var(--primary-color);
-            margin-bottom: 40px;
-            font-weight: 600;
-            opacity: 0.9;
-            animation: fade-in-up 1.5s ease-out forwards;
-            animation-delay: 0.3s;
-        }
-
-        h2 {
-            font-size: 2.2rem;
-            font-weight: 300;
-            margin-bottom: 25px;
-            color: var(--text-light);
-            animation: fade-in-up 1.5s ease-out forwards;
-            animation-delay: 0.6s;
-        }
-
-        p {
-            font-size: 1.1rem;
-            color: #b0b0b0;
-            line-height: 1.8;
-            margin-bottom: 50px;
-            max-width: 550px;
-            margin-left: auto;
-            margin-right: auto;
-            animation: fade-in-up 1.5s ease-out forwards;
-            animation-delay: 0.9s;
-        }
-
-        @keyframes fade-in-up {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* নিওন বাটন */
-        .call-to-action-btn {
-            padding: 18px 45px;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            color: #000;
-            border-radius: 100px;
+            margin-bottom: 10px;
             font-weight: 700;
-            text-decoration: none;
-            font-size: 1rem;
-            transition: all 0.4s ease;
-            display: inline-block;
-            box-shadow: 0 15px 30px rgba(0, 230, 118, 0.3);
-            animation: fade-in-up 1.5s ease-out forwards;
-            animation-delay: 1.2s;
         }
 
-        .call-to-action-btn:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 25px 50px rgba(0, 230, 118, 0.5);
+        .header p {
+            color: #94a3b8;
+            margin-bottom: 35px;
+            letter-spacing: 1px;
+        }
+
+        /* কন্টেন্ট লিস্ট */
+        .points-grid {
+            display: grid;
+            gap: 20px;
+            margin-bottom: 35px;
+        }
+
+        .point-item {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+
+        .point-item:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: var(--primary);
+            transform: scale(1.02);
+        }
+
+        .point-item.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            background: rgba(251, 191, 36, 0.1);
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .text-box {
+            text-align: left;
+        }
+
+        .text-box h3 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .text-box p {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            line-height: 1.5;
         }
 
         /* ফুটার */
-        .footer-note {
-            margin-top: 50px;
-            font-size: 0.8rem;
-            color: #777;
-            letter-spacing: 2px;
-            animation: fade-in-up 1.5s ease-out forwards;
-            animation-delay: 1.5s;
+        .footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 25px;
         }
 
-        /* রেসপন্সিভ ডিজাইন */
-        @media (max-width: 600px) {
-            .glass-card { padding: 50px 25px; border-radius: 30px; }
-            .logo-text { font-size: 2.8rem; }
-            h2 { font-size: 1.8rem; }
-            p { font-size: 1rem; }
-            .tagline { letter-spacing: 5px; }
+        .footer-quote {
+            color: #94a3b8;
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
         }
+
+        .brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .tagline {
+            color: var(--secondary);
+            font-size: 0.8rem;
+            margin-top: 5px;
+        }
+
     </style>
 </head>
 <body>
 
-    <div class="background-image"></div>
-    <div class="background-overlay"></div>
+    <div class="background" id="bg-animation"></div>
 
-    <div class="glass-card">
-        <h1 class="logo-text">Galib Academy</h1>
-        <span class="tagline">জ্ঞান যেখানে সীমাহীন</span>
-        
-        <h2>আরবি শিক্ষা ও আধুনিকতার নতুন দিগন্ত</h2>
-        
-        <p>
-            আমরা একটি বৈপ্লবিক ই-লার্নিং প্ল্যাটফর্ম তৈরি করছি। আপনার শেখার যাত্রা আরও সহজ, ইন্টারেক্টিভ এবং ফলপ্রসূ করতে উন্নত আরবি কোর্স ও অ্যাডভান্সড পরীক্ষার ব্যবস্থা নিয়ে আসছি।
-        </p>
+    <div class="poster-card">
+        <div class="header">
+            <h1>রমজানে ডিজিটাল সংযম</h1>
+            <p>Galib Academy Special Guidelines</p>
+        </div>
 
-        <a href="#" class="call-to-action-btn">আমাদের সাথে থাকুন</a>
+        <div class="points-grid">
+            <div class="point-item">
+                <div class="icon-box"><i class="fas fa-hand-pointer"></i></div>
+                <div class="text-box">
+                    <h3>অবাধ স্ক্রলিং বন্ধ করুন</h3>
+                    <p>রিলস বা শর্টসের মায়াজালে মূল্যবান সময় নষ্ট করবেন না।</p>
+                </div>
+            </div>
 
-        <div class="footer-note">
-            &copy; 2026 GALIB ACADEMY | শ্রেষ্ঠত্বের নতুন সংজ্ঞা
+            <div class="point-item">
+                <div class="icon-box"><i class="fas fa-eye"></i></div>
+                <div class="text-box">
+                    <h3>দৃষ্টির হেফাজত করুন</h3>
+                    <p>সোশ্যাল মিডিয়ায় অশ্লীল বা অনর্থক কন্টেন্ট থেকে দূরে থাকুন।</p>
+                </div>
+            </div>
+
+            <div class="point-item">
+                <div class="icon-box"><i class="fas fa-volume-xmark"></i></div>
+                <div class="text-box">
+                    <h3>গান ও মিউজিক বর্জন</h3>
+                    <p>রমজানের পবিত্রতা রক্ষায় বাদ্যযন্ত্র ও মিউজিক এড়িয়ে চলুন।</p>
+                </div>
+            </div>
+
+            <div class="point-item">
+                <div class="icon-box"><i class="fas fa-clock"></i></div>
+                <div class="text-box">
+                    <h3>ইবাদতে সময় দিন</h3>
+                    <p>স্ক্রিন টাইম কমিয়ে তিলাওয়াত ও জিকিরে মনোযোগী হোন।</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p class="footer-quote">"আসুন, ডিজিটাল আসক্তি ছেড়ে আল্লাহর সান্নিধ্যে সময় কাটাই।"</p>
+            <div class="brand">Galib Academy</div>
+            <div class="tagline">শুদ্ধ জ্ঞান ও আমলের পথে আপনার সাথী</div>
         </div>
     </div>
 
+    <script>
+        // ব্যাকগ্রাউন্ড কণা তৈরি
+        const bg = document.getElementById('bg-animation');
+        for (let i = 0; i < 20; i++) {
+            const cube = document.createElement('div');
+            cube.className = 'cube';
+            cube.style.left = Math.random() * 100 + '%';
+            cube.style.animationDelay = Math.random() * 15 + 's';
+            cube.style.opacity = Math.random();
+            bg.appendChild(cube);
+        }
+
+        // পয়েন্টগুলো লোড হওয়ার অ্যানিমেশন
+        const items = document.querySelectorAll('.point-item');
+        items.forEach((item, index) => {
+            setTimeout(() => {
+                item.classList.add('show');
+            }, 300 * (index + 1));
+        });
+    </script>
 </body>
 </html>
