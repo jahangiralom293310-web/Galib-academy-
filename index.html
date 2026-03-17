@@ -3,166 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Eid Greeting | Galib Academy</title>
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;700&family=Noto+Serif+Bengali:wght@700&display=swap" rel="stylesheet">
+    <title>Galib Academy | Eid Special</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;700&family=Noto+Serif+Bengali:wght@900&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --gold: linear-gradient(135deg, #fceabb 0%, #f8b500 50%, #fceabb 100%);
-            --deep-royal: #060c21;
-        }
-
-        body, html {
-            margin: 0; padding: 0; width: 100%; height: 100%;
-            background: var(--deep-royal); overflow: hidden;
-            font-family: 'Hind Siliguri', sans-serif;
-            display: flex; justify-content: center; align-items: center;
-        }
-
-        /* ডাইনামিক গোল্ডেন পার্টিকেল ব্যাকগ্রাউন্ড */
-        .canvas-bg {
-            position: absolute; width: 100%; height: 100%;
-            background: radial-gradient(circle at center, #0a1931 0%, #000 100%);
-            z-index: -1;
-        }
-
-        .poster-frame {
-            position: relative;
-            width: 380px; height: 550px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 2px solid;
-            border-image: var(--gold) 1;
-            box-shadow: 0 0 50px rgba(248, 181, 0, 0.15);
-            padding: 40px;
-            text-align: center;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-        }
-
-        /* কোণায় ডেকোরেশন */
-        .corner {
-            position: absolute; width: 60px; height: 60px;
-            border: 2px solid #f8b500;
-        }
-        .top-left { top: 10px; left: 10px; border-right: none; border-bottom: none; }
-        .bottom-right { bottom: 10px; right: 10px; border-left: none; border-top: none; }
-
-        .moon-glow {
-            width: 80px; height: 80px;
-            background: #f8b500;
-            border-radius: 50%;
-            margin: 0 auto 30px;
-            filter: blur(40px);
-            opacity: 0.6;
-            animation: pulse 3s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.4; }
-            50% { transform: scale(1.2); opacity: 0.7; }
-        }
-
-        h1 {
-            font-family: 'Noto Serif Bengali', serif;
-            font-size: 3.5rem;
-            background: var(--gold);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        body {
             margin: 0;
-            filter: drop-shadow(0 0 5px rgba(248,181,0,0.3));
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #050505;
+            font-family: 'Hind Siliguri', sans-serif;
+            overflow: hidden;
         }
 
-        .eng-sub {
-            color: #fff;
-            letter-spacing: 6px;
-            font-size: 0.9rem;
-            margin-bottom: 40px;
-            opacity: 0.7;
+        /* ব্যাকগ্রাউন্ড লাইট ইফেক্ট */
+        .bg-glow {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(50px);
+        }
+
+        .card-wrapper {
+            position: relative;
+            width: 350px;
+            height: 500px;
+            background: linear-gradient(145deg, #111, #000);
+            border-radius: 20px;
+            padding: 2px; /* বর্ডার ইফেক্টের জন্য */
+            box-shadow: 0 30px 60px rgba(0,0,0,0.9);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        /* গোল্ডেন বর্ডার অ্যানিমেশন */
+        .card-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            border-radius: 20px;
+            background: linear-gradient(45deg, transparent, #d4af37, transparent);
+            z-index: -1;
+            animation: borderRotate 4s linear infinite;
+        }
+
+        @keyframes borderRotate {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        .main-content {
+            background: #0a0a0a;
+            width: 100%;
+            height: 100%;
+            border-radius: 18px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .eid-title {
+            font-family: 'Noto Serif Bengali', serif;
+            font-size: 3.8rem;
+            color: #d4af37;
+            margin: 0;
+            line-height: 1.2;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .english-text {
+            font-size: 0.8rem;
+            letter-spacing: 8px;
+            color: #888;
+            text-transform: uppercase;
+            margin-top: 5px;
         }
 
         .divider {
-            width: 50px; height: 2px;
-            background: var(--gold);
-            margin: 20px auto;
+            width: 40px;
+            height: 1px;
+            background: #d4af37;
+            margin: 30px 0;
         }
 
-        .message {
-            color: #d4d4d4;
-            line-height: 1.8;
-            font-size: 1.1rem;
+        .msg {
+            color: #ccc;
+            font-size: 1rem;
+            width: 80%;
+            text-align: center;
+            line-height: 1.6;
             font-weight: 300;
         }
 
-        .footer-brand {
-            position: absolute;
-            bottom: 40px; left: 0; width: 100%;
+        .academy-branding {
+            margin-top: 50px;
+            text-align: center;
         }
 
-        .brand-name {
-            font-size: 1.6rem;
+        .academy-name {
+            font-size: 1.5rem;
             font-weight: 700;
             color: #fff;
-            letter-spacing: 1px;
+            margin: 0;
         }
 
-        .tagline {
-            color: #f8b500;
-            font-size: 0.75rem;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-top: 8px;
+        .tag {
+            color: #d4af37;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
         }
 
-        /* আলোর কণা অ্যানিমেশন */
-        .sparkle {
-            position: absolute; background: white; border-radius: 50%;
-            animation: move-sparkle 10s linear infinite;
-        }
-        @keyframes move-sparkle {
-            0% { transform: translateY(100vh) scale(0); opacity: 0; }
-            50% { opacity: 1; }
-            100% { transform: translateY(-100vh) scale(1); opacity: 0; }
+        /* মাউস হোভার ইফেক্ট */
+        .card-wrapper:hover .main-content {
+            background: #0f0f0f;
         }
     </style>
 </head>
 <body>
 
-    <div class="canvas-bg" id="sparkles-container"></div>
+    <div class="bg-glow"></div>
 
-    <div class="poster-frame">
-        <div class="corner top-left"></div>
-        <div class="corner bottom-right"></div>
-        
-        <div class="moon-glow"></div>
-        
-        <h1>ঈদ মোবারক</h1>
-        <div class="eng-sub">EID MUBARAK</div>
-        
-        <div class="divider"></div>
-        
-        <p class="message">
-            পবিত্র ঈদের এই আলোকবর্তিকা আপনার জীবনকে সমৃদ্ধি, সুস্বাস্থ্য এবং সাফল্যে ভরিয়ে তুলুক।
-        </p>
-        
-        <div class="footer-brand">
-            <div class="brand-name">গালিব একাডেমি</div>
-            <div class="tagline">Leading with Excellence | 2026</div>
+    <div class="card-wrapper" id="card">
+        <div class="main-content">
+            <h1 class="eid-title">ঈদ<br>মোবারক</h1>
+            <div class="english-text">Eid Mubarak</div>
+            
+            <div class="divider"></div>
+            
+            <p class="msg">
+                পবিত্র ঈদুল ফিতর আপনার ও আপনার পরিবারের জীবনে বয়ে আনুক অনাবিল আনন্দ ও সমৃদ্ধি।
+            </p>
+
+            <div class="academy-branding">
+                <p class="academy-name">গালিব একাডেমি</p>
+                <span class="tag">EXCELLENCE IN EDUCATION</span>
+            </div>
         </div>
     </div>
 
     <script>
-        // ব্যাকগ্রাউন্ডে আলোর কণা তৈরি
-        const container = document.getElementById('sparkles-container');
-        for (let i = 0; i < 50; i++) {
-            const sparkle = document.createElement('div');
-            sparkle.className = 'sparkle';
-            const size = Math.random() * 3 + 'px';
-            sparkle.style.width = size;
-            sparkle.style.height = size;
-            sparkle.style.left = Math.random() * 100 + '%';
-            sparkle.style.animationDuration = Math.random() * 5 + 5 + 's';
-            sparkle.style.animationDelay = Math.random() * 5 + 's';
-            container.appendChild(sparkle);
-        }
+        const card = document.getElementById('card');
+        const glow = document.querySelector('.bg-glow');
+
+        document.addEventListener('mousemove', (e) => {
+            // কার্ড টিল্ট ইফেক্ট
+            let xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+            let yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+            card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+
+            // ব্যাকগ্রাউন্ড গ্লো মুভমেন্ট
+            glow.style.left = e.pageX - 250 + 'px';
+            glow.style.top = e.pageY - 250 + 'px';
+        });
+
+        card.addEventListener('mouseenter', () => {
+            card.style.transition = 'none';
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transition = 'all 0.5s ease';
+            card.style.transform = `rotateY(0deg) rotateX(0deg)`;
+        });
     </script>
 </body>
 </html>
