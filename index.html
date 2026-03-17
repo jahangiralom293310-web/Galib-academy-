@@ -3,91 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ঈদ মোবারক পোস্টার</title>
+    <title>ঈদ মোবারক - গালিব একাডেমি</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
-        body {
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: white;
-            text-align: center;
-        }
-
-        .poster-card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 40px;
-            border-radius: 20px;
-            border: 2px solid #ffd700;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-            backdrop-filter: blur(10px);
-            max-width: 500px;
-            width: 90%;
-            position: relative;
+            /* একটি গাঢ় ও রাজকীয় ব্যাকগ্রাউন্ড */
+            background: radial-gradient(circle, #1a2a6c, #b21f1f, #fdbb2d);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
             overflow: hidden;
         }
 
-        .poster-card::before {
-            content: "🌙";
-            font-size: 50px;
-            display: block;
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .poster-container {
+            position: relative;
+            width: 380px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            color: #fff;
+            animation: fadeIn 2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .moon-icon {
+            font-size: 60px;
+            color: #ffd700;
             margin-bottom: 10px;
+            filter: drop-shadow(0 0 10px #ffd700);
         }
 
         h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
             color: #ffd700;
-            font-size: 3rem;
-            margin: 10px 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            letter-spacing: 2px;
+            text-shadow: 2px 4px 6px rgba(0,0,0,0.3);
         }
 
-        p {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            margin-bottom: 30px;
+        .message {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            font-weight: 300;
+            color: #f0f0f0;
         }
 
-        .academy-name {
-            font-weight: bold;
-            font-size: 1.5rem;
-            color: #00ffcc;
-            border-top: 1px solid rgba(255,255,255,0.2);
+        .brand-section {
             padding-top: 20px;
+            border-top: 2px solid rgba(255, 215, 0, 0.3);
         }
 
-        .footer {
-            margin-top: 20px;
+        .brand-name {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #ffd700;
+            margin-bottom: 5px;
+        }
+
+        .tagline {
             font-size: 0.9rem;
-            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #00ffcc;
         }
 
-        /* ছোট এনিমেশন */
-        @keyframes glow {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+        /* ডেকোরেশন এলিমেন্ট */
+        .star {
+            position: absolute;
+            color: #fff;
+            opacity: 0.5;
+            animation: twinkle 3s infinite;
         }
-        .poster-card:hover {
-            animation: glow 2s infinite ease-in-out;
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
         }
     </style>
 </head>
 <body>
 
-    <div class="poster-card">
-        <h1>ঈদ মোবারক</h1>
-        <p>পবিত্র ঈদুল ফিতরের আনন্দ ছড়িয়ে পড়ুক সবার মনে। আপনার এবং আপনার পরিবারের জন্য রইলো অনেক অনেক শুভকামনা ও ভালোবাসা।</p>
-        
-        <div class="academy-name">
-            শুভেচ্ছান্তে: গালিব একাডেমি
-        </div>
+    <div class="star" style="top: 10%; left: 10%;">✦</div>
+    <div class="star" style="top: 20%; right: 15%;">✦</div>
+    <div class="star" style="bottom: 15%; left: 20%;">✦</div>
 
-        <div class="footer">
-            &copy; ২০২৬ | সবার জন্য শিক্ষা
+    <div class="poster-container">
+        <div class="moon-icon">🌙</div>
+        <h1>ঈদ মোবারক</h1>
+        <p class="message">
+            পবিত্র ঈদুল ফিতরের এই আনন্দময় দিনে আপনার জীবন ভরে উঠুক অনাবিল সুখ ও শান্তিতে। 
+        </p>
+        
+        <div class="brand-section">
+            <div class="brand-name">গালিব একাডেমি</div>
+            <div class="tagline">২০২৬ | জ্ঞান ও প্রগতির পথে</div>
         </div>
     </div>
 
