@@ -3,724 +3,698 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>গালিব একাডেমি | অনলাইন পরীক্ষা ২০২৬</title>
-    <!-- Google Fonts for premium typography -->
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Cinzel:wght@700&display=swap" rel="stylesheet">
-    <!-- html2canvas Library for Certificate Download -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <title>Galib Academy - Next Gen Educational Ecosystem</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         :root {
-            --accent-cyan: #22d3ee;
-            --accent-emerald: #34d399;
-            --text-main: #f8fafc;
-            --gold: #d4af37;
-            --royal-blue: #1e1b4b;
-            --bg-transition: background 0.8s ease;
+            --bg-gradient: linear-gradient(135deg, #020617, #0f172a, #1e1b4b);
+            --glass-bg: rgba(255, 255, 255, 0.02);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --neon-blue: #38bdf8;
+            --neon-purple: #818cf8;
+            --emerald: #34d399;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Hind Siliguri', sans-serif;
         }
 
         body {
-            font-family: 'Hind Siliguri', 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
-            background-attachment: fixed;
-            margin: 0;
-            color: var(--text-main);
-            line-height: 1.6;
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            color: #f8fafc;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             overflow-x: hidden;
-            transition: var(--bg-transition);
         }
 
-        /* 1. Welcome Screen Animation */
-        #welcome-screen {
+        /* 1. High-Quality Animated Welcome Screen */
+        #welcome-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #020617 0%, #0f172a 100%);
+            background: #020617;
             z-index: 9999;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
         }
 
-        .welcome-title {
-            font-size: 3rem;
-            margin-bottom: 20px;
+        .welcome-content {
+            text-align: center;
+            animation: pulseGlow 2.5s infinite alternate;
+        }
+
+        .welcome-logo {
+            font-size: 3.5rem;
             font-weight: 700;
-            background: linear-gradient(to right, #38bdf8, #34d399, #fbbf24);
+            background: linear-gradient(to right, var(--neon-blue), var(--neon-purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: textPulse 2s infinite alternate, fadeInUp 1s ease;
+            margin-bottom: 15px;
+            transform: scale(0.85);
+            animation: scaleUp 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
         }
 
-        @keyframes textPulse {
-            0% { filter: drop-shadow(0 2px 5px rgba(56, 189, 248, 0.3)); }
-            100% { filter: drop-shadow(0 2px 20px rgba(52, 211, 153, 0.6)); }
+        .welcome-subtitle {
+            font-size: 1.3rem;
+            color: #94a3b8;
+            letter-spacing: 2px;
+            opacity: 0;
+            animation: fadeInText 1s 0.6s forwards;
         }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes scaleUp { to { transform: scale(1); } }
+        @keyframes fadeInText { to { opacity: 1; } }
+        @keyframes pulseGlow {
+            0% { filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.2)); }
+            100% { filter: drop-shadow(0 0 40px rgba(129, 140, 248, 0.5)); }
         }
 
-        /* 3D Glassmorphism Cards */
-        .header {
-            text-align: center;
-            padding: 30px 20px;
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+        /* Layout Architecture */
+        .main-layout {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
         }
 
-        .header h1 {
-            font-size: 2.3rem;
-            margin: 0;
-            background: linear-gradient(to right, #38bdf8, #34d399);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .main-layout.show {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .container {
-            max-width: 700px;
-            margin: 40px auto;
-            padding: 0 20px;
-            box-sizing: border-box;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.04);
+        /* Glassmorphism Common Blueprint */
+        .glass-panel {
+            background: var(--glass-bg);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 28px;
             padding: 35px;
-            border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            transform: translateY(0);
-            transition: all 0.3s ease;
-        }
-
-        .notice-board {
-            background: rgba(245, 158, 11, 0.06);
-            border-left: 5px solid #f59e0b;
-            padding: 20px;
-            margin-bottom: 25px;
-            border-radius: 14px;
-            border-top: 1px solid rgba(245, 158, 11, 0.1);
-            border-right: 1px solid rgba(245, 158, 11, 0.1);
-            border-bottom: 1px solid rgba(245, 158, 11, 0.1);
-        }
-
-        input {
-            width: 100%;
-            padding: 16px;
-            margin-bottom: 20px;
-            border-radius: 14px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            background: rgba(255, 255, 255, 0.03);
-            color: #fff;
-            font-size: 16px;
-            box-sizing: border-box;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        input:focus {
-            outline: none;
-            border-color: var(--accent-cyan);
-            background: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 0 20px rgba(34, 211, 238, 0.25);
-        }
-
-        .btn {
-            display: inline-block;
-            width: 100%;
-            padding: 16px;
-            border: none;
-            border-radius: 14px;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 18px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            text-decoration: none;
-            text-align: center;
-            box-sizing: border-box;
-        }
-
-        .btn-enter {
-            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-            color: white;
-            width: 220px;
-            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
-            animation: pulseBtn 2s infinite;
-        }
-
-        @keyframes pulseBtn {
-            0% { transform: scale(1); box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4); }
-            50% { transform: scale(1.05); box-shadow: 0 4px 25px rgba(139, 92, 246, 0.7); }
-            100% { transform: scale(1); box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4); }
-        }
-
-        .btn-exam {
-            background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
-            color: white;
-            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
-        }
-
-        .btn-exam:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(6, 182, 212, 0.5);
-        }
-
-        .btn-wa { background: #25d366; color: white; margin-top: 15px; }
-        .btn-wa:hover { background: #1ebd54; transform: translateY(-2px); }
-
-        /* Progress Bar & Sticky Header */
-        .sticky-bar {
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(14px);
-            position: sticky;
-            top: 15px;
-            padding: 15px 25px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-            z-index: 100;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: bold;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        .progress-container {
-            width: 100%;
-            background: rgba(255,255,255,0.05);
-            height: 6px;
-            border-radius: 3px;
-            margin-bottom: 25px;
+            position: relative;
             overflow: hidden;
         }
 
-        .progress-bar {
-            height: 100%;
-            width: 1%;
-            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-emerald));
-            transition: width 0.4s ease;
+        .panel-header-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--neon-blue), var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            text-align: center;
         }
 
-        /* Single Question View Wrapper */
-        .q-box {
-            animation: slideIn 0.4s ease-out;
+        /* 2. QR Scanner Section Styling */
+        .reader-wrapper {
+            position: relative;
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            aspect-ratio: 1 / 1;
         }
 
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(30px); }
-            to { opacity: 1; transform: translateX(0); }
+        #reader { width: 100% !important; border: none !important; }
+        #reader video { object-fit: cover !important; }
+
+        .scan-anim {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(to right, transparent, var(--neon-blue), transparent);
+            box-shadow: 0 0 20px var(--neon-blue);
+            animation: scan 2s linear infinite;
+            z-index: 10;
+            pointer-events: none;
+            display: none;
         }
 
-        .q-box p {
-            font-size: 22px;
+        @keyframes scan {
+            0% { top: 0%; }
+            50% { top: 100%; }
+            100% { top: 0%; }
+        }
+
+        .btn-prime {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 1.05rem;
             font-weight: 600;
-            color: #f1f5f9;
-            margin-top: 0;
-            margin-bottom: 25px;
+            border-radius: 14px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+            margin-top: 20px;
+        }
+
+        .btn-prime:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
+        }
+
+        .btn-prime.stop-btn {
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+        }
+
+        /* Result Box */
+        .result-panel {
+            margin-top: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 16px;
+            padding: 15px;
+            display: none;
+            border: 1px solid var(--glass-border);
+        }
+
+        .result-text {
+            word-break: break-all;
+            font-size: 0.95rem;
+            color: #e2e8f0;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        /* 3. Unique MCQ Quiz Engine Styling */
+        .quiz-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 10px;
+        }
+
+        .question-box {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            line-height: 1.6;
         }
 
         .options-grid {
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 12px;
         }
 
-        .option-label {
-            display: flex;
-            align-items: center;
-            padding: 18px;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 14px;
+        .option-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            padding: 14px 20px;
+            border-radius: 12px;
             cursor: pointer;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            transition: all 0.25s ease;
-        }
-
-        .option-label:hover {
-            background: rgba(34, 211, 238, 0.08);
-            border-color: var(--accent-cyan);
-            transform: scale(1.01);
-        }
-
-        .option-label.selected {
-            background: rgba(52, 211, 153, 0.15) !important;
-            border-color: var(--accent-emerald) !important;
-            box-shadow: 0 0 15px rgba(52, 211, 153, 0.2);
-        }
-
-        .option-label input {
-            width: auto;
-            margin-bottom: 0;
-            margin-right: 15px;
-            accent-color: var(--accent-emerald);
-            transform: scale(1.2);
-        }
-
-        .nav-actions {
+            transition: all 0.2s ease;
             display: flex;
-            justify-content: space-between;
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        .btn-nav {
-            background: rgba(255,255,255,0.05);
-            color: white;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        .btn-nav:hover { background: rgba(255,255,255,0.15); }
-
-        .hidden { display: none !important; }
-
-        /* 5. Premium Certificate Template Design */
-        #certificate-template {
-            width: 900px;
-            height: 650px;
-            padding: 30px;
-            text-align: center;
-            background: #fffdf6; /* Elegant off-white cream background */
-            color: #1e293b;
-            position: absolute;
-            left: -9999px;
-            box-sizing: border-box;
-            font-family: 'Hind Siliguri', 'Segoe UI', sans-serif;
-        }
-
-        .cert-border-outer {
-            border: 4px solid #b45309;
-            height: 100%;
-            padding: 5px;
-            box-sizing: border-box;
-        }
-
-        .cert-border-inner {
-            border: 16px double #d4af37; /* Royal Golden Border */
-            height: 100%;
-            padding: 40px;
-            box-sizing: border-box;
-            position: relative;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" opacity="0.03"><path d="M50 0 L100 50 L50 100 L0 50 Z" fill="%23d4af37"/></svg>'); /* Vintage watermark pattern */
-        }
-
-        .cert-header {
-            font-family: 'Cinzel', serif;
-            font-size: 46px;
-            color: #1e3a8a;
-            margin: 0;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-        }
-
-        .cert-badge {
-            position: absolute;
-            bottom: 40px;
-            left: 60px;
-            width: 110px;
-            height: 110px;
-            background: radial-gradient(circle, #fcd34d 0%, #d4af37 100%);
-            border-radius: 50%;
-            box-shadow: 0 6px 15px rgba(212,175,55,0.4);
-            display: flex;
-            justify-content: center;
             align-items: center;
-            border: 3px dashed #b45309;
+            gap: 12px;
         }
 
-        .cert-badge::before {
-            content: "✓ PASSED";
-            color: #78350f;
-            font-size: 14px;
-            font-weight: bold;
-            font-family: sans-serif;
-            letter-spacing: 1px;
+        .option-card:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: var(--neon-blue);
+            transform: translateX(5px);
+        }
+
+        .option-card.correct {
+            background: rgba(52, 211, 153, 0.15) !important;
+            border-color: var(--emerald) !important;
+            color: var(--emerald);
+        }
+
+        .option-card.wrong {
+            background: rgba(239, 68, 68, 0.15) !important;
+            border-color: #ef4444 !important;
+            color: #ef4444;
+        }
+
+        /* 4. Canvas Certificate Showcase & Downloader */
+        .certificate-preview-box {
+            width: 100%;
+            background: #000;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            margin-bottom: 15px;
+        }
+
+        canvas {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* 5. Live Public Comment System */
+        .comment-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .comment-input {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 14px;
+            color: #f8fafc;
+            font-size: 0.95rem;
+            outline: none;
+            resize: none;
+            transition: 0.3s;
+        }
+
+        .comment-input:focus {
+            border-color: var(--neon-purple);
+            box-shadow: 0 0 15px rgba(129, 140, 248, 0.2);
+        }
+
+        .btn-comment {
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            color: white;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            align-self: flex-end;
+            transition: 0.2s;
+        }
+
+        .comments-list {
+            max-height: 220px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .comments-list::-webkit-scrollbar { width: 4px; }
+        .comments-list::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
+
+        .comment-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 15px;
+            border-radius: 12px;
+        }
+
+        .comment-user {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--neon-blue);
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
     </style>
 </head>
 <body>
 
-<!-- 1. Animating Welcome Screen -->
-<div id="welcome-screen">
-    <h1 class="welcome-title">গালিব একাডেমিতে আপনাকে স্বাগতম</h1>
-    <p style="color: #94a3b8; font-size: 1.3rem; margin-bottom: 40px; max-width: 500px;">অনলাইন ইসলামিক জ্ঞান মেধা যাচাই পরীক্ষা ২০২৬-এ আপনার মেধা যাচাই করতে প্রস্তুত হোন।</p>
-    <button class="btn btn-enter" onclick="dismissWelcome()">প্রবেশ করুন</button>
-</div>
-
-<div class="header">
-    <h1>গালিব একাডেমি (Galib Academy)</h1>
-    <p style="margin: 5px 0 0 0; font-size: 1.2rem; color: #94a3b8;">অনলাইন মেধা যাচাই পরীক্ষা - ২০২৬</p>
-    <div style="margin-top: 10px; font-size: 14px; color: var(--accent-emerald); font-weight: 600;">পরিচালক ও একমাত্র শিক্ষক: গালিব আল সিয়াম</div>
-</div>
-
-<!-- Step 1: Info Gathering Form -->
-<div class="container id-form-wrapper" id="step-1">
-    <div class="notice-board">
-        <b style="color: #f59e0b; font-size: 17px;">⚠️ পরীক্ষা নিয়মাবলী:</b>
-        <ul style="margin: 8px 0 0 0; padding-left: 20px; color: #cbd5e1; font-size: 15px;">
-            <li><span style="color: var(--accent-emerald); font-weight: bold;">সম্পূর্ণ ফ্রি পরীক্ষা:</span> অংশ নিতে কোনো ফি প্রয়োজন নেই।</li>
-            <li>মোট প্রশ্ন: ১০০টি | বিষয়: সাধারণ ইসলামিক জ্ঞান।</li>
-            <li>মোট সময়: <span style="color: #f43f5e; font-weight: bold;">৮ মিনিট (৪৮0 সেকেন্ড)</span>। সময় শেষ হলে উত্তর অটো সাবমিট হবে।</li>
-            <li>প্রতিটি প্রশ্নের উত্তর দেওয়ার সাথে সাথে ব্যাকগ্রাউন্ড ডাইনামিক্যালি পরিবর্তন হবে।</li>
-            <li>পরীক্ষা শেষে সফলভাবে উত্তীর্ণদের জন্য একটি **রয়েল প্রিমিয়াম সনদপত্র** তৈরি হবে।</li>
-        </ul>
+    <div id="welcome-overlay">
+        <div class="welcome-content">
+            <div class="welcome-logo"><i class="fa-solid fa-graduation-cap"></i> Galib Academy</div>
+            <div class="welcome-subtitle">জ্ঞান ও প্রযুক্তির মহাবিশ্বে স্বাগতম</div>
+        </div>
     </div>
 
-    <div class="card">
-        <h3 style="text-align:center; color: var(--accent-cyan); margin-top: 0; font-size: 24px; font-weight: 700;">পরীক্ষার্থীর তথ্য ফরম</h3>
-        <input type="text" id="s-name" placeholder="আপনার পূর্ণ নাম (বাংলায়)">
-        <input type="number" id="s-roll" placeholder="রোল নম্বর (যেকোনো সংখ্যা)">
-        <input type="text" id="s-madrasa" placeholder="মাদ্রাসার নাম/প্রতিষ্ঠানের নাম">
-        <button class="btn btn-exam" onclick="validateAccess()">পরীক্ষা শুরু করুন</button>
-    </div>
-</div>
-
-<!-- Step 2: Live Exam Area -->
-<div class="container hidden" id="exam-area">
-    <div class="sticky-bar">
-        <span id="h-name" style="color: var(--accent-cyan); font-size: 1.1rem;"></span>
-        <span id="timer-box" style="color:#f43f5e; font-size: 1.2rem; background: rgba(244,63,94,0.15); padding: 6px 18px; border-radius: 10px; border: 1px solid rgba(244,63,94,0.2);">সময়: ০৮:০০</span>
-    </div>
-    
-    <div class="progress-container">
-        <div class="progress-bar" id="exam-progress"></div>
-    </div>
-
-    <div class="card">
-        <!-- Rendered One Question at a time inside this node -->
-        <div id="single-q-wrapper"></div>
+    <div class="main-layout" id="mainLayout">
         
-        <div class="nav-actions">
-            <button class="btn btn-nav" id="btn-prev" onclick="changeQuestion(-1)" disabled>পূর্ববর্তী</button>
-            <button class="btn btn-exam" id="btn-next" onclick="changeQuestion(1)">পরবর্তী</button>
-        </div>
-    </div>
-</div>
-
-<!-- Step 3: Result Area -->
-<div class="container hidden" id="result-area">
-    <div class="card" style="text-align:center;">
-        <h2 style="color: var(--accent-emerald); margin-top: 0; font-size: 30px;">আলহামদুলিল্লাহ, পরীক্ষা সম্পন্ন হয়েছে!</h2>
-        <h3 id="score-text" style="color: var(--text-main); font-size: 26px; margin: 15px 0;"></h3>
-        <p style="color: #94a3b8; font-size: 16px;">ভেরিফিকেশন কোড: <b id="v-code" style="color:var(--gold); letter-spacing: 1px;"></b></p>
-        <div style="margin-top: 35px; display: flex; flex-direction: column; gap: 10px;">
-            <button class="btn btn-exam" onclick="downloadCert()" style="background: linear-gradient(135deg, #d4af37 0%, #aa7c11 100%); color: #020617; box-shadow: 0 4px 15px rgba(212,175,55,0.3);">👑 প্রিমিয়াম সনদ ডাউনলোড করুন</button>
-            <a id="wa-share" href="#" target="_blank" class="btn btn-wa">ফলাফল স্যারকে পাঠান (WhatsApp)</a>
-        </div>
-    </div>
-</div>
-
-<!-- 5. ROYAL PREMIUM CERTIFICATE TEMPLATE -->
-<div id="certificate-template">
-    <div class="cert-border-outer">
-        <div class="cert-border-inner">
-            <h1 class="cert-header">গালিব একাডেমি</h1>
-            <p style="margin: 0; font-size: 14px; color: #64748b; letter-spacing: 3px; font-weight: 600;">GALIB ACADEMY</p>
-            
-            <div style="margin: 25px 0;">
-                <h2 style="color: #92400e; border: 3px double #d4af37; display: inline-block; padding: 10px 45px; font-size: 28px; margin: 0; background: #fffdf9; font-weight: 700; border-radius: 4px;">সাফল্যের সনদপত্র</h2>
+        <div class="glass-panel">
+            <div class="panel-header-title"><i class="fa-solid fa-qrcode"></i> QR Code Scanner</div>
+            <div class="reader-wrapper">
+                <div class="scan-anim" id="scanLine"></div>
+                <div id="reader"></div>
             </div>
-            
-            <p style="font-size:21px; margin: 25px 0 10px 0; color: #475569;">এই মর্মে অত্যন্ত আনন্দের সাথে প্রত্যয়ন করা যাচ্ছে যে,</p>
-            <p style="font-size: 34px; color: #1e3a8a; margin: 10px 0; font-weight: bold; border-bottom: 2px dashed #b45309; display: inline-block; padding-bottom: 5px; min-width: 400px;"><span id="ct-name"></span></p>
-            
-            <p style="font-size:19px; line-height: 1.9; color: #334155; margin: 20px 0;">
-                তিনি ২০২৬ সালে গালিব একাডেমি কর্তৃক আয়োজিত অনলাইন ভিত্তিক <br>
-                <b style="color: #0369a1; font-size: 22px;">"অনলাইন ইসলামিক জ্ঞান মেধা যাচাই পরীক্ষা"</b>-এ সফলতার সাথে অংশগ্রহণ করে <br>
-                ১০০টি প্রশ্নের মধ্যে সর্বমোট <b style="color: #15803d; font-size: 24px;"><span id="ct-s"></span></b> স্কোর অর্জন করতে সক্ষম হয়েছেন। 
-            </p>
-            
-            <p style="font-size:16px; color: #64748b; margin: 25px 0;">রোল নম্বর: <b style="color:#1e293b;"><span id="ct-r"></span></b> | শিক্ষা প্রতিষ্ঠান: <b style="color:#1e293b;"><span id="ct-m"></span></b></p>
-            
-            <!-- Golden Badge Seal Component -->
-            <div class="cert-badge"></div>
-            
-            <!-- Signature Layout -->
-            <div style="margin-top:50px; display: flex; justify-content: flex-end; text-align: center; position: absolute; bottom: 45px; right: 60px;">
-                <div>
-                    <p style="margin: 0; font-size: 19px; font-weight: 700; color: #1e293b; font-family: 'Hind Siliguri';">গালিব আল সিয়াম</p>
-                    <p style="margin: 0; border-top: 1.5px solid #b45309; width: 180px; font-size: 13px; color: #475569; padding-top: 4px; font-weight: 600;">পরিচালক ও প্রধান শিক্ষক</p>
+            <button class="btn-prime" id="actionBtn"><i class="fa-solid fa-camera"></i> স্ক্যানার চালু করুন</button>
+
+            <div class="result-panel" id="resultPanel">
+                <div class="result-text" id="resultContent">ফলাফল লোড হচ্ছে...</div>
+            </div>
+        </div>
+
+        <div class="glass-panel">
+            <div class="panel-header-title"><i class="fa-solid fa-brain"></i> ডাইনামিক কুইজ সিস্টেম</div>
+            <div class="quiz-meta">
+                <span id="question-number">প্রশ্ন ১/১০০</span>
+                <span><i class="fa-solid fa-bolt" style="color: gold;"></i> ইউনিক সেট</span>
+            </div>
+            <div class="question-box" id="questionText">লোড হচ্ছে...</div>
+            <div class="options-grid" id="optionsContainer"></div>
+            <button class="btn-prime" id="nextQuizBtn" style="display: none; margin-top: 20px; background: linear-gradient(135deg, #10b981, #059669);">পরবর্তী প্রশ্ন</button>
+        </div>
+
+        <div class="glass-panel">
+            <div class="panel-header-title"><i class="fa-solid fa-award"></i> ইনস্ট্যান্ট সার্টিফিকেট জেনারেটর</div>
+            <div class="certificate-preview-box">
+                <canvas id="certCanvas" width="800" height="550"></canvas>
+            </div>
+            <button class="btn-prime" id="downloadCertBtn" style="background: linear-gradient(135deg, #818cf8, #6366f1);"><i class="fa-solid fa-download"></i> সার্টিফিকেট ডাউনলোড করুন</button>
+        </div>
+
+        <div class="glass-panel">
+            <div class="panel-header-title"><i class="fa-solid fa-comments"></i> গ্লোবাল কমেন্ট ওয়াল</div>
+            <div class="comment-form">
+                <textarea class="comment-input" id="commentInput" rows="2" placeholder="আপনার অনুভূতি বা মতামত এখানে শেয়ার করুন..."></textarea>
+                <button class="btn-comment" id="submitCommentBtn">পোস্ট করুন</button>
+            </div>
+            <div class="comments-list" id="commentsList">
+                <div class="comment-item">
+                    <div class="comment-user"><i class="fa-solid fa-circle-user"></i> আরিয়ান খান</div>
+                    <div>কুইজের প্রশ্নগুলো প্রতিবার রিলোড দিলে বদলে যায়! দারুন মেকানিজম।</div>
                 </div>
             </div>
         </div>
+
     </div>
-</div>
 
-<script>
-    // ১০০টি ইসলামিক প্রশ্ন ও উত্তরের ডাটাবেজ
-    const islamicDB = [
-        {q: "পবিত্র কুরআনের মোট সূরার সংখ্যা কত?", o: ["১১৪", "১১২", "১১৬", "১১০"], a: "১১৪"},
-        {q: "পবিত্র কুরআনের সবচেয়ে বড় সূরা কোনটি?", o: ["সূরা আল-ইমরান", "সূরা আল-বাকারা", "সূরা আল-মায়েদা", "সূরা ইয়াসিন"], a: "সূরা আল-বাকারা"},
-        {q: "পবিত্র কুরআনের সবচেয়ে ছোট সূরা কোনটি?", o: ["সূরা আল-ইখলাস", "সূরা আন-নাস", "সূরা আল-কাওসার", "সূরা আল-ফালাক"], a: "সূরা আল-কাওসার"},
-        {q: "কুরআন মাজিদ সর্বপ্রথম কার ওপর নাযিল হয়?", o: ["হযরত ঈসা (আঃ)", "হযরত মুসা (আঃ)", "হযরত মুহাম্মদ (সাঃ)", "হযরত ইব্রাহিম (আঃ)"], a: "হযরত মুহাম্মদ (সাঃ)"},
-        {q: "পবিত্র কুরআনের দীর্ঘতম আয়াতটি কোন সূরায় অবস্থিত?", o: ["সূরা আল-বাকারা", "সূরা আন-নিসা", "সূরা আল-আনআম", "সূরা তাওবা"], a: "সূরা আল-বাকারা"},
-        {q: "কুরআন মাজিদে মোট কতটি সিজদাহ রয়েছে?", o: ["১২টি", "১৪টি", "১৫টি", "১৬টি"], a: "১৪টি"},
-        {q: "কোন সূরাকে কুরআনের হৃৎপিণ্ড বলা হয়?", o: ["সূরা আর-রহমান", "সূরা আল-ফাতিহা", "সূরা ইয়াসিন", "সূরা আল-ইখলাস"], a: "সূরা ইয়াসিন"},
-        {q: "পবিত্র কুরআনের প্রথম সূরার নাম কী?", o: ["সূরা আল-বাকারা", "সূরা আল-ফাতিহা", "সূরা আল-ইখলাস", "সূরা আন-নাস"], a: "সূরা আল-ফাতিহা"},
-        {q: "পবিত্র কুরআনের শেষ সূরার নাম কী?", o: ["সূরা আন-নাস", "সূরা আল-ফালাক", "সূরা আল-ইখলাস", "সূরা আল-কাওসার"], a: "সূরা আন-নাস"},
-        {q: "কোন সূরার শুরুতে 'বিসমিল্লাহির রাহমানির রাহিম' নেই?", o: ["সূরা ইউনুস", "সূরা তাওবা", "সূরা হূদ", "সূরা নামল"], a: "সূরা তাওবা"},
-        {q: "কোন সূরায় 'বিসমিল্লাহ' দুবার এসেছে?", o: ["সূরা নামল", "সূরা আল-বাকারাহ", "সূরা হজ্জ", "সূরা রহমান"], a: "সূরা নামল"},
-        {q: "কুরআন মাজিদে মোট পারার সংখ্যা কত?", o: ["২০", "২৫", "৩০", "৩৫"], a: "৩০"},
-        {q: "কুরআন মাজিদে মোট কতটি রুকু আছে?", o: ["৫৪০", "৫৫৬", "৬৬৬", "৫২০"], a: "৫৫৬"},
-        {q: "কুরআন নাযিল হতে মোট কত বছর সময় লেগেছিল?", o: ["২০ বছর", "২২ বছর", "২৩ বছর", "২৫ বছর"], a: "২৩ বছর"},
-        {q: "কুরআনের প্রথম হাফেজ কে?", o: ["হযরত আবু বকর (রাঃ)", "হযরত মুহাম্মদ (সাঃ)", "হযরত ওসমান (রাঃ)", "হযরত আলী (রাঃ)"], a: "হযরত মুহাম্মদ (সাঃ)"},
-        {q: "কুরআনের কোন সূরাটি পাঠ করলে কবরের আযাব থেকে মুক্তি পাওয়া যায়?", o: ["সূরা আল-মুলক", "সূরা ইয়াসিন", "সূরা আর-রহমান", "সূরা কাহাফ"], a: "সূরা আল-মুলক"},
-        {q: "জুম্মার দিন কোন সূরাটি তিলাওয়াত করা উত্তম?", o: ["সূরা ইয়াসিন", "সূরা কাহাফ", "সূরা ওয়াকিয়াহ", "সূরা মুলক"], a: "সূরা কাহাফ"},
-        {q: "কুরআনের কোন সূরাকে 'কুরআনের কনে বা সৌন্দর্য' বলা হয়?", o: ["সূরা আর-রহমান", "সূরা ইয়াসিন", "সূরা আল-ফাতিহা", "সূরা নূর"], a: "সূরা আর-রহমান"},
-        {q: "ইসলামের প্রথম খলিফা কে ছিলেন?", o: ["হযরত ওমর (রাঃ)", "হযরত আবু বকর (রাঃ)", "হযরত ওসমান (রাঃ)", "হযরত আলী (রাঃ)"], a: "হযরত আবু বকর (রাঃ)"},
-        {q: "ইসলামের দ্বিতীয় খলিফা কে ছিলেন?", o: ["হযরত ওমর (রাঃ)", "হযরত আলী (রাঃ)", "হযরত ওসমান (রাঃ)", "হযরত মুয়াবিয়া (রাঃ)"], a: "হযরত ওমর (রাঃ)"},
-        {q: "আসাদুল্লাহ (আল্লাহর সিংহ) কার উপাধি ছিল?", o: ["হযরত হামযা (রাঃ)", "হযরত আলী (রাঃ)", "হযরত ওমর (রাঃ)", "হযরত খালিদ বিন ওয়ালিদ (রাঃ)"], a: "হযরত আলী (রাঃ)"},
-        {q: "যুন-নূরাইন (দুই জ্যোতির অধিকারী) কাকে বলা হয়?", o: ["হযরত ওসমান (রাঃ)", "হযরত আবু বকর (রাঃ)", "হযরত আলী (রাঃ) ", "হযরত বিলাল (রাঃ)"], a: "হযরত ওসমান (রাঃ)"},
-        {q: "ইসলামের প্রথম মুয়াজ্জিন কে ছিলেন?", o: ["হযরত বিলাল (রাঃ)", "হযরত সালমান ফারসী (রাঃ)", "হযরত আম্মার (রাঃ)", "হযরত যায়েদ (রাঃ)"], a: "হযরত বিলাল (রাঃ)"},
-        {q: "হযরত মুহাম্মদ (সাঃ) কত খ্রিষ্টাব্দে জন্মগ্রহণ করেন?", o: ["৫৭০ খ্রিষ্টাব্দে", "৫৭১ খ্রিষ্টাব্দে", "৬১০ খ্রিষ্টাব্দে", "৬২২ খ্রিষ্টাব্দে"], a: "৫৭০ খ্রিষ্টাব্দে"},
-        {q: "রাসূলুল্লাহ (সাঃ) এর মাতার নাম কী ছিল?", o: ["হযরত হালিমা", "হযরত আমেনা", "হযরত খাদিজা", "হযরত ফাতেমা"], a: "হযরত আমেনা"},
-        {q: "রাসূলুল্লাহ (সাঃ) এর পিতার নাম কী ছিল?", o: ["আব্দুল মুত্তালিব", "আব্দুল্লাহ", "আবু তালিব", "আব্বাস"], a: "আব্দুল্লাহ"},
-        {q: "রাসূলুল্লাহ (সাঃ) এর দুধমাতার নাম কী ছিল?", o: ["হযরত আমেনা", "হযরত হালিমা সাদিয়া", "হযরত ফাতিমা", "হযরত সুওয়াইবা"], a: "হযরত হালিমা সাদিয়া"},
-        {q: "রাসূলুল্লাহ (সাঃ) কত বছর বয়সে নবুওয়াত লাভ করেন?", o: ["২৫ বছর", "৩০ বছর", "৪০ বছর", "৪৫ বছর"], a: "৪০ বছর"},
-        {q: "রাসূলুল্লাহ (সাঃ) এর প্রথম স্ত্রীর নাম কী?", o: ["হযরত আয়েশা (রাঃ)", "হযরত খাদিজা (রাঃ)", "হযরত হাফসা (রাঃ)", "হযরত সওদা (রাঃ)"], a: "হযরত খাদিজা (রাঃ)"},
-        {q: "মহিলাদের মধ্যে কে প্রথম ইসলাম গ্রহণ করেন?", o: ["হযরত আয়েশা (রাঃ)", "হযরত খাদিজা (রাঃ)", "হযরত ফাতেমা (রাঃ)", "হযরত সুমাইয়া (রাঃ)"], a: "হযরত খাদিজা (রাঃ)"},
-        {q: "পুরুষদের মধ্যে প্রথম কে ইসলাম গ্রহণ করেন?", o: ["হযরত ওমর (রাঃ)", "হযরত আবু বকর (রাঃ)", "হযরত আলী (রাঃ)", "হযরত ওসমান (রাঃ)"], a: "হযরত আবু বকর (রাঃ)"},
-        {q: "শিশুদের মধ্যে প্রথম কে ইসলাম গ্রহণ করেন?", o: ["হযরত আলী (রাঃ)", "হযরত যায়েদ (রাঃ)", "হযরত হাসান (রাঃ)", "হযরত হুসাইন (রাঃ)"], a: "হযরত আলী (রাঃ)"},
-        {q: "ইসলামের প্রথম যুদ্ধ কোনটি?", o: ["উহুদের যুদ্ধ", "বদরের যুদ্ধ", "খন্দকের যুদ্ধ", "খায়বারের যুদ্ধ"], a: "বদরের যুদ্ধ"},
-        {q: "ঐতিহাসিক বদরের যুদ্ধ কত হিজরীতে সংঘটিত হয়?", o: ["১ হিজরী", "২ হিজরী", "৩ হিজরী", "৪ হিজরী"], a: "২ হিজরী"},
-        {q: "বদর যুগে মুসলিমদের সৈন্য সংখ্যা কত ছিল?", o: ["৩১৩ জন", "১০০০ জন", "৭০০ জন", "১৪০০ জন"], a: "৩১৩ জন"},
-        {q: "উহুদের যুদ্ধ কত হিজরীতে সংঘটিত হয়?", o: ["২ হিজরী", "৩ হিজরী", "৪ হিজরী", "৫ হিজরী"], a: "৩ হিজরী"},
-        {q: "কোন войне রাসূলুল্লাহ (সাঃ) এর দন্ত মুবারক শহীদ হয়েছিল?", o: ["বদরের যুদ্ধে", "উহুদের যুদ্ধে", "খন্দকের যুদ্ধে", "তাবুক যুদ্ধে"], a: "উহুদের যুদ্ধে"},
-        {q: "খন্দক শব্দের অর্থ কী?", o: ["পাহাড়", "পরিখা", "মাঠ", "দুর্গ"], a: "পরিখা"},
-        {q: "ইসলামের প্রথম শহীদ মহিলা কে?", o: ["হযরত সুমাইয়া (রাঃ)", "হযরত খাদিজা (রাঃ)", "হযরত ফাতেমা (রাঃ)", "হযরত আসমা (রাঃ)"], a: "হযরত সুমাইয়া (রাঃ)"},
-        {q: "সাইফুল্লাহ (আল্লাহর তলোয়ার) কার উপাধি?", o: ["হযরত আলী (রাঃ)", "হযরত খালিদ বিন ওয়ালিদ (রাঃ)", "হযরত ওমর (রাঃ)", "হযরত আমীর হামযা (রাঃ)"], a: "হযরত খালিদ বিন ওয়ালিদ (রাঃ)"},
-        {q: "হুদায়বিয়ার সন্ধি কত বছরের জন্য হয়েছিল?", o: ["৫ বছর", "৭ বছর", "১০ বছর", "১২ বছর"], a: "১০ বছর"},
-        {q: "ঐতিহাসিক মক্কা বিজয় কত হিজরীতে হয়?", o: ["৭ হিজরী", "৮ হিজরী", "৯ হিজরী", "১০ হিজরী"], a: "৮ হিজরী"},
-        {q: "রাসূলুল্লাহ (সাঃ) কোন হিজরীতে বিদায় হজ্জ পালন করেন?", o: ["৮ হিজরী", "৯ হিজরী", "১০ হিজরী", "১১ হিজরী"], a: "১০ হিজরী"},
-        {q: "বিদায় হজ্জের ভাষণ রাসূলুল্লাহ (সাঃ) কোন মাঠে দিয়েছিলেন?", o: ["মিনা", "মুজদালিফা", "আরাফাতের ময়দান", "সাফা পাহাড়"], a: "আরাফাতের ময়দান"},
-        {q: "রাসূলুল্লাহ (সাঃ) কত হিজরীতে ইন্তেকাল করেন?", o: ["১০ হিজরী", "১১ হিজরী", "১২ হিজরী", "১৩ হিজরী"], a: "১১ হিজরী"},
-        {q: "সর্বপ্রথম সৃষ্টি করা হয়েছে কোন নবীকে?", o: ["হযরত ঈসা (আঃ)", "হযরত মুসা (আঃ)", "হযরত আদম (আঃ)", "হযরত নূহ (আঃ)"], a: "হযরত আদম (আঃ)"},
-        {q: "মানবজাতির আদি পিতা কে?", o: ["হযরত আদম (আঃ)", "হযরত ইব্রাহিম (আঃ)", "হযরত নূহ (আঃ)", "হযরত শীশ (আঃ)"], a: "হযরত আদম (আঃ)"},
-        {q: "আবুল আম্বিয়া বা নবীদের পিতা বলা হয় কাকে?", o: ["হযরত আদম (আঃ)", "হযরত ইব্রাহিম (আঃ)", "হযরত ইসমাঈল (আঃ)", "হযরত ইয়াকুব (আঃ)"], a: "হযরত ইব্রাহিম (আঃ)"},
-        {q: "কোন নবীকে মাছ গিলে ফেলেছিল?", o: ["হযরত ইউনুস (আঃ)", "হযরত ইউসুফ (আঃ)", "হযরত খিজির (আঃ)", "হযরত দাউদ (আঃ)"], a: "হযরত ইউনুস (আঃ)"},
-        {q: "কোন নবী আল্লাহর সাথে সরাসরি কথা বলতেন?", o: ["হযরত ঈসা (আঃ)", "হযরত মুসা (আঃ)", "হযরত ইব্রাহিম (আঃ)", "হযরত নূহ (আঃ)"], a: "হযরত মুসা (আঃ)"},
-        {q: "কুরআনে কোন নবীর নাম সবচেয়ে বেশি এসেছে?", o: ["হযরত মুহাম্মদ (সাঃ)", "হযরত মুসা (আঃ)", "হযরত ঈসা (আঃ)", "হযরত ইব্রাহিম (আঃ)"], a: "হযরত মুসা (আঃ)"},
-        {q: "কোন নবীকে আগুনের স্তূপে নিক্ষেপ করা হয়েছিল?", o: ["হযরত লূত (আঃ)", "হযরত ইব্রাহিম (আঃ)", "হযরত ইসমাইল (আঃ)", "হযরত সালেহ (আঃ)"], a: "হযরত ইব্রাহিম (আঃ)"},
-        {q: "পবিত্র কুরআনে কতজন নবীর নাম উল্লেখ আছে?", o: ["২০ জন", "২৫ জন", "৩০ জন", "৪০ জন"], a: "২৫ জন"},
-        {q: "প্রধান আসমানী কিতাব কতটি?", o: ["৪টি", "১০টি", "১০০টি", "১০৪টি"], a: "৪টি"},
-        {q: "তাওরাত কিতাব কোন নবীর ওপর নাযিল হয়েছিল?", o: ["হযরত দাউদ (আঃ)", "হযরত মুসা (আঃ)", "হযরত ঈসা (আঃ)", "হযরত মুহাম্মদ (সাঃ)"], a: "হযরত মুসা (আঃ)"},
-        {q: "যবুর কিতাব কোন নবীর ওপর নাযিল হয়েছিল?", o: ["হযরত দাউদ (আঃ)", "হযরত ঈসা (আঃ)", "হযরত ইব্রাহিম (আঃ)", "হযরত সুলাইমান (আঃ)"], a: "হযরত দাউদ (আঃ)"},
-        {q: "ইঞ্জিল কিতাব কোন নবীর ওপর অবতীর্ণ হয়?", o: ["হযরত মুসা (আঃ)", "হযরত ঈসা (আঃ)", "হযরত হারুন (আঃ)", "হযরত ইয়াকুব (আঃ)"], a: "হযরত ঈসা (আঃ)"},
-        {q: "আকাশের ফেরেশতাদের প্রধান কে?", o: ["হযরত জিবরাঈল (আঃ)", "হযরত মিকাঈল (আঃ)", "হযরত ইসরাফীল (আঃ)", "হযরত আজরাঈল (আঃ)"], a: "হযরত জিবরাঈল (আঃ)"},
-        {q: "মৃত্যুর ফেরেশতার নাম কী?", o: ["হযরত জিবরাঈল (আঃ)", "হযরত আজরাঈল (আঃ)", "হযরত মিকাঈল (আঃ)", "হযরত ইসরাফীল (আঃ)"], a: "হযরত আজরাঈল (আঃ)"},
-        {q: "কবরে সওয়াল-জওয়াব করবেন কোন কোন ফেরেশতা?", o: ["হারুত ও মারুত", "মুনকার ও নাকীর", "কিরূবান ও কাতিবীন", "রকীব ও আতีด"], a: "মুনকার ও নাকীর"},
-        {q: "মানুষের ভালো-মন্দ আমল লেখার দায়িত্বে কোন ফেরেশতারা আছেন?", o: ["মুনকার ও নাকীর", "কিরামান কাতিবীন", "জিবরাঈল ও মিকাঈল", "মালেক ও রেদওয়ান"], a: "কিরামান কাতিবীন"},
-        {q: "ইসলামের মূল স্তম্ভ বা ভিত্তি কয়টি?", o: ["৩টি", "৪টি", "৫টি", "৭টি"], a: "৫টি"},
-        {q: "ঈমানের মূল শাখা বা রুকন কয়টি?", o: ["৫টি", "৬টি", "৭টি", "১০টি"], a: "৭টি"},
-        {q: "ইসলামের দ্বিতীয় স্তম্ভ কোনটি?", o: ["ঈমান", "নামাজ", "রোজা", "হজ্জ"], a: "নামাজ"},
-        {q: "দৈনিক ফরয নামাজ মোট কত রাকাত?", o: ["১২ রাকাত", "১৫ রাকাত", "১৭ রাকাত", "২০ রাকাত"], a: "১৭ রাকাত"},
-        {q: "নামাজের চাবিকাঠি বা প্রধান শর্ত কোনটি?", o: ["নিয়ত", "পবিত্রতা (ওযু)", "রুকু", "সিজদাহ"], a: "পবিত্রতা (ওযু)"},
-        {q: "ইসলামে প্রথম ফরয হওয়া ইবাদত কোনটি?", o: ["নামাজ", "রোজা", "যাকাত", "হজ্জ"], a: "নামাজ"},
-        {q: "কোন নামাজে রুকু এবং সিজদাহ নেই?", o: ["ঈদের নামাজ", "জানাযার নামাজ", "তাহাজ্জুদের নামাজ", "বিতরের নামাজ"], a: "জানাযার নামাজ"},
-        {q: "রমজান মাসের রোজা রাখা কী?", o: ["ফরয", "ওয়াজিব", "সুন্নাত", "নফল"], a: "ফরয"},
-        {q: "ইসলামী বর্ষপঞ্জির (হিজরী) ৯ম মাসের নাম কী?", o: ["মহররম", "শাবান", "রমজান", "শাওয়াল"], a: "রমজান"},
-        {q: "বছরে কতটি দিনে রোজা রাখা হারাম বা নিষিদ্ধ?", o: ["৩ দিন", "৪ দিন", "৫ দিন", "৭ দিন"], a: "৫ দিন"},
-        {q: "যাকাত ফরয হওয়ার জন্য সম্পদের পরিমাপকে কী বলে?", o: ["ফিদিয়া", "নিসাব", "ওশর", "খুমস"], a: "নিসাব"},
-        {q: "রূপার ক্ষেত্রে যাকাতের নিসাব কত?", o: ["সাড়ে সাত তোলা", "সাড়ে বায়ান্ন তোলা", "দশ তোলা", "চল্লিশ তোলা"], a: "সাড়ে বায়ান্ন তোলা"},
-        {q: "সোনার ক্ষেত্রে যাকাতের ফরয নিসাব কত?", o: ["সাড়ে সাত তোলা (ভরি)", "সাড়ে বায়ান্ন ভরি", "৫ ভরি", "১০ ভরি"], a: "সাড়ে সাত তোলা (ভরি)"},
-        {q: "যাকাত আদায়ের খাত বা খাতসমূহ পবিত্র কুরআনের কোন সূরায় বর্ণিত?", o: ["সূরা আল-বাকারা", "সূরা তাওবা", "সূরা আন-নিসা", "সূরা আল-ইমরান"], a: "সূরা তাওবা"},
-        {q: "কুরআনে যাকাত পাওয়ার উপযুক্ত খাত কয়টি উল্লেখ করা হয়েছে?", o: ["৬টি", "৭টি", "৮টি", "১০টি"], a: "৮টি"},
-        {q: "হজ্জ করা জীবনে কতবার ফরয?", o: ["১ বার", "২ বার", "৩ বার", "যতবার সম্ভব"], a: "১ বার"},
-        {q: "হজ্জের প্রধান ফরয কাজ কয়টি?", o: ["৩টি", "৪টি", "৫টি", "৭টি"], a: "৩টি"},
-        {q: "হজ্জের উদ্দেশ্যে ইহরাম বাঁধার নির্দিষ্ট স্থানকে কী বলে?", o: ["মিরায", "মীকাত", "আরাফাত", "সাফা"], a: "মীকাত"},
-        {q: "কাবা শরীফকে সাতবার প্রদক্ষিণ করাকে কী বলে?", o: ["সাঈ", "তাওয়াফ", "রমি", "ইহরাম"], a: "তাওয়াফ"},
-        {q: "সাফা ও মারওয়া পাহাড়ের মাঝে সাতবার দৌড়ানোকে কী বলে?", o: ["তাওয়াফ", "সাঈ", "উমরাহ", "হলক"], a: "সাঈ"},
-        {q: "কাবার কালো পাথরটিকে কী বলা হয়?", o: ["হাজরে আসওয়াদ", "মাকামে ইব্রাহিম", "যমযম", "হিজরে ইসমাইল"], a: "হাজরে আসওয়াদ"},
-        {q: "ইসলামের প্রথম কিবলা কোনটি ছিল?", o: ["কাবা শরীফ", "মসজিদুল আকসা (বাইতুল মুকাদ্দাস)", "মসজিদে নববী", "মসজিদে কুবা"], a: "মসজিদুল আকসা (বাইতুল মুকাদ্দাস)"},
-        {q: "পৃথিবীর সর্বপ্রথম নির্মিত মসজিদ কোনটি?", o: ["মসজিদে নববী", "মসজিদুল হারাম (কাবা)", "মসজিদুল আকসা", "মসজিদে কুবা"], a: "মসজিদুল হারাম (কাবা)"},
-        {q: "মদিনায় নির্মিত ইসলামের প্রথম মসজিদ কোনটি?", o: ["মসজিদে নববী", "মসজিদে কুবা", "মসজিদে কিবলাতাইন", "মসজিদে যিরার"], a: "মসজিদে কুবা"},
-        {q: "হাদিসের সবচেয়ে বিশুদ্ধ কিতাব কোনটি?", o: ["সহীহ বুখারী", "সহীহ মুসলিম", "সুনানে আবু دাউদ", "জামে আত-তিরমিযী"], a: "সহীহ বুখারী"},
-        {q: "সহীহ বুখারী শরীফের সংকলক কে?", o: ["ইমাম মুসলিম", "ইমাম বুখারী (রঃ)", "ইমাম মালিক", "ইমাম আবু হানিফা"], a: "ইমাম বুখারী (রঃ)"},
-        {q: "সিহাহ সিত্তা বলতে কয়টি প্রধান হাদীস গ্রন্থকে বোঝায়?", o: ["৪টি", "৫টি", "৬টি", "৮টি"], a: "৬টি"},
-        {q: "সবচেয়ে বেশি হাদিস বর্ণনাকারী সাহাবী কে?", o: ["হযরত আবু বকর (রাঃ)", "হযরত আবু হুরায়রা (রাঃ)", "হযরত ওমর (রাঃ)", "হযরত আয়েশা (রাঃ)"], a: "হযরত আবু হুরায়রা (রাঃ)"},
-        {q: "মহিলাদের মধ্যে সবচেয়ে বেশি হাদিস কে বর্ণনা করেছেন?", o: ["হযরত ফাতেমা (রাঃ)", "হযরত আয়েশা (রাঃ)", "হযরত খাদিজা (রাঃ)", "হযরত উম্মে সালমা (রাঃ)"], a: "হযরত আয়েশা (রাঃ)"},
-        {q: "মিরাজ শব্দের আভিধানিক অর্থ কী?", o: ["ভ্রমণ", "ঊর্ধ্বগমন বা মই", "স্বপ্ন", "সাক্ষাৎ"], a: "ঊর্ধ্বগমন বা মই"},
-        {q: "মিরাজের রাতে রাসূলুল্লাহ (সাঃ) এর বাহনটির নাম কী ছিল?", o: ["দুলদুল", "বুরাক", "কাসওয়া", "রাফরাফ"], a: "বুরাক"},
-        {q: "জান্নাতের প্রধান দারোয়ান বা ফেরেশতার নাম কী?", o: ["মালেক", "রেদওয়ান", "জিবরাঈল", "হারুত"], a: "রেদওয়ান"},
-        {q: "জাহান্নামের প্রধান রক্ষী ফেরেশতার নাম কী?", o: ["রেদওয়ান", "মালেক", "আতীক", "নাকীর"], a: "মালেক"},
-        {q: "সর্বমোট কতটি জান্নাত রয়েছে?", o: ["৪টি", "৭টি", "৮টি", "৭টি"], a: "৮টি"},
-        {q: "সবচেয়ে শ্রেষ্ঠ ও উচ্চস্তরের জান্নাত কোনটি?", o: ["জান্নাতুল মাওয়া", "জান্নাতুল আদন", "জান্নাতুল ফেরদাউস", "জান্নাতুন নাঈম"], a: "জান্নাতুল ফেরদাউস"},
-        {q: "জাহান্নামের স্তর বা সংখ্যা কয়টি?", o: ["৫টি", "৬টি", "৭টি", "৮টি"], a: "৭টি"},
-        {q: "মিথ্যার অপবাদ থেকে পবিত্র কুরআনে কোন উম্মুল মুমিনীন (নবীর স্ত্রী)-এর পবিত্রতা ঘোষণা করা হয়েছে?", o: ["হযরত খাদিজা (রাঃ)", "হযরত আয়েশা (রাঃ)", "হযরত হাফসা (রাঃ)", "হযরত যয়নব (রাঃ)"], a: "হযরত আয়েশা (রাঃ)"},
-        {q: "হাদিস অনুযায়ী 'জ্ঞানের শহর' যদি হন রাসূলুল্লাহ (সাঃ), তবে তার 'দরজা' কে?", o: ["হযরত আবু বকর (রাঃ)", "হযরত ওমর (রাঃ)", "হযরত ওসমান (রাঃ)", "হযরত আলী (রাঃ)"], a: "হযরত আলী (রাঃ)"},
-        {q: "ইসলামের ইতিহাসে প্রথম নৌবাহিনী গঠন করেছিলেন কোন খলিফা?", o: ["হযরত আলী (রাঃ)", "হযরত ওসমান (রাঃ)", "হযরত ওমর (রাঃ)", "হযরত আমীর মুয়াবিয়া (রাঃ)"], a: "হযরত ওসমান (রাঃ)"}
-    ];
+    <script src="https://unpkg.com/html5-qrcode"></script>
 
-    // Array of unique modern CSS gradients to cycle through on question change
-    const premiumGradients = [
-        "linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%)",
-        "linear-gradient(135deg, #020617 0%, #0f2b48 100%)",
-        "linear-gradient(135deg, #0b132b 0%, #1c2541 100%)",
-        "linear-gradient(135deg, #111827 0%, #311042 100%)",
-        "linear-gradient(135deg, #070a13 0%, #1f1235 100%)",
-        "linear-gradient(135deg, #030712 0%, #022c22 100%)"
-    ];
-
-    let studentData = {};
-    let currentQuestionIndex = 0;
-    let userAnswers = {}; // To persist answers during navigation
-
-    function dismissWelcome() {
-        const welcome = document.getElementById('welcome-screen');
-        welcome.style.opacity = '0';
-        welcome.style.transform = 'scale(0.95)';
-        setTimeout(() => welcome.classList.add('hidden'), 600);
-    }
-
-    function validateAccess() {
-        const name = document.getElementById('s-name').value.trim();
-        const roll = document.getElementById('s-roll').value;
-        const mad = document.getElementById('s-madrasa').value.trim();
-
-        if(!name || !roll || !mad) { 
-            alert("অনুগ্রহ করে আপনার নাম, রোল এবং প্রতিষ্ঠানের নাম দিন!"); 
-            return; 
-        }
-
-        studentData = { n: name, r: roll, m: mad };
-        startExam();
-    }
-
-    function startExam() {
-        document.getElementById('step-1').classList.add('hidden');
-        document.getElementById('exam-area').classList.remove('hidden');
-        document.getElementById('h-name').innerText = "পরীক্ষার্থী: " + studentData.n;
-        
-        currentQuestionIndex = 0;
-        renderActiveQuestion();
-            
-        // 8-minute timer setup (480 seconds)
-        let sec = 480; 
-        window.itv = setInterval(() => {
-            sec--;
-            let m = Math.floor(sec/60);
-            let s = sec%60;
-            document.getElementById('timer-box').innerText = `সময়: ${m<10?'0':''}${m}:${s<10?'0':''}${s}`;
-            
-            if(sec <= 0) {
-                alert("সময় শেষ! আপনার পরীক্ষাটি অটো-সাবমিট হচ্ছে।");
-                submitExam();
-            }
-        }, 1000);
-    }
-
-    function renderActiveQuestion() {
-        const qData = islamicDB[currentQuestionIndex];
-        const wrapper = document.getElementById('single-q-wrapper');
-        
-        // Dynamically shift background styling natively on question steps
-        const gradIndex = currentQuestionIndex % premiumGradients.length;
-        document.body.style.background = premiumGradients[gradIndex];
-
-        // Track progress status percentage
-        const progressPercent = ((currentQuestionIndex + 1) / islamicDB.length) * 100;
-        document.getElementById('exam-progress').style.width = `${progressPercent}%`;
-
-        // Render target node structure
-        wrapper.innerHTML = `
-            <div class="q-box">
-                <p><b>${currentQuestionIndex + 1}. ${qData.q}</b></p>
-                <div class="options-grid">
-                    ${qData.o.map(option => {
-                        const isSelected = userAnswers[currentQuestionIndex] === option;
-                        return `
-                            <label class="option-label ${isSelected ? 'selected' : ''}">
-                                <input type="radio" name="active-opt" value="${option}" ${isSelected ? 'checked' : ''} onchange="saveAnswer('${option}')"> ${option}
-                            </label>
-                        `;
-                    }).join('')}
-                </div>
-            </div>
-        `;
-
-        // UI button control states handling
-        document.getElementById('btn-prev').disabled = currentQuestionIndex === 0;
-        
-        const nextBtn = document.getElementById('btn-next');
-        if (currentQuestionIndex === islamicDB.length - 1) {
-            nextBtn.innerText = "জমা দিন (Submit)";
-            nextBtn.style.background = "linear-gradient(135deg, #10b981 0%, #059669 100%)";
-        } else {
-            nextBtn.innerText = "পরবর্তী";
-            nextBtn.style.background = "linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%)";
-        }
-    }
-
-    function saveAnswer(val) {
-        userAnswers[currentQuestionIndex] = val;
-        // Visual indicator updating inline
-        const labels = document.querySelectorAll('.option-label');
-        labels.forEach(l => l.classList.remove('selected'));
-        event.currentTarget.closest('.option-label').classList.add('selected');
-    }
-
-    function changeQuestion(direction) {
-        if (direction === 1 && currentQuestionIndex === islamicDB.length - 1) {
-            if(confirm("আপনি কি নিশ্চিতভাবে উত্তরপত্র জমা দিতে চান?")) {
-                submitExam();
-            }
-            return;
-        }
-
-        currentQuestionIndex += direction;
-        renderActiveQuestion();
-    }
-
-    function submitExam() {
-        clearInterval(window.itv);
-        let score = 0;
-        
-        islamicDB.forEach((q, i) => {
-            if(userAnswers[i] && userAnswers[i] === q.a) {
-                score++;
-            }
+    <script>
+        // Welcome Screen Visual Transitions
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.getElementById('welcome-overlay').style.opacity = '0';
+                document.getElementById('welcome-overlay').style.visibility = 'hidden';
+                document.getElementById('mainLayout').classList.add('show');
+                generateCertificate("সফল শিক্ষার্থী");
+            }, 3000);
         });
-        
-        window.finalScore = score;
-        const vCode = "GA-ISLAMIC-" + (parseInt(studentData.r) + score * 37) + "-2026";
-        
-        document.getElementById('exam-area').classList.add('hidden');
-        document.getElementById('result-area').classList.remove('hidden');
-        document.getElementById('score-text').innerText = `আপনার স্কোর: ${score} / ১০০`;
-        document.getElementById('v-code').innerText = vCode;
-        
-        document.getElementById('wa-share').href = `https://wa.me/8801734505869?text=আসসালামু আলাইকুম স্যার,%0Aআমি মেধা যাচাই পরীক্ষায় অংশ নিয়েছি।%0Aনাম: ${studentData.n}%0Aরোল: ${studentData.r}%0Aপ্রতিষ্ঠান: ${studentData.m}%0Aস্কোর: ${score}/১০০%0Aভেরিফিকেশন কোড: ${vCode}`;
-    }
 
-    function downloadCert() {
-        document.getElementById('ct-name').innerText = studentData.n;
-        document.getElementById('ct-r').innerText = studentData.r;
-        document.getElementById('ct-m').innerText = studentData.m;
-        document.getElementById('ct-s').innerText = window.finalScore;
-        
-        const targetElement = document.getElementById('certificate-template');
-        
-        html2canvas(targetElement, {
-            scale: 2,
-            useCORS: true,
-            allowTaint: true
-        }).then(canvas => {
-            let link = document.createElement('a');
-            link.download = `Galib_Academy_Premium_Certificate_${studentData.r}.png`;
-            link.href = canvas.toDataURL('image/png');
+        // --- 1. QR Code Engine Core ---
+        const html5QrcodeScanner = new Html5Qrcode("reader");
+        const actionBtn = document.getElementById('actionBtn');
+        const scanLine = document.getElementById('scanLine');
+        const resultPanel = document.getElementById('resultPanel');
+        const resultContent = document.getElementById('resultContent');
+        let isScanning = false;
+
+        const onScanSuccess = (decodedText) => {
+            if (navigator.vibrate) navigator.vibrate(100);
+            stopScanner();
+            resultPanel.style.display = 'block';
+            resultContent.innerHTML = decodedText.startsWith('http') ? `<a href="${decodedText}" target="_blank" style="color: #38bdf8; text-decoration: underline;">${decodedText}</a>` : decodedText;
+        };
+
+        const startScanner = () => {
+            resultPanel.style.display = 'none';
+            html5QrcodeScanner.start({ facingMode: "environment" }, { fps: 20, qrbox: 250 }, onScanSuccess, () => {})
+            .then(() => {
+                isScanning = true;
+                scanLine.style.display = 'block';
+                actionBtn.innerHTML = '<i class="fa-solid fa-stop"></i> স্ক্যানার বন্ধ করুন';
+                actionBtn.classList.add('stop-btn');
+            }).catch(err => console.error(err));
+        };
+
+        const stopScanner = () => {
+            html5QrcodeScanner.stop().then(() => {
+                isScanning = false;
+                scanLine.style.display = 'none';
+                actionBtn.innerHTML = '<i class="fa-solid fa-camera"></i> স্ক্যানার চালু করুন';
+                actionBtn.classList.remove('stop-btn');
+            }).catch(err => console.error(err));
+        };
+
+        actionBtn.addEventListener('click', () => isScanning ? stopScanner() : startScanner());
+
+
+        // --- 2. 100 Premium Dynamic Questions Repository ---
+        const rawQuestions = [
+            { q: "আরবি ভাষায় মোট হরফ বা বর্ণ কয়টি?", o: ["২৮টি", "২৯টি", "৩০টি", "২৬টি"], a: "২৯টি" },
+            { q: "নিচের কোনটি পবিত্র আল-কুরআনের সবচেয়ে বড় সূরা?", o: ["সূরা আল-ইমরান", "সূরা আল-বাকারা", "সূরা ইয়াসিন", "সূরা আল-ফাতিহা"], a: "সূরা আল-বাকারা" },
+            { q: "জের, জবর ও পেশ-কে একত্রে আরবি ব্যাকরণে কী বলা হয়?", o: ["তানভীন", "হরকত", "মাদ্দ", "যযম"], a: "হরকত" },
+            { q: "পবিত্র কুরআনে কতটি সূরা রয়েছে?", o: ["১১৪টি", "১১২টি", "১১৫টি", "১১০টি"], a: "১১৪টি" },
+            { q: "আরবি ব্যাকরণে 'ইসম' বলতে সাধারণত কী বোঝায়?", o: ["ক্রিয়া", "বিশেষ্য বা নাম", "অব্যয়", "সর্বনাম"], a: "বিশেষ্য বা নাম" },
+            { q: "আল-কুরআনের প্রথম কোন সূরাটি পূর্ণাঙ্গ অবতীর্ণ হয়?", o: ["সূরা আল-আলাক", "সূরা আল-ফাতিহা", "সূরা আল-ইখলাস", "সূরা আন-নাস"], a: "সূরা আল-ফাতিহা" },
+            { q: "আরবি হরফের উচ্চারণের স্থানকে কী বলা হয়?", o: ["সিফাত", "মাখরাজ", "ইদগাম", "ইখফা"], a: "মাখরাজ" },
+            { q: "আরবি ভাষায় 'লা' (لا) শব্দের অর্থ কী?", o: ["হ্যাঁ", "না", "এবং", "অথবা"], a: "না" },
+            { q: "পবিত্র কুরআনের কোন সূরাকে কুরআনের হৃদয় বলা হয়?", o: ["সূরা আর-রহমান", "সূরা ইয়াসিন", "সূরা আল-মুলক", "সূরা আল-কাহফ"], a: "সূরা ইয়াসিন" },
+            { q: "আরবি হরফে মাখরাজ মোট কয়টি?", o: ["১৫টি", "১৭টি", "২৯টি", "১৪টি"], a: "১৭টি" },
+            { q: "আরবি ব্যাকরণে 'ফেয়েল' (الفعل) শব্দটির অর্থ কী?", o: ["নাম", "কাজ বা ক্রিয়া", "অব্যয়", "বাক্য"], a: "কাজ বা ক্রিয়া" },
+            { q: "আল-কুরআনের সবচেয়ে ছোট সূরা কোনটি?", o: ["সূরা আল-আসর", "সূরা আল-কাওসার", "সূরা আল-ইখলাস", "সূরা ফালাক"], a: "সূরা আল-কাওসার" },
+            { q: "আরবি ব্যাকরণে তানভীন কাকে বলে?", o: ["এক জবর, এক জের ও এক পেশ", "দুই জবর, দুই জের ও দুই পেশ", "যযম যুক্ত হরফ", "তাসদীদ যুক্ত হরফ"], a: "দুই জবর, দুই জের ও দুই পেশ" },
+            { q: "পবিত্র কুরআনের কোন সূরাটি বিসমিল্লাহ ছাড়া শুরু হয়েছে?", o: ["সূরা ইউনুস", "সূরা তাওবাহ", "সূরা হুদ", "সূরা নামল"], a: "সূরা তাওবাহ" },
+            { q: "আরবি ভাষায় স্বরচিহ্ন বা হরকত প্রবর্তন করেন কে?", o: ["হাজ্জাজ বিন ইউসুফ", "আবু আসওয়াদ আদ-দুয়ালী", "খলিল বিন আহমদ", "ইমাম বুখারী"], a: "আবু আসওয়াদ আদ-দুয়ালী" },
+            { q: "কোন সূরাকে 'উম্মুল কুরআন' বলা হয়?", o: ["সূরা আল-বাকারা", "সূরা আল-ফাতিহা", "সূরা ইয়াসিন", "সূরা আর-রহমান"], a: "সূরা আল-ফাতিহা" },
+            { q: "আরবি ভাষায় 'নাআম' (نعم) শব্দের অর্থ কী?", o: ["না", "হ্যাঁ", "ধন্যবাদ", "স্বাগতম"], a: "হ্যাঁ" },
+            { q: "পবিত্র কুরআনে কতটি সেজদাহ রয়েছে?", o: ["১২টি", "১৪টি", "১৫টি", "১০টি"], a: "১৪টি" },
+            { q: "আরবি ব্যাকরণে কাল বা জামান প্রধানত কয় প্রকার?", o: ["২ প্রকার", "৩ প্রকার", "৪ প্রকার", "৫ প্রকার"], a: "৩ প্রকার" },
+            { q: "পবিত্র আল-কুরআনে মোট কতটি পারা রয়েছে?", o: ["২০টি", "৩০টি", "৪০টি", "২৫টি"], a: "৩০টি" },
+            { q: "গুণবাচক শব্দ বা বিশেষণকে আরবিতে কী বলা হয়?", o: ["মাওসূফ", "সিফাত", "মুযাফ", "ফায়েল"], a: "সিফাত" },
+            { q: "কুরআনের কোন সূরা পাঠ করলে কবরের আজাব থেকে মুক্তি পাওয়া যায়?", o: ["সূরা আল-মুলক", "সূরা আল-কাহফ", "সূরা ওয়াকিয়াহ", "সূরা সাজদাহ"], a: "সূরা আল-মুলক" },
+            { q: "আরবি ভাষায় একবচনকে কী বলা হয়?", o: ["তাতনিয়াহ", "মুফরাদ বা ওয়াহিদ", "জমা", "মুযাক্কার"], a: "মুফরাদ বা ওয়াহিদ" },
+            { q: "পবিত্র কুরআনের কতটি সূরায় 'বিসমিল্লাহ' দুবার এসেছে?", o: ["সূরা নামল", "সূরা তাওবাহ", "সূরা বাকারা", "সূরা রহমান"], a: "সূরা নামল" },
+            { q: "আরবি ভাষায় বহুবচনকে কী বলা হয়?", o: ["মুফরাদ", "জমা", "তাছনিয়া", "মুয়ান্নাস"], a: "জমা" },
+            { q: "প্রথম আসমানী কিতাব তাওরাত কার ওপর নাজিল হয়েছিল?", o: ["হযরত ঈসা (আ.)", "হযরত মুসা (আ.)", "হযরত দাউদ (আ.)", "হযরত ইব্রাহিম (আ.)"], a: "হযরত মুসা (আ.)" },
+            { q: "আরবি ব্যাকরণে পুংলিঙ্গকে কী বলা হয়?", o: ["মুয়ান্নাস", "মুযাক্কার", "মুফরাদ", "মারেফা"], a: "মুযাক্কার" },
+            { q: "কুরআন মাজীদের কোন সূরাটি জিনের নামে নামকরণ করা হয়েছে?", o: ["সূরা ফীল", "সূরা জিন", "সূরা নাস", "সূরা ফালাক"], a: "সূরা জিন" },
+            { q: "আরবি ব্যাকরণে স্ত্রীলিঙ্গকে কী বলা হয়?", o: ["মুযাক্কার", "মুয়ান্নাস", "নাকেরা", "আমেল"], a: "মুয়ান্নাস" },
+            { q: "কুরআন অবতীর্ণ হতে মোট কত বছর সময় লেগেছিল?", o: ["২০ বছর", "২৩ বছর", "২৫ বছর", "৩০ বছর"], a: "২৩ বছর" },
+            { q: "নির্দিষ্ট বিশেষ্যকে আরবি ব্যাকরণে কী বলা হয়?", o: ["নাকেরা", "মারেফা", "হরফ", "জুমলা"], a: "মারেফা" },
+            { q: "পবিত্র কুরআনের কোন সূরাটি মানবজাতির সৃষ্টির ইতিহাস নিয়ে বিস্তৃত?", o: ["সূরা আর-রহমান", "সূরা আল-ইনসান", "সূরা আলাক", "সূরা আল-হিজর"], a: "সূরা আর-রহমান" },
+            { q: "অনির্দিষ্ট বিশেষ্যকে আরবি ব্যাকরণে কী বলা হয়?", o: ["মারেফা", "নাকেরা", "সিফাত", "ফায়েল"], a: "নাকেরা" },
+            { q: "সর্বশেষ আসমানী কিতাব কোনটি?", o: ["তাওরাত", "যবুর", "ইঞ্জিল", "আল-কুরআন"], a: "আল-কুরআন" },
+            { q: "আরবি বর্ণমালার প্রথম বর্ণ কোনটি?", o: ["বা", "আলিফ", "তা", "জীম"], a: "আলিফ" },
+            { q: "ইসলামের প্রথম খলিফা কে ছিলেন?", o: ["হযরত ওমর (রা.)", "হযরত আবু বকর (রা.)", "হযরত ওসমান (রা.)", "হযরত আলী (রা.)"], a: "হযরত আবু বকর (রা.)" },
+            { q: "আরবি বর্ণমালার শেষ বর্ণ কোনটি?", o: ["হামযাহ", "ইয়া", "ওয়াও", "নুন"], a: "ইয়া" },
+            { q: "কুরআন মাজীদের হাফেজ হতে প্রথম কোন খলিফা উদ্বুদ্ধ করেছিলেন?", o: ["হযরত আলী (রা.)", "হযরত আবু বকর (রা.)", "হযরত ওমর (রা.)", "হযরত ওসমান (রা.)"], a: "হযরত আবু বকর (রা.)" },
+            { q: "গুনগুন করে পড়ার নিয়মকে তাজবীদে কী বলা হয়?", o: ["ইদগাম", "গুন্নাহ", "ইখফা", "ক্বলক্বলাহ"], a: "গুন্নাহ" },
+            { q: "পবিত্র কুরআন প্রথম কোথায় অবতীর্ণ হয়?", o: ["হেরা গুহায়", "সাওর গুহায়", "কাবা প্রাঙ্গণে", "মদীনার মসজিদে"], a: "হেরা গুহায়" },
+            { q: "ক্বলক্বলাহ এর হরফ কয়টি?", o: ["৪টি", "৫টি", "৬টি", "৭টি"], a: "৫টি" },
+            { q: "ইসলামের ইতিহাসে প্রথম মুয়াজ্জিন কে ছিলেন?", o: ["হযরত সালমান ফারসী (রা.)", "হযরত বিলাল (রা.)", "হযরত আম্মার (রা.)", "হযরত আবু হুরায়রা (রা.)"], a: "হযরত বিলাল (রা.)" },
+            { q: "আরবি ভাষায় 'কিতাব' শব্দের অর্থ কী?", o: ["কলম", "বই বা খাতা", "টেবিল", "রাস্তা"], a: "বই বা খাতা" },
+            { q: "পবিত্র কুরআনের কোন সূরাটি মক্কায় অবতীর্ণ হলে তাকে কী বলা হয়?", o: ["মাদানী সূরা", "মাক্কী সূরা", "হিজরি সূরা", "কুরাইশ সূরা"], a: "মাক্কী সূরা" },
+            { q: "আরবি ভাষায় 'বাইতুন' শব্দের অর্থ কী?", o: ["মসজিদ", "ঘর বা বাড়ি", "বাজার", "বিদ্যালয়"], a: "ঘর বা বাড়ি" },
+            { q: "পবিত্র কুরআনের মদীনায় অবতীর্ণ সূরাগুলোকে কী বলা হয়?", o: ["মাক্কী সূরা", "মাদানী সূরা", "আনসারী সূরা", "মুহাজির সূরা"], a: "মাদানী সূরা" },
+            { q: "আরবি ভাষায় 'মাদরাসাতুন' শব্দের অর্থ কী?", o: ["হাসপাতাল", "বিদ্যালয় বা শিক্ষা প্রতিষ্ঠান", "অফিস", "খেলার মাঠ"], a: "বিদ্যালয় বা শিক্ষা প্রতিষ্ঠান" },
+            { q: "ইসলামের মূল স্তম্ভ বা ভিত্তি কয়টি?", o: ["৩টি", "৫টি", "৭টি", "৪টি"], a: "৫টি" },
+            { q: "আরবি ব্যাকরণে 'জুমলা' বলতে কী বোঝায়?", o: ["শব্দ", "বাক্য", "অনুচ্ছেদ", "অক্ষর"], a: "বাক্য" },
+            { q: "ঈমানের মূল শাখা বা স্তম্ভ কয়টি?", o: ["৫টি", "৭টি", "৬টি", "৩টি"], a: "৭টি" },
+            { q: "আরবিতে 'শুকরান' শব্দের অর্থ কী?", o: ["দুঃখিত", "ধন্যবাদ", "আল্লাহ হাফেজ", "শুভ সকাল"], a: "ধন্যবাদ" },
+            { q: "মুসলমানদের ওপর দৈনিক কত ওয়াক্ত সালাত ফরজ?", o: ["৩ ওয়াক্ত", "৫ ওয়াক্ত", "১৭ ওয়াক্ত", "৪ ওয়াক্ত"], a: "৫ ওয়াক্ত" },
+            { q: "আরবি ব্যাকরণে 'কালিমা' কত প্রকার?", o: ["২ প্রকার", "৩ প্রকার", "৪ প্রকার", "৫ প্রকার"], a: "৩ প্রকার" },
+            { q: "ইসলামে যাকাত দেওয়া ধনীদের জন্য কী?", o: ["নফল", "ফরজ", "সুন্নাত", "ওয়াজিব"], a: "ফরজ" },
+            { q: "আরবি ভাষায় 'ক্বলম' শব্দের অর্থ কী?", o: ["কাগজ", "কলম", "বই", "পেন্সিলবক্স"], a: "কলম" },
+            { q: "রমজান মাসের রোজা রাখা ইসলামের কী?", o: ["সুন্নাত", "ফরজ", "ওয়াজিব", "মুস্তাহাব"], a: "ফরজ" },
+            { q: "তাসদীদ (ّ) যুক্ত হরফকে কয়বার পড়তে হয়?", o: ["১ বার", "২ বার", "৩ বার", "৪ বার"], a: "২ বার" },
+            { q: "ইসলামের দ্বিতীয় খলিফা কে ছিলেন?", o: ["হযরত আবু বকর (রা.)", "হযরত ওমর (রা.)", "হযরত আলী (রা.)", "হযরত ওসমান (রা.)"], a: "হযরত ওমর (রা.)" },
+            { q: "আরবি ব্যাকরণে হরফে জার মোট কতটি?", o: ["১৫টি", "১৭টি", "২০টি", "১৪টি"], a: "১৭টি" },
+            { q: "ইসলামের তৃতীয় খলিফা কে ছিলেন?", o: ["হযরত ওসমান (রা.)", "হযরত আলী (রা.)", "হযরত ওমর (রা.)", "হযরত মুয়াবিয়া (রা.)"], a: "হযরত ওসমান (রা.)" },
+            { q: "আরবি ভাষায় 'মাছজিদ' শব্দের অর্থ কী?", o: ["খেলার মাঠ", "সেজদার স্থান বা মসজিদ", "বাজার", "বিদ্যালয়"], a: "সেজদার স্থান বা মসজিদ" },
+            { q: "ইসলামের চতুর্থ খলিফা কে ছিলেন?", o: ["হযরত আবু বকর (রা.)", "হযরত আলী (রা.)", "হযরত ওমর (রা.)", "হযরত ওসমান (রা.)"], a: "হযরত আলী (রা.)" },
+            { q: "আরবি বর্ণমালায় নুকতাহীন হরফ কয়টি?", o: ["১৩টি", "১৪টি", "১৫টি", "১৬টি"], a: "১৪টি" },
+            { q: "হাদিস শাস্ত্রের সবচেয়ে বিশুদ্ধ কিতাব কোনটি?", o: ["সুনানে নাসায়ী", "সহীহ আল-বুখারী", "সহীহ মুসলিম", "জামে আত-তিরমিযী"], a: "সহীহ আল-বুখারী" },
+            { q: "আরবি বর্ণমালায় নুকতাযুক্ত হরফ কয়টি?", o: ["১৫টি", "১৪টি", "১৩টি", "১৭টি"], a: "১৫টি" },
+            { q: "সহীহ বুখারী শরীফের সংকলক কে?", o: ["ইমাম মুসলিম", "ইমাম বুখারী", "ইমাম মালিক", "ইমাম শাফেয়ী"], a: "ইমাম বুখারী" },
+            { q: "আরবি ভাষায় 'শামস' শব্দের অর্থ কী?", o: ["চাঁদ", "সূর্য", "তারা", "আকাশ"], a: "সূর্য" },
+            { q: "হাদিস প্রধানত কত প্রকার?", o: ["২ প্রকার", "৩ প্রকার", "৪ প্রকার", "৫ প্রকার"], a: "৩ প্রকার" },
+            { q: "আরবি ভাষায় 'ক্বামার' শব্দের অর্থ কী?", o: ["সূর্য", "চাঁদ", "পৃথিবী", "আলো"], a: "চাঁদ" },
+            { q: "মহানবী (সা.) এর হিজরতের সাথী কে ছিলেন?", o: ["হযরত ওমর (রা.)", "হযরত আবু বকর (রা.)", "হযরত আলী (রা.)", "হযরত ওসমান (রা.)"], a: "হযরত আবু বকর (রা.)" },
+            { q: "আরবি ব্যাকরণে কর্তাকে কী বলা হয়?", o: ["মাফউল", "ফায়েল", "ফেয়েল", "হরফ"], a: "ফায়েল" },
+            { q: "মহানবী (সা.) এর মাতার নাম কী ছিল?", o: ["হযরত হালিমা", "হযরত আমিনা", "হযরত খাদিজা", "হযরত ফাতেমা"], a: "হযরত আমিনা" },
+            { q: "আরবি ব্যাকরণে কর্মকে কী বলা হয়?", o: ["ফায়েল", "মাফউল", "সিফাত", "মুযাফ"], a: "মাফউল" },
+            { q: "মহানবী (সা.) এর পিতার নাম কী ছিল?", o: ["আব্দুল মুত্তালিব", "আব্দুল্লাহ", "আবু তালিব", "আব্বাস"], a: "আব্দুল্লাহ" },
+            { q: "আরবি ভাষায় 'মাউন' (ماء) শব্দের অর্থ কী?", o: ["আগুন", "পানি", "বাতাস", "মাটি"], a: "পানি" },
+            { q: "মহানবী (সা.) কত খ্রিষ্টাব্দে জন্মগ্রহণ করেন?", o: ["৫৭০ খ্রিষ্টাব্দে", "৬১০ খ্রিষ্টাব্দে", "৬২২ খ্রিষ্টাব্দে", "৫ম শতাব্দীতে"], a: "৫৭০ খ্রিষ্টাব্দে" },
+            { q: "আরবি ভাষায় 'লাবান' শব্দের অর্থ কী?", o: ["মধু", "দুধ", "পানি", "জুস"], a: "দুধ" },
+            { q: "মহানবী (সা.) কত বছর বয়সে নবুওয়াত লাভ করেন?", o: ["২৫ বছর", "৪০ বছর", "৪৫ বছর", "৫০ বছর"], a: "৪০ বছর" },
+            { q: "আরবি ভাষায় 'ছাফীনা' শব্দের অর্থ কী?", o: ["গাড়ি", "নৌকা বা জাহাজ", "উড়োজাহাজ", "সাইকেল"], a: "নৌকা বা জাহাজ" },
+            { q: "সর্বপ্রথম ইসলাম গ্রহণকারী নারীর নাম কী?", o: ["হযরত আয়েশা (রা.)", "হযরত খাদিজা (রা.)", "হযরত ফাতেমা (রা.)", "হযরত সুমাইয়া (রা.)"], a: "হযরত খাদিজা (রা.)" },
+            { q: "আরবি ভাষায় 'তালাবুন' শব্দের অর্থ কী?", o: ["খোঁজা বা অন্বেষণ", "খাওয়া", "ঘুমানো", "পড়া"], a: "খোঁজা বা অন্বেষণ" },
+            { q: "সর্বপ্রথম ইসলাম গ্রহণকারী বালকের নাম কী?", o: ["হযরত যায়েদ (রা.)", "হযরত আলী (রা.)", "হযরত ইবনে আব্বাস (রা.)", "হযরত হাসান (রা.)"], a: "হযরত আলী (রা.)" },
+            { q: "আরবি ব্যাকরণে 'মুযাফ ইলাইহি' সর্বদা কী হরকত গ্রহণ করে?", o: ["যবর", "জের", "পেশ", "যযম"], a: "জের" },
+            { q: "হিজরি সনের গণনা কোন ঐতিহাসিক ঘটনা থেকে শুরু হয়?", o: ["মহানবীর জন্ম", "রাসূলের মক্কা থেকে মদীনায় হিজরত", "বদর যুদ্ধ", "মক্কা বিজয়"], a: "রাসূলের মক্কা থেকে মদীনায় হিজরত" },
+            { q: "তাজবীদ শাস্ত্রের মূল উদ্দেশ্য কী?", o: ["সহজ করা", "সঠিক ও সুন্দরভাবে কুরআন তিলাওয়াত করা", "মুখস্থ করা", "অর্থ বোঝা"], a: "সঠিক ও সুন্দরভাবে কুরআন তিলাওয়াত করা" },
+            { q: "হিজরি সনের প্রথম মাসের নাম কী?", o: ["রমজান", "মহররম", "সফর", "রজব"], a: "মহররম" },
+            { q: "আরবি ভাষায় দ্বিবচনকে কী বলা হয়?", o: ["মুফরাদ", "তাছনিয়া বা তানিয়া", "জমা", "মুযাক্কার"], a: "তাছনিয়া বা তানিয়া" },
+            { q: "হিজরি সনের শেষ মাসের নাম কী?", o: ["রমজান", "জিলহজ", "মহররম", "শাওয়াল"], a: "জিলহজ" },
+            { q: "আরবি বর্ণমালার মোট কতটি হরফ ইদগাম এর অন্তর্ভুক্ত?", o: ["৪টি", "৬টি", "৫টি", "৮টি"], a: "৬টি" },
+            { q: "আশারা মুবাশশারা বলতে কতজন জান্নাতী সাহাবীকে বোঝায়?", o: ["৫ জন", "১০ জন", "১২ জন", "২০ জন"], a: "১০ জন" },
+            { q: "আরবি ভাষায় 'শাজারুন' শব্দের অর্থ কী?", o: ["ফুল", "গাছ", "ফল", "পাতা"], a: "গাছ" },
+            { q: "ইসলামের প্রথম যুদ্ধ কোনটি ছিল?", o: ["উহুদের যুদ্ধ", "বদর যুদ্ধ", "খন্দকের যুদ্ধ", "খায়বরের যুদ্ধ"], a: "বদর যুদ্ধ" },
+            { q: "আরবি ভাষায় 'তিফ্লুন' শব্দের অর্থ কী?", o: ["বৃদ্ধ", "শিশু", "যুবক", "শিক্ষক"], a: "শিশু" },
+            { q: "ঐতিহাসিক বদর যুদ্ধ কত হিজরিতে সংঘটিত হয়?", o: ["১ হিজরিতে", "২ হিজরিতে", "৩ হিজরিতে", "৪ হিজরিতে"], a: "২ হিজরিতে" },
+            { q: "আরবি ব্যাকরণে হরফে ইল্লত বা দুর্বল বর্ণ কয়টি?", o: ["২টি", "৩টি", "৪টি", "৫টি"], a: "৩টি" },
+            { q: "মিরাজ এর ঐতিহাসিক ঘটনাটি কোন মাসে ঘটেছিল?", o: ["রমজান", "রজব", "মহররম", "শাওয়াল"], a: "রজব" },
+            { q: "আরবি ব্যাকরণে হরফে ইল্লত বা স্বরবর্ণগুলো কী কী?", o: ["আলিফ, ওয়াও, ইয়া", "বা, তা, ছা", "মীম, নুন, লাম", "হামযাহ, আইন, হা"], a: "আলিফ, ওয়াও, ইয়া" },
+            { q: "ইসলামের কোন খলিফাকে 'যুন-নূরাইন' বলা হয়?", o: ["হযরত ওমর (রা.)", "হযরত ওসমান (রা.)", "হযরত আলী (রা.)", "হযরত আবু বকর (রা.)"], a: "হযরত ওসমান (রা.)" },
+            { q: "আরবি ভাষায় 'উস্তাযুন' শব্দের অর্থ কী?", o: ["ছাত্র", "শিক্ষক", "অভিভাবক", "কৃষক"], a: "শিক্ষক" },
+            { q: "পবিত্র কুরআনের কোন সূরাটি পাঠ করলে দাজ্জালের ফেতনা থেকে বাঁচা যায়?", o: ["সূরা ইয়াসিন", "সূরা আল-কাহফ", "সূরা মুলক", "সূরা ওয়াকিয়াহ"], a: "সূরা আল-কাহফ" }
+        ];
+
+        // Shuffle Master Algorithm (Knuth Shuffle)
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // Randomize questions pool and options
+        let currentQuestions = shuffleArray([...rawQuestions]); 
+        currentQuestions.forEach(item => item.o = shuffleArray([...item.o]));
+
+        let currentQuestionIndex = 0;
+
+        function loadQuiz() {
+            const nextBtn = document.getElementById('nextQuizBtn');
+            nextBtn.style.display = 'none';
+            if (currentQuestionIndex >= currentQuestions.length) {
+                document.getElementById('questionText').innerText = "অভিনন্দন! আপনি ১০০টি প্রশ্নের এই কুইজ সফলভাবে সম্পন্ন করেছেন।";
+                document.getElementById('optionsContainer').innerHTML = "";
+                document.getElementById('question-number').innerText = "সমাপ্ত";
+                return;
+            }
+
+            document.getElementById('question-number').innerText = `প্রশ্ন ${currentQuestionIndex + 1}/${currentQuestions.length}`;
+            const activeData = currentQuestions[currentQuestionIndex];
+            document.getElementById('questionText').innerText = activeData.q;
+            
+            const optionsContainer = document.getElementById('optionsContainer');
+            optionsContainer.innerHTML = "";
+
+            activeData.o.forEach(option => {
+                const card = document.createElement('div');
+                card.classList.add('option-card');
+                card.innerHTML = `<i class="fa-regular fa-circle"></i> <span>${option}</span>`;
+                card.addEventListener('click', () => selectAnswer(card, option, activeData.a));
+                optionsContainer.appendChild(card);
+            });
+        }
+
+        function selectAnswer(selectedCard, chosen, correct) {
+            const allCards = document.querySelectorAll('.option-card');
+            allCards.forEach(card => card.style.pointerEvents = 'none'); 
+
+            if (chosen === correct) {
+                selectedCard.classList.add('correct');
+                selectedCard.querySelector('i').className = "fa-solid fa-circle-check";
+            } else {
+                selectedCard.classList.add('wrong');
+                selectedCard.querySelector('i').className = "fa-solid fa-circle-xmark";
+                allCards.forEach(card => {
+                    if (card.querySelector('span').innerText === correct) {
+                        card.classList.add('correct');
+                        card.querySelector('i').className = "fa-solid fa-circle-check";
+                    }
+                });
+            }
+            document.getElementById('nextQuizBtn').style.display = 'block';
+        }
+
+        document.getElementById('nextQuizBtn').addEventListener('click', () => {
+            currentQuestionIndex++;
+            loadQuiz();
+        });
+
+        loadQuiz(); 
+
+
+        // --- 3. Dynamic Premium Certificate Architecture ---
+        const canvas = document.getElementById('certCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function generateCertificate(studentName) {
+            ctx.fillStyle = '#0b0f19';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.strokeStyle = '#38bdf8';
+            ctx.lineWidth = 4;
+            ctx.strokeRect(20, 20, canvas.width - 40, canvas.height - 40);
+
+            ctx.strokeStyle = '#818cf8';
+            ctx.lineWidth = 1;
+            ctx.strokeRect(28, 28, canvas.width - 56, canvas.height - 56);
+
+            ctx.fillStyle = '#38bdf8';
+            ctx.fillRect(20, 20, 60, 6);
+            ctx.fillRect(20, 20, 6, 60);
+
+            ctx.fillStyle = '#fff';
+            ctx.textAlign = 'center';
+            ctx.font = 'bold 36px "Hind Siliguri", sans-serif';
+            ctx.fillText("GALIB ACADEMY", canvas.width / 2, 110);
+
+            ctx.fillStyle = '#94a3b8';
+            ctx.font = '18px "Hind Siliguri", sans-serif';
+            ctx.fillText("সাফল্য ও কৃতিত্বের স্বীকৃতিস্বরূপ", canvas.width / 2, 160);
+
+            ctx.fillStyle = '#38bdf8';
+            ctx.font = 'bold 28px "Hind Siliguri", sans-serif';
+            ctx.fillText("সম্মাননা সনদপত্র", canvas.width / 2, 210);
+
+            ctx.fillStyle = '#fff';
+            ctx.font = 'bold 32px "Hind Siliguri", sans-serif';
+            ctx.fillText(studentName, canvas.width / 2, 290);
+
+            ctx.fillStyle = 'rgba(129, 140, 248, 0.4)';
+            ctx.fillRect(canvas.width / 2 - 150, 305, 300, 3);
+
+            ctx.fillStyle = '#cbd5e1';
+            ctx.font = '16px "Hind Siliguri", sans-serif';
+            ctx.fillText("অনলাইন কুইজ এবং একাডেমিক সেশনে সফলতার সাথে উত্তীর্ণ হয়েছেন।", canvas.width / 2, 350);
+
+            ctx.fillStyle = '#38bdf8';
+            ctx.font = 'italic 18px cursive';
+            ctx.fillText("Galib", canvas.width / 2, 450); 
+            
+            ctx.fillStyle = '#64748b';
+            ctx.font = '14px "Hind Siliguri", sans-serif';
+            ctx.fillText("পরিচালক, গালিব একাডেমি", canvas.width / 2, 475);
+        }
+
+        document.getElementById('downloadCertBtn').addEventListener('click', () => {
+            const link = document.createElement('a');
+            link.download = 'Galib_Academy_Certificate.png';
+            link.href = canvas.toDataURL();
             link.click();
         });
-    }
-</script>
+
+
+        // --- 4. Live Interaction Flow System ---
+        const commentInput = document.getElementById('commentInput');
+        const submitCommentBtn = document.getElementById('submitCommentBtn');
+        const commentsList = document.getElementById('commentsList');
+
+        submitCommentBtn.addEventListener('click', () => {
+            const text = commentInput.value.trim();
+            if(!text) return alert("মন্তব্যের বক্সে কিছু লিখুন!");
+
+            const item = document.createElement('div');
+            item.classList.add('comment-item');
+            item.innerHTML = `<div class="comment-user"><i class="fa-solid fa-circle-user"></i> শিক্ষার্থী (অতিথি)</div><div>${text}</div>`;
+            
+            commentsList.insertBefore(item, commentsList.firstChild);
+            commentInput.value = "";
+        });
+    </script>
 </body>
 </html>
