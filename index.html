@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galib Academy - Premium Exam Ecosystem</title>
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -16,6 +14,7 @@
             --neon-blue: #38bdf8;
             --neon-purple: #818cf8;
             --emerald: #34d399;
+            --rose: #fb7185;
         }
 
         * {
@@ -162,6 +161,19 @@
             color: var(--neon-blue);
         }
 
+        .timer-display {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--rose);
+            background: rgba(251, 113, 133, 0.1);
+            padding: 4px 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(251, 113, 133, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
         .question-text {
             font-size: 1.35rem;
             font-weight: 600;
@@ -219,6 +231,29 @@
         .btn-action:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+        }
+
+        /* স্কোরকার্ড বোর্ড */
+        .scoreboard {
+            display: flex;
+            justify-content: space-around;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 15px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .score-block h4 {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin-bottom: 5px;
+        }
+
+        .score-block p {
+            font-size: 1.6rem;
+            font-weight: 700;
         }
 
         /* হিডেন এলিমেন্টস */
@@ -289,12 +324,11 @@
 </head>
 <body>
 
-    <!-- ১. স্বাগতম স্ক্রিন ও নাম এন্ট্রি ফর্ম -->
     <div id="welcome-overlay">
         <div class="welcome-card">
             <div class="academy-badge"><i class="fa-solid fa-atom"></i> গালিব একাডেমি ইকোসিস্টেম</div>
             <h1 class="welcome-title">ডিজিটাল পোর্টালে স্বাগতম</h1>
-            <p class="welcome-quote">"জ্ঞানের আলোয় উদ্ভাসিত হোক প্রতিটি মন।" আপনার মেধা যাচাইয়ের জন্য ১০০টি স্তরের এই বিশেষ কুইজ সেশনে প্রবেশ করতে আপনার নাম সাবমিট করুন।</p>
+            <p class="welcome-quote">"জ্ঞানের আলোয় উদ্ভাসিত হোক প্রতিটি মন।" আপনার মেধা যাচাইয়ের জন্য ১০০টি স্তরের এই বিশেষ কুইজ সেশনে প্রবেশ করতে আপনার নাম সাবমিট করুন। <br><b style="color: var(--rose);">সময় সীমাবদ্ধতা: ১০ মিনিট।</b></p>
             
             <div class="form-group">
                 <label><i class="fa-solid fa-signature"></i> আপনার পুরো নাম:</label>
@@ -304,14 +338,12 @@
         </div>
     </div>
 
-    <!-- মূল অ্যাপ্লিকেশন কন্টেইনার -->
     <div class="container">
         
-        <!-- ২. কুইজ ইন্টারফেস সেকশন -->
         <div class="glass-panel" id="quiz-section" style="display: none;">
             <div class="quiz-header">
                 <div class="question-counter" id="qCounter">প্রশ্ন: ১/১০০</div>
-                <div style="color: #64748b; font-size: 0.9rem;"><i class="fa-solid fa-circle-dot" style="color: var(--emerald);"></i> লাইভ এক্সাম</div>
+                <div class="timer-display" id="timerBox"><i class="fa-solid fa-clock-three"></i> ১০:০০</div>
             </div>
             
             <div class="question-text" id="qText">প্রশ্ন লোড হচ্ছে...</div>
@@ -320,18 +352,31 @@
             <button class="btn-action" id="nextBtn">পরবর্তী প্রশ্ন <i class="fa-solid fa-chevron-right"></i></button>
         </div>
 
-        <!-- ৩. অনন্য ডিজিটাল সার্টিফিকেট সেকশন -->
         <div class="glass-panel" id="certificate-section">
-            <h2 style="text-align: center; margin-bottom: 20px; color: var(--emerald); font-weight: 700;"><i class="fa-solid fa-circle-check"></i> পরীক্ষা সম্পন্ন হয়েছে!</h2>
-            <p style="text-align: center; color: #94a3b8; margin-bottom: 25px;">অভিনন্দন <span id="certUser" style="color:#fff; font-weight:600;"></span>, আপনি সফলতার সাথে ১০০টি চ্যালেঞ্জ পার করেছেন।</p>
+            <h2 id="completionTitle" style="text-align: center; margin-bottom: 10px; color: var(--emerald); font-weight: 700;"><i class="fa-solid fa-circle-check"></i> পরীক্ষা সম্পন্ন হয়েছে!</h2>
+            <p style="text-align: center; color: #94a3b8; margin-bottom: 25px;">অভিনন্দন <span id="certUser" style="color:#fff; font-weight:600;"></span>, আপনার পরীক্ষার ফলাফল নিচে দেওয়া হলো।</p>
             
+            <div class="scoreboard">
+                <div class="score-block">
+                    <h4>মোট প্রশ্ন</h4>
+                    <p style="color: var(--neon-blue);">১০০</p>
+                </div>
+                <div class="score-block">
+                    <h4>সঠিক উত্তর</h4>
+                    <p id="correctAnswersCount" style="color: var(--emerald);">০</p>
+                </div>
+                <div class="score-block">
+                    <h4>ভুল উত্তর</h4>
+                    <p id="wrongAnswersCount" style="color: var(--rose);">০</p>
+                </div>
+            </div>
+
             <div class="canvas-container">
                 <canvas id="certCanvas" width="800" height="550"></canvas>
             </div>
             <button class="btn-action" id="downloadBtn" style="background: linear-gradient(135deg, #818cf8, #6366f1);"><i class="fa-solid fa-arrow-down-to-line"></i> সনদপত্র ডাউনলোড করুন</button>
         </div>
 
-        <!-- ৪. লাইভ সোশ্যাল কমেন্ট ওয়াল -->
         <div class="glass-panel" id="comment-section">
             <h3 style="margin-bottom: 15px; font-size: 1.2rem; color: var(--neon-purple);"><i class="fa-solid fa-comments"></i> আপনার অনুভূতি শেয়ার করুন</h3>
             <div class="comment-box">
@@ -351,8 +396,13 @@
     <script>
         let userName = "";
         let currentQuestionIndex = 0;
-        let selectedAnswers = [];
+        let score = 0; 
         let currentSelectedOption = null;
+        
+        // ১০ মিনিট টাইমার ভ্যারিয়েবল (১০ * ৬০ = ৬০০ সেকেন্ড)
+        let totalTimeInSeconds = 600; 
+        let timerInterval = null;
+        let isExamFinished = false;
 
         // ১০০টি ইউনিক ব্যাকগ্রাউন্ড ম্যাট্রিক্স জেনারেটর
         const uniqueBackgrounds = [];
@@ -363,9 +413,9 @@
             uniqueBackgrounds.push(`linear-gradient(135deg, rgb(${r},${g},${b}), rgb(${r+12},${g+12},${b+22}))`);
         }
 
-        // ১০০টি সম্পূর্ণ বাস্তব ও টাইপ করা ইসলামিক কুইজ ডাটাবেজ (কোনো আরবি ব্যাকরণ নেই)
+        // ১০০টি সম্পূর্ণ বাস্তব ও টাইপ করা ইসলামিক কুইজ ডাটাবেজ
         const quizDatabase = [
-            { q: "১. পবিত্র আল-কুরআনের সবচেয়ে বড় সূরা কোনটি?", o: ["সূরা আল-ইমরান", "সূরা আল-বাকারা", "সূরা ইয়াসিন", "সূরা আল-ফাতিহা"], a: "সূরা আল-বাকারা" },
+            { q: "১. পবিত্র আল-کুরআনের সবচেয়ে বড় সূরা কোনটি?", o: ["সূরা আল-ইমরান", "সূরা আল-বাকারা", "সূরা ইয়াসিন", "সূরা আল-ফাতিহা"], a: "সূরা আল-বাকারা" },
             { q: "২. পবিত্র কুরআনে মোট কতটি সূরা রয়েছে?", o: ["১১৪টি", "১১২টি", "১১৫টি", "১১০টি"], a: "১১৪টি" },
             { q: "৩. আল-কুরআনের প্রথম কোন সূরাটি পূর্ণাঙ্গ বা একসাথে অবতীর্ণ হয়?", o: ["সূরা আল-আলাক", "সূরা আল-ফাতিহা", "সূরা আল-ইখলাস", "সূরা আন-নাস"], a: "সূরা আল-ফাতিহা" },
             { q: "৪. পবিত্র কুরআনের কোন সূরাকে কুরআনের হৃদয় বলা হয়?", o: ["সূরা আর-রহমান", "সূরা ইয়াসিন", "সূরা আল-মুলক", "সূরা আল-কাহফ"], a: "সূরা ইয়াসিন" },
@@ -411,7 +461,7 @@
             { q: "৪৪. চরম ও দীর্ঘস্থায়ী কঠিন রোগে ধৈর্য ধারণের মূর্ত প্রতীক ছিলেন কোন নবি?", o: ["হযরত আইয়ুব (আঃ)", "হযরত ইয়াকুব (আঃ)", "হযরত ইউনুস (আঃ)", "হযরত জাকারিয়া (আঃ)"], a: "হযরত আইয়ুব (আঃ)" },
             { q: "৪৫. কোন নবিকে জীবিত অবস্থায় আসমানে তুলে নেওয়া হয়েছিল?", o: ["হযরত ঈসা (আঃ)", "হযরত মুসা (আঃ)", "হযরত ইদ্রিস (আঃ)", "হযরত হারুন (আঃ)"], a: "হযরত ঈসা (আঃ)" },
             { q: "৪৬. আমাদের নবি হযরত মুহাম্মদ (সাঃ) কোন বংশে জন্মগ্রহণ করেন?", o: ["কুরাইশ বংশ", "হাশেমি বংশ", "উমাইয়া বংশ", "আউস বংশ"], a: "কুরাইশ বংশ" },
-            { q: "৪৭. মহান নবি (সাঃ) এর মাতার নাম কী ছিল?", o: ["হযরত আমেনা", "হযরত হালিমা", "হযরত ফাতিমা", "হযরত খাদিজা"], a: "হযরত আমেনা" },
+            { q: "৪৭. মহান নবি (সাঃ) এর মাতার নাম কী ছিল?", o: ["হযরত আমেনা", "হযরত হালিমা", "হযরত ফাতিমা", "হযরত খাদিজา"], a: "হযরত আমেনা" },
             { q: "৪৮. মহান নবি (সাঃ) এর পিতার নাম কী ছিল?", o: ["আব্দুল্লাহ", "আবু তালিব", "আব্দুল মুত্তালিব", "আব্বাস"], a: "আব্দুল্লাহ" },
             { q: "৪৯. মহান নবি (সাঃ) এর দুগ্ধমাতা বা ধাত্রী মাতা কে ছিলেন?", o: ["হযরত হালিমা", "হযরত আমেনা", "হযরত উম্মে আয়মন", "হযরত সোয়াইবা"], a: "হযরত হালিমা" },
             { q: "৫০. মহান নবি (সাঃ) এর দাদার নাম কী ছিল?", o: ["আব্দুল মুত্তালিব", "আবু তালিব", "হাশেম", "কিসাই"], a: "আব্দুল মুত্তালিব" },
@@ -449,7 +499,7 @@
             { q: "৮২. ওহী কত প্রকার বা কী কী?", o: ["২ প্রকার", "৩ প্রকার", "৪ প্রকার", "৫ প্রকার"], a: "২ প্রকার" },
             { q: "৮৩. হাদিস প্রধানত কয় প্রকার?", o: ["২ প্রকার", "৩ প্রকার", "৪ প্রকার", "৫ প্রকার"], a: "৩ প্রকার" },
             { q: "৮৪. পৃথিবীর সবচেয়ে বিশুদ্ধতম হাদিস গ্রন্থ কোনটি?", o: ["সহিহ বুখারি", "সহিহ মুসলিম", "সুনানে আবু দাউদ", "জামে আত-তিরমিজি"], a: "সহিহ বুখারি" },
-            { q: "৮৫. সহিহ বুখারি গ্রন্থের সংকলক কে?", o: ["ইমাম বুখারি (রহঃ)", "ইমাম মুসলিম (রহঃ)", "ইমাম মালিক (রহঃ)", "ইমাম শাফেয়ী (রহঃ)"], a: "ইমাম বুখারি (রহঃ)" },
+            { q: "৮৫. সহিহ বুখারি গ্রন্থের সংকলক কে?", o: ["ইмам বুখারি (রহঃ)", "ইмам মুসলিম (রহঃ)", "ইмам মালিক (রহঃ)", "ইмам শাফেয়ী (রহঃ)"], a: "ইмам বুখারি (রহঃ)" },
             { q: "৮৬. সিহাহ সিত্তা বলতে কয়টি বিখ্যাত হাদিস গ্রন্থকে বোঝায়?", o: ["৪টি", "৫টি", "৬টি", "৭টি"], a: "৬টি" },
             { q: "৮৭. মিরাজ শব্দের অর্থ কী?", o: ["উচ্চ মর্যাদা", "ঊর্ধ্বগমন বা মই", "ভ্রমণ", "অলৌকিক ঘটনা"], a: "ঊর্ধ্বগমন বা মই" },
             { q: "৮৮. আল-কুরআনের কোন সূরাকে সুরক্ষাকবচ বা শেষ সূরা বলা হয়?", o: ["সূরা আন-নাস", "সূরা আল-ফাতিহা", "সূরা আল-ইখলাস", "সূরা আল-ফালাক"], a: "সূরা আন-নাস" },
@@ -462,7 +512,7 @@
             { q: "৯৫. তায়াম্মুমের ফরজ কাজ কয়টি?", o: ["২টি", "৩টি", "৪টি", "৫টি"], a: "৩টি" },
             { q: "৯৬. সালাত বা নামাজের ভেতরে ও বাইরে মোট কতটি ফরজ বা আহকাম-আরকান রয়েছে?", o: ["১২টি", "১৩টি", "১৪টি", "১৫টি"], a: "১৩টি" },
             { q: "৯৭. নামাজের চাবি বলা হয় কোন ইবাদতকে?", o: ["ওজু", "নিয়ত", "আজান", "তাকবির"], a: "ওজু" },
-            { q: "৯৮. মিরাজ রজনীতে নবিজি (সাঃ) যে বিশেষ বাহনে ভ্রমণ করেছিলেন তার নাম কী ছিল?", o: ["বোরাক", "দুুলদুল", "কাসওয়া", "রাফরাফ"], a: "বোরাক" },
+            { q: "৯৮. মিরাজ রজনীতে নবিজি (সাঃ) যে বিশেষ বাহনে ভ্রমণ করেছিলেন তার নাম কী ছিল?", o: ["বোরাক", "দিলদিল", "কাসওয়া", "রাফরাফ"], a: "বোরাক" },
             { q: "৯৯. আল-কুরআনে বর্ণিত একমাত্র মহিলার নাম কী?", o: ["হযরত মরিয়ম", "হযরত আছিয়া", "হযরত হাওয়া", "হযরত আমেনা"], a: "হযরত মরিয়ম" },
             { q: "১০০. আখিরাত শব্দের অর্থ কী?", o: ["পরকাল", "ইহকাল", "চিরকাল", "জীবনাবসান"], a: "পরকাল" }
         ];
@@ -480,12 +530,44 @@
             document.getElementById('welcome-overlay').style.visibility = 'hidden';
             document.getElementById('quiz-section').style.display = 'block';
             
+            // টাইমার স্টার্ট ইঞ্জিন
+            startTimer();
             showQuestion();
         });
 
-        // ২. সিঙ্গেল কোয়েশ্চেন রেন্ডারিং ইঞ্জিন
+        // ২. লাইভ কাউন্টডাউন টাইমার সিস্টেম
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                if(totalTimeInSeconds <= 0) {
+                    clearInterval(timerInterval);
+                    document.getElementById('completionTitle').innerHTML = `<i class="fa-solid fa-hourglass-end" style="color: var(--rose);"></i> সময় শেষ হয়েছে!`;
+                    finishExam(); // সময় শেষ হলে অটোমেটিক পরীক্ষা শেষ হবে
+                    return;
+                }
+                
+                totalTimeInSeconds--;
+                
+                let minutes = Math.floor(totalTimeInSeconds / 60);
+                let seconds = totalTimeInSeconds % 60;
+                
+                // দুই ডিজিটে রূপান্তর (যেমন: 05:09)
+                let strMinutes = minutes < 10 ? "০" + minutes : convertToBanglaNumber(minutes);
+                let strSeconds = seconds < 10 ? "০" + seconds : convertToBanglaNumber(seconds);
+                
+                document.getElementById('timerBox').innerHTML = `<i class="fa-solid fa-clock"></i> ${strMinutes}:${strSeconds}`;
+            }, 1000);
+        }
+
+        // ইংরেজি সংখ্যাকে বাংলায় কনভার্ট করার হেল্পার ফাংশন
+        function convertToBanglaNumber(num) {
+            const banglaDigits = ["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];
+            return num.toString().split('').map(digit => banglaDigits[digit] || digit).join('');
+        }
+
+        // ৩. সিঙ্গেল কোয়েশ্চেন রেন্ডারিং ইঞ্জিন
         function showQuestion() {
             if(currentQuestionIndex >= quizDatabase.length) {
+                clearInterval(timerInterval); // সব প্রশ্নের উত্তর দিলে টাইমার বন্ধ হবে
                 finishExam();
                 return;
             }
@@ -513,6 +595,7 @@
                 div.innerHTML = `<i class="fa-regular fa-circle"></i> <span>${option}</span>`;
                 
                 div.addEventListener('click', () => {
+                    if(isExamFinished) return; // এক্সাম ওভার হলে ক্লিক লক
                     const activeOptions = optionsBox.querySelectorAll('.option-item');
                     activeOptions.forEach(opt => {
                         opt.classList.remove('selected');
@@ -526,23 +609,37 @@
             });
         }
 
-        // ৩. নেক্সট এবং সাবমিট বাটন কন্ট্রোলার
+        // ৪. নেক্সট বাটন কন্ট্রোলার
         document.getElementById('nextBtn').addEventListener('click', () => {
+            if(isExamFinished) return;
             if(!currentSelectedOption) {
                 alert("দয়া করে যেকোনো একটি অপশন সিলেক্ট করুন!");
                 return;
             }
-            selectedAnswers.push(currentSelectedOption);
+            
+            // স্কোর চেকিং অ্যালগরিদম
+            if(currentSelectedOption === quizDatabase[currentQuestionIndex].a) {
+                score++;
+            }
+            
             currentQuestionIndex++;
             showQuestion();
         });
 
-        // ৪. ফাইনাল এক্সাম সাবমিশন ও ইন্টারফেস রিলিজ
+        // ৫. ফাইনাল এক্সাম সাবমিশন ও ফলাফল প্রসেসিং
         function finishExam() {
+            if(isExamFinished) return;
+            isExamFinished = true;
+            clearInterval(timerInterval);
+
             document.getElementById('quiz-section').style.display = 'none';
             document.getElementById('certificate-section').style.display = 'block';
             document.getElementById('comment-section').style.display = 'block';
             document.getElementById('certUser').innerText = userName;
+
+            // ইন্টারফেসে স্কোর রেন্ডার করা
+            document.getElementById('correctAnswersCount').innerText = score;
+            document.getElementById('wrongAnswersCount').innerText = quizDatabase.length - score;
 
             document.body.style.background = "linear-gradient(135deg, #020617, #0f172a)";
 
@@ -552,7 +649,7 @@
             });
         }
 
-        // ৫. হাই-রেন্ডারিং ক্যানভাস ড্রাইভার (সার্টিফিকেট জেনারেটর)
+        // ৬. হাই-রেন্ডারিং ক্যানভাস ড্রাইভার (স্কোর-সহ সার্টিফিকেট জেনারেটর)
         const canvas = document.getElementById('certCanvas');
         const ctx = canvas.getContext('2d');
 
@@ -574,34 +671,39 @@
             // মেইন কোর অবজেক্ট
             ctx.fillStyle = '#38bdf8';
             ctx.font = 'bold 26px "Hind Siliguri", sans-serif';
-            ctx.fillText("সম্মাননা সনদপত্র", canvas.width / 2, 180);
+            ctx.fillText("সম্মাননা সনদপত্র", canvas.width / 2, 170);
 
             ctx.fillStyle = '#94a3b8';
             ctx.font = '400 18px "Hind Siliguri", sans-serif';
-            ctx.fillText("গৌরবের সাথে সার্টিফাইড করা যাচ্ছে যে,", canvas.width / 2, 240);
+            ctx.fillText("গৌরবের সাথে সার্টিфাইড করা যাচ্ছে যে,", canvas.width / 2, 225);
 
             // ডায়নামিক শিক্ষার্থীর নাম
             ctx.fillStyle = '#34d399';
             ctx.font = 'bold 34px "Hind Siliguri", sans-serif';
-            ctx.fillText(userName, canvas.width / 2, 310);
+            ctx.fillText(userName, canvas.width / 2, 290);
 
             // বিবরণী ফুটপ্রিন্ট
             ctx.fillStyle = '#cbd5e1';
             ctx.font = '400 18px "Hind Siliguri", sans-serif';
-            ctx.fillText("তিনি গালিব একাডেমির ১০০টি অনন্য কুইজ চ্যালেঞ্জে সফলভাবে অংশগ্রহণ করে", canvas.width / 2, 380);
-            ctx.fillText("ইসলামিক সাধারণ জ্ঞান ও আল-কুরআন বিষয়ে চূড়ান্ত কৃতিত্বের সাথে উত্তীর্ণ হয়েছেন।", canvas.width / 2, 415);
+            ctx.fillText("তিনি গালিব একাডেমির ১০০টি অনন্য কুইজ চ্যালেঞ্জে সফলভাবে অংশগ্রহণ করে", canvas.width / 2, 350);
+            ctx.fillText("ইসলামিক সাধারণ জ্ঞান ও আল-কুরআন বিষয়ে চূড়ান্ত কৃতিত্বের সাথে উত্তীর্ণ হয়েছেন।", canvas.width / 2, 385);
+
+            // সার্টিফিকেটে স্কোর স্ট্যাম্পিং
+            ctx.fillStyle = '#e2e8f0';
+            ctx.font = '600 18px "Hind Siliguri", sans-serif';
+            ctx.fillText(`অর্জিত স্কোর: ১০০ এর মধ্যে ${score}`, canvas.width / 2, 435);
 
             // ভেরিফাইড সাইন টেক্সট
             ctx.fillStyle = '#818cf8';
             ctx.font = 'italic bold 24px "Hind Siliguri", sans-serif';
-            ctx.fillText("Galib", canvas.width / 2, 475);
+            ctx.fillText("Galib", canvas.width / 2, 485);
             
             ctx.fillStyle = '#64748b';
             ctx.font = '500 14px "Hind Siliguri", sans-serif';
-            ctx.fillText("পরিচালক, গালিব একাডেমি", canvas.width / 2, 500);
+            ctx.fillText("পরিচালক, গালিব একাডেমি", canvas.width / 2, 510);
         }
 
-        // ৬. নিরাপদ ফাইল ডাউনলোড ট্রিপল-ট্রিগার
+        // ৭. নিরাপদ ফাইল ডাউনলোড ট্রিগার
         document.getElementById('downloadBtn').addEventListener('click', () => {
             const link = document.createElement('a');
             link.download = `${userName}_Galib_Academy_Certificate.png`;
@@ -609,7 +711,7 @@
             link.click();
         });
 
-        // ৭. লাইভ ইন্টারেক্টিভ কমেন্ট পোস্ট মডিউল
+        // ৮. লাইভ ইন্টারেক্টিভ কমেন্ট পোস্ট মডিউল
         document.getElementById('postBtn').addEventListener('click', () => {
             const text = document.getElementById('cInput').value.trim();
             if(!text) return;
