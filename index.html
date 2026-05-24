@@ -4,232 +4,380 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>গালিব একাডেমি | অনলাইন পরীক্ষা ২০২৬</title>
+    <!-- Google Fonts for premium typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Cinzel:wght@700&display=swap" rel="stylesheet">
     <!-- html2canvas Library for Certificate Download -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         :root {
-            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
-            --glass-bg: rgba(255, 255, 255, 0.07);
-            --glass-border: rgba(255, 255, 255, 0.1);
             --accent-cyan: #22d3ee;
             --accent-emerald: #34d399;
             --text-main: #f8fafc;
-            --gold: #fbbf24;
+            --gold: #d4af37;
+            --royal-blue: #1e1b4b;
+            --bg-transition: background 0.8s ease;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, 'SolaimanLipi', sans-serif;
-            background: var(--bg-gradient);
+            font-family: 'Hind Siliguri', 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
             background-attachment: fixed;
             margin: 0;
             color: var(--text-main);
             line-height: 1.6;
+            overflow-x: hidden;
+            transition: var(--bg-transition);
         }
 
+        /* 1. Welcome Screen Animation */
+        #welcome-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #020617 0%, #0f172a 100%);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .welcome-title {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            background: linear-gradient(to right, #38bdf8, #34d399, #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textPulse 2s infinite alternate, fadeInUp 1s ease;
+        }
+
+        @keyframes textPulse {
+            0% { filter: drop-shadow(0 2px 5px rgba(56, 189, 248, 0.3)); }
+            100% { filter: drop-shadow(0 2px 20px rgba(52, 211, 153, 0.6)); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 3D Glassmorphism Cards */
         .header {
             text-align: center;
-            padding: 40px 20px;
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--glass-border);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
         }
 
         .header h1 {
-            font-size: 2.5rem;
+            font-size: 2.3rem;
             margin: 0;
             background: linear-gradient(to right, #38bdf8, #34d399);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 2px 10px rgba(56, 189, 248, 0.2);
         }
 
         .container {
-            max-width: 850px;
-            margin: auto;
-            padding: 20px;
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 0 20px;
+            box-sizing: border-box;
         }
 
         .card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            padding: 30px;
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 35px;
             border-radius: 24px;
-            border: 1px solid var(--glass-border);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transform: translateY(0);
+            transition: all 0.3s ease;
         }
 
         .notice-board {
-            background: rgba(245, 158, 11, 0.1);
+            background: rgba(245, 158, 11, 0.06);
             border-left: 5px solid #f59e0b;
             padding: 20px;
             margin-bottom: 25px;
-            border-radius: 12px;
-            border: 1px solid rgba(245, 158, 11, 0.2);
+            border-radius: 14px;
+            border-top: 1px solid rgba(245, 158, 11, 0.1);
+            border-right: 1px solid rgba(245, 158, 11, 0.1);
+            border-bottom: 1px solid rgba(245, 158, 11, 0.1);
         }
 
         input {
             width: 100%;
-            padding: 14px;
-            margin-bottom: 18px;
-            border-radius: 12px;
-            border: 1px solid var(--glass-border);
-            background: rgba(255, 255, 255, 0.05);
+            padding: 16px;
+            margin-bottom: 20px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.03);
             color: #fff;
             font-size: 16px;
             box-sizing: border-box;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         input:focus {
             outline: none;
             border-color: var(--accent-cyan);
-            background: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 0 15px rgba(34, 211, 238, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 20px rgba(34, 211, 238, 0.25);
         }
 
         .btn {
-            display: block;
+            display: inline-block;
             width: 100%;
             padding: 16px;
             border: none;
-            border-radius: 12px;
+            border-radius: 14px;
             font-weight: bold;
             cursor: pointer;
             font-size: 18px;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             text-decoration: none;
             text-align: center;
             box-sizing: border-box;
         }
 
+        .btn-enter {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            color: white;
+            width: 220px;
+            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
+            animation: pulseBtn 2s infinite;
+        }
+
+        @keyframes pulseBtn {
+            0% { transform: scale(1); box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 4px 25px rgba(139, 92, 246, 0.7); }
+            100% { transform: scale(1); box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4); }
+        }
+
         .btn-exam {
             background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
             color: white;
-            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.4);
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
         }
 
         .btn-exam:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(6, 182, 212, 0.6);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(6, 182, 212, 0.5);
         }
 
-        .btn-wa {
-            background: #25d366;
-            color: white;
-            margin-top: 15px;
-        }
+        .btn-wa { background: #25d366; color: white; margin-top: 15px; }
+        .btn-wa:hover { background: #1ebd54; transform: translateY(-2px); }
 
-        .btn-wa:hover {
-            background: #20ba5a;
-            transform: translateY(-2px);
-        }
-
+        /* Progress Bar & Sticky Header */
         .sticky-bar {
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(12px);
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(14px);
             position: sticky;
-            top: 0;
+            top: 15px;
             padding: 15px 25px;
-            border-bottom: 1px solid var(--glass-border);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 16px;
             z-index: 100;
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-weight: bold;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
+        .progress-container {
+            width: 100%;
+            background: rgba(255,255,255,0.05);
+            height: 6px;
+            border-radius: 3px;
+            margin-bottom: 25px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 1%;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-emerald));
+            transition: width 0.4s ease;
+        }
+
+        /* Single Question View Wrapper */
         .q-box {
-            background: rgba(255, 255, 255, 0.04);
-            padding: 25px;
-            border-radius: 16px;
-            margin-bottom: 20px;
-            border: 1px solid var(--glass-border);
+            animation: slideIn 0.4s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         .q-box p {
+            font-size: 22px;
+            font-weight: 600;
+            color: #f1f5f9;
             margin-top: 0;
-            font-size: 18px;
-            color: #e2e8f0;
+            margin-bottom: 25px;
         }
 
         .options-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
-
-        @media (max-width: 600px) {
-            .options-grid { grid-template-columns: 1fr; }
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
         }
 
         .option-label {
             display: flex;
             align-items: center;
-            padding: 14px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 10px;
+            padding: 18px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 14px;
             cursor: pointer;
-            border: 1px solid var(--glass-border);
-            transition: all 0.2s ease;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.25s ease;
         }
 
         .option-label:hover {
-            background: rgba(34, 211, 238, 0.1);
+            background: rgba(34, 211, 238, 0.08);
             border-color: var(--accent-cyan);
+            transform: scale(1.01);
+        }
+
+        .option-label.selected {
+            background: rgba(52, 211, 153, 0.15) !important;
+            border-color: var(--accent-emerald) !important;
+            box-shadow: 0 0 15px rgba(52, 211, 153, 0.2);
         }
 
         .option-label input {
             width: auto;
             margin-bottom: 0;
-            margin-right: 10px;
-            accent-color: var(--accent-cyan);
+            margin-right: 15px;
+            accent-color: var(--accent-emerald);
+            transform: scale(1.2);
         }
 
-        .hidden { display: none; }
+        .nav-actions {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 30px;
+        }
 
-        /* hidden template used by html2canvas */
+        .btn-nav {
+            background: rgba(255,255,255,0.05);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .btn-nav:hover { background: rgba(255,255,255,0.15); }
+
+        .hidden { display: none !important; }
+
+        /* 5. Premium Certificate Template Design */
         #certificate-template {
-            width: 800px;
-            height: 600px;
-            padding: 40px;
+            width: 900px;
+            height: 650px;
+            padding: 30px;
             text-align: center;
-            border: 20px double var(--gold);
-            background: #fff;
+            background: #fffdf6; /* Elegant off-white cream background */
             color: #1e293b;
             position: absolute;
             left: -9999px;
             box-sizing: border-box;
-            font-family: 'SolaimanLipi', sans-serif;
+            font-family: 'Hind Siliguri', 'Segoe UI', sans-serif;
+        }
+
+        .cert-border-outer {
+            border: 4px solid #b45309;
+            height: 100%;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+
+        .cert-border-inner {
+            border: 16px double #d4af37; /* Royal Golden Border */
+            height: 100%;
+            padding: 40px;
+            box-sizing: border-box;
+            position: relative;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" opacity="0.03"><path d="M50 0 L100 50 L50 100 L0 50 Z" fill="%23d4af37"/></svg>'); /* Vintage watermark pattern */
+        }
+
+        .cert-header {
+            font-family: 'Cinzel', serif;
+            font-size: 46px;
+            color: #1e3a8a;
+            margin: 0;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .cert-badge {
+            position: absolute;
+            bottom: 40px;
+            left: 60px;
+            width: 110px;
+            height: 110px;
+            background: radial-gradient(circle, #fcd34d 0%, #d4af37 100%);
+            border-radius: 50%;
+            box-shadow: 0 6px 15px rgba(212,175,55,0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 3px dashed #b45309;
+        }
+
+        .cert-badge::before {
+            content: "✓ PASSED";
+            color: #78350f;
+            font-size: 14px;
+            font-weight: bold;
+            font-family: sans-serif;
+            letter-spacing: 1px;
         }
     </style>
 </head>
 <body>
 
+<!-- 1. Animating Welcome Screen -->
+<div id="welcome-screen">
+    <h1 class="welcome-title">গালিব একাডেমিতে আপনাকে স্বাগতম</h1>
+    <p style="color: #94a3b8; font-size: 1.3rem; margin-bottom: 40px; max-width: 500px;">অনলাইন ইসলামিক জ্ঞান মেধা যাচাই পরীক্ষা ২০২৬-এ আপনার মেধা যাচাই করতে প্রস্তুত হোন।</p>
+    <button class="btn btn-enter" onclick="dismissWelcome()">প্রবেশ করুন</button>
+</div>
+
 <div class="header">
     <h1>গালিব একাডেমি (Galib Academy)</h1>
     <p style="margin: 5px 0 0 0; font-size: 1.2rem; color: #94a3b8;">অনলাইন মেধা যাচাই পরীক্ষা - ২০২৬</p>
-    <div style="margin-top: 10px; font-size: 14px; color: var(--accent-emerald);">পরিচালক ও একমাত্র শিক্ষক: গালিব আল সিয়াম</div>
+    <div style="margin-top: 10px; font-size: 14px; color: var(--accent-emerald); font-weight: 600;">পরিচালক ও একমাত্র শিক্ষক: গালিব আল সিয়াম</div>
 </div>
 
-<div class="container" id="step-1">
+<!-- Step 1: Info Gathering Form -->
+<div class="container id-form-wrapper" id="step-1">
     <div class="notice-board">
-        <b style="color: #f59e0b; font-size: 16px;">⚠️ পরীক্ষা নিয়মাবলী:</b>
-        <ul style="margin: 5px 0 0 0; padding-left: 20px; color: #cbd5e1;">
-            <li><span style="color: var(--accent-emerald); font-weight: bold;">ফ্রি পরীক্ষা:</span> এই পরীক্ষায় অংশ নিতে কোনো ফি লাগবে না।</li>
+        <b style="color: #f59e0b; font-size: 17px;">⚠️ পরীক্ষা নিয়মাবলী:</b>
+        <ul style="margin: 8px 0 0 0; padding-left: 20px; color: #cbd5e1; font-size: 15px;">
+            <li><span style="color: var(--accent-emerald); font-weight: bold;">সম্পূর্ণ ফ্রি পরীক্ষা:</span> অংশ নিতে কোনো ফি প্রয়োজন নেই।</li>
             <li>মোট প্রশ্ন: ১০০টি | বিষয়: সাধারণ ইসলামিক জ্ঞান।</li>
-            <li>মোট সময়: <span style="color: #f43f5e; font-weight: bold;">৫ মিনিট (৩০০ সেকেন্ড)</span>। সময় শেষ হলে অটো সাবমিট হবে।</li>
-            <li>পরীক্ষা শেষে আপনার মেধার ভিত্তিতে একটি চমৎকার ডিজিটাল সনদপত্র (Certificate) জেনারেট হবে।</li>
+            <li>মোট সময়: <span style="color: #f43f5e; font-weight: bold;">৮ মিনিট (৪৮0 সেকেন্ড)</span>। সময় শেষ হলে উত্তর অটো সাবমিট হবে।</li>
+            <li>প্রতিটি প্রশ্নের উত্তর দেওয়ার সাথে সাথে ব্যাকগ্রাউন্ড ডাইনামিক্যালি পরিবর্তন হবে।</li>
+            <li>পরীক্ষা শেষে সফলভাবে উত্তীর্ণদের জন্য একটি **রয়েল প্রিমিয়াম সনদপত্র** তৈরি হবে।</li>
         </ul>
     </div>
 
     <div class="card">
-        <h3 style="text-align:center; color: var(--accent-cyan); margin-top: 0; font-size: 22px;">পরীক্ষার্থীর তথ্য</h3>
+        <h3 style="text-align:center; color: var(--accent-cyan); margin-top: 0; font-size: 24px; font-weight: 700;">পরীক্ষার্থীর তথ্য ফরম</h3>
         <input type="text" id="s-name" placeholder="আপনার পূর্ণ নাম (বাংলায়)">
         <input type="number" id="s-roll" placeholder="রোল নম্বর (যেকোনো সংখ্যা)">
         <input type="text" id="s-madrasa" placeholder="মাদ্রাসার নাম/প্রতিষ্ঠানের নাম">
@@ -237,52 +385,72 @@
     </div>
 </div>
 
+<!-- Step 2: Live Exam Area -->
 <div class="container hidden" id="exam-area">
     <div class="sticky-bar">
-        <span id="h-name" style="color: var(--accent-cyan);"></span>
-        <span id="timer-box" style="color:#f43f5e; font-size: 1.2rem; background: rgba(244,63,94,0.1); padding: 5px 15px; border-radius: 8px;">সময়: ০৫:০০</span>
+        <span id="h-name" style="color: var(--accent-cyan); font-size: 1.1rem;"></span>
+        <span id="timer-box" style="color:#f43f5e; font-size: 1.2rem; background: rgba(244,63,94,0.15); padding: 6px 18px; border-radius: 10px; border: 1px solid rgba(244,63,94,0.2);">সময়: ০৮:০০</span>
     </div>
-    <div id="qs-container"></div>
-    <button class="btn btn-exam" onclick="submitExam()" style="margin-top: 20px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);">জমা দিন (Submit)</button>
+    
+    <div class="progress-container">
+        <div class="progress-bar" id="exam-progress"></div>
+    </div>
+
+    <div class="card">
+        <!-- Rendered One Question at a time inside this node -->
+        <div id="single-q-wrapper"></div>
+        
+        <div class="nav-actions">
+            <button class="btn btn-nav" id="btn-prev" onclick="changeQuestion(-1)" disabled>পূর্ববর্তী</button>
+            <button class="btn btn-exam" id="btn-next" onclick="changeQuestion(1)">পরবর্তী</button>
+        </div>
+    </div>
 </div>
 
+<!-- Step 3: Result Area -->
 <div class="container hidden" id="result-area">
     <div class="card" style="text-align:center;">
-        <h2 style="color: var(--accent-emerald); margin-top: 0; font-size: 28px;">আলহামদুলিল্লাহ, পরীক্ষা সম্পন্ন হয়েছে!</h2>
-        <h3 id="score-text" style="color: var(--text-main); font-size: 24px; margin: 15px 0;"></h3>
-        <p style="color: #94a3b8;">ভেরিফিকেশন কোড: <b id="v-code" style="color:var(--gold);"></b></p>
-        <div style="margin-top: 30px;">
-            <button class="btn btn-exam" onclick="downloadCert()">সনদ ডাউনলোড করুন</button>
+        <h2 style="color: var(--accent-emerald); margin-top: 0; font-size: 30px;">আলহামদুলিল্লাহ, পরীক্ষা সম্পন্ন হয়েছে!</h2>
+        <h3 id="score-text" style="color: var(--text-main); font-size: 26px; margin: 15px 0;"></h3>
+        <p style="color: #94a3b8; font-size: 16px;">ভেরিফিকেশন কোড: <b id="v-code" style="color:var(--gold); letter-spacing: 1px;"></b></p>
+        <div style="margin-top: 35px; display: flex; flex-direction: column; gap: 10px;">
+            <button class="btn btn-exam" onclick="downloadCert()" style="background: linear-gradient(135deg, #d4af37 0%, #aa7c11 100%); color: #020617; box-shadow: 0 4px 15px rgba(212,175,55,0.3);">👑 প্রিমিয়াম সনদ ডাউনলোড করুন</button>
             <a id="wa-share" href="#" target="_blank" class="btn btn-wa">ফলাফল স্যারকে পাঠান (WhatsApp)</a>
         </div>
     </div>
 </div>
 
-<!-- HTML Canvas Certificate Template (Kept Hidden) -->
+<!-- 5. ROYAL PREMIUM CERTIFICATE TEMPLATE -->
 <div id="certificate-template">
-    <div style="border: 5px solid #1e293b; height: 100%; padding: 30px; box-sizing: border-box; position: relative;">
-        <h1 style="font-size:45px; color:#1e293b; margin: 0;">গালিব একাডেমি</h1>
-        <p style="margin: 0; font-size: 14px; color: #64748b; letter-spacing: 2px;">GALIB ACADEMY</p>
-        
-        <div style="margin: 25px 0;">
-            <h2 style="color: #b45309; border: 3px double #b45309; display: inline-block; padding: 8px 35px; font-size: 26px; margin: 0; background: #fffdf5;">সাফল্যের সনদপত্র</h2>
-        </div>
-        
-        <p style="font-size:20px; margin: 20px 0 10px 0; color: #475569;">এই মর্মে অত্যন্ত আনন্দের সাথে প্রত্যয়ন করা যাচ্ছে যে,</p>
-        <p style="font-size: 32px; color: #0f172a; margin: 10px 0; font-weight: bold; border-bottom: 2px dashed #cbd5e1; display: inline-block; padding-bottom: 5px; min-width: 300px;"><span id="ct-name"></span></p>
-        
-        <p style="font-size:18px; line-height: 1.8; color: #334155; margin: 15px 0;">
-            তিনি ২০২৬ সালের গালিব একাডেমি আয়োজিত <br>
-            <b style="color: #0284c7; font-size: 20px;">"অনলাইন ইসলামিক জ্ঞান মেধা যাচাই পরীক্ষা"</b>-এ অংশগ্রহণ করে <br>
-            ১০০টি প্রশ্নের মধ্যে সর্বমোট <b style="color: #16a34a; font-size: 22px;"><span id="ct-s"></span></b> স্কোর অর্জন করেছেন। 
-        </p>
-        
-        <p style="font-size:15px; color: #64748b; margin: 20px 0;">রোল নম্বর: <b style="color:#334155;"><span id="ct-r"></span></b> | শিক্ষা প্রতিষ্ঠান: <b style="color:#334155;"><span id="ct-m"></span></b></p>
-        
-        <div style="margin-top:50px; display: flex; justify-content: dashed; text-align: right; position: absolute; bottom: 40px; right: 50px;">
-            <div>
-                <p style="margin: 0; font-size: 18px; font-weight: bold; color: #1e293b;">গালিব আল সিয়াম</p>
-                <p style="margin: 0; border-top: 1px solid #475569; width: 160px; font-size: 13px; color: #64748b; padding-top: 3px;">পরিচালক, গালিব একাডেমি</p>
+    <div class="cert-border-outer">
+        <div class="cert-border-inner">
+            <h1 class="cert-header">গালিব একাডেমি</h1>
+            <p style="margin: 0; font-size: 14px; color: #64748b; letter-spacing: 3px; font-weight: 600;">GALIB ACADEMY</p>
+            
+            <div style="margin: 25px 0;">
+                <h2 style="color: #92400e; border: 3px double #d4af37; display: inline-block; padding: 10px 45px; font-size: 28px; margin: 0; background: #fffdf9; font-weight: 700; border-radius: 4px;">সাফল্যের সনদপত্র</h2>
+            </div>
+            
+            <p style="font-size:21px; margin: 25px 0 10px 0; color: #475569;">এই মর্মে অত্যন্ত আনন্দের সাথে প্রত্যয়ন করা যাচ্ছে যে,</p>
+            <p style="font-size: 34px; color: #1e3a8a; margin: 10px 0; font-weight: bold; border-bottom: 2px dashed #b45309; display: inline-block; padding-bottom: 5px; min-width: 400px;"><span id="ct-name"></span></p>
+            
+            <p style="font-size:19px; line-height: 1.9; color: #334155; margin: 20px 0;">
+                তিনি ২০২৬ সালে গালিব একাডেমি কর্তৃক আয়োজিত অনলাইন ভিত্তিক <br>
+                <b style="color: #0369a1; font-size: 22px;">"অনলাইন ইসলামিক জ্ঞান মেধা যাচাই পরীক্ষা"</b>-এ সফলতার সাথে অংশগ্রহণ করে <br>
+                ১০০টি প্রশ্নের মধ্যে সর্বমোট <b style="color: #15803d; font-size: 24px;"><span id="ct-s"></span></b> স্কোর অর্জন করতে সক্ষম হয়েছেন। 
+            </p>
+            
+            <p style="font-size:16px; color: #64748b; margin: 25px 0;">রোল নম্বর: <b style="color:#1e293b;"><span id="ct-r"></span></b> | শিক্ষা প্রতিষ্ঠান: <b style="color:#1e293b;"><span id="ct-m"></span></b></p>
+            
+            <!-- Golden Badge Seal Component -->
+            <div class="cert-badge"></div>
+            
+            <!-- Signature Layout -->
+            <div style="margin-top:50px; display: flex; justify-content: flex-end; text-align: center; position: absolute; bottom: 45px; right: 60px;">
+                <div>
+                    <p style="margin: 0; font-size: 19px; font-weight: 700; color: #1e293b; font-family: 'Hind Siliguri';">গালিব আল সিয়াম</p>
+                    <p style="margin: 0; border-top: 1.5px solid #b45309; width: 180px; font-size: 13px; color: #475569; padding-top: 4px; font-weight: 600;">পরিচালক ও প্রধান শিক্ষক</p>
+                </div>
             </div>
         </div>
     </div>
@@ -325,15 +493,15 @@
         {q: "শিশুদের মধ্যে প্রথম কে ইসলাম গ্রহণ করেন?", o: ["হযরত আলী (রাঃ)", "হযরত যায়েদ (রাঃ)", "হযরত হাসান (রাঃ)", "হযরত হুসাইন (রাঃ)"], a: "হযরত আলী (রাঃ)"},
         {q: "ইসলামের প্রথম যুদ্ধ কোনটি?", o: ["উহুদের যুদ্ধ", "বদরের যুদ্ধ", "খন্দকের যুদ্ধ", "খায়বারের যুদ্ধ"], a: "বদরের যুদ্ধ"},
         {q: "ঐতিহাসিক বদরের যুদ্ধ কত হিজরীতে সংঘটিত হয়?", o: ["১ হিজরী", "২ হিজরী", "৩ হিজরী", "৪ হিজরী"], a: "২ হিজরী"},
-        {q: "বদর যুদ্ধে মুসলিমদের সৈন্য সংখ্যা কত ছিল?", o: ["৩১৩ জন", "১০০০ জন", "৭০০ জন", "১৪০০ জন"], a: "৩১৩ জন"},
+        {q: "বদর যুগে মুসলিমদের সৈন্য সংখ্যা কত ছিল?", o: ["৩১৩ জন", "১০০০ জন", "৭০০ জন", "১৪০০ জন"], a: "৩১৩ জন"},
         {q: "উহুদের যুদ্ধ কত হিজরীতে সংঘটিত হয়?", o: ["২ হিজরী", "৩ হিজরী", "৪ হিজরী", "৫ হিজরী"], a: "৩ হিজরী"},
-        {q: "কোন যুদ্ধে রাসূলুল্লাহ (সাঃ) এর দন্ত মুবারক শহীদ হয়েছিল?", o: ["বদরের যুদ্ধে", "উহুদের যুদ্ধে", "খন্দকের যুদ্ধে", "তাবুক যুদ্ধে"], a: "উহুদের যুদ্ধে"},
+        {q: "কোন войне রাসূলুল্লাহ (সাঃ) এর দন্ত মুবারক শহীদ হয়েছিল?", o: ["বদরের যুদ্ধে", "উহুদের যুদ্ধে", "খন্দকের যুদ্ধে", "তাবুক যুদ্ধে"], a: "উহুদের যুদ্ধে"},
         {q: "খন্দক শব্দের অর্থ কী?", o: ["পাহাড়", "পরিখা", "মাঠ", "দুর্গ"], a: "পরিখা"},
         {q: "ইসলামের প্রথম শহীদ মহিলা কে?", o: ["হযরত সুমাইয়া (রাঃ)", "হযরত খাদিজা (রাঃ)", "হযরত ফাতেমা (রাঃ)", "হযরত আসমা (রাঃ)"], a: "হযরত সুমাইয়া (রাঃ)"},
         {q: "সাইফুল্লাহ (আল্লাহর তলোয়ার) কার উপাধি?", o: ["হযরত আলী (রাঃ)", "হযরত খালিদ বিন ওয়ালিদ (রাঃ)", "হযরত ওমর (রাঃ)", "হযরত আমীর হামযা (রাঃ)"], a: "হযরত খালিদ বিন ওয়ালিদ (রাঃ)"},
         {q: "হুদায়বিয়ার সন্ধি কত বছরের জন্য হয়েছিল?", o: ["৫ বছর", "৭ বছর", "১০ বছর", "১২ বছর"], a: "১০ বছর"},
         {q: "ঐতিহাসিক মক্কা বিজয় কত হিজরীতে হয়?", o: ["৭ হিজরী", "৮ হিজরী", "৯ হিজরী", "১০ হিজরী"], a: "৮ হিজরী"},
-        {q: "রাসূলুল্লাহ (সাঃ) কোন হিজরীতে বিদায় হজ্জ পালন করেন?", o: ["৮ হিজরী", "৯ হিজরী", "১০ হিজরী", "১১ হিজরী"], a: "১০ হিজরী"},
+        {q: "রাসূলুল্লাহ (সাঃ) কোন হিজরীতে বিদায় হজ্জ পালন করেন?", o: ["৮ হিজরী", "৯ হিজরী", "১০ হিজরী", "১১ হিজরী"], a: "১০ হিজরী"},
         {q: "বিদায় হজ্জের ভাষণ রাসূলুল্লাহ (সাঃ) কোন মাঠে দিয়েছিলেন?", o: ["মিনা", "মুজদালিফা", "আরাফাতের ময়দান", "সাফা পাহাড়"], a: "আরাফাতের ময়দান"},
         {q: "রাসূলুল্লাহ (সাঃ) কত হিজরীতে ইন্তেকাল করেন?", o: ["১০ হিজরী", "১১ হিজরী", "১২ হিজরী", "১৩ হিজরী"], a: "১১ হিজরী"},
         {q: "সর্বপ্রথম সৃষ্টি করা হয়েছে কোন নবীকে?", o: ["হযরত ঈসা (আঃ)", "হযরত মুসা (আঃ)", "হযরত আদম (আঃ)", "হযরত নূহ (আঃ)"], a: "হযরত আদম (আঃ)"},
@@ -350,7 +518,7 @@
         {q: "ইঞ্জিল কিতাব কোন নবীর ওপর অবতীর্ণ হয়?", o: ["হযরত মুসা (আঃ)", "হযরত ঈসা (আঃ)", "হযরত হারুন (আঃ)", "হযরত ইয়াকুব (আঃ)"], a: "হযরত ঈসা (আঃ)"},
         {q: "আকাশের ফেরেশতাদের প্রধান কে?", o: ["হযরত জিবরাঈল (আঃ)", "হযরত মিকাঈল (আঃ)", "হযরত ইসরাফীল (আঃ)", "হযরত আজরাঈল (আঃ)"], a: "হযরত জিবরাঈল (আঃ)"},
         {q: "মৃত্যুর ফেরেশতার নাম কী?", o: ["হযরত জিবরাঈল (আঃ)", "হযরত আজরাঈল (আঃ)", "হযরত মিকাঈল (আঃ)", "হযরত ইসরাফীল (আঃ)"], a: "হযরত আজরাঈল (আঃ)"},
-        {q: "কবরে সওয়াল-জওয়াব করবেন কোন কোন ফেরেশতা?", o: ["হারুত ও মারুত", "মুনকার ও নাকীর", "কিরূবান ও কাতিবীন", "রকীব ও আতীদ"], a: "মুনকার ও নাকীর"},
+        {q: "কবরে সওয়াল-জওয়াব করবেন কোন কোন ফেরেশতা?", o: ["হারুত ও মারুত", "মুনকার ও নাকীর", "কিরূবান ও কাতিবীন", "রকীব ও আতีด"], a: "মুনকার ও নাকীর"},
         {q: "মানুষের ভালো-মন্দ আমল লেখার দায়িত্বে কোন ফেরেশতারা আছেন?", o: ["মুনকার ও নাকীর", "কিরামান কাতিবীন", "জিবরাঈল ও মিকাঈল", "মালেক ও রেদওয়ান"], a: "কিরামান কাতিবীন"},
         {q: "ইসলামের মূল স্তম্ভ বা ভিত্তি কয়টি?", o: ["৩টি", "৪টি", "৫টি", "৭টি"], a: "৫টি"},
         {q: "ঈমানের মূল শাখা বা রুকন কয়টি?", o: ["৫টি", "৬টি", "৭টি", "১০টি"], a: "৭টি"},
@@ -376,7 +544,7 @@
         {q: "ইসলামের প্রথম কিবলা কোনটি ছিল?", o: ["কাবা শরীফ", "মসজিদুল আকসা (বাইতুল মুকাদ্দাস)", "মসজিদে নববী", "মসজিদে কুবা"], a: "মসজিদুল আকসা (বাইতুল মুকাদ্দাস)"},
         {q: "পৃথিবীর সর্বপ্রথম নির্মিত মসজিদ কোনটি?", o: ["মসজিদে নববী", "মসজিদুল হারাম (কাবা)", "মসজিদুল আকসা", "মসজিদে কুবা"], a: "মসজিদুল হারাম (কাবা)"},
         {q: "মদিনায় নির্মিত ইসলামের প্রথম মসজিদ কোনটি?", o: ["মসজিদে নববী", "মসজিদে কুবা", "মসজিদে কিবলাতাইন", "মসজিদে যিরার"], a: "মসজিদে কুবা"},
-        {q: "হাদিসের সবচেয়ে বিশুদ্ধ কিতাব কোনটি?", o: ["সহীহ বুখারী", "সহীহ মুসলিম", "সুনানে আবু দাউদ", "জামে আত-তিরমিযী"], a: "সহীহ বুখারী"},
+        {q: "হাদিসের সবচেয়ে বিশুদ্ধ কিতাব কোনটি?", o: ["সহীহ বুখারী", "সহীহ মুসলিম", "সুনানে আবু دাউদ", "জামে আত-তিরমিযী"], a: "সহীহ বুখারী"},
         {q: "সহীহ বুখারী শরীফের সংকলক কে?", o: ["ইমাম মুসলিম", "ইমাম বুখারী (রঃ)", "ইমাম মালিক", "ইমাম আবু হানিফা"], a: "ইমাম বুখারী (রঃ)"},
         {q: "সিহাহ সিত্তা বলতে কয়টি প্রধান হাদীস গ্রন্থকে বোঝায়?", o: ["৪টি", "৫টি", "৬টি", "৮টি"], a: "৬টি"},
         {q: "সবচেয়ে বেশি হাদিস বর্ণনাকারী সাহাবী কে?", o: ["হযরত আবু বকর (রাঃ)", "হযরত আবু হুরায়রা (রাঃ)", "হযরত ওমর (রাঃ)", "হযরত আয়েশা (রাঃ)"], a: "হযরত আবু হুরায়রা (রাঃ)"},
@@ -393,7 +561,26 @@
         {q: "ইসলামের ইতিহাসে প্রথম নৌবাহিনী গঠন করেছিলেন কোন খলিফা?", o: ["হযরত আলী (রাঃ)", "হযরত ওসমান (রাঃ)", "হযরত ওমর (রাঃ)", "হযরত আমীর মুয়াবিয়া (রাঃ)"], a: "হযরত ওসমান (রাঃ)"}
     ];
 
+    // Array of unique modern CSS gradients to cycle through on question change
+    const premiumGradients = [
+        "linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%)",
+        "linear-gradient(135deg, #020617 0%, #0f2b48 100%)",
+        "linear-gradient(135deg, #0b132b 0%, #1c2541 100%)",
+        "linear-gradient(135deg, #111827 0%, #311042 100%)",
+        "linear-gradient(135deg, #070a13 0%, #1f1235 100%)",
+        "linear-gradient(135deg, #030712 0%, #022c22 100%)"
+    ];
+
     let studentData = {};
+    let currentQuestionIndex = 0;
+    let userAnswers = {}; // To persist answers during navigation
+
+    function dismissWelcome() {
+        const welcome = document.getElementById('welcome-screen');
+        welcome.style.opacity = '0';
+        welcome.style.transform = 'scale(0.95)';
+        setTimeout(() => welcome.classList.add('hidden'), 600);
+    }
 
     function validateAccess() {
         const name = document.getElementById('s-name').value.trim();
@@ -414,21 +601,11 @@
         document.getElementById('exam-area').classList.remove('hidden');
         document.getElementById('h-name').innerText = "পরীক্ষার্থী: " + studentData.n;
         
-        // ১০০টি প্রশ্ন লোড করা
-        document.getElementById('qs-container').innerHTML = islamicDB.map((q, i) => `
-            <div class="q-box">
-                <p><b>${i+1}. ${q.q}</b></p>
-                <div class="options-grid">
-                    ${q.o.map(o => `
-                        <label class="option-label">
-                            <input type="radio" name="q${i}" value="${o}"> ${o}
-                        </label>
-                    `).join('')}
-                </div>
-            </div>`).join('');
+        currentQuestionIndex = 0;
+        renderActiveQuestion();
             
-        // ৫ মিনিটের টাইমার (৩০০ সেকেন্ড)
-        let sec = 300; 
+        // 8-minute timer setup (480 seconds)
+        let sec = 480; 
         window.itv = setInterval(() => {
             sec--;
             let m = Math.floor(sec/60);
@@ -442,19 +619,79 @@
         }, 1000);
     }
 
+    function renderActiveQuestion() {
+        const qData = islamicDB[currentQuestionIndex];
+        const wrapper = document.getElementById('single-q-wrapper');
+        
+        // Dynamically shift background styling natively on question steps
+        const gradIndex = currentQuestionIndex % premiumGradients.length;
+        document.body.style.background = premiumGradients[gradIndex];
+
+        // Track progress status percentage
+        const progressPercent = ((currentQuestionIndex + 1) / islamicDB.length) * 100;
+        document.getElementById('exam-progress').style.width = `${progressPercent}%`;
+
+        // Render target node structure
+        wrapper.innerHTML = `
+            <div class="q-box">
+                <p><b>${currentQuestionIndex + 1}. ${qData.q}</b></p>
+                <div class="options-grid">
+                    ${qData.o.map(option => {
+                        const isSelected = userAnswers[currentQuestionIndex] === option;
+                        return `
+                            <label class="option-label ${isSelected ? 'selected' : ''}">
+                                <input type="radio" name="active-opt" value="${option}" ${isSelected ? 'checked' : ''} onchange="saveAnswer('${option}')"> ${option}
+                            </label>
+                        `;
+                    }).join('')}
+                </div>
+            </div>
+        `;
+
+        // UI button control states handling
+        document.getElementById('btn-prev').disabled = currentQuestionIndex === 0;
+        
+        const nextBtn = document.getElementById('btn-next');
+        if (currentQuestionIndex === islamicDB.length - 1) {
+            nextBtn.innerText = "জমা দিন (Submit)";
+            nextBtn.style.background = "linear-gradient(135deg, #10b981 0%, #059669 100%)";
+        } else {
+            nextBtn.innerText = "পরবর্তী";
+            nextBtn.style.background = "linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%)";
+        }
+    }
+
+    function saveAnswer(val) {
+        userAnswers[currentQuestionIndex] = val;
+        // Visual indicator updating inline
+        const labels = document.querySelectorAll('.option-label');
+        labels.forEach(l => l.classList.remove('selected'));
+        event.currentTarget.closest('.option-label').classList.add('selected');
+    }
+
+    function changeQuestion(direction) {
+        if (direction === 1 && currentQuestionIndex === islamicDB.length - 1) {
+            if(confirm("আপনি কি নিশ্চিতভাবে উত্তরপত্র জমা দিতে চান?")) {
+                submitExam();
+            }
+            return;
+        }
+
+        currentQuestionIndex += direction;
+        renderActiveQuestion();
+    }
+
     function submitExam() {
         clearInterval(window.itv);
         let score = 0;
         
         islamicDB.forEach((q, i) => {
-            const selected = document.querySelector(`input[name="q${i}"]:checked`);
-            if(selected && selected.value === q.a) {
+            if(userAnswers[i] && userAnswers[i] === q.a) {
                 score++;
             }
         });
         
         window.finalScore = score;
-        // ইউনিক ভেরিফিকেশন কোড জেনারেট
         const vCode = "GA-ISLAMIC-" + (parseInt(studentData.r) + score * 37) + "-2026";
         
         document.getElementById('exam-area').classList.add('hidden');
@@ -462,22 +699,25 @@
         document.getElementById('score-text').innerText = `আপনার স্কোর: ${score} / ১০০`;
         document.getElementById('v-code').innerText = vCode;
         
-        // হোয়াটসঅ্যাপে স্যারকে মেসেজ পাঠানোর লিংক তৈরি
         document.getElementById('wa-share').href = `https://wa.me/8801734505869?text=আসসালামু আলাইকুম স্যার,%0Aআমি মেধা যাচাই পরীক্ষায় অংশ নিয়েছি।%0Aনাম: ${studentData.n}%0Aরোল: ${studentData.r}%0Aপ্রতিষ্ঠান: ${studentData.m}%0Aস্কোর: ${score}/১০০%0Aভেরিফিকেশন কোড: ${vCode}`;
     }
 
     function downloadCert() {
-        // সার্টিফিকেটে ডাটা পুশ করা
         document.getElementById('ct-name').innerText = studentData.n;
         document.getElementById('ct-r').innerText = studentData.r;
         document.getElementById('ct-m').innerText = studentData.m;
         document.getElementById('ct-s').innerText = window.finalScore;
         
-        // html2canvas দিয়ে ইমেজ তৈরি ও ডাউনলোড
-        html2canvas(document.getElementById('certificate-template'), {scale: 2}).then(canvas => {
+        const targetElement = document.getElementById('certificate-template');
+        
+        html2canvas(targetElement, {
+            scale: 2,
+            useCORS: true,
+            allowTaint: true
+        }).then(canvas => {
             let link = document.createElement('a');
-            link.download = `Galib_Academy_Certificate_${studentData.r}.png`;
-            link.href = canvas.toDataURL();
+            link.download = `Galib_Academy_Premium_Certificate_${studentData.r}.png`;
+            link.href = canvas.toDataURL('image/png');
             link.click();
         });
     }
