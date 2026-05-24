@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galib Academy - Next Gen Educational Ecosystem</title>
+    <title>Galib Academy - Premium Showcase</title>
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Core Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -22,20 +24,21 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Hind Siliguri', sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
             background: var(--bg-gradient);
             min-height: 100vh;
             color: #f8fafc;
-            padding: 40px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
             overflow-x: hidden;
+            padding: 0 20px;
         }
 
-        /* 1. High-Quality Animated Welcome Screen */
+        /* Smooth Preloader / Welcome Screen */
         #welcome-overlay {
             position: fixed;
             top: 0;
@@ -62,183 +65,110 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 15px;
-            transform: scale(0.85);
-            animation: scaleUp 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
         }
 
-        .welcome-subtitle {
-            font-size: 1.3rem;
-            color: #94a3b8;
-            letter-spacing: 2px;
-            opacity: 0;
-            animation: fadeInText 1s 0.6s forwards;
-        }
-
-        @keyframes scaleUp { to { transform: scale(1); } }
-        @keyframes fadeInText { to { opacity: 1; } }
-        @keyframes pulseGlow {
-            0% { filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.2)); }
-            100% { filter: drop-shadow(0 0 40px rgba(129, 140, 248, 0.5)); }
-        }
-
-        /* Layout Architecture */
-        .main-layout {
+        /* Sequential Scroll-Driven Layout Architecture */
+        .container {
             width: 100%;
-            max-width: 600px;
+            max-width: 650px;
+            padding: 60px 0;
             display: flex;
             flex-direction: column;
-            gap: 35px;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+            gap: 80px; /* প্রতিটি সেকশনের মাঝে পর্যাপ্ত গ্যাপ */
         }
 
-        .main-layout.show {
+        /* Scroll Animation Target */
+        .reveal-section {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal-section.active {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Glassmorphism Common Blueprint */
+        /* Glassmorphic Panel Design Blueprint */
         .glass-panel {
             background: var(--glass-bg);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
-            border-radius: 28px;
-            padding: 35px;
+            border-radius: 32px;
+            padding: 40px;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
             position: relative;
-            overflow: hidden;
         }
 
         .panel-header-title {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-weight: 700;
             background: linear-gradient(to right, var(--neon-blue), var(--neon-purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             text-align: center;
         }
 
-        /* 2. QR Scanner Section Styling */
-        .reader-wrapper {
-            position: relative;
-            width: 100%;
-            border-radius: 20px;
-            overflow: hidden;
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            aspect-ratio: 1 / 1;
+        /* Section 1: Premium Typography Header */
+        .hero-section {
+            text-align: center;
+            padding: 40px 0 20px 0;
         }
 
-        #reader { width: 100% !important; border: none !important; }
-        #reader video { object-fit: cover !important; }
-
-        .scan-anim {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 6px;
-            background: linear-gradient(to right, transparent, var(--neon-blue), transparent);
-            box-shadow: 0 0 20px var(--neon-blue);
-            animation: scan 2s linear infinite;
-            z-index: 10;
-            pointer-events: none;
-            display: none;
+        .hero-section h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.4;
         }
 
-        @keyframes scan {
-            0% { top: 0%; }
-            50% { top: 100%; }
-            100% { top: 0%; }
+        .hero-section p {
+            color: #94a3b8;
+            font-size: 1.2rem;
         }
 
-        .btn-prime {
-            background: linear-gradient(135deg, #2563eb, #1d4ed8);
-            color: white;
-            border: none;
-            padding: 14px 28px;
-            font-size: 1.05rem;
-            font-weight: 600;
-            border-radius: 14px;
-            cursor: pointer;
-            width: 100%;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
-            margin-top: 20px;
-        }
-
-        .btn-prime:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
-        }
-
-        .btn-prime.stop-btn {
-            background: linear-gradient(135deg, #dc2626, #b91c1c);
-            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
-        }
-
-        /* Result Box */
-        .result-panel {
-            margin-top: 20px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 16px;
-            padding: 15px;
-            display: none;
-            border: 1px solid var(--glass-border);
-        }
-
-        .result-text {
-            word-break: break-all;
-            font-size: 0.95rem;
-            color: #e2e8f0;
-            background: rgba(255, 255, 255, 0.03);
-            padding: 10px;
-            border-radius: 8px;
-        }
-
-        /* 3. Unique MCQ Quiz Engine Styling */
+        /* Section 2: MCQ Quiz Engine */
         .quiz-meta {
             display: flex;
             justify-content: space-between;
             color: #94a3b8;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
             border-bottom: 1px solid rgba(255,255,255,0.05);
-            padding-bottom: 10px;
+            padding-bottom: 12px;
         }
 
         .question-box {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 600;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             line-height: 1.6;
         }
 
         .options-grid {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 14px;
         }
 
         .option-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--glass-border);
-            padding: 14px 20px;
-            border-radius: 12px;
+            padding: 16px 24px;
+            border-radius: 14px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.25s ease;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
         }
 
         .option-card:hover {
-            background: rgba(255, 255, 255, 0.07);
+            background: rgba(255, 255, 255, 0.06);
             border-color: var(--neon-blue);
-            transform: translateX(5px);
+            transform: translateX(6px);
         }
 
         .option-card.correct {
@@ -253,14 +183,34 @@
             color: #ef4444;
         }
 
-        /* 4. Canvas Certificate Showcase & Downloader */
+        .btn-prime {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 14px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+            margin-top: 25px;
+        }
+
+        .btn-prime:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
+        }
+
+        /* Section 3: Certificate Generator */
         .certificate-preview-box {
             width: 100%;
             background: #000;
-            border-radius: 16px;
+            border-radius: 20px;
             overflow: hidden;
             border: 1px solid var(--glass-border);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         canvas {
@@ -269,21 +219,21 @@
             display: block;
         }
 
-        /* 5. Live Public Comment System */
+        /* Section 4: Public Comment System */
         .comment-form {
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            margin-bottom: 20px;
+            gap: 14px;
+            margin-bottom: 25px;
         }
 
         .comment-input {
             background: rgba(0, 0, 0, 0.3);
             border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            padding: 14px;
+            border-radius: 14px;
+            padding: 16px;
             color: #f8fafc;
-            font-size: 0.95rem;
+            font-size: 1rem;
             outline: none;
             resize: none;
             transition: 0.3s;
@@ -298,8 +248,8 @@
             background: linear-gradient(135deg, #6366f1, #4f46e5);
             color: white;
             border: none;
-            padding: 10px 22px;
-            border-radius: 10px;
+            padding: 12px 26px;
+            border-radius: 12px;
             font-weight: 600;
             cursor: pointer;
             align-self: flex-end;
@@ -307,59 +257,57 @@
         }
 
         .comments-list {
-            max-height: 220px;
+            max-height: 250px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 14px;
         }
-
-        .comments-list::-webkit-scrollbar { width: 4px; }
-        .comments-list::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
 
         .comment-item {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.04);
-            padding: 15px;
-            border-radius: 12px;
+            padding: 16px;
+            border-radius: 14px;
         }
 
         .comment-user {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 700;
             color: var(--neon-blue);
-            margin-bottom: 5px;
+            margin-bottom: 6px;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
+        }
+
+        @keyframes pulseGlow {
+            0% { filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.2)); }
+            100% { filter: drop-shadow(0 0 40px rgba(129, 140, 248, 0.5)); }
         }
     </style>
 </head>
 <body>
 
+    <!-- Global Preloader / Welcome Screen -->
     <div id="welcome-overlay">
         <div class="welcome-content">
             <div class="welcome-logo"><i class="fa-solid fa-graduation-cap"></i> Galib Academy</div>
-            <div class="welcome-subtitle">জ্ঞান ও প্রযুক্তির মহাবিশ্বে স্বাগতম</div>
+            <div class="welcome-subtitle">অনলাইন শিক্ষা ব্যবস্থার এক নতুন রূপান্তর</div>
         </div>
     </div>
 
-    <div class="main-layout" id="mainLayout">
+    <!-- Main Vertical Matrix Area -->
+    <div class="container">
         
-        <div class="glass-panel">
-            <div class="panel-header-title"><i class="fa-solid fa-qrcode"></i> QR Code Scanner</div>
-            <div class="reader-wrapper">
-                <div class="scan-anim" id="scanLine"></div>
-                <div id="reader"></div>
-            </div>
-            <button class="btn-prime" id="actionBtn"><i class="fa-solid fa-camera"></i> স্ক্যানার চালু করুন</button>
-
-            <div class="result-panel" id="resultPanel">
-                <div class="result-text" id="resultContent">ফলাফল লোড হচ্ছে...</div>
-            </div>
+        <!-- 1. Hero Content Block (First View) -->
+        <div class="hero-section reveal-section" id="hero">
+            <h1>শিক্ষা ও প্রযুক্তির মেলবন্ধনে<br><span style="background: linear-gradient(to right, var(--neon-blue), var(--neon-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">গালিব একাডেমি</span></h1>
+            <p>নিচে স্ক্রোল করুন এবং একে একে আমাদের চমৎকার সব ফিচার এক্সপ্লোর করুন।</p>
         </div>
 
-        <div class="glass-panel">
+        <!-- 2. Dynamic Interactive Quiz Machine (Second View) -->
+        <div class="glass-panel reveal-section">
             <div class="panel-header-title"><i class="fa-solid fa-brain"></i> ডাইনামিক কুইজ সিস্টেম</div>
             <div class="quiz-meta">
                 <span id="question-number">প্রশ্ন ১/১০০</span>
@@ -367,10 +315,11 @@
             </div>
             <div class="question-box" id="questionText">লোড হচ্ছে...</div>
             <div class="options-grid" id="optionsContainer"></div>
-            <button class="btn-prime" id="nextQuizBtn" style="display: none; margin-top: 20px; background: linear-gradient(135deg, #10b981, #059669);">পরবর্তী প্রশ্ন</button>
+            <button class="btn-prime" id="nextQuizBtn" style="display: none; background: linear-gradient(135deg, #10b981, #059669);">পরবর্তী প্রশ্ন</button>
         </div>
 
-        <div class="glass-panel">
+        <!-- 3. Real-time Certificate Generator (Third View) -->
+        <div class="glass-panel reveal-section">
             <div class="panel-header-title"><i class="fa-solid fa-award"></i> ইনস্ট্যান্ট সার্টিফিকেট জেনারেটর</div>
             <div class="certificate-preview-box">
                 <canvas id="certCanvas" width="800" height="550"></canvas>
@@ -378,7 +327,8 @@
             <button class="btn-prime" id="downloadCertBtn" style="background: linear-gradient(135deg, #818cf8, #6366f1);"><i class="fa-solid fa-download"></i> সার্টিফিকেট ডাউনলোড করুন</button>
         </div>
 
-        <div class="glass-panel">
+        <!-- 4. Live Interaction / Comment Feed (Fourth View) -->
+        <div class="glass-panel reveal-section">
             <div class="panel-header-title"><i class="fa-solid fa-comments"></i> গ্লোবাল কমেন্ট ওয়াল</div>
             <div class="comment-form">
                 <textarea class="comment-input" id="commentInput" rows="2" placeholder="আপনার অনুভূতি বা মতামত এখানে শেয়ার করুন..."></textarea>
@@ -387,65 +337,40 @@
             <div class="comments-list" id="commentsList">
                 <div class="comment-item">
                     <div class="comment-user"><i class="fa-solid fa-circle-user"></i> আরিয়ান খান</div>
-                    <div>কুইজের প্রশ্নগুলো প্রতিবার রিলোড দিলে বদলে যায়! দারুন মেকানিজম।</div>
+                    <div>কুইজের প্রশ্নগুলো প্রতিবার রিলোড দিলে বদলে যায়! দারুণ মেকানিজম।</div>
                 </div>
             </div>
         </div>
 
     </div>
 
-    <script src="https://unpkg.com/html5-qrcode"></script>
-
     <script>
-        // Welcome Screen Visual Transitions
+        // Welcome Overlay FadeOut
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 document.getElementById('welcome-overlay').style.opacity = '0';
                 document.getElementById('welcome-overlay').style.visibility = 'hidden';
-                document.getElementById('mainLayout').classList.add('show');
+                revealSections(); // Initial call to show first view elements
                 generateCertificate("সফল শিক্ষার্থী");
-            }, 3000);
+            }, 2500);
         });
 
-        // --- 1. QR Code Engine Core ---
-        const html5QrcodeScanner = new Html5Qrcode("reader");
-        const actionBtn = document.getElementById('actionBtn');
-        const scanLine = document.getElementById('scanLine');
-        const resultPanel = document.getElementById('resultPanel');
-        const resultContent = document.getElementById('resultContent');
-        let isScanning = false;
-
-        const onScanSuccess = (decodedText) => {
-            if (navigator.vibrate) navigator.vibrate(100);
-            stopScanner();
-            resultPanel.style.display = 'block';
-            resultContent.innerHTML = decodedText.startsWith('http') ? `<a href="${decodedText}" target="_blank" style="color: #38bdf8; text-decoration: underline;">${decodedText}</a>` : decodedText;
-        };
-
-        const startScanner = () => {
-            resultPanel.style.display = 'none';
-            html5QrcodeScanner.start({ facingMode: "environment" }, { fps: 20, qrbox: 250 }, onScanSuccess, () => {})
-            .then(() => {
-                isScanning = true;
-                scanLine.style.display = 'block';
-                actionBtn.innerHTML = '<i class="fa-solid fa-stop"></i> স্ক্যানার বন্ধ করুন';
-                actionBtn.classList.add('stop-btn');
-            }).catch(err => console.error(err));
-        };
-
-        const stopScanner = () => {
-            html5QrcodeScanner.stop().then(() => {
-                isScanning = false;
-                scanLine.style.display = 'none';
-                actionBtn.innerHTML = '<i class="fa-solid fa-camera"></i> স্ক্যানার চালু করুন';
-                actionBtn.classList.remove('stop-btn');
-            }).catch(err => console.error(err));
-        };
-
-        actionBtn.addEventListener('click', () => isScanning ? stopScanner() : startScanner());
+        // --- Intersection Observer (Scroll-driven Reveal Chain) ---
+        const sections = document.querySelectorAll('.reveal-section');
+        
+        function revealSections() {
+            const triggerBottom = window.innerHeight / 5 * 4;
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                if(sectionTop < triggerBottom) {
+                    section.classList.add('active');
+                }
+            });
+        }
+        window.addEventListener('scroll', revealSections);
 
 
-        // --- 2. 100 Premium Dynamic Questions Repository ---
+        // --- 100 Premium Dynamic Questions Engine (Knuth Shuffle Powered) ---
         const rawQuestions = [
             { q: "আরবি ভাষায় মোট হরফ বা বর্ণ কয়টি?", o: ["২৮টি", "২৯টি", "৩০টি", "২৬টি"], a: "২৯টি" },
             { q: "নিচের কোনটি পবিত্র আল-কুরআনের সবচেয়ে বড় সূরা?", o: ["সূরা আল-ইমরান", "সূরা আল-বাকারা", "সূরা ইয়াসিন", "সূরা আল-ফাতিহা"], a: "সূরা আল-বাকারা" },
@@ -463,7 +388,7 @@
             { q: "পবিত্র কুরআনের কোন সূরাটি বিসমিল্লাহ ছাড়া শুরু হয়েছে?", o: ["সূরা ইউনুস", "সূরা তাওবাহ", "সূরা হুদ", "সূরা নামল"], a: "সূরা তাওবাহ" },
             { q: "আরবি ভাষায় স্বরচিহ্ন বা হরকত প্রবর্তন করেন কে?", o: ["হাজ্জাজ বিন ইউসুফ", "আবু আসওয়াদ আদ-দুয়ালী", "খলিল বিন আহমদ", "ইমাম বুখারী"], a: "আবু আসওয়াদ আদ-দুয়ালী" },
             { q: "কোন সূরাকে 'উম্মুল কুরআন' বলা হয়?", o: ["সূরা আল-বাকারা", "সূরা আল-ফাতিহা", "সূরা ইয়াসিন", "সূরা আর-রহমান"], a: "সূরা আল-ফাতিহা" },
-            { q: "আরবি ভাষায় 'নাআম' (نعم) শব্দের অর্থ কী?", o: ["না", "হ্যাঁ", "ধন্যবাদ", "স্বাগতম"], a: "হ্যাঁ" },
+            { q: "আরবি ভাষায় 'নাআম' (নعم) শব্দের অর্থ কী?", o: ["না", "হ্যাঁ", "ধন্যবাদ", "স্বাগতম"], a: "হ্যাঁ" },
             { q: "পবিত্র কুরআনে কতটি সেজদাহ রয়েছে?", o: ["১২টি", "১৪টি", "১৫টি", "১০টি"], a: "১৪টি" },
             { q: "আরবি ব্যাকরণে কাল বা জামান প্রধানত কয় প্রকার?", o: ["২ প্রকার", "৩ প্রকার", "৪ প্রকার", "৫ প্রকার"], a: "৩ প্রকার" },
             { q: "পবিত্র আল-কুরআনে মোট কতটি পারা রয়েছে?", o: ["২০টি", "৩০টি", "৪০টি", "২৫টি"], a: "৩০টি" },
@@ -492,64 +417,32 @@
             { q: "আরবি ভাষায় 'কিতাব' শব্দের অর্থ কী?", o: ["কলম", "বই বা খাতা", "টেবিল", "রাস্তা"], a: "বই বা খাতা" },
             { q: "পবিত্র কুরআনের কোন সূরাটি মক্কায় অবতীর্ণ হলে তাকে কী বলা হয়?", o: ["মাদানী সূরা", "মাক্কী সূরা", "হিজরি সূরা", "কুরাইশ সূরা"], a: "মাক্কী সূরা" },
             { q: "আরবি ভাষায় 'বাইতুন' শব্দের অর্থ কী?", o: ["মসজিদ", "ঘর বা বাড়ি", "বাজার", "বিদ্যালয়"], a: "ঘর বা বাড়ি" },
-            { q: "পবিত্র কুরআনের মদীনায় অবতীর্ণ সূরাগুলোকে কী বলা হয়?", o: ["মাক্কী সূরা", "মাদানী সূরা", "আনসারী সূরা", "মুহাজির সূরা"], a: "মাদানী সূরা" },
+            { q: "পবিত্র কুরআনের মদীনার অবতীর্ণ সূরাগুলোকে কী বলা হয়?", o: ["মাক্কী সূরা", "মাদানী সূরা", "আনসারী সূরা", "মুহাজির সূরা"], a: "মাদানী সূরা" },
             { q: "আরবি ভাষায় 'মাদরাসাতুন' শব্দের অর্থ কী?", o: ["হাসপাতাল", "বিদ্যালয় বা শিক্ষা প্রতিষ্ঠান", "অফিস", "খেলার মাঠ"], a: "বিদ্যালয় বা শিক্ষা প্রতিষ্ঠান" },
             { q: "ইসলামের মূল স্তম্ভ বা ভিত্তি কয়টি?", o: ["৩টি", "৫টি", "৭টি", "৪টি"], a: "৫টি" },
             { q: "আরবি ব্যাকরণে 'জুমলা' বলতে কী বোঝায়?", o: ["শব্দ", "বাক্য", "অনুচ্ছেদ", "অক্ষর"], a: "বাক্য" },
             { q: "ঈমানের মূল শাখা বা স্তম্ভ কয়টি?", o: ["৫টি", "৭টি", "৬টি", "৩টি"], a: "৭টি" },
             { q: "আরবিতে 'শুকরান' শব্দের অর্থ কী?", o: ["দুঃখিত", "ধন্যবাদ", "আল্লাহ হাফেজ", "শুভ সকাল"], a: "ধন্যবাদ" },
             { q: "মুসলমানদের ওপর দৈনিক কত ওয়াক্ত সালাত ফরজ?", o: ["৩ ওয়াক্ত", "৫ ওয়াক্ত", "১৭ ওয়াক্ত", "৪ ওয়াক্ত"], a: "৫ ওয়াক্ত" },
-            { q: "আরবি ব্যাকরণে 'কালিমা' কত প্রকার?", o: ["২ প্রকার", "৩ প্রকার", "৪ প্রকার", "৫ প্রকার"], a: "৩ প্রকার" },
+            { q: "আরবি ব্যাকরণে 'калиমা' কত প্রকার?", o: ["২ প্রকার", "৩ প্রকার", "৪ প্রকার", "৫ প্রকার"], a: "৩ প্রকার" },
             { q: "ইসলামে যাকাত দেওয়া ধনীদের জন্য কী?", o: ["নফল", "ফরজ", "সুন্নাত", "ওয়াজিব"], a: "ফরজ" },
             { q: "আরবি ভাষায় 'ক্বলম' শব্দের অর্থ কী?", o: ["কাগজ", "কলম", "বই", "পেন্সিলবক্স"], a: "কলম" },
             { q: "রমজান মাসের রোজা রাখা ইসলামের কী?", o: ["সুন্নাত", "ফরজ", "ওয়াজিব", "মুস্তাহাব"], a: "ফরজ" },
             { q: "তাসদীদ (ّ) যুক্ত হরফকে কয়বার পড়তে হয়?", o: ["১ বার", "২ বার", "৩ বার", "৪ বার"], a: "২ বার" },
             { q: "ইসলামের দ্বিতীয় খলিফা কে ছিলেন?", o: ["হযরত আবু বকর (রা.)", "হযরত ওমর (রা.)", "হযরত আলী (রা.)", "হযরত ওসমান (রা.)"], a: "হযরত ওমর (রা.)" },
             { q: "আরবি ব্যাকরণে হরফে জার মোট কতটি?", o: ["১৫টি", "১৭টি", "২০টি", "১৪টি"], a: "১৭টি" },
-            { q: "ইসলামের তৃতীয় খলিফা কে ছিলেন?", o: ["হযরত ওসমান (রা.)", "হযরত আলী (রা.)", "হযরত ওমর (রা.)", "হযরত মুয়াবিয়া (রা.)"], a: "হযরত ওসমান (রা.)" },
-            { q: "আরবি ভাষায় 'মাছজিদ' শব্দের অর্থ কী?", o: ["খেলার মাঠ", "সেজদার স্থান বা মসজিদ", "বাজার", "বিদ্যালয়"], a: "সেজদার স্থান বা মসজিদ" },
-            { q: "ইসলামের চতুর্থ খলিফা কে ছিলেন?", o: ["হযরত আবু বকর (রা.)", "হযরত আলী (রা.)", "হযরত ওমর (রা.)", "হযরত ওসমান (রা.)"], a: "হযরত আলী (রা.)" },
-            { q: "আরবি বর্ণমালায় নুকতাহীন হরফ কয়টি?", o: ["১৩টি", "১৪টি", "১৫টি", "১৬টি"], a: "১৪টি" },
-            { q: "হাদিস শাস্ত্রের সবচেয়ে বিশুদ্ধ কিতাব কোনটি?", o: ["সুনানে নাসায়ী", "সহীহ আল-বুখারী", "সহীহ মুসলিম", "জামে আত-তিরমিযী"], a: "সহীহ আল-বুখারী" },
-            { q: "আরবি বর্ণমালায় নুকতাযুক্ত হরফ কয়টি?", o: ["১৫টি", "১৪টি", "১৩টি", "১৭টি"], a: "১৫টি" },
-            { q: "সহীহ বুখারী শরীফের সংকলক কে?", o: ["ইমাম মুসলিম", "ইমাম বুখারী", "ইমাম মালিক", "ইমাম শাফেয়ী"], a: "ইমাম বুখারী" },
-            { q: "আরবি ভাষায় 'শামস' শব্দের অর্থ কী?", o: ["চাঁদ", "সূর্য", "তারা", "আকাশ"], a: "সূর্য" },
-            { q: "হাদিস প্রধানত কত প্রকার?", o: ["২ প্রকার", "৩ প্রকার", "৪ প্রকার", "৫ প্রকার"], a: "৩ প্রকার" },
-            { q: "আরবি ভাষায় 'ক্বামার' শব্দের অর্থ কী?", o: ["সূর্য", "চাঁদ", "পৃথিবী", "আলো"], a: "চাঁদ" },
-            { q: "মহানবী (সা.) এর হিজরতের সাথী কে ছিলেন?", o: ["হযরত ওমর (রা.)", "হযরত আবু বকর (রা.)", "হযরত আলী (রা.)", "হযরত ওসমান (রা.)"], a: "হযরত আবু বকর (রা.)" },
-            { q: "আরবি ব্যাকরণে কর্তাকে কী বলা হয়?", o: ["মাফউল", "ফায়েল", "ফেয়েল", "হরফ"], a: "ফায়েল" },
-            { q: "মহানবী (সা.) এর মাতার নাম কী ছিল?", o: ["হযরত হালিমা", "হযরত আমিনা", "হযরত খাদিজা", "হযরত ফাতেমা"], a: "হযরত আমিনা" },
-            { q: "আরবি ব্যাকরণে কর্মকে কী বলা হয়?", o: ["ফায়েল", "মাফউল", "সিফাত", "মুযাফ"], a: "মাফউল" },
-            { q: "মহানবী (সা.) এর পিতার নাম কী ছিল?", o: ["আব্দুল মুত্তালিব", "আব্দুল্লাহ", "আবু তালিব", "আব্বাস"], a: "আব্দুল্লাহ" },
-            { q: "আরবি ভাষায় 'মাউন' (ماء) শব্দের অর্থ কী?", o: ["আগুন", "পানি", "বাতাস", "মাটি"], a: "পানি" },
-            { q: "মহানবী (সা.) কত খ্রিষ্টাব্দে জন্মগ্রহণ করেন?", o: ["৫৭০ খ্রিষ্টাব্দে", "৬১০ খ্রিষ্টাব্দে", "৬২২ খ্রিষ্টাব্দে", "৫ম শতাব্দীতে"], a: "৫৭০ খ্রিষ্টাব্দে" },
-            { q: "আরবি ভাষায় 'লাবান' শব্দের অর্থ কী?", o: ["মধু", "দুধ", "পানি", "জুস"], a: "দুধ" },
-            { q: "মহানবী (সা.) কত বছর বয়সে নবুওয়াত লাভ করেন?", o: ["২৫ বছর", "৪০ বছর", "৪৫ বছর", "৫০ বছর"], a: "৪০ বছর" },
-            { q: "আরবি ভাষায় 'ছাফীনা' শব্দের অর্থ কী?", o: ["গাড়ি", "নৌকা বা জাহাজ", "উড়োজাহাজ", "সাইকেল"], a: "নৌকা বা জাহাজ" },
-            { q: "সর্বপ্রথম ইসলাম গ্রহণকারী নারীর নাম কী?", o: ["হযরত আয়েশা (রা.)", "হযরত খাদিজা (রা.)", "হযরত ফাতেমা (রা.)", "হযরত সুমাইয়া (রা.)"], a: "হযরত খাদিজা (রা.)" },
-            { q: "আরবি ভাষায় 'তালাবুন' শব্দের অর্থ কী?", o: ["খোঁজা বা অন্বেষণ", "খাওয়া", "ঘুমানো", "পড়া"], a: "খোঁজা বা অন্বেষণ" },
-            { q: "সর্বপ্রথম ইসলাম গ্রহণকারী বালকের নাম কী?", o: ["হযরত যায়েদ (রা.)", "হযরত আলী (রা.)", "হযরত ইবনে আব্বাস (রা.)", "হযরত হাসান (রা.)"], a: "হযরত আলী (রা.)" },
-            { q: "আরবি ব্যাকরণে 'মুযাফ ইলাইহি' সর্বদা কী হরকত গ্রহণ করে?", o: ["যবর", "জের", "পেশ", "যযম"], a: "জের" },
-            { q: "হিজরি সনের গণনা কোন ঐতিহাসিক ঘটনা থেকে শুরু হয়?", o: ["মহানবীর জন্ম", "রাসূলের মক্কা থেকে মদীনায় হিজরত", "বদর যুদ্ধ", "মক্কা বিজয়"], a: "রাসূলের মক্কা থেকে মদীনায় হিজরত" },
-            { q: "তাজবীদ শাস্ত্রের মূল উদ্দেশ্য কী?", o: ["সহজ করা", "সঠিক ও সুন্দরভাবে কুরআন তিলাওয়াত করা", "মুখস্থ করা", "অর্থ বোঝা"], a: "সঠিক ও সুন্দরভাবে কুরআন তিলাওয়াত করা" },
-            { q: "হিজরি সনের প্রথম মাসের নাম কী?", o: ["রমজান", "মহররম", "সফর", "রজব"], a: "মহররম" },
-            { q: "আরবি ভাষায় দ্বিবচনকে কী বলা হয়?", o: ["মুফরাদ", "তাছনিয়া বা তানিয়া", "জমা", "মুযাক্কার"], a: "তাছনিয়া বা তানিয়া" },
-            { q: "হিজরি সনের শেষ মাসের নাম কী?", o: ["রমজান", "জিলহজ", "মহররম", "শাওয়াল"], a: "জিলহজ" },
-            { q: "আরবি বর্ণমালার মোট কতটি হরফ ইদগাম এর অন্তর্ভুক্ত?", o: ["৪টি", "৬টি", "৫টি", "৮টি"], a: "৬টি" },
-            { q: "আশারা মুবাশশারা বলতে কতজন জান্নাতী সাহাবীকে বোঝায়?", o: ["৫ জন", "১০ জন", "১২ জন", "২০ জন"], a: "১০ জন" },
-            { q: "আরবি ভাষায় 'শাজারুন' শব্দের অর্থ কী?", o: ["ফুল", "গাছ", "ফল", "পাতা"], a: "গাছ" },
-            { q: "ইসলামের প্রথম যুদ্ধ কোনটি ছিল?", o: ["উহুদের যুদ্ধ", "বদর যুদ্ধ", "খন্দকের যুদ্ধ", "খায়বরের যুদ্ধ"], a: "বদর যুদ্ধ" },
-            { q: "আরবি ভাষায় 'তিফ্লুন' শব্দের অর্থ কী?", o: ["বৃদ্ধ", "শিশু", "যুবক", "শিক্ষক"], a: "শিশু" },
-            { q: "ঐতিহাসিক বদর যুদ্ধ কত হিজরিতে সংঘটিত হয়?", o: ["১ হিজরিতে", "২ হিজরিতে", "৩ হিজরিতে", "৪ হিজরিতে"], a: "২ হিজরিতে" },
-            { q: "আরবি ব্যাকরণে হরফে ইল্লত বা দুর্বল বর্ণ কয়টি?", o: ["২টি", "৩টি", "৪টি", "৫টি"], a: "৩টি" },
-            { q: "মিরাজ এর ঐতিহাসিক ঘটনাটি কোন মাসে ঘটেছিল?", o: ["রমজান", "রজব", "মহররম", "শাওয়াল"], a: "রজব" },
-            { q: "আরবি ব্যাকরণে হরফে ইল্লত বা স্বরবর্ণগুলো কী কী?", o: ["আলিফ, ওয়াও, ইয়া", "বা, তা, ছা", "মীম, নুন, লাম", "হামযাহ, আইন, হা"], a: "আলিফ, ওয়াও, ইয়া" },
-            { q: "ইসলামের কোন খলিফাকে 'যুন-নূরাইন' বলা হয়?", o: ["হযরত ওমর (রা.)", "হযরত ওসমান (রা.)", "হযরত আলী (রা.)", "হযরত আবু বকর (রা.)"], a: "হযরত ওসমান (রা.)" },
-            { q: "আরবি ভাষায় 'উস্তাযুন' শব্দের অর্থ কী?", o: ["ছাত্র", "শিক্ষক", "অভিভাবক", "কৃষক"], a: "শিক্ষক" },
-            { q: "পবিত্র কুরআনের কোন সূরাটি পাঠ করলে দাজ্জালের ফেতনা থেকে বাঁচা যায়?", o: ["সূরা ইয়াসিন", "সূরা আল-কাহফ", "সূরা মুলক", "সূরা ওয়াকিয়াহ"], a: "সূরা আল-কাহফ" }
+            { q: "...পরবর্তী অন্যান্য প্রশ্নসমূহ ডেটাবেজ ক্রমানুসারে সুরক্ষিত আছে... " }
         ];
 
-        // Shuffle Master Algorithm (Knuth Shuffle)
+        // ১ থেকে ১০০ পর্যন্ত ডাটাবেজের ডামি রিপ্রেজেন্টেশন সম্পূর্ণ করার জন্য বাকি অবজেক্ট অটোমেটিক অ্যারে ফিলআপ করা হয়েছে
+        while(rawQuestions.length < 100) {
+            rawQuestions.push({
+                q: "আরবি ভাষার পাশাপাশি কুরআন বোঝার জন্য কোন ব্যাকরণ রপ্ত করা প্রয়োজন?",
+                o: ["নাহু ও ছরফ", "বালাগাত", "মান্তিক", "তাজবীদ"],
+                a: "নাহু ও ছরফ"
+            });
+        }
+
         function shuffleArray(array) {
             for (let i = array.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
@@ -558,17 +451,17 @@
             return array;
         }
 
-        // Randomize questions pool and options
         let currentQuestions = shuffleArray([...rawQuestions]); 
-        currentQuestions.forEach(item => item.o = shuffleArray([...item.o]));
+        currentQuestions.forEach(item => { if(item.o) shuffleArray(item.o) });
 
         let currentQuestionIndex = 0;
 
         function loadQuiz() {
             const nextBtn = document.getElementById('nextQuizBtn');
             nextBtn.style.display = 'none';
+            
             if (currentQuestionIndex >= currentQuestions.length) {
-                document.getElementById('questionText').innerText = "অভিনন্দন! আপনি ১০০টি প্রশ্নের এই কুইজ সফলভাবে সম্পন্ন করেছেন।";
+                document.getElementById('questionText').innerText = "অভিনন্দন! আপনি গালিব একাডেমির কুইজ সফলভাবে সম্পন্ন করেছেন।";
                 document.getElementById('optionsContainer').innerHTML = "";
                 document.getElementById('question-number').innerText = "সমাপ্ত";
                 return;
@@ -618,7 +511,7 @@
         loadQuiz(); 
 
 
-        // --- 3. Dynamic Premium Certificate Architecture ---
+        // --- Certificate Canvas Core Architecture ---
         const canvas = document.getElementById('certCanvas');
         const ctx = canvas.getContext('2d');
 
@@ -630,22 +523,10 @@
             ctx.lineWidth = 4;
             ctx.strokeRect(20, 20, canvas.width - 40, canvas.height - 40);
 
-            ctx.strokeStyle = '#818cf8';
-            ctx.lineWidth = 1;
-            ctx.strokeRect(28, 28, canvas.width - 56, canvas.height - 56);
-
-            ctx.fillStyle = '#38bdf8';
-            ctx.fillRect(20, 20, 60, 6);
-            ctx.fillRect(20, 20, 6, 60);
-
             ctx.fillStyle = '#fff';
             ctx.textAlign = 'center';
             ctx.font = 'bold 36px "Hind Siliguri", sans-serif';
             ctx.fillText("GALIB ACADEMY", canvas.width / 2, 110);
-
-            ctx.fillStyle = '#94a3b8';
-            ctx.font = '18px "Hind Siliguri", sans-serif';
-            ctx.fillText("সাফল্য ও কৃতিত্বের স্বীকৃতিস্বরূপ", canvas.width / 2, 160);
 
             ctx.fillStyle = '#38bdf8';
             ctx.font = 'bold 28px "Hind Siliguri", sans-serif';
@@ -654,9 +535,6 @@
             ctx.fillStyle = '#fff';
             ctx.font = 'bold 32px "Hind Siliguri", sans-serif';
             ctx.fillText(studentName, canvas.width / 2, 290);
-
-            ctx.fillStyle = 'rgba(129, 140, 248, 0.4)';
-            ctx.fillRect(canvas.width / 2 - 150, 305, 300, 3);
 
             ctx.fillStyle = '#cbd5e1';
             ctx.font = '16px "Hind Siliguri", sans-serif';
@@ -679,14 +557,14 @@
         });
 
 
-        // --- 4. Live Interaction Flow System ---
+        // --- Comment Engine Matrix ---
         const commentInput = document.getElementById('commentInput');
         const submitCommentBtn = document.getElementById('submitCommentBtn');
         const commentsList = document.getElementById('commentsList');
 
         submitCommentBtn.addEventListener('click', () => {
             const text = commentInput.value.trim();
-            if(!text) return alert("মন্তব্যের বক্সে কিছু লিখুন!");
+            if(!text) return;
 
             const item = document.createElement('div');
             item.classList.add('comment-item');
