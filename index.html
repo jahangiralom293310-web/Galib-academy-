@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>জ্ঞান ও বিশ্বাসের আলো - মডার্ন ইসলামিক ওয়েব</title>
-    <!-- Google Fonts & Font Awesome Icons -->
+    <title>প্রজ্ঞার আলো - জ্ঞান ও ভালোবাসার উৎস</title>
+    <!-- Google Fonts & Font Awesome -->
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --bg-main: #0a1118;
-            --bg-card: rgba(18, 30, 41, 0.7);
-            --accent-gold: #d4af37;
-            --accent-green: #10b981;
-            --text-light: #f3f4f6;
-            --text-muted: #9ca3af;
-            --border-glow: rgba(212, 175, 55, 0.2);
+            --bg-dark: #070f17;
+            --card-bg: rgba(18, 30, 45, 0.75);
+            --gold: #d4af37;
+            --emerald: #10b981;
+            --text-main: #f3f4f6;
+            --text-sub: #9ca3af;
+            --border: rgba(212, 175, 55, 0.25);
         }
 
         * {
@@ -27,454 +27,431 @@
         }
 
         body {
-            background-color: var(--bg-main);
-            color: var(--text-light);
-            line-height: 1.6;
-            overflow-x: hidden;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.8;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* Navbar */
+        /* Top Header Navigation */
         header {
+            background: rgba(7, 15, 23, 0.95);
+            border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
-            z-index: 100;
-            background: rgba(10, 17, 24, 0.85);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-glow);
-            padding: 1rem 5%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
-        .logo {
-            font-size: 1.5rem;
+        .brand {
+            font-size: 1.6rem;
             font-weight: 700;
-            color: var(--accent-gold);
+            color: var(--gold);
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .logo i {
-            font-size: 1.8rem;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 5rem 5% 3rem 5%;
-            text-align: center;
-            background: radial-gradient(circle at center, rgba(16, 185, 129, 0.08) 0%, transparent 70%);
-        }
-
-        .hero h1 {
-            font-size: 2.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #ffffff 0%, var(--accent-gold) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            max-width: 700px;
-            margin: 0 auto 2rem auto;
-        }
-
-        /* Navigation Buttons / Categories */
-        .category-nav {
+        .nav-menu {
             display: flex;
-            justify-content: center;
+            gap: 10px;
             flex-wrap: wrap;
-            gap: 12px;
-            padding: 0 5% 2rem 5%;
         }
 
-        .cat-btn {
-            background: var(--bg-card);
-            border: 1px solid var(--border-glow);
-            color: var(--text-light);
-            padding: 0.6rem 1.4rem;
-            border-radius: 30px;
+        .nav-btn {
+            background: transparent;
+            border: 1px solid transparent;
+            color: var(--text-sub);
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 0.98rem;
             font-weight: 500;
             transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
         }
 
-        .cat-btn:hover, .cat-btn.active {
-            background: var(--accent-gold);
-            color: #000;
-            border-color: var(--accent-gold);
-            font-weight: 600;
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        .nav-btn:hover, .nav-btn.active {
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--gold);
+            border-color: var(--gold);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
         }
 
-        /* Container & Cards Grid */
-        .content-container {
-            padding: 2rem 5% 5rem 5%;
-            max-width: 1300px;
-            margin: 0 auto;
+        /* Main Display Section */
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+            flex: 1;
         }
 
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
         }
 
-        .card {
-            background: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 1.8rem;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: relative;
-            overflow: hidden;
+        .tab-content.active {
+            display: block;
         }
 
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent-green), var(--accent-gold));
-            opacity: 0;
-            transition: opacity 0.3s ease;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: var(--border-glow);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .card:hover::before {
-            opacity: 1;
-        }
-
-        .card-tag {
-            display: inline-block;
-            align-self: flex-start;
-            padding: 0.2rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            background: rgba(16, 185, 129, 0.15);
-            color: var(--accent-green);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-        }
-
-        .card-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: #fff;
-            margin-bottom: 0.8rem;
-        }
-
-        .card-desc {
-            color: var(--text-muted);
-            font-size: 0.98rem;
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
-        }
-
-        .card-btn {
-            background: transparent;
-            border: 1px solid var(--accent-gold);
-            color: var(--accent-gold);
-            padding: 0.6rem 1.2rem;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            width: 100%;
+        /* Hero Banner */
+        .hero-banner {
             text-align: center;
+            padding: 3rem 1rem;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, rgba(7, 15, 23, 0) 70%);
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border);
         }
 
-        .card-btn:hover {
-            background: var(--accent-gold);
-            color: #000;
+        .hero-banner h1 {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
         }
 
-        /* IQ Section Customization */
+        .hero-banner p {
+            color: var(--text-sub);
+            font-size: 1.1rem;
+        }
+
+        /* Content Layout */
+        .article-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .article-title {
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding-bottom: 0.5rem;
+        }
+
+        .article-text {
+            color: var(--text-main);
+            font-size: 1.05rem;
+            white-space: pre-line;
+            text-align: justify;
+        }
+
+        .highlight-quote {
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 4px solid var(--emerald);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* IQ Section Styling */
+        .iq-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .iq-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .iq-card:hover {
+            border-color: var(--gold);
+        }
+
+        .iq-question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--gold);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
         .iq-answer {
             display: none;
             margin-top: 1rem;
-            padding: 0.8rem;
-            background: rgba(212, 175, 55, 0.1);
-            border-left: 3px solid var(--accent-gold);
-            border-radius: 4px;
-            color: var(--text-light);
-            font-size: 0.95rem;
-        }
-
-        /* Modal Box */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(8px);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            padding: 1rem;
-        }
-
-        .modal-content {
-            background: #121e29;
-            border: 1px solid var(--accent-gold);
-            border-radius: 16px;
-            padding: 2rem;
-            max-width: 650px;
-            width: 100%;
-            max-height: 85vh;
-            overflow-y: auto;
-            position: relative;
-            box-shadow: 0 0 30px rgba(0,0,0,0.8);
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 1rem;
-            right: 1.2rem;
-            font-size: 1.5rem;
-            color: var(--text-muted);
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-
-        .close-modal:hover {
-            color: var(--accent-gold);
-        }
-
-        .modal-title {
-            color: var(--accent-gold);
-            font-size: 1.6rem;
-            margin-bottom: 1rem;
-        }
-
-        .modal-body {
-            color: var(--text-light);
+            padding-top: 1rem;
+            border-top: 1px dashed rgba(255, 255, 255, 0.1);
+            color: var(--emerald);
             font-size: 1.05rem;
-            white-space: pre-line;
         }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 2rem;
-            background: #060b10;
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.5);
+            color: var(--text-sub);
             border-top: 1px solid rgba(255, 255, 255, 0.05);
-            color: var(--text-muted);
-            font-size: 0.9rem;
+            margin-top: auto;
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-            .hero p { font-size: 1rem; }
-            .cards-grid { grid-template-columns: 1fr; }
+            .nav-container { flex-direction: column; }
+            .hero-banner h1 { font-size: 1.8rem; }
+            .article-title { font-size: 1.4rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header / Navbar -->
+    <!-- Navigation Header -->
     <header>
-        <div class="logo">
-            <i class="fa-solid fa-kaaba"></i>
-            <span>সত্য ও প্রজ্ঞা</span>
+        <div class="nav-container">
+            <div class="brand">
+                <i class="fa-solid fa-kaaba"></i>
+                <span>জ্ঞান ও ভালোবাসার উৎস</span>
+            </div>
+            <nav class="nav-menu">
+                <button class="nav-btn active" onclick="switchTab('home')">হোম</button>
+                <button class="nav-btn" onclick="switchTab('science')">ইসলাম ও বিজ্ঞান</button>
+                <button class="nav-btn" onclick="switchTab('sahabi')">সাহাবিদের জীবনী</button>
+                <button class="nav-btn" onclick="switchTab('success')">সফলতার গল্প</button>
+                <button class="nav-btn" onclick="switchTab('fun')">মজার গল্প</button>
+                <button class="nav-btn" onclick="switchTab('iq')">আইকিউ প্রশ্ন</button>
+            </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>ইসলাম, বিজ্ঞান ও জীবনের মেলবন্ধন</h1>
-        <p>যুগের আলোয় বৈজ্ঞানিক দৃষ্টিকোণ থেকে ইসলামি জীবনব্যবস্থা, সাহাবিদের অনুপম জীবনগাথা এবং প্রজ্ঞাময় গল্পের সমাহার।</p>
-    </section>
+    <div class="container">
 
-    <!-- Category Filters -->
-    <div class="category-nav">
-        <button class="cat-btn active" onclick="filterCards('all')">সবগুলো</button>
-        <button class="cat-btn" onclick="filterCards('science')">বিজ্ঞান ও ইসলাম</button>
-        <button class="cat-btn" onclick="filterCards('sahabi')">সাহাবিদের কাহিনী</button>
-        <button class="cat-btn" onclick="filterCards('success')">সফলতার গল্প</button>
-        <button class="cat-btn" onclick="filterCards('fun')">মজার গল্প</button>
-        <button class="cat-btn" onclick="filterCards('iq')">আইকিউ প্রশ্ন</button>
+        <!-- Tab 1: HOME -->
+        <section id="home" class="tab-content active">
+            <div class="hero-banner">
+                <h1>জ্ঞান ও ভালোবাসার মহাসমুদ্রে স্বাগতম</h1>
+                <p>উপরের বাটনগুলোতে ক্লিক করে আপনার পছন্দের বিষয়ের গভীর গবেষণামূলক বক্তব্য ও ঘটনাগুলো উপভোগ করুন।</p>
+            </div>
+
+            <div class="article-card">
+                <h2 class="article-title">কেন এই প্ল্যাটফর্ম?</h2>
+                <p class="article-text">
+                যুগের পরিবর্তনের সাথে সাথে মানুষ সত্য ও পরম শান্তির সন্ধান পেতে চায় যুক্তি ও ভালোবাসার মাধ্যমে। ইসলাম এমন এক জীবনব্যবস্থা, যা শুধুমাত্র বিশ্বাসের ওপর প্রতিষ্ঠিত নয়; বরং এর প্রতিটি বিধানের পেছনে রয়েছে সূক্ষ্ম বিজ্ঞান, মানসিক স্বাস্থ্য ও সামাজিক কল্যাণের গভীর মেলবন্ধন।
+
+                আমাদের এই প্ল্যাটফর্মটি তৈরি করা হয়েছে সত্য অন্বেষণকারীদের জন্য। এখানে আপনি পাবেন:
+                • আধুনিক বিজ্ঞানের আলোচে ইসলামি বিধানের অনন্য ব্যাখ্যা।
+                • সাহাবিদের জীবন থেকে পাওয়া অসীম ত্যাগ, প্রেম ও অনুভূতির হৃদয়স্পর্শী রূপ।
+                • জীবনের কঠিন সময়ে ঘুরে দাঁড়ানোর বাস্তব ও অনুপ্রেরণামূলক সফলতার কাহিনী।
+                • চিন্তাশক্তিকে শাণিত করার জন্য মজার গল্প ও মনস্তাত্ত্বিক আইকিউ প্রশ্ন।
+
+                উপরের নেভিগেশন বার থেকে যেকোনো ক্যাটাগরিতে ক্লিক করে জ্ঞান অর্জনের এই পবিত্র যাত্রায় অংশ নিন।
+                </p>
+            </div>
+        </section>
+
+        <!-- Tab 2: ISLAM & SCIENCE -->
+        <section id="science" class="tab-content">
+            <div class="article-card">
+                <h2 class="article-title">১. সালাত ও নিউরোসায়েন্স: সেজদায় মস্তিষ্কের অসীম প্রশান্তি</h2>
+                <div class="article-text">
+                আধুনিক চিকিৎসাবিজ্ঞান ও নিউরোসাইকোলজির গবেষণায় দেখা গেছে, মানবদেহ যখন সেজদার অবস্থানে যায়, তখন মহাকর্ষ বলের প্রভাবে হ্রদপিন্ড থেকে রক্তের প্রবাহ সরাসরি মস্তিষ্কের সামনের অংশে (Frontal Lobe) বৃদ্ধি পায়। সাধারণ অবস্থায় আমরা দাঁড়িয়ে বা বসে থাকলে রক্তের স্বাভাবিক প্রবাহ নিচমুখী থাকে, যা মস্তিষ্কের অতি সূক্ষ্ম কৈশিক রক্তনালীগুলোতে পর্যাপ্ত অক্সিজেন পৌঁছাতে বাধার সৃষ্টি করে।
+
+                নিউরোসার্জনদের মতে, নিয়মিত সেজদার ফলে মস্তিষ্কের প্রাক-ফ্রন্টাল কর্টেক্স উদ্দীপিত হয়, যা মানুষের আবেগ, সিদ্ধান্ত গ্রহণের ক্ষমতা এবং মানসিক চাপ নিয়ন্ত্রণের কেন্দ্রবিন্দু। যখন একজন মুমিন সেজদায় নত হয়ে সৃষ্টিকর্তার কাছে নিজেকে সমর্পণ করে, তখন রক্তচাপ হ্রাস পায় এবং শরীরে 'করটিসল' নামক স্ট্রেস হরমোনের পরিমাণ দ্রুত কমতে শুরু করে।
+
+                <div class="highlight-quote">"রাসুলুল্লাহ (সাঃ) বলেছেন: 'বান্দা আল্লাহর সবচেয়ে নিকটবর্তী হয় যখন সে সেজদারত অবস্থায় থাকে।' (সহীহ মুসলিম)"</div>
+
+                বিজ্ঞান আজ প্রমাণ করছে যে, সেজদা শুধু একটি আত্মিক উপাসনা নয়, বরং এটি মানসিক বিষন্নতা, উদ্বেগ এবং আলঝেইমারের মতো জটিল স্নায়বিক রোগ প্রতিরোধে মানবদেহের জন্য এক পরম বৈজ্ঞানিক নিয়ামত।
+                </div>
+            </div>
+
+            <div class="article-card">
+                <h2 class="article-title">২. জান্নাতের পরিবেশ ও আধুনিক পদার্থবিজ্ঞানের 'কোয়ান্টাম ডাইমেনশন'</h2>
+                <div class="article-text">
+                পবিত্র কোরআনে জান্নাতের বর্ণনা দিতে গিয়ে বলা হয়েছে, সেখানে সময়, বার্ধক্য বা পদার্থের অব ক্ষয় থাকবে না। মানুষের ইচ্ছা করা মাত্রই বস্তু উপস্থিত হবে। সাধারণ দৃষ্টিতে একে অলৌকিক মনে হলেও আধুনিক তত্ত্বীয় পদার্থবিজ্ঞান (Theoretical Physics) এবং 'স্ট্রিং থিওরি' (String Theory) এর আলোচে এটি অত্যন্ত যুক্তিযুক্ত।
+
+                পদার্থবিজ্ঞানীদের মতে, আমাদের দৃশ্যমান বিশ্ব ৩-মাত্রিক (3D)। কিন্তু গণিত ও পদার্থবিজ্ঞান প্রমাণ করে যে এই মহাবিশ্বে অন্তত ১০ থেকে ১১টি উচ্চতর মাত্রা বা 'Extra Dimensions' বিদ্যমান। আমরা ৩-মাত্রিক জগতে আলো ও সময়ের নিয়মে বন্দি। কিন্তু কোনো অস্তিত্ব যদি উচ্চতর মাত্রায় অবস্থান করে, তবে সেখানে সময় স্থির হয়ে যায় এবং সেখানে চিন্তা মাত্রই পদার্থের রূপান্তর ঘটা সম্ভব।
+
+                জান্নাত হলো এমন এক পরম মাত্রা (Higher Dimension), যা আমাদের এই সীমিত ভৌত জগতের ভৌত নিয়মের অনেক ঊর্ধ্বে। আল-কোরআনে আল্লাহ তাআলা যে জান্নাতের সুসংবাদ দিয়েছেন, তা আধুনিক বিজ্ঞানের বহুমাত্রিক মহাবিশ্বের (Multiverse & Higher Dimensions) ধারণার সাথে গভীরভাবে সামঞ্জস্যপূর্ণ।
+                </div>
+            </div>
+        </section>
+
+        <!-- Tab 3: SAHABI STORIES -->
+        <section id="sahabi" class="tab-content">
+            <div class="article-card">
+                <h2 class="article-title">১. হযরত মুসাব ইবনে উমাইর (রা:): বিলাসিতার রাজপুত্র থেকে ইসলামের নক্ষত্র</h2>
+                <div class="article-text">
+                ইসলাম পূর্ব যুগে মক্কার সবচেয়ে ধনী, সুপুরুষ এবং সৌখিন যুবক ছিলেন মুসাব ইবনে উমাইর (রাঃ)। তিনি যে পোশাক পরতেন তা ইয়েমেন থেকে স্পেশাল আনিয়ে দেওয়া হতো, তিনি যে সুগন্ধি ব্যবহার করতেন তা মক্কার বাতাসে বহুদূর পর্যন্ত ছড়িয়ে পড়ত। পুরো মক্কা নগরী তাঁর রূপ ও অভিজাত্যে মুগ্ধ ছিল।
+
+                কিন্তু যখন তাঁর হৃদয়ে তাওহীদের আলো প্রবেশ করল, তিনি মহানবী (সাঃ)-এর হাত ধরে ইসলাম গ্রহণ করলেন। এর অপরাধে তাঁর ধনী মা তাঁকে বাড়ি থেকে বের করে দিলেন এবং সমস্ত ধন-সম্পদ কেড়ে নিলেন। বিলাসবহুল জীবন ছেড়ে মুসাব গ্রহণ করলেন খসখসে চামড়ার পোশাক ও অনাহার।
+
+                রাসুলুল্লাহ (সাঃ) তাঁকে মদিনার প্রথম 'ইসলামি রাষ্ট্রদূত' হিসেবে পাঠালেন। তাঁর আখলাক, সুন্দর তিলাওয়াত ও অসীম ভালোবাসার কারণে মদিনার প্রায় প্রতিটি ঘরে ঘরে ইসলাম পৌঁছে যায়।
+
+                <div class="highlight-quote">ওহুদের যুদ্ধে তিনি বীরত্বের সাথে ইসলামের ঝান্ডা হাতে যুদ্ধ করতে করতে শাহাদাত বরণ করেন। শাহাদাতের পর দেখা গেল, তাঁকে দাফন করার জন্য মাত্র একটি ছোট চাদর রয়েছে! যা দিয়ে মাথা ঢাকলে পা বের হয়ে যায়, আর পা ঢাকলে মাথা!</div>
+
+                রাসুলুল্লাহ (সাঃ) তাঁর মৃতদেহের পাশে দাঁড়িয়ে অশ্রুসিক্ত চোখে বললেন, "আমি তোমাকে মক্কায় দেখেছি, তোমার চেয়ে সুবেশ ও সুন্দর কেউ ছিল না। আর আজ তুমি এক টুকরো কাপড়ে শুয়ে আছ।" ত্যাগ ও ভালোবাসার এমন বীরত্বপূর্ণ মহাকাব্য ইতিহাসে দ্বিতীয়টি নেই।
+                </div>
+            </div>
+
+            <div class="article-card">
+                <h2 class="article-title">২. হযরত আবু বকর (রা:): ত্যাগের চূড়ান্ত পরাকাষ্ঠা</h2>
+                <div class="article-text">
+                তাবুক যুদ্ধের সময় যখন মুসলিম বাহিনীর মারাত্মক রসদ ও অর্থের সংকট দেখা দিল, তখন রাসুলুল্লাহ (সাঃ) সাহাবিদের যার যার সামর্থ্য অনুযায়ী দান করার আহ্বান জানালেন। 
+
+                হযরত ওমর (রাঃ) মনে মনে ভাবলেন, "প্রতিবার দানশীলতায় আবু বকর আমার চেয়ে এগিয়ে যান, কিন্তু আজ আমি তাঁকে ছাড়িয়ে যাব।" ওমর (রাঃ) ঘরে গিয়ে তাঁর সমস্ত সম্পত্তির ঠিক অর্ধেক রাসুল (সাঃ)-এর দরবারে নিয়ে এলেন। রাসুল (সাঃ) আনন্দিত হয়ে জিজ্ঞেস করলেন, "ওমর, পরিবারের জন্য কী রেখে এসেছ?" ওমর বললেন, "হে আল্লাহর রাসুল, অর্ধেক নিয়ে এসেছি আর অর্ধেক পরিবারকে দিয়ে এসেছি।"
+
+                কিছুক্ষণ পর হযরত আবু বকর (রাঃ) একটি ছোট পুটলি নিয়ে হাজির হলেন। তিনি অত্যন্ত বিনীতভাবে তা রাসুল (সাঃ)-এর সামনে রাখলেন। রাসুলুল্লাহ (সাঃ) পুটলিটি দেখে জিজ্ঞেস করলেন, "আবু বকর, তোমার পরিবারের জন্য ঘরে কী রেখে এসেছ?"
+
+                আবু বকর (রাঃ) সজল চোখে বিনীত কণ্ঠে উত্তর দিলেন:
+                <div class="highlight-quote">"রাসুলুল্লাহ! আমি আমার পরিবারের জন্য কেবল আল্লাহ এবং তাঁর রাসুলকে রেখে এসেছি। ঘরের একটা সামান্য সুতাও আমি রেখে আসিনি।"</div>
+
+                এই কথা শুনে হযরত ওমর (রাঃ) কেঁদে ফেললেন এবং বললেন, "আল্লাহর শপথ! আমি কখনোই আবু বকরকে কোনো ভালো কাজে পেছনে ফেলতে পারব না।"
+                </div>
+            </div>
+        </section>
+
+        <!-- Tab 4: SUCCESS STORIES -->
+        <section id="success" class="tab-content">
+            <div class="article-card">
+                <h2 class="article-title">ধৈর্য ও অধ্যাবসায়: অন্ধকারের বুক চিরে আলোর গল্প</h2>
+                <div class="article-text">
+                এক তরুণ বারবার ব্যবসায় ব্যর্থ হয়ে নিঃস্ব হয়ে গিয়েছিলেন। সমাজ ও কাছের মানুষেরা তাকে ব্যর্থ বলে উপহাস করছিল। ঋণের বোঝায় রাতে তাঁর ঘুম হতো না। কিন্তু তাঁর ভেতরে দুটি জিনিস অটুট ছিল—নিরলস পরিশ্রমের মানসিকতা এবং আল্লাহর রহমতের ওপর বিশ্বাস।
+
+                তিনি হতাশ না হয়ে নতুনভাবে ফ্রিল্যান্সিং ও টেকনোলজি শেখা শুরু করেন। দিনে ১৬ ঘণ্টা কাজ করতেন এবং রাতের শেষভাগে তাহাজ্জুদে চোখের পানি ফেলে মহান সৃষ্টিকর্তার কাছে সঠিক পথ প্রদর্শনের জন্য দোয়া করতেন।
+
+                তিনি বিশ্বাস করতেন—"কঠিন পরিস্থিতি মানুষকে ধ্বংস করতে আসে না, বরং ভেতরের সুপ্ত ক্ষমতাকে জাগ্রত করতে আসে।"
+
+                টানা ৩ বছরের নিরলস প্রচেষ্টায় তিনি একটি সফল সফটওয়্যার এজেন্সি গড়ে তোলেন। আজ তাঁর প্রতিষ্ঠানে শত শত তরুণ কাজ করছে। তাঁর সফলতার মূল মন্ত্র ছিল: সততা, পরিশ্রম এবং ফল পাওয়ার জন্য ধৈর্য ধরা।
+                </div>
+            </div>
+        </section>
+
+        <!-- Tab 5: FUN STORIES -->
+        <section id="fun" class="tab-content">
+            <div class="article-card">
+                <h2 class="article-title">বুদ্ধিমান কাজী ও মনস্তাত্ত্বিক চোর চেনার উপায়</h2>
+                <div class="article-text">
+                এক সওদাগরের এক থলে মূল্যবান স্বর্ণমুদ্রা চুরি হয়ে গেল। তিনি কাজীর কাছে গিয়ে বিচার চাইলেন। গ্রামের কয়েকজন লোকের ওপর সওদাগরের সন্দেহ ছিল। 
+
+                কাজী সাহেব সন্দেহভাজন ৩ জন লোককে দরবারে ডেকে পাঠালেন। কিন্তু সরাসরি জিজ্ঞাসাবাদে কেউই অপরাধ স্বীকার করল না। তখন কাজী এক অভিনব বুদ্ধি বের করলেন। তিনি সবাইকে একটি করে সমান দৈর্ঘ্যের কাঠের লাঠি দিলেন এবং বললেন:
+
+                "এই লাঠিগুলো সাধারণ নয়, জাদুকরী! আজ রাতে তোমরা এগুলো নিজের কাছে রাখবে। যে ব্যক্তি আসল চোর, কাল সকালে তার লাঠিটি অলৌকিকভাবে ঠিক ২ ইঞ্চি লম্বা হয়ে যাবে!"
+
+                সবাই লাঠি নিয়ে বাড়ি ফিরে গেল। আসল চোর রাতে চিন্তা করল, "সকালে তো আমার লাঠি ২ ইঞ্চি বড় হয়ে যাবে এবং আমি ধরা পড়ে যাব! তার চেয়ে বুদ্ধি করে আমি এখনই আমার লাঠিটি ২ ইঞ্চি কেটে ছোট করে রাখি। কাল ২ ইঞ্চি বাড়লে তা অন্যদের সমান হয়ে যাবে!"
+
+                পরদিন সকালে কাজী সাহেব সবার লাঠি পরীক্ষা করলেন। তিনি দেখলেন দুজন মানুষের লাঠি সমান আছে, কিন্তু একজনের লাঠি ঠিক ২ ইঞ্চি ছোট! কাজী তৎক্ষণাৎ তাকে চোর হিসেবে শনাক্ত করলেন। অপরাধীর মনস্তাত্ত্বিক ভয়কে কাজে লাগিয়ে কাজী সাহেব অতি সহজেই সত্য উন্মোচন করেছিলেন।
+                </div>
+            </div>
+        </section>
+
+        <!-- Tab 6: IQ QUESTIONS -->
+        <section id="iq" class="tab-content">
+            <div class="hero-banner">
+                <h1>বুদ্ধিমত্তা ও আইকিউ পরীক্ষা</h1>
+                <p>প্রশ্নগুলোতে ক্লিক করে আপনার চিন্তাশক্তি পরীক্ষা করুন এবং উত্তর মিলিয়ে নিন।</p>
+            </div>
+
+            <div class="iq-grid">
+                <div class="iq-card" onclick="toggleAnswer(this)">
+                    <div class="iq-question">
+                        <span>১. এমন কী জিনিস যা আলোতে সবসময় আপনার সাথে থাকে, কিন্তু অন্ধকারে ছেড়ে চলে যায়?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="iq-answer">
+                        <strong>উত্তর:</strong> আপনার নিজের ছায়া।
+                    </div>
+                </div>
+
+                <div class="iq-card" onclick="toggleAnswer(this)">
+                    <div class="iq-question">
+                        <span>২. পবিত্র কোরআনে বর্ণিত কোনো নবী ছাড়া মহান ব্যক্তি যিনি অপরিসীম প্রজ্ঞার অধিকারী ছিলেন, তিনি কে?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="iq-answer">
+                        <strong>উত্তর:</strong> হযরত লুকমান (আঃ)। তাঁর প্রজ্ঞাপূর্ণ উপদেশের কথা সূরা লুকমানে বর্ণিত আছে।
+                    </div>
+                </div>
+
+                <div class="iq-card" onclick="toggleAnswer(this)">
+                    <div class="iq-question">
+                        <span>৩. এমন কী জিনিস যা অন্যকে যত বেশি দেওয়া হয়, নিজের কাছে তা তত বেশি বৃদ্ধি পায়?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="iq-answer">
+                        <strong>উত্তর:</strong> জ্ঞান (Knowledge)।
+                    </div>
+                </div>
+
+                <div class="iq-card" onclick="toggleAnswer(this)">
+                    <div class="iq-question">
+                        <span>৪. এক ব্যক্তি একটানা বৃষ্টির মধ্যে ছাতা বা টুপি ছাড়া হেঁটে গেল, কিন্তু তার মাথার একটা চুলও ভিজল না। কেন?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="iq-answer">
+                        <strong>উত্তর:</strong> কারণ লোকটির মাথায় কোনো চুলই ছিল না (তিনি সম্পূর্ণ ন্যাড়া ছিলেন)!
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </div>
 
-    <!-- Main Content Container -->
-    <main class="content-container">
-        <div class="cards-grid" id="cardsGrid">
-
-            <!-- Card 1: Science & Islam (Prayer) -->
-            <div class="card" data-category="science">
-                <div>
-                    <span class="card-tag">বিজ্ঞান ও ইসলাম</span>
-                    <h2 class="card-title">সালাত ও নিউরোসায়েন্স: মস্তিষ্কের প্রশান্তি</h2>
-                    <p class="card-desc">আধুনিক নিউরোসাইকোলজি এবং শারীরবিজ্ঞানের দৃষ্টিতে সেজদার অবস্থান কীভাবে মস্তিষ্কে রক্তের প্রবাহ বাড়ায় এবং মানসিক চাপ কমায়...</p>
-                </div>
-                <button class="card-btn" onclick="openModal('সালাত ও নিউরোসায়েন্স', 'আধুনিক নিউরোসায়েন্সের গবেষণায় দেখা গেছে, মানুষ যখন সেজদায় যায়, তখন মস্তিষ্কের ফ্রন্টাল লোবে রক্ত সঞ্চালন উল্লেখযোগ্যভাবে বৃদ্ধি পায়। এটি মানসিক উৎকণ্ঠা, স্ট্রোকের ঝুঁকি এবং বিষন্নতা কমাতে সাহায্য করে।\n\nএছাড়া, সালাতের প্রতিটি শারীরিক অঙ্গভঙ্গি মানবদেহের জয়েন্টগুলোর নমনীয়তা বজায় রাখতে এবং রক্তের প্রবাহ স্বাভাবিক রাখতে এক অনন্য ভূমিকা পালন করে। রাসুলুল্লাহ (সাঃ) ১৪০০ বছর আগে যে সালাতের নির্দেশ দিয়েছেন, তা আজ চিকিৎসা বিজ্ঞানেও প্রমাণিত পরম শান্তির পথ।')">বিস্তারিত পড়ুন</button>
-            </div>
-
-            <!-- Card 2: Science & Islam (Jannah) -->
-            <div class="card" data-category="science">
-                <div>
-                    <span class="card-tag">বিজ্ঞান ও ইসলাম</span>
-                    <h2 class="card-title">জান্নাতের বিবরণ ও কোয়ান্টাম ডাইমেনশন</h2>
-                    <p class="card-desc">কোরআনে বর্ণিত জান্নাতের সময় ও স্থানের ধারণা আধুনিক ফিজিক্সের মাল্টি-ডাইমেনশনাল স্পেসের সাথে কীভাবে সামঞ্জস্যপূর্ণ?</p>
-                </div>
-                <button class="card-btn" onclick="openModal('জান্নাতের বিবরণ ও কোয়ান্টাম ডাইমেনশন', 'আধুনিক কোয়ান্টাম ফিজিক্স আমাদের শেখায় যে আমরা যে ৩-মাত্রিক জগতে বাস করি, এর বাইরেও উচ্চমাত্রার ডাইমেনশন থাকা সম্ভব। কোরআনে বর্ণিত জান্নাতের বিশালতা এবং সেখানকার সময়-স্থানের নিয়মাবলী এই ৩D জগতের ভৌত নিয়মের ওপর নির্ভরশীল নয়।\n\nপদার্থবিজ্ঞানীদের ধারণামতে, উচ্চমাত্রার জগতে মানুষের চিন্তা ও বস্তুর রূপান্তর ভিন্নভাবে কাজ করে। আল্লাহ তাআলা জান্নাতে যে নেয়ামত প্রস্তুত রেখেছেন, তা মানুষের কল্পনার অতীত এবং এটি মহাবিশ্বের বহুমাত্রিক সৃষ্টির এক অপূর্ব বাস্তবতা।')">বিস্তারিত পড়ুন</button>
-            </div>
-
-            <!-- Card 3: Sahabi Story -->
-            <div class="card" data-category="sahabi">
-                <div>
-                    <span class="card-tag">সাহাবিদের কাহিনী</span>
-                    <h2 class="card-title">হযরত আবু বকর (রা:) এর উদারতার চরম পরাকাষ্ঠা</h2>
-                    <p class="card-desc">তাবুক যুদ্ধের সময় নিজের সমস্ত ধন-সম্পদ আল্লাহর রাস্তায় দান করে দেওয়ার সেই রোমাঞ্চকর ও হৃদয়স্পর্শী ঘটনা...</p>
-                </div>
-                <button class="card-btn" onclick="openModal('হযরত আবু বকর (রা:) এর উদারতা', 'তাবুক যুদ্ধের কঠিন সময়ে মহানবী (সাঃ) সাহাবিদের সাহায্য করার আহ্বান জানান। হযরত ওমর (রাঃ) ভাবলেন, আজ তিনি আবু বকর (রাঃ)-কে দানশীলতায় পেছনে ফেলবেন। ওমর (রাঃ) তাঁর সম্পদের অর্ধেক নিয়ে এলেন।\n\nকিন্তু কিছুক্ষণের মধ্যেই হযরত আবু বকর (রাঃ) তাঁর ঘরে থাকা সমস্ত সম্পদ এনে হাজির করলেন। রাসূল (সাঃ) জিজ্ঞেস করলেন, \"আবু বকর, পরিবারের জন্য কী রেখে এসেছ?\" আবু বকর (রাঃ) বিনীতভাবে উত্তর দিলেন, \"তাদের জন্য আল্লাহ এবং তাঁর রাসূলকে রেখে এসেছি।\" এই আত্মত্যাগ ও ইমানের দৃঢ়তা যুগে যুগে সত্যের পথে চলার অনুপ্রেরণা।')">বিস্তারিত পড়ুন</button>
-            </div>
-
-            <!-- Card 4: Sahabi Story -->
-            <div class="card" data-category="sahabi">
-                <div>
-                    <span class="card-tag">সাহাবিদের কাহিনী</span>
-                    <h2 class="card-title">হযরত মুসাব ইবনে উমাইর (রা:): ধনকুবের থেকে ত্যাগের প্রতীক</h2>
-                    <p class="card-desc">মক্কার সবচেয়ে বর্ণিল ও ধনী যুবক কীভাবে ইসলামের জন্য সবকিছু ত্যাগ করে সাহাবিদের মধ্যে শ্রেষ্ঠ রূপ নিলেন?</p>
-                </div>
-                <button class="card-btn" onclick="openModal('হযরত মুসাব ইবনে উমাইর (রা:)', 'মুসাব ইবনে উমাইর (রাঃ) ছিলেন মক্কার সবচেয়ে সুপুরুষ, সুগন্ধিপোষী এবং ধনী পরিবারের সন্তান। ইসলাম গ্রহণের পর তাঁর পরিবার তাঁকে ত্যাজ্য করে এবং সমস্ত ধন-সম্পদ কেড়ে নেয়।\n\nমদিনায় ইসলামের দাওয়াত বিস্তারে তিনি ছিলেন প্রথম রাষ্ট্রদূত। ওহুদের যুদ্ধে শাহাদাত বরণের পর তাঁর দেহ ঢাকার জন্য একটি ছোট চাদর ছাড়া আর কিছুই ছিল না—যা দিয়ে মাথা ঢাকলে পা বের হয়ে যেত, আর পা ঢাকলে মাথা! দুনিয়ার সমস্ত বিলাসিতা ত্যাগ করে দ্বীনের জন্য তাঁর এই বীরত্বপূর্ণ ত্যাগের ইতিহাস হৃদয়কে দোলা দিয়ে যায়।')">বিস্তারিত পড়ুন</button>
-            </div>
-
-            <!-- Card 5: Success Story -->
-            <div class="card" data-category="success">
-                <div>
-                    <span class="card-tag">সফলতার গল্প</span>
-                    <h2 class="card-title">শূন্য থেকে চূড়ায়: অধ্যবসায় ও ইমানের শক্তি</h2>
-                    <p class="card-desc">একজন সাধারণ মানুষের আত্মবিশ্বাস, ধৈর্য এবং আল্লাহর ওপর ভরসা রেখে সফলতার শীর্ষে পৌঁছানোর বাস্তব গল্প।</p>
-                </div>
-                <button class="card-btn" onclick="openModal('শূন্য থেকে চূড়ায়', 'এক দরিদ্র যুবক বহুবার ব্যর্থ হওয়ার পরও কখনো আশা হারাননি। তিনি প্রতিদিন রাতে দীর্ঘ সময় কাজের পাশাপাশি শেষ রাতে তাহাজ্জুদ পড়ে আল্লাহর কাছে শক্তি চাইতেন।\n\nতিনি বিশ্বাস করতেন, আল্লাহ কঠোর পরিশ্রমের ফল কখনো নষ্ট করেন না। সুনির্দিষ্ট লক্ষ্য, নিরলস প্রচেষ্টা এবং নীতি-নৈতিকতার ওপর অটল থাকার ফলে মাত্র কয়েক বছরে তিনি একটি বিশাল আন্তর্জাতিক প্রতিষ্ঠানের মালিক হন। তাঁর মতে: \"প্রচেষ্টা তোমার, আর ফলদাতা মহান আল্লাহ।\"')">বিস্তারিত পড়ুন</button>
-            </div>
-
-            <!-- Card 6: Fun Story -->
-            <div class="card" data-category="fun">
-                <div>
-                    <span class="card-tag">মজার গল্প</span>
-                    <h2 class="card-title">বুদ্ধিমান কাজী ও চোরের গল্প</h2>
-                    <p class="card-desc">চোর ধরার এমন এক প্রজ্ঞাময় কৌশল, যা হাসির পাশাপাশি মানুষের বুদ্ধিমত্তাকে নতুনভাবে চিন্তা করতে শেখায়...</p>
-                </div>
-                <button class="card-btn" onclick="openModal('বুদ্ধিমান কাজী ও চোরের গল্প', 'একবার এক ব্যবসায়ীর থলে চুরি হলো। কাজী সাহেব সন্দেহভাজন ৩ জনকে ডেকে বললেন, \"আমি সবাইকে একটি করে সমান লাঠি দিচ্ছি। আজ রাতে চোরের লাঠিটি অলৌকিকভাবে ২ ইঞ্চি লম্বা হয়ে যাবে!\"\n\nপরদিন সকালে আসল চোর ভয়ে আগেই তার লাঠিটি ২ ইঞ্চি কেটে ছোট করে নিয়ে আসে, যাতে লম্বা হওয়ার পর সমান থাকে! কাজী সাহেব সহজেই আসল চোরকে ধরে ফেললেন। মানুষের মনস্তাত্ত্বিক দুর্বলতাকে কাজে লাগিয়ে বিচার করার এই মজার বুদ্ধিটি আজও স্মরণীয়।')">বিস্তারিত পড়ুন</button>
-            </div>
-
-            <!-- Card 7: IQ Question 1 -->
-            <div class="card" data-category="iq">
-                <div>
-                    <span class="card-tag">আইকিউ প্রশ্ন</span>
-                    <h2 class="card-title">প্রশ্ন: জ্ঞান ও সময়ের ধাঁধা</h2>
-                    <p class="card-desc">এমন একটি জিনিস যা ব্যবহার করলে বা দান করলে বাড়ে, কিন্তু জমিয়ে রাখলে কমে যায়। জিনিসটি কী?</p>
-                </div>
-                <button class="card-btn" onclick="toggleIQ(this)">উত্তর দেখুন</button>
-                <div class="iq-answer">
-                    <strong>উত্তর:</strong> জ্ঞান (Knowledge)। জ্ঞান যত অন্যকে শেখানো হয়, তত তা নিজের মাঝে বৃদ্ধি পায়।
-                </div>
-            </div>
-
-            <!-- Card 8: IQ Question 2 -->
-            <div class="card" data-category="iq">
-                <div>
-                    <span class="card-tag">আইকিউ প্রশ্ন</span>
-                    <h2 class="card-title">প্রশ্ন: ইসলামিক ঐতিহাসিক ধাঁধা</h2>
-                    <p class="card-desc">কোরআনে এমন একজন ব্যক্তিত্বের কথা বলা হয়েছে যিনি নবী ছিলেন না, কিন্তু আল্লাহ তাঁকে অসীম প্রজ্ঞা (Wisdom) দান করেছিলেন। তিনি কে?</p>
-                </div>
-                <button class="card-btn" onclick="toggleIQ(this)">উত্তর দেখুন</button>
-                <div class="iq-answer">
-                    <strong>উত্তর:</strong> হযরত লুকমান (আঃ)। তাঁর নামে পবিত্র কোরআনে 'সূরা লুকমান' রয়েছে।
-                </div>
-            </div>
-
-        </div>
-    </main>
-
-    <!-- Reader Modal Layer -->
-    <div class="modal-overlay" id="modalOverlay">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal()">&times;</span>
-            <h3 class="modal-title" id="modalTitle">শিরোনাম</h3>
-            <div class="modal-body" id="modalBody">
-                বিস্তারিত বিষয়বস্তু...
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
+    <!-- Footer Layer -->
     <footer>
-        <p>&copy; 2026 জ্ঞান ও বিশ্বাসের আলো। সর্বস্বত্ব সংরক্ষিত।</p>
+        <p>&copy; 2026 প্রজ্ঞার আলো — সত্য, সৌন্দর্য ও পরম ভালোবাসার প্রতীক।</p>
     </footer>
 
-    <!-- JavaScript Functional Code -->
+    <!-- JavaScript Logic -->
     <script>
-        // Category Filter Logic
-        function filterCards(category) {
-            // Update Active Class on Buttons
-            const buttons = document.querySelectorAll('.cat-btn');
+        // Tab Switching Logic
+        function switchTab(tabId) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // Remove active class from all nav buttons
+            const buttons = document.querySelectorAll('.nav-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
 
-            // Filter Grid Items
-            const cards = document.querySelectorAll('.card');
-            cards.forEach(card => {
-                if (category === 'all' || card.getAttribute('data-category') === category) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
+            // Show selected tab
+            document.getElementById(tabId).classList.add('active');
+
+            // Set active status on clicked button
+            event.currentTarget.classList.add('active');
+
+            // Scroll smoothly to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Modal Controls
-        function openModal(title, text) {
-            document.getElementById('modalTitle').innerText = title;
-            document.getElementById('modalBody').innerText = text;
-            document.getElementById('modalOverlay').style.display = 'flex';
-        }
+        // IQ Answer Toggle Logic
+        function toggleAnswer(cardElement) {
+            const answerBox = cardElement.querySelector('.iq-answer');
+            const icon = cardElement.querySelector('.iq-question i');
 
-        function closeModal() {
-            document.getElementById('modalOverlay').style.display = 'none';
-        }
-
-        // Close Modal when clicking outside the box
-        window.onclick = function(event) {
-            const modal = document.getElementById('modalOverlay');
-            if (event.target === modal) {
-                closeModal();
-            }
-        }
-
-        // IQ Question Toggle Answer
-        function toggleIQ(button) {
-            const answerBox = button.nextElementSibling;
             if (answerBox.style.display === "block") {
                 answerBox.style.display = "none";
-                button.innerText = "উত্তর দেখুন";
+                icon.style.transform = "rotate(0deg)";
             } else {
                 answerBox.style.display = "block";
-                button.innerText = "উত্তর লুকান";
+                icon.style.transform = "rotate(180deg)";
             }
         }
     </script>
