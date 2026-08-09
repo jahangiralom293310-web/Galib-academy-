@@ -40,7 +40,7 @@
             overflow-x: hidden;
         }
 
-        /* Tier 1 Header Glassmorphism Navigation */
+        /* Header Navigation */
         header {
             background: rgba(5, 11, 20, 0.85);
             border-bottom: 1px solid var(--border-glass);
@@ -80,11 +80,17 @@
             -webkit-text-fill-color: initial;
         }
 
-        /* Tier 1 Buttons */
+        /* Tier 1 Buttons Bar */
         .tier1-menu {
             display: flex;
             gap: 10px;
-            flex-wrap: wrap;
+            overflow-x: auto;
+            padding-bottom: 5px;
+            scrollbar-width: none;
+        }
+
+        .tier1-menu::-webkit-scrollbar {
+            display: none;
         }
 
         .tier1-btn {
@@ -96,10 +102,11 @@
             cursor: pointer;
             font-size: 0.95rem;
             font-weight: 600;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             gap: 8px;
+            white-space: nowrap;
         }
 
         .tier1-btn:hover, .tier1-btn.active {
@@ -114,12 +121,17 @@
         .tier2-bar {
             background: rgba(10, 18, 30, 0.7);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 1rem 2rem;
+            padding: 0.8rem 2rem;
             display: flex;
             justify-content: center;
             gap: 12px;
-            flex-wrap: wrap;
+            overflow-x: auto;
             backdrop-filter: blur(8px);
+            scrollbar-width: none;
+        }
+
+        .tier2-bar::-webkit-scrollbar {
+            display: none;
         }
 
         .tier2-btn {
@@ -132,6 +144,7 @@
             font-size: 0.9rem;
             font-weight: 500;
             transition: all 0.3s ease;
+            white-space: nowrap;
         }
 
         .tier2-btn:hover, .tier2-btn.active {
@@ -145,17 +158,17 @@
         /* Main Container */
         .container {
             max-width: 1350px;
-            margin: 2.5rem auto;
+            margin: 2rem auto;
             padding: 0 1.5rem;
             flex: 1;
         }
 
         .hero-banner {
             text-align: center;
-            padding: 3rem 1.5rem;
+            padding: 2.5rem 1.5rem;
             background: rgba(15, 25, 40, 0.5);
             border-radius: 24px;
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
             border: 1px solid var(--border-glass);
             backdrop-filter: var(--glass-blur);
             position: relative;
@@ -163,19 +176,8 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
 
-        .hero-banner::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(243, 156, 18, 0.1) 0%, transparent 60%);
-            pointer-events: none;
-        }
-
         .hero-banner h1 {
-            font-size: 2.5rem;
+            font-size: 2.3rem;
             color: var(--gold-light);
             margin-bottom: 0.8rem;
             text-shadow: 0 2px 10px rgba(0,0,0,0.5);
@@ -185,13 +187,45 @@
             color: var(--text-sub);
             font-size: 1.1rem;
             max-width: 750px;
-            margin: 0 auto;
+            margin: 0 auto 1.5rem;
         }
 
-        /* Tier 3 Cards Grid (Modern 3D Glow Design) */
+        /* Search Box Design */
+        .search-box {
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.8rem 1.2rem 0.8rem 3rem;
+            background: rgba(5, 11, 20, 0.8);
+            border: 1px solid var(--border-glass);
+            border-radius: 30px;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-box input:focus {
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 15px rgba(243, 156, 18, 0.3);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 1.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gold-primary);
+        }
+
+        /* Cards Grid */
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
         }
 
@@ -206,31 +240,13 @@
             flex-direction: column;
             justify-content: space-between;
             position: relative;
-            overflow: hidden;
             backdrop-filter: var(--glass-blur);
-        }
-
-        .topic-card::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 20px;
-            padding: 2px;
-            background: linear-gradient(135deg, var(--gold-primary), transparent, var(--emerald-glow));
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            opacity: 0.3;
-            transition: opacity 0.4s ease;
         }
 
         .topic-card:hover {
             transform: translateY(-8px) scale(1.01);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(243, 156, 18, 0.2);
-        }
-
-        .topic-card:hover::after {
-            opacity: 1;
+            border-color: var(--gold-primary);
         }
 
         .topic-card .card-badge {
@@ -246,7 +262,7 @@
         }
 
         .topic-card h3 {
-            font-size: 1.4rem;
+            font-size: 1.35rem;
             color: #fff;
             margin-bottom: 1rem;
             line-height: 1.4;
@@ -254,7 +270,7 @@
 
         .topic-card p {
             color: var(--text-sub);
-            font-size: 1rem;
+            font-size: 0.98rem;
             margin-bottom: 1.5rem;
             flex-grow: 1;
             display: -webkit-box;
@@ -284,6 +300,17 @@
             box-shadow: 0 0 15px rgba(243, 156, 18, 0.5);
         }
 
+        .no-data {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-sub);
+            font-size: 1.2rem;
+            background: rgba(15, 25, 40, 0.4);
+            border-radius: 16px;
+            border: 1px dashed var(--border-glass);
+        }
+
         /* Modal Ultra Reader */
         .modal-overlay {
             position: fixed;
@@ -311,7 +338,7 @@
             border: 1px solid var(--gold-primary);
             border-radius: 24px;
             padding: 3rem;
-            max-width: 950px;
+            max-width: 900px;
             width: 100%;
             max-height: 85vh;
             overflow-y: auto;
@@ -323,10 +350,10 @@
             position: absolute;
             top: 1.5rem;
             right: 1.8rem;
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: var(--text-sub);
             cursor: pointer;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
             width: 40px;
             height: 40px;
             display: flex;
@@ -343,7 +370,7 @@
 
         .modal-title {
             color: var(--gold-light);
-            font-size: 2.2rem;
+            font-size: 2rem;
             margin-bottom: 1.5rem;
             border-bottom: 1px solid var(--border-glass);
             padding-bottom: 1rem;
@@ -352,17 +379,17 @@
 
         .modal-body {
             color: var(--text-main);
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             white-space: pre-line;
             text-align: justify;
-            line-height: 2;
+            line-height: 1.9;
         }
 
         .highlight-box {
             background: rgba(16, 185, 129, 0.1);
             border-left: 4px solid var(--emerald-glow);
             padding: 1.2rem 1.8rem;
-            margin: 1.8rem 0;
+            margin: 1.5rem 0;
             font-style: italic;
             border-radius: 0 12px 12px 0;
             color: #e2e8f0;
@@ -372,23 +399,25 @@
             background: rgba(243, 156, 18, 0.1);
             border-left: 4px solid var(--gold-primary);
             padding: 1.2rem 1.8rem;
-            margin: 1.8rem 0;
+            margin: 1.5rem 0;
             border-radius: 0 12px 12px 0;
             font-weight: 500;
         }
 
         footer {
             text-align: center;
-            padding: 2.5rem;
+            padding: 2rem;
             background: rgba(3, 7, 13, 0.95);
             color: var(--text-sub);
             border-top: 1px solid var(--border-glass);
             margin-top: auto;
+            font-size: 0.95rem;
         }
 
         @media (max-width: 768px) {
-            .nav-container { flex-direction: column; }
-            .hero-banner h1 { font-size: 1.8rem; }
+            .nav-container { flex-direction: column; align-items: stretch; }
+            .brand { justify-content: center; }
+            .hero-banner h1 { font-size: 1.7rem; }
             .modal-content { padding: 1.8rem; }
             .cards-grid { grid-template-columns: 1fr; }
         }
@@ -422,8 +451,14 @@
     <!-- Main Content Container -->
     <div class="container">
         <div class="hero-banner" id="heroBanner">
-            <h1 id="catTitle">রাসূলুল্লাহ (সাঃ)-এর মহিমান্বিত জীবন</h1>
+            <h1 id="catTitle">রাসূলুল্লাহ (সাঃ)-এর মহিমান্বিত জীবনগাথা</h1>
             <p id="catDesc">রহমত, প্রজ্ঞা, মহানুভবতা ও সাহসিকতার এক চিরন্তন মহাসমুদ্র। প্রতিটি ঘটনা থেকে শিক্ষা নিন এবং জীবনে প্রয়োগ করুন।</p>
+            
+            <!-- Dynamic Search Feature -->
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchInput" placeholder="খুঁজুন (যেমন: তায়েফ, ক্ষমা, এডিসন, সালাত...)" oninput="handleSearch()">
+            </div>
         </div>
 
         <div class="cards-grid" id="cardsGrid">
@@ -437,7 +472,7 @@
             <span class="close-modal" onclick="closeModal()">&times;</span>
             <h2 class="modal-title" id="modalTitle">শিরোনাম</h2>
             <div class="modal-body" id="modalBody">
-                বিস্তারিত পাঠাগার রিড হচ্ছে...
+                বিস্তারিত পাঠাগার লোড হচ্ছে...
             </div>
         </div>
     </div>
@@ -451,7 +486,7 @@
         const appData = {
             'prophet': {
                 title: "রাসূলুল্লাহ (সাঃ)-এর মহিমান্বিত জীবনগাথা",
-                desc: "মানবজাতির ইতিহাসের শ্রেষ্ঠ ব্যক্তিত্বের অলৌকিক প্রজ্ঞা, অসীম সহনশীলতা ও মহানুভবতার বিস্তৃত বিবরণ।",
+                desc: "মানবজাতির ইতিহাসের श्रेष्ठ ব্যক্তিত্বের অলৌকিক প্রজ্ঞা, অসীম সহনশীলতা ও মহানুভবতার বিস্তৃত বিবরণ।",
                 subCats: [
                     { id: 'all', name: 'সবগুলো নিবন্ধ' },
                     { id: 'p_mercy', name: 'ক্ষমা ও মানবিকতা' },
@@ -459,54 +494,14 @@
                     { id: 'p_character', name: 'চরিত্র ও চারিত্রিক সৌন্দর্য' }
                 ],
                 topics: [
-                    {
-                        sub: 'p_mercy',
-                        title: '১. তায়েফের রক্তভেজা ময়দানে অসীম ক্ষমা ও দোয়া',
-                        preview: 'পাথরের তীব্র আঘাতে জুতো রক্তে ভিজে আটকে গিয়েছিল। তা সত্ত্বেও অভিশাপ না দিয়ে রহমতের দোয়া করার অভূতপূর্ব ইতিহাস...',
-                        key: 'p_taif'
-                    },
-                    {
-                        sub: 'p_mercy',
-                        title: '২. মক্কা বিজয়ের দিন: পৃথিবীর বৃহত্তম সাধারণ ক্ষমা',
-                        preview: '১০,০০০ বিজয়ী সৈন্য নিয়ে মক্কায় প্রবেশ করে চরম শত্রু কুরাইশদের এক নিমেষে মুক্ত ঘোষণা করার বিরল নজির...',
-                        key: 'p_mecca'
-                    },
-                    {
-                        sub: 'p_character',
-                        title: '৩. ঈদের দিনে এতিম শিশুকে বুকে জড়িয়ে নেওয়ার অলৌকিক ভালোবাসা',
-                        preview: 'পথের ধারে কেঁদে বুক ভাসানো এতিম সন্তানকে নিজের সন্তান হিসেবে আপন করে নেওয়ার হৃদয়স্পর্শী ঘটনা...',
-                        key: 'p_orphan'
-                    },
-                    {
-                        sub: 'p_diplomacy',
-                        title: '৪. হুদাইবিয়ার ঐতিহাসিক চুক্তি ও নবিজির দূরদর্শী কূটনীতি',
-                        preview: 'বাহ্যিক অপমানজনক শর্ত মেনে নিয়েও কিভাবে রক্তপাত ছাড়া মক্কা বিজয়ের পথ প্রশস্ত করা হয়েছিল...',
-                        key: 'p_hudaibiya'
-                    },
-                    {
-                        sub: 'p_diplomacy',
-                        title: '৫. খন্দকের যুদ্ধ: পেটে পাথর বেঁধে মাটি কাটার ঐতিহাসিক নেতৃত্ব',
-                        preview: 'চরম ক্ষুধা ও হাড়কাঁপানো শীতে মদিনা রক্ষায় নবিজি এবং সাহাবিদের পরিখা খননের অসীম ত্যাগ...',
-                        key: 'p_khandaq'
-                    },
-                    {
-                        sub: 'p_character',
-                        title: '৬. সুরার গুহা ও অলৌকিক হিজরতের ঐতিহাসিক পথচলা',
-                        preview: 'মক্কা ছেড়ে মদিনায় যাত্রাপথে আল্লাহর অদৃশ্য সাহায্য এবং মাকড়সার জালের চিরন্তন অলৌকিক ঘটনা...',
-                        key: 'p_hijrat'
-                    },
-                    {
-                        sub: 'p_mercy',
-                        title: '৭. বিষ প্রদানকারী ইহুদি নারীকে ক্ষমা করার মহানুভবতা',
-                        preview: 'খাইবারে ছাগলের মাংসে বিষ মিশিয়ে হত্যাচেষ্টা চালানো নারীকেও রাসুল (সাঃ) কিভাবে ক্ষমা করেছিলেন...',
-                        key: 'p_poison'
-                    },
-                    {
-                        sub: 'p_character',
-                        title: '৮. বিদায় হজ্জের ভাষণ: মানবজাতির প্রথম সর্বজনীন মানবাধিকার ঘোষণা',
-                        preview: 'আরাফাতের ময়দানে দাঁড়িয়ে বর্ণবাদ, বংশ গৌরব ও নারী অধিকার নিয়ে রাসুল (সাঃ)-এর ঐতিহাসিক বক্তব্য...',
-                        key: 'p_biday'
-                    }
+                    { sub: 'p_mercy', title: '১. তায়েফের রক্তভেজা ময়দানে অসীম ক্ষমা ও দোয়া', preview: 'পাথরের তীব্র আঘাতে জুতো রক্তে ভিজে আটকে গিয়েছিল। তা সত্ত্বেও অভিশাপ না দিয়ে রহমতের দোয়া করার অভূতপূর্ব ইতিহাস...', key: 'p_taif' },
+                    { sub: 'p_mercy', title: '২. মক্কা বিজয়ের দিন: পৃথিবীর বৃহত্তম সাধারণ ক্ষমা', preview: '১০,০০০ বিজয়ী সৈন্য নিয়ে মক্কায় প্রবেশ করে চরম শত্রু কুরাইশদের এক নিমেষে মুক্ত ঘোষণা করার বিরল নজির...', key: 'p_mecca' },
+                    { sub: 'p_character', title: '৩. ঈদের দিনে এতিম শিশুকে বুকে জড়িয়ে নেওয়ার অলৌকিক ভালোবাসা', preview: 'পথের ধারে কেঁদে বুক ভাসানো এতিম সন্তানকে নিজের সন্তান হিসেবে আপন করে নেওয়ার হৃদয়স্পর্শী ঘটনা...', key: 'p_orphan' },
+                    { sub: 'p_diplomacy', title: '৪. হুদাইবিয়ার ঐতিহাসিক চুক্তি ও নবিজির দূরদর্শী কূটনীতি', preview: 'বাহ্যিক অপমানজনক শর্ত মেনে নিয়েও কিভাবে রক্তপাত ছাড়া মক্কা বিজয়ের পথ প্রশস্ত করা হয়েছিল...', key: 'p_hudaibiya' },
+                    { sub: 'p_diplomacy', title: '৫. খন্দকের যুদ্ধ: পেটে পাথর বেঁধে মাটি কাটার ঐতিহাসিক নেতৃত্ব', preview: 'চরম ক্ষুধা ও হাড়কাঁপানো শীতে মদিনা রক্ষায় নবিজি এবং সাহাবিদের পরিখা খননের অসীম ত্যাগ...', key: 'p_khandaq' },
+                    { sub: 'p_character', title: '৬. সুরার গুহা ও অলৌকিক হিজরতের ঐতিহাসিক পথচলা', preview: 'মক্কা ছেড়ে মদিনায় যাত্রাপথে আল্লাহর অদৃশ্য সাহায্য এবং মাকড়সার জালের চিরন্তন অলৌকিক ঘটনা...', key: 'p_hijrat' },
+                    { sub: 'p_mercy', title: '৭. বিষ প্রদানকারী ইহুদি নারীকে ক্ষমা করার মহানুভবতা', preview: 'খাইবারে ছাগলের মাংসে বিষ মিশিয়ে হত্যাচেষ্টা চালানো নারীকেও রাসুল (সাঃ) কিভাবে ক্ষমা করেছিলেন...', key: 'p_poison' },
+                    { sub: 'p_character', title: '৮. বিদায় হজ্জের ভাষণ: মানবজাতির প্রথম সর্বজনীন মানবাধিকার ঘোষণা', preview: 'আরাফাতের ময়দানে দাঁড়িয়ে বর্ণবাদ, বংশ গৌরব ও নারী অধিকার নিয়ে রাসুল (সাঃ)-এর ঐতিহাসিক বক্তব্য...', key: 'p_biday' }
                 ]
             },
             'sahabi': {
@@ -518,54 +513,14 @@
                     { id: 's_martyrs', name: 'বীর ও শহীদ সাহাবি' }
                 ],
                 topics: [
-                    {
-                        sub: 's_martyrs',
-                        title: '১. হযরত মুসাব ইবনে উমাইর (রা:): মক্কার বিলাসিতা থেকে শাহাদাত',
-                        preview: 'সুগন্ধি আর রাজকীয় পোশাক ছেড়ে ছেঁড়া এক টুকরো কাপড়ে কাফন হওয়ার অতুলনীয় ত্যাগের কাহিনী...',
-                        key: 's_musab'
-                    },
-                    {
-                        sub: 's_khulafa',
-                        title: '২. হযরত আবু বকর সিদ্দিক (রা:): ঘরের সমস্ত সম্পদ দানের ঈমানী পরীক্ষা',
-                        preview: 'তাবুক যুদ্ধে সংসারের সুই-সুতা সহ সব দান করে পরিবারের জন্য শুধু আল্লাহ ও রাসুলকে রেখে আসার গল্প...',
-                        key: 's_abubakar'
-                    },
-                    {
-                        sub: 's_khulafa',
-                        title: '৩. হযরত ওমর ইবনুল খাত্তাব (রা:): রাতের ছদ্মবেশে প্রজাসেবা',
-                        preview: 'অর্ধ-পৃথিবীর অধিপতি হয়েও রাতের আঁধারে পিঠে আটার বস্তা বয়ে নিয়ে ক্ষুধার্ত শিশুদের মুখে আহার তুলে দেওয়া...',
-                        key: 's_umar'
-                    },
-                    {
-                        sub: 's_khulafa',
-                        title: '৪. হযরত ওসমান ইবনে আফফান (রা:): দানশীলতার উজ্জ্বল নক্ষত্র',
-                        preview: 'মদিনায় পানির সংকট মেটাতে ইহুদির কাছ থেকে সম্পূর্ণ রুমা কুপ কিনে মুসলিমদের ওয়াকফ করে দেওয়া...',
-                        key: 's_osman'
-                    },
-                    {
-                        sub: 's_khulafa',
-                        title: '৫. হযরত আলী (রা:): খাইবারের বীরত্ব ও জ্ঞানের অগাধ দরবার',
-                        preview: 'রাসুল (সাঃ)-এর হাত থেকে বিজয়ের পতাকা নিয়ে খাইবারের সুবিশাল দুর্গের লৌহকপাট ভাঙার বীরত্ব...',
-                        key: 's_ali'
-                    },
-                    {
-                        sub: 's_martyrs',
-                        title: '৬. হযরত বিলাল ইবনে রবাহ (রা:): উত্তপ্ত বালুতে ঈমানের অবিচল সুর',
-                        preview: 'বুকের ওপর ভারী পাথর চেপে রাখার পরও "আহাদ, আহাদ" ধ্বনিতে ঈমানের সত্যতা প্রমাণের ইতিহাস...',
-                        key: 's_belal'
-                    },
-                    {
-                        sub: 's_martyrs',
-                        title: '৭. হযরত খালেদ ইবনুল ওয়ালিদ (রা:): আল্লাহর তলোয়ারের রণকৌশল',
-                        preview: 'একশটিরও বেশি যুদ্ধে অংশগ্রহণ করে একটিতেও না হারা পৃথিবীর ইতিহাসের একমাত্র অপরাজিত সেনাপতি...',
-                        key: 's_khaled'
-                    },
-                    {
-                        sub: 's_martyrs',
-                        title: '৮. হযরত সালমান ফারসি (রা:): সত্যের সন্ধানে পারস্য থেকে মদিনায়',
-                        preview: 'সত্য ধর্মের খোঁজে বছরের পর বছর দাসত্ব সহ্য করে অবশেষে রাসুল (সাঃ)-এর দরবারে পৌঁছানোর মহাকাব্য...',
-                        key: 's_salman'
-                    }
+                    { sub: 's_martyrs', title: '১. হযরত মুসাব ইবনে উমাইর (রা:): মক্কার বিলাসিতা থেকে শাহাদাত', preview: 'সুগন্ধি আর রাজকীয় পোশাক ছেড়ে ছেঁড়া এক টুকরো কাপড়ে কাফন হওয়ার অতুলনীয় ত্যাগের কাহিনী...', key: 's_musab' },
+                    { sub: 's_khulafa', title: '২. হযরত আবু বকর সিদ্দিক (রা:): ঘরের সমস্ত সম্পদ দানের ঈমানী পরীক্ষা', preview: 'তাবুক যুদ্ধে সংসারের সুই-সুতা সহ সব দান করে পরিবারের জন্য শুধু আল্লাহ ও রাসুলকে রেখে আসার গল্প...', key: 's_abubakar' },
+                    { sub: 's_khulafa', title: '৩. হযরত ওমর ইবনুল খাত্তাব (রা:): রাতের ছদ্মবেশে প্রজাসেবা', preview: 'অর্ধ-পৃথিবীর অধিপতি হয়েও রাতের আঁধারে পিঠে আটার বস্তা বয়ে নিয়ে ক্ষুধার্ত শিশুদের মুখে আহার তুলে দেওয়া...', key: 's_umar' },
+                    { sub: 's_khulafa', title: '৪. হযরত ওসমান ইবনে আফফান (রা:): দানশীলতার উজ্জ্বল নক্ষত্র', preview: 'মদিনায় পানির সংকট মেটাতে ইহুদির কাছ থেকে সম্পূর্ণ রুমা কুপ কিনে মুসলিমদের ওয়াকফ করে দেওয়া...', key: 's_osman' },
+                    { sub: 's_khulafa', title: '৫. হযরত আলী (রা:): খাইবারের বীরত্ব ও জ্ঞানের অগাধ দরবার', preview: 'রাসুল (সাঃ)-এর হাত থেকে বিজয়ের পতাকা নিয়ে খাইবারের সুবিশাল দুর্গের লৌহকপাট ভাঙার বীরত্ব...', key: 's_ali' },
+                    { sub: 's_martyrs', title: '৬. হযরত বিলাল ইবনে রবাহ (রা:): উত্তপ্ত বালুতে ঈমানের অবিচল সুর', preview: 'বুকের ওপর ভারী পাথর চেপে রাখার পরও "আহাদ, আহাদ" ধ্বনিতে ঈমানের সত্যতা প্রমাণের ইতিহাস...', key: 's_belal' },
+                    { sub: 's_martyrs', title: '৭. হযরত খালেদ ইবনুল ওয়ালিদ (রা:): আল্লাহর তলোয়ারের রণকৌশল', preview: 'একশটিরও বেশি যুদ্ধে অংশগ্রহণ করে একটিতেও না হারা পৃথিবীর ইতিহাসের একমাত্র অপরাজিত সেনাপতি...', key: 's_khaled' },
+                    { sub: 's_martyrs', title: '৮. হযরত সালমান ফারসি (রা:): সত্যের সন্ধানে পারস্য থেকে মদিনায়', preview: 'সত্য ধর্মের খোঁজে বছরের পর বছর দাসত্ব সহ্য করে অবশেষে রাসুল (সাঃ)-এর দরবারে পৌঁছানোর মহাকাব্য...', key: 's_salman' }
                 ]
             },
             'success': {
@@ -578,48 +533,13 @@
                     { id: 'sc_biz', name: 'উদ্যোক্তা ও লেখক' }
                 ],
                 topics: [
-                    {
-                        sub: 'sc_leaders',
-                        title: '১. আব্রাহাম লিংকন: টানা ৩০ বছরের ব্যর্থতা পেরিয়ে প্রেসিডেন্ট',
-                        preview: 'ব্যবসায়ে দেউলিয়া, প্রিয়তমার মৃত্যু ও ডজনখানেক নির্বাচনে পরাজয়ের পর দাসপ্রথা বিলুপ্ত করার ইতিহাস...',
-                        key: 'sc_lincoln'
-                    },
-                    {
-                        sub: 'sc_sci',
-                        title: '২. টমাস আলভা এডিসন: ১০০০ বার ব্যর্থ হয়েও পৃথিবীকে আলো দেওয়া',
-                        preview: 'শিক্ষকদের কাছে গাধা গাল খেয়েও হার না মেনে বৈদ্যুতিক বাল্ব আবিষ্কারের অবিস্মরণীয় মানসিকতা...',
-                        key: 'sc_edison'
-                    },
-                    {
-                        sub: 'sc_sci',
-                        title: '৩. আলবার্ট আইনস্টাইন: কথা বলতে না পারা শিশু থেকে শতাব্দীর সেরা মস্তিষ্ক',
-                        preview: 'স্কুল থেকে বিতাড়িত হয়েও কৌতূহল ও পদার্থবিজ্ঞানের প্রতি ভালোবাসা দিয়ে বিশ্ব বদলে দেওয়া...',
-                        key: 'sc_einstein'
-                    },
-                    {
-                        sub: 'sc_biz',
-                        title: '৪. স্টিভ জবস: নিজ কোম্পানি থেকে বরখাস্ত হয়েও ঘুরে দাঁড়ানো',
-                        preview: 'অ্যাপল থেকে বের করে দেওয়ার পর নিওক্সট ও পিক্সার দিয়ে বিশ্ব জয় করে অ্যাপলে ফিরে আসার গল্প...',
-                        key: 'sc_jobs'
-                    },
-                    {
-                        sub: 'sc_biz',
-                        title: '৫. কর্নেল হারল্যান্ড স্যান্ডার্স: ৬৫ বছর বয়সে ১০০০ বার প্রত্যাখ্যাত KFC',
-                        preview: 'পেনশনের ১০৫ ডলার নিয়ে রাস্তায় রাস্তায় ঘুরে আজ পৃথিবীর সর্ববৃহৎ চিকেন ব্র্যান্ড গড়ে তোলার গল্প...',
-                        key: 'sc_kfc'
-                    },
-                    {
-                        sub: 'sc_biz',
-                        title: '৬. জে. কে. রোলিং: চরম বিষণ্ণতা ও দারিদ্র্য থেকে বিলিয়নিয়ার লেখিকা',
-                        preview: '১২টি প্রকাশনা থেকে বাতিল হওয়ার পর হ্যারি পটার লিখে ইতিহাসের সফলতম লেখিকা হওয়ার পথচলা...',
-                        key: 'sc_rowling'
-                    },
-                    {
-                        sub: 'sc_biz',
-                        title: '৭. জ্যাক মা: ৩০ টি চাকরিতে প্রত্যাখ্যাত হয়ে আলি বাবা গঠন',
-                        preview: 'কেএফসির ইন্টারভিউ থেকে বাদ পড়া একমাত্র লোক যিনি চীনের সবচেয়ে ধনী ব্যক্তিত্বে পরিণত হন...',
-                        key: 'sc_jackma'
-                    }
+                    { sub: 'sc_leaders', title: '১. আব্রাহাম লিংকন: টানা ৩০ বছরের ব্যর্থতা পেরিয়ে প্রেসিডেন্ট', preview: 'ব্যবসায়ে দেউলিয়া, প্রিয়তমার মৃত্যু ও ডজনখানেক নির্বাচনে পরাজয়ের পর দাসপ্রথা বিলুপ্ত করার ইতিহাস...', key: 'sc_lincoln' },
+                    { sub: 'sc_sci', title: '২. টমাস আলভা এডিসন: ১০০০ বার ব্যর্থ হয়েও পৃথিবীকে আলো দেওয়া', preview: 'শিক্ষকদের কাছে গাধা গাল খেয়েও হার না মেনে বৈদ্যুতিক বাল্ব আবিষ্কারের অবিস্মরণীয় মানসিকতা...', key: 'sc_edison' },
+                    { sub: 'sc_sci', title: '৩. আলবার্ট আইনস্টাইন: কথা বলতে না পারা শিশু থেকে শতাব্দীর সেরা মস্তিষ্ক', preview: 'স্কুল থেকে বিতাড়িত হয়েও কৌতূহল ও পদার্থবিজ্ঞানের প্রতি ভালোবাসা দিয়ে বিশ্ব বদলে দেওয়া...', key: 'sc_einstein' },
+                    { sub: 'sc_biz', title: '৪. স্টিভ জবস: নিজ কোম্পানি থেকে বরখাস্ত হয়েও ঘুরে দাঁড়ানো', preview: 'অ্যাপল থেকে বের করে দেওয়ার পর নিওক্সট ও পিক্সার দিয়ে বিশ্ব জয় করে অ্যাপলে ফিরে আসার গল্প...', key: 'sc_jobs' },
+                    { sub: 'sc_biz', title: '৫. কর্নেল হারল্যান্ড স্যান্ডার্স: ৬৫ বছর বয়সে ১০০০ বার প্রত্যাখ্যাত KFC', preview: 'পেনশনের ১০৫ ডলার নিয়ে রাস্তায় রাস্তায় ঘুরে আজ পৃথিবীর সর্ববৃহৎ চিকেন ব্র্যান্ড গড়ে তোলার গল্প...', key: 'sc_kfc' },
+                    { sub: 'sc_biz', title: '৬. জে. কে. রোলিং: চরম বিষণ্ণতা ও দারিদ্র্য থেকে বিলিয়নিয়ার লেখিকা', preview: '১২টি প্রকাশনা থেকে বাতিল হওয়ার পর হ্যারি পটার লিখে ইতিহাসের সফলতম লেখিকা হওয়ার পথচলা...', key: 'sc_rowling' },
+                    { sub: 'sc_biz', title: '৭. জ্যাক মা: ৩০ টি চাকরিতে প্রত্যাখ্যাত হয়ে আলি বাবা গঠন', preview: 'কেএফসির ইন্টারভিউ থেকে বাদ পড়া একমাত্র লোক যিনি চীনের সবচেয়ে ধনী ব্যক্তিত্বে পরিণত হন...', key: 'sc_jackma' }
                 ]
             },
             'verses': {
@@ -631,36 +551,11 @@
                     { id: 'v_social', name: 'সামাজিক ও পারিবারিক জীবন' }
                 ],
                 topics: [
-                    {
-                        sub: 'v_mind',
-                        title: '১. কঠিন বিপদে ধৈর্য (সবর) ও সালাতের অলৌকিক ক্ষমতা',
-                        preview: 'সুরা বাকারার ১৫৩ নম্বর আয়াত এবং মানসিক চাপ কমানোর আত্মিক ঔষধ...',
-                        key: 'v_sabr'
-                    },
-                    {
-                        sub: 'v_mind',
-                        title: '২. জ্ঞান অর্জন ও গবেষণার জন্য কোরআনের প্রথম হুকুম',
-                        preview: 'ইকরা (পড়ো) বানীর মাধ্যমে অন্ধকার দূর করে সত্য অনুসন্ধানের তাগিদ...',
-                        key: 'v_ilm'
-                    },
-                    {
-                        sub: 'v_social',
-                        title: '৩. পিতা-মাতার সেবা: জান্নাত অর্জনের সহজতম দরজা',
-                        preview: 'বার্ধক্যে তাদের উফ শব্দটুকু না বলার কোরআনিক নির্দেশ ও হাদিসের ব্যাখ্যা...',
-                        key: 'v_parents'
-                    },
-                    {
-                        sub: 'v_social',
-                        title: '৪. সামাজিক ইনসাফ ও শত্রু-মিত্র নির্বিশেষে ন্যায়বিচার',
-                        preview: 'নিজের ক্ষতি হলেও সত্যের ওপর অবিচল থাকার ঐশ্বরিক আইন...',
-                        key: 'v_justice'
-                    },
-                    {
-                        sub: 'v_mind',
-                        title: '৫. হতাশা দূরীকরণে আল্লাহর রহমত: সুরা দুহা-র বার্তা',
-                        preview: 'যখন জীবন অন্ধকারে ছেয়ে যায় তখন "তোমার রব তোমাকে ছেড়ে যাননি" আয়াতের আত্মিক শক্তি...',
-                        key: 'v_duha'
-                    }
+                    { sub: 'v_mind', title: '১. কঠিন বিপদে ধৈর্য (সবর) ও সালাতের অলৌকিক ক্ষমতা', preview: 'সুরা বাকারার ১৫৩ নম্বর আয়াত এবং মানসিক চাপ কমানোর আত্মিক ঔষধ...', key: 'v_sabr' },
+                    { sub: 'v_mind', title: '২. জ্ঞান অর্জন ও গবেষণার জন্য কোরআনের প্রথম হুকুম', preview: 'ইকরা (পড়ো) বানীর মাধ্যমে অন্ধকার দূর করে সত্য অনুসন্ধানের তাগিদ...', key: 'v_ilm' },
+                    { sub: 'v_social', title: '৩. পিতা-মাতার সেবা: জান্নাত অর্জনের সহজতম দরজা', preview: 'বার্ধক্যে তাদের উফ শব্দটুকু না বলার কোরআনিক নির্দেশ ও হাদিসের ব্যাখ্যা...', key: 'v_parents' },
+                    { sub: 'v_social', title: '৪. সামাজিক ইনসাফ ও শত্রু-মিত্র নির্বিশেষে ন্যায়বিচার', preview: 'নিজের ক্ষতি হলেও সত্যের ওপর অবিচল থাকার ঐশ্বরিক আইন...', key: 'v_justice' },
+                    { sub: 'v_mind', title: '৫. হতাশা দূরীকরণে আল্লাহর রহমত: সুরা দুহা-র বার্তা', preview: 'যখন জীবন অন্ধকারে ছেয়ে যায় তখন "তোমার রব তোমাকে ছেড়ে যাননি" আয়াতের আত্মিক শক্তি...', key: 'v_duha' }
                 ]
             },
             'science': {
@@ -669,33 +564,14 @@
                 subCats: [
                     { id: 'all', name: 'সবগুলো নিবন্ধ' },
                     { id: 'sci_bio', name: 'চিকিৎসা ও শরীরবিজ্ঞান' },
-                    { id: 'sci_space', name: 'মহাকাশ ও পদার্থবিজ্ঞান' }
+                    { id: 'sci_space', name: 'মহাকাশ ও মহাজগত' }
                 ],
                 topics: [
-                    {
-                        sub: 'sci_bio',
-                        title: '১. সালাত ও সেজদা: নিউরোসায়েন্স ও মস্তিষ্কের রক্তপ্রবাহ',
-                        preview: 'সেজদার সময় ফ্রন্টাল লোবে রক্ত চলাচল এবং মানসিক স্ট্রেস কমানোর বৈজ্ঞানিক প্রমাণ...',
-                        key: 'sci_namaz'
-                    },
-                    {
-                        sub: 'sci_space',
-                        title: '২. মহাবিশ্বের সম্প্রসারণ থিওরি ও সুরা আজ-জারিয়াত',
-                        preview: 'এডউইন হাবলের গবেষণার বহু আগেই কোরআনে মহাবিশ্ব সম্প্রসারণের স্পষ্ট তথ্য...',
-                        key: 'sci_universe'
-                    },
-                    {
-                        sub: 'sci_bio',
-                        title: '৩. ভ্রূণবিজ্ঞান (Embryology) ও মায়ের গর্ভে মানবদেহের বিকাশ',
-                        preview: 'প্রফেসর কিথ মুরের অবাক হওয়া এবং নুতফাহ ও আলাক্বাহ থেকে হাড়ের বিকাশের নিখুঁত বর্ণনা...',
-                        key: 'sci_embryo'
-                    },
-                    {
-                        sub: 'sci_space',
-                        title: '৪. সমুদ্রের দুই পানির মিলনস্থল (Barriers in Oceans)',
-                        preview: 'মিষ্টি ও নোনা পানি পাশাপাশি প্রবাহিত হলেও কেন মিশে যায় না— সুরা আর-রহমানের বৈজ্ঞানিক সত্য...',
-                        key: 'sci_ocean'
-                    }
+                    { sub: 'sci_bio', title: '১. সালাত ও সেজদা: নিউরোসায়েন্স ও মস্তিষ্কের রক্তপ্রবাহ', preview: 'সেজদার সময় ফ্রন্টাল লোবে রক্ত চলাচল এবং মানসিক স্ট্রেস কমানোর বৈজ্ঞানিক প্রমাণ...', key: 'sci_namaz' },
+                    { sub: 'sci_space', title: '২. মহাবিশ্বের সম্প্রসারণ থিওরি ও সুরা আজ-জারিয়াত', preview: 'এডউইন হাবলের গবেষণার বহু আগেই কোরআনে মহাবিশ্ব সম্প্রসারণের স্পষ্ট তথ্য...', key: 'sci_universe' },
+                    { sub: 'sci_bio', title: '৩. ভ্রূণবিজ্ঞান (Embryology) ও মায়ের গর্ভে মানবদেহের বিকাশ', preview: 'প্রফেসর কিথ মুরের অবাক হওয়া এবং নুতফাহ ও আলাক্বাহ থেকে হাড়ের বিকাশের নিখুঁত বর্ণনা...', key: 'sci_embryo' },
+                    { sub: 'sci_space', title: '৪. সমুদ্রের দুই পানির মিলনস্থল (Barriers in Oceans)', preview: 'মিষ্টি ও নোনা পানি পাশাপাশি প্রবাহিত হলেও কেন মিশে যায় না— সুরা আর-রহমানের বৈজ্ঞানিক সত্য...', key: 'sci_ocean' },
+                    { sub: 'sci_space', title: '৫. লোহা অবতীর্ণ করার মহাজাগতিক বৈজ্ঞানিক রহস্য', preview: 'পৃথিবীর বাইরে থেকে লোহা উল্কাপাতের মাধ্যমে নেমে আসার বিষয়ে সুরা হাদিদের বৈজ্ঞানিক তথ্য...', key: 'sci_iron' }
                 ]
             },
             'fun': {
@@ -707,35 +583,15 @@
                     { id: 'f_moral', name: 'মনস্তাত্ত্বিক শিক্ষা' }
                 ],
                 topics: [
-                    {
-                        sub: 'f_wit',
-                        title: '১. বিচারক কাজীর জাদুকরী লাঠি ও চোরের মনস্তত্ত্ব',
-                        preview: 'অপরাধীর মানসিক দুর্বলতা কাজে লাগিয়ে ২ ইঞ্চি কাটা লাঠি দিয়ে চোর শনাক্ত করার প্রজ্ঞা...',
-                        key: 'f_kazi'
-                    },
-                    {
-                        sub: 'f_wit',
-                        title: '২. মোল্লা নাসিরুদ্দিনের পোশাকের ভোজ: "খাও জামা খাও!"',
-                        preview: 'মানুষের বাহ্যিক রূপ দেখে সম্মান দেওয়ার মানসিকতার বিরুদ্ধে ঐতিহাসিক এক রসবোধপূর্ণ শিক্ষা...',
-                        key: 'f_mollah'
-                    },
-                    {
-                        sub: 'f_moral',
-                        title: '৩. চার অন্ধ ও হাতির গল্প: আংশিক জ্ঞানের অন্ধকার',
-                        preview: 'নিজের আংশিক অভিজ্ঞতা দিয়ে পুরো সত্যকে বিচার করার অপচেষ্টার পরিণতি...',
-                        key: 'f_elephant'
-                    },
-                    {
-                        sub: 'f_moral',
-                        title: '৪. গভীর কুয়ায় পড়া গাধা ও পিঠের মাটি ঝেড়ে ফেলার শিক্ষা',
-                        preview: 'জীবন আপনার ওপর কাদা ছিটালে সেই কাদাকেই উপরে ওঠার সিঁড়ি বানানোর জীবনমুখী শিক্ষা...',
-                        key: 'f_donkey'
-                    }
+                    { sub: 'f_wit', title: '১. বিচারক কাজীর জাদুকরী লাঠি ও চোরের মনস্তত্ত্ব', preview: 'অপরাধীর মানসিক দুর্বলতা কাজে লাগিয়ে ২ ইঞ্চি কাটা লাঠি দিয়ে চোর শনাক্ত করার প্রজ্ঞা...', key: 'f_kazi' },
+                    { sub: 'f_wit', title: '২. মোল্লা নাসিরুদ্দিনের পোশাকের ভোজ: "খাও জামা খাও!"', preview: 'মানুষের বাহ্যিক রূপ দেখে সম্মান দেওয়ার মানসিকতার বিরুদ্ধে ঐতিহাসিক এক রসবোধপূর্ণ শিক্ষা...', key: 'f_mollah' },
+                    { sub: 'f_moral', title: '৩. চার অন্ধ ও হাতির গল্প: আংশিক জ্ঞানের অন্ধকার', preview: 'নিজের আংশিক অভিজ্ঞতা দিয়ে পুরো সত্যকে বিচার করার অপচেষ্টার পরিণতি...', key: 'f_elephant' },
+                    { sub: 'f_moral', title: '৪. গভীর কুয়ায় পড়া গাধা ও পিঠের মাটি ঝেড়ে ফেলার শিক্ষা', preview: 'জীবন আপনার ওপর কাদা ছিটালে সেই কাদাকেই উপরে ওঠার সিঁড়ি বানানোর জীবনমুখী শিক্ষা...', key: 'f_donkey' }
                 ]
             }
         };
 
-        // Long Detailed Comprehensive Text Database
+        // Detailed Content Database
         const fullDatabase = {
             'p_taif': `নবুওয়াতের দশম বর্ষে রাসুলুল্লাহ (সাঃ) তাওহীদের বার্তা নিয়ে তায়েফ নগরীতে গমন করেন। সঙ্গে ছিলেন তাঁর প্রিয় সাহাবি হযরত যায়েদ ইবনে হারেসা (রাঃ)। মক্কার কুরাইশদের নির্যাতন থেকে রক্ষা পেতে এবং তায়েফবাসীদের কাছে দ্বীনের দাওয়াত পৌঁছানোই ছিল তাঁর মূল উদ্দেশ্য।
 
@@ -812,7 +668,7 @@
 
 আল্লাহ তাআলা জিবরাইল (আঃ)-এর মাধ্যমে নবিজিকে তাদের এই চক্রান্ত জানিয়ে দেন এবং হিজরতের নির্দেশ দেন। নবিজি (সাঃ) তাঁর অনুগত সাহাবি হযরত আলী (রাঃ)-কে নিজের বিছানায় শুইয়ে রাখেন, যাতে জনগণের আমানতগুলো পরদিন সকালে বুঝিয়ে দেওয়া যায়। ঘেরাও করে রাখা কাফেরদের চোখে ধুলো দিয়ে নবিজি সুরা ইয়াসীনের আয়াত তেলাওয়াত করে বাড়ি থেকে বের হয়ে যান।
 
-নবিজি (সাঃ) এবং তাঁর বিশ্বস্ত সাথী হযরত আবু বকর সিদ্দিক (রাঃ) মক্কা থেকে দক্ষিণে ‘সুর’ পর্বতের গুহায় (গარე সুর) আত্মগোপন করেন। কাফেররা রক্তপিপাসু হয়ে তাঁদের সন্ধানে গুহার দোরগোড়ায় পৌঁছে যায়।
+নবিজি (সাঃ) এবং তাঁর বিশ্বস্ত সাথী হযরত আবু বকর সিদ্দিক (রাঃ) মক্কা থেকে দক্ষিণে ‘সুর’ পর্বতের গুহায় (গারে সুর) আত্মগোপন করেন। কাফেররা রক্তপিপাসু হয়ে তাঁদের সন্ধানে গুহার দোরগোড়ায় পৌঁছে যায়।
 
 আবু বকর (রাঃ) অত্যন্ত চিন্তিত হয়ে ফিসফিস করে বললেন: "হে আল্লাহর রাসুল! তারা যদি তাদের পায়ের দিকে তাকায়, তবেই আমাদের দেখে ফেলবে!"
 তখন নবিজি (সাঃ) পরম শান্ত কণ্ঠে উত্তর দিলেন:
@@ -826,8 +682,7 @@
 
 কিন্তু ততক্ষণে হযরত বিশর (রাঃ) এক টুকরো গিলে ফেলেছিলেন এবং কিছুক্ষণের মধ্যেই শাহাদাত বরণ করেন।
 
-সেই নারীকে ডেকে আনা হলো। নবিজি (সাঃ) জিজ্ঞেস করলেন: "তুমি কেন এমন কাজ করলে?"
-নারীটি দৃষ্টতার সাথে বলল: "আমি ভেবেছিলাম, আপনি যদি ভণ্ড রাজা হন তবে বিষ খেয়ে মারা যাবেন আর আমাদের মুক্তি মিলবে। আর যদি সত্যিই আল্লাহর রাসুল হন, তবে আল্লাহ আপনাকে জানিয়ে দেবেন।"
+সেই নারীর সাক্ষাৎকার নেওয়া হলে সে দৃষ্টতার সাথে বলল: "আমি ভেবেছিলাম, আপনি যদি ভণ্ড রাজা হন তবে বিষ খেয়ে মারা যাবেন আর আমাদের মুক্তি মিলবে। আর যদি সত্যিই আল্লাহর রাসুল হন, তবে আল্লাহ আপনাকে জানিয়ে দেবেন।"
 
 উপস্থিত সাহাবিরা সেই নারীকে হত্যা করার অনুমতি চাইলেন। কিন্তু পরম সহনশীলতার প্রতীক রাসুলুল্লাহ (সাঃ) তাকে ব্যক্তিগতভাবে ক্ষমা করে দিলেন এবং মুক্তি দিলেন।`,
 
@@ -973,7 +828,7 @@
 
 তিনি ৪ বছর বয়স পর্যন্ত কোনো কথা বলতে পারতেন না। ৯ বছর বয়স পর্যন্ত স্পষ্টভাবে রিডিং পড়তে পারতেন না। তাঁর শিক্ষকরা মনে করেছিলেন তিনি মানসিকভাবে পিছিয়ে পড়া এক শিশু। জুরিখের পলিটেকনিক স্কুলের ভর্তি পরীক্ষায় তিনি গণিত ছাড়া বাকি সব বিষয়ে ফেল করেছিলেন!
 
-প্যাটেন্ট অফিসে সাধারণ একজন ক্লার্কের চাকরি করার সময় তিনি নিজের কৌতূহল ধরে রেখেছিলেন। ১৯০৫ সালে ক্লার্কের অবসরে তিনি ৪টি এমন গবেষণাপত্র প্রকাশ করেন যা পদার্থবিজ্ঞানের মূল ভিত্তি নাড়িয়ে দেয়। তিনি আবিষ্কার করেন আপেক্ষিকতার তত্ত্ব (Theory of Relativity) এবং $E=mc^2$ সমীকরণ।
+প্যাটেন্ট অফিসে সাধারণ একজন ক্লার্কের চাকরি করার সময় তিনি নিজের কৌতূহল ধরে রেখেছিলেন। ১৯০৫ সালে ক্লার্কের অবসরে তিনি ৪টি এমন গবেষণাপত্র প্রকাশ করেন যা পদার্থবিজ্ঞানের মূল ভিত্তি নাড়িয়ে দেয়। তিনি আবিষ্কার করেন আপেক্ষিকতার তত্ত্ব (Theory of Relativity) এবং E=mc² সমীকরণ।
 
 আইনস্টাইন বলতেন: "আমার বিশেষ কোনো প্রতিভা নেই, আমি কেবল কৌতূহল ধরে রাখার ব্যাপারে প্রচণ্ড জেদী!" ১৯২১ সালে তিনি নোবেল পুরস্কার লাভ করেন।`,
 
@@ -1138,7 +993,7 @@
 **শিক্ষা:** জীবন আপনার ওপর বহু আঘাত, অপমান ও হতাশার কাদা ছিটাবে। সেগুলোতে চাপা না পড়ে, সেগুলোকে ঝেড়ে ফেলে ওপরে ওঠার সিঁড়ি বানান।`
         };
 
-        // Page Navigation Trackers
+        // Trackers
         let currentCat = 'prophet';
         let currentSubCat = 'all';
 
@@ -1152,6 +1007,9 @@
         function loadCategory(catKey, evt) {
             currentCat = catKey;
             currentSubCat = 'all';
+
+            // Clear Search Box
+            document.getElementById('searchInput').value = '';
 
             const tier1Btns = document.querySelectorAll('.tier1-btn');
             tier1Btns.forEach(btn => btn.classList.remove('active'));
@@ -1183,6 +1041,7 @@
 
         function filterSubCat(subId, evt) {
             currentSubCat = subId;
+            document.getElementById('searchInput').value = '';
 
             const tier2Btns = document.querySelectorAll('.tier2-btn');
             tier2Btns.forEach(btn => btn.classList.remove('active'));
@@ -1193,15 +1052,28 @@
             renderTier3();
         }
 
+        // Search Function
+        function handleSearch() {
+            const query = document.getElementById('searchInput').value.trim().toLowerCase();
+            renderTier3(query);
+        }
+
         // Tier 3 Topic Grid Render
-        function renderTier3() {
+        function renderTier3(searchQuery = '') {
             const cardsGrid = document.getElementById('cardsGrid');
             cardsGrid.innerHTML = '';
 
             const topics = appData[currentCat].topics;
+            let count = 0;
 
             topics.forEach(topic => {
-                if (currentSubCat === 'all' || topic.sub === currentSubCat) {
+                const matchesSubCat = (currentSubCat === 'all' || topic.sub === currentSubCat);
+                const matchesSearch = searchQuery === '' || 
+                                      topic.title.toLowerCase().includes(searchQuery) || 
+                                      topic.preview.toLowerCase().includes(searchQuery);
+
+                if (matchesSubCat && matchesSearch) {
+                    count++;
                     const card = document.createElement('div');
                     card.className = 'topic-card';
                     card.onclick = () => openModal(topic.key, topic.title);
@@ -1220,6 +1092,10 @@
                     cardsGrid.appendChild(card);
                 }
             });
+
+            if (count === 0) {
+                cardsGrid.innerHTML = `<div class="no-data"><i class="fa-solid fa-folder-open" style="font-size: 2rem; margin-bottom: 10px; color: var(--gold-primary);"></i><br>দুঃখিত, কোনো তথ্য খুঁজে পাওয়া যায়নি!</div>`;
+            }
         }
 
         // Modal Reader System
@@ -1228,17 +1104,22 @@
             document.getElementById('modalTitle').innerText = title;
             document.getElementById('modalBody').innerHTML = content;
             document.getElementById('modalOverlay').style.display = 'flex';
-            document.body.style.overflow = 'hidden'; // Stop page scrolling behind modal
+            document.body.style.overflow = 'hidden';
         }
 
         function closeModal() {
             document.getElementById('modalOverlay').style.display = 'none';
-            document.body.style.overflow = 'auto'; // Restore scrolling
+            document.body.style.overflow = 'auto';
         }
 
+        // Close on Overlay Click or Esc Key
         window.onclick = function(e) {
             const modal = document.getElementById('modalOverlay');
             if (e.target === modal) closeModal();
+        }
+
+        window.onkeydown = function(e) {
+            if (e.key === 'Escape') closeModal();
         }
     </script>
 </body>
