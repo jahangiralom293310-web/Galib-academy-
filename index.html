@@ -3,20 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>জ্ঞান ও প্রজ্ঞার ভাণ্ডার</title>
-    <!-- Google Fonts & Font Awesome -->
+    <title>প্রজ্ঞার অলকানন্দা — মহৎ জীবনের অমলিন বার্তা</title>
+    
+    <!-- Google Fonts & Font Awesome Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --bg-dark: #070f17;
-            --card-bg: rgba(18, 30, 45, 0.85);
-            --gold: #d4af37;
-            --emerald: #10b981;
-            --text-main: #f3f4f6;
-            --text-sub: #9ca3af;
-            --border: rgba(212, 175, 55, 0.3);
+            --bg-deep: #050b14;
+            --bg-surface: rgba(15, 25, 40, 0.75);
+            --gold-primary: #f39c12;
+            --gold-light: #f1c40f;
+            --emerald-glow: #10b981;
+            --text-main: #f8fafc;
+            --text-sub: #cbd5e1;
+            --border-glass: rgba(243, 156, 18, 0.25);
+            --glass-blur: blur(16px);
         }
 
         * {
@@ -24,276 +27,370 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Hind Siliguri', sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--bg-dark);
+            background: radial-gradient(circle at top, #0f1e36 0%, var(--bg-deep) 80%);
             color: var(--text-main);
             line-height: 1.8;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            overflow-x: hidden;
         }
 
-        /* Tier 1 Header & Main Menu */
+        /* Tier 1 Header Glassmorphism Navigation */
         header {
-            background: rgba(7, 15, 23, 0.98);
-            border-bottom: 1px solid var(--border);
+            background: rgba(5, 11, 20, 0.85);
+            border-bottom: 1px solid var(--border-glass);
             position: sticky;
             top: 0;
             z-index: 1000;
-            backdrop-filter: blur(12px);
+            backdrop-filter: var(--glass-blur);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
         .nav-container {
-            max-width: 1300px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 1rem 1.5rem;
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 1.2rem;
         }
 
         .brand {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            color: var(--gold);
+            background: linear-gradient(135deg, var(--gold-light), #e67e22);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .brand i {
+            color: var(--gold-primary);
+            font-size: 1.6rem;
+            -webkit-text-fill-color: initial;
         }
 
         /* Tier 1 Buttons */
         .tier1-menu {
             display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .tier1-btn {
-            background: transparent;
-            border: 1px solid transparent;
-            color: var(--text-sub);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.95rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .tier1-btn:hover, .tier1-btn.active {
-            background: rgba(212, 175, 55, 0.2);
-            color: var(--gold);
-            border-color: var(--gold);
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
-        }
-
-        /* Tier 2 Sub-Category Filter Bar */
-        .tier2-bar {
-            background: rgba(13, 23, 34, 0.9);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 0.8rem 1.5rem;
-            display: flex;
-            justify-content: center;
             gap: 10px;
             flex-wrap: wrap;
         }
 
+        .tier1-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-glass);
+            color: var(--text-sub);
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tier1-btn:hover, .tier1-btn.active {
+            background: linear-gradient(135deg, rgba(243, 156, 18, 0.25), rgba(16, 185, 129, 0.15));
+            color: #fff;
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 20px rgba(243, 156, 18, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Tier 2 Sub-Category Filter Bar */
+        .tier2-bar {
+            background: rgba(10, 18, 30, 0.7);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            backdrop-filter: blur(8px);
+        }
+
         .tier2-btn {
             background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            color: var(--text-main);
-            padding: 0.4rem 1.1rem;
-            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-sub);
+            padding: 0.4rem 1.2rem;
+            border-radius: 20px;
             cursor: pointer;
             font-size: 0.9rem;
+            font-weight: 500;
             transition: all 0.3s ease;
         }
 
         .tier2-btn:hover, .tier2-btn.active {
-            background: var(--emerald);
+            background: var(--emerald-glow);
             color: #000;
-            border-color: var(--emerald);
-            font-weight: 600;
+            border-color: var(--emerald-glow);
+            font-weight: 700;
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
         }
 
         /* Main Container */
         .container {
-            max-width: 1250px;
-            margin: 2rem auto;
+            max-width: 1350px;
+            margin: 2.5rem auto;
             padding: 0 1.5rem;
             flex: 1;
         }
 
         .hero-banner {
             text-align: center;
-            padding: 2rem 1rem;
-            background: radial-gradient(circle, rgba(16, 185, 129, 0.12) 0%, rgba(7, 15, 23, 0) 75%);
-            border-radius: 20px;
-            margin-bottom: 2rem;
-            border: 1px solid var(--border);
+            padding: 3rem 1.5rem;
+            background: rgba(15, 25, 40, 0.5);
+            border-radius: 24px;
+            margin-bottom: 3rem;
+            border: 1px solid var(--border-glass);
+            backdrop-filter: var(--glass-blur);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(243, 156, 18, 0.1) 0%, transparent 60%);
+            pointer-events: none;
         }
 
         .hero-banner h1 {
-            font-size: 2.2rem;
-            color: var(--gold);
-            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+            color: var(--gold-light);
+            margin-bottom: 0.8rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
 
-        /* Tier 3 Cards Grid */
+        .hero-banner p {
+            color: var(--text-sub);
+            font-size: 1.1rem;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        /* Tier 3 Cards Grid (Modern 3D Glow Design) */
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
         }
 
         .topic-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 1.8rem;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            padding: 2rem;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             position: relative;
             overflow: hidden;
+            backdrop-filter: var(--glass-blur);
         }
 
-        .topic-card::before {
+        .topic-card::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--emerald), var(--gold));
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            inset: 0;
+            border-radius: 20px;
+            padding: 2px;
+            background: linear-gradient(135deg, var(--gold-primary), transparent, var(--emerald-glow));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0.3;
+            transition: opacity 0.4s ease;
         }
 
         .topic-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--gold);
-            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.15);
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(243, 156, 18, 0.2);
         }
 
-        .topic-card:hover::before {
+        .topic-card:hover::after {
             opacity: 1;
         }
 
+        .topic-card .card-badge {
+            align-self: flex-start;
+            background: rgba(243, 156, 18, 0.15);
+            color: var(--gold-light);
+            font-size: 0.8rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 12px;
+            border: 1px solid rgba(243, 156, 18, 0.3);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
         .topic-card h3 {
-            font-size: 1.3rem;
-            color: var(--gold);
-            margin-bottom: 0.8rem;
+            font-size: 1.4rem;
+            color: #fff;
+            margin-bottom: 1rem;
+            line-height: 1.4;
         }
 
         .topic-card p {
             color: var(--text-sub);
-            font-size: 0.95rem;
-            margin-bottom: 1.2rem;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
             flex-grow: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
-        /* Tier 3 Read Button */
         .tier3-btn {
-            background: transparent;
-            border: 1px solid var(--gold);
-            color: var(--gold);
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
+            background: linear-gradient(135deg, rgba(243, 156, 18, 0.2), rgba(243, 156, 18, 0.05));
+            border: 1px solid var(--gold-primary);
+            color: var(--gold-light);
+            padding: 0.7rem 1.2rem;
+            border-radius: 12px;
             font-weight: 600;
             text-align: center;
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
         .topic-card:hover .tier3-btn {
-            background: var(--gold);
+            background: var(--gold-primary);
             color: #000;
+            box-shadow: 0 0 15px rgba(243, 156, 18, 0.5);
         }
 
-        /* Modal Reader */
+        /* Modal Ultra Reader */
         .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.88);
-            backdrop-filter: blur(10px);
+            background: rgba(2, 6, 12, 0.92);
+            backdrop-filter: blur(15px);
             display: none;
             justify-content: center;
             align-items: center;
             z-index: 2000;
             padding: 1.5rem;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .modal-content {
-            background: #0d1722;
-            border: 1px solid var(--gold);
-            border-radius: 20px;
-            padding: 2.5rem;
-            max-width: 900px;
+            background: #0b1320;
+            border: 1px solid var(--gold-primary);
+            border-radius: 24px;
+            padding: 3rem;
+            max-width: 950px;
             width: 100%;
             max-height: 85vh;
             overflow-y: auto;
             position: relative;
-            box-shadow: 0 0 35px rgba(0,0,0,0.9);
+            box-shadow: 0 0 50px rgba(243, 156, 18, 0.25);
         }
 
         .close-modal {
             position: absolute;
-            top: 1.2rem;
-            right: 1.5rem;
-            font-size: 1.8rem;
+            top: 1.5rem;
+            right: 1.8rem;
+            font-size: 2rem;
             color: var(--text-sub);
             cursor: pointer;
+            transition: color 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
         }
 
-        .close-modal:hover { color: var(--gold); }
+        .close-modal:hover { 
+            color: #fff; 
+            background: rgba(239, 68, 68, 0.8);
+        }
 
         .modal-title {
-            color: var(--gold);
-            font-size: 2rem;
-            margin-bottom: 1.2rem;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 0.8rem;
+            color: var(--gold-light);
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-glass);
+            padding-bottom: 1rem;
+            line-height: 1.3;
         }
 
         .modal-body {
             color: var(--text-main);
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             white-space: pre-line;
             text-align: justify;
-            line-height: 1.9;
+            line-height: 2;
         }
 
         .highlight-box {
-            background: rgba(16, 185, 129, 0.12);
-            border-left: 4px solid var(--emerald);
-            padding: 1rem 1.5rem;
-            margin: 1.5rem 0;
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 4px solid var(--emerald-glow);
+            padding: 1.2rem 1.8rem;
+            margin: 1.8rem 0;
             font-style: italic;
-            border-radius: 0 8px 8px 0;
+            border-radius: 0 12px 12px 0;
+            color: #e2e8f0;
+        }
+
+        .quote-box {
+            background: rgba(243, 156, 18, 0.1);
+            border-left: 4px solid var(--gold-primary);
+            padding: 1.2rem 1.8rem;
+            margin: 1.8rem 0;
+            border-radius: 0 12px 12px 0;
+            font-weight: 500;
         }
 
         footer {
             text-align: center;
-            padding: 1.8rem;
-            background: rgba(0, 0, 0, 0.6);
+            padding: 2.5rem;
+            background: rgba(3, 7, 13, 0.95);
             color: var(--text-sub);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid var(--border-glass);
             margin-top: auto;
         }
 
         @media (max-width: 768px) {
             .nav-container { flex-direction: column; }
-            .hero-banner h1 { font-size: 1.7rem; }
-            .modal-content { padding: 1.5rem; }
+            .hero-banner h1 { font-size: 1.8rem; }
+            .modal-content { padding: 1.8rem; }
+            .cards-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -303,34 +400,34 @@
     <header>
         <div class="nav-container">
             <div class="brand">
-                <i class="fa-solid fa-kaaba"></i>
+                <i class="fa-solid fa-book-open-reader"></i>
                 <span>প্রজ্ঞার অলকানন্দা</span>
             </div>
             <nav class="tier1-menu">
-                <button class="tier1-btn active" onclick="loadCategory('prophet', event)">রাসূল (সাঃ)-এর ঘটনা</button>
-                <button class="tier1-btn" onclick="loadCategory('sahabi', event)">সাহাবিদের জীবনী</button>
-                <button class="tier1-btn" onclick="loadCategory('success', event)">সফলতার গল্প</button>
-                <button class="tier1-btn" onclick="loadCategory('verses', event)">আয়াত ও হাদিস</button>
-                <button class="tier1-btn" onclick="loadCategory('science', event)">ইসলাম ও বিজ্ঞান</button>
-                <button class="tier1-btn" onclick="loadCategory('fun', event)">মজার গল্প</button>
+                <button class="tier1-btn active" onclick="loadCategory('prophet', event)"><i class="fa-solid fa-kaaba"></i> রাসূল (সাঃ)-এর জীবন</button>
+                <button class="tier1-btn" onclick="loadCategory('sahabi', event)"><i class="fa-solid fa-users-rays"></i> সাহাবিদের মহাকাব্য</button>
+                <button class="tier1-btn" onclick="loadCategory('success', event)"><i class="fa-solid fa-trophy"></i> সফলতার ইতিহাস</button>
+                <button class="tier1-btn" onclick="loadCategory('verses', event)"><i class="fa-solid fa-quran"></i> আয়াত ও উপদেশ</button>
+                <button class="tier1-btn" onclick="loadCategory('science', event)"><i class="fa-solid fa-atom"></i> ইসলাম ও বিজ্ঞান</button>
+                <button class="tier1-btn" onclick="loadCategory('fun', event)"><i class="fa-solid fa-lightbulb"></i> প্রজ্ঞাময় গল্প</button>
             </nav>
         </div>
     </header>
 
     <!-- Tier 2 Filter Sub-Menu Bar -->
     <div class="tier2-bar" id="tier2Bar">
-        <!-- Sub category buttons will load dynamically here -->
+        <!-- Dynamic Sub-category buttons will load here -->
     </div>
 
-    <!-- Main Content Grid Container -->
+    <!-- Main Content Container -->
     <div class="container">
         <div class="hero-banner" id="heroBanner">
-            <h1 id="catTitle">রাসূলুল্লাহ (সাঃ)-এর জীবনগাথা</h1>
-            <p id="catDesc">নিচের ফিল্টার থেকে সাব-ক্যাটাগরি বেছে নিন এবং নির্দিষ্ট বাটনে ক্লিক করে পুরো নিবন্ধ পড়ুন।</p>
+            <h1 id="catTitle">রাসূলুল্লাহ (সাঃ)-এর মহিমান্বিত জীবন</h1>
+            <p id="catDesc">রহমত, প্রজ্ঞা, মহানুভবতা ও সাহসিকতার এক চিরন্তন মহাসমুদ্র। প্রতিটি ঘটনা থেকে শিক্ষা নিন এবং জীবনে প্রয়োগ করুন।</p>
         </div>
 
         <div class="cards-grid" id="cardsGrid">
-            <!-- Tier 3 Topic Cards will render here dynamically -->
+            <!-- Dynamic Topic Cards Render Here -->
         </div>
     </div>
 
@@ -340,444 +437,718 @@
             <span class="close-modal" onclick="closeModal()">&times;</span>
             <h2 class="modal-title" id="modalTitle">শিরোনাম</h2>
             <div class="modal-body" id="modalBody">
-                বিস্তারিত বিষয়বস্তু...
+                বিস্তারিত পাঠাগার রিড হচ্ছে...
             </div>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2026 প্রজ্ঞার অলকানন্দা — তথ্য ও জ্ঞানের সমৃদ্ধ ভাণ্ডার।</p>
+        <p>&copy; 2026 প্রজ্ঞার অলকানন্দা — মহৎ জীবনের আলোকবর্তিকা ও জ্ঞানভাণ্ডার।</p>
     </footer>
 
-    <!-- JavaScript Data Architecture -->
+    <!-- Comprehensive Data Architecture -->
     <script>
-        // Extensive Content Data Store with 3-Tier Hierarchy
         const appData = {
             'prophet': {
-                title: "রাসূলুল্লাহ (সাঃ)-এর জীবনগাথা",
-                desc: "দয়া, ক্ষমা, বীরত্ব ও প্রজ্ঞার এক অসীম মহাসমুদ্র",
+                title: "রাসূলুল্লাহ (সাঃ)-এর মহিমান্বিত জীবনগাথা",
+                desc: "মানবজাতির ইতিহাসের শ্রেষ্ঠ ব্যক্তিত্বের অলৌকিক প্রজ্ঞা, অসীম সহনশীলতা ও মহানুভবতার বিস্তৃত বিবরণ।",
                 subCats: [
-                    { id: 'all', name: 'সবগুলো' },
-                    { id: 'p_mercy', name: 'ক্ষমা ও দয়া' },
-                    { id: 'p_war', name: 'কূটনীতি ও যুদ্ধ' },
-                    { id: 'p_life', name: 'পারিবারিক ও সামাজিক' }
+                    { id: 'all', name: 'সবগুলো নিবন্ধ' },
+                    { id: 'p_mercy', name: 'ক্ষমা ও মানবিকতা' },
+                    { id: 'p_diplomacy', name: 'রাজনীতি ও সংগ্রাম' },
+                    { id: 'p_character', name: 'চরিত্র ও চারিত্রিক সৌন্দর্য' }
                 ],
                 topics: [
                     {
                         sub: 'p_mercy',
-                        title: '১. তায়েফের ময়দানে পরম ক্ষমা',
-                        preview: 'রক্তে ভেজা শরীর সত্ত্বেও তায়েফবাসীর জন্য নবিজির অসীম দোয়া ও ক্ষমা...',
+                        title: '১. তায়েফের রক্তভেজা ময়দানে অসীম ক্ষমা ও দোয়া',
+                        preview: 'পাথরের তীব্র আঘাতে জুতো রক্তে ভিজে আটকে গিয়েছিল। তা সত্ত্বেও অভিশাপ না দিয়ে রহমতের দোয়া করার অভূতপূর্ব ইতিহাস...',
                         key: 'p_taif'
                     },
                     {
                         sub: 'p_mercy',
-                        title: '২. মক্কা বিজয়ের দিনে সাধারণ ক্ষমা',
-                        preview: 'মহাশত্রু কুরাইশদের এক বাক্যে স্বাধীন ও মুক্ত ঘোষণা করার বিরল নজির...',
+                        title: '২. মক্কা বিজয়ের দিন: পৃথিবীর বৃহত্তম সাধারণ ক্ষমা',
+                        preview: '১০,০০০ বিজয়ী সৈন্য নিয়ে মক্কায় প্রবেশ করে চরম শত্রু কুরাইশদের এক নিমেষে মুক্ত ঘোষণা করার বিরল নজির...',
                         key: 'p_mecca'
                     },
                     {
-                        sub: 'p_mercy',
-                        title: '৩. ঈদগায়ে এতিম শিশুর অভিভাবকত্ব',
-                        preview: 'ঈদের দিনে কাঁদানোর বদলে এতিম শিশুকে বুকে জড়িয়ে নেওয়ার হৃদয়স্পর্শী ঘটনা...',
+                        sub: 'p_character',
+                        title: '৩. ঈদের দিনে এতিম শিশুকে বুকে জড়িয়ে নেওয়ার অলৌকিক ভালোবাসা',
+                        preview: 'পথের ধারে কেঁদে বুক ভাসানো এতিম সন্তানকে নিজের সন্তান হিসেবে আপন করে নেওয়ার হৃদয়স্পর্শী ঘটনা...',
                         key: 'p_orphan'
                     },
                     {
-                        sub: 'p_war',
-                        title: '৪. হুদাইবিয়ার ঐতিহাসিক চুক্তি',
-                        preview: 'বাহ্যিক পরাজয় মনে হলেও নবিজির দূরদর্শী কূটনৈতিক দূরদর্শিতা...',
+                        sub: 'p_diplomacy',
+                        title: '৪. হুদাইবিয়ার ঐতিহাসিক চুক্তি ও নবিজির দূরদর্শী কূটনীতি',
+                        preview: 'বাহ্যিক অপমানজনক শর্ত মেনে নিয়েও কিভাবে রক্তপাত ছাড়া মক্কা বিজয়ের পথ প্রশস্ত করা হয়েছিল...',
                         key: 'p_hudaibiya'
                     },
                     {
-                        sub: 'p_war',
-                        title: '৫. খন্দকের যুদ্ধে পরিখা খনন ও সহমর্মিতা',
-                        preview: 'পেটে পাথর বেঁধে সাহাবিদের সাথে মাটি কাটার অবিস্মরণীয় মহাকাব্য...',
+                        sub: 'p_diplomacy',
+                        title: '৫. খন্দকের যুদ্ধ: পেটে পাথর বেঁধে মাটি কাটার ঐতিহাসিক নেতৃত্ব',
+                        preview: 'চরম ক্ষুধা ও হাড়কাঁপানো শীতে মদিনা রক্ষায় নবিজি এবং সাহাবিদের পরিখা খননের অসীম ত্যাগ...',
                         key: 'p_khandaq'
                     },
                     {
-                        sub: 'p_life',
-                        title: '৬. মদিনায় হিজরত ও সুরার গুহার অলৌকিকতা',
-                        preview: 'মক্কা ছেড়ে মদিনায় যাত্রাপথে আল্লাহর অদৃশ্য সাহায্যের জীবন্ত নজির...',
+                        sub: 'p_character',
+                        title: '৬. সুরার গুহা ও অলৌকিক হিজরতের ঐতিহাসিক পথচলা',
+                        preview: 'মক্কা ছেড়ে মদিনায় যাত্রাপথে আল্লাহর অদৃশ্য সাহায্য এবং মাকড়সার জালের চিরন্তন অলৌকিক ঘটনা...',
                         key: 'p_hijrat'
+                    },
+                    {
+                        sub: 'p_mercy',
+                        title: '৭. বিষ প্রদানকারী ইহুদি নারীকে ক্ষমা করার মহানুভবতা',
+                        preview: 'খাইবারে ছাগলের মাংসে বিষ মিশিয়ে হত্যাচেষ্টা চালানো নারীকেও রাসুল (সাঃ) কিভাবে ক্ষমা করেছিলেন...',
+                        key: 'p_poison'
+                    },
+                    {
+                        sub: 'p_character',
+                        title: '৮. বিদায় হজ্জের ভাষণ: মানবজাতির প্রথম সর্বজনীন মানবাধিকার ঘোষণা',
+                        preview: 'আরাফাতের ময়দানে দাঁড়িয়ে বর্ণবাদ, বংশ গৌরব ও নারী অধিকার নিয়ে রাসুল (সাঃ)-এর ঐতিহাসিক বক্তব্য...',
+                        key: 'p_biday'
                     }
                 ]
             },
             'sahabi': {
-                title: "সাহাবিদের হৃদয় দুলানো জীবনী",
-                desc: "ঈমান, ত্যাগ ও আনুগত্যের নক্ষত্রপুঞ্জ",
+                title: "সাহাবিদের ঈমান ও ত্যাগের মহাকাব্য",
+                desc: "সত্য ও ইনসাফ প্রতিষ্ঠার জন্য জীবনের সবকিছু বিসর্জন দেওয়া মহাসাধকদের স্বর্ণালী ইতিহাস।",
                 subCats: [
-                    { id: 'all', name: 'সবগুলো' },
+                    { id: 'all', name: 'সবগুলো নিবন্ধ' },
                     { id: 's_khulafa', name: 'খোলাফায়ে রাশেদীন' },
-                    { id: 's_heroes', name: 'বীর ও ত্যাগী সাহাবি' }
+                    { id: 's_martyrs', name: 'বীর ও শহীদ সাহাবি' }
                 ],
                 topics: [
                     {
-                        sub: 's_heroes',
-                        title: '১. হযরত মুসাব ইবনে উমাইর (রা:)',
-                        preview: 'মক্কার বিলাসিতার রাজপুত্র থেকে ইসলামের প্রথম রাষ্ট্রদূতের মহাকাব্যিক ত্যাগ...',
+                        sub: 's_martyrs',
+                        title: '১. হযরত মুসাব ইবনে উমাইর (রা:): মক্কার বিলাসিতা থেকে শাহাদাত',
+                        preview: 'সুগন্ধি আর রাজকীয় পোশাক ছেড়ে ছেঁড়া এক টুকরো কাপড়ে কাফন হওয়ার অতুলনীয় ত্যাগের কাহিনী...',
                         key: 's_musab'
                     },
                     {
                         sub: 's_khulafa',
-                        title: '২. হযরত আবু বকর সিদ্দিক (রা:)',
-                        preview: 'তাবুক যুদ্ধে ঘরের সমস্ত সম্পদ দান করার অসীম ঈমানী দৃষ্টান্ত...',
+                        title: '২. হযরত আবু বকর সিদ্দিক (রা:): ঘরের সমস্ত সম্পদ দানের ঈমানী পরীক্ষা',
+                        preview: 'তাবুক যুদ্ধে সংসারের সুই-সুতা সহ সব দান করে পরিবারের জন্য শুধু আল্লাহ ও রাসুলকে রেখে আসার গল্প...',
                         key: 's_abubakar'
                     },
                     {
                         sub: 's_khulafa',
-                        title: '৩. হযরত ওমর ইবনুল খাত্তাব (রা:)',
-                        preview: 'অর্ধ-পৃথিবীর শাসক যিনি রাতে ছদ্মবেশে প্রজা সাধারণের খোঁজ নিতেন...',
+                        title: '৩. হযরত ওমর ইবনুল খাত্তাব (রা:): রাতের ছদ্মবেশে প্রজাসেবা',
+                        preview: 'অর্ধ-পৃথিবীর অধিপতি হয়েও রাতের আঁধারে পিঠে আটার বস্তা বয়ে নিয়ে ক্ষুধার্ত শিশুদের মুখে আহার তুলে দেওয়া...',
                         key: 's_umar'
                     },
                     {
                         sub: 's_khulafa',
-                        title: '৪. হযরত ওসমান ইবনে আফফান (রা:)',
-                        preview: 'জুন নূরাইন এবং মদিনায় রুমা কুপ কিনে মুসলিমদের দান করার ইতিহাস...',
+                        title: '৪. হযরত ওসমান ইবনে আফফান (রা:): দানশীলতার উজ্জ্বল নক্ষত্র',
+                        preview: 'মদিনায় পানির সংকট মেটাতে ইহুদির কাছ থেকে সম্পূর্ণ রুমা কুপ কিনে মুসলিমদের ওয়াকফ করে দেওয়া...',
                         key: 's_osman'
                     },
                     {
                         sub: 's_khulafa',
-                        title: '৫. হযরত আলী ইবনে আবী তালিব (রা:)',
-                        preview: 'খাইবার বিজয়ের মহান বীর এবং জ্ঞানের দরজাস্বরূপ বীর সাহাবি...',
+                        title: '৫. হযরত আলী (রা:): খাইবারের বীরত্ব ও জ্ঞানের অগাধ দরবার',
+                        preview: 'রাসুল (সাঃ)-এর হাত থেকে বিজয়ের পতাকা নিয়ে খাইবারের সুবিশাল দুর্গের লৌহকপাট ভাঙার বীরত্ব...',
                         key: 's_ali'
                     },
                     {
-                        sub: 's_heroes',
-                        title: '৬. হযরত বিলাল ইবনে রবাহ (রা:)',
-                        preview: 'উত্তপ্ত বালুতে আযানের ধ্বনি দেওয়া ঈমানের অবিচল প্রতীক...',
+                        sub: 's_martyrs',
+                        title: '৬. হযরত বিলাল ইবনে রবাহ (রা:): উত্তপ্ত বালুতে ঈমানের অবিচল সুর',
+                        preview: 'বুকের ওপর ভারী পাথর চেপে রাখার পরও "আহাদ, আহাদ" ধ্বনিতে ঈমানের সত্যতা প্রমাণের ইতিহাস...',
                         key: 's_belal'
+                    },
+                    {
+                        sub: 's_martyrs',
+                        title: '৭. হযরত খালেদ ইবনুল ওয়ালিদ (রা:): আল্লাহর তলোয়ারের রণকৌশল',
+                        preview: 'একশটিরও বেশি যুদ্ধে অংশগ্রহণ করে একটিতেও না হারা পৃথিবীর ইতিহাসের একমাত্র অপরাজিত সেনাপতি...',
+                        key: 's_khaled'
+                    },
+                    {
+                        sub: 's_martyrs',
+                        title: '৮. হযরত সালমান ফারসি (রা:): সত্যের সন্ধানে পারস্য থেকে মদিনায়',
+                        preview: 'সত্য ধর্মের খোঁজে বছরের পর বছর দাসত্ব সহ্য করে অবশেষে রাসুল (সাঃ)-এর দরবারে পৌঁছানোর মহাকাব্য...',
+                        key: 's_salman'
                     }
                 ]
             },
             'success': {
-                title: "সফল ও মহান মানুষদের রূপকথা",
-                desc: "পরাজয়কে পায়ে দলে সাফল্যের শীর্ষে ওঠার বাস্তব কাহিনী",
+                title: "পরাজয়কে হারিয়ে সফলতার শিখরে ওঠা মহামানব",
+                desc: "ধারাবাহিক ব্যর্থতা, হতাশা ও দারিদ্র্যকে তুচ্ছ করে বিশ্বজয়ের অনুপ্রাণিত করা বাস্তব কাহিনী।",
                 subCats: [
-                    { id: 'all', name: 'সবগুলো' },
-                    { id: 'sc_leaders', name: 'নেতা ও সমাজ সংস্কারক' },
-                    { id: 'sc_sci', name: 'বিজ্ঞানী ও উদ্ভাবক' },
+                    { id: 'all', name: 'সবগুলো নিবন্ধ' },
+                    { id: 'sc_leaders', name: 'নেতা ও রাষ্ট্রনায়ক' },
+                    { id: 'sc_sci', name: 'বিজ্ঞান ও উদ্ভাবন' },
                     { id: 'sc_biz', name: 'উদ্যোক্তা ও লেখক' }
                 ],
                 topics: [
                     {
                         sub: 'sc_leaders',
-                        title: '১. আব্রাহাম লিংকন',
-                        preview: 'টানা ৩০ বছর নির্বাচনে হেরেও আমেরিকার শ্রেষ্ঠ প্রেসিডেন্ট হওয়া...',
+                        title: '১. আব্রাহাম লিংকন: টানা ৩০ বছরের ব্যর্থতা পেরিয়ে প্রেসিডেন্ট',
+                        preview: 'ব্যবসায়ে দেউলিয়া, প্রিয়তমার মৃত্যু ও ডজনখানেক নির্বাচনে পরাজয়ের পর দাসপ্রথা বিলুপ্ত করার ইতিহাস...',
                         key: 'sc_lincoln'
                     },
                     {
                         sub: 'sc_sci',
-                        title: '২. টমাস আলভা এডিসন',
-                        preview: '১০০০ বার ব্যর্থ হয়েও হার না মেনে বৈদ্যুতিক বাল্ব আবিষ্কার...',
+                        title: '২. টমাস আলভা এডিসন: ১০০০ বার ব্যর্থ হয়েও পৃথিবীকে আলো দেওয়া',
+                        preview: 'শিক্ষকদের কাছে গাধা গাল খেয়েও হার না মেনে বৈদ্যুতিক বাল্ব আবিষ্কারের অবিস্মরণীয় মানসিকতা...',
                         key: 'sc_edison'
                     },
                     {
                         sub: 'sc_sci',
-                        title: '৩. আলবার্ট আইনস্টাইন',
-                        preview: 'কথা না বলতে পারা শিশু থেকে শতাব্দীর সেরা পদার্থবিজ্ঞানী...',
+                        title: '৩. আলবার্ট আইনস্টাইন: কথা বলতে না পারা শিশু থেকে শতাব্দীর সেরা মস্তিষ্ক',
+                        preview: 'স্কুল থেকে বিতাড়িত হয়েও কৌতূহল ও পদার্থবিজ্ঞানের প্রতি ভালোবাসা দিয়ে বিশ্ব বদলে দেওয়া...',
                         key: 'sc_einstein'
                     },
                     {
                         sub: 'sc_biz',
-                        title: '৪. স্টিভ জবস',
-                        preview: 'নিজের গড়ে তোলা কোম্পানি থেকে বরখাস্ত হয়েও বিশ্বজয়ের গল্প...',
+                        title: '৪. স্টিভ জবস: নিজ কোম্পানি থেকে বরখাস্ত হয়েও ঘুরে দাঁড়ানো',
+                        preview: 'অ্যাপল থেকে বের করে দেওয়ার পর নিওক্সট ও পিক্সার দিয়ে বিশ্ব জয় করে অ্যাপলে ফিরে আসার গল্প...',
                         key: 'sc_jobs'
                     },
                     {
                         sub: 'sc_biz',
-                        title: '৫. কর্নেল হারল্যান্ড স্যান্ডার্স (KFC)',
-                        preview: '৬৫ বছর বয়সে ১০০৯ বার প্রত্যাখ্যাত হয়ে বিশ্বখ্যাত KFC ব্র্যান্ড গঠন...',
+                        title: '৫. কর্নেল হারল্যান্ড স্যান্ডার্স: ৬৫ বছর বয়সে ১০০০ বার প্রত্যাখ্যাত KFC',
+                        preview: 'পেনশনের ১০৫ ডলার নিয়ে রাস্তায় রাস্তায় ঘুরে আজ পৃথিবীর সর্ববৃহৎ চিকেন ব্র্যান্ড গড়ে তোলার গল্প...',
                         key: 'sc_kfc'
                     },
                     {
                         sub: 'sc_biz',
-                        title: '৬. জে. কে. রোলিং (হ্যারি পটার)',
-                        preview: 'গৃহহীন ও চরম বিষন্নতা থেকে বিশ্বের প্রথম বিলিয়নিয়ার লেখিকা...',
+                        title: '৬. জে. কে. রোলিং: চরম বিষণ্ণতা ও দারিদ্র্য থেকে বিলিয়নিয়ার লেখিকা',
+                        preview: '১২টি প্রকাশনা থেকে বাতিল হওয়ার পর হ্যারি পটার লিখে ইতিহাসের সফলতম লেখিকা হওয়ার পথচলা...',
                         key: 'sc_rowling'
+                    },
+                    {
+                        sub: 'sc_biz',
+                        title: '৭. জ্যাক মা: ৩০ টি চাকরিতে প্রত্যাখ্যাত হয়ে আলি বাবা গঠন',
+                        preview: 'কেএফসির ইন্টারভিউ থেকে বাদ পড়া একমাত্র লোক যিনি চীনের সবচেয়ে ধনী ব্যক্তিত্বে পরিণত হন...',
+                        key: 'sc_jackma'
                     }
                 ]
             },
             'verses': {
-                title: "বিষয়ভিত্তিক কোরআনের আয়াত ও হাদিস",
-                desc: "জীবন গঠনের শাশ্বত গাইডলাইন",
+                title: "জীবন বদলে দেওয়া কোরআনের আয়াত ও মোটিভেশনাল হাদিস",
+                desc: "মানুষের আত্মিক প্রশান্তি, ধৈর্য ও সৎ জীবনযাপনের জন্য ঐশ্বরিক গাইডলাইন।",
                 subCats: [
-                    { id: 'all', name: 'সবগুলো' },
-                    { id: 'v_moral', name: 'নৈতিকতা ও ইবাদত' },
-                    { id: 'v_social', name: 'সামাজিক জীবন' }
+                    { id: 'all', name: 'সবগুলো নিবন্ধ' },
+                    { id: 'v_mind', name: 'মানসিক শান্তি ও ধৈর্য' },
+                    { id: 'v_social', name: 'সামাজিক ও পারিবারিক জীবন' }
                 ],
                 topics: [
                     {
-                        sub: 'v_moral',
-                        title: '১. সবর ও মানসিক ধৈর্য',
-                        preview: 'বিপদের সময়ে আল্লাহর প্রতি ভরসা ও মানসিক দৃঢ়তার নির্দেশ...',
+                        sub: 'v_mind',
+                        title: '১. কঠিন বিপদে ধৈর্য (সবর) ও সালাতের অলৌকিক ক্ষমতা',
+                        preview: 'সুরা বাকারার ১৫৩ নম্বর আয়াত এবং মানসিক চাপ কমানোর আত্মিক ঔষধ...',
                         key: 'v_sabr'
                     },
                     {
-                        sub: 'v_moral',
-                        title: '২. জ্ঞান অর্জন ও গবেষণার তাগিদ',
-                        preview: 'কোরআনের প্রথম বাণী এবং ইলমের অপরিহার্যতা...',
+                        sub: 'v_mind',
+                        title: '২. জ্ঞান অর্জন ও গবেষণার জন্য কোরআনের প্রথম হুকুম',
+                        preview: 'ইকরা (পড়ো) বানীর মাধ্যমে অন্ধকার দূর করে সত্য অনুসন্ধানের তাগিদ...',
                         key: 'v_ilm'
                     },
                     {
                         sub: 'v_social',
-                        title: '৩. পিতা-মাতার সম্মান ও সেবা',
-                        preview: 'পিতা-মাতার সাথে সদাচরণে কোরআন ও হাদিসের কঠোর নির্দেশ...',
+                        title: '৩. পিতা-মাতার সেবা: জান্নাত অর্জনের সহজতম দরজা',
+                        preview: 'বার্ধক্যে তাদের উফ শব্দটুকু না বলার কোরআনিক নির্দেশ ও হাদিসের ব্যাখ্যা...',
                         key: 'v_parents'
                     },
                     {
                         sub: 'v_social',
-                        title: '৪. সামাজিক ইনসাফ ও ন্যায়বিচার',
-                        preview: 'শত্রুর সাথেও ইনসাফ করার ঐশ্বরিক হুকুম...',
+                        title: '৪. সামাজিক ইনসাফ ও শত্রু-মিত্র নির্বিশেষে ন্যায়বিচার',
+                        preview: 'নিজের ক্ষতি হলেও সত্যের ওপর অবিচল থাকার ঐশ্বরিক আইন...',
                         key: 'v_justice'
+                    },
+                    {
+                        sub: 'v_mind',
+                        title: '৫. হতাশা দূরীকরণে আল্লাহর রহমত: সুরা দুহা-র বার্তা',
+                        preview: 'যখন জীবন অন্ধকারে ছেয়ে যায় তখন "তোমার রব তোমাকে ছেড়ে যাননি" আয়াতের আত্মিক শক্তি...',
+                        key: 'v_duha'
                     }
                 ]
             },
             'science': {
-                title: "ইসলাম ও আধুনিক বিজ্ঞান",
-                desc: "বিজ্ঞান ও কোরআনের বিস্ময়কর সামঞ্জস্য",
+                title: "ইসলাম ও আধুনিক বিজ্ঞানের বিস্ময়কর সামঞ্জস্য",
+                desc: "১৪০০ বছর আগের কোরআন এবং আধুনিক বিজ্ঞানের আবিষ্কারের মধ্যে অবাক করা মিল।",
                 subCats: [
-                    { id: 'all', name: 'সবগুলো' },
-                    { id: 'sci_med', name: 'চিকিৎসা ও শরীরবিজ্ঞান' },
-                    { id: 'sci_astro', name: 'মহাকাশ ও প্রকৃতি' }
+                    { id: 'all', name: 'সবগুলো নিবন্ধ' },
+                    { id: 'sci_bio', name: 'চিকিৎসা ও শরীরবিজ্ঞান' },
+                    { id: 'sci_space', name: 'মহাকাশ ও পদার্থবিজ্ঞান' }
                 ],
                 topics: [
                     {
-                        sub: 'sci_med',
-                        title: '১. সালাত ও নিউরোসায়েন্স',
-                        preview: 'সেজদায় মস্তিষ্কের ফ্রন্টাল লোবে রক্ত প্রবাহ এবং স্ট্রেস হ্রাস...',
+                        sub: 'sci_bio',
+                        title: '১. সালাত ও সেজদা: নিউরোসায়েন্স ও মস্তিষ্কের রক্তপ্রবাহ',
+                        preview: 'সেজদার সময় ফ্রন্টাল লোবে রক্ত চলাচল এবং মানসিক স্ট্রেস কমানোর বৈজ্ঞানিক প্রমাণ...',
                         key: 'sci_namaz'
                     },
                     {
-                        sub: 'sci_astro',
-                        title: '২. মহাবিশ্বের সম্প্রসারণ থিওরি',
-                        preview: 'এডউইন হাবল থিওরি এবং সূরা আজ-জারিয়াতের অলৌকিকতা...',
+                        sub: 'sci_space',
+                        title: '২. মহাবিশ্বের সম্প্রসারণ থিওরি ও সুরা আজ-জারিয়াত',
+                        preview: 'এডউইন হাবলের গবেষণার বহু আগেই কোরআনে মহাবিশ্ব সম্প্রসারণের স্পষ্ট তথ্য...',
                         key: 'sci_universe'
                     },
                     {
-                        sub: 'sci_med',
-                        title: '৩. ভ্রূণবিজ্ঞান (Embryology) ও কোরআন',
-                        preview: 'মায়ের গর্ভে শিশুর বিকাশ ধাপ নিয়ে কোরআনের নিখুঁত তথ্য...',
+                        sub: 'sci_bio',
+                        title: '৩. ভ্রূণবিজ্ঞান (Embryology) ও মায়ের গর্ভে মানবদেহের বিকাশ',
+                        preview: 'প্রফেসর কিথ মুরের অবাক হওয়া এবং নুতফাহ ও আলাক্বাহ থেকে হাড়ের বিকাশের নিখুঁত বর্ণনা...',
                         key: 'sci_embryo'
                     },
                     {
-                        sub: 'sci_astro',
-                        title: '৪. পানি চক্র ও বায়ুমণ্ডলের স্তর',
-                        preview: 'বৃষ্টিপাত, মেঘের সঞ্চালন ও সুরক্ষিত ছাদস্বরূপ বায়ুমণ্ডল...',
-                        key: 'sci_water'
+                        sub: 'sci_space',
+                        title: '৪. সমুদ্রের দুই পানির মিলনস্থল (Barriers in Oceans)',
+                        preview: 'মিষ্টি ও নোনা পানি পাশাপাশি প্রবাহিত হলেও কেন মিশে যায় না— সুরা আর-রহমানের বৈজ্ঞানিক সত্য...',
+                        key: 'sci_ocean'
                     }
                 ]
             },
             'fun': {
-                title: "প্রজ্ঞাময় ও মজার শিক্ষণীয় গল্প",
-                desc: "হাসির ছলে জীবনের গভীর শিক্ষা",
+                title: "প্রজ্ঞাময় ও রসবোধের শিক্ষণীয় গল্প",
+                desc: "হাসির অনুষঙ্গে জীবনের গভীর নীতিশিক্ষা ও বুদ্ধিমত্তার বাস্তব ঘটনা।",
                 subCats: [
-                    { id: 'all', name: 'সবগুলো' },
-                    { id: 'f_wisdom', name: 'প্রজ্ঞার গল্প' },
-                    { id: 'f_wit', name: 'রসবোধ ও বুদ্ধি' }
+                    { id: 'all', name: 'সবগুলো নিবন্ধ' },
+                    { id: 'f_wit', name: 'বুদ্ধিমত্তা ও প্রজ্ঞা' },
+                    { id: 'f_moral', name: 'মনস্তাত্ত্বিক শিক্ষা' }
                 ],
                 topics: [
                     {
-                        sub: 'f_wisdom',
-                        title: '১. বুদ্ধিমান কাজী ও চোরের লাঠি',
-                        preview: 'অপরাধীর মনস্তাত্ত্বিক দুর্বলতা কাজে লাগিয়ে চোর ধরা...',
+                        sub: 'f_wit',
+                        title: '১. বিচারক কাজীর জাদুকরী লাঠি ও চোরের মনস্তত্ত্ব',
+                        preview: 'অপরাধীর মানসিক দুর্বলতা কাজে লাগিয়ে ২ ইঞ্চি কাটা লাঠি দিয়ে চোর শনাক্ত করার প্রজ্ঞা...',
                         key: 'f_kazi'
                     },
                     {
                         sub: 'f_wit',
-                        title: '২. মোল্লা নাসিরুদ্দিনের পোষাক ও ভোজ',
-                        preview: 'পোশাক দেখে সম্মান দেওয়ার মানসিকতার বিরুদ্ধে মজার শিক্ষা...',
+                        title: '২. মোল্লা নাসিরুদ্দিনের পোশাকের ভোজ: "খাও জামা খাও!"',
+                        preview: 'মানুষের বাহ্যিক রূপ দেখে সম্মান দেওয়ার মানসিকতার বিরুদ্ধে ঐতিহাসিক এক রসবোধপূর্ণ শিক্ষা...',
                         key: 'f_mollah'
                     },
                     {
-                        sub: 'f_wisdom',
-                        title: '৩. চার অন্ধ ও হাতির গল্প',
-                        preview: 'আংশিক জ্ঞান দিয়ে পুরো সত্য বিচার করার অপচেষ্টা...',
+                        sub: 'f_moral',
+                        title: '৩. চার অন্ধ ও হাতির গল্প: আংশিক জ্ঞানের অন্ধকার',
+                        preview: 'নিজের আংশিক অভিজ্ঞতা দিয়ে পুরো সত্যকে বিচার করার অপচেষ্টার পরিণতি...',
                         key: 'f_elephant'
                     },
                     {
-                        sub: 'f_wisdom',
-                        title: '৪. কুয়ায় পড়া কৃষকের গাধা',
-                        preview: 'আপনার ওপর নিক্ষিপ্ত আঘাতগুলোকে ওপরে ওঠার সিঁড়ি বানানো...',
+                        sub: 'f_moral',
+                        title: '৪. গভীর কুয়ায় পড়া গাধা ও পিঠের মাটি ঝেড়ে ফেলার শিক্ষা',
+                        preview: 'জীবন আপনার ওপর কাদা ছিটালে সেই কাদাকেই উপরে ওঠার সিঁড়ি বানানোর জীবনমুখী শিক্ষা...',
                         key: 'f_donkey'
                     }
                 ]
             }
         };
 
-        // Full Comprehensive Long Articles Database
+        // Long Detailed Comprehensive Text Database
         const fullDatabase = {
-            'p_taif': `নবুওয়াতের দশম বর্ষে রাসুলুল্লাহ (সাঃ) তাওহীদের বার্তা নিয়ে তায়েফ নগরীতে গমন করেন। তায়েফের সরদারেরা কেবল তাঁর সাথে অপমানজনক আচরণই করেনি; বরং স্থানীয় বখাটেদের উস্কে দিয়েছিল নবিজির পেছনে।
+            'p_taif': `নবুওয়াতের দশম বর্ষে রাসুলুল্লাহ (সাঃ) তাওহীদের বার্তা নিয়ে তায়েফ নগরীতে গমন করেন। সঙ্গে ছিলেন তাঁর প্রিয় সাহাবি হযরত যায়েদ ইবনে হারেসা (রাঃ)। মক্কার কুরাইশদের নির্যাতন থেকে রক্ষা পেতে এবং তায়েফবাসীদের কাছে দ্বীনের দাওয়াত পৌঁছানোই ছিল তাঁর মূল উদ্দেশ্য।
 
-পাথরের তীব্র আঘাতে নবিজি (সাঃ)-এর পবিত্র শরীর ক্ষতবশত হয়ে যায়, জুতো রক্তে জমে আটকে যায়। রক্তক্ষরণে তিনি বারবার মুর্ছা যাচ্ছিলেন। পাহাড়ের ফেরেশতা এসে যখন তায়েফকে দুই পাহাড়ের মাঝে পিষে ধ্বংস করার অনুমতি চাইলেন, তখন রহমাতুল্লিল আলামীন বিশ্বনবী (সাঃ) ক্ষমা করে দিয়ে বললেন:
+কিন্তু তায়েফের তিন সরদার (আব্দ ইয়ালীল, মাসউদ ও হাবীব) কেবল তাঁর কথা প্রত্যাখ্যানই করেনি; বরং চরম দৃষ্টতা ও অপমানজনক আচরণ করেছিল। তারা তায়েফের রাস্তার বখাটে, দাস ও যুবকদের উস্কে দিয়েছিল নবিজির পেছনে।
 
-<div class="highlight-box">"না! আমি আশা করি, ওদের ভবিষ্যৎ বংশধরদের মধ্য থেকে এমন মানুষ জন্ম নেবে, যারা এক আল্লাহর ইবাদত করবে। হে আল্লাহ! আমার কওমকে ক্ষমা করো, কারণ তারা জানে না।"</div>
+তায়েফের পথ ধরে যখন নবিজি (সাঃ) যাচ্ছিলেন, তখন দুপাশ থেকে বখাটেরা তাঁর দিকে অঝোরে পাথর ছুড়তে শুরু করে। হযরত যায়েদ (রাঃ) নিজের শরীর দিয়ে নবিজিকে আড়াল করার চেষ্টা করে ক্ষতবিক্ষত হন। পাথরের তীব্র আঘাতে নবিজি (সাঃ)-এর পবিত্র শরীর রক্তে ভেসে যায়, তাঁর জুতো রক্তে জমে পায়ের সাথে আটকে যায়। যন্ত্রণায় ও অতিরিক্ত রক্তক্ষরণে তিনি কয়েকবার মূর্ছা যান।
 
-এমন অসীম ক্ষমার দৃষ্টান্ত মানব ইতিহাসে বিরল। তিনি নিজের কষ্টের চেয়ে উম্মতের হেদায়েতকে প্রাধান্য দিয়েছিলেন।`,
+পথের পাশে এক আঙুর বাগানে আশ্রয় নিয়ে নবিজি (সাঃ) আল্লাহর দরবারে কাতর কণ্ঠে হাত তোলেন। তখন আল্লাহ তাআলা পাহাড়ের দায়িত্বে নিয়োজিত ফেরেশতাকে পাঠালেন। ফেরেশতা এসে সালাম জানিয়ে বললেন:
+<div class="highlight-box">"হে আল্লাহর রাসুল! আপনি আদেশ করলে আমি তায়েফের দুই পাশের বিশাল পাহাড় দুটিকে একত্র করে এই পাপিষ্ঠ জাতিকে পিষে ধ্বংস করে দেব!"</div>
 
-            'p_mecca': `৮ম হিজরিতে ১০,০০০ মুসলিম বাহিনী নিয়ে মক্কা বিজয়ের দিন রাসুলুল্লাহ (সাঃ) উটের পিঠে মাথা নিচু করে বিনীতভাবে মক্কায় প্রবেশ করেন।
+এমন চরম মুহূর্তে রক্তে ভেজা শরীর নিয়ে রহমাতুল্লিল আলামীন বিশ্বনবী (সাঃ) যে উত্তর দিয়েছিলেন, তা মানব ইতিহাসের অন্যতম শ্রেষ্ঠ ক্ষমার উদাহরণ। তিনি ফেরেশতাকে বাধা দিয়ে বললেন:
 
-যে কুরাইশরা দীর্ঘ ১৩ বছর অমানুষিক নির্যাতন চালিয়েছিল, সাহাবিদের হত্যা করেছিল, আজও তারা কাবা প্রাঙ্গণে ভয়ে কাঁপছিল। কিন্তু রাসুলুল্লাহ (সাঃ) বিজয়ী হয়েও কোনো অহংকার প্রকাশ করেননি। তিনি তাদের দিকে তাকিয়ে ইউসুফ (আঃ)-এর ভাষায় ঘোষণা দিলেন:
+<div class="quote-box">"না! আমি আশা করি, আল্লাহ যদি এদের ধ্বংস না করেন, তবে এদের ভবিষ্যৎ বংশধরদের মধ্য থেকে এমন মানুষ জন্ম নেবে, যারা এক আল্লাহর ইবাদত করবে এবং তাঁর সাথে কাউকেও শরিক করবে না। হে আল্লাহ! আমার কওমকে হেদায়েত দাও, কারণ তারা সত্যকে চেনে না।"</div>
 
-<div class="highlight-box">"আজ তোমাদের বিরুদ্ধে কোনো অভিযোগ নেই। যাও, তোমরা সবাই স্বাধীন ও মুক্ত!"</div>
+**শিক্ষা:** নিজের কষ্ট বা ব্যক্তিগত স্বার্থের ওপর অন্যের হেদায়েত ও ক্ষমাকে প্রাধান্য দেওয়া এবং প্রতিশোধ না নিয়ে ধৈর্যের সর্বোচ্চ পরাকাষ্ঠা দেখানোই ছিল রাসুল (সাঃ)-এর সুন্নাত।`,
 
-এক নিমেষে হাজার বছরের রক্তক্ষয়ী শত্রুতাকে ভালোবাসায় রূপান্তর করার এই দৃশ্য পৃথিবীর ইতিহাসে অদ্বিতীয়।`,
+            'p_mecca': `৮ম হিজরিতে ১০,০০০ বিজয়ী মুসলিম বাহিনী নিয়ে রাসুলুল্লাহ (সাঃ) মক্কা নগরীতে প্রবেশ করেন। মক্কা বিজয়ের এই দিনটি ছিল ইসলামের ইতিহাসের অন্যতম বড় সামাজিক ও রাজনৈতিক মুহূর্ত।
 
-            'p_orphan': `এক ঈদের দিন সকালে রাসুলুল্লাহ (সাঃ) ঈদের ময়দানে যাচ্ছিলেন। পথিমধ্যে দেখলেন সব শিশুরা নতুন জামা পরে হাসিখুশি খেলছে, কিন্তু গলির এক কোণে একটি ছোট শিশু ছেঁড়া জামা পরে ফুঁপিয়ে ফুঁপিয়ে কাঁদছে।
+যে মক্কায় রাসুলুল্লাহ (সাঃ) এবং তাঁর সাহাবিদের ওপর দীর্ঘ ১৩ বছর অমানুষিক নির্যাতন চালানো হয়েছিল, বিলাল (রাঃ)-এর বুকে পাথর চাপা দেওয়া হয়েছিল, সুমাইয়া (রাঃ)-কে শহীদ করা হয়েছিল এবং শেষ পর্যন্ত নবিজিকে নিজ জন্মভূমি ছেড়ে মদিনায় হিজরত করতে বাধ্য করা হয়েছিল— আজ সেই কুরাইশ শত্রুরা কাবার প্রাঙ্গণে মস্তক অবনত করে কাঁপছিল। তাদের মনে ভয় ছিল— আজ বোধহয় তাদের রক্তের বদলা নেওয়া হবে।
 
-রাসুল (সাঃ) দরদ ভরা কণ্ঠে জিজ্ঞেস করলেন, "বাছা, তুমি কাঁদছ কেন?" শিশুটি বলল, "আমার বাবা উহুদের যুদ্ধে শহীদ হয়েছেন। আমার মা অন্য জায়গায় বিয়ে করেছেন। আজ আমার কোনো নতুন জামা নেই, খাবার নেই, বাবাও নেই।"
+রাসুলুল্লাহ (সাঃ) বিজয়ী সেনাপতির মতো অহংকার না করে উটের পিঠে এতটা অবনত হয়ে মক্কায় প্রবেশ করেছিলেন যে তাঁর দাড়ি مبارক উটের পিঠ ছুঁয়ে যাচ্ছিল। তিনি কাবা শরিফের ৩৬০টি মূর্তি অপসারণ করলেন।
 
-নবিজি (সাঃ) শিশুটিকে কোলে তুলে নিলেন, চোখের পানি মুছে দিলেন এবং বললেন:
-<div class="highlight-box">"তুমি কি পছন্দ করবে না যদি মুহাম্মদ তোমার বাবা হয়, আয়েশা তোমার মা হয় আর ফাতিমা তোমার বোন হয়?"</div>
+অতঃপর কাবার দরজায় দাঁড়িয়ে আতঙ্কিত কুরাইশদের উদ্দেশ্যে বললেন: "হে কুরাইশগণ! তোমরা আজ আমার কাছ থেকে কেমন ব্যবহার আশা করো?"
+তারা বলল: "আপনি আমাদের দয়ালু ভাই এবং দয়ালু ভাইয়ের সন্তান।"
 
-তিনি শিশুটিকে ঘরে এনে গোসল করিয়ে নতুন জামা পরিয়ে পেট ভরে খাওয়ালেন।`,
+তখন বিশ্বনবী (সাঃ) হযরত ইউসুফ (আঃ)-এর ভাষায় কালজয়ী ঘোষণাটি দিলেন:
+<div class="highlight-box">"আজ তোমাদের বিরুদ্ধে আমার কোনো অভিযোগ নেই। যাও, তোমরা সবাই স্বাধীন ও মুক্ত!"</div>
 
-            'p_hudaibiya': `হুদাইবিয়ার সন্ধির সময় মক্কার কুরাইশরা বেশ কিছু কঠিন শর্ত চাপিয়ে দিয়েছিল, যা বাহ্যিকভাবে মুসলিমদের জন্য অপমানজনক মনে হচ্ছিল। এমনকি চুক্তিনামায় "আল্লাহর রাসুল" শব্দ লিখতেও আপত্তি করা হয়েছিল।
+ঐতিহাসিকগণ বলেন, পৃথিবীর ইতিহাসে কোনো বিজয়ী নায়ক তার রক্তপিপাসু চরম শত্রুদের বিনা শর্তে এভাবে মুক্তি দেওয়ার আর দ্বিতীয় কোনো নজির রাখতে পারেনি। এই ক্ষমার কারণেই হাজার হাজার মক্কাবাসী স্বেচ্ছায় ইসলাম গ্রহণ করে।`,
 
-রাসুলুল্লাহ (সাঃ) নিজের হাতে সেই শব্দ মুছে দিয়ে পরম ধৈর্য ও প্রজ্ঞার পরিচয় দেন। তিনি সাময়িক ছাড় দিয়ে স্থায়ী শান্তির পথ সুগম করেছিলেন। আল-কোরআনে এই চুক্তিকেই "স্পষ্ট বিজয়" (ফাতহুম মুবীন) বলে ঘোষণা করা হয়, কারণ এই শান্তির ফলেই মক্কায় ইসলামের আলো দ্রুত ছড়িয়ে পড়েছিল।`,
+            'p_orphan': `এক ঈদের দিন সকালে রাসুলুল্লাহ (সাঃ) ঈদের সালাতের উদ্দেশ্যে ময়দানে যাচ্ছিলেন। পথিমধ্যে তিনি দেখলেন সব শিশুরা নতুন রঙিন পোশাক পরে, হাতে মিষ্টি নিয়ে হাসিখুশি মনে খেলাধুলা করছে। কিন্তু গলি থেকে একটু দূরে একটি ছোট শিশু ছেঁড়া জরাজীর্ণ জামা পরে ধুলোবালিতে বসে ফুঁপিয়ে ফুঁপিয়ে কাঁদছে।
 
-            'p_khandaq': `মদিনা আক্রান্ত হওয়ার সময় হযরত সালমান ফারসি (রাঃ)-এর পরামর্শে পরিখা খননের সিদ্ধান্ত হয়। প্রচন্ড শীত ও তীব্র ক্ষুধার মাঝেও রাসুলুল্লাহ (সাঃ) নিজে পেটে পাথর বেঁধে মাটি কাটার কাজ করেন।
+রাসুলুল্লাহ (সাঃ) শিশুটির কাছে এগিয়ে গেলেন। পরম মমতায় তার মাথায় হাত রেখে মৃদু কণ্ঠে জিজ্ঞেস করলেন: "বাছা! আজকের এই আনন্দের দিনে সবাই খেলছে, আর তুমি এখানে বসে কাঁদছ কেন?"
 
-সাহাবিরা যখন দেখতেন তাঁদের নেতা নিজে এত কষ্ট সহ্য করছেন, তখন তাঁদের মনোবল বহুগুণ বেড়ে যেত। চরম অভাব ও সংকটের মধ্যেও তিনি সাহাবিদের সহমর্মিতা ও নেতৃত্বের শ্রেষ্ঠ উজ্জ্বল নজির স্থাপন করেছিলেন।`,
+শিশুটি নবিজিকে চিনতে পারেনি। সে কান্নাভেজা চোখে বলল: "আমার বাবা উহুদের যুদ্ধে রাসুলুল্লাহ (সাঃ)-এর সাথে গিয়ে শহীদ হয়েছেন। আমার মা অন্য জায়গায় বিয়ে করেছেন এবং আমার সৎ বাবা আমাকে ঘর থেকে বের করে দিয়েছেন। আজ আমার কোনো নতুন জামা নেই, খাবার নেই, থাকার জায়গা নেই। আজ আমার বাবাও নেই যে আমাকে কোলে নেবে!"
 
-            'p_hijrat': `ইসলামের দাওয়াত রক্ষা ও মদিনায় নতুন ইসলামী সমাজ প্রতিষ্ঠার উদ্দেশ্যে রাসুলুল্লাহ (সাঃ) ও আবু বকর (রাঃ) হিজরত করেন। 
+শিশুটির কথা শুনে রাসুলুল্লাহ (সাঃ)-এর চোখ জলে ভরে গেল। তিনি তৎক্ষণাৎ শিশুটিকে বুকে জড়িয়ে নিলেন এবং পরম মমতায় তুলে নিয়ে বললেন:
 
-কাফেররা যখন সুরার গুহার মুখে পৌঁছে গিয়েছিল, তখন আবু বকর (রাঃ) চিন্তিত হয়ে পড়েছিলেন। রাসুলুল্লাহ (সাঃ) শান্ত কণ্ঠে বলেছিলেন, "চিন্তা করো না, নিশ্চয়ই আল্লাহ আমাদের সাথে আছেন।" আল্লাহ তাআলা মাকড়সার জাল ও পায়রার বাসা দিয়ে গুহার মুখ ঢেকে রেখে তাঁদের রক্ষা করেন।`,
+<div class="quote-box">"হে প্রিয় বাছা! তুমি কি এতে খুশি নও যে— আজ থেকে মুহাম্মদ (সাঃ) তোমার বাবা, আয়েশা (রাঃ) তোমার মা, আর ফাতিমা (রাঃ) তোমার বোন?"</div>
 
-            's_musab': `মক্কার সবচেয়ে বিলাসী ও সুন্দর যুবক ছিলেন মুসাব ইবনে উমাইর (রাঃ)। তাঁর পোশাক আসত ইয়েমেন থেকে, সুগন্ধির গন্ধে মক্কার গলি মেহক হয়ে উঠত। 
+নবিজি (সাঃ) শিশুটিকে ঘরে নিয়ে এলেন। আয়েশা (রাঃ) পরম আদরে তাকে গোসল করিয়ে দিলেন, নতুন জামা পরালেন এবং পেট ভরে সুস্বাদু খাবার খাওয়ালেন। কিছুক্ষণের মধ্যেই শিশুটি হাসিমুখে অন্য শিশুদের সাথে খেলতে ছুটে গেল। অন্য শিশুরা অবাক হয়ে জিজ্ঞেস করল, "একটু আগেই তো তুমি কাঁদছিলে, এখন এত খুশি কেন?"
+শিশুটি গর্ব করে বলল, "কেন হব না? আজ পৃথিবীর শ্রেষ্ঠ মানুষটি আমার বাবা!"`,
 
-ইসলাম গ্রহণের পর তাঁর ধনী মা তাঁকে বাড়ি থেকে বের করে দিলেন। মুসাব বেছে নিলেন খসখসে পশুর চামড়া আর অনাহার। মদিনায় ইসলামের প্রথম দূত হয়ে গিয়ে তিনি ঘরে ঘরে দাওয়াত পৌঁছে দেন। 
+            'p_hudaibiya': `৬ষ্ঠ হিজরিতে রাসুলুল্লাহ (সাঃ) ১,৪০০ সাহাবিকে সাথে নিয়ে উমরাহ পালনের উদ্দেশ্যে মক্কার দিকে রওনা হন। কিন্তু কুরাইশরা তাঁদের মক্কায় প্রবেশ করতে বাধা দেয়। হুদাইবিয়া নামক স্থানে মুসলিম বাহিনী অবস্থান নেয়। রক্তপাত এড়াতে নবিজি (সাঃ) কুরাইশদের সাথে আলোচনা শুরু করেন।
 
-ওহুদের যুদ্ধে শাহাদাতের পর দেখা গেল তাঁকে কাফন দেওয়ার মতো পুরো কাপড় নেই! চাদর দিয়ে মাথা ঢাকলে পা বের হয়ে যেত। রাসুল (সাঃ) চোখের পানিতে বললেন: "মক্কায় তোমার চেয়ে দামী পোশাক পরা কেউ ছিল না, আর আজ তুমি এক টুকরো ছেঁড়া কাপড়ে শুয়ে আছ।"`,
+দীর্ঘ আলোচনার পর কুরাইশদের প্রতিনিধি সোহাইল ইবনে আমর একটি চুক্তিনামা তৈরি করে, যার শর্তগুলো ছিল অত্যন্ত একপেশে এবং বাহ্যিকভাবে মুসলিমদের জন্য চরম অপমানজনক:
+১. মুসলিমরা এ বছর উমরাহ না করে মদিনায় ফিরে যাবে।
+২. আগামী বছর আসবে এবং মাত্র তিন দিন মক্কায় থাকতে পারবে।
+৩. কোনো মক্কাবাসী অভিভাবকের অনুমতি ছাড়া মদিনায় পালিয়ে গেলে তাকে ফেরত দিতে হবে; কিন্তু কোনো মদিনাবাসী মক্কায় এলে তাকে ফেরত দেওয়া হবে না।
+৪. আগামী ১০ বছর কোনো যুদ্ধ করা যাবে না।
 
-            's_abubakar': `নবুওয়াতের সূচনালগ্ন থেকে প্রতিটি বিপদে নবিজির পাশে ছিলেন আবু বকর (রাঃ)। 
+এমনকি চুক্তিনামায় "উমর ইবনুল খাত্তাব" ও "আলী (রাঃ)" যখন লিখলেন "আল্লাহর রাসুল মুহাম্মদ", তখন সোহাইল আপত্তি তুলে বলল: "আমরা যদি আপনাকে আল্লাহর রাসুলই মানতাম, তবে বাধা দিতাম কেন? এখানে শুধু 'মুহাম্মদ ইবনে আব্দুল্লাহ' লিখতে হবে।"
 
-তাবুক যুদ্ধের কড়া খরার দিনে রাসুল (সাঃ) দানের আহ্বান জানালেন। ওমর (রাঃ) নিজের অর্ধেক সম্পদ নিয়ে এলেন। কিন্তু আবু বকর (রাঃ) ঘরে থাকা সুই-সুতা সহ সমস্ত জিনিস নবিজির কদমে এনে রাখলেন।
+হযরত ওমর (রাঃ) সহ অনেক সাহাবি ক্ষোভে ফেটে পড়লেন। তাঁরা বললেন, আমরা সত্যের ওপর থাকা সত্ত্বেও কেন এই অপমানজনক চুক্তি মেনে নেব? কিন্তু রাসুলুল্লাহ (সাঃ) অত্যন্ত ধীরকণ্ঠে হযরত আলীকে বললেন, "আলী! 'আল্লাহর রাসুল' শব্দটি মুছে দাও।" আলী (রাঃ) নবিজির প্রতি সম্মানে সেই শব্দ মুছতে পারছিলেন না। তখন নবিজি নিজে হাত দিয়ে সেই শব্দ মুছে দিলেন।
 
-রাসুল (সাঃ) বললেন, "পরিবারের জন্য কী রেখে এসেছ?" আবু বকর (রাঃ) সজল চোখে বললেন:
-<div class="highlight-box">"আমার পরিবারের জন্য কেবল আল্লাহ এবং তাঁর রাসুলকে রেখে এসেছি!"</div>`,
+নবিজি (সাঃ) জানতেন— এই শান্তিকালীন চুক্তি মুসলিমদের জন্য বড় সুযোগ তৈরি করবে। চুক্তি স্বাক্ষরের পর সুরা ফাতহ নাজিল হয়, যেখানে আল্লাহ তাআলা ঘোষণা করেন:
+<div class="highlight-box">"নিশ্চয়ই আমি তোমাকে দান করেছি এক স্পষ্ট ও সুমহান বিজয়।"</div>
 
-            's_umar': `হযরত ওমর ইবনুল খাত্তাব (রাঃ)-এর শাসন আমলে ইসলামী সাম্রাজ্য রোম ও পারস্য পর্যন্ত বিস্তৃত হয়। কিন্তু তাঁর নিজের জীবন ছিল অত্যন্ত সাদামাটা।
+পরবর্তী দুই বছরে যুদ্ধের ভয় না থাকায় হাজার হাজার মানুষ ইসলামের সুশীতল ছায়ায় আশ্রয় নেয়। নবিজির রাজনৈতিক ও কূটনৈতিক দূরদর্শিতা হুদাইবিয়ার সন্ধিকে বিজয়ের দুয়ারে রূপান্তর করেছিল।`,
 
-তিনি রাতের আঁধারে ছদ্মবেশে মদিনার গলিতে ঘুরে বেড়াতেন প্রজা সাধারণের অভাব-অভিযোগ দেখার জন্য। এক রাতে তিনি দেখেন এক মা বুভুক্ষু সন্তানদের শান্ত রাখতে চুলায় পানি ফুটাচ্ছেন। ওমর (রাঃ) তৎক্ষণাৎ বায়তুল মাল থেকে আটার বস্তা নিজের পিঠে বহন করে এনে সেই পরিবারকে রান্না করে খাওয়ান।`,
+            'p_khandaq': `৫ম হিজরিতে মক্কার কুরাইশ, ইহুদি গোত্র বনু নজীর এবং অন্যান্য আরব গোত্রগুলো মিলে ১০,০০০ সৈন্যের এক বিশাল সম্মিলিত বাহিনী (আহযাব) গঠন করে মদিনা একেবারে ধ্বংস করার উদ্দেশ্যে আক্রমণ চালায়। মদিনার ইতিহাসে এটিই ছিল সবচেয়ে বড় প্রতিরক্ষা সংকট।
 
-            's_osman': `হযরত ওসমান (রাঃ) ছিলেন অত্যন্ত ধনী ও বিনয়ী সাহাবি। মদিনায় যখন খাবার পানির তীব্র সংকট তৈরি হয়, তখন "রুমা কুপ" নামের একটি কুয়া কেবল এক ইহুদির মালিকানায় ছিল, যে চড়া দামে পানি বিক্রি করত।
+সম্মিলিত শত্রু বাহিনীর মোকাবিলায় হযরত সালমান ফারসি (রাঃ) একটি বুদ্ধিমান প্রস্তাব দেন— মদিনার যেসব দিক উন্মুক্ত, সেদিকে গভীর ও প্রশস্ত পরিখা (খন্দক) খনন করা। নবিজি (সাঃ) এই প্রস্তাব সানন্দে গ্রহণ করেন।
 
-হযরত ওসমান (রাঃ) নিজের বিপুল অর্থ খরচ করে সেই পুরো কুয়াটি কিনে নেন এবং মুসলিমদের জন্য বিনামূল্যে ওয়াকফ করে দেন। তাঁর এই দানশীলতার জন্য রাসুলুল্লাহ (সাঃ) তাঁকে জান্নাতের সুসংবাদ দিয়েছিলেন।`,
+মদিনায় তখন চরম খাদ্য সংকট ও তীব্র শীত চলছিল। নবিজি (সাঃ) নিজে একজন সাধারণ শ্রমিকের মতো কোদাল ও ঝুড়ি হাতে নিয়ে সাহাবিদের সাথে পরিখা কাটতে শুরু করেন। ক্ষুধা এতটাই তীব্র ছিল যে, সাহাবিরা পেটে একটি করে পাথর বেঁধে রেখেছিলেন। নবিজি (সাঃ) যখন নিজের গায়ের চাদর তুললেন, সাহাবিরা দেখলেন ক্ষুধায় নবিজির পেটে দুটি পাথর বাঁধা!
 
-            's_ali': `রাসুলুল্লাহ (সাঃ)-এর চাচাতো ভাই ও জামাতা হযরত আলী (রাঃ) ছিলেন অসীম বীরত্ব ও জ্ঞানের প্রতীক। খাইবার যুদ্ধে যখন ইহুদিদের দুর্গ বিজিত হচ্ছিল না, তখন রাসুল (সাঃ) বললেন, "আগামীকাল আমি এমন একজনের হাতে পতাকা দেব, যাকে আল্লাহ ও তাঁর রাসুল ভালোবাসেন।"
+কাজের মাঝেই সাহাবিরা কবিতা গাইতেন: "আমরা সেই দল, যারা মুহাম্মদের হাতে বাইআত হয়েছি জিহাদের ওপর..." আর নবিজি (সাঃ) উত্তর দিতেন: "হে আল্লাহ! আখেরাতের জীবনই তো আসল জীবন, আপনি আনসার ও মুহাজিরদের ক্ষমা করুন।"
 
-পরদিন তিনি হযরত আলী (রাঃ)-এর হাতে পতাকা তুলে দেন এবং আলী (রাঃ) খাইবারের বিশাল লৌহকপাট একা ভেঙে ঐতিহাসিক বিজয় ছিনিয়ে আনেন।`,
+পরিখা খননের সময় এক বিশাল শক্ত পাথর পাওয়া গেল যা কেউ ভাঙতে পারছিল না। নবিজি (সাঃ) বিসমিল্লাহ বলে কোদাল দিয়ে আঘাত করলেন। প্রথম আঘাতে স্ফুলিঙ্গ বের হলো, তিনি বললেন: "আল্লাহু আকবার! আমাকে পারস্যের রাজপ্রাসাদ বিজয়ের সুসংবাদ দেওয়া হয়েছে।" দ্বিতীয় ও তৃতীয় আঘাতে রোম ও ইয়েমেনের রাজপ্রাসাদ বিজয়ের বার্তা দিলেন।
 
-            's_belal': `হযরত বিলাল (রাঃ) ছিলেন একজন হাবশী দাস। ইসলাম গ্রহণ করার অপরাধে তাঁর মনিব উমাইয়া ইবনে খালাফ তাঁকে উত্তপ্ত মরুভূমির বালুতে শুইয়ে বুকের ওপর ভারী পাথর চাপা দিয়ে রাখত।
+চরম সংকটকালেও নবিজি সাহাবিদের মনে আশা ও ঈমানের মশাল জ্বালিয়ে রেখেছিলেন। শেষ পর্যন্ত অলৌকিক তুফান ও আল্লাহর সাহায্যে কাফের বাহিনী পালিয়ে যেতে বাধ্য হয়।`,
 
-তীব্র যাতনার মাঝেও বিলালের কণ্ঠ থেকে বের হতো— "আহাদ, আহাদ" (আল্লাহ এক, আল্লাহ এক)। পরবর্তীতে আবু বকর (রাঃ) তাঁকে কিনে নিয়ে মুক্ত করেন। তিনিই হয়ে ওঠেন ইসলামের প্রথম মুয়াজ্জিন।`,
+            'p_hijrat': `নবুওয়াতের ত্রয়োদশ বর্ষে মক্কার কুরাইশরা দারুন নদওয়ায় (পরামর্শ সভা) একত্রিত হয়ে সিদ্ধান্ত নেয়— প্রতি গোত্র থেকে একজন করে শক্তিশালী যুবক নিয়ে রাসুলুল্লাহ (সাঃ)-কে একসাথে তলোয়ারের আঘাতে হত্যা করা হবে।
 
-            'sc_lincoln': `আমেরিকার ১৬তম প্রেসিডেন্ট আব্রাহাম লিংকনের জীবন ছিল ব্যর্থতার এক দীর্ঘ তালিকা।
-• ১৮৩১ সালে ব্যবসায় দেউলিয়া হন।
-• ১৮৩২ সালে রাজ্য আইনসভার নির্বাচনে হারেন।
-• ১৮৩৫ সালে তাঁর প্রিয়তমা মৃত্যুবরণ করেন।
-• ১৮৫৮ সালে সিনেট নির্বাচনে পরাজিত হন।
+আল্লাহ তাআলা জিবরাইল (আঃ)-এর মাধ্যমে নবিজিকে তাদের এই চক্রান্ত জানিয়ে দেন এবং হিজরতের নির্দেশ দেন। নবিজি (সাঃ) তাঁর অনুগত সাহাবি হযরত আলী (রাঃ)-কে নিজের বিছানায় শুইয়ে রাখেন, যাতে জনগণের আমানতগুলো পরদিন সকালে বুঝিয়ে দেওয়া যায়। ঘেরাও করে রাখা কাফেরদের চোখে ধুলো দিয়ে নবিজি সুরা ইয়াসীনের আয়াত তেলাওয়াত করে বাড়ি থেকে বের হয়ে যান।
 
-টানা ৩০ বছর চরম ব্যর্থতার পর ১৮৬০ সালে তিনি আমেরিকার প্রেসিডেন্ট নির্বাচিত হন এবং দাসপ্রথা বিলুপ্ত করে ইতিহাস গড়ে তোলেন। তিনি প্রমাণ করেছেন— ব্যর্থতা মানেই শেষ নয়, বরং নতুন করে শুরু করার নামই সফলতা।`,
+নবিজি (সাঃ) এবং তাঁর বিশ্বস্ত সাথী হযরত আবু বকর সিদ্দিক (রাঃ) মক্কা থেকে দক্ষিণে ‘সুর’ পর্বতের গুহায় (গარე সুর) আত্মগোপন করেন। কাফেররা রক্তপিপাসু হয়ে তাঁদের সন্ধানে গুহার দোরগোড়ায় পৌঁছে যায়।
 
-            'sc_edison': `বৈদ্যুতিক বাল্ব আবিষ্কারের আগে টমাস আলভা এডিসন প্রায় ৯৯৯ বার ব্যর্থ হয়েছিলেন। তাঁর সহকারীরা তাঁকে চেষ্টা ছেড়ে দিতে বলেছিল।
+আবু বকর (রাঃ) অত্যন্ত চিন্তিত হয়ে ফিসফিস করে বললেন: "হে আল্লাহর রাসুল! তারা যদি তাদের পায়ের দিকে তাকায়, তবেই আমাদের দেখে ফেলবে!"
+তখন নবিজি (সাঃ) পরম শান্ত কণ্ঠে উত্তর দিলেন:
+<div class="highlight-box">"হে আবু বকর! তুমি সেই দুজনের ব্যাপারে কী ভাবছ, যাদের তৃতীয় জন হলেন স্বয়ং আল্লাহ? চিন্তা করো না, নিশ্চয়ই আল্লাহ আমাদের সাথে আছেন।"</div>
 
-কিন্তু এডিসন ইতিবাচক মনোভাব বজায় রেখে বলেছিলেন:
-<div class="highlight-box">"আমি ৯৯৯ বার ব্যর্থ হইনি, বরং আমি ৯৯৯টি এমন উপায় আবিষ্কার করেছি যার মাধ্যমে বাল্ব তৈরি করা সম্ভব নয়!"</div>
+আল্লাহ তাআলা অলৌকিকভাবে গুহার মুখে মাকড়সা দিয়ে জাল বুনিয়ে দেন এবং পায়রা দিয়ে ডিম পাড়িয়ে দেন। কাফেররা গুহার মুখ দেখে মনে করল এখানে কেউ থাকা সম্ভব নয় এবং তারা ফিরে গেল। ৩ দিন পর নবিজি ও আবু বকর (রাঃ) মদিনার পানে ঐতিহাসিক যাত্রা শুরু করেন।`,
 
-অবশেষে ১০০০তম বারে তিনি বিশ্বের প্রথম সফল বৈদ্যুতিক বাল্ব তৈরি করে পৃথিবীকে আলোকিত করেন।`,
+            'p_poison': `খাইবার বিজয়ের পর এক ইহুদি নারী (যয়নব বিনতে আল-হারিস) রাসুলুল্লাহ (সাঃ)-এর কাছে সুস্বাদু ছাগলের ভুনা মাংস উপহার হিসেবে নিয়ে আসে। সে আগে থেকেই জেনে নিয়েছিল যে নবিজি ছাগলের রানের মাংস খেতে ভালোবাসেন, তাই সেই অংশে তীব্র বিষ মিশিয়ে দিয়েছিল।
 
-            'sc_einstein': `ছোটবেলায় আলবার্ট আইনস্টাইন ৪ বছর বয়স পর্যন্ত কথা বলতে পারতেন না এবং ৯ বছর বয়স পর্যন্ত রিডিং পড়তে পারতেন না। শিক্ষকরা তাঁকে "মন্দবুদ্ধির শিশু" বলে স্কুল থেকে বের করে দিয়েছিল।
+নবিজি (সাঃ) এবং তাঁর সাথে সাহাবি হযরত বিশর ইবনে বারা (রাঃ) খাবারের টেবিলে বসলেন। নবিজি (সাঃ) রানের অংশ থেকে এক টুকরো মুখে নিলেন, কিন্তু গিলে ফেলার আগেই ওহীর মাধ্যমে জানতে পারলেন এতে বিষ রয়েছে। তিনি সাথে সাথে থুথু দিয়ে তা ফেলে দিলেন এবং বললেন: "এই হাড় আমাকে বলছে এতে বিষ মেশানো হয়েছে!"
 
-কিন্তু তিনি হাল ছাড়েননি। নিজের কৌতূহল ও পদার্থবিজ্ঞানের প্রতি গভীর ভালোবাসা তাঁকে নিয়ে যায় সাফল্যের শীর্ষ শিখরে। আপেক্ষিকতার তত্ত্ব (Theory of Relativity) আবিষ্কার করে তিনি হয়ে ওঠেন সর্বকালের সেরা বিজ্ঞানীদের একজন।`,
+কিন্তু ততক্ষণে হযরত বিশর (রাঃ) এক টুকরো গিলে ফেলেছিলেন এবং কিছুক্ষণের মধ্যেই শাহাদাত বরণ করেন।
 
-            'sc_jobs': `অ্যাপল কোম্পানির সহ-প্রতিষ্ঠাতা স্টিভ জবসকে তাঁর নিজের গড়ে তোলা কোম্পানি থেকেই একসময় বরখাস্ত করা হয়েছিল! এটি ছিল তাঁর জীবনের সবচেয়ে বড় ধাক্কা।
+সেই নারীকে ডেকে আনা হলো। নবিজি (সাঃ) জিজ্ঞেস করলেন: "তুমি কেন এমন কাজ করলে?"
+নারীটি দৃষ্টতার সাথে বলল: "আমি ভেবেছিলাম, আপনি যদি ভণ্ড রাজা হন তবে বিষ খেয়ে মারা যাবেন আর আমাদের মুক্তি মিলবে। আর যদি সত্যিই আল্লাহর রাসুল হন, তবে আল্লাহ আপনাকে জানিয়ে দেবেন।"
 
-কিন্তু তিনি ভেঙে পড়েননি। তিনি নিওক্সট (NeXT) ও পিক্সার (Pixar) নামের দুটি নতুন প্রতিষ্ঠান গড়ে তোলেন। পরবর্তীতে অ্যাপল তাঁকে পুনরায় ফিরিয়ে নেয় এবং তিনি আইফোন ও আইপ্যাডের মতো বৈপ্লবিক উদ্ভাবন দিয়ে বিশ্বকে চমকে দেন।`,
+উপস্থিত সাহাবিরা সেই নারীকে হত্যা করার অনুমতি চাইলেন। কিন্তু পরম সহনশীলতার প্রতীক রাসুলুল্লাহ (সাঃ) তাকে ব্যক্তিগতভাবে ক্ষমা করে দিলেন এবং মুক্তি দিলেন।`,
 
-            'sc_kfc': `কেএফসি (KFC)-এর প্রতিষ্ঠাতা কর্নেল হারল্যান্ড স্যান্ডার্স ৬৫ বছর বয়সে সম্পূর্ণ নিঃস্ব হয়ে পড়েন। তাঁর হাতে ছিল মাত্র ১০৫ ডলারের একটি সরকারি চেক।
+            'p_biday': `১০ম হিজরিতে রাসুলুল্লাহ (সাঃ) এক লাখ বিশ হাজারেরও বেশি সাহাবিকে সাথে নিয়ে জীবনে প্রথম ও শেষবারের মতো হজ পালন করেন, যা 'বিদায় হজ' নামে পরিচিত। আরাফাতের ময়দানে জাবালে রহমতের পাদদেশে দাঁড়িয়ে নবিজি (সাঃ) মানবজাতির উদ্দেশ্যে যে ভাষণ দিয়েছিলেন, তা কেয়ামত পর্যন্ত মানুষের অধিকারের সনদ।
 
-তিনি নিজের তৈরি ফ্রাইড চিকেনের রেসিপি নিয়ে ১০৯ বারের মতো রেস্তোরাঁয় ঘুরে প্রত্যাখ্যাত হন। অবশেষে ১০০০তম বারে এক রেস্তোরাঁ তাঁর রেসিপি গ্রহণে সম্মত হয়। আজ বিশ্বজুড়ে কেএফসি একটি বিশ্ববিখ্যাত ব্র্যান্ড।`,
+ভাষণের প্রধান প্রধান অংশসমূহ:
+১. **বর্ণবাদ বিলোপ:** "কোনো আরবের ওপর অনারবের, কিংবা অনারবের ওপর আরবের কোনো শ্রেষ্ঠত্ব নেই। সাদা মানুষের ওপর কালো মানুষের বা কালো মানুষের ওপর সাদা মানুষের কোনো প্রাধান্য নেই। শ্রেষ্ঠত্বের একমাত্র মাপকাঠি হলো তাকওয়া বা পরহেজগারি।"
+২. **নারীর অধিকার:** "তোমরা নারীদের বিষয়ে আল্লাহকে ভয় করো। তাদের ওপর তোমাদের যেমন অধিকার রয়েছে, তোমাদের ওপরও তাদের সমান অধিকার রয়েছে।"
+৩. **সুদ বিলুপ্তকরণ:** "জাহেলী যুগের সমস্ত সুদের বকেয়া বাতিল করা হলো। প্রথম সুদ হিসেবে আমার চাচা আব্বাসের সুদ মওকুফ করলাম।"
+৪. **রক্তপাত ও সম্পত্তি রক্ষা:** "তোমাদের রক্ত, তোমাদের ধন-সম্পদ এবং তোমাদের ইজ্জত আজকের এই দিন, এই মাস ও এই শহরের মতোই পবিত্র।"
 
-            'sc_rowling': `জে. কে. রোলিং যখন হ্যারি পটার লেখা শুরু করেন, তখন তিনি ছিলেন একজন বেকার, একাকী মা এবং চরম বিষণ্নতায় ভুগছিলেন। ১২টি প্রধান প্রকাশনা সংস্থা তাঁর পান্ডুলিপি বাতিল করে দিয়েছিল।
+ভাষণের শেষে নবিজি আকাশের দিকে হাত তুলে বললেন: "হে আল্লাহ! আমি কি আপনার বার্তা পৌঁছে দিয়েছি?" আকাশবাতাস মুখরিত করে লাখো সাহাবি আওয়াজ তুললেন: "হ্যাঁ, আপনি পৌঁছে দিয়েছেন!"`,
 
-কিন্তু তিনি নিজের লেখার ওপর বিশ্বাস হারাননি। অবশেষে ১৩ নম্বর প্রকাশনী তাঁর বই ছাপে। আজ তিনি বিশ্বের অন্যতম সফল লেখিকা এবং বই লিখে বিলিয়নিয়ার হওয়া প্রথম ব্যক্তি।`,
+            's_musab': `মক্কার কুরাইশ বংশের সবচেয়ে সুপুরুষ, মার্জিত এবং ধনী যুবকদের একজন ছিলেন হযরত মুসাব ইবনে উমাইর (রাঃ)। তাঁর পোশাক আসত সরাসরি ইয়েমেন থেকে। তিনি যখন মক্কার গলি দিয়ে হেঁটে যেতেন, তাঁর ব্যবহৃত দামি সুগন্ধির মদিরতায় চারপাশ মেহক হয়ে উঠত। মক্কার প্রতিটি তরুণী তাঁর বধূ হওয়ার স্বপ্ন দেখত।
 
-            'v_sabr': `কোরআনে আল্লাহ তাআলা ধৈর্য ও সবরের ওপর অত্যন্ত গুরুত্ব দিয়েছেন। সূরা বাকারা-র ১৫৩ নম্বর আয়াতে বলা হয়েছে:
-"হে মুমিনগণ! তোমরা ধৈর্য ও সালাতের মাধ্যমে সাহায্য প্রার্থনা করো। নিশ্চয়ই আল্লাহ ধৈর্যশীলদের সাথে আছেন।"
+কিন্তু ইসলামের সত্যের আলো যখন তাঁর হৃদয়ে প্রবেশ করল, তিনি গোপনে রাসুলুল্লাহ (সাঃ)-এর দরবারে গিয়ে ইসলাম গ্রহণ করলেন। তাঁর ধনকুবের মা খুনফাস যখন এই খবর পেলেন, তখন মুসাবকে ঘর থেকে বের করে দিলেন এবং সমস্ত সম্পত্তি থেকে বঞ্চিত করলেন।
 
-জীবনসংগ্রামে যেকোনো দুঃখ-কষ্ট ও পরীক্ষার সময়ে ভেঙে না পড়ে আল্লাহর ওপর ভরসা রাখা ও ধৈর্য ধারণ করাই মুমিনের আসল পরিচয়।`,
+যে মুসাব দামি রেশমি পোশাক পরতেন, তিনি রাসুল (সাঃ)-এর সাহচর্যে এসে খসখসে পশুর চামড়া দিয়ে নিজেকে ঢেকে নিলেন। অনাহারে তাঁর গায়ের চামড়া সাপের চামড়ার মতো উঠে যেত। নবিজি (সাঃ) তাঁকে মদিনায় ইসলামের প্রথম রাষ্ট্রদূত হিসেবে পাঠান। মুসাবের প্রজ্ঞা ও নম্রতায় মদিনার ঘরে ঘরে দাওয়াত পৌঁছে যায়।
 
-            'v_ilm': `ইসলামে জ্ঞান অর্জনকে পরম পবিত্র কাজ হিসেবে গণ্য করা হয়েছে। মহান আল্লাহর পক্ষ থেকে রাসুলুল্লাহ (সাঃ)-এর ওপর নাজিলকৃত প্রথম শব্দই ছিল— "ইকরা" (পড়ো)।
+অতঃপর উহুদের যুদ্ধ এলো। মুসাব (রাঃ) মুসলিম বাহিনীর পতাকাবাহী ছিলেন। যুদ্ধের এক পর্যায়ে শত্রুরা তাঁকে ঘিরে ফেলে এবং তাঁর ডান হাত কেটে ফেলে। তিনি বাম হাতে পতাকা চেপে ধরেন। শত্রুরা বাম হাতও কেটে ফেলে। তখন তিনি দুই কাটা হাতের অবশিষ্ট অংশ দিয়ে পতাকা বুকের সাথে জড়িয়ে ধরে সুরা আল-ইমরানের আয়াত তেলাওয়াত করতে করতে শাহাদাত বরণ করেন।
 
-রাসুলুল্লাহ (সাঃ) হাদীসে এরশাদ করেছেন: "জ্ঞান অর্জন করা প্রতিটি মুসলিম নর-নারীর ওপর ফরজ।" (ইবনে মাজাহ)। সঠিক জ্ঞানই মানুষকে আলো ও অন্ধকারের পার্থক্য বুঝতে সাহায্য করে।`,
+যুদ্ধশেষে তাঁর দেহ পাওয়া গেল। কিন্তু দেখা গেল তাঁকে কাফন দেওয়ার মতো পুরো কাপড় নেই! তাঁর নিজের একটা ছোট চাদর ছিল, যা দিয়ে মাথা ঢাকলে পা বের হয়ে যেত, আর পা ঢাকলে মাথা বের হয়ে যেত!
+রাসুলুল্লাহ (সাঃ) চোখের পানি ফেলে বললেন: "চাদর দিয়ে মাথা ঢেকে দাও আর পায়ের ওপর ঘাস দিয়ে দাও।" নবিজি সাহাবিদের দিকে তাকিয়ে বললেন: "আমি মক্কায় মুসাবের চেয়ে সুন্দর ও দামি পোশাক পরা কাউকেও দেখিনি, আর আজ সে এক টুকরো ছেঁড়া কাপড়ে ধুলোয় শুয়ে আছে!"`,
 
-            'v_parents': `পিতা-মাতার সম্মান ও সেবা করার বিষয়ে কোরআনুল কারীমে বারবার নির্দেশ দেওয়া হয়েছে। সূরা বনী ইসরাইলে আল্লাহ বলেন:
-"তোমাদের পিতা-মাতা অথবা তাঁদের একজন যদি তোমার জীবদ্দশায় বার্ধক্যে উপনীত হন, তবে তাঁদের উফ্ (বিরক্তি সূচক শব্দ) বলো না এবং তাঁদের সাথে সম্মানের সাথে কথা বলো।"
+            's_abubakar': `নবুওয়াতের সূচনা থেকে শুরু করে নবিজির ইন্তেকাল পর্যন্ত হযরত আবু বকর সিদ্দিক (রাঃ) ছিলেন নবিজির ছায়াসঙ্গী। তিনি ছিলেন কুরাইশদের অন্যতম ধনী ব্যবসায়ী, কিন্তু ইসলামের জন্য তিনি নিজের সমস্ত সম্পদ বিলিয়ে দিয়েছিলেন।
 
-হাদিসে এসেছে— "পিতার সন্তুষ্টিতে আল্লাহর সন্তুষ্টি এবং পিতার অসন্তুষ্টিতে আল্লাহর অসন্তুষ্টি।"`,
+৯ম হিজরিতে সুদূর রোমান সাম্রাজ্যের বিরুদ্ধে অভিযানের জন্য রাসুলুল্লাহ (সাঃ) 'তাবুক যুদ্ধের' ডাক দিলেন। তখন মদিনায় চরম খরা ও অভাব চলছিল। রাসুল (সাঃ) সাহাবিদের যার যা আছে তা নিয়ে বায়তুল মালে দান করার আহ্বান জানালেন।
 
-            'v_justice': `ইসলাম সমাজে সমান অধিকার ও ন্যায়বিচারের ওপর সর্বোচ্চ গুরুত্ব আরোপ করেছে। সূরা মায়িদার ৮ নম্বর আয়াতে আল্লাহ নির্দেশ দেন:
-"কোনো সম্প্রদায়ের শত্রুতা যেন তোমাদের বিচার ও ইনসাফ বর্জনে প্ররোচিত না করে। তোমরা ইনসাফ করো, এটাই তাকওয়ার অধিক নিকটবর্তী।"
+হযরত ওমর (রাঃ) মনে মনে ভাবলেন: "আজ আমি আবু বকরকে হারিয়ে দেব!" ওমর (রাঃ) তাঁর ঘরের অর্ধেক সম্পদ এনে নবিজির সামনে রাখলেন।
+রাসুল (সাঃ) বললেন: "হে ওমর! পরিবারের জন্য কী রেখে এসেছ?"
+ওমর বললেন: "হে আল্লাহর রাসুল! অর্ধেক এনেছি আর অর্ধেক পরিবারে রেখে এসেছি।"
 
-ব্যক্তিগত পছন্দ-অপছন্দের ঊর্ধ্বে উঠে সত্যের পক্ষে দাঁড়ানোই ইসলামের মূল শিক্ষা।`,
+কিছুক্ষণ পর হযরত আবু বকর (রাঃ) এলেন। তিনি একটি ছোট পোটলা নবিজির কদমে রাখলেন। নবিজি পোটলা খুলে দেখলেন— তাতে ঘরের থালাবাসন, পোশাক, এমনকি মহিলাদের সুই-সুতা পর্যন্ত রয়েছে!
 
-            'sci_namaz': `আধুনিক নিউরোসাইন্স ও মেডিকেল সায়েন্সে প্রমাণিত হয়েছে যে, সেজদার সময়ে মানুষের মস্তিষ্ক হৃদপিণ্ডের চেয়ে নিচে অবস্থান করে। 
+রাসুলুল্লাহ (সাঃ) মুচকি হেসে জিজ্ঞেস করলেন: "হে আবু বকর! তুমি ঘরের লোকজনের জন্য কী রেখে এসেছ?"
+আবু বকর (রাঃ) দুই চোখ বেয়ে অশ্রু ফেলে উত্তর দিলেন:
+<div class="quote-box">"হে আল্লাহর রাসুল! আমি আমার পরিবারের জন্য কেবল পরম করুণাময় আল্লাহ এবং তাঁর রাসুলকে রেখে এসেছি!"</div>
 
-এর ফলে অভিকর্ষ বলের প্রভাবে প্রচুর পরিমাণ রক্ত সরাসরি মস্তিষ্কের ফ্রন্টাল লোবে পৌঁছায়। এতে স্মৃতিশক্তি বৃদ্ধি পায়, মানসিক চাপ কমে এবং স্নায়ুতন্ত্র শিথিল হয়। বিজ্ঞানীদের মতে, এটি মস্তিষ্কের স্বাস্থ্যরক্ষায় দারুণ কার্যকর।`,
+ওমর (রাঃ) কেঁদে ফেললেন এবং বললেন, "আল্লাহর কসম! আমি কখনোই আবু বকরকে কোনো ভালো কাজে পেছনে ফেলতে পারব না।"`,
 
-            'sci_universe': `১৯২৯ সালে মহাকাশবিজ্ঞানী এডউইন হাবল আবিষ্কার করেন যে মহাবিশ্ব ক্রমাগত প্রসারিত হচ্ছে। অথচ ১৪০০ বছর আগে পবিত্র কোরআনের সূরা আজ-জারিয়াতের ৪৭ নম্বর আয়াতে আল্লাহ তাআলা ঘোষণা করেছেন:
-"আমি স্বীয় ক্ষমতাবলে মহাবিশ্ব সৃষ্টি করেছি এবং নিশ্চয়ই আমি একে সম্প্রসারিত করছি।"
+            's_umar': `হযরত ওমর ইবনুল খাত্তাব (রাঃ)-এর ১০ বছরের শাসন আমলে ইসলামী সাম্রাজ্য পারস্য (ইরান) থেকে শুরু করে পুরো রোমান সাম্রাজ্য পর্যন্ত বিস্তৃত হয়েছিল। জেরুজালেম মুসলিমদের হস্তগত হয়েছিল। কিন্তু এই বিশাল সাম্রাজ্যের খলিফা হয়েও ওমরের জীবনযাপন ছিল সাধারণ এক ফকীরের মতো। তাঁর জামায় ১৬টি তালি লাগানো থাকত।
 
-এটি কোরআনের এক অকাট্য বৈজ্ঞানিক অলৌকিকতা।`,
+প্রজাদের অবস্থা স্বচক্ষে দেখার জন্য খলিফা ওমর (রাঃ) রাতের আঁধারে ছদ্মবেশে মদিনার গলিতে ঘুরে বেড়াতেন।
 
-            'sci_embryo': `মায়ের গর্ভে একটি মানবশিশুর সৃষ্টির পর্যায়গুলো নিয়ে আধুনিক ভ্রূণবিজ্ঞান (Embryology) যে তথ্য আবিষ্কার করেছে, কোরআনে তা ১৪০০ বছর আগেই নির্ভুলভাবে বর্ণিত হয়েছে।
+এক রাতে মদিনার সীমান্ত এলাকায় টহল দেওয়ার সময় তিনি একটি তাঁবুর ভেতর থেকে বাচ্চাদের কান্নার আওয়াজ শুনতে পেলেন। কাছে গিয়ে দেখলেন এক নারী চুলায় পাতিল বসিয়ে কাঠ জ্বালিয়ে ফুঁ দিচ্ছেন আর বাচ্চারা কান্না করছে।
 
-সূরা মুমিনুনের ১২-১৪ আয়াতে নুতফাহ (শুক্রবিন্দু), আলাক্বাহ (জমাট রক্তপিণ্ড), মুদগাহ (মাংসপিণ্ড) এবং হাড়ে মাংস জড়ানোর পর্যায়গুলো নিখুঁতভাবে বলা হয়েছে, যা বিজ্ঞানী কিথ মুরকেও অবাক করেছিল।`,
+ওমর (রাঃ) ভেতরে যাওয়ার অনুমতি নিয়ে জিজ্ঞেস করলেন: "বোন! বাচ্চারা কাঁদছে কেন?"
+নারীটি বলল: "আজ দুই দিন ধরে ঘরে এক দানা খাবার নেই। আমি পাতিলে শুধু পানি আর কিছু পাথর দিয়ে ফোটাচ্ছি, যাতে বাচ্চারা মনে করে রান্না হচ্ছে এবং কাঁদতে কাঁদতে একসময় ঘুমিয়ে পড়ে। আর আমাদের খলিফা ওমর! তিনি আমাদের কোনো খবরই রাখেন না!"
 
-            'sci_water': `আধুনিক বিজ্ঞান অনুযায়ী সমুদ্রের পানি বাষ্পীভূত হয়ে মেঘ গঠন করে এবং বায়ুমণ্ডলের সাহায্যে নির্দিষ্ট অঞ্চলে গিয়ে বৃষ্টিপাত ঘটায়। 
+ওমর (রাঃ) চমকে উঠলেন। তিনি নিজের পরিচয় না দিয়ে দ্রুত মদিনার বায়তুল মালে ছোটেন। নিজ হাতে এক বস্তা আটা, ঘি ও খেজুর পিঠে তুলে নেন। তাঁর গোলাম আসলাম বলল: "হে আমিরুল মুমিনীন! বস্তাটি আমার পিঠে দিন, আমি বয়ে নিয়ে যাই।"
 
-কোরআনের সূরা নূর এবং সূরা হিজরে বাতাসের মাধ্যমে মেঘমালাকে পুঞ্জীভূত করা এবং তার থেকে বৃষ্টির ফোঁটা ঝরে পড়ার প্রক্রিয়া অত্যন্ত বিজ্ঞানসম্মতভাবে ব্যাখ্যা করা হয়েছে, যা সেকালের কোনো মানুষের পক্ষে জানা সম্ভব ছিল না।`,
+ওমর (রাঃ) কেঁদে বললেন:
+<div class="highlight-box">"হে আসলাম! আজ তুমি আমার বোঝা বইবে, কিন্তু কেয়ামতের দিন আল্লাহর সামনে ওমরের পাপের বোঝা কে বইবে?"</div>
 
-            'f_kazi': `এক ধনী বণিকের একটি স্বর্ণের থলে চুরি হলে সে কাজীর কাছে বিচার চাইল। কাজী সাহেব সব সন্দেহভাজন ৩ জন সন্দেহভাজনকে ডেকে এনে সবাইকে সমান দৈর্ঘ্যের একটি করে কাঠ দিয়ে বললেন, "এটি জাদুকরী লাঠি! যে আসল চোর, রাতে তার লাঠি ২ ইঞ্চি লম্বা হয়ে যাবে।"
+খলিফা ওমর নিজে বস্তা বয়ে তাঁবুতে নিয়ে গেলেন। নিজ হাতে রুটি বানিয়ে বাচ্চাদের পেট ভরে খাওয়ালেন। বাচ্চাদের মুখে হাসি দেখে খলিফা পরম তৃপ্তি নিয়ে মদিনায় ফিরে এলেন।`,
 
-চোর মনে মনে ভয় পেয়ে গেল। সে ভাবল, "আমার লাঠি যদি ২ ইঞ্চি বেড়ে যায় তবে তো আমি ধরা পড়ে যাব!" তাই সে বুদ্ধি করে রাতেই তার লাঠিটি ২ ইঞ্চি কেটে ছোট করে রাখল। 
+            's_osman': `হযরত ওসমান ইবনে আফফান (রাঃ) ছিলেন মক্কার অন্যতম ধনী এবং বিনয়ী ব্যক্তিত্ব। তাঁর দানশীলতার জন্য তাঁকে 'গনী' বলা হতো এবং নবিজির দুই কন্যাকে পর্যায়ক্রমে বিয়ে করায় তাঁকে 'জুন নূরাইন' (দুই জ্যোতির অধিকারী) বলা হয়।
 
-সকালে কাজী সাহেব সবার লাঠি মেপে দেখলেন একজনের লাঠি ২ ইঞ্চি ছোট! চোরের মনস্তাত্ত্বিক দুর্বলতাকে কাজে লাগিয়ে কাজী সাহেব নিমেষেই চোর ধরে ফেললেন।`,
+মুসলিমরা যখন হিজরত করে মদিনায় এলো, তখন মদিনায় খাবার পানির তীব্র সংকট দেখা দিল। পুরো মদিনায় কেবল একটিই মিষ্টি পানির কুয়া ছিল— "বীর রুমা" (রুমা কুপ)। কিন্তু তার মালিক ছিল এক কৃপণ ইহুদি। সে মুসলিমদের কাছে চড়া দামে এক মগ পানি বিক্রি করত। গরিব সাহাবিদের পক্ষে পানি কেনা অসম্ভব হয়ে দাঁড়িয়েছিল।
 
-            'f_mollah': `একবার মোল্লা নাসিরুদ্দিনকে এক ধনী ব্যক্তি তাঁর বাড়িতে ধুমধাম করে দাওয়াত দিল। মোল্লা সাধারণ জরাজীর্ণ পোশাক পরে সেখানে গেলেন। কিন্তু দরোজা থেকে প্রহরী ও অতিথিরা তাঁকে পাত্তা দিল না, এমনকি ভালো খাবারও পরিবেশন করল না।
+রাসুলুল্লাহ (সাঃ) সাহাবিদের উদ্দেশ্যে বললেন: "তোমাদের মধ্যে এমন কে আছে, যে রুমা কুপ কিনে মুসলিমদের জন্য ওয়াকফ করে দেবে এবং জান্নাতে এর চেয়ে উত্তম ঝরনা লাভ করবে?"
 
-মোল্লা চুপচাপ বাড়ি ফিরে গিয়ে তাঁর সবচেয়ে দামী ও জাঁকজমকপূর্ণ রাজকীয় পোশাক পরে আবার দাওয়াতে হাজির হলেন। এবার সবাই তাঁকে খাতির করে সম্মান জানিয়ে টেবিলের সবচেয়ে ভালো ভালো খাবার তাঁর সামনে দিল।
+হযরত ওসমান (রাঃ) তৎক্ষণাৎ উঠে দাঁড়ালেন। তিনি ইহুদির কাছে গিয়ে পুরো কুয়াটি কেনার প্রস্তাব দিলেন। ইহুদি চালাকি করে বলল, সে পুরো কুয়া বেচবে না, অর্ধেক বেচবে— অর্থাৎ একদিন ইহুদি পানি বেচবে, আর একদিন ওসমান। ওসমান (রাঃ) ১২,০০০ দেরহাম দিয়ে অর্ধেক মালিকানা কিনে নিলেন।
 
-মোল্লা এবার অদ্ভুত এক কাজ করলেন! তিনি খাসির মাংস ও জর্দা চামচে নিয়ে তাঁর পোশাকের হাতায় মাখাতে মাখাতে বলতে লাগলেন— "খাও জামা, খাও! এই খাতির আর সুস্বাদু খাবার তো আমার জ্ঞানের জন্য নয়, তোমার চেহারার জন্য!" অতিথিরা তাঁদের ভুল বুঝতে পেরে লজ্জিত হলো।`,
+ওসমান (রাঃ) ঘোষণা দিলেন— তাঁর মালিকানার দিনে মদিনার যেকোনো মানুষ (মুসলিম বা অমুসলিম) যত খুশি পানি বিনামূল্যে নিয়ে যেতে পারবে।
+ফলাফল হলো— ওসমানের দিনে সবাই দুই দিনের পানি একসাথে ফ্রিতে সংগ্রহ করে নিত! ফলে ইহুদির দিনে আর কেউ পানি কিনতে যেত না। বাধ্য হয়ে ইহুদি বাকি অর্ধেক কুয়াও ওসমানের কাছে ৮,০০০ দেরহামে বিক্রি করে দেয়।
 
-            'f_elephant': `একবার চারজন অন্ধ ব্যক্তিকে একটি হাতি স্পর্শ করে বলতে বলা হলো হাতিটি দেখতে কেমন।
-১ম জন হাতির পা ধরে বলল, "হাতি হলো খামের বা খুঁটির মতো।"
-২য় জন হাতির লেজ ধরে বলল, "হাতি তো দড়ির মতো।"
-৩য় জন হাতির শুঁড় ধরে বলল, "হাতি মোটেও তা নয়, হাতি গাছের ডালের মতো।"
-৪র্থ জন হাতির পেট স্পর্শ করে বলল, "তোমরা সবাই ভুল বলছ, হাতি আসলে বিশাল দেওয়ালের মতো!"
+ওসমান (রাঃ) সম্পূর্ণ কুয়াটি সর্বসাধারণের জন্য দান করে দেন। সেই কুপ আজও মদিনায় বিদ্যমান এবং আজও তাঁর নামে ওয়াকফ সম্পত্তি পরিচালনা করা হয়।`,
 
-চারজনই নিজ নিজ অভিজ্ঞতায় সত্যি বলছিল, কিন্তু কেউ পুরো সত্যটা দেখেনি। বাস্তব জীবনেও আমরা অনেক সময় নিজেদের আংশিক জ্ঞান দিয়ে পুরো সত্য বিচার করতে গিয়ে ভুল বুঝি।`,
+            's_ali': `রাসুলুল্লাহ (সাঃ)-এর চাচাতো ভাই, জামাতা এবং ইসলামের চতুর্থ খলিফা হযরত আলী (রাঃ) ছিলেন বীরত্ব, জ্ঞান ও প্রজ্ঞার এক মহীরুহ। নবিজি তাঁর সম্পর্কে বলেছিলেন: "আমি জ্ঞানের শহর, আর আলী হলো তার দরজা।"
 
-            'f_donkey': `এক কৃষকের একটি বৃদ্ধ গাধা দুর্ঘটনাবশত এক গভীর শুকনো কুয়ায় পড়ে গেল। গাধাটি ঘণ্টার পর ঘণ্টা চিৎকার করে কাঁদতে লাগল। কৃষক চিন্তা করল গাধাটি এমনিতেও বৃদ্ধ হয়ে গেছে এবং কুয়াটিও বুজিয়ে ফেলা দরকার, তাই গাধাটিকে উদ্ধার করা লাভজনক নয়।
+৭ম হিজরিতে খাইবারের যুদ্ধে ইহুদিদের দুর্গগুলো একের পর এক বিজিত হচ্ছিল, কিন্তু তাদের সবচেয়ে শক্ত ও সুরক্ষিত দুর্গ "কামুস" বিজিত হচ্ছিল না। টানা বেশ কিছুদিন চেষ্টা করেও মুসলিমরা সাফল্য পাচ্ছিল না।
 
-সে প্রতিবেশীদের ডেকে এনে কোদাল দিয়ে কুয়ায় মাটি ফেলতে শুরু করল। গাধাটি প্রথমে পিঠে মাটি পড়ে ভয় পেয়ে গেল। কিন্তু একটু পরেই সে এক বুদ্ধি বের করল— যখনই তার পিঠে মাটি পড়ছে, সে গা ঝাড়া দিয়ে মাটি নিচে ফেলে দিচ্ছে এবং সেই মাটির ওপর এক ধাপ উঠে দাঁড়াচ্ছে!
+এক রাতে রাসুলুল্লাহ (সাঃ) ঐতিহাসিক ঘোষণা দিলেন:
+<div class="highlight-box">"আগামীকাল আমি এমন এক ব্যক্তির হাতে বিজয়ের পতাকা তুলে দেব, যে আল্লাহ ও তাঁর রাসুলকে ভালোবাসে এবং যাকে আল্লাহ ও তাঁর রাসুল ভালোবাসেন। তার হাত দিয়েই আল্লাহ বিজয় দান করবেন!"</div>
 
-এভাবে ক্রমাগত মাটি ঝেড়ে উপরে উঠতে উঠতে একসময় কুয়া মাটিতে পূর্ণ হয়ে গেল এবং গাধাটি লাফ দিয়ে বাইরে চলে এলো! 
+পরদিন সকালে সব সাহাবি আশায় বুক বাঁধলেন। নবিজি (সাঃ) ডাকলেন: "আলী কোথায়?" সাহাবিরা বললেন, আলীর চোখে তীব্র ব্যথা, তিনি দেখতে পাচ্ছেন না। নবিজি আলীকে ডেকে আনলেন এবং নিজ হাতে তাঁর চোখে মুখের লালা লাগিয়ে দিলেন। অলৌকিকভাবে আলীর চোখের ব্যথা মুহূর্তের মধ্যে ভালো হয়ে গেল।
 
-**শিক্ষা:** জীবনে আপনার ওপর নিক্ষিপ্ত প্রতিটি আঘাত ও কাদা ছিটানোকে হতাশ না হয়ে ওপরে ওঠার সিঁড়ি বানাতে শিখুন।`
+নবিজি তাঁর হাতে পতাকা তুলে দিলেন। হযরত আলী (রাঃ) একাকী বীরদর্পে দুর্গের সামনে গিয়ে দাঁড়ালেন। ইহুদিদের বিখ্যাত মায়াবী বীর ‘মারহাব’ চ্যালেঞ্জ জানিয়ে সামনে এলো। আলী (রাঃ) এক কোপে মারহাবের হেলমেট ও মাথা দুই খণ্ড করে দিলেন।
+
+যুদ্ধের এক পর্যায়ে আলীর হাতের ঢাল পড়ে গেলে, তিনি দুর্গের সুবিশাল লৌহকপাট এক হাতে উপড়ে ফেলে সেটিকে ঢাল হিসেবে ব্যবহার করেন! খাইবার বিজিত হয় এবং আলীর নাম ইতিহাসে ‘আসাদুল্লাহ’ (আল্লাহর সিংহ) হিসেবে অমর হয়ে থাকে।`,
+
+            's_belal': `হযরত বিলাল ইবনে রবাহ (রাঃ) ছিলেন হাবশার (ইথিওপিয়া) একজন কৃষ্ণাঙ্গ দাস। মক্কার পাষাণ কাফের উমাইয়া ইবনে খালাফের অধীনে তিনি দাসত্ব করতেন। কিন্তু যখনই তাঁর হৃদয়ে ইসলামের সত্যের বাণী পৌঁছাল, তিনি গোপনে ঈমান আনলেন।
+
+উমাইয়া যখন বিলালের ইসলাম গ্রহণের কথা জানতে পারল, তখন তাঁর ওপর শুরু হলো পাশবিক নির্যাতন। মক্কার প্রখর গ্রীষ্মে যখন মরুভূমির বালু আগুনের মতো জ্বলত, তখন বিলালকে খালি গায়ে সেই উত্তপ্ত বালুতে শুইয়ে দেওয়া হতো। তাঁর বুকের ওপর বিশাল ভারী পাথর চাপা দেওয়া হতো যাতে তিনি নিঃশ্বাস নিতে না পারেন।
+
+উমাইয়া বলত: "মুহাম্মদের রবকে অস্বীকার কর, তবেই তোকে ছাড়ব!"
+কিন্তু বুকের ওপর পাথরের চাপে ছটফট করতে থাকা বিলালের মুখ থেকে কেবল একটি শব্দই নির্গত হতো:
+<div class="quote-box">"আহাদ! আহাদ!" (আল্লাহ এক! আল্লাহ এক!)</div>
+
+তাঁকে গলায় দড়ি বেঁধে মক্কার বখাটে ছেলেদের হাতে দেওয়া হতো, তারা তাঁকে পাথুরে রাস্তায় টেনেহিঁচড়ে নিয়ে বেড়াত। কিন্তু বিলালের ঈমানি দৃঢ়তা একটুও টলেনি।
+
+অবশেষে হযরত আবু বকর সিদ্দিক (রাঃ) প্রভূত অর্থ দিয়ে উমাইয়ার কাছ থেকে বিলালকে কিনে নেন এবং মুক্ত করে দেন। নবিজি (সাঃ) বিলালকে এতটাই ভালোবাসতেন যে, মক্কা বিজয়ের দিন কাবার ছাদ থেকে আযান দেওয়ার পবিত্র দায়িত্ব বিলালকেই দিয়েছিলেন। তিনিই হয়ে ওঠেন ইসলামের প্রথম মুয়াজ্জিন।`,
+
+            's_khaled': `হযরত খালেদ ইবনুল ওয়ালিদ (রাঃ) ছিলেন সামরিক ইতিহাসের এক মহাবীর। ইসলাম গ্রহণের পূর্বে তিনি উহুদের যুদ্ধে মক্কার অশ্বারোহী বাহিনীর নেতৃত্বে ছিলেন। ৮ হিজরিতে তিনি ইসলাম গ্রহণ করেন। নবিজি (সাঃ) তাঁর যুদ্ধকৌশলে মুগ্ধ হয়ে তাঁকে "সাইফুল্লাহ" (আল্লাহর উন্মুক্ত তলোয়ার) উপাধিতে ভূষিত করেন।
+
+মুতার যুদ্ধে যখন তিনজন মুসলিম সেনাপতি একের পর এক শহীদ হন, তখন মাত্র ৩,০০০ মুসলিম সৈন্যের মুখোমুখি ছিল ২,০০,০০০ রোমান সৈন্য! এমন চরম নিশ্চিত পরাজয়ের মুখে খালেদ (রাঃ) ব্যাটালিয়নের নেতৃত্ব নেন। তিনি রাতের আঁধারে সৈন্য সাজানোর বিশেষ কৌশল অবলম্বন করে রোমানদের মনে ভয় ঢুকিয়ে দেন যে মদিনা থেকে নতুন সাহায্য এসেছে। তিনি অলৌকিকভাবে পুরো বাহিনীকে নিরাপদে বের করে আনেন।
+
+তিনি জীবনের ছোট-বড় ১০০টিরও বেশি যুদ্ধে অংশগ্রহণ করেছিলেন এবং একটি যুদ্ধেও পরাজিত হননি!
+
+মৃত্যুশয্যায় শুয়ে খালেদ (রাঃ) কেঁদে ফেলেছিলেন। তিনি তাঁর গা ও বুকের দাগ দেখিয়ে সহযোদ্ধাকে বলেছিলেন: "আমার শরীরে এমন কোনো ইঞ্চি জায়গা খালি নেই যেখানে তলোয়ার, বল্লম বা তীরের আঘাত লাগেনি। আমি যুদ্ধের ময়দানে শহীদ হতে চেয়েছিলাম, কিন্তু আজ আমি পশুর মতো বিছানায় মারা যাচ্ছি!"
+
+সহযোদ্ধা উত্তর দিয়েছিলেন: "হে খালেদ! নবিজি আপনাকে 'আল্লাহর তলোয়ার' উপাধি দিয়েছেন। আল্লাহর তলোয়ার কখনো যুদ্ধে ভেঙে পড়তে পারে না, তাই যুদ্ধক্ষেত্রে আপনার মৃত্যু হয়নি!"`,
+
+            's_salman': `পারস্যের (ইরান) এক অগ্নিপূজক সম্ভ্রান্ত পরিবারে জন্ম গ্রহণ করেছিলেন হযরত সালমান ফারসি (রাঃ)। তাঁর পিতা ছিলেন অগ্নিকুণ্ডের প্রধান পুরোহিত। কিন্তু সালমানের মনে সত্য জানার তৃষ্ণা ছিল। তিনি বুঝতে পেরেছিলেন আগুন কোনো উপাস্য হতে পারে না।
+
+সত্য ধর্মের খোঁজে তিনি ঘর ছাড়লেন। প্রথমে খ্রিস্টান পাদ্রিদের সান্নিধ্যে এলেন। এক বয়স্ক পাদ্রি মৃত্যুর আগে তাঁকে বললেন: "আরবে শেষ নবীর আগমন ঘটেছে। তিনি উপহার গ্রহণ করেন কিন্তু সদকা খান না, আর তাঁর দুই কাঁধের মাঝে নবুওয়াতের মোহর রয়েছে।"
+
+এই নবীর সন্ধানে সালমান এক আরব ক্যারাভানের সাথে রওনা হলেন। কিন্তু কাফেলাটি তাঁর সাথে বিশ্বাসঘাতকতা করে তাঁকে এক ইহুদির কাছে দাস হিসেবে বিক্রি করে দিল। ইহুদি তাঁকে মদিনার এক খেজুর বাগানে কাজের জন্য নিয়ে এলো।
+
+মদিনায় রাসুল (সাঃ)-এর আসার খবর শুনে সালমান খেজুর বাগান থেকে ছুটে এলেন। তিনি পরীক্ষামূলকভাবে নবিজিকে কিছু খেজুর দিয়ে বললেন "এটি সদকা।" নবিজি তা সাহাবিদের দিলেন কিন্তু নিজে খেলেন না। পরদিন তিনি খেজুর নিয়ে বললেন "এটি উপহার।" নবিজি তা সানন্দে খেলেন। এরপর নবিজির চাদর সরে গেলে সালমান পিঠে নবুওয়াতের মোহর দেখে নবিজিকে জড়িয়ে ধরে কেঁদে ফেললেন।
+
+নবিজি (সাঃ) ও সাহাবিরা প্রভূত অর্থ ও খেজুর গাছ রোপণ করে ইহুদির হাত থেকে সালমানকে মুক্ত করেন। সালমান (রাঃ) পরবর্তীতে খন্দকের যুদ্ধে পরিখা খননের ঐতিহাসিক পরামর্শ দিয়ে মদিনাকে রক্ষা করেন।`,
+
+            'sc_lincoln': `আমেরিকার ১৬তম প্রেসিডেন্ট আব্রাহাম লিংকনের জীবনকে বলা হয় ব্যর্থতার মধ্য দিয়ে সফলতায় পৌঁছানোর সবচেয়ে বড় ঐতিহাসিক দলিল। দারিদ্র্যের কারণে তিনি মাত্র ১ বছর স্কুলে পড়ার সুযোগ পেয়েছিলেন, বাকিসব শিখেছেন নিজে বই পড়ে।
+
+তাঁর জীবনের ব্যর্থতার তালিকাটি দেখুন:
+• ১৮৩১ সালে ব্যবসা শুরু করে সম্পূর্ণ দেউলিয়া হন।
+• ১৮৩২ সালে স্টেট লেজিসলেচার নির্বাচনে হেরে যান।
+• ১৮৩৩ সালে পুনরায় ব্যবসায় চরম ধস নামে।
+• ১৮৩৫ সালে তাঁর প্রিয়তমা অ্যান রুটলেজ মৃত্যুবরণ করেন, যা তাঁকে মানসিকভাবে ভেঙে ফেলে।
+• ১৮৩৬ সালে তিনি গুরুতর মানসিক অবসাদে (Nervous Breakdown) ভোগেন।
+• ১৮৪৩, ১৮৪৮, ১৮৫৪ এবং ১৮৫৮ সালে পরপর সিনেট ও কংগ্রেস নির্বাচনে পরাজিত হন।
+
+টানা ৩০ বছর ধরে ডজন খানেক নির্বাচনে পরাজয়, প্রিয়জনদের মৃত্যু এবং চরম দারিদ্র্য সত্ত্বেও তিনি নিজের লক্ষ্য থেকে একচুলও সরে যাননি।
+
+অবশেষে ১৮৬০ সালে তিনি মার্কিন যুক্তরাষ্ট্রের ১৬তম প্রেসিডেন্ট নির্বাচিত হন। তিনি আমেরিকার সিভিল ওয়ার (গৃহযুদ্ধ) বন্ধ করেন এবং দাসপ্রথা বিলুপ্ত করে কোটি কোটি মানুষকে পরাধীনতার শৃঙ্খল থেকে মুক্ত করেন।
+
+**শিক্ষা:** পরাজয় মানে পথ শেষ হয়ে যাওয়া নয়; পরাজয় হলো নতুন করে আরও বেশি অভিজ্ঞতা নিয়ে শুরু করার একটি সুযোগ।`,
+
+            'sc_edison': `আধুনিক বিশ্বের আলোর কারিগর টমাস আলভা এডিসনকে ছোটবেলায় স্কুল থেকে বের করে দেওয়া হয়েছিল। তাঁর প্রাথমিক বিদ্যালয়ের শিক্ষক এক চিঠিতে লিখেছিলেন: "এই শিশুটি এতই মন্দবুদ্ধির যে তাকে কোনো কিছু শেখানো অসম্ভব!"
+
+এডিসনের মা চিঠিটি পড়ে কাঁদলেন এবং এডিসনকে বললেন: "শিক্ষক লিখেছেন তুমি নাকি অনেক মেধাবী, এই স্কুল তোমার জন্য ছোট, তাই আমিই তোমাকে ঘরে পড়াব।"
+
+এডিসন বৈজ্ঞানিক পরীক্ষা-নিরীক্ষা শুরু করলেন। তিনি যখন বৈদ্যুতিক বাল্ব আবিষ্কারের গবেষণা শুরু করেন, তখন ফিলামেন্ট তৈরির উপযুক্ত উপাদান খুঁজতে গিয়ে তিনি টানা ৯৯৯ বার ব্যর্থ হন! তাঁর ল্যাবরেটরির সহকারীরা হতাশ হয়ে পড়েছিল এবং কাজ বন্ধ করার অনুরোধ করেছিল।
+
+এডিসন মুচকি হেসে বলেছিলেন:
+<div class="highlight-box">"আমি ৯৯৯ বার ব্যর্থ হইনি! বরং আমি ৯৯৯টি এমন উপাদান আবিষ্কার করেছি, যা দিয়ে ফিলামেন্ট তৈরি করা সম্ভব নয়!"</div>
+
+অবশেষে ১,০০০ তম বারে তিনি সুতির সুতা পুড়িয়ে কার্বন ফিলামেন্ট তৈরি করে সফলভাবে প্রথম বৈদ্যুতিক বাল্ব জ্বালান। এছাড়াও তিনি গ্রামোফোন ও মোশন পিকচার ক্যামেরা আবিষ্কার করে বিশ্বকে বদলে দেন।`,
+
+            'sc_einstein': `আলবার্ট আইনস্টাইনকে বলা হয় মানব ইতিহাসের সর্বকালের শ্রেষ্ঠ বৈজ্ঞানিক মস্তিষ্ক। কিন্তু তাঁর শৈশব ছিল সম্পূর্ণ বিপরীত।
+
+তিনি ৪ বছর বয়স পর্যন্ত কোনো কথা বলতে পারতেন না। ৯ বছর বয়স পর্যন্ত স্পষ্টভাবে রিডিং পড়তে পারতেন না। তাঁর শিক্ষকরা মনে করেছিলেন তিনি মানসিকভাবে পিছিয়ে পড়া এক শিশু। জুরিখের পলিটেকনিক স্কুলের ভর্তি পরীক্ষায় তিনি গণিত ছাড়া বাকি সব বিষয়ে ফেল করেছিলেন!
+
+প্যাটেন্ট অফিসে সাধারণ একজন ক্লার্কের চাকরি করার সময় তিনি নিজের কৌতূহল ধরে রেখেছিলেন। ১৯০৫ সালে ক্লার্কের অবসরে তিনি ৪টি এমন গবেষণাপত্র প্রকাশ করেন যা পদার্থবিজ্ঞানের মূল ভিত্তি নাড়িয়ে দেয়। তিনি আবিষ্কার করেন আপেক্ষিকতার তত্ত্ব (Theory of Relativity) এবং $E=mc^2$ সমীকরণ।
+
+আইনস্টাইন বলতেন: "আমার বিশেষ কোনো প্রতিভা নেই, আমি কেবল কৌতূহল ধরে রাখার ব্যাপারে প্রচণ্ড জেদী!" ১৯২১ সালে তিনি নোবেল পুরস্কার লাভ করেন।`,
+
+            'sc_jobs': `অ্যাপল কোম্পানির সহ-প্রতিষ্ঠাতা স্টিভ জবসের জীবন ছিল এক রোমাঞ্চকর রোলার কোস্টার। কলেজে পড়ার খরচ বাবা-মার পক্ষে চালানো সম্ভব ছিল না দেখে তিনি পড়ালেখা ছেড়ে দেন। বন্ধুদের গ্যারেজে বসে ১৯৭৬ সালে স্টিভ ওজনিয়াককে সাথে নিয়ে তিনি 'অ্যাপল' শুরু করেন।
+
+কঠিন পরিশ্রমের মাধ্যমে ১০ বছরে গ্যারেজের ২ জনের অ্যাপল ২ বিলিয়ন ডলারের কোম্পানিতে পরিণত হয়। কিন্তু ১৯৮৫ সালে পরিচালনা পর্ষদের সাথে মতভেদের কারণে স্টিভ জবসকে তাঁর নিজের হাতে গড়ে তোলা কোম্পানি থেকেই বরখাস্ত (Fire) করা হয়!
+
+এটি ছিল তাঁর জীবনের সবচেয়ে বড় ধাক্কা। কিন্তু তিনি দমে যাননি। তিনি পরবর্তী কয়েক বছরে 'NeXT' এবং 'Pixar' নামের দুটি বৈপ্লবিক কোম্পানি গড়ে তোলেন। পিক্সার পরবর্তীতে অ্যানিমেশন জগতের শীর্ষে পৌঁছায়।
+
+১৯৯৬ সালে দেউলিয়া হওয়ার পথে থাকা অ্যাপল বাধ্য হয়ে NeXT-কে কিনে নেয় এবং স্টিভ জবস সিইও হিসেবে অ্যাপলে ফিরে আসেন। এরপর তিনি আইপড (iPod), আইফোন (iPhone) এবং আইপ্যাড (iPad) দিয়ে প্রযুক্তি বিশ্বকে নতুন রূপ দেন।`,
+
+            'sc_kfc': `বিশ্ববিখ্যাত 'KFC' (Kentucky Fried Chicken)-এর প্রতিষ্ঠাতা কর্নেল হারল্যান্ড স্যান্ডার্সের জীবনের গল্প প্রমাণ করে যে সফল হতে বয়সের কোনো সীমা থাকে না।
+
+তিনি ৫ বছর বয়সে বাবাকে হারান। ১৬ বছর বয়সে স্কুল ছাড়েন। জীবনে তিনি কন্ডাক্টর, মেকানিক, বীমা এজেন্ট ও ট্রেন চালক হিসেবে কাজ করেছেন এবং প্রতিটা চাকরি থেকেই বরখাস্ত হয়েছেন। ৪০ বছর বয়সে তিনি এক সার্ভিস স্টেশনে ফ্রাইড চিকেন বিক্রি শুরু করেন।
+
+৬৫ বছর বয়সে এসে তাঁর রেস্তোরাঁটি হাইওয়ে রোড পরিবর্তনের কারণে বন্ধ হয়ে যায়। তিনি সম্পূর্ণ নিঃস্ব হয়ে পড়েন। তাঁর হাতে ছিল কেবল সরকারের দেওয়া ১০৫ ডলারের একটি সামাজিক নিরাপত্তা চেক।
+
+তিনি নিজের তৈরি বিশেষ 'চিকেন রেসিপি' নিয়ে একটি পুরানো গাড়ি নিয়ে বের হয়ে পড়েন। তিনি ১,০০৯টি রেস্তোরাঁয় গিয়ে তাঁর রেসিপি বিক্রির প্রস্তাব দেন এবং ১,০০৯ বারই প্রত্যাখ্যাত হন!
+অবশেষে ১,০১০ তম রেস্তোরাঁ তাঁর রেসিপি গ্রহণে সম্মত হয়। আজ বিশ্বজুড়ে ১৫০টিরও বেশি দেশে কেএফসির হাজার হাজার আউটলেট রয়েছে।`,
+
+            'sc_rowling': `হ্যারি পটার সিরিজের লেখিকা জে. কে. রোলিংয়ের জীবন ছিল চরম হতাশা ও দারিদ্র্যে ভরা। 
+
+৩১ বছর বয়সে তিনি ছিলেন একজন ডিভোর্সি, বেকার এবং একাকী মা। অর্থাভাবে নিজের ও শিশুর খাবার জোটানো অসম্ভব ছিল। তিনি সরকারি ভাতার ওপর বেঁচে ছিলেন এবং চরম মানসিক অবসাদে (Clinical Depression) ভুগছিলেন। এমনকি তিনি আত্মহত্যার কথাও ভেবেছিলেন।
+
+এই চরম অন্ধকারের মাঝে বসে তিনি ক্যাফেতে কফির কাপ সামনে নিয়ে ম্যানুয়ালি টাইপরাইটারে 'হ্যারি পটার' লেখা শুরু করেন। পান্ডুলিপি তৈরি হওয়ার পর তিনি একে একে ১২টি বিখ্যাত প্রকাশনা সংস্থায় জমা দেন। কিন্তু ১২টি প্রকাশনীই তাঁর বই ছাপতে অস্বীকার করে এবং বলে: "শিশুদের এই বই কেউ পড়বে না!"
+
+অবশেষে 'ব্লুমসবারি' নামের এক ছোট প্রকাশনী বইটির মাত্র ৫০০ কপি ছাপে। এর পরের ইতিহাস সবার জানা। হ্যারি পটার বিশ্বের সবচেয়ে বেশি বিক্রি হওয়া বইয়ের তালিকায় স্থান পায়। রোলিং হয়ে ওঠেন বই লিখে প্রথম বিলিয়নিয়ার হওয়ার রেকর্ড গড়া লেখিকা।`,
+
+            'sc_jackma': `চীনের ই-কমার্স জায়ান্ট 'আলি বাবা' (Alibaba)-র প্রতিষ্ঠাতা জ্যাক মা শৈশবে একাধিকবার স্কুলের পরীক্ষায় ফেল করেছিলেন।
+
+হাইস্কুল পাসের পর তিনি তিনবার বিশ্ববিদ্যালয়ে ভর্তি পরীক্ষায় ফেল করেন। তিনি ৩০টি ভিন্ন ভিন্ন প্রতিষ্ঠানে চাকরির জন্য আবেদন করেছিলেন এবং ৩০ বারই বাদ পড়েছিলেন!
+তিনি বলেন: "যখন আমাদের শহরে KFC প্রথম এলো, ২৪ জন লোক চাকরির ইন্টারভিউ দিয়েছিল। ২৩ জনের চাকরি হয়েছিল, শুধু আমি একাই বাদ পড়েছিলাম!" এমনকি পুলিশে চাকরির জন্য আবেদন করে ৫ জনের মধ্যে ৪ জনের চাকরি হলেও তিনিই বাদ পড়েছিলেন।
+
+১৯৯৫ সালে তিনি প্রথম ইন্টারনেটের সাথে পরিচিত হন। ১৯৯৯ সালে নিজের ফ্ল্যাটে ১৭ জন বন্ধুকে একত্রিত করে তিনি ই-কমার্স সাইট 'আলি বাবা' শুরু করেন। বহু বছর তাদের কোনো লাভ হয়নি, কিন্তু তিনি বিশ্বাস হারাননি। আজ আলি বাবা বিশ্বের অন্যতম বৃহত্তম ই-কমার্স প্রতিষ্ঠান এবং জ্যাক মা চীনের শীর্ষ ধনী ব্যক্তিদের একজন।`,
+
+            'v_sabr': `দৈনন্দিন জীবনের নানা দুঃখ-কষ্ট, হতাশা ও প্রতিকূলতায় মানুষের একমাত্র আত্মিক আশ্রয় হলো ধৈর্য (সবর)। সুরা বাকারা-র ১৫৩ নম্বর আয়াতে মহান আল্লাহ তাআলা ঘোষণা করেন:
+
+<div class="highlight-box">"হে ঈমানদারগণ! তোমরা ধৈর্য ও সালাতের মাধ্যমে সাহায্য প্রার্থনা করো। নিশ্চয়ই আল্লাহ ধৈর্যশীলদের সাথে আছেন।"</div>
+
+**আয়াতের বিস্তৃত শিক্ষা:**
+১. **সবরের অর্থ:** সবর মানে কেবল হাত গুটিয়ে বসে থাকা নয়; বরং বিপদ-আপদে ভেঙে না পড়ে মানসিক দৃঢ়তা বজায় রাখা এবং আল্লাহর বিধানের ওপর অবিচল থেকে চেষ্টা চালিয়ে যাওয়া।
+২. **আল্লাহর প্রতিশ্রুতি:** আল্লাহ বলেননি তিনি কেবল নামাযীদের সাথে আছেন, বরং বলেছেন তিনি "ধৈর্যশীলদের সাথে আছেন"। অর্থাৎ বিপদে যে ব্যক্তি ধৈর্য ধরে, আল্লাহর শক্তি ও সাহায্য সরাসরি তার সাথে থাকে।`,
+
+            'v_ilm': `পবিত্র কোরআনের প্রথম নাজিলকৃত বাণী কোনো ইবাদতের নির্দেশ ছিল না; বরং তা ছিল জ্ঞান অর্জনের নির্দেশ। সুরা আলাক-এর ১-৫ নম্বর আয়াতে আল্লাহ বলেন:
+
+<div class="quote-box">"পড়ো তোমার রবের নামে, যিনি সৃষ্টি করেছেন। সৃষ্টি করেছেন মানুষকে জমাট রক্তপিণ্ড হতে। পড়ো, আর তোমার রব মহা মহিমান্বিত, যিনি কলমের সাহায্যে শিক্ষা দিয়েছেন।"</div>
+
+**তাফসির ও গুরুত্ব:**
+ইসলামে জ্ঞান অর্জনকে প্রতিটি মুসলিম নর-নারীর ওপর ফরজ (আবশ্যক) করা হয়েছে। অশিক্ষিত ও অন্ধ অনুকরণকারী সমাজ কখনো উন্নত হতে পারে না। বিজ্ঞান, দর্শন, চিকিৎসা এবং দ্বীনের সঠিক জ্ঞান অর্জন করার মাধ্যমেই মানুষ সৃষ্টির সেরা জীব (আশরাফুল মাখলুকাত) হিসেবে মর্যাদা পায়।`,
+
+            'v_parents': `পিতা-মাতার প্রতি সন্তানের দায়িত্ব নিয়ে সুরা বনী ইসরাইলের ২৩-২৪ নম্বর আয়াতে আল্লাহ অত্যন্ত কঠোর ও মমতাময়ী ভাষায় নির্দেশ দিয়েছেন:
+
+<div class="highlight-box">"তোমাদের রব নির্দেশ দিয়েছেন যে, তোমরা তাঁকে ছাড়া অন্য কারো ইবাদত করবে না এবং পিতা-মাতার সাথে ভালো ব্যবহার করবে। তাঁদের একজন বা উভয়ই যদি তোমাদের জীবদ্দশায় বার্ধক্যে উপনীত হন, তবে তাঁদের উফ্ (বিরক্তি সূচক শব্দ) বলো না, তাঁদের সাথে ঝিঁঝিঁ করো না; বরং তাঁদের সাথে সম্মানের সাথে কথা বলো।"</div>
+
+**হাদিসের শিক্ষা:**
+রাসুলুল্লাহ (সাঃ) বলেছেন: "পিতার সন্তুষ্টিতেই আল্লাহর সন্তুষ্টি এবং পিতার অসন্তুষ্টিতেই আল্লাহর অসন্তুষ্টি।" অন্য হাদিসে তিনি বলেছেন: "তোমার জান্নাত বা জাহান্নাম হলেন তোমার মাতা-পিতা।" বার্ধক্যে পিতা-মাতার সেবা করাই জান্নাত অর্জনের সবচেয়ে সহজ পথ।`,
+
+            'v_justice': `সমাজ ও রাষ্ট্রীয় জীবনে ইনসাফ বা ন্যায়বিচার প্রতিষ্ঠার ব্যাপারে সুরা মায়িদার ৮ নম্বর আয়াতে আল্লাহ আদেশ করেন:
+
+<div class="quote-box">"হে মুমিনগণ! তোমরা আল্লাহর উদ্দেশ্যে ন্যায়বিচারে দৃঢ় প্রতিষ্ঠিত থাকো এবং কোনো সম্প্রদায়ের প্রতি শত্রুতা যেন তোমাদের ইনসাফ ত্যাগ করতে প্ররোচিত না করে। ইনসাফ করো, এটাই তাকওয়ার অধিক নিকটবর্তী।"</div>
+
+**শিক্ষা:**
+নিজের আত্মীয়, বন্ধু বা দলের স্বার্থ হলেও সত্যের পক্ষে থাকতে হবে। শত্রুর সাথেও বিচারে কোনো অন্যায় করা যাবে না। ন্যায়বিচারই একটি সভ্য সমাজের মূল ভিত্তি।`,
+
+            'v_duha': `যখন রাসুলুল্লাহ (সাঃ)-এর ওপর কিছুদিনের জন্য ওহী নাজিল বন্ধ ছিল, তখন মক্কার কাফেররা ঠাট্টা করে বলছিল: "মুহাম্মদের রব তাকে ছেড়ে গেছেন এবং তার ওপর রাগান্বিত হয়েছেন।" এতে নবিজি অত্যন্ত ব্যথিত ও চিন্তিত হয়ে পড়েছিলেন।
+
+তখন আল্লাহ তাআলা সুরা আদ-দুহা নাজিল করে নবিজির মনকে শান্ত করেন:
+<div class="highlight-box">"তোমার রব তোমাকে কখনো পরিত্যাগ করেননি এবং তোমার ওপর রাগান্বিত হননি। আর নিশ্চয়ই তোমার জন্য পরবর্তী সময় পূর্ববর্তী সময়ের চেয়ে উত্তম।"</div>
+
+**জীবনমুখী শিক্ষা:** জীবনের যেকোনো কঠিন সময়ে যখন মনে হবে সব পথ বন্ধ হয়ে গেছে, চারপাশ অন্ধকার— তখন এই সুরা মনে করিয়ে দেয় যে আল্লাহ তাঁর বান্দাকে কখনো ভুলে যান না। কষ্টের পরেই স্বস্তি আসে।`,
+
+            'sci_namaz': `আধুনিক নিউরোসাইন্স ও মেডিকেল সায়েন্সের গবেষণায় নামাজ বা সালাতের শারীরিক ও মানসিক উপকারিতা নিয়ে চমকপ্রদ তথ্য উঠে এসেছে।
+
+সেজদা (Prostration) হলো সালাতের সবচেয়ে গুরুত্বপূর্ণ রুকন। যখন একজন মানুষ সেজদায় যায়, তখন তার মাথা ও মস্তিষ্ক হৃদপিণ্ডের চেয়ে নিচে অবস্থান করে।
+
+**মেডিকেল সুফল:**
+১. **মস্তিষ্কে রক্তপ্রবাহ:** অভিকর্ষ বলের কারণে রক্তের প্রবাহ সরাসরি মস্তিষ্কের ফ্রন্টাল লোবে (Frontal Lobe) পৌঁছায়। সাধারণ অবস্থায় সোজা দাঁড়িয়ে থাকলে মস্তিষ্কে এত বেশি রক্ত পৌঁছাতে পারে না।
+২. **স্ট্রেস ও অ্যাংজাইটি হ্রাস:** ফ্রন্টাল লোবে রক্ত প্রবাহ বৃদ্ধির ফলে মানসিক চাপ, দুশ্চিন্তা ও হতাশা হ্রাসে সহায়ক এনজাইম ক্ষরিত হয়।
+৩. **স্মৃতিশক্তি বৃদ্ধি:** নিউরোলজিস্টদের মতে, নিয়মিত সেজদার অভ্যাস মস্তিষ্কের নিউরনগুলোকে সতেজ রাখে, যা একাগ্রতা ও স্মৃতিশক্তি বৃদ্ধি করে।
+
+১৪০০ বছর আগে প্রবর্তিত এই ইবাদতটি আজ আধুনিক বিজ্ঞানের চিকিৎসাবিজ্ঞানে এক অলৌকিক নিয়ামত হিসেবে প্রমাণিত।`,
+
+            'sci_universe': `১৯২৯ সালে বিখ্যাত মার্কিন জ্যোতির্বিজ্ঞানী এডউইন হাবল (Edwin Hubble) মাউন্ট উইলসন অবজারভেটরির টেলিস্কোপ দিয়ে পর্যবেক্ষণ করে আবিষ্কার করেন যে, মহাবিশ্বের গ্যালাক্সিগুলো একে অপরের থেকে দূরে সরে যাচ্ছে— অর্থাৎ মহাবিশ্ব ক্রমাগত প্রসারিত (Expanding) হচ্ছে।
+
+অথচ এই তথ্য আবিষ্কারের ১৪০০ বছর আগে পবিত্র কোরআনের সুরা আজ-জারিয়াতের ৪৭ নম্বর আয়াতে স্পষ্ট ভাষায় বলা হয়েছে:
+
+<div class="highlight-box">"আমি স্বীয় ক্ষমতাবলে মহাবিশ্ব সৃষ্টি করেছি এবং নিশ্চয়ই আমি একে সম্প্রসারিত করছি।"</div>
+
+যে যুগে মানুষের ধারণা ছিল মহাবিশ্ব স্থির ও অপরিবর্তনশীল, সে যুগে মরুভূমির বুকে নাজিল হওয়া কোরআনে মহাবিশ্বের সম্প্রসারণের কথা বলা এক অকাট্য বৈজ্ঞানিক অলৌকিকতা।`,
+
+            'sci_embryo': `কানাডার টরন্টো বিশ্ববিদ্যালয়ের অ্যানাটমি বিভাগের প্রধান ও বিশ্বখ্যাত ভ্রূণবিজ্ঞানী প্রফেসর ড. কিথ মুর (Dr. Keith Moore) কোরআনের সুরা মুমিনুনের ১২-১৪ নম্বর আয়াত পড়ে হতবাক হয়ে গিয়েছিলেন।
+
+কোরআনে মায়ের গর্ভে মানব শিশুর বিকাশের ধাপগুলো এভাবে বর্ণিত হয়েছে:
+১. **নুতফাহ (Nutfah):** শুক্রাণু ও ডিম্বাণুর ফোঁটা।
+২. **আলাক্বাহ (Alaqah):** জোকের মতো ঝুলে থাকা জমাট রক্তপিণ্ড।
+৩. **মুদগাহ (Mudghah):** চর্বিত মাংসপিণ্ড।
+৪. **অস্থিপাঞ্জর ও মাংস পেশী:** প্রথমে হাড় তৈরি হয়, তারপর তা মাংসপেশী দিয়ে ঢেকে দেওয়া হয়।
+
+মাইক্রোস্কোপ আবিষ্কারের আগে চোখের অগোচরে মায়ের গর্ভে শিশুর এই নিখুঁত ধারাবাহিক বৃদ্ধি জানা মানুষের পক্ষে অসম্ভব ছিল। ড. কিথ মুর পরবর্তীতে স্বীকার করেন যে, এই তথ্য পরম সৃষ্টিকর্তা আল্লাহর পক্ষ থেকেই আসা সম্ভব।`,
+
+            'sci_ocean': `সুরা আর-রহমানের ১৯-২০ নম্বর আয়াতে আল্লাহ তাআলা প্রকৃতির একটি বিস্ময়কর নিয়মের কথা উল্লেখ করেছেন:
+
+<div class="quote-box">"তিনি পাশাপাশি দুই সমুদ্র প্রবাহিত করেছেন। উভয়ের মাঝখানে রয়েছে এক অন্তরাল (Barrier), যা তারা অতিক্রম করতে পারে না।"</div>
+
+**আধুনিক সমুদ্রবিজ্ঞান (Oceanography):**
+আধুনিক বিজ্ঞানীরা স্যাটেলাইট ও গবেষণার মাধ্যমে দেখেছেন যে, যেখানে দুটি মহাসমুদ্র (যেমন ভূমধ্যসাগর ও আটলান্টিক মহাসাগর) বা মিষ্টি নদী ও নোনা সমুদ্রের পানি একত্রিত হয়, সেখানে তাদের ঘনত্ব, তাপমাত্রা ও লবণাক্ততার পার্থক্যের কারণে পানির মাঝে এক অদৃশ্য প্রাচীর বা 'ইনক্লাইনড ব্যারিয়ার' তৈরি হয়। ফলে দুটি পানি পাশাপাশি প্রবাহিত হলেও একে অপরের সাথে পুরোপুরি মিশে যায় না!`,
+
+            'sci_iron': `সুরা হাদিদের ২৫ নম্বর আয়াতে আল্লাহ বলেন: "আর আমি নাজিল (অবতীর্ণ) করেছি লোহা, যার মধ্যে রয়েছে প্রচণ্ড শক্তি এবং মানুষের জন্য বহু কল্যাণ।"
+
+বিজ্ঞানীরা আবিষ্কার করেছেন যে লোহা (Iron) পৃথিবীর সাধারণ উপাদান থেকে তৈরি হয়নি। লোহার পরমাণু তৈরির জন্য যে পরিমাণ শক্তি ও তাপমাত্রার প্রয়োজন, তা পুরো সৌরজগতেও নেই। মহাশূন্যের বিশাল নক্ষত্রদের (Supernova explosion) বিস্ফোরণের ফলে উৎপন্ন লোহা উল্কাপাতের মাধ্যমে পৃথিবীতে পতিত হয়েছিল। কোরআনে "অবতীর্ণ করেছি" (নাজিল) শব্দটি ব্যবহার করে এর মহাজাগতিক উৎপত্তির দিকেই ইঙ্গিত দেওয়া হয়েছে।`,
+
+            'f_kazi': `এক ধনী বণিকের এক থলে স্বর্ণমুদ্রা চুরি হয়ে গেল। অনেক খোঁজাখুঁজি করেও কোনো হদিস মিলল না। সন্দেহ গিয়ে পড়ল বণিকের ঘরের তিন জন নতুন চাকরের ওপর। বণিক তাদেরকে কাজীর (বিচারক) দরবারে নিয়ে এলো।
+
+কাজী সাহেব অত্যন্ত বুদ্ধিমান লোক ছিলেন। তিনি বুঝতে পারলেন সাধারণ জিজ্ঞাসাবাদে আসল চোর মুখ খুলবে না, অপরাধীর মনস্তাত্ত্বিক দুর্বলতাকে কাজে লাগাতে হবে।
+
+তিনি তিন চাকরকে ডেকে একটি অন্ধকার ঘরে নিয়ে গেলেন। সবার হাতে সমান দৈর্ঘ্যের একটি করে সোজা কাঠের লাঠি দিয়ে বললেন:
+"এই লাঠিগুলো সাধারণ লাঠি নয়, এগুলো জাদুকরী লাঠি! আজ রাতে তোমরা এগুলো নিজের কাছে রাখবে। যে আসল চোর, রাতে জাদুর প্রভাবে তার লাঠিটি ঠিক ২ ইঞ্চি লম্বা হয়ে যাবে!"
+
+চাকররা ঘরে ফিরে গেল। আসল যে চোর ছিল, সে মনে মনে মহা চিন্তায় পড়ে গেল: "সবাই যদি সকালে একই সমান লাঠি দেখায়, আর আমারটা ২ ইঞ্চি লম্বা থাকে তবে তো আমি ধরা পড়ে যাব!" সে বুদ্ধি করে একটি করাত দিয়ে তার লাঠির শেষ অংশ থেকে মেপে ২ ইঞ্চি কেটে ছোট করে রাখল। সে ভাবল, ২ ইঞ্চি বাড়লে কেটে ফেলা ২ ইঞ্চির সমান হয়ে যাবে!
+
+পরদিন সকালে কাজী সাহেব সবাইকে ডেকে সবার হাতের লাঠি মেপে দেখলেন। দেখলেন দুইজনের লাঠি আগের মতোই সমান আছে, কিন্তু একজনের লাঠি ২ ইঞ্চি ছোট!
+
+কাজী সাহেব গর্জে উঠে বললেন: "এই লোকটাই আসল চোর!" চোর ভয়ে কাঁপতে কাঁপতে চুরির কথা স্বীকার করে নিল।`,
+
+            'f_mollah': `একবার গ্রামের এক ধনী মাতব্বর তাঁর বাড়িতে এক জাঁকজমকপূর্ণ ভোজের আয়োজন করলেন। শহরের বিখ্যাত ব্যক্তি ও আলেম মোল্লা নাসিরুদ্দিনকেও দাওয়াত দেওয়া হলো।
+
+মোল্লা নাসিরুদ্দিন সেদিন মাঠে কাজ করছিলেন। কাজের পোশাকেই ধুলোবালি মেখে তিনি সরাসরি মাতব্বরের প্রাসাদে চলে গেলেন। কিন্তু তাঁর পরনে ছিল জরাজীর্ণ ছেঁড়া জামা। প্রাসাদের ফটকে দাঁড়িয়ে থাকা প্রহরী ও ধনাঢ্য অতিথিরা মোল্লাকে দেখে অবহেলার চোখে তাকাল। তাকে মূল টেবিলে বসতে দেওয়া হলো না, এমনকি কেউ পাত্তা পর্যন্ত দিল না। এক কোণে সামান্য খাবার পেয়ে মোল্লা না খেয়ে চুপচাপ বের হয়ে এলেন।
+
+তিনি সোজা বাড়ি ফিরে গেলেন। নিজের আলমারি থেকে তাঁর সবচেয়ে দামি, রেশমি সুতায় বোনা রাজকীয় জোব্বা ও টুপি পরে সুগন্ধি লাগিয়ে পুনরায় ভোজের অনুষ্ঠানে হাজির হলেন।
+
+এবার দৃশ্য পুরোপুরি বদলে গেল! প্রহরীরা ঝুকে সালাম দিল, মাতব্বর নিজে এগিয়ে এসে সম্মান জানিয়ে মোল্লাকে প্রধান টেবিলে নিয়ে বসালেন। সামনে এনে দেওয়া হলো খাসির রোস্ট, পোলাও ও জর্দা।
+
+মোল্লা খাবার মুখে না দিয়ে এক অদ্ভুত কাজ শুরু করলেন! তিনি চামচ দিয়ে ঝোল ও রোস্ট নিয়ে নিজের দামি জোব্বার হাতা ও পকেটে মাখাতে লাগলেন এবং ফিসফিস করে বলতে লাগলেন:
+<div class="quote-box">"খাও আমার জামা, পেট ভরে খাও! এই সুস্বাদু খাবার তো আমার জ্ঞানের জন্য নয়, তোমার এই দামি চেহারার জন্য দেওয়া হয়েছে!"</div>
+
+উপস্থিত সবাই হাঁ করে তাকিয়ে রিল। মাতব্বর লজ্জিত হয়ে ক্ষমা চাইলেন। মোল্লা সবাইকে বুঝিয়ে দিলেন— মানুষের পোশাক দেখে নয়, মানুষকে তার গুণ ও চরিত্র দেখে সম্মান করা উচিত।`,
+
+            'f_elephant': `এক গ্রামে চারজন অন্ধ ব্যক্তি বাস করত। তারা কখনোই হাতি দেখেনি। একদিন গ্রামে এক সার্কাস দলের সাথে একটি বিশাল হাতি এলো। অন্ধ চারজন আবদার করল তারা হাতিটি স্পর্শ করে বুঝতে চায় হাতি দেখতে কেমন।
+
+হাতির কাছে তাদের নিয়ে যাওয়া হলো:
+১. প্রথম অন্ধ ব্যক্তি হাতির শক্ত ও মোটা পা স্পর্শ করে বলল: "ওহ! আমি বুঝে গেছি, হাতি আসলে একটা বিশাল খুঁটি বা গাছের গুঁড়ির মতো!"
+২. দ্বিতীয় অন্ধ ব্যক্তি হাতির লেজ ধরে বলল: "না না! তুমি ভুল বলছ, হাতি মোটেও খুঁটির মতো নয়, হাতি আসলে একটা মোটা দড়ির মতো!"
+৩. তৃতীয় অন্ধ ব্যক্তি হাতির শুঁড় স্পর্শ করে বলল: "তোমরা দুজনেই ভুল বলছ, হাতি তো অজগর সাপের মতো গোল আর নরম!"
+৪. চতুর্থ অন্ধ ব্যক্তি হাতির বিশাল পেট স্পর্শ করে চিৎকার করে বলল: "তোমরা সবাই পাগল হয়ে গেছ! হাতি কোনো দড়ি বা সাপের মতো নয়, হাতি হলো এক বিশাল শক্ত দেওয়ালের মতো!"
+
+চারজনই নিজ নিজ জায়গায় নিজেদের দেখা অংশের জন্য সত্যি বলছিল, কিন্তু কেউ পুরো সত্যটা বিচার করতে পারেনি। ফলে তাদের মধ্যে মারামারি লেগে গেল।
+
+**শিক্ষা:** বাস্তব জীবনে আমরা অনেকেই নিজেদের সাময়িক অভিজ্ঞতা বা আংশিক জ্ঞান দিয়ে পুরো সত্যকে বিচার করতে গিয়ে ভুল বুঝি। সম্পূর্ণ সত্য না জেনে চূড়ান্ত মন্তব্য করা উচিত নয়।`,
+
+            'f_donkey': `এক কৃষকের একটি বৃদ্ধ গাধা দুর্ঘটনাবশত এক গভীর শুকনো কুয়ায় পড়ে গেল। কুয়াটি এতই গভীর ছিল যে গাধাটি একা বের হতে পারছিল না। সে সাহায্য পাওয়ার জন্য ঘণ্টার পর ঘণ্টা বিকট শব্দে চিৎকার করে কাঁদতে লাগল।
+
+কৃষক এসে দেখল কুয়া থেকে গাধাকে তোলার কোনো উপায় নেই। সে চিন্তা করল— গাধাটি এমনিতেই বৃদ্ধ হয়ে গেছে, আর কুয়াটিও অনেকদিন ধরে শুকনো, তাই এটিকে বুজিয়ে ফেলা দরকার। গাধাকে উদ্ধার করার পেছনে সময় নষ্ট করা লাভজনক নয়।
+
+কৃষক প্রতিবেশীদের ডেকে আনল। সবাই কোদাল ও বেলচা হাতে নিয়ে কুয়ার ভেতর মাটি ও ময়লা ফেলতে শুরু করল।
+
+গাধাটি যখন বুঝতে পারল তার ওপর মাটি ফেলা হচ্ছে, সে ভয়ে আর যন্ত্রণায় আরও জোরে কাঁদতে লাগল। কিন্তু কিছুক্ষণ পর আশ্চর্যজনকভাবে গাধাটি শান্ত হয়ে গেল।
+
+কৃষক কুয়ার ভেতর তাকাতেই অবাক হয়ে গেল! গাধাটি এক অসাধারণ বুদ্ধি বের করেছে— যখনই তার পিঠে এক বেলচা মাটি পড়ছে, সে শরীর ঝাড়া দিয়ে মাটি নিচে ফেলে দিচ্ছে এবং সেই জমে থাকা মাটির ওপর এক ধাপ উঠে দাঁড়াচ্ছে!
+
+এভাবে প্রতিবার মাটি ঝেড়ে উপরে উঠতে উঠতে একসময় কুয়াটি মাটিতে পূর্ণ হয়ে গেল এবং গাধাটি আনন্দিত মনে লাফ দিয়ে কুয়া থেকে বাইরে চলে এলো!
+
+**শিক্ষা:** জীবন আপনার ওপর বহু আঘাত, অপমান ও হতাশার কাদা ছিটাবে। সেগুলোতে চাপা না পড়ে, সেগুলোকে ঝেড়ে ফেলে ওপরে ওঠার সিঁড়ি বানান।`
         };
 
-        // Trackers
+        // Page Navigation Trackers
         let currentCat = 'prophet';
         let currentSubCat = 'all';
 
-        // Initialize Page
+        // Page Load Init
         window.onload = function() {
             renderTier2(appData['prophet'].subCats);
             renderTier3();
         };
 
-        // Tier 1 Function (Fixed Event Passing)
+        // Tier 1 Function
         function loadCategory(catKey, evt) {
             currentCat = catKey;
             currentSubCat = 'all';
@@ -796,7 +1167,7 @@
             renderTier3();
         }
 
-        // Tier 2 Function (Fixed Dynamic Rendering)
+        // Tier 2 Function
         function renderTier2(subCats) {
             const tier2Bar = document.getElementById('tier2Bar');
             tier2Bar.innerHTML = '';
@@ -822,7 +1193,7 @@
             renderTier3();
         }
 
-        // Tier 3 Function (Card Rendering)
+        // Tier 3 Topic Grid Render
         function renderTier3() {
             const cardsGrid = document.getElementById('cardsGrid');
             cardsGrid.innerHTML = '';
@@ -837,26 +1208,32 @@
 
                     card.innerHTML = `
                         <div>
+                            <span class="card-badge"><i class="fa-solid fa-feather"></i> নিবন্ধ</span>
                             <h3>${topic.title}</h3>
                             <p>${topic.preview}</p>
                         </div>
-                        <div class="tier3-btn">সম্পূর্ণ বিস্তারিত পড়ুন</div>
+                        <div class="tier3-btn">
+                            <span>সম্পূর্ণ ঘটনাটি পড়ুন</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
                     `;
                     cardsGrid.appendChild(card);
                 }
             });
         }
 
-        // Modal Controls
+        // Modal Reader System
         function openModal(key, title) {
-            const content = fullDatabase[key] || "এই নিবন্ধটি খুব শীঘ্রই আরও বিস্তৃত তথ্যে আপডেট করা হবে।";
+            const content = fullDatabase[key] || "এই বিশেষ নিবন্ধটির বিস্তারিত অংশ শীঘ্রই সংকলন করে যুক্ত করা হবে।";
             document.getElementById('modalTitle').innerText = title;
             document.getElementById('modalBody').innerHTML = content;
             document.getElementById('modalOverlay').style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Stop page scrolling behind modal
         }
 
         function closeModal() {
             document.getElementById('modalOverlay').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
         }
 
         window.onclick = function(e) {
