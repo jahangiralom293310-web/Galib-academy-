@@ -3,19 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>শ্রদ্ধা, অনুশোচনা ও অধিকারের বিনীত স্মারকপত্র</title>
+    <title>শ্রদ্ধা, আত্মোপলব্ধি ও সম্পর্কের পুনর্জাগরণ</title>
+    <!-- Google Fonts & FontAwesome Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <style>
         :root {
-            --primary-glow: #38bdf8;
-            --secondary-glow: #818cf8;
-            --accent-gold: #fbbf24;
-            --bg-dark: #030712;
-            --card-glass: rgba(15, 23, 42, 0.75);
-            --border-glass: rgba(255, 255, 255, 0.12);
-            --text-main: #f8fafc;
-            --text-sub: #cbd5e1;
+            --bg-gradient: linear-gradient(135deg, #064e3b 0%, #022c22 40%, #0f172a 100%);
+            --card-bg: rgba(255, 255, 255, 0.96);
+            --card-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+            --text-dark: #0f172a;
+            --text-muted: #334155;
+            --emerald-main: #059669;
+            --emerald-dark: #047857;
+            --gold-accent: #d97706;
+            --blue-accent: #2563eb;
+            --danger-accent: #dc2626;
         }
 
         * {
@@ -26,418 +29,428 @@
         }
 
         body {
-            background: var(--bg-dark);
-            color: var(--text-main);
+            background: var(--bg-gradient);
+            color: var(--text-dark);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 20px;
             overflow-x: hidden;
-            perspective: 1200px;
+            perspective: 1000px;
         }
 
-        /* Ambient 3D Dynamic Background */
-        .orb {
+        /* Ambient Glowing Orbs for 3D Depth */
+        .ambient-orb {
             position: absolute;
             border-radius: 50%;
-            filter: blur(90px);
+            filter: blur(80px);
             z-index: 0;
             pointer-events: none;
-            animation: orbFloat 12s infinite alternate ease-in-out;
+            opacity: 0.6;
+            animation: pulse3D 10s infinite alternate ease-in-out;
         }
-        .orb-1 { width: 500px; height: 500px; background: rgba(56, 189, 248, 0.18); top: -10%; left: -10%; }
-        .orb-2 { width: 600px; height: 600px; background: rgba(129, 140, 248, 0.15); bottom: -15%; right: -10%; }
-        .orb-3 { width: 350px; height: 350px; background: rgba(251, 191, 36, 0.08); top: 40%; left: 40%; }
+        .orb-1 { width: 400px; height: 400px; background: #10b981; top: -5%; left: -5%; }
+        .orb-2 { width: 500px; height: 500px; background: #3b82f6; bottom: -10%; right: -5%; }
 
-        @keyframes orbFloat {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(40px, 50px) scale(1.15); }
+        @keyframes pulse3D {
+            0% { transform: scale(1) translate(0, 0); }
+            100% { transform: scale(1.15) translate(30px, 20px); }
         }
 
-        /* 3D Master Glass Stage */
-        .stage-container {
-            width: 92%;
-            max-width: 1000px;
+        /* Main Display Stage Container */
+        .master-card {
+            width: 100%;
+            max-width: 980px;
             min-height: 680px;
-            background: var(--card-glass);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border: 1px solid var(--border-glass);
-            border-radius: 32px;
-            padding: 45px;
+            background: var(--card-bg);
+            border-radius: 28px;
+            box-shadow: var(--card-shadow), 0 0 0 1px rgba(255, 255, 255, 0.3);
+            padding: 40px;
             position: relative;
             z-index: 10;
-            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8), 
-                        inset 0 1px 0 rgba(255, 255, 255, 0.2);
-            transform-style: preserve-3d;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease;
         }
 
-        /* Top Modern Progress Bar */
-        .progress-track {
+        /* Top High-Contrast Progress Bar */
+        .progress-container {
             width: 100%;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.06);
+            height: 10px;
+            background: #e2e8f0;
             border-radius: 20px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        .progress-fill {
+        .progress-bar-fill {
             height: 100%;
             width: 16.66%;
-            background: linear-gradient(90deg, var(--primary-glow), var(--secondary-glow), var(--accent-gold));
-            box-shadow: 0 0 15px var(--primary-glow);
-            transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            background: linear-gradient(90deg, var(--emerald-main), var(--blue-accent), var(--gold-accent));
+            border-radius: 20px;
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Slide Animation Logic */
+        /* Slide Transition Engine */
         .slide {
             display: none;
             opacity: 0;
-            transform: translateZ(-50px) rotateX(5deg);
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(20px);
+            transition: all 0.5s ease-in-out;
         }
 
         .slide.active {
             display: block;
             opacity: 1;
-            transform: translateZ(0) rotateX(0deg);
+            transform: translateY(0);
         }
 
+        /* Typography */
         h1 {
-            font-size: 2.3rem;
+            font-size: 2.2rem;
             font-weight: 700;
+            color: #064e3b;
             margin-bottom: 18px;
-            background: linear-gradient(90deg, #ffffff, #93c5fd, #fef08a);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            line-height: 1.35;
+            line-height: 1.3;
+            border-bottom: 3px solid #10b981;
+            display: inline-block;
+            padding-bottom: 5px;
         }
 
-        p.hero-text {
-            font-size: 1.12rem;
+        p.lead-text {
+            font-size: 1.18rem;
             line-height: 1.85;
-            color: var(--text-sub);
-            font-weight: 300;
-            margin-bottom: 25px;
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-bottom: 20px;
         }
 
-        /* 3D Visual Floating Card Frame */
-        .visual-3d-card {
+        /* 3D Visual Banner Element */
+        .hero-banner-3d {
             width: 100%;
-            height: 220px;
-            border-radius: 24px;
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.08), rgba(129, 140, 248, 0.04));
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 25px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(56, 189, 248, 0.1);
-            position: relative;
-            transform: translateZ(20px);
+            background: linear-gradient(135deg, #ecfdf5 0%, #dbeafe 100%);
+            border: 2px solid #a7f3d0;
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 20px rgba(5, 150, 105, 0.08);
+            transform: translateZ(10px);
         }
 
-        .visual-3d-card i {
-            font-size: 4.5rem;
-            color: var(--accent-gold);
-            filter: drop-shadow(0 0 20px rgba(251, 191, 36, 0.5));
-            animation: floatIcon 4s ease-in-out infinite;
+        .hero-banner-3d i {
+            font-size: 3.5rem;
+            color: var(--emerald-main);
+            margin-bottom: 10px;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+            animation: bounceSoft 3s infinite ease-in-out;
         }
 
-        @keyframes floatIcon {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-12px) scale(1.05); }
+        @keyframes bounceSoft {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
         }
 
-        .visual-3d-card span {
-            margin-top: 15px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #f1f5f9;
-            letter-spacing: 0.5px;
-        }
-
-        /* Timeline / Timeline Cards */
-        .journey-grid {
+        /* Card Grids & Layout Boxes */
+        .grid-layout {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 15px;
-            max-height: 360px;
+            gap: 16px;
+            max-height: 380px;
             overflow-y: auto;
             padding-right: 8px;
         }
 
-        .journey-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 18px;
+        .info-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-left: 5px solid var(--emerald-main);
+            border-radius: 14px;
             padding: 18px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
             transition: all 0.3s ease;
         }
 
-        .journey-card:hover {
-            border-color: var(--primary-glow);
-            background: rgba(56, 189, 248, 0.05);
-            transform: translateY(-4px);
+        .info-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            border-color: var(--emerald-main);
         }
 
-        .journey-title {
-            font-size: 1.1rem;
+        .card-header {
+            font-size: 1.15rem;
             font-weight: 700;
-            color: var(--primary-glow);
+            color: var(--emerald-dark);
             margin-bottom: 8px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .teacher-change-box {
-            background: rgba(239, 68, 68, 0.08);
-            border-left: 4px solid #ef4444;
-            padding: 12px 16px;
-            border-radius: 0 12px 12px 0;
+        .teacher-badge-box {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            border-left: 5px solid var(--danger-accent);
+            border-radius: 14px;
+            padding: 16px;
             margin-bottom: 12px;
         }
 
-        .teacher-flow {
-            font-size: 0.95rem;
-            color: #fca5a5;
-            font-weight: 500;
+        .teacher-flow-text {
+            font-size: 1rem;
+            color: #991b1b;
+            font-weight: 600;
+            margin-top: 5px;
         }
 
-        /* Strategy Cards */
-        .strategy-box {
-            background: rgba(255, 255, 255, 0.025);
-            border: 1px solid var(--border-glass);
-            border-radius: 20px;
-            padding: 22px;
-            margin-bottom: 15px;
+        /* High Priority Highlight Cards */
+        .feature-box {
+            background: #eff6ff;
+            border: 1.5px solid #bfdbfe;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 16px;
         }
 
-        .strategy-box h3 {
-            color: var(--accent-gold);
-            font-size: 1.25rem;
-            margin-bottom: 10px;
+        .feature-box h3 {
+            color: #1e40af;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .badge {
-            background: rgba(56, 189, 248, 0.2);
-            color: var(--primary-glow);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        /* Nav Controls */
-        .nav-bar {
+        /* Navigation Controls Bar */
+        .nav-controls {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-top: 25px;
             padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            border-top: 2px solid #f1f5f9;
         }
 
-        .btn-action {
-            background: linear-gradient(135deg, var(--primary-glow), var(--secondary-glow));
+        .btn-custom {
+            background: linear-gradient(135deg, var(--emerald-main), var(--emerald-dark));
             color: #ffffff;
             border: none;
-            padding: 14px 34px;
+            padding: 14px 32px;
             font-size: 1.05rem;
-            font-weight: 600;
+            font-weight: 700;
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 6px 25px rgba(56, 189, 248, 0.35);
+            box-shadow: 0 6px 18px rgba(5, 150, 105, 0.3);
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .btn-action:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.5);
+        .btn-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(5, 150, 105, 0.4);
+            background: linear-gradient(135deg, #10b981, var(--emerald-dark));
         }
 
-        .btn-action:disabled {
-            background: #334155;
+        .btn-custom:disabled {
+            background: #cbd5e1;
             box-shadow: none;
             cursor: not-allowed;
             transform: none;
-            opacity: 0.4;
         }
 
-        .btn-outline {
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: var(--text-sub);
+        .btn-secondary {
+            background: #ffffff;
+            border: 2px solid #cbd5e1;
+            color: var(--text-muted);
             box-shadow: none;
         }
 
-        .btn-outline:hover {
-            background: rgba(255, 255, 255, 0.08);
-            color: #ffffff;
+        .btn-secondary:hover {
+            background: #f8fafc;
+            border-color: #94a3b8;
+            color: var(--text-dark);
         }
 
+        /* Scrollbar customization */
         ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
     </style>
 </head>
 <body>
 
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
 
-    <div class="stage-container">
-        <div class="progress-track">
-            <div class="progress-fill" id="progressFill"></div>
+    <div class="master-card">
+        <!-- Top Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar-fill" id="progressBar"></div>
         </div>
 
+        <!-- SLIDE 1: Deep Apology & Reconcile -->
         <div class="slide active" id="slide1">
-            <div class="visual-3d-card">
+            <div class="hero-banner-3d">
                 <i class="fa-solid fa-hands-praying"></i>
-                <span>উস্তাদগণের মহিমান্বিত দরবারে বিনম্র নিবেদন</span>
+                <h2 style="color: var(--emerald-dark); font-size: 1.4rem;">উস্তাদগণের মহিমান্বিত দরবারে অনুতপ্ত ছাত্রদের আরজ</h2>
             </div>
-            <h1>ক্ষমা ও হৃদয়ের আকুল আকুতি</h1>
-            <p class="hero-text">
-                শ্রদ্ধাস্পদ উস্তাদবৃন্দ, বিগত তিন মাসের অনাকাঙ্ক্ষিত নীরবতা ও দূরত্বের জন্য আমরা আমাদের আত্মাকে অনুশোচনার গভীরতম জলে নিমজ্জিত করে ক্ষমা প্রার্থনা করছি। আমাদের উদ্দেশ্য কখনো শ্রদ্ধার সীমানা লঙ্ঘন করা ছিল না। আপনারা আমাদের ইলমের বাতিঘর; আপনাদের বিচ্ছেদ মানে আমাদের ভবিষ্যতের ঘোর অন্ধকার।
+            <h1>আমরা আন্তরিকভাবে ক্ষমা চাচ্ছি</h1>
+            <p class="lead-text">
+                শ্রদ্ধাস্পদ উস্তাদবৃন্দ, বিগত তিন মাসের অনাকাঙ্ক্ষিত দূরত্ব ও ভুল বোঝাবুঝির জন্য আমরা আমাদের অন্তর থেকে গভীর অনুশোচনা প্রকাশ করছি এবং ক্ষমা প্রার্থনা করছি। আমাদের উদ্দেশ্য কখনো আপনাদের অবাধ্য হওয়া ছিল না। আপনারা আমাদের ইলম ও আখলাকের মিনার; আপনাদের স্নেহ ও দিকনির্দেশনা ব্যতিরেকে আমাদের ভবিষ্যৎ অসম্পূর্ণ।
             </p>
         </div>
 
+        <!-- SLIDE 2: 10 Years Struggle & System Disturbance -->
         <div class="slide" id="slide2">
-            <h1>আমাদের ১০ বছরের শিক্ষাজীবন: এক করুণ বাস্তবতা</h1>
-            <p class="hero-text" style="margin-bottom: 15px;">আমাদের না-শেখা এবং পিছিয়ে পড়ার পেছনে রয়েছে বছরের পর বছর ধরে গড়ে ওঠা অনাকাঙ্ক্ষিত প্রতিবন্ধকতা:</p>
-            
-            <div class="journey-grid">
-                <div class="journey-card">
-                    <div class="journey-title"><i class="fa-solid fa-virus"></i> চতুর্থ-পঞ্চম শ্রেণী (করোনা মহামারী)</div>
-                    <p style="font-size:0.95rem; color:#94a3b8;">মহামারীর থাবায় প্রাতিষ্ঠানিক শিক্ষা স্তব্ধ ছিল। কেবল অ্যাসাইনমেন্ট দিয়ে কোনোমতে অতিক্রম করেছি, ফলে ভিত্তি দুর্বল থেকে যায়।</p>
-                </div>
-                <div class="journey-card">
-                    <div class="journey-title"><i class="fa-solid fa-compass-drafting"></i> সপ্তম-অষ্টম শ্রেণী (নতুন কারিকুলাম)</div>
-                    <p style="font-size:0.95rem; color:#94a3b8;">নতুন কারিকুলামে অভ্যস্ত হতে গিয়ে বিজ্ঞানের মৌলিক থিওরি ও গভীর জ্ঞানার্জন থেকে আমরা পুরোপুরি বঞ্চিত থেকে যাই।</p>
-                </div>
-                <div class="journey-card">
-                    <div class="journey-title"><i class="fa-solid fa-book-skull"></i> নবম শ্রেণী (বই প্রাপ্তিতে বিলম্ব ও সময় সংকট)</div>
-                    <p style="font-size:0.95rem; color:#94a3b8;">বছরের প্রথম ৪ মাস কোনো বই হাতে পাইনি। ৬ষ্ঠ মাসে পিটিএস পরীক্ষা হলো—যেখানে ৫ মিনিটও ক্লাস হয়নি! ৮ মাসের মাথায় আরমান স্যার অক্লান্ত চেষ্টা করলেও বিজ্ঞান আমাদের কাছে অধরাই রয়ে যায়।</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="slide" id="slide3">
-            <h1>সিস্টেমের সংকট: শিক্ষক পরিবর্তনের অস্থিরতা</h1>
-            <p class="hero-text" style="margin-bottom: 15px;">দশম শ্রেণীতে উঠেও আমাদের অস্থিরতার মুখোমুখি হতে হয়েছে। একটি বিষয়ের উপর বারবার শিক্ষক পরিবর্তিত হওয়ায় আমরা খাপ খাওয়াতে পারিনি:</p>
-
-            <div class="journey-grid">
-                <div class="teacher-change-box">
-                    <div style="font-weight:700; color:#f8fafc; margin-bottom:5px;">আরবি প্রথম পত্র (৪ বার পরিবর্তন)</div>
-                    <div class="teacher-flow">এনামুল হুজুর ➔ মমিনুল স্যার ➔ মাহবুব স্যার ➔ আব্দুল্লাহ স্যার</div>
-                </div>
-                <div class="teacher-change-box">
-                    <div style="font-weight:700; color:#f8fafc; margin-bottom:5px;">কুরআন মাজিদ (৪ বার পরিবর্তন)</div>
-                    <div class="teacher-flow">মাহবুব স্যার ➔ মমিনুল স্যার ➔ দিনুল স্যার ➔ দিনুল স্যার (বর্তমান)</div>
-                </div>
-                <div class="teacher-change-box">
-                    <div style="font-weight:700; color:#f8fafc; margin-bottom:5px;">বাংলা প্রথম পত্র (দীর্ঘ গ্যাপ ও পরিবর্তন)</div>
-                    <div class="teacher-flow">নীলিমা ম্যাম ➔ (১৫ দিন বন্ধ) ➔ রেহানা ম্যাম ➔ (ছুটি ও নতুন ইনস্ট্রাক্টর) ➔ রেহানা ম্যাম</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="slide" id="slide4">
-            <h1>বিষয়ভিত্তিক প্রস্তাবনা: সাপ্তাহিক চ্যাপ্টার টেস্ট</h1>
-            <p class="hero-text" style="margin-bottom: 15px;">যেহেতু পরীক্ষার মাত্র ১ মাস বাকি, আমরা সাধারণ ক্লাসের চেয়ে মূল্যায়নে মনোযোগ দিতে চাই:</p>
-
-            <div class="strategy-box">
-                <h3><i class="fa-solid fa-vihara"></i> কুরআন, হাদিস, আকায়িদ-ফিকহ, বাংলা ১ম ও ২য় <span class="badge">অধ্যায়ভিত্তিক পরীক্ষা</span></h3>
-                <p style="color:#cbd5e1; font-size:1rem; line-height:1.7;">
-                    কুরআনের তারকিব, তাহকিক ও জমির সংক্রান্ত জটিলতাগুলো আমরা উস্তাদদের থেকে বুঝে নেব। প্রতিদিন লেকচারের পরিবর্তে প্রতি সপ্তাহে নির্দিষ্ট সিলেবাসের উপর <strong>সাপ্তাহিক পরীক্ষা (Chapter-wise Exam)</strong> গ্রহণ করা হোক।
-                </p>
-            </div>
-
-            <div class="strategy-box">
-                <h3><i class="fa-solid fa-scissors"></i> কঠিন বিষয়সমূহে ৫০% (হাফ) সিলেবাস প্রস্তাবনা</h3>
-                <p style="color:#cbd5e1; font-size:1rem; line-height:1.7;">
-                    যে বিষয়গুলোতে আমরা পিছিয়ে আছি, সেগুলোতে কোনোপ্রকার দেখে পরীক্ষা বা ফাঁকি না দিয়ে শতভাগ নিখুঁত প্রস্তুতির জন্য ১ মাসের জন্য <strong>হাফ-সিলেবাসে</strong> পরীক্ষা নেওয়া হোক।
-                </p>
-            </div>
-        </div>
-
-        <div class="slide" id="slide5">
-            <h1>বিশেষ ম্যারাথন ক্লাস রূপরেখা (Block Classes)</h1>
-            <p class="hero-text" style="margin-bottom: 15px;">আরবি ভাষার অর্থ অনুধাবন ও ব্যাখ্যার দুর্বলতা কাটাতে আমাদের বিশেষ প্রস্তাবনা:</p>
-
-            <div class="strategy-box" style="border-color: var(--primary-glow); background: rgba(56, 189, 248, 0.04);">
-                <h3 style="color:var(--primary-glow);"><i class="fa-solid fa-clock-rotate-left"></i> টানা ৮ পিরিয়ড নিবিড় পাঠদান</h3>
-                <p style="color:#f8fafc; font-size:1.05rem; line-height:1.8;">
-                    সপ্তাহের নির্দিষ্ট একটি দিনে—<strong>আরবি প্রথম পত্র, আরবি দ্বিতীয় পত্র এবং বাংলা দ্বিতীয় পত্র</strong>—এই তিনটি বিষয়কে একসাথে রেখে প্রথম থেকে অষ্টম পিরিয়ড পর্যন্ত টানা ম্যারাথন ক্লাস পরিচালনা করা হোক। এতে বিষয়ের গভীরতা ও দখল অর্জিত হবে।
-                </p>
-            </div>
-        </div>
-
-        <div class="slide" id="slide6">
-            <div class="visual-3d-card" style="height: 160px;">
-                <i class="fa-solid fa-graduation-cap" style="font-size: 3.5rem;"></i>
-                <span>আমাদের কেবল একটি সুযোগ দিন</span>
-            </div>
-            <h1>উস্তাদদের প্রতি শেষ বিনীত আকুতি</h1>
-            <p class="hero-text">
-                প্রিয় শিক্ষকবৃন্দ, আমাদের সব ভুলত্রুটি মার্জনা করে আমাদের এই যুক্তিসঙ্গত ও আন্তরিক প্রস্তাবনাটি বিবেচনা করুন। আপনারদের নেক দোয়া ও দিকনির্দেশনা পেলে আমরা ইনশাআল্লাহ সমাগত পরীক্ষায় সেরা ফলাফল উপহার দেব।
+            <h1>আমাদের ১০ বছরের শিক্ষা-সংগ্রাম ও প্রতিবন্ধকতা</h1>
+            <p class="lead-text" style="margin-bottom: 12px; font-size: 1.05rem;">
+                আমাদের না-শেখা বা পিছিয়ে পড়ার পেছনে দীর্ঘ ১০ বছরের ধারাবাহিক কিছু অনাকাঙ্ক্ষিত পরিস্থিতি দায়ী:
             </p>
+
+            <div class="grid-layout">
+                <div class="info-card">
+                    <div class="card-header"><i class="fa-solid fa-virus" style="color:#d97706;"></i> ১ম-৫ম শ্রেণী (করোনা মহামারী)</div>
+                    <p style="font-size:0.98rem; color:#475569;">করোনার কারণে সরাসরি শিক্ষা থেকে বঞ্চিত ছিলাম। অ্যাসাইনমেন্ট দিয়ে অতিক্রম করায় বেসিক বা ভিত্তি গড়ে ওঠেনি।</p>
+                </div>
+                <div class="info-card">
+                    <div class="card-header"><i class="fa-solid fa-layer-group" style="color:#2563eb;"></i> ৭ম-৮ম শ্রেণী (নতুন কারিকুলাম)</div>
+                    <p style="font-size:0.98rem; color:#475569;">নতুন কারিকুলামের কারণে বিজ্ঞানের মূল থিওরি ও গভীর জ্ঞানার্জন থেকে আমরা পুরোপুরি বঞ্চিত ছিলাম।</p>
+                </div>
+                <div class="info-card">
+                    <div class="card-header"><i class="fa-solid fa-book-open" style="color:#dc2626;"></i> ৯মে বই সংকট ও ক্লাস স্থগিত</div>
+                    <p style="font-size:0.98rem; color:#475569;">প্রথম ৪ মাস বই পাইনি। ৬ মাসের মাথায় পরীক্ষা হলেও ৫ মিনিটও ক্লাস হয়নি! পরে আরমান স্যার ক্লাস নিলেও বিজ্ঞান ছিল অচেনা।</p>
+                </div>
+            </div>
         </div>
 
-        <div class="nav-bar">
-            <button class="btn-action btn-outline" id="prevBtn" onclick="moveSlide(-1)" disabled>
-                <i class="fa-solid fa-chevron-left"></i> পূর্ববর্তী
+        <!-- SLIDE 3: System Change - Teacher Swapping -->
+        <div class="slide" id="slide3">
+            <h1>ঘনঘন শিক্ষক পরিবর্তনের প্রশাসনিক সংকট</h1>
+            <p class="lead-text" style="margin-bottom: 12px; font-size: 1.05rem;">
+                ১০ম শ্রেণীতে উঠেও একই বিষয় বারবার নতুন শিক্ষকের কাছে যাওয়ায় আমরা খাপ খাওয়াতে পারিনি:
+            </p>
+
+            <div class="grid-layout">
+                <div class="teacher-badge-box">
+                    <div style="font-size: 1.1rem; font-weight: 700; color: #7f1d1d;"><i class="fa-solid fa-rotate"></i> আরবি প্রথম পত্র (৪ বার পরিবর্তন)</div>
+                    <div class="teacher-flow-text">এনামুল হুজুর ➔ মমিনুল স্যার ➔ মাহবুব স্যার ➔ আব্দুল্লাহ স্যার</div>
+                </div>
+                <div class="teacher-badge-box">
+                    <div style="font-size: 1.1rem; font-weight: 700; color: #7f1d1d;"><i class="fa-solid fa-rotate"></i> কুরআন মাজিদ (৪ বার পরিবর্তন)</div>
+                    <div class="teacher-flow-text">মাহবুব স্যার ➔ মমিনুল স্যার ➔ দিনুল স্যার ➔ দিনুল স্যার (বর্তমান)</div>
+                </div>
+                <div class="teacher-badge-box">
+                    <div style="font-size: 1.1rem; font-weight: 700; color: #7f1d1d;"><i class="fa-solid fa-user-clock"></i> বাংলা প্রথম পত্র (দীর্ঘ গ্যাপ)</div>
+                    <div class="teacher-flow-text">নীলিমা ম্যাম ➔ (১৫ দিন বন্ধ) ➔ রেহানা ম্যাম ➔ (ছুটি ও ইনস্ট্রাক্টর) ➔ রেহানা ম্যাম</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 4: Arabic, Religious & General Subjects Strategy -->
+        <div class="slide" id="slide4">
+            <h1>ধর্মীয় ও সাধারণ বিষয়ের বিশেষ প্রস্তুতি রূপরেখা</h1>
+            
+            <div class="feature-box">
+                <h3><i class="fa-solid fa-list-check"></i> অধ্যায়ভিত্তিক পরীক্ষা (Chapter-wise Test)</h3>
+                <p style="font-size: 1.02rem; color: #334155; line-height: 1.7;">
+                    <strong>কুরআন, হাদিস, আকায়িদ-ফিকহ, বাংলা ১ম ও ২য়:</strong> এই বিষয়গুলোতে আমরা সাধারণ ক্লাসের চেয়ে পরীক্ষা দিতে চাই। উস্তাদগণ কুরআনের তারকিব, তাহকিক ও জমির সংক্রান্ত নিয়ম বুঝিয়ে দেবেন এবং প্রতি সপ্তাহে রুটিন অনুযায়ী চ্যাপ্টার টেস্ট নেবেন।
+                </p>
+            </div>
+
+            <div class="feature-box" style="background: #f0fdf4; border-color: #86efac;">
+                <h3 style="color: #166534;"><i class="fa-solid fa-bolt"></i> টানা ৮ পিরিয়ড ম্যারাথন ব্লকে ক্লাস</h3>
+                <p style="font-size: 1.02rem; color: #334155; line-height: 1.7;">
+                    <strong>আরবি ১ম, আরবি ২য় ও বাংলা ২য়:</strong> আরবি না বোঝার দুর্বলতা কাটাতে সপ্তাহে নির্দিষ্ট একদিন ১ম থেকে ৮ম পিরিয়ড পর্যন্ত এই ৩টি বিষয়ের উপর নিবিড় ও টানা ক্লাস পরিচালিত হবে।
+                </p>
+            </div>
+        </div>
+
+        <!-- SLIDE 5: English 2nd, Math & Science Subjects Plan -->
+        <div class="slide" id="slide5">
+            <h1>ইংরেজি ২য়, গণিত ও বিজ্ঞান বিষয়সমূহের প্রস্তাবনা</h1>
+            
+            <div class="grid-layout">
+                <div class="info-card">
+                    <div class="card-header"><i class="fa-solid fa-file-lines"></i> ইংরেজি ২য় (Type-wise)</div>
+                    <p style="font-size:0.98rem; color:#334155;">বোর্ডের প্রশ্নের নিয়ম এক থাকে। স্যার আমাদের নিয়মভিত্তিক টাইপ ভাগ করে শিট দিলে আমাদের শিখতে অত্যন্ত সুবিধা হবে।</p>
+                </div>
+                <div class="info-card">
+                    <div class="card-header"><i class="fa-solid fa-calculator"></i> গণিত বিষয়ক নিবেদন</div>
+                    <p style="font-size:0.98rem; color:#334155;">অধ্যাপক স্যারের প্রতি পূর্ণ শ্রদ্ধা রেখেই আমাদের বিনীত আরজ—প্রস্তুতির সুবিধার্থে আমাদের 'মমিনুল স্যার'-কে গণিত ক্লাসে দেওয়া হলে আমরা উপকৃত হব।</p>
+                </div>
+                <div class="info-card" style="grid-column: 1 / -1; border-left-color: #2563eb;">
+                    <div class="card-header"><i class="fa-solid fa-flask"></i> বিজ্ঞান বিষয়সমূহ (পদার্থ, রসায়ন, জীববিজ্ঞান)</div>
+                    <p style="font-size:0.98rem; color:#334155; line-height: 1.7;">
+                        ঘাটতি পূরণে এই ১ মাসে ৫০% (হাফ) সিলেবাসের উপর শতভাগ না-দেখে পরীক্ষা গ্রহণ করা হোক। সপ্তাহে একদিন সারাদিনব্যাপী এই ৩টি বিষয়ের বিশেষ ক্রাশ ক্লাস পরিচালনা করা হোক।
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 6: Gratitude, Rumor Clearing & Final Appeal -->
+        <div class="slide" id="slide6">
+            <div class="hero-banner-3d" style="background: #fffeb3; border-color: #fde047;">
+                <i class="fa-solid fa-heart" style="color: #d97706;"></i>
+                <h2 style="color: #854d0e; font-size: 1.3rem;">শিক্ষকমণ্ডলীর প্রতি অকৃত্রিম শ্রদ্ধা ও কৃতজ্ঞতা প্রকাশ</h2>
+            </div>
+            <h1>ভুল ধারণা খণ্ডন ও আমাদের শেষ আকুতি</h1>
+            <p class="lead-text">
+                'শিক্ষকেরা ঠিকমতো পড়াতে পারেন না'—এই অভিযোগ সম্পূর্ণ ভিত্তিহীন। যেমন: গালিব আল সিয়াম নিজে শ্যামা পদবসাক স্যারের (SPB YouTube) ইংরেজি ২য় এবং আরমান স্যারের ফিজিক্স ক্লাসে ব্যাপকভাবে উপকৃত হয়েছে।
+            </p>
+            <div class="feature-box" style="background: #fdf2f8; border-color: #fbcfe8;">
+                <p style="font-size: 1.08rem; color: #831843; font-weight: 600; text-align: center;">
+                    "আমাদের ভুলগুলো ক্ষমা সুন্দর দৃষ্টিতে দেখে, সন্তানতুল্য মনে করে আমাদের দিকনির্দেশনা দিন এবং এই প্রস্তাবনাগুলো মেনে নিয়ে ক্লাসে ফিরিয়ে নিন।"
+                </p>
+            </div>
+        </div>
+
+        <!-- Navigation Controls -->
+        <div class="nav-controls">
+            <button class="btn-custom btn-secondary" id="prevBtn" onclick="changeSlide(-1)" disabled>
+                <i class="fa-solid fa-arrow-left"></i> পূর্ববর্তী
             </button>
-            <button class="btn-action" id="nextBtn" onclick="moveSlide(1)">
-                পরবর্তী ধাপ <i class="fa-solid fa-chevron-right"></i>
+            <button class="btn-custom" id="nextBtn" onclick="changeSlide(1)">
+                পরবর্তী পৃষ্ঠা <i class="fa-solid fa-arrow-right"></i>
             </button>
         </div>
     </div>
 
     <script>
-        let currentSlideIdx = 0;
+        let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
-        const progressFill = document.getElementById('progressFill');
+        const progressBar = document.getElementById('progressBar');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
 
-        function updateSlideDisplay() {
+        function updateSlideView() {
             slides.forEach((slide, idx) => {
-                slide.classList.toggle('active', idx === currentSlideIdx);
+                slide.classList.toggle('active', idx === currentSlide);
             });
 
-            const percent = ((currentSlideIdx + 1) / slides.length) * 100;
-            progressFill.style.width = `${percent}%`;
+            const percent = ((currentSlide + 1) / slides.length) * 100;
+            progressBar.style.width = `${percent}%`;
 
-            prevBtn.disabled = currentSlideIdx === 0;
-            if (currentSlideIdx === slides.length - 1) {
-                nextBtn.innerHTML = 'বিনীত আবেদন নিবেদিত <i class="fa-solid fa-check-double"></i>';
+            prevBtn.disabled = currentSlide === 0;
+            if (currentSlide === slides.length - 1) {
+                nextBtn.innerHTML = 'বিনীত নিবেদন সমাপ্ত <i class="fa-solid fa-check-double"></i>';
             } else {
-                nextBtn.innerHTML = 'পরবর্তী ধাপ <i class="fa-solid fa-chevron-right"></i>';
+                nextBtn.innerHTML = 'পরবর্তী পৃষ্ঠা <i class="fa-solid fa-arrow-right"></i>';
             }
         }
 
-        function moveSlide(direction) {
-            if (currentSlideIdx + direction >= 0 && currentSlideIdx + direction < slides.length) {
-                currentSlideIdx += direction;
-                updateSlideDisplay();
+        function changeSlide(direction) {
+            if (currentSlide + direction >= 0 && currentSlide + direction < slides.length) {
+                currentSlide += direction;
+                updateSlideView();
             }
         }
 
-        updateSlideDisplay();
+        updateSlideView();
     </script>
 </body>
 </html>
