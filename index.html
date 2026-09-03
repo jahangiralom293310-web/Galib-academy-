@@ -3,204 +3,367 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>শ্রদ্ধা ও সংলাপ | সেতু বন্ধন</title>
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>শ্রদ্ধা ও সংলাপ | উস্তাদ ও ছাত্রদের অনন্য সেতু</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #090d16 0%, #111827 50%, #030712 100%);
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --accent-glow: #38bdf8;
+            --accent-purple: #818cf8;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Hind Siliguri', sans-serif;
+            user-select: none;
         }
 
         body {
-            background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a);
-            color: #f8fafc;
+            background: var(--bg-gradient);
+            color: var(--text-primary);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             overflow-x: hidden;
-        }
-
-        /* Ambient Background Elements */
-        .glow {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(56,189,248,0.15) 0%, rgba(255,255,255,0) 70%);
-            border-radius: 50%;
-            pointer-events: none;
-            animation: float 8s infinite alternate ease-in-out;
-        }
-        .glow-1 { top: 10%; left: 10%; }
-        .glow-2 { bottom: 10%; right: 10%; }
-
-        @keyframes float {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(30px, 40px); }
-        }
-
-        /* Container & Glass Card */
-        .container {
-            width: 90%;
-            max-width: 800px;
-            background: rgba(30, 41, 59, 0.6);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 40px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
             position: relative;
-            z-index: 10;
         }
 
-        /* Progress Bar */
-        .progress-container {
-            width: 100%;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            margin-bottom: 30px;
+        /* Animated 3D Atmospheric Background Glows */
+        .ambient-glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: 0;
+            pointer-events: none;
+            animation: pulseGlow 10s infinite alternate ease-in-out;
+        }
+        .glow-1 {
+            width: 450px;
+            height: 450px;
+            background: rgba(56, 189, 248, 0.15);
+            top: -10%;
+            left: -10%;
+        }
+        .glow-2 {
+            width: 500px;
+            height: 500px;
+            background: rgba(129, 140, 248, 0.12);
+            bottom: -10%;
+            right: -10%;
+        }
+
+        @keyframes pulseGlow {
+            0% { transform: scale(1) translate(0, 0); }
+            100% { transform: scale(1.2) translate(30px, 20px); }
+        }
+
+        /* Main Glass Dashboard Card */
+        .app-card {
+            width: 92%;
+            max-width: 950px;
+            min-height: 620px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid var(--glass-border);
+            border-radius: 28px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            padding: 45px;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             overflow: hidden;
         }
 
-        .progress-bar {
-            height: 100%;
-            width: 20%;
-            background: linear-gradient(90deg, #38bdf8, #818cf8);
-            border-radius: 10px;
-            transition: width 0.5s ease-in-out;
+        /* Top Progress Bar */
+        .progress-bar-wrap {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            margin-bottom: 25px;
+            overflow: hidden;
         }
 
-        /* Slide Control */
+        .progress-bar-fill {
+            height: 100%;
+            width: 20%;
+            background: linear-gradient(90deg, var(--accent-glow), var(--accent-purple));
+            box-shadow: 0 0 12px var(--accent-glow);
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Slide System */
         .slide {
             display: none;
             opacity: 0;
-            transform: translateY(15px);
-            transition: all 0.5s ease-in-out;
+            transform: translateY(20px) scale(0.98);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .slide.active {
             display: block;
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
         }
 
-        /* Typography */
-        h1, h2 {
+        h1 {
+            font-size: 2.2rem;
             font-weight: 700;
             margin-bottom: 15px;
-            background: linear-gradient(90deg, #f8fafc, #93c5fd);
+            background: linear-gradient(90deg, #ffffff, #93c5fd);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            line-height: 1.3;
         }
 
-        p {
+        p.description {
             font-size: 1.15rem;
             line-height: 1.8;
-            color: #cbd5e1;
-            margin-bottom: 25px;
+            color: var(--text-secondary);
             font-weight: 300;
+            margin-bottom: 25px;
         }
 
-        .highlight-card {
-            background: rgba(56, 189, 248, 0.05);
-            border-left: 4px solid #38bdf8;
-            padding: 15px 20px;
-            border-radius: 0 12px 12px 0;
-            margin: 20px 0;
-        }
-
-        /* Grid for 3-Column Section */
-        .framework-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
-        }
-
-        .framework-box {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 20px;
-            border-radius: 16px;
-            text-align: center;
-        }
-
-        .framework-box h3 {
-            color: #38bdf8;
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-        }
-
-        /* Subjects Section */
-        .subjects-list {
+        /* 3D Visual Card Frame (Slide 1) */
+        .visual-frame {
+            width: 100%;
+            height: 240px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(129, 140, 248, 0.05));
+            border: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            max-height: 350px;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .visual-frame i {
+            font-size: 4.5rem;
+            color: var(--accent-glow);
+            filter: drop-shadow(0 0 15px rgba(56, 189, 248, 0.6));
+            margin-bottom: 12px;
+            animation: float3D 4s infinite ease-in-out;
+        }
+
+        @keyframes float3D {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+        }
+
+        .visual-frame p {
+            color: #e2e8f0;
+            font-size: 1.05rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* Highlight Boxes */
+        .quote-card {
+            background: rgba(56, 189, 248, 0.06);
+            border-left: 4px solid var(--accent-glow);
+            padding: 18px 24px;
+            border-radius: 0 16px 16px 0;
+            font-size: 1.05rem;
+            color: #f1f5f9;
+            margin: 20px 0;
+        }
+
+        /* What / Why / How Cards (Slide 3) */
+        .needs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            margin-top: 20px;
+        }
+
+        .need-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            padding: 22px;
+            border-radius: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .need-card:hover {
+            border-color: var(--accent-glow);
+            transform: translateY(-5px);
+            background: rgba(56, 189, 248, 0.05);
+        }
+
+        .need-card h3 {
+            color: var(--accent-glow);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Interactive "কীভাবে চাই" Trigger Button */
+        .btn-action-trigger {
+            width: 100%;
+            margin-top: 15px;
+            padding: 14px;
+            background: rgba(129, 140, 248, 0.15);
+            border: 1px dashed var(--accent-purple);
+            border-radius: 14px;
+            color: #c7d2fe;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-action-trigger:hover {
+            background: rgba(129, 140, 248, 0.3);
+            color: #ffffff;
+            box-shadow: 0 0 15px rgba(129, 140, 248, 0.4);
+        }
+
+        /* Modal Drawer for "কীভাবে চাই" */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: #0f172a;
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            width: 90%;
+            max-width: 600px;
+            padding: 35px;
+            position: relative;
+            color: #f8fafc;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.8);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+        }
+
+        /* Subject Cards Layout (Slide 4) */
+        .subjects-viewport {
+            max-height: 380px;
             overflow-y: auto;
             padding-right: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
-        .subjects-list::-webkit-scrollbar {
+        .subjects-viewport::-webkit-scrollbar {
             width: 6px;
         }
-
-        .subjects-list::-webkit-scrollbar-thumb {
+        .subjects-viewport::-webkit-scrollbar-thumb {
             background: rgba(255, 255, 255, 0.2);
             border-radius: 10px;
         }
 
-        .subject-card {
-            background: rgba(255, 255, 255, 0.04);
+        .subject-block {
+            background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.06);
-            padding: 16px;
-            border-radius: 12px;
+            border-radius: 16px;
+            padding: 20px;
             transition: 0.3s ease;
         }
 
-        .subject-card:hover {
-            border-color: #38bdf8;
-            background: rgba(56, 189, 248, 0.08);
+        .subject-block:hover {
+            border-color: var(--accent-glow);
+            background: rgba(255, 255, 255, 0.04);
         }
 
-        .subject-title {
+        .subject-header {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent-glow);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .detail-row {
+            margin-bottom: 8px;
+            font-size: 0.98rem;
+            line-height: 1.6;
+        }
+
+        .detail-row span.label {
             font-weight: 600;
             color: #38bdf8;
-            margin-bottom: 5px;
+        }
+
+        .detail-row span.solution-label {
+            font-weight: 600;
+            color: #a7f3d0;
         }
 
         /* Navigation Buttons */
-        .btn-group {
+        .nav-controls {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        button {
-            background: linear-gradient(135deg, #38bdf8, #6366f1);
-            color: #fff;
+        .btn-nav {
+            background: linear-gradient(135deg, var(--accent-glow), var(--accent-purple));
+            color: #ffffff;
             border: none;
-            padding: 12px 28px;
+            padding: 14px 32px;
             font-size: 1rem;
             font-weight: 600;
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+            box-shadow: 0 4px 20px rgba(56, 189, 248, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        button:hover {
+        .btn-nav:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(56, 189, 248, 0.5);
+            box-shadow: 0 6px 25px rgba(56, 189, 248, 0.5);
         }
 
-        button:disabled {
-            background: #475569;
+        .btn-nav:disabled {
+            background: #334155;
             box-shadow: none;
             cursor: not-allowed;
             transform: none;
@@ -209,79 +372,111 @@
 
         .btn-secondary {
             background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: var(--text-secondary);
             box-shadow: none;
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
         }
     </style>
 </head>
 <body>
 
-    <div class="glow glow-1"></div>
-    <div class="glow glow-2"></div>
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
 
-    <div class="container">
-        <div class="progress-container">
-            <div class="progress-bar" id="progressBar"></div>
+    <div class="app-card">
+        <div class="progress-bar-wrap">
+            <div class="progress-bar-fill" id="progressBar"></div>
         </div>
 
         <div class="slide active" id="slide1">
+            <div class="visual-frame">
+                <i class="fa-solid fa-hands-holding"></i>
+                <p>বিনম্র অনুশোচনা ও অন্তরের আকুতি</p>
+            </div>
             <h1>আমরা আন্তরিকভাবে ক্ষমা চাচ্ছি</h1>
-            <p>অনিচ্ছাকৃত ভুল বোঝাবুঝি এবং দীর্ঘ তিন মাসের দূরত্বের জন্য আমরা আমাদের সম্মানিত শিক্ষকদের নিকট অত্যন্ত বিনম্রচিত্তে ও সহৃদয়তায় ক্ষমা প্রার্থনা করছি। আমাদের উদ্দেশ্য কখনো শ্রদ্ধা লঙ্ঘন করা ছিল না, বরং আপনাদের দিকনির্দেশনা আমাদের জন্য চিরকাল শিক্ষণীয়।</p>
-            <div class="highlight-card">
-                "শিক্ষক ও শিক্ষার্থীর সম্পর্ক কেবল প্রাতিষ্ঠানিক নয়, এটি আত্মিক ও নীতিগত।"
+            <p class="description">বিগত তিন মাসের অনাকাঙ্ক্ষিত দূরত্ব ও ভুল বোঝাবুঝির জন্য আমরা উস্তাদদের চরণে অত্যন্ত বিনম্রচিত্তে ক্ষমা প্রার্থনা করছি। আমাদের উদ্দেশ্য কখনোই অবাধ্যতা ছিল না; আপনাদের দিকনির্দেশনা ও স্নেহ ছাড়া আমাদের ভবিষ্যৎ অসম্পূর্ণ।</p>
+            <div class="quote-card">
+                "উস্তাদের অসন্তুষ্টিতে কোনো কল্যাণ নেই—আমরা পুনরায় আপনাদের স্নেহের ছায়ায় ফিরে আসতে চাই।"
             </div>
         </div>
 
         <div class="slide" id="slide2">
-            <h1>শিক্ষকদের দৃষ্টিভঙ্গি ও আমাদের উপলব্ধি</h1>
-            <p>আমরা অন্তরের অন্তঃস্থল থেকে বিশ্বাস করি যে, শিক্ষকেরা সবসময় শিক্ষার্থীদের সর্বোচ্চ কল্যাণ ও সাফল্যই কামনা করেন। মাঝখানে যা ঘটে গেছে, তা কেবলই কিছু অনাকাঙ্ক্ষিত যোগাযোগের অভাব এবং ভুল বোঝাবুঝির ফল।</p>
-            <div class="highlight-card">
-                আলোচনার শুরুতেই আমরা শ্রদ্ধার সাথে আরেকবার আমাদের অনাকাঙ্ক্ষিত ভুলের জন্য ক্ষমা চেয়ে নিচ্ছি।
+            <h1>শিক্ষকরা সবার ভালোই চান</h1>
+            <p class="description">আমরা অন্তরের অন্তঃস্থল থেকে উপলব্ধি করেছি যে, শিক্ষক সর্বদাই ছাত্রের সাফল্য ও কল্যাণ কামনা করেন। মাঝখানে যা ঘটে গেছে, তা কেবলই ভুল বোঝাবুঝি এবং অনাকাঙ্ক্ষিত যোগাযোগের অভাবের ফসল।</p>
+            <div class="quote-card">
+                "আলোচনার প্রারম্ভেই আমরা পুনরায় আমাদের সমস্ত অনিচ্ছাকৃত ভুলের জন্য করজোড়ে ক্ষমা চেয়ে নিচ্ছি।"
             </div>
         </div>
 
         <div class="slide" id="slide3">
-            <h1>আমাদের বিষয়সমূহ: কী, কেন এবং কীভাবে?</h1>
-            <p>আমাদের অ্যাকাডেমিক অগ্রগতি নিশ্চিত করতে যেসব চ্যালেঞ্জ বা সমস্যার সম্মুখীন হতে হচ্ছে, তা আমরা তিনটি মূল দৃষ্টিভঙ্গিতে উপস্থাপন করছি:</p>
-            <div class="framework-grid">
-                <div class="framework-box">
-                    <h3>আমরা কী চাই?</h3>
-                    <p style="font-size:0.95rem; margin-bottom:0;">পাঠদানের মানোন্নয়ন এবং সমন্বিত একাডেমিক পরিবেশ।</p>
+            <h1>আমাদের আকুতি: কী, কেন এবং কীভাবে?</h1>
+            <p class="description">আমরা কোনো দাবি নিয়ে আসিনি, এসেছি শিক্ষার্থী হিসেবে কিছু প্রত্যাশা ও বিনীত নিবেদন নিয়ে:</p>
+            
+            <div class="needs-grid">
+                <div class="need-card">
+                    <h3><i class="fa-solid fa-heart"></i> একটু ভালোবাসা</h3>
+                    <p style="font-size: 0.95rem; color: #cbd5e1;">শাসন ও কড়া অনুশাসনের পাশাপাশি উস্তাদসুলভ স্নেহ ও অভিভাবকত্ব।</p>
                 </div>
-                <div class="framework-box">
-                    <h3>কেন চাই?</h3>
-                    <p style="font-size:0.95rem; margin-bottom:0;">শিক্ষার্থীদের সময়োপযোগী প্রস্তুতি ও বিষয়ের পূর্ণাঙ্গ দখল নিশ্চিত করতে।</p>
+                <div class="need-card">
+                    <h3><i class="fa-solid fa-book-open"></i> সঠিক শিক্ষা</h3>
+                    <p style="font-size: 0.95rem; color: #cbd5e1;">সহজবোধ্য পাঠদান এবং প্রতিটি বিষয়ে গভীর ধারণাগত জ্ঞান অর্জন।</p>
                 </div>
-                <div class="framework-box">
-                    <h3>কীভাবে চাই?</h3>
-                    <p style="font-size:0.95rem; margin-bottom:0;">শিক্ষকদের পরামর্শ ও পারস্পরিক সহমর্মিতার মাধ্যমে সমাধান।</p>
+                <div class="need-card">
+                    <h3><i class="fa-solid fa-trophy"></i> ভালো রেজাল্ট</h3>
+                    <p style="font-size: 0.95rem; color: #cbd5e1;">পরীক্ষায় এবং কর্মজীবনে প্রতিষ্ঠানের মুখ উজ্জ্বল করার সক্ষমতা।</p>
                 </div>
             </div>
+
+            <button class="btn-action-trigger" onclick="openModal()">
+                <i class="fa-solid fa-circle-info"></i> আমরা "কীভাবে চাই" তার বিস্তারিত রূপরেখা দেখতে ক্লিক করুন
+            </button>
         </div>
 
         <div class="slide" id="slide4">
-            <h1>বিষয়ভিত্তিক পর্যবেক্ষণ ও সমস্যাসমূহ</h1>
-            <p>নিচে আমাদের ১৪টি বিষয়ের সামগ্রিক বিষয়সমূহ সংক্ষিপ্তভাবে উল্লেখ করা হলো:</p>
-            <div class="subjects-list" id="subjectsContainer">
+            <h1>১৪টি বিষয়ের সুনির্দিষ্ট সমস্যা ও আমাদের চাওয়া</h1>
+            <p class="description" style="margin-bottom: 15px;">প্রতিটি বিষয়ের মানোন্নয়নে আমাদের চিহ্নিত সমস্যা ও উস্তাদদের নিকট সমাধান নিবেদন:</p>
+            
+            <div class="subjects-viewport" id="subjectsContainer">
                 </div>
         </div>
 
         <div class="slide" id="slide5">
-            <h1>আবেদন ও বিনম্র অনুরোধ</h1>
-            <p>সম্মানিত উস্তাদবৃন্দ, অতীতের সমস্ত ভুল বোঝাবুঝি মুছে দিয়ে আমাদের পুনরায় আপনার স্নেহের ছায়াতলে গ্রহণ করুন। আমাদের এই আবেদন কেবল কোনো দাবি নয়, বরং একটি সুন্দর অ্যাকাডেমিক পরিবেশ গঠনের জন্য আন্তরিক আকুতি।</p>
-            <div class="highlight-card">
-                "ক্ষমার চেয়ে মহান কিছু নেই; আমাদের ভুলগুলো ক্ষমা সুন্দর দৃষ্টিতে দেখে পুনরায় শ্রেণিকক্ষে আলোর প্রদীপ জ্বালানোর অনুরোধ জানাচ্ছি।"
+            <div class="visual-frame" style="height: 180px;">
+                <i class="fa-solid fa-pen-nib" style="font-size: 3.5rem;"></i>
+                <p>নতুন সূচনার অঙ্গীকার</p>
+            </div>
+            <h1>সর্বশেষ আকুতি ও বিনীত অনুরোধ</h1>
+            <p class="description">সম্মানিত উস্তাদবৃন্দ, সমস্ত ভুল বোঝাবুঝি ও দূরত্ব মুছে দিয়ে আমাদের পুনরায় আপনাদের স্নেহের শ্রেণিকক্ষে ফিরিয়ে নিন। আপনাদের সুপরামর্শ ও দোয়াই আমাদের চলার পথের একমাত্র আলো।</p>
+            <div class="quote-card">
+                "আমরা ভুল করেছি, তবে শুধরে নেওয়ার সুযোগ চাই। ক্ষমা করে আমাদের গ্রহণ করুন।"
             </div>
         </div>
 
-        <div class="btn-group">
-            <button id="prevBtn" class="btn-secondary" onclick="changeSlide(-1)" disabled>পূর্ববর্তী</button>
-            <button id="nextBtn" onclick="changeSlide(1)">পরবর্তী পেজ</button>
+        <div class="nav-controls">
+            <button class="btn-nav btn-secondary" id="prevBtn" onclick="navigateSlide(-1)" disabled>
+                <i class="fa-solid fa-arrow-left"></i> পূর্ববর্তী
+            </button>
+            <button class="btn-nav" id="nextBtn" onclick="navigateSlide(1)">
+                পরবর্তী পেজ <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="howModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <h2 style="color: var(--accent-glow); margin-bottom: 15px;"><i class="fa-solid fa-compass"></i> আমরা কীভাবে পরিবর্তন চাই?</h2>
+            <ul style="line-height: 2; color: #cbd5e1; font-size: 1.05rem; padding-left: 20px;">
+                <li><strong>সৌহার্দ্যপূর্ণ আলোচনা:</strong> উস্তাদ ও ছাত্রদের মাঝে সাপ্তাহিক ফিডব্যাক সেশন।</li>
+                <li><strong>পরিকল্পিত পাঠ্যসূচি:</strong> প্রতিটি বিষয়ের কঠিন অধ্যায়গুলোর সহজ ও সময়োপযোগী ব্যাখ্যা।</li>
+                <li><strong>মানসিক আস্থা:</strong> ভুল করলে সরাসরি বুঝিয়ে সংশোধন করা, যেন কোনো ক্ষোভ জমা না থাকে।</li>
+                <li><strong>বিষয়ভিত্তিক সমাধান:</strong> পরবর্তী স্লাইডে উল্লেখিত ১৪টি বিষয়ের জন্য নির্দিষ্ট রূপরেখা অনুসরণ।</li>
+            </ul>
         </div>
     </div>
 
@@ -292,63 +487,77 @@
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
 
-        // Sample 14 Subjects Data Structure (You can update texts later)
+        // 14 Subjects Data Array
         const subjectsData = [
-            { name: "১. বিষয় ১ (যেমন: আরবি ১ম পত্র)", problem: "পাঠ্যসূচির নির্দিষ্ট কিছু অধ্যায়ের পুনরালোচনা এবং সময়সূচি সমন্বয় করা প্রয়োজন।" },
-            { name: "২. বিষয় ২ (যেমন: আরবি ২য় পত্র)", problem: "ব্যাকরণ অংশ সহজবোধ্য উপায়ে চর্চার জন্য অতিরিক্ত ক্লাসের প্রয়োজন।" },
-            { name: "৩. বিষয় ৩ (যেমন: ফিকহ)", problem: "ব্যবহারিক ও আধুনিক মাসআলার প্রয়োগ সহজ করার অনুরোধ।" },
-            { name: "৪. বিষয় ৪ (যেমন: হাদীস)", problem: "নিয়মিত রিভিশন ও গুরুত্বপূর্ণ হাদিস মুখস্থের দিকনির্দেশনা।" },
-            { name: "৫. বিষয় ৫", problem: "বিষয়ভিত্তিক আলোচনার জন্য নির্দিষ্ট নোট বা সাজেশন সহায়িকা।" },
-            { name: "৬. বিষয় ৬", problem: "শ্রেণিকক্ষে প্রশ্ন করার পর্যাপ্ত সুযোগ ও সময় বৃদ্ধি করা।" },
-            { name: "৭. বিষয় ৭", problem: "পরীক্ষার খাতার মূল্যায়ন ও মতামত শেয়ার করার সুযোগ।" },
-            { name: "৮. বিষয় ৮", problem: "পাঠদানের ধারাবাহিকতা বজায় রাখতে সাপ্তাহিক ছোট কুইজ।" },
-            { name: "৯. বিষয় ৯", problem: "ক্লাসে কঠিন বিষয়গুলোর সহজ ব্যাখ্যা প্রদান।" },
-            { name: "১০. বিষয় ১০", problem: "বিষয়ভিত্তিক জটিল অংশগুলো পুনরায় বুঝিয়ে দেওয়া।" },
-            { name: "১১. বিষয় ১১", problem: "সহায়ক বই ও রেফারেন্সের দিকনির্দেশনা দেওয়া।" },
-            { name: "১২. বিষয় ১২", problem: "শিক্ষার্থী ও শিক্ষকের মাঝে নিয়মিত ফিডব্যাক সেশন রাখা।" },
-            { name: "১৩. বিষয় ১৩", problem: "পরীক্ষার প্রস্তুতিমূলক রিভিশন ক্লাস পরিচালনা করা।" },
-            { name: "১৪. বিষয় ১৪", problem: "পরিকল্পিত পাঠ্যসূচি অনুযায়ী সিলেবাস দ্রুত সম্পন্ন করা।" }
+            { name: "১. আরবি প্রথম পত্র", icon: "fa-book-quran", problem: "শব্দার্থ ও মূল ইবারতের ব্যাখ্যা বুঝতে স্পষ্টতার অভাব।", solution: "ইবারত ও তরজমার সহজ ব্যাখ্যার সাথে সংক্ষিপ্ত নোট সরবরাহ করা।" },
+            { name: "২. আরবি দ্বিতীয় পত্র", icon: "fa-language", problem: "কাওয়ায়েদ বা ব্যাকরণের জটিল বিষয়াবলি আয়ত্ত করতে সমস্যা।", solution: "নিয়মিত কুইজ ও ব্যবহারিক ব্যাকরণ চর্চার সেশন বৃদ্ধি করা।" },
+            { name: "৩. আল-কুরআন", icon: "fa-quran", problem: "তাজবীদ ও তাফসিরের মূল সূক্ষ্মতা অনুধাবনে সময় স্বল্পতা।", solution: "আয়াতভিত্তিক বিষয়বস্তুর সহজ সারসংক্ষেপ দেওয়া।" },
+            { name: "৪. হাদিস শরীফ", icon: "fa-book-open-reader", problem: "হাদিসের সানাদ ও মূল বক্তব্যের সমন্বয় মনে রাখা কঠিন।", solution: "গুরুত্বপূর্ণ হাদিসগুলোর মূল বার্তা ও আমলি দিকগুলো চিহ্নিত করা।" },
+            { name: "৫. আকায়িদ ও ফিকহ", icon: "fa-kaaba", problem: "আধুনিক মাসআলা ও তাত্ত্বিক বিষয়গুলোর স্পষ্টতার অভাব।", solution: "বাস্তব জীবনের উদাহরণসহ মাসআলা আলোচনা করা।" },
+            { name: "৬. বাংলা প্রথম পত্র", icon: "fa-pen-fancy", problem: "সৃজনশীল প্রশ্নের উত্তর গুছিয়ে লেখার সঠিক পদ্ধতির অভাব।", solution: "নমুনা উত্তর তৈরি ও উত্তর লেখার ফ্রেমওয়ার্ক শেখানো।" },
+            { name: "৭. বাংলা দ্বিতীয় পত্র", icon: "fa-spell-check", problem: "ব্যাকরণ অংশের জটিল নিয়ম মনে রাখা।", solution: "সহজ ছক ও সূত্রের মাধ্যমে ব্যাকরণ অনুশীলন করানো।" },
+            { name: "৮. ইংরেজি প্রথম পত্র", icon: "fa-font", problem: "ভোকেবুলারি বা শব্দভাণ্ডার দুর্বলতা এবং প্যাসেজ বুঝতে কষ্ট।", solution: "প্রতি ক্লাসে গুরুত্বপূর্ণ ওয়ার্ড-মিন টিচিং ও থিম রাইটিং অনুশীলনী।" },
+            { name: "৯. ইংরেজি দ্বিতীয় পত্র", icon: "fa-i-cursor", problem: "গ্রামারের রুলস মুখস্থ করলেও প্রয়োগে ভুল হওয়া।", solution: "হাতে-কলমে এক্সারসাইজ সমাধান করানো।" },
+            { name: "১০. গণিত", icon: "fa-calculator", problem: "বেসিক সূত্র প্রয়োগ এবং জটিল অধ্যায়ের ভীতি।", solution: "ধাপে ধাপে অংক বুঝিয়ে দেওয়া এবং অতিরিক্ত প্র্যাকটিস সেশন।" },
+            { name: "১১. উচ্চতর গণিত", icon: "fa-square-root-variable", problem: "জ্যামিতি ও ক্যালকুলাসের ধারণা বুঝতে জটিলতা।", solution: "ভিজ্যুয়াল চিত্র বা সহজ উপায়ে উপপাদ্য ও সূত্রের বিশ্লেষণ।" },
+            { name: "১২. পদার্থবিজ্ঞান", icon: "fa-atom", problem: "গাণিতিক সমস্যা সমাধান এবং থিওরির মিল খুঁজে না পাওয়া।", solution: "সূত্রগুলোর বাস্তব প্রয়োগ ও ম্যাথ স্পেশাল সেশন রাখা।" },
+            { name: "১৩. রসায়ন", icon: "fa-flask", problem: "রাসায়নিক বিক্রিয়া ও সমীকরণ মনে রাখতে না পারা।", solution: "বিক্রিয়া মনে রাখার সহজ কৌশল শেখানো।" },
+            { name: "১৪. জীববিজ্ঞান", icon: "fa-dna", problem: "চিত্র অঙ্কন ও বড় উত্তর মনে রাখা কঠিন।", solution: "চিত্রের মাধ্যমে পয়েন্ট আকারে বিষয়গুলো উপস্থাপন করা।" }
         ];
 
-        // Render Subjects
-        function loadSubjects() {
+        // Populate Subject List dynamically
+        function renderSubjects() {
             const container = document.getElementById('subjectsContainer');
             container.innerHTML = subjectsData.map(sub => `
-                <div class="subject-card">
-                    <div class="subject-title">${sub.name}</div>
-                    <div style="font-size:0.95rem; color:#94a3b8;">${sub.problem}</div>
+                <div class="subject-block">
+                    <div class="subject-header">
+                        <i class="fa-solid ${sub.icon}"></i> ${sub.name}
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">চিহ্নিত সমস্যা:</span> ${sub.problem}
+                    </div>
+                    <div class="detail-row">
+                        <span class="solution-label">আমরা যেভাবে চাই (সমাধান):</span> ${sub.solution}
+                    </div>
                 </div>
             `).join('');
         }
 
-        function updateSlideUI() {
-            slides.forEach((slide, index) => {
-                slide.classList.toggle('active', index === currentSlide);
+        // Navigation logic
+        function updateUI() {
+            slides.forEach((slide, idx) => {
+                slide.classList.toggle('active', idx === currentSlide);
             });
 
-            // Update Progress Bar
-            const progressPercent = ((currentSlide + 1) / slides.length) * 100;
-            progressBar.style.width = `${progressPercent}%`;
+            const percent = ((currentSlide + 1) / slides.length) * 100;
+            progressBar.style.width = `${percent}%`;
 
-            // Button Control
             prevBtn.disabled = currentSlide === 0;
             if (currentSlide === slides.length - 1) {
-                nextBtn.innerText = 'ধন্যবাদ';
+                nextBtn.innerHTML = 'সম্পূর্ণ হয়েছে <i class="fa-solid fa-check"></i>';
             } else {
-                nextBtn.innerText = 'পরবর্তী পেজ';
+                nextBtn.innerHTML = 'পরবর্তী পেজ <i class="fa-solid fa-arrow-right"></i>';
             }
         }
 
-        function changeSlide(direction) {
-            if (currentSlide + direction >= 0 && currentSlide + direction < slides.length) {
-                currentSlide += direction;
-                updateSlideUI();
+        function navigateSlide(dir) {
+            if (currentSlide + dir >= 0 && currentSlide + dir < slides.length) {
+                currentSlide += dir;
+                updateUI();
             }
         }
 
-        // Initialize
-        loadSubjects();
-        updateSlideUI();
+        // Modal Controls
+        function openModal() {
+            document.getElementById('howModal').style.display = 'flex';
+        }
+        function closeModal() {
+            document.getElementById('howModal').style.display = 'none';
+        }
+
+        // Init
+        renderSubjects();
+        updateUI();
     </script>
 </body>
 </html>
