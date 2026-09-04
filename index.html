@@ -4,18 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>বিশ্বব্রহ্মাণ্ডের ক্যানভাসে উস্তাদগণের প্রতি বিনম্র মিনতি</title>
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Hind Siliguri Font with High Weights & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <style>
         :root {
-            --space-bg: #02020a;
-            --nebula-blue: #0f172a;
+            --space-dark: #010309;
             --starlight-cyan: #00f2fe;
-            --galaxy-purple: #7928ca;
-            --cosmic-gold: #ff0080;
-            --gold-accent: #ffd700;
-            --text-light: #f8fafc;
-            --text-sub: #cbd5e1;
+            --galaxy-purple: #9d4edd;
+            --cosmic-gold: #ffbe0b;
+            --bright-white: #ffffff;
+            --high-contrast-bg: rgba(3, 7, 18, 0.92);
         }
 
         * {
@@ -26,8 +25,8 @@
         }
 
         body {
-            background-color: var(--space-bg);
-            color: var(--text-light);
+            background-color: var(--space-dark);
+            color: var(--bright-white);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -36,7 +35,7 @@
             perspective: 1200px;
         }
 
-        /* Continuous Cosmic Animations */
+        /* Continuous Cosmic Animations Backdrop */
         .universe-container {
             position: fixed;
             top: 0;
@@ -48,46 +47,65 @@
             overflow: hidden;
         }
 
-        /* Animated Nebula Background */
+        /* Multi-layered Glowing Nebulae */
         .nebula {
             position: absolute;
             border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.45;
-            animation: nebulaPulse 12s infinite alternate ease-in-out;
+            filter: blur(90px);
+            opacity: 0.5;
+            animation: nebulaPulse 10s infinite alternate ease-in-out;
         }
-        .nebula-1 { width: 600px; height: 600px; background: radial-gradient(circle, #7928ca, transparent); top: -20%; left: -10%; }
-        .nebula-2 { width: 700px; height: 700px; background: radial-gradient(circle, #00f2fe, transparent); bottom: -20%; right: -10%; }
-        .nebula-3 { width: 450px; height: 450px; background: radial-gradient(circle, #ff0080, transparent); top: 30%; left: 35%; }
+        .nebula-1 { width: 650px; height: 650px; background: radial-gradient(circle, #7928ca, transparent); top: -15%; left: -10%; }
+        .nebula-2 { width: 750px; height: 750px; background: radial-gradient(circle, #00f2fe, transparent); bottom: -20%; right: -10%; }
+        .nebula-3 { width: 500px; height: 500px; background: radial-gradient(circle, #ff007f, transparent); top: 35%; left: 30%; }
 
         @keyframes nebulaPulse {
-            0% { transform: scale(1) translate(0, 0) rotate(0deg); opacity: 0.35; }
-            100% { transform: scale(1.25) translate(40px, 30px) rotate(45deg); opacity: 0.55; }
+            0% { transform: scale(1) rotate(0deg); opacity: 0.4; }
+            100% { transform: scale(1.3) rotate(60deg); opacity: 0.65; }
         }
 
-        /* Orbiting Cosmic Rings */
+        /* Multi-Ring Orbiting Galaxy Core */
+        .galaxy-core {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300px;
+            height: 300px;
+            margin-top: -150px;
+            margin-left: -150px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 242, 254, 0.15) 0%, transparent 70%);
+            animation: coreGlow 4s infinite alternate ease-in-out;
+        }
+
+        @keyframes coreGlow {
+            0% { transform: scale(0.8); opacity: 0.3; }
+            100% { transform: scale(1.4); opacity: 0.7; }
+        }
+
         .cosmic-orbit {
             position: absolute;
             top: 50%;
             left: 50%;
-            border: 1px dashed rgba(0, 242, 254, 0.25);
+            border: 2px dashed rgba(0, 242, 254, 0.3);
             border-radius: 50%;
             transform: translate(-50%, -50%);
             pointer-events: none;
-            animation: rotateOrbit 25s linear infinite;
+            animation: rotateOrbit 20s linear infinite;
         }
-        .orbit-1 { width: 850px; height: 850px; border-color: rgba(255, 215, 0, 0.2); }
-        .orbit-2 { width: 1100px; height: 1100px; border-color: rgba(121, 40, 202, 0.3); animation-duration: 40s; animation-direction: reverse; }
+        .orbit-1 { width: 800px; height: 800px; border-color: rgba(255, 190, 11, 0.35); }
+        .orbit-2 { width: 1150px; height: 1150px; border-color: rgba(157, 78, 221, 0.4); animation-duration: 35s; animation-direction: reverse; }
+        .orbit-3 { width: 1400px; height: 1400px; border-color: rgba(0, 242, 254, 0.25); animation-duration: 50s; }
 
         .planet {
             position: absolute;
-            top: 0;
+            top: -10px;
             left: 50%;
-            width: 16px;
-            height: 16px;
-            background: #ffd700;
+            width: 22px;
+            height: 22px;
+            background: var(--cosmic-gold);
             border-radius: 50%;
-            box-shadow: 0 0 15px #ffd700;
+            box-shadow: 0 0 20px var(--cosmic-gold);
         }
 
         @keyframes rotateOrbit {
@@ -95,41 +113,39 @@
             100% { transform: translate(-50%, -50%) rotate(360deg); }
         }
 
-        /* Master Stage Card */
+        /* Master Stage Container with High Contrast Glassmorphism */
         .stage-box {
-            width: 92%;
-            max-width: 1000px;
-            min-height: 690px;
-            background: rgba(8, 12, 28, 0.75);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border: 1px solid rgba(0, 242, 254, 0.2);
+            width: 94%;
+            max-width: 1050px;
+            min-height: 720px;
+            background: var(--high-contrast-bg);
+            border: 2px solid rgba(0, 242, 254, 0.4);
             border-radius: 35px;
             padding: 45px;
             position: relative;
             z-index: 10;
-            box-shadow: 0 0 50px rgba(0, 242, 254, 0.15), inset 0 0 20px rgba(121, 40, 202, 0.2);
+            box-shadow: 0 0 60px rgba(0, 242, 254, 0.25), inset 0 0 30px rgba(0, 0, 0, 0.8);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
-        /* Progress Bar */
+        /* High Visibility Progress Bar */
         .progress-track {
             width: 100%;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.08);
+            height: 10px;
+            background: rgba(255, 255, 255, 0.15);
             border-radius: 20px;
             margin-bottom: 25px;
             overflow: hidden;
-            box-shadow: inset 0 0 8px rgba(0,0,0,0.8);
+            box-shadow: inset 0 0 10px #000000;
         }
 
         .progress-fill {
             height: 100%;
             width: 16.66%;
-            background: linear-gradient(90deg, var(--starlight-cyan), var(--galaxy-purple), var(--gold-accent));
-            box-shadow: 0 0 15px var(--starlight-cyan);
+            background: linear-gradient(90deg, var(--starlight-cyan), var(--galaxy-purple), var(--cosmic-gold));
+            box-shadow: 0 0 20px var(--starlight-cyan);
             transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -137,8 +153,8 @@
         .slide {
             display: none;
             opacity: 0;
-            transform: scale(0.95) translateY(20px);
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: scale(0.96) translateY(20px);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .slide.active {
@@ -147,51 +163,56 @@
             transform: scale(1) translateY(0);
         }
 
+        /* HIGH READABILITY TYPOGRAPHY */
         h1 {
-            font-size: 2.3rem;
-            font-weight: 700;
-            margin-bottom: 18px;
-            background: linear-gradient(90deg, #ffffff, var(--starlight-cyan), var(--gold-accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 2.6rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--bright-white);
+            text-shadow: 0 0 20px rgba(0, 242, 254, 0.6), 0 3px 6px rgba(0, 0, 0, 0.9);
             line-height: 1.35;
+            letter-spacing: 0.5px;
         }
 
         p.hero-desc {
-            font-size: 1.15rem;
-            line-height: 1.85;
-            color: var(--text-sub);
-            font-weight: 300;
+            font-size: 1.35rem;
+            line-height: 1.9;
+            color: #ffffff;
+            font-weight: 600;
             margin-bottom: 25px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.4);
+            padding: 18px;
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
-        /* SLIDE 1 UNIQUE SHAPE: Cosmic Portal Circle */
+        /* SLIDE 1 Portal Shape */
         .portal-frame {
-            width: 220px;
-            height: 220px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             margin: 0 auto 25px auto;
-            background: radial-gradient(circle, rgba(0,242,254,0.1) 0%, rgba(121,40,202,0.3) 100%);
-            border: 2px solid var(--starlight-cyan);
-            box-shadow: 0 0 35px rgba(0, 242, 254, 0.4), inset 0 0 25px rgba(255, 0, 128, 0.3);
+            background: radial-gradient(circle, rgba(0,242,254,0.2) 0%, rgba(157,78,221,0.4) 100%);
+            border: 3px solid var(--starlight-cyan);
+            box-shadow: 0 0 45px rgba(0, 242, 254, 0.6);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            position: relative;
             animation: floatPortal 4s ease-in-out infinite alternate;
         }
 
         @keyframes floatPortal {
             0% { transform: translateY(0) rotate(0deg); }
-            100% { transform: translateY(-12px) rotate(5deg); }
+            100% { transform: translateY(-12px) rotate(8deg); }
         }
 
         .portal-frame i {
-            font-size: 4rem;
-            color: var(--gold-accent);
-            filter: drop-shadow(0 0 15px var(--gold-accent));
-            animation: spinIcon 10s linear infinite;
+            font-size: 4.5rem;
+            color: var(--cosmic-gold);
+            filter: drop-shadow(0 0 20px var(--cosmic-gold));
+            animation: spinIcon 12s linear infinite;
         }
 
         @keyframes spinIcon {
@@ -199,88 +220,101 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* SLIDE 2 UNIQUE SHAPE: Asymmetrical Hexagonal / Polygon Cards */
+        /* SLIDE 2 Asymmetrical Shapes - Ultra Clear Text */
         .poly-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 18px;
-            max-height: 380px;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 20px;
+            max-height: 400px;
             overflow-y: auto;
-            padding-right: 8px;
+            padding-right: 10px;
         }
 
         .poly-card {
-            background: rgba(15, 23, 42, 0.8);
-            border: 1px solid rgba(0, 242, 254, 0.25);
-            border-radius: 35px 8px 35px 8px; /* Distinct Asymmetrical Shape */
-            padding: 22px;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
+            background: rgba(10, 18, 40, 0.95);
+            border: 2px solid var(--starlight-cyan);
+            border-radius: 35px 8px 35px 8px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
         }
 
         .poly-card:hover {
-            border-color: var(--gold-accent);
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.2);
+            border-color: var(--cosmic-gold);
+            transform: translateY(-4px);
         }
 
         .poly-title {
-            font-size: 1.15rem;
-            font-weight: 700;
+            font-size: 1.3rem;
+            font-weight: 800;
             color: var(--starlight-cyan);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            text-shadow: 0 0 10px rgba(0, 242, 254, 0.4);
         }
 
-        /* SLIDE 3 UNIQUE SHAPE: Capsule / Pill Shaped Cards */
+        .poly-text {
+            font-size: 1.15rem;
+            color: #ffffff;
+            font-weight: 600;
+            line-height: 1.7;
+        }
+
+        /* SLIDE 3 Pill/Capsule Shapes */
         .pill-card {
-            background: rgba(121, 40, 202, 0.12);
-            border: 1px solid rgba(121, 40, 202, 0.4);
-            border-radius: 50px 15px 50px 15px; /* Capsule variation */
-            padding: 20px 28px;
-            margin-bottom: 15px;
-            transition: all 0.3s ease;
+            background: rgba(20, 10, 45, 0.95);
+            border: 2px solid var(--galaxy-purple);
+            border-radius: 50px 18px 50px 18px;
+            padding: 22px 30px;
+            margin-bottom: 18px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.7);
         }
 
-        .pill-card:hover {
-            background: rgba(121, 40, 202, 0.25);
-            border-color: var(--starlight-cyan);
-            transform: translateX(8px);
+        .pill-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
         .pill-flow {
-            font-size: 1.05rem;
-            color: var(--gold-accent);
-            font-weight: 600;
-            margin-top: 6px;
+            font-size: 1.2rem;
+            color: var(--cosmic-gold);
+            font-weight: 700;
+            margin-top: 8px;
+            text-shadow: 0 0 10px rgba(255, 190, 11, 0.4);
         }
 
-        /* SLIDE 4 & 5 UNIQUE SHAPES: Octagonal & Diamond Accent Shards */
+        /* SLIDE 4 & 5 Shard Boxes */
         .shard-box {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            clip-path: polygon(0 0, 95% 0, 100% 15%, 100% 100%, 5% 100%, 0 85%); /* Shard Polygon */
-            padding: 22px;
-            margin-bottom: 16px;
-            border-left: 4px solid var(--starlight-cyan);
-            transition: all 0.3s ease;
-        }
-
-        .shard-box:hover {
-            background: rgba(0, 242, 254, 0.08);
-            border-left-color: var(--gold-accent);
+            background: rgba(15, 23, 42, 0.95);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            clip-path: polygon(0 0, 96% 0, 100% 18%, 100% 100%, 4% 100%, 0 82%);
+            padding: 24px;
+            margin-bottom: 18px;
+            border-left: 6px solid var(--starlight-cyan);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
         }
 
         .shard-box h3 {
             color: var(--starlight-cyan);
-            font-size: 1.2rem;
-            margin-bottom: 8px;
+            font-size: 1.35rem;
+            font-weight: 800;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+        }
+
+        .shard-text {
+            color: #ffffff;
+            font-size: 1.18rem;
+            font-weight: 600;
+            line-height: 1.8;
         }
 
         /* Navigation Controls */
@@ -290,28 +324,28 @@
             align-items: center;
             margin-top: 25px;
             padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
         }
 
         .btn-cosmic {
             background: linear-gradient(135deg, var(--starlight-cyan), var(--galaxy-purple));
             color: #ffffff;
             border: none;
-            padding: 14px 34px;
-            font-size: 1.05rem;
-            font-weight: 700;
+            padding: 16px 38px;
+            font-size: 1.2rem;
+            font-weight: 800;
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 0 20px rgba(0, 242, 254, 0.4);
+            box-shadow: 0 0 25px rgba(0, 242, 254, 0.5);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
         .btn-cosmic:hover {
             transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 0 30px rgba(0, 242, 254, 0.7);
+            box-shadow: 0 0 35px rgba(0, 242, 254, 0.8);
             background: linear-gradient(135deg, var(--galaxy-purple), var(--cosmic-gold));
         }
 
@@ -319,40 +353,42 @@
             background: #1e293b;
             box-shadow: none;
             cursor: not-allowed;
-            transform: none;
-            opacity: 0.4;
+            opacity: 0.3;
         }
 
         .btn-secondary {
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            color: var(--text-sub);
-            box-shadow: none;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: #ffffff;
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.08);
-            color: #ffffff;
+            background: rgba(255, 255, 255, 0.2);
             border-color: var(--starlight-cyan);
         }
 
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-thumb { background: rgba(0, 242, 254, 0.3); border-radius: 10px; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-thumb { background: var(--starlight-cyan); border-radius: 10px; }
     </style>
 </head>
 <body>
 
-    <!-- Continuous Cosmic Animations Backdrop -->
+    <!-- Enhanced Continuous Cosmic Animation -->
     <div class="universe-container">
         <div class="nebula nebula-1"></div>
         <div class="nebula nebula-2"></div>
         <div class="nebula nebula-3"></div>
 
+        <div class="galaxy-core"></div>
+
         <div class="cosmic-orbit orbit-1">
             <div class="planet"></div>
         </div>
         <div class="cosmic-orbit orbit-2">
-            <div class="planet" style="background:#00f2fe; box-shadow: 0 0 15px #00f2fe;"></div>
+            <div class="planet" style="background:#00f2fe; box-shadow: 0 0 20px #00f2fe;"></div>
+        </div>
+        <div class="cosmic-orbit orbit-3">
+            <div class="planet" style="background:#ff007f; box-shadow: 0 0 20px #ff007f;"></div>
         </div>
     </div>
 
@@ -367,10 +403,10 @@
         <div class="slide active" id="slide1">
             <div class="portal-frame">
                 <i class="fa-solid fa-atom"></i>
-                <span style="font-size:0.9rem; color:var(--starlight-cyan); margin-top:8px;">মহাজাগতিক বিনম্রতা</span>
+                <span style="font-size:1.05rem; color:var(--starlight-cyan); font-weight:800; margin-top:8px;">মহাজাগতিক বিনম্রতা</span>
             </div>
             <h1 style="text-align: center;">মহাবিশ্বের মহিমায় উস্তাদগণের প্রতি ক্ষমা প্রার্থনা</h1>
-            <p class="hero-desc" style="text-align: center; max-width: 850px; margin: 0 auto;">
+            <p class="hero-desc" style="text-align: center;">
                 শ্রদ্ধাস্পদ উস্তাদবৃন্দ, মহাবিশ্বের অসীম বিশালতার সামনে যেমন মানুষ বিন্দুবৎ, তেমনি আপনাদের ইলম ও জ্ঞানের সাগরে আমরা নিতান্তই পথভোলা শিশু। বিগত তিন মাসের অনাকাঙ্ক্ষিত বিচ্ছেদ ও ভুল বোঝাবুঝির জন্য আমরা গভীর অনুশোচনায় নিজেদের সঁপে দিয়ে বিনম্র ক্ষমা প্রার্থনা করছি। আপনাদের স্নেহচ্ছায়া ব্যতীত আমাদের এই যাত্রা অন্ধকারময়।
             </p>
         </div>
@@ -378,20 +414,20 @@
         <!-- SLIDE 2: 10 Years Struggle (Asymmetrical Polygon Cards) -->
         <div class="slide" id="slide2">
             <h1>১০ বছরের শিক্ষাজীবন: অমানিশা ও লড়াইয়ের ইতিহাস</h1>
-            <p class="hero-desc" style="margin-bottom: 15px;">আমাদের না-শেখা এবং পিছিয়ে পড়ার অন্তরালে রয়ে গেছে বছরের পর বছর ধরে জমতে থাকা কিছু ঐতিহাসিক ও প্রশাসনিক সংকট:</p>
+            <p class="hero-desc">আমাদের না-শেখা এবং পিছিয়ে পড়ার অন্তরালে রয়ে গেছে বছরের পর বছর ধরে জমতে থাকা কিছু ঐতিহাসিক ও প্রশাসনিক সংকট:</p>
             
             <div class="poly-grid">
                 <div class="poly-card">
                     <div class="poly-title"><i class="fa-solid fa-biohazard" style="color:var(--cosmic-gold);"></i> ৪র্থ-৫ম শ্রেণী (করোনা মহামারী)</div>
-                    <p style="font-size:0.95rem; color:var(--text-sub);">মহামারীতে প্রতিষ্ঠান বন্ধ থাকায় প্রাতিষ্ঠানিক পাঠদান ব্যাহত হয়। কেবল অ্যাসাইনমেন্টে বেসিক বা মূল ভিত্তি তৈরিই হয়নি।</p>
+                    <p class="poly-text">মহামারীতে প্রতিষ্ঠান বন্ধ থাকায় প্রাতিষ্ঠানিক পাঠদান ব্যাহত হয়। কেবল অ্যাসাইনমেন্টে বেসিক বা মূল ভিত্তি তৈরিই হয়নি।</p>
                 </div>
                 <div class="poly-card">
                     <div class="poly-title"><i class="fa-solid fa-shapes" style="color:var(--starlight-cyan);"></i> ৭ম-৮ম শ্রেণী (নতুন কারিকুলাম)</div>
-                    <p style="font-size:0.95rem; color:var(--text-sub);">নতুন কারিকুলামের রূপান্তরে অভ্যস্ত হতে গিয়ে বিজ্ঞানের মূল থিওরি ও গভীর পাঠ থেকে আমরা বঞ্চিত রয়ে যাই।</p>
+                    <p class="poly-text">নতুন কারিকুলামের রূপান্তরে অভ্যস্ত হতে গিয়ে বিজ্ঞানের মূল থিওরি ও গভীর পাঠ থেকে আমরা বঞ্চিত রয়ে যাই।</p>
                 </div>
                 <div class="poly-card">
-                    <div class="poly-title"><i class="fa-solid fa-hourglass-half" style="color:var(--gold-accent);"></i> ৯মে বই সংকট ও ক্লাস স্থগিত</div>
-                    <p style="font-size:0.95rem; color:var(--text-sub);">প্রথম ৪ মাস কোনো বই হাতে পাইনি। ৬ষ্ঠ মাসে পিটিএস পরীক্ষা হলেও ৫ মিনিটও ক্লাস হয়নি! পরে আরমান স্যার চেষ্টা করলেও বিজ্ঞান অচেনাই থেকে যায়।</p>
+                    <div class="poly-title"><i class="fa-solid fa-hourglass-half" style="color:var(--cosmic-gold);"></i> ৯মে বই সংকট ও ক্লাস স্থগিত</div>
+                    <p class="poly-text">প্রথম ৪ মাস কোনো বই হাতে পাইনি। ৬ষ্ঠ মাসে পিটিএস পরীক্ষা হলেও ৫ মিনিটও ক্লাস হয়নি! পরে আরমান স্যার চেষ্টা করলেও বিজ্ঞান অচেনাই থেকে যায়।</p>
                 </div>
             </div>
         </div>
@@ -399,18 +435,18 @@
         <!-- SLIDE 3: Systemic Instability - Teacher Changes (Capsule Cards) -->
         <div class="slide" id="slide3">
             <h1>সিস্টেমের সংকট: ঘনঘন শিক্ষক পরিবর্তনের বিভ্রান্তি</h1>
-            <p class="hero-desc" style="margin-bottom: 15px;">১০ম শ্রেণীতে পদার্পণ করেও আমাদের স্থিরতার অভাব ছিল। একই বিষয়ে বারবার শিক্ষক পরিবর্তিত হওয়ায় আমরা খাপ খাওয়াতে ব্যর্থ হয়েছি:</p>
+            <p class="hero-desc">১০ম শ্রেণীতে পদার্পণ করলেও আমাদের স্থিরতার অভাব ছিল। একই বিষয়ে বারবার শিক্ষক পরিবর্তিত হওয়ায় আমরা খাপ খাওয়াতে ব্যর্থ হয়েছি:</p>
 
             <div class="pill-card">
-                <div style="font-weight:700; color:#ffffff;"><i class="fa-solid fa-arrows-rotate" style="color:var(--starlight-cyan);"></i> আরবি প্রথম পত্র (৪ বার শিক্ষক রোটেশন)</div>
+                <div class="pill-title"><i class="fa-solid fa-arrows-rotate" style="color:var(--starlight-cyan);"></i> আরবি প্রথম পত্র (৪ বার শিক্ষক রোটেশন)</div>
                 <div class="pill-flow">এনামুল হুজুর ➔ মমিনুল স্যার ➔ মাহবুব স্যার ➔ আব্দুল্লাহ স্যার</div>
             </div>
             <div class="pill-card">
-                <div style="font-weight:700; color:#ffffff;"><i class="fa-solid fa-arrows-rotate" style="color:var(--starlight-cyan);"></i> কুরআন মাজিদ (৪ বার শিক্ষক রোটেশন)</div>
+                <div class="pill-title"><i class="fa-solid fa-arrows-rotate" style="color:var(--starlight-cyan);"></i> কুরআন মাজিদ (৪ বার শিক্ষক রোটেশন)</div>
                 <div class="pill-flow">মাহবুব স্যার ➔ মমিনুল স্যার ➔ দিনুল স্যার ➔ দিনুল স্যার (বর্তমান)</div>
             </div>
             <div class="pill-card">
-                <div style="font-weight:700; color:#ffffff;"><i class="fa-solid fa-clock-rotate-left" style="color:var(--cosmic-gold);"></i> বাংলা প্রথম পত্র (দীর্ঘ সেশন গ্যাপ)</div>
+                <div class="pill-title"><i class="fa-solid fa-clock-rotate-left" style="color:var(--cosmic-gold);"></i> বাংলা প্রথম পত্র (দীর্ঘ সেশন গ্যাপ)</div>
                 <div class="pill-flow">নীলিমা ম্যাম ➔ (১৫ দিন বন্ধ) ➔ রেহানা ম্যাম ➔ (ছুটি ও নতুন ইনস্ট্রাক্টর) ➔ রেহানা ম্যাম</div>
             </div>
         </div>
@@ -421,14 +457,14 @@
             
             <div class="shard-box">
                 <h3><i class="fa-solid fa-vihara"></i> অধ্যায়ভিত্তিক পরীক্ষা (Chapter-wise Test)</h3>
-                <p style="color:var(--text-sub); font-size:1rem; line-height:1.7;">
+                <p class="shard-text">
                     <strong>কুরআন, হাদিস, আকায়িদ-ফিকহ, বাংলা ১ম ও ২য়:</strong> উস্তাদগণ কুরআনের তারকিব, তাহকিক ও জমিরে সমস্যাগুলো সমাধান করবেন। আমরা নিয়মিত ক্লাসের চেয়ে সপ্তাহে নির্দিষ্ট অধ্যায়ের ওপর পরীক্ষা দিয়ে নিজেদের প্রস্তুত করতে চাই।
                 </p>
             </div>
 
-            <div class="shard-box" style="border-left-color: var(--gold-accent);">
-                <h3 style="color:var(--gold-accent);"><i class="fa-solid fa-bolt"></i> টানা ৮ পিরিয়ড ম্যারাথন ব্লকে ক্লাস</h3>
-                <p style="color:var(--text-sub); font-size:1rem; line-height:1.7;">
+            <div class="shard-box" style="border-left-color: var(--cosmic-gold);">
+                <h3 style="color:var(--cosmic-gold);"><i class="fa-solid fa-bolt"></i> টানা ৮ পিরিয়ড ম্যারাথন ব্লকে ক্লাস</h3>
+                <p class="shard-text">
                     <strong>আরবি ১ম, আরবি ২য় ও বাংলা ২য়:</strong> আরবি ভাষা না বোঝার দুর্বলতা কাটাতে সপ্তাহের নির্ধারিত একদিনে ১ম থেকে ৮ম পিরিয়ড পর্যন্ত টানা এই তিনটি বিষয়ের নিবিড় পাঠদান পরিচালিত হোক।
                 </p>
             </div>
@@ -440,31 +476,31 @@
             
             <div class="shard-box">
                 <h3><i class="fa-solid fa-file-code"></i> ইংরেজি ২য় পত্র: Type-wise পদ্ধতি</h3>
-                <p style="color:var(--text-sub); font-size:0.98rem;">বোর্ডের প্রশ্ন আলাদা হলেও নিয়ম একই। স্যার আমাদের নিয়মগুলো টাইপ আকারে ভাগ করে শিট দিলে আমাদের শিখতে সুবিধা হবে।</p>
+                <p class="shard-text">বোর্ডের প্রশ্ন আলাদা হলেও নিয়ম একই। স্যার আমাদের নিয়মগুলো টাইপ আকারে ভাগ করে শিট দিলে আমাদের শিখতে অত্যন্ত সুবিধা হবে।</p>
             </div>
 
             <div class="shard-box" style="border-left-color: var(--cosmic-gold);">
                 <h3 style="color:var(--cosmic-gold);"><i class="fa-solid fa-square-root-variable"></i> গণিত বিষয়ে বিনীত নিবেদন</h3>
-                <p style="color:var(--text-sub); font-size:0.98rem;">বর্তমান অধ্যাপক স্যারের প্রতি শ্রদ্ধা রেখেই নিবেদন—আমাদের সার্বিক প্রস্তুতির স্বার্থে 'মনিরুজ্জামান স্যার'-কে গণিত ক্লাসে দেওয়া হলে আমরা অত্যন্ত উপকৃত হব।</p>
+                <p class="shard-text">বর্তমান অধ্যাপক স্যারের প্রতি পূর্ণ শ্রদ্ধা রেখেই নিবেদন—আমাদের সার্বিক প্রস্তুতির স্বার্থে 'মনিরুজ্জামান স্যার'-কে গণিত ক্লাসে দেওয়া হলে আমরা উপকৃত হব।</p>
             </div>
 
             <div class="shard-box" style="border-left-color: var(--starlight-cyan);">
                 <h3><i class="fa-solid fa-flask-vial"></i> বিজ্ঞান বিষয়সমূহ (পদার্থ, রসায়ন, জীববিজ্ঞান)</h3>
-                <p style="color:var(--text-sub); font-size:0.98rem;">ঘাটতি পূরণে ১ মাসে ৫০% (হাফ) সিলেবাসের উপর শতভাগ না-দেখে পরীক্ষা নেওয়ার প্রস্তাব করছি। সপ্তাহে একদিন সারাদিনব্যাপী এই ৩টি বিষয়ের বিশেষ ক্রাশ ক্লাস রাখা হোক।</p>
+                <p class="shard-text">ঘাটতি পূরণে ১ মাসে ৫০% (হাফ) সিলেবাসের উপর শতভাগ না-দেখে পরীক্ষা নেওয়ার প্রস্তাব করছি। সপ্তাহে একদিন সারাদিনব্যাপী এই ৩টি বিষয়ের বিশেষ ক্রাশ ক্লাস রাখা হোক।</p>
             </div>
         </div>
 
         <!-- SLIDE 6: Rumor Clearing, Gratitude & Final Reconcile -->
         <div class="slide" id="slide6">
-            <div class="portal-frame" style="width:140px; height:140px; margin-bottom:15px;">
+            <div class="portal-frame" style="width:130px; height:130px; margin-bottom:15px;">
                 <i class="fa-solid fa-heart-pulse" style="font-size:2.8rem; color:var(--cosmic-gold);"></i>
             </div>
             <h1 style="text-align: center;">ভুল ধারণা খণ্ডন ও আমাদের শেষ আরজ</h1>
             <p class="hero-desc" style="text-align: center;">
                 'শিক্ষকরা ঠিকমতো পড়ান না'—এই কথাটি সম্পূর্ণ মিথ্যে। গালিব আল শাহম নিজে শ্যামল স্যারের (SPB YouTube) ইংরেজি ২য় এবং আরমান স্যারের ফিজিক্স ক্লাসে ব্যাপকভাবে উপকৃত হয়েছে। শিক্ষকমণ্ডলীর প্রতি আমাদের শ্রদ্ধা অপরসীম।
             </p>
-            <div style="background: rgba(255,215,0,0.08); border: 1px dashed var(--gold-accent); padding: 18px; border-radius: 20px; text-align: center;">
-                <p style="color: var(--gold-accent); font-size: 1.1rem; font-weight: 600;">
+            <div style="background: rgba(255,190,11,0.12); border: 2px dashed var(--cosmic-gold); padding: 22px; border-radius: 20px; text-align: center;">
+                <p style="color: var(--cosmic-gold); font-size: 1.3rem; font-weight: 800; text-shadow: 0 0 10px rgba(0,0,0,0.8);">
                     "আমাদের ভুলগুলো ক্ষমা করে, সন্তানতুল্য মনে করে এই যুক্তিসঙ্গত প্রস্তাবনাগুলো মেনে নিন এবং পুনরায় আপনাদের স্নেহের ছায়াতলে গ্রহণ করুন।"
                 </p>
             </div>
