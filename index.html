@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>মহাজাগতিক ক্যানভাসে উস্তাদগণের প্রতি বিনম্র মিনতি</title>
-    <!-- Hind Siliguri High-Contrast Font & FontAwesome -->
+    <!-- Hind Siliguri Font & FontAwesome Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <style>
@@ -12,7 +12,6 @@
             --bg-dark: #010309;
             --accent-glow: #00f2fe;
             --text-light: #ffffff;
-            --border-glow: rgba(0, 242, 254, 0.4);
             --stage-bg: rgba(3, 7, 18, 0.94);
         }
 
@@ -35,7 +34,7 @@
             transition: background 1s ease;
         }
 
-        /* DYNAMIC BACKGROUND ANIMATIONS PER THEME */
+        /* DYNAMIC ATMOSPHERE */
         .universe-container {
             position: fixed;
             top: 0;
@@ -58,61 +57,32 @@
         .nebula-1 { width: 700px; height: 700px; top: -15%; left: -10%; }
         .nebula-2 { width: 800px; height: 800px; bottom: -20%; right: -10%; }
 
-        /* THEME 0: Cosmic Portal (Deep Blue & Purple) */
-        body[data-theme="theme-0"] {
-            --bg-dark: #02020a;
-            --accent-glow: #00f2fe;
-            --stage-bg: rgba(5, 10, 25, 0.95);
-        }
+        /* MULTI-THEME BACKDROPS */
+        body[data-theme="theme-0"] { --bg-dark: #02020a; --accent-glow: #00f2fe; --stage-bg: rgba(5, 10, 25, 0.95); }
         body[data-theme="theme-0"] .nebula-1 { background: radial-gradient(circle, #7928ca, transparent); }
         body[data-theme="theme-0"] .nebula-2 { background: radial-gradient(circle, #00f2fe, transparent); }
 
-        /* THEME 1: Constellation Matrix (Cyan & Deep Space) */
-        body[data-theme="theme-1"] {
-            --bg-dark: #000d1a;
-            --accent-glow: #38ef7d;
-            --stage-bg: rgba(0, 20, 40, 0.95);
-        }
+        body[data-theme="theme-1"] { --bg-dark: #000d1a; --accent-glow: #38ef7d; --stage-bg: rgba(0, 20, 40, 0.95); }
         body[data-theme="theme-1"] .nebula-1 { background: radial-gradient(circle, #11998e, transparent); }
         body[data-theme="theme-1"] .nebula-2 { background: radial-gradient(circle, #38ef7d, transparent); }
 
-        /* THEME 2: Solar Flare (Crimson & Violet Pulse) */
-        body[data-theme="theme-2"] {
-            --bg-dark: #120014;
-            --accent-glow: #ff007f;
-            --stage-bg: rgba(30, 5, 35, 0.95);
-        }
+        body[data-theme="theme-2"] { --bg-dark: #120014; --accent-glow: #ff007f; --stage-bg: rgba(30, 5, 35, 0.95); }
         body[data-theme="theme-2"] .nebula-1 { background: radial-gradient(circle, #ff007f, transparent); }
         body[data-theme="theme-2"] .nebula-2 { background: radial-gradient(circle, #7928ca, transparent); }
 
-        /* THEME 3: Emerald Aurora (Deep Green & Gold) */
-        body[data-theme="theme-3"] {
-            --bg-dark: #01140e;
-            --accent-glow: #10b981;
-            --stage-bg: rgba(4, 30, 22, 0.95);
-        }
+        body[data-theme="theme-3"] { --bg-dark: #01140e; --accent-glow: #10b981; --stage-bg: rgba(4, 30, 22, 0.95); }
         body[data-theme="theme-3"] .nebula-1 { background: radial-gradient(circle, #059669, transparent); }
         body[data-theme="theme-3"] .nebula-2 { background: radial-gradient(circle, #f59e0b, transparent); }
 
-        /* THEME 4: Quantum Grid (Electric Blue & Magenta) */
-        body[data-theme="theme-4"] {
-            --bg-dark: #05051a;
-            --accent-glow: #2563eb;
-            --stage-bg: rgba(10, 15, 45, 0.95);
-        }
+        body[data-theme="theme-4"] { --bg-dark: #05051a; --accent-glow: #2563eb; --stage-bg: rgba(10, 15, 45, 0.95); }
         body[data-theme="theme-4"] .nebula-1 { background: radial-gradient(circle, #3b82f6, transparent); }
         body[data-theme="theme-4"] .nebula-2 { background: radial-gradient(circle, #ec4899, transparent); }
 
-        /* THEME 5: Golden Sunburst (Divine Light & Gold) */
-        body[data-theme="theme-5"] {
-            --bg-dark: #181200;
-            --accent-glow: #ffbe0b;
-            --stage-bg: rgba(35, 25, 5, 0.96);
-        }
+        body[data-theme="theme-5"] { --bg-dark: #181200; --accent-glow: #ffbe0b; --stage-bg: rgba(35, 25, 5, 0.96); }
         body[data-theme="theme-5"] .nebula-1 { background: radial-gradient(circle, #ffbe0b, transparent); }
         body[data-theme="theme-5"] .nebula-2 { background: radial-gradient(circle, #fb5607, transparent); }
 
-        /* CONTINUOUS ROTATING ORBITS */
+        /* ROTATING ORBITS */
         .cosmic-orbit {
             position: absolute;
             top: 50%;
@@ -144,7 +114,41 @@
             100% { transform: translate(-50%, -50%) rotate(360deg); }
         }
 
-        /* STAGE CONTAINER WITH DYNAMIC SHADOWS */
+        /* TOP AUDIO & TOOLBAR CONTROLS */
+        .top-toolbar {
+            position: fixed;
+            top: 20px;
+            right: 25px;
+            z-index: 100;
+            display: flex;
+            gap: 12px;
+        }
+
+        .tool-btn {
+            background: rgba(0, 0, 0, 0.65);
+            border: 2px solid var(--accent-glow);
+            color: #ffffff;
+            padding: 10px 18px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tool-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px var(--accent-glow);
+            background: var(--accent-glow);
+            color: #000000;
+        }
+
+        /* STAGE CONTAINER */
         .stage-box {
             width: 94%;
             max-width: 1050px;
@@ -180,73 +184,28 @@
             transition: all 0.6s ease;
         }
 
-        /* SLIDE TRANSITION ENGINES (UNIQUE ENTRY ANIMATIONS) */
-        .slide {
-            display: none;
-            opacity: 0;
-        }
+        /* SLIDE ENTRY ANIMATIONS */
+        .slide { display: none; opacity: 0; }
 
-        /* Slide 1 Animation: Portal Expand */
-        body[data-theme="theme-0"] .slide.active {
-            display: block;
-            animation: portalZoom 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-        @keyframes portalZoom {
-            0% { opacity: 0; transform: scale(0.7) rotate(-5deg); }
-            100% { opacity: 1; transform: scale(1) rotate(0deg); }
-        }
+        body[data-theme="theme-0"] .slide.active { display: block; animation: portalZoom 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes portalZoom { 0% { opacity: 0; transform: scale(0.7) rotate(-5deg); } 100% { opacity: 1; transform: scale(1) rotate(0deg); } }
 
-        /* Slide 2 Animation: Cyber Matrix Glitch Slide */
-        body[data-theme="theme-1"] .slide.active {
-            display: block;
-            animation: matrixSlide 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-        @keyframes matrixSlide {
-            0% { opacity: 0; transform: translateX(-80px) skewX(5deg); }
-            100% { opacity: 1; transform: translateX(0) skewX(0deg); }
-        }
+        body[data-theme="theme-1"] .slide.active { display: block; animation: matrixSlide 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes matrixSlide { 0% { opacity: 0; transform: translateX(-80px) skewX(5deg); } 100% { opacity: 1; transform: translateX(0) skewX(0deg); } }
 
-        /* Slide 3 Animation: Solar Flare Flip */
-        body[data-theme="theme-2"] .slide.active {
-            display: block;
-            animation: solarFlip 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-        @keyframes solarFlip {
-            0% { opacity: 0; transform: rotateY(90deg) translateY(-30px); }
-            100% { opacity: 1; transform: rotateY(0deg) translateY(0); }
-        }
+        body[data-theme="theme-2"] .slide.active { display: block; animation: solarFlip 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes solarFlip { 0% { opacity: 0; transform: rotateY(90deg) translateY(-30px); } 100% { opacity: 1; transform: rotateY(0deg) translateY(0); } }
 
-        /* Slide 4 Animation: Aurora Wave Rise */
-        body[data-theme="theme-3"] .slide.active {
-            display: block;
-            animation: auroraRise 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-        @keyframes auroraRise {
-            0% { opacity: 0; transform: translateY(80px) scale(0.95); }
-            100% { opacity: 1; transform: translateY(0) scale(1); }
-        }
+        body[data-theme="theme-3"] .slide.active { display: block; animation: auroraRise 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes auroraRise { 0% { opacity: 0; transform: translateY(80px) scale(0.95); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
 
-        /* Slide 5 Animation: Quantum 3D Drop */
-        body[data-theme="theme-4"] .slide.active {
-            display: block;
-            animation: quantumDrop 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-        @keyframes quantumDrop {
-            0% { opacity: 0; transform: translateZ(-300px) translateY(-50px); }
-            100% { opacity: 1; transform: translateZ(0) translateY(0); }
-        }
+        body[data-theme="theme-4"] .slide.active { display: block; animation: quantumDrop 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes quantumDrop { 0% { opacity: 0; transform: translateZ(-300px) translateY(-50px); } 100% { opacity: 1; transform: translateZ(0) translateY(0); } }
 
-        /* Slide 6 Animation: Golden Radiance Burst */
-        body[data-theme="theme-5"] .slide.active {
-            display: block;
-            animation: radianceBurst 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-        @keyframes radianceBurst {
-            0% { opacity: 0; transform: scale(1.15); filter: brightness(2); }
-            100% { opacity: 1; transform: scale(1); filter: brightness(1); }
-        }
+        body[data-theme="theme-5"] .slide.active { display: block; animation: radianceBurst 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes radianceBurst { 0% { opacity: 0; transform: scale(1.15); filter: brightness(2); } 100% { opacity: 1; transform: scale(1); filter: brightness(1); } }
 
-        /* TYPOGRAPHY - EXTRA LARGE & ULTRA READABLE */
+        /* HIGH VISIBILITY TYPOGRAPHY */
         h1 {
             font-size: 2.6rem;
             font-weight: 800;
@@ -257,24 +216,24 @@
         }
 
         p.hero-desc {
-            font-size: 1.35rem;
+            font-size: 1.32rem;
             line-height: 1.9;
             color: #ffffff;
             font-weight: 600;
             margin-bottom: 25px;
             text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95);
-            background: rgba(0, 0, 0, 0.55);
+            background: rgba(0, 0, 0, 0.6);
             padding: 20px;
             border-radius: 20px;
             border: 2px solid rgba(255, 255, 255, 0.2);
         }
 
-        /* PORTAL & ICON SHAPES */
+        /* PORTAL SHAPE */
         .portal-frame {
-            width: 190px;
-            height: 190px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
-            margin: 0 auto 25px auto;
+            margin: 0 auto 20px auto;
             background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.6) 100%);
             border: 3px solid var(--accent-glow);
             box-shadow: 0 0 45px var(--accent-glow);
@@ -291,18 +250,15 @@
         }
 
         .portal-frame i {
-            font-size: 4.5rem;
+            font-size: 4.2rem;
             color: #ffbe0b;
             filter: drop-shadow(0 0 20px #ffbe0b);
             animation: spinIcon 12s linear infinite;
         }
 
-        @keyframes spinIcon {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+        @keyframes spinIcon { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        /* ASYMMETRICAL POLYGON GRID */
+        /* POLYGON CARDS */
         .poly-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
@@ -330,14 +286,9 @@
             gap: 12px;
         }
 
-        .poly-text {
-            font-size: 1.15rem;
-            color: #ffffff;
-            font-weight: 600;
-            line-height: 1.7;
-        }
+        .poly-text { font-size: 1.15rem; color: #ffffff; font-weight: 600; line-height: 1.7; }
 
-        /* CAPSULE PILL CARDS */
+        /* CAPSULE CARDS */
         .pill-card {
             background: rgba(0, 0, 0, 0.7);
             border: 2px solid var(--accent-glow);
@@ -347,58 +298,30 @@
             box-shadow: 0 8px 25px rgba(0,0,0,0.8);
         }
 
-        .pill-title {
-            font-size: 1.25rem;
-            font-weight: 800;
-            color: #ffffff;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .pill-flow {
-            font-size: 1.2rem;
-            color: #ffbe0b;
-            font-weight: 700;
-            margin-top: 8px;
-            text-shadow: 0 0 10px rgba(255, 190, 11, 0.5);
-        }
+        .pill-title { font-size: 1.25rem; font-weight: 800; color: #ffffff; display: flex; align-items: center; gap: 12px; }
+        .pill-flow { font-size: 1.2rem; color: #ffbe0b; font-weight: 700; margin-top: 8px; text-shadow: 0 0 10px rgba(255, 190, 11, 0.5); }
 
         /* SHARD BOXES */
         .shard-box {
             background: rgba(0, 0, 0, 0.7);
             border: 2px solid rgba(255, 255, 255, 0.25);
             clip-path: polygon(0 0, 96% 0, 100% 18%, 100% 100%, 4% 100%, 0 82%);
-            padding: 24px;
-            margin-bottom: 18px;
+            padding: 22px;
+            margin-bottom: 16px;
             border-left: 6px solid var(--accent-glow);
             box-shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
 
-        .shard-box h3 {
-            color: var(--accent-glow);
-            font-size: 1.35rem;
-            font-weight: 800;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .shard-text {
-            color: #ffffff;
-            font-size: 1.18rem;
-            font-weight: 600;
-            line-height: 1.8;
-        }
+        .shard-box h3 { font-size: 1.3rem; font-weight: 800; color: var(--accent-glow); margin-bottom: 8px; display: flex; align-items: center; gap: 12px; }
+        .shard-text { color: #ffffff; font-size: 1.15rem; font-weight: 600; line-height: 1.8; }
 
         /* NAVIGATION CONTROLS */
         .nav-controls {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 25px;
-            padding-top: 20px;
+            margin-top: 20px;
+            padding-top: 18px;
             border-top: 2px solid rgba(255, 255, 255, 0.2);
         }
 
@@ -418,29 +341,11 @@
             gap: 12px;
         }
 
-        .btn-cosmic:hover {
-            transform: translateY(-3px) scale(1.04);
-            box-shadow: 0 0 40px var(--accent-glow);
-        }
+        .btn-cosmic:hover { transform: translateY(-3px) scale(1.04); box-shadow: 0 0 40px var(--accent-glow); }
+        .btn-cosmic:disabled { background: #334155; color: #94a3b8; box-shadow: none; cursor: not-allowed; opacity: 0.4; }
 
-        .btn-cosmic:disabled {
-            background: #334155;
-            color: #94a3b8;
-            box-shadow: none;
-            cursor: not-allowed;
-            opacity: 0.4;
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            color: #ffffff;
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: var(--accent-glow);
-        }
+        .btn-secondary { background: rgba(255, 255, 255, 0.1); border: 2px solid rgba(255, 255, 255, 0.3); color: #ffffff; }
+        .btn-secondary:hover { background: rgba(255, 255, 255, 0.2); border-color: var(--accent-glow); }
 
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-thumb { background: var(--accent-glow); border-radius: 10px; }
@@ -448,17 +353,23 @@
 </head>
 <body data-theme="theme-0">
 
+    <!-- TOP TOOLBAR CONTROLS -->
+    <div class="top-toolbar">
+        <button class="tool-btn" id="soundBtn" onclick="toggleSound()">
+            <i class="fa-solid fa-volume-xmark"></i> আবহ সঙ্গীত চালু করুন
+        </button>
+        <button class="tool-btn" onclick="toggleFullscreen()">
+            <i class="fa-solid fa-expand"></i> ফুলস্ক্রিন
+        </button>
+    </div>
+
     <!-- DYNAMIC BACKGROUND ATMOSPHERE -->
     <div class="universe-container">
         <div class="nebula nebula-1"></div>
         <div class="nebula nebula-2"></div>
 
-        <div class="cosmic-orbit orbit-1">
-            <div class="planet"></div>
-        </div>
-        <div class="cosmic-orbit orbit-2">
-            <div class="planet" style="top:auto; bottom:-12px;"></div>
-        </div>
+        <div class="cosmic-orbit orbit-1"><div class="planet"></div></div>
+        <div class="cosmic-orbit orbit-2"><div class="planet" style="top:auto; bottom:-12px;"></div></div>
     </div>
 
     <!-- MAIN STAGE BOX -->
@@ -468,109 +379,115 @@
             <div class="progress-fill" id="progressFill"></div>
         </div>
 
-        <!-- SLIDE 1: COSMIC PORTAL (THEME 0: Deep Nebula) -->
+        <!-- SLIDE 1: COSMIC PORTAL -->
         <div class="slide active" id="slide0">
             <div class="portal-frame">
                 <i class="fa-solid fa-atom"></i>
                 <span style="font-size:1.1rem; color:#ffffff; font-weight:800; margin-top:8px;">মহাজাগতিক বিনম্রতা</span>
             </div>
-            <h1 style="text-align: center;">মহাবিশ্বের মহিমায় উস্তাদগণের প্রতি ক্ষমা প্রার্থনা</h1>
+            <h1 style="text-align: center;">মহাবিশ্বের মহিমায় উস্তাদগণের প্রতি বিনম্র আরজ</h1>
             <p class="hero-desc" style="text-align: center;">
-                শ্রদ্ধাস্পদ উস্তাদবৃন্দ, মহাবিশ্বের অসীম বিশালতার সামনে যেমন মানুষ বিন্দুবৎ, তেমনি আপনাদের ইলম ও জ্ঞানের সাগরে আমরা নিতান্তই পথভোলা শিশু। বিগত তিন মাসের অনাকাঙ্ক্ষিত বিচ্ছেদ ও ভুল বোঝাবুঝির জন্য আমরা গভীর অনুশোচনায় নিজেদের সঁপে দিয়ে বিনম্র ক্ষমা প্রার্থনা করছি। আপনাদের স্নেহচ্ছায়া ব্যতীত আমাদের এই যাত্রা অন্ধকারময়।
+                শ্রদ্ধাস্পদ উস্তাদবৃন্দ, আপনারা আমাদের জ্ঞানের দিশারী। মহাবিশ্বের অসীম বিশালতার সামনে যেমন মানুষ বিন্দুবৎ, তেমনি আপনাদের ইলম ও অভিজ্ঞতার সাগরে আমরা নিতান্তই ছোট ও অজ্ঞ শিশু। বিগত তিন মাসের অনাকাঙ্ক্ষিত দূরত্ব ও ভুল বোঝাবুঝির জন্য আমরা নিজেদের অপরাধী মনে করে বিনম্র ক্ষমা প্রার্থনা করছি। আপনাদের স্নেহচ্ছায়া ব্যতীত আমাদের সুন্দর ভবিষ্যৎ কল্পনা করা অসম্ভব।
             </p>
         </div>
 
-        <!-- SLIDE 2: 10 YEARS STRUGGLE (THEME 1: Constellation Matrix) -->
+        <!-- SLIDE 2: 10 YEARS STRUGGLE -->
         <div class="slide" id="slide1">
-            <h1>১০ বছরের শিক্ষাজীবন: অমানিশা ও লড়াইয়ের ইতিহাস</h1>
-            <p class="hero-desc">আমাদের না-শেখা এবং পিছিয়ে পড়ার অন্তরালে রয়ে গেছে বছরের পর বছর ধরে জমতে থাকা কিছু ঐতিহাসিক ও প্রশাসনিক সংকট:</p>
+            <h1>১০ বছরের শিক্ষাজীবন: আমাদের পিছিয়ে পড়ার প্রেক্ষাপট</h1>
+            <p class="hero-desc">আপনাদের কাছে আড়াল করার কিছু নেই; আমাদের নানা দুর্বলতার পেছনে বছর জুড়ে জমা হওয়া কিছু অনিচ্ছাকৃত পরিস্থিতি ছিল:</p>
             
             <div class="poly-grid">
                 <div class="poly-card">
                     <div class="poly-title"><i class="fa-solid fa-biohazard" style="color:#ffbe0b;"></i> ৪র্থ-৫ম শ্রেণী (করোনা মহামারী)</div>
-                    <p class="poly-text">মহামারীতে প্রতিষ্ঠান বন্ধ থাকায় প্রাতিষ্ঠানিক পাঠদান ব্যাহত হয়। কেবল অ্যাসাইনমেন্টে বেসিক বা মূল ভিত্তি তৈরিই হয়নি।</p>
+                    <p class="poly-text">মহামারীতে দীর্ঘদিন প্রতিষ্ঠান বন্ধ থাকায় আমাদের প্রাতিষ্ঠানিক ভিত্তি তৈরিতে বড় ঘাটতি থেকে যায়।</p>
                 </div>
                 <div class="poly-card">
                     <div class="poly-title"><i class="fa-solid fa-shapes"></i> ৭ম-৮ম শ্রেণী (নতুন কারিকুলাম)</div>
-                    <p class="poly-text">নতুন কারিকুলামের রূপান্তরে অভ্যস্ত হতে গিয়ে বিজ্ঞানের মূল থিওরি ও গভীর পাঠ থেকে আমরা বঞ্চিত রয়ে যাই।</p>
+                    <p class="poly-text">নতুন কারিকুলামের পরিবর্তনের সাথে খাপ খাওয়াতে গিয়ে বিজ্ঞানের মূল থিওরিটিক্যাল পড়ালেখা থেকে আমরা কিছুটা দূরে সরে পড়ি।</p>
                 </div>
                 <div class="poly-card">
                     <div class="poly-title"><i class="fa-solid fa-hourglass-half" style="color:#ffbe0b;"></i> ৯মে বই সংকট ও ক্লাস স্থগিত</div>
-                    <p class="poly-text">প্রথম ৪ মাস কোনো বই হাতে পাইনি। ৬ষ্ঠ মাসে পিটিএস পরীক্ষা হলেও ৫ মিনিটও ক্লাস হয়নি! পরে আরমান স্যার চেষ্টা করলেও বিজ্ঞান অচেনাই থেকে যায়।</p>
+                    <p class="poly-text">বছরের শুরুতে বই পেতে দেরি হওয়া এবং সাময়িক ক্লাস স্থগিত থাকার কারণে আমাদের বিজ্ঞানের ভীতি কাটেনি।</p>
                 </div>
             </div>
         </div>
 
-        <!-- SLIDE 3: TEACHER ROTATION (THEME 2: Solar Flare) -->
+        <!-- SLIDE 3: TEACHER ROTATION -->
         <div class="slide" id="slide2">
-            <h1>সিস্টেমের সংকট: ঘনঘন শিক্ষক পরিবর্তনের বিভ্রান্তি</h1>
-            <p class="hero-desc">১০ম শ্রেণীতে পদার্পণ করলেও আমাদের স্থিরতার অভাব ছিল। একই বিষয়ে বারবার শিক্ষক পরিবর্তিত হওয়ায় আমরা খাপ খাওয়াতে ব্যর্থ হয়েছি:</p>
+            <h1>শিক্ষক রোটেশন: আমাদের খাপ খাওয়ানোর সীমাবদ্ধতা</h1>
+            <p class="hero-desc">স্যাররা তো সবসময় সর্বোচ্চ পঠিত বিদ্যাই আমাদের দেন, কিন্তু একই বিষয়ে বারবার ইনস্ট্রাক্টর পরিবর্তিত হওয়ায় আমাদের বুঝতে কিছুটা সময় বেশি লেগেছে:</p>
 
             <div class="pill-card">
-                <div class="pill-title"><i class="fa-solid fa-arrows-rotate"></i> আরবি প্রথম পত্র (৪ বার শিক্ষক রোটেশন)</div>
+                <div class="pill-title"><i class="fa-solid fa-arrows-rotate"></i> আরবি প্রথম পত্র (৪ বার পরিবর্তন)</div>
                 <div class="pill-flow">এনামুল হুজুর ➔ মমিনুল স্যার ➔ মাহবুব স্যার ➔ আব্দুল্লাহ স্যার</div>
             </div>
             <div class="pill-card">
-                <div class="pill-title"><i class="fa-solid fa-arrows-rotate"></i> কুরআন মাজিদ (৪ বার শিক্ষক রোটেশন)</div>
+                <div class="pill-title"><i class="fa-solid fa-arrows-rotate"></i> কুরআন মাজিদ (৪ বার পরিবর্তন)</div>
                 <div class="pill-flow">মাহবুব স্যার ➔ মমিনুল স্যার ➔ দিনুল স্যার ➔ দিনুল স্যার (বর্তমান)</div>
             </div>
             <div class="pill-card">
-                <div class="pill-title"><i class="fa-solid fa-clock-rotate-left" style="color:#ffbe0b;"></i> বাংলা প্রথম পত্র (দীর্ঘ সেশন গ্যাপ)</div>
-                <div class="pill-flow">নীলিমা ম্যাম ➔ (১৫ দিন বন্ধ) ➔ রেহানা ম্যাম ➔ (ছুটি ও নতুন ইনস্ট্রাক্টর) ➔ রেহানা ম্যাম</div>
+                <div class="pill-title"><i class="fa-solid fa-clock-rotate-left" style="color:#ffbe0b;"></i> বাংলা প্রথম পত্র (সেশন গ্যাপ)</div>
+                <div class="pill-flow">নীলিমা ম্যাম ➔ (১৫ দিন বন্ধ) ➔ রেহানা ম্যাম ➔ (ছুটি) ➔ রেহানা ম্যাম</div>
             </div>
         </div>
 
-        <!-- SLIDE 4: RELIGIOUS SUBJECTS (THEME 3: Emerald Aurora) -->
+        <!-- SLIDE 4: RELIGIOUS SUBJECTS (HUMBLE TONE) -->
         <div class="slide" id="slide3">
-            <h1>ধর্মীয় ও সাধারণ বিষয়ের সুনির্দিষ্ট প্রস্তাবনা</h1>
+            <h1>ধর্মীয় ও সাধারণ বিষয়ে শিক্ষার্থীদের বিনীত আবেদন</h1>
+            <p class="hero-desc" style="margin-bottom:15px; padding:12px 20px;">
+                আপনাদের উপদেশের চেয়ে উত্তম কিছু হতে পারে না। স্যারদের বিবেচনার জন্য আমাদের পক্ষ থেকে ছোট কিছু আরজ রাখা হলো মাত্র; আপনারা যেভাবে ভালো মনে করেন সিদ্ধান্ত নেবেন:
+            </p>
             
             <div class="shard-box">
                 <h3><i class="fa-solid fa-vihara"></i> অধ্যায়ভিত্তিক পরীক্ষা (Chapter-wise Test)</h3>
                 <p class="shard-text">
-                    <strong>কুরআন, হাদিস, আকায়িদ-ফিকহ, বাংলা ১ম ও ২য়:</strong> উস্তাদগণ কুরআনের তারকিব, তাহকিক ও জমিরে সমস্যাগুলো সমাধান করবেন। আমরা নিয়মিত ক্লাসের চেয়ে সপ্তাহে নির্দিষ্ট অধ্যায়ের ওপর পরীক্ষা দিয়ে নিজেদের প্রস্তুত করতে চাই।
+                    <strong>কুরআন, হাদিস, আকায়িদ-ফিকহ, বাংলা ১ম ও ২য়:</strong> তারকিব ও তাহকিকের ভীতি কাটাতে স্যাররা যদি নিয়মিত অধ্যায়ভিত্তিক ছোট ছোট পরীক্ষা নেওয়ার ব্যবস্থা করেন, তবে আমরা অনেক উপকৃত হতাম।
                 </p>
             </div>
 
             <div class="shard-box" style="border-left-color: #ffbe0b;">
-                <h3 style="color:#ffbe0b;"><i class="fa-solid fa-bolt"></i> টানা ৮ পিরিয়ড ম্যারাথন ব্লকে ক্লাস</h3>
+                <h3 style="color:#ffbe0b;"><i class="fa-solid fa-bolt"></i> বিশেষ ম্যারাথন ব্লক ক্লাস</h3>
                 <p class="shard-text">
-                    <strong>আরবি ১ম, আরবি ২য় ও বাংলা ২য়:</strong> আরবি ভাষা না বোঝার দুর্বলতা কাটাতে সপ্তাহের নির্ধারিত একদিনে ১ম থেকে ৮ম পিরিয়ড পর্যন্ত টানা এই তিনটি বিষয়ের নিবিড় পাঠদান পরিচালিত হোক।
+                    <strong>আরবি ১ম, ২য় ও বাংলা ২য়:</strong> আমাদের ব্যাকরণ ও আরবি ভাষার দুর্বলতা কাটাতে সপ্তাহের কোনো একদিন একটানা নিবিড় ক্লাসের সুযোগ দিলে আমাদের বেসিক মজবুত হতো।
                 </p>
             </div>
         </div>
 
-        <!-- SLIDE 5: MATH & SCIENCE (THEME 4: Quantum Grid) -->
+        <!-- SLIDE 5: MATH & SCIENCE (REVISED RESPECTFUL MATH SECTION) -->
         <div class="slide" id="slide4">
-            <h1>ইংরেজি ২য়, গণিত ও বিজ্ঞান বিষয়সমূহের রূপরেখা</h1>
-            
+            <h1>ইংরেজি ২য়, গণিত ও বিজ্ঞান বিষয়ের নিবেদন</h1>
+            <p class="hero-desc" style="margin-bottom:15px; padding:12px 20px;">
+                আপনারা আমাদের শিক্ষক, কোনটা ভালো হবে তা আমাদের চেয়ে আপনারাই শতগুণ বেশি বোঝেন। আমাদের কেবল ছোট্ট আকুতি:
+            </p>
+
             <div class="shard-box">
-                <h3><i class="fa-solid fa-file-code"></i> ইংরেজি ২য় পত্র: Type-wise পদ্ধতি</h3>
-                <p class="shard-text">বোর্ডের প্রশ্ন আলাদা হলেও নিয়ম একই। স্যার আমাদের নিয়মগুলো টাইপ আকারে ভাগ করে শিট দিলে আমাদের শিখতে অত্যন্ত সুবিধা হবে।</p>
+                <h3><i class="fa-solid fa-file-code"></i> ইংরেজি ২য় পত্র: Type-wise শিট</h3>
+                <p class="shard-text">স্যার যদি বোর্ডের নিয়মগুলো টাইপ অনুযায়ী আলাদা শিট করে বুঝিয়ে দেন, তবে ইংরেজি ব্যাকরণ নিয়ে আমাদের দ্বিধা কাটবে।</p>
             </div>
 
             <div class="shard-box" style="border-left-color: #ffbe0b;">
                 <h3 style="color:#ffbe0b;"><i class="fa-solid fa-square-root-variable"></i> গণিত বিষয়ে বিনীত নিবেদন</h3>
-                <p class="shard-text">বর্তমান অধ্যাপক স্যারের প্রতি পূর্ণ শ্রদ্ধা রেখেই নিবেদন—আমাদের সার্বিক প্রস্তুতির স্বার্থে 'মনিরুজ্জামান স্যার'-কে গণিত ক্লাসে দেওয়া হলে আমরা উপকৃত হব।</p>
+                <p class="shard-text">আমাদের গণিত স্যারের প্রতি শ্রদ্ধা অপরসীম। আমরা কোনো শিক্ষক পরিবর্তনের কথা চিন্তাও করি না; তবে বিজ্ঞানের মতো গণিতেও যদি আমাদের জন্য অতিরিক্ত রিভিশন ক্লাস ও নিয়মিত মূল্যায়নের সুযোগ দেওয়া হতো, তবে আমাদের আত্মবিশ্বাস আরও বেড়ে যেত।</p>
             </div>
 
             <div class="shard-box">
-                <h3><i class="fa-solid fa-flask-vial"></i> বিজ্ঞান বিষয়সমূহ (পদার্থ, রসায়ন, জীববিজ্ঞান)</h3>
-                <p class="shard-text">ঘাটতি পূরণে ১ মাসে ৫০% (হাফ) সিলেবাসের উপর শতভাগ না-দেখে পরীক্ষা নেওয়ার প্রস্তাব করছি। সপ্তাহে একদিন সারাদিনব্যাপী এই ৩টি বিষয়ের বিশেষ ক্রাশ ক্লাস রাখা হোক।</p>
+                <h3><i class="fa-solid fa-flask-vial"></i> বিজ্ঞান বিষয়সমূহ (পদার্থ, রসায়ন, জীববিজ্ঞান)</h3>
+                <p class="shard-text">ঘাটতি মেটাতে ১ মাসে ৫০% সিলেবাসের ওপর বিশেষ প্রস্তুতি ও নিয়মিত মডেল টেস্টের ব্যবস্থা রাখা যায় কিনা, তা বিবেচনার আবেদন রইল।</p>
             </div>
         </div>
 
-        <!-- SLIDE 6: FINAL APPEAL (THEME 5: Golden Sunburst) -->
+        <!-- SLIDE 6: FINAL APPEAL -->
         <div class="slide" id="slide5">
-            <div class="portal-frame" style="width:130px; height:130px; margin-bottom:15px; border-color:#ffbe0b; box-shadow:0 0 50px #ffbe0b;">
-                <i class="fa-solid fa-heart-pulse" style="font-size:2.8rem; color:#ffbe0b;"></i>
+            <div class="portal-frame" style="width:120px; height:120px; margin-bottom:15px; border-color:#ffbe0b; box-shadow:0 0 50px #ffbe0b;">
+                <i class="fa-solid fa-heart-pulse" style="font-size:2.5rem; color:#ffbe0b;"></i>
             </div>
             <h1 style="text-align: center;">ভুল ধারণা খণ্ডন ও আমাদের শেষ আরজ</h1>
             <p class="hero-desc" style="text-align: center;">
-                'শিক্ষকরা ঠিকমতো পড়ান না'—এই কথাটি সম্পূর্ণ মিথ্যে। গালিব আল শাহম নিজে শ্যামল স্যারের (SPB YouTube) ইংরেজি ২য় এবং আরমান স্যারের ফিজিক্স ক্লাসে ব্যাপকভাবে উপকৃত হয়েছে। শিক্ষকমণ্ডলীর প্রতি আমাদের শ্রদ্ধা অপরসীম।
+                'শিক্ষকরা মন দিয়ে পড়ান না'—এটি একটি সম্পূর্ণ ভুল ধারণা। গালিব আল শাহমসহ আমরা সবাই শিক্ষকবৃন্দের পরিশ্রম ও আন্তরিকতায় অত্যন্ত উপকৃত। শিক্ষকমণ্ডলীর প্রতি আমাদের সম্মান চিরন্তন।
             </p>
-            <div style="background: rgba(0,0,0,0.8); border: 2px dashed #ffbe0b; padding: 22px; border-radius: 20px; text-align: center;">
-                <p style="color: #ffbe0b; font-size: 1.35rem; font-weight: 800; text-shadow: 0 0 10px rgba(0,0,0,0.9);">
-                    "আমাদের ভুলগুলো ক্ষমা করে, সন্তানতুল্য মনে করে এই যুক্তিসঙ্গত প্রস্তাবনাগুলো মেনে নিন এবং পুনরায় আপনাদের স্নেহের ছায়াতলে গ্রহণ করুন।"
+            <div style="background: rgba(0,0,0,0.8); border: 2px dashed #ffbe0b; padding: 20px; border-radius: 20px; text-align: center;">
+                <p style="color: #ffbe0b; font-size: 1.3rem; font-weight: 800; text-shadow: 0 0 10px rgba(0,0,0,0.9);">
+                    "আপনারা আমাদের অভিভাবক। আমাদের অগোচর ভুলগুলো ক্ষমা করে, সন্তানতুল্য মনে করে আমাদের আকুতিগুলো বিবেচনা করবেন এবং স্নেহের ছায়াতলে স্থান দেবেন—এই মিনতিই রাখছি।"
                 </p>
             </div>
         </div>
@@ -593,23 +510,106 @@
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
 
+        // WEB AUDIO API SYNTHESIZER (NO EXTERNAL AUDIO FILES NEEDED)
+        let audioCtx = null;
+        let ambientOsc1, ambientOsc2, ambientGain;
+        let isSoundOn = false;
+
+        function initAudio() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+        }
+
+        function toggleSound() {
+            initAudio();
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            isSoundOn = !isSoundOn;
+            const btn = document.getElementById('soundBtn');
+            if (isSoundOn) {
+                btn.innerHTML = '<i class="fa-solid fa-volume-high"></i> আবহ সঙ্গীত চালু';
+                btn.style.borderColor = '#38ef7d';
+                startAmbient();
+            } else {
+                btn.innerHTML = '<i class="fa-solid fa-volume-xmark"></i> আবহ সঙ্গীত বন্ধ';
+                btn.style.borderColor = 'var(--accent-glow)';
+                stopAmbient();
+            }
+        }
+
+        function startAmbient() {
+            if (!audioCtx) return;
+            ambientOsc1 = audioCtx.createOscillator();
+            ambientOsc2 = audioCtx.createOscillator();
+            ambientGain = audioCtx.createGain();
+
+            ambientOsc1.type = 'sine';
+            ambientOsc2.type = 'triangle';
+
+            // Relaxing Space Harmonics (A2 & E3)
+            ambientOsc1.frequency.setValueAtTime(110, audioCtx.currentTime); 
+            ambientOsc2.frequency.setValueAtTime(164.81, audioCtx.currentTime); 
+
+            ambientGain.gain.setValueAtTime(0.001, audioCtx.currentTime);
+            ambientGain.gain.linearRampToValueAtTime(0.06, audioCtx.currentTime + 3);
+
+            ambientOsc1.connect(ambientGain);
+            ambientOsc2.connect(ambientGain);
+            ambientGain.connect(audioCtx.destination);
+
+            ambientOsc1.start();
+            ambientOsc2.start();
+        }
+
+        function stopAmbient() {
+            if (ambientGain) {
+                ambientGain.gain.linearRampToValueAtTime(0.001, audioCtx.currentTime + 0.5);
+                setTimeout(() => {
+                    try {
+                        ambientOsc1.stop();
+                        ambientOsc2.stop();
+                    } catch(e){}
+                }, 500);
+            }
+        }
+
+        // WOOSH SOUND EFFECT FOR SLIDE TRANSITIONS
+        function playWoosh() {
+            if (!isSoundOn || !audioCtx) return;
+            try {
+                let osc = audioCtx.createOscillator();
+                let gain = audioCtx.createGain();
+                osc.type = 'sine';
+                
+                // Sweep frequency from low to high then down (Woosh sound)
+                osc.frequency.setValueAtTime(120, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(500, audioCtx.currentTime + 0.15);
+                osc.frequency.exponentialRampToValueAtTime(80, audioCtx.currentTime + 0.35);
+
+                gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.35);
+
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.35);
+            } catch(e){}
+        }
+
+        // SLIDE NAVIGATION ENGINE
         function updateMultiThemeEngine() {
-            // Update Body Theme Attribute
             document.body.setAttribute('data-theme', 'theme-' + currentSlideIdx);
 
-            // Hide/Show Active Slide
             for (let i = 0; i < totalSlides; i++) {
                 const slide = document.getElementById('slide' + i);
-                if (slide) {
-                    slide.classList.toggle('active', i === currentSlideIdx);
-                }
+                if (slide) slide.classList.toggle('active', i === currentSlideIdx);
             }
 
-            // Update Progress Bar
             const percent = ((currentSlideIdx + 1) / totalSlides) * 100;
             progressFill.style.width = `${percent}%`;
 
-            // Update Navigation Buttons
             prevBtn.disabled = currentSlideIdx === 0;
             if (currentSlideIdx === totalSlides - 1) {
                 nextBtn.innerHTML = 'বিনীত আবেদন সমাপিত <i class="fa-solid fa-check-double"></i>';
@@ -621,9 +621,25 @@
         function moveSlide(direction) {
             if (currentSlideIdx + direction >= 0 && currentSlideIdx + direction < totalSlides) {
                 currentSlideIdx += direction;
+                playWoosh();
                 updateMultiThemeEngine();
             }
         }
+
+        // FULLSCREEN TOGGLE
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(e => console.log(e));
+            } else {
+                if (document.exitFullscreen) document.exitFullscreen();
+            }
+        }
+
+        // KEYBOARD NAVIGATION CONTROLS
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'Space') moveSlide(1);
+            if (e.key === 'ArrowLeft') moveSlide(-1);
+        });
 
         updateMultiThemeEngine();
     </script>
