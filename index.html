@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>উস্তাদগণের প্রতি বিনম্র আরজ ও নিবেদন</title>
-    <!-- Hind Siliguri Font & FontAwesome Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <style>
@@ -32,7 +31,6 @@
             justify-content: center;
             align-items: center;
             overflow-x: hidden;
-            perspective: 1200px;
             transition: background 1.2s ease;
         }
 
@@ -92,13 +90,13 @@
 
         @keyframes fallAndSway {
             0% {
-                transform: translateY(0) translateX(0) rotate(0deg) scale(0.8);
+                transform: translateY(0) translateX(0) rotate(0deg);
                 opacity: 0;
             }
             12% { opacity: 0.95; }
             88% { opacity: 0.95; }
             100% {
-                transform: translateY(112vh) translateX(110px) rotate(540deg) scale(1.15);
+                transform: translateY(112vh) translateX(110px) rotate(360deg);
                 opacity: 0;
             }
         }
@@ -131,13 +129,12 @@
         }
 
         .tool-btn:hover {
-            transform: translateY(-2px);
             box-shadow: 0 0 30px var(--accent-glow);
             background: var(--accent-glow);
             color: #000000;
         }
 
-        /* MAIN STAGE BOX WITH HIGHLY LUMINOUS BORDERS & PULSE */
+        /* MAIN STAGE BOX WITH STABLE LUMINOUS BORDERS */
         .stage-box {
             width: 94%;
             max-width: 1080px;
@@ -153,18 +150,7 @@
             flex-direction: column;
             justify-content: space-between;
             backdrop-filter: blur(25px);
-            animation: stageAuraPulse 4s ease-in-out infinite alternate;
-        }
-
-        @keyframes stageAuraPulse {
-            0% {
-                border-color: var(--accent-glow);
-                box-shadow: 0 0 30px var(--accent-glow), inset 0 0 20px rgba(255, 255, 255, 0.05);
-            }
-            100% {
-                border-color: var(--gold-glow);
-                box-shadow: 0 0 50px var(--gold-glow), inset 0 0 30px rgba(255, 255, 255, 0.15);
-            }
+            transition: border-color 0.8s ease, box-shadow 0.8s ease;
         }
 
         /* PROGRESS TRACK */
@@ -183,22 +169,22 @@
             width: 14.28%;
             background: linear-gradient(90deg, var(--accent-glow), var(--gold-glow));
             box-shadow: 0 0 25px var(--accent-glow);
-            transition: all 0.6s ease;
+            transition: all 0.5s ease;
         }
 
-        /* SLIDE FADE IN WITH ELEGANT FLOAT ANIMATION */
+        /* CLEAN SMOOTH FADE IN (NO SCALING/GROWING SHIFTS) */
         .slide { display: none; opacity: 0; }
         .slide.active { 
             display: block; 
-            animation: smoothFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
+            animation: smoothFadeIn 0.4s ease-in-out forwards; 
         }
 
         @keyframes smoothFadeIn {
-            0% { opacity: 0; transform: translateY(22px) scale(0.98); }
-            100% { opacity: 1; transform: translateY(0) scale(1); }
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
 
-        /* TYPOGRAPHY WITH LUMINOUS GLOW */
+        /* TYPOGRAPHY WITH STABLE GLOW */
         h1 {
             font-size: 2.5rem;
             font-weight: 800;
@@ -206,12 +192,6 @@
             color: #ffffff;
             text-shadow: 0 2px 12px rgba(0, 0, 0, 1), 0 0 25px var(--accent-glow);
             line-height: 1.35;
-            animation: titleShimmer 3s ease-in-out infinite alternate;
-        }
-
-        @keyframes titleShimmer {
-            0% { text-shadow: 0 2px 12px rgba(0,0,0,1), 0 0 20px var(--accent-glow); }
-            100% { text-shadow: 0 2px 12px rgba(0,0,0,1), 0 0 35px var(--gold-glow); }
         }
 
         p.hero-desc {
@@ -239,12 +219,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            animation: floatFrame 4s ease-in-out infinite alternate;
-        }
-
-        @keyframes floatFrame {
-            0% { transform: translateY(0); box-shadow: 0 0 30px var(--gold-glow); }
-            100% { transform: translateY(-8px); box-shadow: 0 0 50px var(--gold-glow); }
         }
 
         .flower-frame i {
@@ -253,7 +227,7 @@
             filter: drop-shadow(0 0 18px var(--gold-glow));
         }
 
-        /* LUMINOUS CARDS WITH BRIGHT BORDERS */
+        /* LUMINOUS CARDS (STABLE VISUALS) */
         .poly-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -269,11 +243,10 @@
             border-radius: 20px;
             padding: 22px;
             box-shadow: 0 0 20px rgba(56, 189, 248, 0.3), 0 8px 30px rgba(0, 0, 0, 0.95);
-            transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .poly-card:hover {
-            transform: translateY(-5px);
             border-color: var(--gold-glow);
             box-shadow: 0 0 35px var(--gold-glow);
             background: rgba(0, 0, 0, 0.98);
@@ -306,7 +279,7 @@
             padding: 20px 28px;
             margin-bottom: 16px;
             box-shadow: 0 0 20px rgba(56, 189, 248, 0.3), 0 8px 30px rgba(0, 0, 0, 0.95);
-            transition: all 0.3s ease;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .pill-card:hover {
@@ -337,7 +310,7 @@
             box-shadow: inset 0 0 10px var(--accent-glow);
         }
 
-        /* SHARD BOXES WITH GLOWING LEFT BORDER */
+        /* SHARD BOXES */
         .shard-box {
             background: rgba(0, 0, 0, 0.92);
             border: 2px solid var(--accent-glow);
@@ -346,7 +319,7 @@
             padding: 20px 24px;
             margin-bottom: 16px;
             box-shadow: 0 0 22px rgba(56, 189, 248, 0.3), 0 8px 30px rgba(0, 0, 0, 0.95);
-            transition: all 0.3s ease;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .shard-box:hover {
@@ -392,7 +365,7 @@
             font-weight: 800;
             border-radius: 50px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 0 30px var(--accent-glow);
             display: flex;
             align-items: center;
@@ -400,7 +373,6 @@
         }
 
         .btn-cosmic:hover {
-            transform: translateY(-3px) scale(1.03);
             box-shadow: 0 0 45px var(--gold-glow);
         }
 
@@ -431,7 +403,6 @@
 </head>
 <body data-theme="theme-0">
 
-    <!-- TOP TOOLBAR -->
     <div class="top-toolbar">
         <button class="tool-btn" onclick="window.print()">
             <i class="fa-solid fa-print"></i> আবেদন প্রিন্ট করুন
@@ -441,23 +412,18 @@
         </button>
     </div>
 
-    <!-- BACKGROUND GLOWS -->
     <div class="universe-container">
         <div class="ambient-glow glow-1"></div>
         <div class="ambient-glow glow-2"></div>
     </div>
 
-    <!-- LIGHTING FALLING FLOWERS CONTAINER -->
     <div class="petal-container" id="petalContainer"></div>
 
-    <!-- MAIN STAGE BOX WITH LUMINOUS BORDERS -->
     <div class="stage-box">
-        <!-- PROGRESS TRACK -->
         <div class="progress-track">
             <div class="progress-fill" id="progressFill"></div>
         </div>
 
-        <!-- SLIDE 1: INTRO -->
         <div class="slide active" id="slide0">
             <div class="flower-frame">
                 <i class="fa-solid fa-spa"></i>
@@ -468,7 +434,6 @@
             </p>
         </div>
 
-        <!-- SLIDE 2: 10 YEARS STRUGGLE -->
         <div class="slide" id="slide1">
             <h1>১০ বছরের শিক্ষাজীবন: আমাদের পিছিয়ে পড়ার প্রেক্ষাপট</h1>
             <p class="hero-desc">আপনাদের কাছে আড়াল করার কিছু নেই; আমাদের নানা দুর্বলতার পেছনে বছর জুড়ে জমা হওয়া কিছু অনিচ্ছাকৃত পরিস্থিতি ছিল:</p>
@@ -489,7 +454,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 3: TEACHER ROTATION -->
         <div class="slide" id="slide2">
             <h1>শিক্ষক রোটেশন: আমাদের খাপ খাওয়ানোর সীমাবদ্ধতা</h1>
             <p class="hero-desc">স্যাররা তো সবসময় সর্বোচ্চ পঠিত বিদ্যাই আমাদের দেন, কিন্তু একই বিষয়ে বারবার ইনস্ট্রাক্টর পরিবর্তিত হওয়ায় আমাদের বুঝতে কিছুটা সময় বেশি লেগেছে:</p>
@@ -508,7 +472,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 4: RELIGIOUS SUBJECTS -->
         <div class="slide" id="slide3">
             <h1>ধর্মীয় ও সাধারণ বিষয়ে শিক্ষার্থীদের বিনীত আবেদন</h1>
             <p class="hero-desc" style="margin-bottom:15px; padding:15px 22px;">
@@ -530,7 +493,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 5: MATH & SCIENCE -->
         <div class="slide" id="slide4">
             <h1>ইংরেজি ২য়, গণিত ও বিজ্ঞান বিষয়ের নিবেদন</h1>
             <p class="hero-desc" style="margin-bottom:15px; padding:15px 22px;">
@@ -553,30 +515,35 @@
             </div>
         </div>
 
-        <!-- SLIDE 6: SAMPLE ROUTINE -->
         <div class="slide" id="slide5">
-            <h1>প্রস্তাবিত বিশেষ ক্লাস ও রিভিশন রুটিন (নমুনা)</h1>
+            <h1>প্রস্তাবিত ৬-ঘণ্টার বিশেষ ক্লাস ও রিভিশন রুটিন (নমুনা)</h1>
             <p class="hero-desc" style="margin-bottom:15px; padding:15px 22px; border-color: var(--gold-glow);">
-                <i class="fa-solid fa-circle-info" style="color: var(--gold-glow);"></i> <strong>বিশেষ দ্রষ্টব্য:</strong> এটি শুধুমাত্র আমাদের পক্ষ থেকে একটি <em>নমুনা প্রস্তাবনা মাত্র</em>। সম্মানিত উস্তাদবৃন্দ আপনাদের সুবিধামতো যেকোনো দিন বা সময় নির্ধারণ করতে পারেন।
+                <i class="fa-solid fa-circle-info" style="color: var(--gold-glow);"></i> <strong>বিশেষ দ্রষ্টব্য:</strong> এটি শুধুমাত্র আমাদের পক্ষ থেকে একটি <em>নমুনা প্রস্তাবনা মাত্র</em>। প্রতিদিন ৬ ঘণ্টায় ৬টি ক্লাস হিসেবে এটি সাজানো হয়েছে। সম্মানিত উস্তাদবৃন্দ আপনাদের সুবিধানুযায়ী তা পরিবর্তন করতে পারেন।
             </p>
 
             <div class="poly-grid">
                 <div class="poly-card">
-                    <div class="poly-title"><i class="fa-solid fa-clock"></i> ১. দৈনিক অধ্যায়ভিত্তিক মূল্যায়ন</div>
-                    <p class="poly-text"><strong>সময়:</strong> নিয়মিত ক্লাসের প্রথম ১০ মিনিট<br><strong>বিষয়:</strong> কুরআন, হাদিস, আকায়িদ ও বাংলা ১ম/২য়<br><strong>পদ্ধতি:</strong> সংক্ষিপ্ত প্রশ্ন, তারকিব ও তাহকিক চর্চা।</p>
+                    <div class="poly-title"><i class="fa-solid fa-file-pen" style="color:#fde047;"></i> ১. সপ্তাহের ১ম ও ২য় দিন (মূল্যায়ন পরীক্ষা)</div>
+                    <p class="poly-text">
+                        <strong>দৈনিক ৬টি ক্লাস/পিরিয়ড:</strong> বিষয়সমূহের (কুরআন, হাদিস, আকায়িদ-ফিকহ, আরবি ১ম, আরবি ২য়, বাংলা ১ম ও ২য়) নির্ধারিত অধ্যায়ের উপর নিয়মিত লিখিত ও মৌখিক মূল্যায়ন পরীক্ষা নেওয়া যেতে পারে।
+                    </p>
                 </div>
                 <div class="poly-card">
-                    <div class="poly-title"><i class="fa-solid fa-calendar-week" style="color:#fde047;"></i> ২. সাপ্তাহিক ম্যারাথন ব্লক ক্লাস</div>
-                    <p class="poly-text"><strong>সময়:</strong> সপ্তাহের নির্ধারিত ১ দিন (অতিরিক্ত সময়)<br><strong>বিষয়:</strong> আরবি ১ম, ২য় ও ইংরেজি ব্যাকরণ<br><strong>পদ্ধতি:</strong> নিবিড় গ্রামার ও ব্যাকরণের বেসিক চর্চা।</p>
+                    <div class="poly-title"><i class="fa-solid fa-book-bookmark"></i> ২. সপ্তাহের পরবর্তী ৩ দিন (১৮টি বিশেষ ক্লাস)</div>
+                    <p class="poly-text">
+                        <strong>মূল বিষয়সমূহ:</strong> পদার্থ, রসায়ন, জীববিজ্ঞান, ইংরেজি ১ম, ইংরেজি ২য় ও গণিত।<br>
+                        <strong>বণ্টন:</strong> ৩ দিন × ৬ পিরিয়ড = মোট ১৮টি ক্লাসে এই গুরুত্বপূর্ণ বিষয়গুলো সমানভাবে বিভক্ত থাকবে।
+                    </p>
                 </div>
                 <div class="poly-card">
-                    <div class="poly-title"><i class="fa-solid fa-vial"></i> ৩. গণিত ও বিজ্ঞান মডেল টেস্ট</div>
-                    <p class="poly-text"><strong>সময়:</strong> সাপ্তাহিক শেষ কার্যদিবস<br><strong>বিষয়:</strong> গণিত, পদার্থ, রসায়ন ও জীববিজ্ঞান<br><strong>পদ্ধতি:</strong> টাইপভিত্তিক সমস্যা সমাধান ও বিশেষ মূল্যায়ন।</p>
+                    <div class="poly-title"><i class="fa-solid fa-user-check" style="color:#fde047;"></i> ৩. শিক্ষকমণ্ডলীর মূল্যায়ন সুবিধা</div>
+                    <p class="poly-text">
+                        <strong>পরীক্ষা গ্রহণের পূর্ণ স্বাধীনতা:</strong> এই ১৮টি ক্লাসের মাঝেও শ্রদ্ধেয় স্যাররা তাদের প্রয়োজন ও সুবিধা অনুযায়ী লিখিত বা শর্ট টেস্ট গ্রহণ করতে পারবেন।
+                    </p>
                 </div>
             </div>
         </div>
 
-        <!-- SLIDE 7: FINAL APPEAL -->
         <div class="slide" id="slide6">
             <div class="flower-frame" style="width:100px; height:100px; margin-bottom:15px;">
                 <i class="fa-solid fa-heart" style="font-size:2.5rem; color:#fde047;"></i>
@@ -592,7 +559,6 @@
             </div>
         </div>
 
-        <!-- NAVIGATION CONTROLS -->
         <div class="nav-controls">
             <button class="btn-cosmic btn-secondary" id="prevBtn" onclick="moveSlide(-1)" disabled>
                 <i class="fa-solid fa-chevron-left"></i> পূর্ববর্তী মিনতি
@@ -624,12 +590,12 @@
         // HIGH DENSITY FLOWER GENERATOR (110 FLOWERS PER SLIDE)
         function createFallingPetals(slideIndex) {
             const container = document.getElementById('petalContainer');
-            container.style.opacity = '0'; // Smooth transition out
+            container.style.opacity = '0';
             
             setTimeout(() => {
-                container.innerHTML = ''; // Clear previous slide's flowers
+                container.innerHTML = ''; 
                 const currentFlowers = flowerSets[slideIndex] || flowerSets[0];
-                const petalCount = 110; // Significantly increased flower density
+                const petalCount = 110;
 
                 for (let i = 0; i < petalCount; i++) {
                     let petal = document.createElement('div');
@@ -644,8 +610,8 @@
 
                     container.appendChild(petal);
                 }
-                container.style.opacity = '1'; // Fade back in
-            }, 250);
+                container.style.opacity = '1';
+            }, 200);
         }
 
         function updateMultiThemeEngine() {
