@@ -9,11 +9,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <style>
         :root {
-            --bg-dark: #030811;
+            --bg-dark: #020611;
             --accent-glow: #38bdf8;
-            --gold-glow: #fbbf24;
+            --gold-glow: #fef08a;
+            --pink-glow: #f472b6;
             --text-bright: #ffffff;
-            --card-bg: rgba(6, 15, 30, 0.94);
+            --card-bg: rgba(2, 9, 22, 0.96);
         }
 
         * {
@@ -35,7 +36,7 @@
             transition: background 1s ease;
         }
 
-        /* SERENE & PEACEFUL BACKGROUND ATMOSPHERE */
+        /* BACKGROUND ATMOSPHERE */
         .universe-container {
             position: fixed;
             top: 0;
@@ -50,23 +51,23 @@
         .ambient-glow {
             position: absolute;
             border-radius: 50%;
-            filter: blur(140px);
-            opacity: 0.35;
+            filter: blur(150px);
+            opacity: 0.38;
             transition: all 1.2s ease-in-out;
         }
 
-        .glow-1 { width: 700px; height: 700px; top: -20%; left: -10%; background: radial-gradient(circle, #0284c7, transparent); }
-        .glow-2 { width: 800px; height: 800px; bottom: -20%; right: -10%; background: radial-gradient(circle, #059669, transparent); }
+        .glow-1 { width: 750px; height: 750px; top: -20%; left: -10%; background: radial-gradient(circle, #0284c7, transparent); }
+        .glow-2 { width: 850px; height: 850px; bottom: -20%; right: -10%; background: radial-gradient(circle, #0d9488, transparent); }
 
-        /* MULTI-THEME PALETTES (PEACEFUL & EYES-RELAXING) */
-        body[data-theme="theme-0"] { --bg-dark: #020b18; --accent-glow: #38bdf8; --card-bg: rgba(5, 18, 38, 0.96); }
-        body[data-theme="theme-1"] { --bg-dark: #011710; --accent-glow: #34d399; --card-bg: rgba(3, 32, 22, 0.96); }
-        body[data-theme="theme-2"] { --bg-dark: #120917; --accent-glow: #e879f9; --card-bg: rgba(28, 12, 36, 0.96); }
-        body[data-theme="theme-3"] { --bg-dark: #03131d; --accent-glow: #67e8f9; --card-bg: rgba(6, 28, 42, 0.96); }
-        body[data-theme="theme-4"] { --bg-dark: #140d02; --accent-glow: #fbbf24; --card-bg: rgba(32, 20, 4, 0.96); }
-        body[data-theme="theme-5"] { --bg-dark: #0a1103; --accent-glow: #a3e635; --card-bg: rgba(18, 28, 6, 0.96); }
+        /* MULTI-THEME PALETTES */
+        body[data-theme="theme-0"] { --bg-dark: #020b18; --accent-glow: #38bdf8; --card-bg: rgba(2, 12, 28, 0.97); }
+        body[data-theme="theme-1"] { --bg-dark: #011710; --accent-glow: #34d399; --card-bg: rgba(2, 24, 18, 0.97); }
+        body[data-theme="theme-2"] { --bg-dark: #120917; --accent-glow: #f472b6; --card-bg: rgba(24, 10, 30, 0.97); }
+        body[data-theme="theme-3"] { --bg-dark: #03131d; --accent-glow: #67e8f9; --card-bg: rgba(3, 20, 32, 0.97); }
+        body[data-theme="theme-4"] { --bg-dark: #140d02; --accent-glow: #fde047; --card-bg: rgba(26, 16, 3, 0.97); }
+        body[data-theme="theme-5"] { --bg-dark: #0a1103; --accent-glow: #a3e635; --card-bg: rgba(14, 24, 5, 0.97); }
 
-        /* FALLING FLOWERS / PETALS ANIMATION */
+        /* GLOWING LIGHTING FALLING FLOWERS */
         .petal-container {
             position: fixed;
             top: 0;
@@ -82,19 +83,21 @@
             top: -10%;
             pointer-events: none;
             animation: fallAndSway linear infinite;
-            filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
+            /* LIGHTING GLOW EFFECT FOR FLOWERS */
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.9)) 
+                    drop-shadow(0 0 22px var(--accent-glow));
             user-select: none;
         }
 
         @keyframes fallAndSway {
             0% {
-                transform: translateY(0) translateX(0) rotate(0deg);
+                transform: translateY(0) translateX(0) rotate(0deg) scale(0.8);
                 opacity: 0;
             }
-            10% { opacity: 0.95; }
-            90% { opacity: 0.95; }
+            15% { opacity: 0.95; }
+            85% { opacity: 0.95; }
             100% {
-                transform: translateY(110vh) translateX(70px) rotate(420deg);
+                transform: translateY(112vh) translateX(90px) rotate(480deg) scale(1.1);
                 opacity: 0;
             }
         }
@@ -110,7 +113,7 @@
         }
 
         .tool-btn {
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.85);
             border: 2px solid var(--accent-glow);
             color: #ffffff;
             padding: 10px 22px;
@@ -118,9 +121,9 @@
             font-size: 1.05rem;
             font-weight: 700;
             cursor: pointer;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+            box-shadow: 0 4px 18px rgba(0,0,0,0.7);
             display: flex;
             align-items: center;
             gap: 8px;
@@ -128,12 +131,12 @@
 
         .tool-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 0 20px var(--accent-glow);
+            box-shadow: 0 0 25px var(--accent-glow);
             background: var(--accent-glow);
             color: #000000;
         }
 
-        /* MAIN CONTAINER (HIGH READABILITY STAGE) */
+        /* MAIN STAGE BOX WITH BREATHING LIGHT AURA */
         .stage-box {
             width: 94%;
             max-width: 1080px;
@@ -144,14 +147,20 @@
             padding: 45px;
             position: relative;
             z-index: 10;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.95), inset 0 0 40px rgba(0, 0, 0, 0.8);
+            box-shadow: 0 0 45px rgba(0, 0, 0, 0.95), 0 0 25px rgba(56, 189, 248, 0.2);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             backdrop-filter: blur(25px);
+            animation: stageAuraPulse 6s ease-in-out infinite alternate;
         }
 
-        /* PROGRESS BAR */
+        @keyframes stageAuraPulse {
+            0% { box-shadow: 0 0 35px rgba(0, 0, 0, 0.95), 0 0 20px rgba(56, 189, 248, 0.2); }
+            100% { box-shadow: 0 0 55px rgba(0, 0, 0, 0.98), 0 0 35px rgba(254, 240, 138, 0.3); }
+        }
+
+        /* PROGRESS TRACK */
         .progress-track {
             width: 100%;
             height: 10px;
@@ -159,14 +168,14 @@
             border-radius: 20px;
             margin-bottom: 25px;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         .progress-fill {
             height: 100%;
             width: 16.66%;
             background: linear-gradient(90deg, var(--accent-glow), var(--gold-glow));
-            box-shadow: 0 0 15px var(--accent-glow);
+            box-shadow: 0 0 20px var(--accent-glow);
             transition: all 0.6s ease;
         }
 
@@ -175,17 +184,17 @@
         .slide.active { display: block; animation: smoothFadeIn 0.7s ease-out forwards; }
 
         @keyframes smoothFadeIn {
-            0% { opacity: 0; transform: translateY(20px); }
+            0% { opacity: 0; transform: translateY(18px); }
             100% { opacity: 1; transform: translateY(0); }
         }
 
-        /* ULTRA HIGH CONTRAST TYPOGRAPHY */
+        /* ULTRA HIGH READABILITY TYPOGRAPHY ACROSS ALL SLIDES */
         h1 {
             font-size: 2.6rem;
             font-weight: 800;
             margin-bottom: 22px;
             color: #ffffff;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 1), 0 0 20px var(--accent-glow);
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 1), 0 0 25px var(--accent-glow);
             line-height: 1.35;
         }
 
@@ -193,23 +202,22 @@
             font-size: 1.35rem;
             line-height: 2;
             color: #ffffff;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 25px;
-            text-shadow: 0 2px 6px rgba(0, 0, 0, 1);
-            background: rgba(0, 0, 0, 0.75);
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 1);
+            background: rgba(0, 0, 0, 0.85);
             padding: 24px;
             border-radius: 20px;
-            border: 2px solid rgba(255, 255, 255, 0.25);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+            border: 2px solid rgba(255, 255, 255, 0.28);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8);
         }
 
-        /* STATIC RESPECTFUL HEADER FRAME */
         .flower-frame {
             width: 120px;
             height: 120px;
             border-radius: 50%;
             margin: 0 auto 20px auto;
-            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.85) 100%);
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(0,0,0,0.9) 100%);
             border: 3px solid var(--gold-glow);
             box-shadow: 0 0 35px var(--gold-glow);
             display: flex;
@@ -220,10 +228,10 @@
         .flower-frame i {
             font-size: 3.5rem;
             color: var(--gold-glow);
-            filter: drop-shadow(0 0 15px var(--gold-glow));
+            filter: drop-shadow(0 0 18px var(--gold-glow));
         }
 
-        /* SOLID HIGH-CONTRAST CARDS */
+        /* HIGH-CONTRAST & CLEAR CARDS FOR SLIDES 2 TO 6 */
         .poly-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
@@ -234,95 +242,100 @@
         }
 
         .poly-card {
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(0, 0, 0, 0.92);
             border: 2px solid var(--accent-glow);
             border-radius: 20px;
             padding: 24px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.9);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.95);
             transition: all 0.3s ease;
         }
 
         .poly-card:hover {
             transform: translateY(-4px);
             border-color: var(--gold-glow);
-            background: rgba(0, 0, 0, 0.95);
+            box-shadow: 0 0 25px var(--gold-glow);
+            background: rgba(0, 0, 0, 0.98);
         }
 
         .poly-title {
             font-size: 1.35rem;
             font-weight: 800;
             color: var(--gold-glow);
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
             gap: 12px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.9);
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 1);
         }
 
         .poly-text {
-            font-size: 1.2rem;
+            font-size: 1.22rem;
             color: #ffffff;
-            font-weight: 600;
-            line-height: 1.8;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+            font-weight: 700;
+            line-height: 1.85;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 1);
         }
 
-        /* CAPSULE CARDS */
+        /* CAPSULE CARDS (SLIDE 3 ENHANCED) */
         .pill-card {
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(0, 0, 0, 0.92);
             border: 2px solid var(--accent-glow);
             border-radius: 25px;
             padding: 22px 30px;
             margin-bottom: 18px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.9);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.95);
         }
 
         .pill-title {
-            font-size: 1.3rem;
+            font-size: 1.32rem;
             font-weight: 800;
             color: #ffffff;
             display: flex;
             align-items: center;
             gap: 12px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.9);
-        }
-
-        .pill-flow {
-            font-size: 1.25rem;
-            color: var(--gold-glow);
-            font-weight: 800;
-            margin-top: 8px;
             text-shadow: 0 2px 6px rgba(0, 0, 0, 1);
         }
 
-        /* SHARD / BOX CARDS FOR EASY READING */
+        .pill-flow {
+            font-size: 1.28rem;
+            color: var(--gold-glow);
+            font-weight: 800;
+            margin-top: 10px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 1);
+            background: rgba(255, 255, 255, 0.08);
+            padding: 10px 18px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        /* SHARD BOXES (SLIDES 4 & 5 ENHANCED) */
         .shard-box {
-            background: rgba(0, 0, 0, 0.85);
-            border: 2px solid rgba(255, 255, 255, 0.25);
+            background: rgba(0, 0, 0, 0.92);
+            border: 2px solid rgba(255, 255, 255, 0.3);
             border-left: 6px solid var(--accent-glow);
-            border-radius: 16px;
-            padding: 22px;
+            border-radius: 18px;
+            padding: 24px;
             margin-bottom: 18px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.9);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.95);
         }
 
         .shard-box h3 {
-            font-size: 1.35rem;
+            font-size: 1.38rem;
             font-weight: 800;
             color: var(--accent-glow);
             margin-bottom: 10px;
             display: flex;
             align-items: center;
             gap: 12px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.9);
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 1);
         }
 
         .shard-text {
             color: #ffffff;
-            font-size: 1.2rem;
-            font-weight: 600;
-            line-height: 1.8;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+            font-size: 1.22rem;
+            font-weight: 700;
+            line-height: 1.85;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 1);
         }
 
         /* NAVIGATION CONTROLS */
@@ -332,7 +345,7 @@
             align-items: center;
             margin-top: 20px;
             padding-top: 20px;
-            border-top: 2px solid rgba(255, 255, 255, 0.2);
+            border-top: 2px solid rgba(255, 255, 255, 0.22);
         }
 
         .btn-cosmic {
@@ -365,13 +378,13 @@
         }
 
         .btn-secondary {
-            background: rgba(255, 255, 255, 0.12);
-            border: 2px solid rgba(255, 255, 255, 0.35);
+            background: rgba(255, 255, 255, 0.14);
+            border: 2px solid rgba(255, 255, 255, 0.4);
             color: #ffffff;
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.28);
             border-color: var(--accent-glow);
         }
 
@@ -391,13 +404,13 @@
         </button>
     </div>
 
-    <!-- BACKGROUND LIGHT GLOWS -->
+    <!-- BACKGROUND GLOWS -->
     <div class="universe-container">
         <div class="ambient-glow glow-1"></div>
         <div class="ambient-glow glow-2"></div>
     </div>
 
-    <!-- CONTINUOUS FALLING FLOWERS / PETALS CONTAINER -->
+    <!-- LIGHTING FALLING FLOWERS CONTAINER -->
     <div class="petal-container" id="petalContainer"></div>
 
     <!-- MAIN STAGE BOX -->
@@ -407,7 +420,7 @@
             <div class="progress-fill" id="progressFill"></div>
         </div>
 
-        <!-- SLIDE 1: INTRO WITH SERENE FLOWER FRAME -->
+        <!-- SLIDE 1: INTRO -->
         <div class="slide active" id="slide0">
             <div class="flower-frame">
                 <i class="fa-solid fa-spa"></i>
@@ -418,14 +431,14 @@
             </p>
         </div>
 
-        <!-- SLIDE 2: 10 YEARS STRUGGLE -->
+        <!-- SLIDE 2: 10 YEARS STRUGGLE (CRYSTAL CLEAR) -->
         <div class="slide" id="slide1">
             <h1>১০ বছরের শিক্ষাজীবন: আমাদের পিছিয়ে পড়ার প্রেক্ষাপট</h1>
             <p class="hero-desc">আপনাদের কাছে আড়াল করার কিছু নেই; আমাদের নানা দুর্বলতার পেছনে বছর জুড়ে জমা হওয়া কিছু অনিচ্ছাকৃত পরিস্থিতি ছিল:</p>
             
             <div class="poly-grid">
                 <div class="poly-card">
-                    <div class="poly-title"><i class="fa-solid fa-biohazard" style="color:#fbbf24;"></i> ৪র্থ-৫ম শ্রেণী (করোনা মহামারী)</div>
+                    <div class="poly-title"><i class="fa-solid fa-biohazard" style="color:#fde047;"></i> ৪র্থ-৫ম শ্রেণী (করোনা মহামারী)</div>
                     <p class="poly-text">মহামারীতে দীর্ঘদিন প্রতিষ্ঠান বন্ধ থাকায় আমাদের প্রাতিষ্ঠানিক ভিত্তি তৈরিতে বড় ঘাটতি থেকে যায়।</p>
                 </div>
                 <div class="poly-card">
@@ -433,13 +446,13 @@
                     <p class="poly-text">নতুন কারিকুলামের পরিবর্তনের সাথে খাপ খাওয়াতে গিয়ে বিজ্ঞানের মূল থিওরিটিক্যাল পড়ালেখা থেকে আমরা কিছুটা দূরে সরে পড়ি।</p>
                 </div>
                 <div class="poly-card">
-                    <div class="poly-title"><i class="fa-solid fa-hourglass-half" style="color:#fbbf24;"></i> ৯মে বই সংকট ও ক্লাস স্থগিত</div>
+                    <div class="poly-title"><i class="fa-solid fa-hourglass-half" style="color:#fde047;"></i> ৯মে বই সংকট ও ক্লাস স্থগিত</div>
                     <p class="poly-text">বছরের শুরুতে বই পেতে দেরি হওয়া এবং সাময়িক ক্লাস স্থগিত থাকার কারণে আমাদের বিজ্ঞানের ভীতি কাটেনি।</p>
                 </div>
             </div>
         </div>
 
-        <!-- SLIDE 3: TEACHER ROTATION -->
+        <!-- SLIDE 3: TEACHER ROTATION (CRYSTAL CLEAR) -->
         <div class="slide" id="slide2">
             <h1>শিক্ষক রোটেশন: আমাদের খাপ খাওয়ানোর সীমাবদ্ধতা</h1>
             <p class="hero-desc">স্যাররা তো সবসময় সর্বোচ্চ পঠিত বিদ্যাই আমাদের দেন, কিন্তু একই বিষয়ে বারবার ইনস্ট্রাক্টর পরিবর্তিত হওয়ায় আমাদের বুঝতে কিছুটা সময় বেশি লেগেছে:</p>
@@ -453,7 +466,7 @@
                 <div class="pill-flow">মাহবুব স্যার ➔ মমিনুল স্যার ➔ দিনুল স্যার ➔ দিনুল স্যার (বর্তমান)</div>
             </div>
             <div class="pill-card">
-                <div class="pill-title"><i class="fa-solid fa-clock-rotate-left" style="color:#fbbf24;"></i> বাংলা প্রথম পত্র (সেশন গ্যাপ)</div>
+                <div class="pill-title"><i class="fa-solid fa-clock-rotate-left" style="color:#fde047;"></i> বাংলা প্রথম পত্র (সেশন গ্যাপ)</div>
                 <div class="pill-flow">নীলিমা ম্যাম ➔ (১৫ দিন বন্ধ) ➔ রেহানা ম্যাম ➔ (ছুটি) ➔ রেহানা ম্যাম</div>
             </div>
         </div>
@@ -472,8 +485,8 @@
                 </p>
             </div>
 
-            <div class="shard-box" style="border-left-color: #fbbf24;">
-                <h3 style="color:#fbbf24;"><i class="fa-solid fa-bolt"></i> বিশেষ ম্যারাথন ব্লক ক্লাস</h3>
+            <div class="shard-box" style="border-left-color: #fde047;">
+                <h3 style="color:#fde047;"><i class="fa-solid fa-bolt"></i> বিশেষ ম্যারাথন ব্লক ক্লাস</h3>
                 <p class="shard-text">
                     <strong>আরবি ১ম, ২য় ও বাংলা ২য়:</strong> আমাদের ব্যাকরণ ও আরবি ভাষার দুর্বলতা কাটাতে সপ্তাহের কোনো একদিন একটানা নিবিড় ক্লাসের সুযোগ দিলে আমাদের বেসিক মজবুত হতো।
                 </p>
@@ -492,8 +505,8 @@
                 <p class="shard-text">স্যার যদি বোর্ডের নিয়মগুলো টাইপ অনুযায়ী আলাদা শিট করে বুঝিয়ে দেন, তবে ইংরেজি ব্যাকরণ নিয়ে আমাদের দ্বিধা কাটবে।</p>
             </div>
 
-            <div class="shard-box" style="border-left-color: #fbbf24;">
-                <h3 style="color:#fbbf24;"><i class="fa-solid fa-calculator"></i> গণিত বিষয়ে বিনীত নিবেদন</h3>
+            <div class="shard-box" style="border-left-color: #fde047;">
+                <h3 style="color:#fde047;"><i class="fa-solid fa-calculator"></i> গণিত বিষয়ে বিনীত নিবেদন</h3>
                 <p class="shard-text">আমাদের গণিত স্যারের প্রতি শ্রদ্ধা অপরসীম। আমরা কোনো শিক্ষক পরিবর্তনের কথা চিন্তাও করি না; তবে বিজ্ঞানের মতো গণিতেও যদি আমাদের জন্য অতিরিক্ত রিভিশন ক্লাস ও নিয়মিত মূল্যায়নের সুযোগ দেওয়া হতো, তবে আমাদের আত্মবিশ্বাস আরও বেড়ে যেত।</p>
             </div>
 
@@ -506,14 +519,14 @@
         <!-- SLIDE 6: FINAL APPEAL -->
         <div class="slide" id="slide5">
             <div class="flower-frame" style="width:110px; height:110px; margin-bottom:15px;">
-                <i class="fa-solid fa-heart" style="font-size:2.8rem; color:#fbbf24;"></i>
+                <i class="fa-solid fa-heart" style="font-size:2.8rem; color:#fde047;"></i>
             </div>
             <h1 style="text-align: center;">ভুল ধারণা খণ্ডন ও আমাদের শেষ আরজ</h1>
             <p class="hero-desc" style="text-align: center;">
                 'শিক্ষকরা মন দিয়ে পড়ান না'—এটি একটি সম্পূর্ণ ভুল ধারণা। আমরা সবাই শিক্ষকবৃন্দের পরিশ্রম ও আন্তরিকতায় অত্যন্ত উপকৃত। শিক্ষকমণ্ডলীর প্রতি আমাদের সম্মান চিরন্তন।
             </p>
-            <div style="background: rgba(0,0,0,0.9); border: 2px dashed #fbbf24; padding: 22px; border-radius: 20px; text-align: center; box-shadow: 0 8px 25px rgba(0,0,0,0.8);">
-                <p style="color: #fbbf24; font-size: 1.35rem; font-weight: 800; text-shadow: 0 2px 4px rgba(0,0,0,1);">
+            <div style="background: rgba(0,0,0,0.95); border: 2px dashed #fde047; padding: 22px; border-radius: 20px; text-align: center; box-shadow: 0 8px 30px rgba(0,0,0,0.9);">
+                <p style="color: #fde047; font-size: 1.38rem; font-weight: 800; text-shadow: 0 2px 5px rgba(0,0,0,1);">
                     "আপনারা আমাদের অভিভাবক। আমাদের অগোচর ভুলগুলো ক্ষমা করে, সন্তানতুল্য মনে করে আমাদের আকুতিগুলো বিবেচনা করবেন এবং স্নেহের ছায়াতলে স্থান দেবেন—এই মিনতিই রাখছি।"
                 </p>
             </div>
@@ -537,23 +550,23 @@
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
 
-        // GENERATE BEAUTIFUL FALLING FLOWERS & PETALS
+        // GENERATE GLOWING LIGHTING FLOWERS (PURE FLOWERS ONLY)
         function createFallingPetals() {
             const container = document.getElementById('petalContainer');
-            const flowerTypes = ['🌸', '🌺', '🌼', '🌹', '🍃', '✨'];
-            const petalCount = 35; // Number of continuous falling petals
+            const pureFlowers = ['🌸', '🌺', '🌼', '🌹', '🌷', '🪷', '🌻'];
+            const petalCount = 50; // Increased flower density for peace
 
             for (let i = 0; i < petalCount; i++) {
                 let petal = document.createElement('div');
                 petal.className = 'petal';
-                petal.innerText = flowerTypes[Math.floor(Math.random() * flowerTypes.length)];
+                petal.innerText = pureFlowers[Math.floor(Math.random() * pureFlowers.length)];
                 
-                // Random position, speed, and delay
+                // Random positions and float speeds
                 petal.style.left = Math.random() * 100 + 'vw';
-                petal.style.animationDuration = (Math.random() * 8 + 7) + 's'; // 7 to 15 seconds float
+                petal.style.animationDuration = (Math.random() * 8 + 6) + 's'; 
                 petal.style.animationDelay = (Math.random() * 8) + 's';
-                petal.style.fontSize = (Math.random() * 1.2 + 0.9) + 'rem';
-                petal.style.opacity = Math.random() * 0.7 + 0.3;
+                petal.style.fontSize = (Math.random() * 1.3 + 1.0) + 'rem';
+                petal.style.opacity = Math.random() * 0.7 + 0.35;
 
                 container.appendChild(petal);
             }
@@ -599,7 +612,7 @@
             if (e.key === 'ArrowLeft') moveSlide(-1);
         });
 
-        // INITIALIZE PETALS AND SLIDES
+        // INITIALIZE
         createFallingPetals();
         updateMultiThemeEngine();
     </script>
