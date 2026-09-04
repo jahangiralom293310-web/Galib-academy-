@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>উস্তাদগণের প্রতি বিনম্র আবেদন ও নিবেদন</title>
+    <title>উস্তাদগণের প্রতি বিনম্র আরজ ও নিবেদন</title>
     <!-- Hind Siliguri Font & FontAwesome Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <style>
         :root {
-            --bg-dark: #01040a;
-            --accent-glow: #00f2fe;
-            --gold-glow: #ffbe0b;
-            --text-light: #ffffff;
-            --stage-bg: rgba(2, 8, 20, 0.95);
+            --bg-dark: #030811;
+            --accent-glow: #38bdf8;
+            --gold-glow: #fbbf24;
+            --text-bright: #ffffff;
+            --card-bg: rgba(6, 15, 30, 0.94);
         }
 
         * {
@@ -25,7 +25,7 @@
 
         body {
             background-color: var(--bg-dark);
-            color: var(--text-light);
+            color: var(--text-bright);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -35,7 +35,7 @@
             transition: background 1s ease;
         }
 
-        /* ATMOSPHERIC BACKGROUND */
+        /* SERENE & PEACEFUL BACKGROUND ATMOSPHERE */
         .universe-container {
             position: fixed;
             top: 0;
@@ -47,84 +47,56 @@
             overflow: hidden;
         }
 
-        .nebula {
+        .ambient-glow {
             position: absolute;
             border-radius: 50%;
-            filter: blur(120px);
-            opacity: 0.45;
+            filter: blur(140px);
+            opacity: 0.35;
             transition: all 1.2s ease-in-out;
         }
 
-        .nebula-1 { width: 700px; height: 700px; top: -15%; left: -10%; }
-        .nebula-2 { width: 800px; height: 800px; bottom: -20%; right: -10%; }
+        .glow-1 { width: 700px; height: 700px; top: -20%; left: -10%; background: radial-gradient(circle, #0284c7, transparent); }
+        .glow-2 { width: 800px; height: 800px; bottom: -20%; right: -10%; background: radial-gradient(circle, #059669, transparent); }
 
-        /* THEMES WITH ISLAMIC NOBLE PALETTES */
-        body[data-theme="theme-0"] { --bg-dark: #01060e; --accent-glow: #00f2fe; --stage-bg: rgba(3, 12, 28, 0.95); }
-        body[data-theme="theme-0"] .nebula-1 { background: radial-gradient(circle, #0284c7, transparent); }
-        body[data-theme="theme-0"] .nebula-2 { background: radial-gradient(circle, #00f2fe, transparent); }
+        /* MULTI-THEME PALETTES (PEACEFUL & EYES-RELAXING) */
+        body[data-theme="theme-0"] { --bg-dark: #020b18; --accent-glow: #38bdf8; --card-bg: rgba(5, 18, 38, 0.96); }
+        body[data-theme="theme-1"] { --bg-dark: #011710; --accent-glow: #34d399; --card-bg: rgba(3, 32, 22, 0.96); }
+        body[data-theme="theme-2"] { --bg-dark: #120917; --accent-glow: #e879f9; --card-bg: rgba(28, 12, 36, 0.96); }
+        body[data-theme="theme-3"] { --bg-dark: #03131d; --accent-glow: #67e8f9; --card-bg: rgba(6, 28, 42, 0.96); }
+        body[data-theme="theme-4"] { --bg-dark: #140d02; --accent-glow: #fbbf24; --card-bg: rgba(32, 20, 4, 0.96); }
+        body[data-theme="theme-5"] { --bg-dark: #0a1103; --accent-glow: #a3e635; --card-bg: rgba(18, 28, 6, 0.96); }
 
-        body[data-theme="theme-1"] { --bg-dark: #01140e; --accent-glow: #10b981; --stage-bg: rgba(2, 28, 20, 0.95); }
-        body[data-theme="theme-1"] .nebula-1 { background: radial-gradient(circle, #059669, transparent); }
-        body[data-theme="theme-1"] .nebula-2 { background: radial-gradient(circle, #34d399, transparent); }
-
-        body[data-theme="theme-2"] { --bg-dark: #120014; --accent-glow: #e0a96d; --stage-bg: rgba(28, 8, 32, 0.95); }
-        body[data-theme="theme-2"] .nebula-1 { background: radial-gradient(circle, #d97706, transparent); }
-        body[data-theme="theme-2"] .nebula-2 { background: radial-gradient(circle, #f59e0b, transparent); }
-
-        body[data-theme="theme-3"] { --bg-dark: #02121e; --accent-glow: #38bdf8; --stage-bg: rgba(4, 25, 45, 0.95); }
-        body[data-theme="theme-3"] .nebula-1 { background: radial-gradient(circle, #0284c7, transparent); }
-        body[data-theme="theme-3"] .nebula-2 { background: radial-gradient(circle, #f59e0b, transparent); }
-
-        body[data-theme="theme-4"] { --bg-dark: #0d0118; --accent-glow: #a855f7; --stage-bg: rgba(20, 5, 38, 0.95); }
-        body[data-theme="theme-4"] .nebula-1 { background: radial-gradient(circle, #7e22ce, transparent); }
-        body[data-theme="theme-4"] .nebula-2 { background: radial-gradient(circle, #ec4899, transparent); }
-
-        body[data-theme="theme-5"] { --bg-dark: #181100; --accent-glow: #ffbe0b; --stage-bg: rgba(35, 25, 3, 0.96); }
-        body[data-theme="theme-5"] .nebula-1 { background: radial-gradient(circle, #f59e0b, transparent); }
-        body[data-theme="theme-5"] .nebula-2 { background: radial-gradient(circle, #d97706, transparent); }
-
-        /* RESPECTFUL ROTATING ISLAMIC ORBITS & MOTIFS */
-        .cosmic-orbit {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            border: 1px dashed var(--accent-glow);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
+        /* FALLING FLOWERS / PETALS ANIMATION */
+        .petal-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
             pointer-events: none;
-            animation: rotateOrbit 35s linear infinite;
         }
-        .orbit-1 { width: 900px; height: 900px; }
-        .orbit-2 { width: 1300px; height: 1300px; animation-duration: 50s; animation-direction: reverse; }
 
-        .orbit-motif {
+        .petal {
             position: absolute;
-            top: -18px;
-            left: 50%;
-            font-size: 1.8rem;
-            color: var(--gold-glow);
-            text-shadow: 0 0 20px var(--gold-glow);
-            transform: translateX(-50%);
-        }
-
-        @keyframes rotateOrbit {
-            0% { transform: translate(-50%, -50%) rotate(0deg); }
-            100% { transform: translate(-50%, -50%) rotate(360deg); }
-        }
-
-        /* FLOATING PARTICLES (SPIRITUAL GLOW) */
-        .particle {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.6);
-            border-radius: 50%;
+            top: -10%;
             pointer-events: none;
-            animation: floatUp 12s infinite linear;
+            animation: fallAndSway linear infinite;
+            filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
+            user-select: none;
         }
 
-        @keyframes floatUp {
-            0% { transform: translateY(100vh) scale(0); opacity: 0; }
-            50% { opacity: 0.8; }
-            100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+        @keyframes fallAndSway {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% { opacity: 0.95; }
+            90% { opacity: 0.95; }
+            100% {
+                transform: translateY(110vh) translateX(70px) rotate(420deg);
+                opacity: 0;
+            }
         }
 
         /* TOP TOOLBAR */
@@ -138,17 +110,17 @@
         }
 
         .tool-btn {
-            background: rgba(0, 0, 0, 0.65);
+            background: rgba(0, 0, 0, 0.8);
             border: 2px solid var(--accent-glow);
             color: #ffffff;
-            padding: 10px 20px;
+            padding: 10px 22px;
             border-radius: 30px;
-            font-size: 1rem;
+            font-size: 1.05rem;
             font-weight: 700;
             cursor: pointer;
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
             display: flex;
             align-items: center;
             gap: 8px;
@@ -161,124 +133,97 @@
             color: #000000;
         }
 
-        /* MAIN STAGE BOX */
+        /* MAIN CONTAINER (HIGH READABILITY STAGE) */
         .stage-box {
             width: 94%;
             max-width: 1080px;
             min-height: 730px;
-            background: var(--stage-bg);
+            background: var(--card-bg);
             border: 2px solid var(--accent-glow);
-            border-radius: 35px;
+            border-radius: 32px;
             padding: 45px;
             position: relative;
             z-index: 10;
-            box-shadow: 0 0 60px rgba(0, 242, 254, 0.25), inset 0 0 35px rgba(0, 0, 0, 0.9);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.95), inset 0 0 40px rgba(0, 0, 0, 0.8);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            backdrop-filter: blur(20px);
+            backdrop-filter: blur(25px);
         }
 
-        /* PROGRESS TRACK */
+        /* PROGRESS BAR */
         .progress-track {
             width: 100%;
             height: 10px;
-            background: rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.15);
             border-radius: 20px;
             margin-bottom: 25px;
             overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .progress-fill {
             height: 100%;
             width: 16.66%;
             background: linear-gradient(90deg, var(--accent-glow), var(--gold-glow));
-            box-shadow: 0 0 20px var(--accent-glow);
+            box-shadow: 0 0 15px var(--accent-glow);
             transition: all 0.6s ease;
         }
 
-        /* SLIDE TRANSITION ANIMATIONS */
+        /* SLIDE FADE IN */
         .slide { display: none; opacity: 0; }
+        .slide.active { display: block; animation: smoothFadeIn 0.7s ease-out forwards; }
 
-        body[data-theme="theme-0"] .slide.active { display: block; animation: portalZoom 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-        @keyframes portalZoom { 0% { opacity: 0; transform: scale(0.85) rotate(-2deg); } 100% { opacity: 1; transform: scale(1) rotate(0deg); } }
+        @keyframes smoothFadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
 
-        body[data-theme="theme-1"] .slide.active { display: block; animation: matrixSlide 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-        @keyframes matrixSlide { 0% { opacity: 0; transform: translateX(-60px); } 100% { opacity: 1; transform: translateX(0); } }
-
-        body[data-theme="theme-2"] .slide.active { display: block; animation: solarFlip 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-        @keyframes solarFlip { 0% { opacity: 0; transform: rotateY(40deg); } 100% { opacity: 1; transform: rotateY(0deg); } }
-
-        body[data-theme="theme-3"] .slide.active { display: block; animation: auroraRise 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-        @keyframes auroraRise { 0% { opacity: 0; transform: translateY(60px); } 100% { opacity: 1; transform: translateY(0); } }
-
-        body[data-theme="theme-4"] .slide.active { display: block; animation: quantumDrop 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-        @keyframes quantumDrop { 0% { opacity: 0; transform: scale(1.1); } 100% { opacity: 1; transform: scale(1); } }
-
-        body[data-theme="theme-5"] .slide.active { display: block; animation: radianceBurst 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-        @keyframes radianceBurst { 0% { opacity: 0; filter: brightness(1.8); } 100% { opacity: 1; filter: brightness(1); } }
-
-        /* TYPOGRAPHY */
+        /* ULTRA HIGH CONTRAST TYPOGRAPHY */
         h1 {
             font-size: 2.6rem;
             font-weight: 800;
-            margin-bottom: 20px;
+            margin-bottom: 22px;
             color: #ffffff;
-            text-shadow: 0 0 25px var(--accent-glow), 0 3px 8px rgba(0,0,0,0.9);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 1), 0 0 20px var(--accent-glow);
             line-height: 1.35;
         }
 
         p.hero-desc {
-            font-size: 1.32rem;
-            line-height: 1.9;
+            font-size: 1.35rem;
+            line-height: 2;
             color: #ffffff;
             font-weight: 600;
             margin-bottom: 25px;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95);
-            background: rgba(0, 0, 0, 0.6);
-            padding: 22px;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 1);
+            background: rgba(0, 0, 0, 0.75);
+            padding: 24px;
             border-radius: 20px;
-            border: 2px solid rgba(255, 255, 255, 0.18);
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
         }
 
-        /* RESPECTFUL ROTATING ISLAMIC SYMBOL FRAME */
-        .portal-frame {
-            width: 170px;
-            height: 170px;
+        /* STATIC RESPECTFUL HEADER FRAME */
+        .flower-frame {
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             margin: 0 auto 20px auto;
-            background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, rgba(0,0,0,0.8) 100%);
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.85) 100%);
             border: 3px solid var(--gold-glow);
-            box-shadow: 0 0 45px var(--gold-glow);
+            box-shadow: 0 0 35px var(--gold-glow);
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            position: relative;
         }
 
-        /* ROTATING 8-POINTED ISLAMIC STAR / QURAN MOTIF */
-        .rotating-motif {
-            font-size: 4.5rem;
+        .flower-frame i {
+            font-size: 3.5rem;
             color: var(--gold-glow);
-            filter: drop-shadow(0 0 20px var(--gold-glow));
-            animation: slowRotate 20s linear infinite;
+            filter: drop-shadow(0 0 15px var(--gold-glow));
         }
 
-        @keyframes slowRotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .portal-text {
-            font-size: 1.15rem;
-            color: #ffffff;
-            font-weight: 800;
-            margin-top: 6px;
-            text-shadow: 0 0 10px var(--gold-glow);
-        }
-
-        /* CARDS WITH HOVER ANIMATION */
+        /* SOLID HIGH-CONTRAST CARDS */
         .poly-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
@@ -289,70 +234,96 @@
         }
 
         .poly-card {
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.85);
             border: 2px solid var(--accent-glow);
-            border-radius: 25px 8px 25px 8px;
+            border-radius: 20px;
             padding: 24px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.9);
             transition: all 0.3s ease;
         }
 
         .poly-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-4px);
             border-color: var(--gold-glow);
-            box-shadow: 0 0 25px var(--gold-glow);
+            background: rgba(0, 0, 0, 0.95);
         }
 
         .poly-title {
-            font-size: 1.3rem;
+            font-size: 1.35rem;
             font-weight: 800;
             color: var(--gold-glow);
             margin-bottom: 10px;
             display: flex;
             align-items: center;
             gap: 12px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.9);
         }
 
-        .poly-text { font-size: 1.15rem; color: #ffffff; font-weight: 600; line-height: 1.7; }
+        .poly-text {
+            font-size: 1.2rem;
+            color: #ffffff;
+            font-weight: 600;
+            line-height: 1.8;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+        }
 
         /* CAPSULE CARDS */
         .pill-card {
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.85);
             border: 2px solid var(--accent-glow);
-            border-radius: 40px 15px 40px 15px;
+            border-radius: 25px;
             padding: 22px 30px;
             margin-bottom: 18px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.8);
-            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.9);
         }
 
-        .pill-card:hover {
-            transform: scale(1.02);
-            border-color: var(--gold-glow);
+        .pill-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.9);
         }
 
-        .pill-title { font-size: 1.25rem; font-weight: 800; color: #ffffff; display: flex; align-items: center; gap: 12px; }
-        .pill-flow { font-size: 1.2rem; color: var(--gold-glow); font-weight: 700; margin-top: 8px; text-shadow: 0 0 10px rgba(255, 190, 11, 0.5); }
+        .pill-flow {
+            font-size: 1.25rem;
+            color: var(--gold-glow);
+            font-weight: 800;
+            margin-top: 8px;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 1);
+        }
 
-        /* SHARD BOXES */
+        /* SHARD / BOX CARDS FOR EASY READING */
         .shard-box {
-            background: rgba(0, 0, 0, 0.7);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            clip-path: polygon(0 0, 96% 0, 100% 18%, 100% 100%, 4% 100%, 0 82%);
-            padding: 22px;
-            margin-bottom: 16px;
-            border-left: 6px solid var(--accent-glow);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-            transition: all 0.3s ease;
-        }
-
-        .shard-box:hover {
-            border-left-color: var(--gold-glow);
             background: rgba(0, 0, 0, 0.85);
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            border-left: 6px solid var(--accent-glow);
+            border-radius: 16px;
+            padding: 22px;
+            margin-bottom: 18px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.9);
         }
 
-        .shard-box h3 { font-size: 1.3rem; font-weight: 800; color: var(--accent-glow); margin-bottom: 8px; display: flex; align-items: center; gap: 12px; }
-        .shard-text { color: #ffffff; font-size: 1.15rem; font-weight: 600; line-height: 1.8; }
+        .shard-box h3 {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--accent-glow);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.9);
+        }
+
+        .shard-text {
+            color: #ffffff;
+            font-size: 1.2rem;
+            font-weight: 600;
+            line-height: 1.8;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+        }
 
         /* NAVIGATION CONTROLS */
         .nav-controls {
@@ -360,16 +331,16 @@
             justify-content: space-between;
             align-items: center;
             margin-top: 20px;
-            padding-top: 18px;
-            border-top: 2px solid rgba(255, 255, 255, 0.18);
+            padding-top: 20px;
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
         }
 
         .btn-cosmic {
             background: linear-gradient(135deg, var(--accent-glow), var(--gold-glow));
             color: #000000;
             border: none;
-            padding: 16px 38px;
-            font-size: 1.2rem;
+            padding: 16px 40px;
+            font-size: 1.25rem;
             font-weight: 800;
             border-radius: 50px;
             cursor: pointer;
@@ -380,11 +351,29 @@
             gap: 12px;
         }
 
-        .btn-cosmic:hover { transform: translateY(-3px) scale(1.04); box-shadow: 0 0 40px var(--gold-glow); }
-        .btn-cosmic:disabled { background: #334155; color: #94a3b8; box-shadow: none; cursor: not-allowed; opacity: 0.4; }
+        .btn-cosmic:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 0 35px var(--gold-glow);
+        }
 
-        .btn-secondary { background: rgba(255, 255, 255, 0.1); border: 2px solid rgba(255, 255, 255, 0.3); color: #ffffff; }
-        .btn-secondary:hover { background: rgba(255, 255, 255, 0.2); border-color: var(--accent-glow); }
+        .btn-cosmic:disabled {
+            background: #334155;
+            color: #94a3b8;
+            box-shadow: none;
+            cursor: not-allowed;
+            opacity: 0.4;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.12);
+            border: 2px solid rgba(255, 255, 255, 0.35);
+            color: #ffffff;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: var(--accent-glow);
+        }
 
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-thumb { background: var(--accent-glow); border-radius: 10px; }
@@ -392,7 +381,7 @@
 </head>
 <body data-theme="theme-0">
 
-    <!-- TOP TOOLBAR CONTROLS -->
+    <!-- TOP TOOLBAR -->
     <div class="top-toolbar">
         <button class="tool-btn" onclick="window.print()">
             <i class="fa-solid fa-print"></i> আবেদন প্রিন্ট করুন
@@ -402,26 +391,14 @@
         </button>
     </div>
 
-    <!-- DYNAMIC BACKGROUND WITH ROTATING ISLAMIC SYMBOLS -->
+    <!-- BACKGROUND LIGHT GLOWS -->
     <div class="universe-container">
-        <div class="nebula nebula-1"></div>
-        <div class="nebula nebula-2"></div>
-
-        <!-- ROTATING ORBITS WITH STAR & CRESCENT MOTIFS -->
-        <div class="cosmic-orbit orbit-1">
-            <div class="orbit-motif"><i class="fa-solid fa-star-and-crescent"></i></div>
-        </div>
-        <div class="cosmic-orbit orbit-2">
-            <div class="orbit-motif" style="top:auto; bottom:-18px;"><i class="fa-solid fa-kaaba"></i></div>
-        </div>
-
-        <!-- FLOATING SPIRITUAL LIGHT PARTICLES -->
-        <div class="particle" style="left:10%; width:4px; height:4px; animation-delay:0s;"></div>
-        <div class="particle" style="left:30%; width:6px; height:6px; animation-delay:3s;"></div>
-        <div class="particle" style="left:50%; width:5px; height:5px; animation-delay:1s;"></div>
-        <div class="particle" style="left:70%; width:7px; height:7px; animation-delay:5s;"></div>
-        <div class="particle" style="left:88%; width:4px; height:4px; animation-delay:2s;"></div>
+        <div class="ambient-glow glow-1"></div>
+        <div class="ambient-glow glow-2"></div>
     </div>
+
+    <!-- CONTINUOUS FALLING FLOWERS / PETALS CONTAINER -->
+    <div class="petal-container" id="petalContainer"></div>
 
     <!-- MAIN STAGE BOX -->
     <div class="stage-box">
@@ -430,14 +407,12 @@
             <div class="progress-fill" id="progressFill"></div>
         </div>
 
-        <!-- SLIDE 1: RESPECTFUL INTRO WITH ROTATING SYMBOL -->
+        <!-- SLIDE 1: INTRO WITH SERENE FLOWER FRAME -->
         <div class="slide active" id="slide0">
-            <div class="portal-frame">
-                <!-- RESPECTFUL ROTATING ISLAMIC STAR / QURAN MOTIF -->
-                <i class="fa-solid fa-book-quran rotating-motif"></i>
-                <span class="portal-text">উস্তাদগণের খিদমতে</span>
+            <div class="flower-frame">
+                <i class="fa-solid fa-spa"></i>
             </div>
-            <h1 style="text-align: center;">মহাবিশ্বের মহিমায় উস্তাদগণের প্রতি বিনম্র আরজ</h1>
+            <h1 style="text-align: center;">উস্তাদগণের প্রতি বিনম্র আরজ ও আকুতি</h1>
             <p class="hero-desc" style="text-align: center;">
                 শ্রদ্ধাস্পদ উস্তাদবৃন্দ, আপনারা আমাদের জ্ঞানের দিশারী। মহাবিশ্বের অসীম বিশালতার সামনে যেমন মানুষ বিন্দুবৎ, তেমনি আপনাদের ইলম ও অভিজ্ঞতার সাগরে আমরা নিতান্তই ছোট ও অজ্ঞ শিশু। বিগত তিন মাসের অনাকাঙ্ক্ষিত দূরত্ব ও ভুল বোঝাবুঝির জন্য আমরা নিজেদের অপরাধী মনে করে বিনম্র ক্ষমা প্রার্থনা করছি। আপনাদের স্নেহচ্ছায়া ব্যতীত আমাদের সুন্দর ভবিষ্যৎ কল্পনা করা অসম্ভব।
             </p>
@@ -450,7 +425,7 @@
             
             <div class="poly-grid">
                 <div class="poly-card">
-                    <div class="poly-title"><i class="fa-solid fa-biohazard" style="color:#ffbe0b;"></i> ৪র্থ-৫ম শ্রেণী (করোনা মহামারী)</div>
+                    <div class="poly-title"><i class="fa-solid fa-biohazard" style="color:#fbbf24;"></i> ৪র্থ-৫ম শ্রেণী (করোনা মহামারী)</div>
                     <p class="poly-text">মহামারীতে দীর্ঘদিন প্রতিষ্ঠান বন্ধ থাকায় আমাদের প্রাতিষ্ঠানিক ভিত্তি তৈরিতে বড় ঘাটতি থেকে যায়।</p>
                 </div>
                 <div class="poly-card">
@@ -458,7 +433,7 @@
                     <p class="poly-text">নতুন কারিকুলামের পরিবর্তনের সাথে খাপ খাওয়াতে গিয়ে বিজ্ঞানের মূল থিওরিটিক্যাল পড়ালেখা থেকে আমরা কিছুটা দূরে সরে পড়ি।</p>
                 </div>
                 <div class="poly-card">
-                    <div class="poly-title"><i class="fa-solid fa-hourglass-half" style="color:#ffbe0b;"></i> ৯মে বই সংকট ও ক্লাস স্থগিত</div>
+                    <div class="poly-title"><i class="fa-solid fa-hourglass-half" style="color:#fbbf24;"></i> ৯মে বই সংকট ও ক্লাস স্থগিত</div>
                     <p class="poly-text">বছরের শুরুতে বই পেতে দেরি হওয়া এবং সাময়িক ক্লাস স্থগিত থাকার কারণে আমাদের বিজ্ঞানের ভীতি কাটেনি।</p>
                 </div>
             </div>
@@ -478,7 +453,7 @@
                 <div class="pill-flow">মাহবুব স্যার ➔ মমিনুল স্যার ➔ দিনুল স্যার ➔ দিনুল স্যার (বর্তমান)</div>
             </div>
             <div class="pill-card">
-                <div class="pill-title"><i class="fa-solid fa-clock-rotate-left" style="color:#ffbe0b;"></i> বাংলা প্রথম পত্র (সেশন গ্যাপ)</div>
+                <div class="pill-title"><i class="fa-solid fa-clock-rotate-left" style="color:#fbbf24;"></i> বাংলা প্রথম পত্র (সেশন গ্যাপ)</div>
                 <div class="pill-flow">নীলিমা ম্যাম ➔ (১৫ দিন বন্ধ) ➔ রেহানা ম্যাম ➔ (ছুটি) ➔ রেহানা ম্যাম</div>
             </div>
         </div>
@@ -486,19 +461,19 @@
         <!-- SLIDE 4: RELIGIOUS SUBJECTS -->
         <div class="slide" id="slide3">
             <h1>ধর্মীয় ও সাধারণ বিষয়ে শিক্ষার্থীদের বিনীত আবেদন</h1>
-            <p class="hero-desc" style="margin-bottom:15px; padding:12px 20px;">
+            <p class="hero-desc" style="margin-bottom:15px; padding:15px 22px;">
                 আপনাদের উপদেশের চেয়ে উত্তম কিছু হতে পারে না। স্যারদের বিবেচনার জন্য আমাদের পক্ষ থেকে ছোট কিছু আরজ রাখা হলো মাত্র; আপনারা যেভাবে ভালো মনে করেন সিদ্ধান্ত নেবেন:
             </p>
             
             <div class="shard-box">
-                <h3><i class="fa-solid fa-mosque"></i> অধ্যায়ভিত্তিক পরীক্ষা (Chapter-wise Test)</h3>
+                <h3><i class="fa-solid fa-book-open-reader"></i> অধ্যায়ভিত্তিক পরীক্ষা (Chapter-wise Test)</h3>
                 <p class="shard-text">
                     <strong>কুরআন, হাদিস, আকায়িদ-ফিকহ, বাংলা ১ম ও ২য়:</strong> তারকিব ও তাহকিকের ভীতি কাটাতে স্যাররা যদি নিয়মিত অধ্যায়ভিত্তিক ছোট ছোট পরীক্ষা নেওয়ার ব্যবস্থা করেন, তবে আমরা অনেক উপকৃত হতাম।
                 </p>
             </div>
 
-            <div class="shard-box" style="border-left-color: #ffbe0b;">
-                <h3 style="color:#ffbe0b;"><i class="fa-solid fa-bolt"></i> বিশেষ ম্যারাথন ব্লক ক্লাস</h3>
+            <div class="shard-box" style="border-left-color: #fbbf24;">
+                <h3 style="color:#fbbf24;"><i class="fa-solid fa-bolt"></i> বিশেষ ম্যারাথন ব্লক ক্লাস</h3>
                 <p class="shard-text">
                     <strong>আরবি ১ম, ২য় ও বাংলা ২য়:</strong> আমাদের ব্যাকরণ ও আরবি ভাষার দুর্বলতা কাটাতে সপ্তাহের কোনো একদিন একটানা নিবিড় ক্লাসের সুযোগ দিলে আমাদের বেসিক মজবুত হতো।
                 </p>
@@ -508,37 +483,37 @@
         <!-- SLIDE 5: MATH & SCIENCE -->
         <div class="slide" id="slide4">
             <h1>ইংরেজি ২য়, গণিত ও বিজ্ঞান বিষয়ের নিবেদন</h1>
-            <p class="hero-desc" style="margin-bottom:15px; padding:12px 20px;">
+            <p class="hero-desc" style="margin-bottom:15px; padding:15px 22px;">
                 আপনারা আমাদের শিক্ষক, কোনটা ভালো হবে তা আমাদের চেয়ে আপনারাই শতগুণ বেশি বোঝেন। আমাদের কেবল ছোট্ট আকুতি:
             </p>
 
             <div class="shard-box">
-                <h3><i class="fa-solid fa-file-code"></i> ইংরেজি ২য় পত্র: Type-wise শিট</h3>
+                <h3><i class="fa-solid fa-file-signature"></i> ইংরেজি ২য় পত্র: Type-wise শিট</h3>
                 <p class="shard-text">স্যার যদি বোর্ডের নিয়মগুলো টাইপ অনুযায়ী আলাদা শিট করে বুঝিয়ে দেন, তবে ইংরেজি ব্যাকরণ নিয়ে আমাদের দ্বিধা কাটবে।</p>
             </div>
 
-            <div class="shard-box" style="border-left-color: #ffbe0b;">
-                <h3 style="color:#ffbe0b;"><i class="fa-solid fa-square-root-variable"></i> গণিত বিষয়ে বিনীত নিবেদন</h3>
+            <div class="shard-box" style="border-left-color: #fbbf24;">
+                <h3 style="color:#fbbf24;"><i class="fa-solid fa-calculator"></i> গণিত বিষয়ে বিনীত নিবেদন</h3>
                 <p class="shard-text">আমাদের গণিত স্যারের প্রতি শ্রদ্ধা অপরসীম। আমরা কোনো শিক্ষক পরিবর্তনের কথা চিন্তাও করি না; তবে বিজ্ঞানের মতো গণিতেও যদি আমাদের জন্য অতিরিক্ত রিভিশন ক্লাস ও নিয়মিত মূল্যায়নের সুযোগ দেওয়া হতো, তবে আমাদের আত্মবিশ্বাস আরও বেড়ে যেত।</p>
             </div>
 
             <div class="shard-box">
-                <h3><i class="fa-solid fa-flask-vial"></i> বিজ্ঞান বিষয়সমূহ (পদার্থ, রসায়ন, জীববিজ্ঞান)</h3>
+                <h3><i class="fa-solid fa-microscope"></i> বিজ্ঞান বিষয়সমূহ (পদার্থ, রসায়ন, জীববিজ্ঞান)</h3>
                 <p class="shard-text">ঘাটতি মেটাতে ১ মাসে ৫০% সিলেবাসের ওপর বিশেষ প্রস্তুতি ও নিয়মিত মডেল টেস্টের ব্যবস্থা রাখা যায় কিনা, তা বিবেচনার আবেদন রইল।</p>
             </div>
         </div>
 
         <!-- SLIDE 6: FINAL APPEAL -->
         <div class="slide" id="slide5">
-            <div class="portal-frame" style="width:130px; height:130px; margin-bottom:15px; border-color:#ffbe0b; box-shadow:0 0 50px #ffbe0b;">
-                <i class="fa-solid fa-hands-praying" style="font-size:3rem; color:#ffbe0b;"></i>
+            <div class="flower-frame" style="width:110px; height:110px; margin-bottom:15px;">
+                <i class="fa-solid fa-heart" style="font-size:2.8rem; color:#fbbf24;"></i>
             </div>
             <h1 style="text-align: center;">ভুল ধারণা খণ্ডন ও আমাদের শেষ আরজ</h1>
             <p class="hero-desc" style="text-align: center;">
                 'শিক্ষকরা মন দিয়ে পড়ান না'—এটি একটি সম্পূর্ণ ভুল ধারণা। আমরা সবাই শিক্ষকবৃন্দের পরিশ্রম ও আন্তরিকতায় অত্যন্ত উপকৃত। শিক্ষকমণ্ডলীর প্রতি আমাদের সম্মান চিরন্তন।
             </p>
-            <div style="background: rgba(0,0,0,0.85); border: 2px dashed #ffbe0b; padding: 22px; border-radius: 20px; text-align: center;">
-                <p style="color: #ffbe0b; font-size: 1.35rem; font-weight: 800; text-shadow: 0 0 10px rgba(0,0,0,0.9);">
+            <div style="background: rgba(0,0,0,0.9); border: 2px dashed #fbbf24; padding: 22px; border-radius: 20px; text-align: center; box-shadow: 0 8px 25px rgba(0,0,0,0.8);">
+                <p style="color: #fbbf24; font-size: 1.35rem; font-weight: 800; text-shadow: 0 2px 4px rgba(0,0,0,1);">
                     "আপনারা আমাদের অভিভাবক। আমাদের অগোচর ভুলগুলো ক্ষমা করে, সন্তানতুল্য মনে করে আমাদের আকুতিগুলো বিবেচনা করবেন এবং স্নেহের ছায়াতলে স্থান দেবেন—এই মিনতিই রাখছি।"
                 </p>
             </div>
@@ -561,6 +536,28 @@
         const progressFill = document.getElementById('progressFill');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
+
+        // GENERATE BEAUTIFUL FALLING FLOWERS & PETALS
+        function createFallingPetals() {
+            const container = document.getElementById('petalContainer');
+            const flowerTypes = ['🌸', '🌺', '🌼', '🌹', '🍃', '✨'];
+            const petalCount = 35; // Number of continuous falling petals
+
+            for (let i = 0; i < petalCount; i++) {
+                let petal = document.createElement('div');
+                petal.className = 'petal';
+                petal.innerText = flowerTypes[Math.floor(Math.random() * flowerTypes.length)];
+                
+                // Random position, speed, and delay
+                petal.style.left = Math.random() * 100 + 'vw';
+                petal.style.animationDuration = (Math.random() * 8 + 7) + 's'; // 7 to 15 seconds float
+                petal.style.animationDelay = (Math.random() * 8) + 's';
+                petal.style.fontSize = (Math.random() * 1.2 + 0.9) + 'rem';
+                petal.style.opacity = Math.random() * 0.7 + 0.3;
+
+                container.appendChild(petal);
+            }
+        }
 
         function updateMultiThemeEngine() {
             document.body.setAttribute('data-theme', 'theme-' + currentSlideIdx);
@@ -596,11 +593,14 @@
             }
         }
 
+        // KEYBOARD ARROW CONTROLS
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowRight' || e.key === 'Space') moveSlide(1);
             if (e.key === 'ArrowLeft') moveSlide(-1);
         });
 
+        // INITIALIZE PETALS AND SLIDES
+        createFallingPetals();
         updateMultiThemeEngine();
     </script>
 </body>
