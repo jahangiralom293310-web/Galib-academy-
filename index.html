@@ -65,9 +65,10 @@
         body[data-theme="theme-2"] { --bg-dark: #120917; --accent-glow: #f472b6; --card-bg: rgba(24, 10, 30, 0.97); }
         body[data-theme="theme-3"] { --bg-dark: #03131d; --accent-glow: #67e8f9; --card-bg: rgba(3, 20, 32, 0.97); }
         body[data-theme="theme-4"] { --bg-dark: #140d02; --accent-glow: #fde047; --card-bg: rgba(26, 16, 3, 0.97); }
-        body[data-theme="theme-5"] { --bg-dark: #0a1103; --accent-glow: #a3e635; --card-bg: rgba(14, 24, 5, 0.97); }
+        body[data-theme="theme-5"] { --bg-dark: #0d0a1a; --accent-glow: #a855f7; --card-bg: rgba(15, 10, 30, 0.97); }
+        body[data-theme="theme-6"] { --bg-dark: #0a1103; --accent-glow: #a3e635; --card-bg: rgba(14, 24, 5, 0.97); }
 
-        /* DYNAMIC FALLING FLOWERS WITH LIGHTING GLOW */
+        /* HIGH-DENSITY DYNAMIC FALLING FLOWERS */
         .petal-container {
             position: fixed;
             top: 0;
@@ -76,7 +77,7 @@
             height: 100%;
             z-index: 2;
             pointer-events: none;
-            transition: opacity 0.6s ease;
+            transition: opacity 0.5s ease;
         }
 
         .petal {
@@ -84,8 +85,8 @@
             top: -10%;
             pointer-events: none;
             animation: fallAndSway linear infinite;
-            filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.9)) 
-                    drop-shadow(0 0 25px var(--accent-glow));
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.9)) 
+                    drop-shadow(0 0 20px var(--accent-glow));
             user-select: none;
         }
 
@@ -94,10 +95,10 @@
                 transform: translateY(0) translateX(0) rotate(0deg) scale(0.8);
                 opacity: 0;
             }
-            15% { opacity: 0.95; }
-            85% { opacity: 0.95; }
+            12% { opacity: 0.95; }
+            88% { opacity: 0.95; }
             100% {
-                transform: translateY(112vh) translateX(90px) rotate(480deg) scale(1.1);
+                transform: translateY(112vh) translateX(110px) rotate(540deg) scale(1.15);
                 opacity: 0;
             }
         }
@@ -179,7 +180,7 @@
 
         .progress-fill {
             height: 100%;
-            width: 16.66%;
+            width: 14.28%;
             background: linear-gradient(90deg, var(--accent-glow), var(--gold-glow));
             box-shadow: 0 0 25px var(--accent-glow);
             transition: all 0.6s ease;
@@ -199,9 +200,9 @@
 
         /* TYPOGRAPHY WITH LUMINOUS GLOW */
         h1 {
-            font-size: 2.6rem;
+            font-size: 2.5rem;
             font-weight: 800;
-            margin-bottom: 22px;
+            margin-bottom: 20px;
             color: #ffffff;
             text-shadow: 0 2px 12px rgba(0, 0, 0, 1), 0 0 25px var(--accent-glow);
             line-height: 1.35;
@@ -214,24 +215,24 @@
         }
 
         p.hero-desc {
-            font-size: 1.35rem;
-            line-height: 2;
+            font-size: 1.3rem;
+            line-height: 1.9;
             color: #ffffff;
             font-weight: 700;
-            margin-bottom: 25px;
+            margin-bottom: 22px;
             text-shadow: 0 2px 8px rgba(0, 0, 0, 1);
             background: rgba(0, 0, 0, 0.88);
-            padding: 24px;
+            padding: 22px;
             border-radius: 20px;
             border: 2px solid var(--accent-glow);
             box-shadow: 0 0 25px rgba(0, 0, 0, 0.95), 0 0 15px var(--accent-glow);
         }
 
         .flower-frame {
-            width: 120px;
-            height: 120px;
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
-            margin: 0 auto 20px auto;
+            margin: 0 auto 18px auto;
             background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(0,0,0,0.9) 100%);
             border: 3px solid var(--gold-glow);
             box-shadow: 0 0 35px var(--gold-glow);
@@ -247,7 +248,7 @@
         }
 
         .flower-frame i {
-            font-size: 3.5rem;
+            font-size: 3.2rem;
             color: var(--gold-glow);
             filter: drop-shadow(0 0 18px var(--gold-glow));
         }
@@ -255,45 +256,45 @@
         /* LUMINOUS CARDS WITH BRIGHT BORDERS */
         .poly-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-            gap: 20px;
-            max-height: 400px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 18px;
+            max-height: 390px;
             overflow-y: auto;
-            padding-right: 10px;
+            padding-right: 8px;
         }
 
         .poly-card {
             background: rgba(0, 0, 0, 0.92);
             border: 2px solid var(--accent-glow);
             border-radius: 20px;
-            padding: 24px;
+            padding: 22px;
             box-shadow: 0 0 20px rgba(56, 189, 248, 0.3), 0 8px 30px rgba(0, 0, 0, 0.95);
             transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .poly-card:hover {
-            transform: translateY(-6px);
+            transform: translateY(-5px);
             border-color: var(--gold-glow);
             box-shadow: 0 0 35px var(--gold-glow);
             background: rgba(0, 0, 0, 0.98);
         }
 
         .poly-title {
-            font-size: 1.35rem;
+            font-size: 1.3rem;
             font-weight: 800;
             color: var(--gold-glow);
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             text-shadow: 0 2px 6px rgba(0, 0, 0, 1);
         }
 
         .poly-text {
-            font-size: 1.22rem;
+            font-size: 1.18rem;
             color: #ffffff;
             font-weight: 700;
-            line-height: 1.85;
+            line-height: 1.8;
             text-shadow: 0 2px 5px rgba(0, 0, 0, 1);
         }
 
@@ -302,8 +303,8 @@
             background: rgba(0, 0, 0, 0.92);
             border: 2px solid var(--accent-glow);
             border-radius: 25px;
-            padding: 22px 30px;
-            margin-bottom: 18px;
+            padding: 20px 28px;
+            margin-bottom: 16px;
             box-shadow: 0 0 20px rgba(56, 189, 248, 0.3), 0 8px 30px rgba(0, 0, 0, 0.95);
             transition: all 0.3s ease;
         }
@@ -314,7 +315,7 @@
         }
 
         .pill-title {
-            font-size: 1.32rem;
+            font-size: 1.3rem;
             font-weight: 800;
             color: #ffffff;
             display: flex;
@@ -324,7 +325,7 @@
         }
 
         .pill-flow {
-            font-size: 1.28rem;
+            font-size: 1.25rem;
             color: var(--gold-glow);
             font-weight: 800;
             margin-top: 10px;
@@ -342,8 +343,8 @@
             border: 2px solid var(--accent-glow);
             border-left: 8px solid var(--gold-glow);
             border-radius: 18px;
-            padding: 24px;
-            margin-bottom: 18px;
+            padding: 20px 24px;
+            margin-bottom: 16px;
             box-shadow: 0 0 22px rgba(56, 189, 248, 0.3), 0 8px 30px rgba(0, 0, 0, 0.95);
             transition: all 0.3s ease;
         }
@@ -354,10 +355,10 @@
         }
 
         .shard-box h3 {
-            font-size: 1.38rem;
+            font-size: 1.32rem;
             font-weight: 800;
             color: var(--accent-glow);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
             gap: 12px;
@@ -366,9 +367,9 @@
 
         .shard-text {
             color: #ffffff;
-            font-size: 1.22rem;
+            font-size: 1.18rem;
             font-weight: 700;
-            line-height: 1.85;
+            line-height: 1.8;
             text-shadow: 0 2px 5px rgba(0, 0, 0, 1);
         }
 
@@ -378,7 +379,7 @@
             justify-content: space-between;
             align-items: center;
             margin-top: 20px;
-            padding-top: 20px;
+            padding-top: 18px;
             border-top: 2px solid rgba(255, 255, 255, 0.22);
         }
 
@@ -386,8 +387,8 @@
             background: linear-gradient(135deg, var(--accent-glow), var(--gold-glow));
             color: #000000;
             border: none;
-            padding: 16px 40px;
-            font-size: 1.25rem;
+            padding: 15px 38px;
+            font-size: 1.2rem;
             font-weight: 800;
             border-radius: 50px;
             cursor: pointer;
@@ -552,17 +553,40 @@
             </div>
         </div>
 
-        <!-- SLIDE 6: FINAL APPEAL -->
+        <!-- SLIDE 6: SAMPLE ROUTINE -->
         <div class="slide" id="slide5">
-            <div class="flower-frame" style="width:110px; height:110px; margin-bottom:15px;">
-                <i class="fa-solid fa-heart" style="font-size:2.8rem; color:#fde047;"></i>
+            <h1>প্রস্তাবিত বিশেষ ক্লাস ও রিভিশন রুটিন (নমুনা)</h1>
+            <p class="hero-desc" style="margin-bottom:15px; padding:15px 22px; border-color: var(--gold-glow);">
+                <i class="fa-solid fa-circle-info" style="color: var(--gold-glow);"></i> <strong>বিশেষ দ্রষ্টব্য:</strong> এটি শুধুমাত্র আমাদের পক্ষ থেকে একটি <em>নমুনা প্রস্তাবনা মাত্র</em>। সম্মানিত উস্তাদবৃন্দ আপনাদের সুবিধামতো যেকোনো দিন বা সময় নির্ধারণ করতে পারেন।
+            </p>
+
+            <div class="poly-grid">
+                <div class="poly-card">
+                    <div class="poly-title"><i class="fa-solid fa-clock"></i> ১. দৈনিক অধ্যায়ভিত্তিক মূল্যায়ন</div>
+                    <p class="poly-text"><strong>সময়:</strong> নিয়মিত ক্লাসের প্রথম ১০ মিনিট<br><strong>বিষয়:</strong> কুরআন, হাদিস, আকায়িদ ও বাংলা ১ম/২য়<br><strong>পদ্ধতি:</strong> সংক্ষিপ্ত প্রশ্ন, তারকিব ও তাহকিক চর্চা।</p>
+                </div>
+                <div class="poly-card">
+                    <div class="poly-title"><i class="fa-solid fa-calendar-week" style="color:#fde047;"></i> ২. সাপ্তাহিক ম্যারাথন ব্লক ক্লাস</div>
+                    <p class="poly-text"><strong>সময়:</strong> সপ্তাহের নির্ধারিত ১ দিন (অতিরিক্ত সময়)<br><strong>বিষয়:</strong> আরবি ১ম, ২য় ও ইংরেজি ব্যাকরণ<br><strong>পদ্ধতি:</strong> নিবিড় গ্রামার ও ব্যাকরণের বেসিক চর্চা।</p>
+                </div>
+                <div class="poly-card">
+                    <div class="poly-title"><i class="fa-solid fa-vial"></i> ৩. গণিত ও বিজ্ঞান মডেল টেস্ট</div>
+                    <p class="poly-text"><strong>সময়:</strong> সাপ্তাহিক শেষ কার্যদিবস<br><strong>বিষয়:</strong> গণিত, পদার্থ, রসায়ন ও জীববিজ্ঞান<br><strong>পদ্ধতি:</strong> টাইপভিত্তিক সমস্যা সমাধান ও বিশেষ মূল্যায়ন।</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 7: FINAL APPEAL -->
+        <div class="slide" id="slide6">
+            <div class="flower-frame" style="width:100px; height:100px; margin-bottom:15px;">
+                <i class="fa-solid fa-heart" style="font-size:2.5rem; color:#fde047;"></i>
             </div>
             <h1 style="text-align: center;">ভুল ধারণা খণ্ডন ও আমাদের শেষ আরজ</h1>
             <p class="hero-desc" style="text-align: center;">
                 'শিক্ষকরা মন দিয়ে পড়ান না'—এটি একটি সম্পূর্ণ ভুল ধারণা। আমরা সবাই শিক্ষকবৃন্দের পরিশ্রম ও আন্তরিকতায় অত্যন্ত উপকৃত। শিক্ষকমণ্ডলীর প্রতি আমাদের সম্মান চিরন্তন।
             </p>
-            <div style="background: rgba(0,0,0,0.95); border: 2.5px solid #fde047; padding: 22px; border-radius: 20px; text-align: center; box-shadow: 0 0 35px #fde047;">
-                <p style="color: #fde047; font-size: 1.38rem; font-weight: 800; text-shadow: 0 2px 5px rgba(0,0,0,1);">
+            <div style="background: rgba(0,0,0,0.95); border: 2.5px solid #fde047; padding: 20px; border-radius: 20px; text-align: center; box-shadow: 0 0 35px #fde047;">
+                <p style="color: #fde047; font-size: 1.35rem; font-weight: 800; text-shadow: 0 2px 5px rgba(0,0,0,1);">
                     "আপনারা আমাদের অভিভাবক। আমাদের অগোচর ভুলগুলো ক্ষমা করে, সন্তানতুল্য মনে করে আমাদের আকুতিগুলো বিবেচনা করবেন এবং স্নেহের ছায়াতলে স্থান দেবেন—এই মিনতিই রাখছি।"
                 </p>
             </div>
@@ -581,22 +605,23 @@
 
     <script>
         let currentSlideIdx = 0;
-        const totalSlides = 6;
+        const totalSlides = 7;
         const progressFill = document.getElementById('progressFill');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
 
-        // DIFFERENT FLOWER SETS FOR EACH INDIVIDUAL SLIDE
+        // DIFFERENT FLOWER SETS FOR EACH INDIVIDUAL SLIDE (7 SLIDES)
         const flowerSets = [
-            ['🌸', '💮', '🌺', '🌷'],      // Slide 1: Soft Cherry Blossom & Pink Lotus
-            ['🌼', '🌻', '🏵️', '🌼'],      // Slide 2: Golden Sunflowers & Marigolds
-            ['🌹', '🥀', '🌺', '🌹'],      // Slide 3: Elegant Red Roses
-            ['🪷', '🌸', '🪻', '💮'],      // Slide 4: Serene Water Lilies & Lavenders
-            ['🌺', '🌼', '🌷', '🌸'],      // Slide 5: Bright Hibiscus & Tulips
-            ['🌹', '🪷', '🌸', '🌼', '🌷'] // Slide 6: Divine Mixed Heavenly Bouquet
+            ['🌸', '💮', '🌺', '🌷', '✨'],      // Slide 1: Soft Cherry Blossom & Pink Lotus
+            ['🌼', '🌻', '🏵️', '🌼', '⭐'],      // Slide 2: Golden Sunflowers & Marigolds
+            ['🌹', '🥀', '🌺', '🌹', '💖'],      // Slide 3: Elegant Red Roses
+            ['🪷', '🌸', '🪻', '💮', '💫'],      // Slide 4: Serene Water Lilies & Lavenders
+            ['🌺', '🌼', '🌷', '🌸', '✨'],      // Slide 5: Bright Hibiscus & Tulips
+            ['🌻', '🪷', '🏵️', '🌷', '🌟'],      // Slide 6: Radiant Routine Blossoms
+            ['🌹', '🪷', '🌸', '🌼', '🌷', '💖'] // Slide 7: Divine Mixed Heavenly Bouquet
         ];
 
-        // GENERATE FLOWERS dynamically PER SLIDE
+        // HIGH DENSITY FLOWER GENERATOR (110 FLOWERS PER SLIDE)
         function createFallingPetals(slideIndex) {
             const container = document.getElementById('petalContainer');
             container.style.opacity = '0'; // Smooth transition out
@@ -604,7 +629,7 @@
             setTimeout(() => {
                 container.innerHTML = ''; // Clear previous slide's flowers
                 const currentFlowers = flowerSets[slideIndex] || flowerSets[0];
-                const petalCount = 45;
+                const petalCount = 110; // Significantly increased flower density
 
                 for (let i = 0; i < petalCount; i++) {
                     let petal = document.createElement('div');
@@ -612,15 +637,15 @@
                     petal.innerText = currentFlowers[Math.floor(Math.random() * currentFlowers.length)];
                     
                     petal.style.left = Math.random() * 100 + 'vw';
-                    petal.style.animationDuration = (Math.random() * 7 + 6) + 's'; 
-                    petal.style.animationDelay = (Math.random() * 3) + 's';
-                    petal.style.fontSize = (Math.random() * 1.3 + 1.0) + 'rem';
-                    petal.style.opacity = Math.random() * 0.75 + 0.35;
+                    petal.style.animationDuration = (Math.random() * 6 + 5) + 's'; 
+                    petal.style.animationDelay = (Math.random() * 4) + 's';
+                    petal.style.fontSize = (Math.random() * 1.4 + 0.9) + 'rem';
+                    petal.style.opacity = Math.random() * 0.8 + 0.35;
 
                     container.appendChild(petal);
                 }
                 container.style.opacity = '1'; // Fade back in
-            }, 300);
+            }, 250);
         }
 
         function updateMultiThemeEngine() {
