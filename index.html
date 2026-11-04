@@ -3,17 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>আমাদের কথা - দাখিল পরীক্ষার্থী ২০২৭</title>
+<title>মাদ্রাসা কোচিং প্ল্যান - দাখিল ২০২৭</title>
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@600;700;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Hind Siliguri',sans-serif;background:#06120d;color:#12241d}
-.topbar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:rgba(6,18,13,.92);color:#fff;backdrop-filter:blur(10px)}
+.topbar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:rgba(6,18,13,.95);color:#fff;gap:8px}
 .topbar b{font-size:15px}
+.topbar .right{display:flex;gap:8px;align-items:center}
 .topbar span{background:#d4af37;color:#111;padding:6px 12px;border-radius:999px;font-size:12px;font-weight:700}
-.wrap{max-width:1050px;margin:0 auto;padding:82px 14px 20px}
+.fs-btn{background:#fff;color:#0b3d2e;border:0;padding:8px 14px;border-radius:999px;font-weight:800;cursor:pointer;font-family:inherit;font-size:13px;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.fs-btn:hover{background:#f5d67b}
+.progress{position:fixed;top:52px;left:0;height:4px;background:#d4af37;z-index:101;width:12.5%;transition:.4s}
+.wrap{max-width:1050px;margin:0 auto;padding:78px 14px 20px}
 .hero{text-align:center;color:#fff;padding:14px 8px}
-.hero .badge{display:inline-block;background:rgba(212,175,55,.18);border:1px solid #d4af37;color:#f5d67b;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600}
+.hero .badge{display:inline-block;background:rgba(212,175,55,.18);border:1px solid #d4af37;color:#f5d67b;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600;animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
 .hero h1{font-family:'Noto Serif Bengali',serif;font-size:clamp(32px,6vw,56px);line-height:1.15;margin:14px 0 8px}
 .hero h1 i{color:#f5d67b;font-style:normal}
 .hero p{opacity:.9;line-height:1.7;max-width:750px;margin:0 auto;font-size:16px}
@@ -22,24 +27,30 @@ body{font-family:'Hind Siliguri',sans-serif;background:#06120d;color:#12241d}
 .wave:after{content:"";position:absolute;left:-10%;right:-10%;bottom:-58px;height:110px;background:#fffdf5;border-radius:50% 50% 0 0}
 .wave h2{position:absolute;z-index:2;left:24px;top:20px;color:#fff;font-family:'Noto Serif Bengali',serif;font-size:clamp(24px,4vw,34px)}
 .wave p{position:absolute;z-index:2;left:24px;top:62px;color:#ffe9a8;font-size:14px;font-weight:600}
-.wave .num{position:absolute;right:20px;top:14px;z-index:2;background:#fff;color:#0b3d2e;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:20px}
+.wave .num{position:absolute;right:20px;top:14px;z-index:2;background:#fff;color:#0b3d2e;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:20px;animation:pop .6s ease}
+@keyframes pop{from{transform:scale(.5);opacity:0}to{transform:scale(1);opacity:1}}
 .body{padding:22px 22px 26px}
 @media(max-width:700px){.body{padding:20px 15px}}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:13px}
 @media(max-width:700px){.grid2{grid-template-columns:1fr}}
-.item{background:#fff;border:1px solid #eee6c8;border-radius:18px;padding:16px;display:flex;gap:12px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:700px){.grid3{grid-template-columns:1fr}}
+.item{background:#fff;border:1px solid #eee6c8;border-radius:18px;padding:16px;display:flex;gap:12px;animation:up .5s ease both}
+.item:nth-child(2){animation-delay:.1s}.item:nth-child(3){animation-delay:.2s}.item:nth-child(4){animation-delay:.3s}
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 .item b{display:block;font-size:16px;line-height:1.4}
 .item small{color:#666;line-height:1.6;font-size:14px}
 .icon{width:44px;height:44px;flex:0 0 44px;border-radius:12px;display:grid;place-items:center;font-size:22px;background:#0b3d2e;color:#fff}
 .icon.gold{background:#d4af37;color:#111}
-.big{background:linear-gradient(135deg,#0b3d2e,#127a58);color:#fff;border-radius:20px;padding:22px;line-height:1.85;font-size:17px}
+.big{background:linear-gradient(135deg,#0b3d2e,#127a58);color:#fff;border-radius:20px;padding:22px;line-height:1.85;font-size:17px;animation:up .5s ease}
 .big b{color:#f5d67b}
 .list{list-style:none}
-.list li{background:#fff;border:1px solid #eee6c8;border-radius:14px;padding:13px 15px;margin-bottom:10px;display:flex;gap:12px;line-height:1.6}
+.list li{background:#fff;border:1px solid #eee6c8;border-radius:14px;padding:13px 15px;margin-bottom:10px;display:flex;gap:12px;line-height:1.6;animation:up .5s ease both}
+.list li:nth-child(2){animation-delay:.1s}.list li:nth-child(3){animation-delay:.2s}.list li:nth-child(4){animation-delay:.3s}.list li:nth-child(5){animation-delay:.4s}.list li:nth-child(6){animation-delay:.5s}
 .list li span{width:30px;height:30px;flex:0 0 30px;background:#0b3d2e;color:#fff;border-radius:50%;display:grid;place-items:center;font-weight:700}
 .subjects{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
 @media(max-width:600px){.subjects{grid-template-columns:1fr}}
-.sub{background:#fff;border:1px solid #eee6c8;border-radius:14px;padding:13px;display:flex;gap:10px;align-items:center;font-weight:600}
+.sub{background:#fff;border:1px solid #eee6c8;border-radius:14px;padding:13px;display:flex;gap:10px;align-items:center;font-weight:600;animation:up .4s ease both}
 .sub em{font-style:normal;width:32px;height:32px;background:#fff3c4;border:1px solid #e8d27a;border-radius:50%;display:grid;place-items:center;flex:0 0 32px}
 .plan{display:grid;grid-template-columns:1.15fr .85fr;gap:15px}
 @media(max-width:750px){.plan{grid-template-columns:1fr}}
@@ -50,27 +61,47 @@ body{font-family:'Hind Siliguri',sans-serif;background:#06120d;color:#12241d}
 .love h3{font-family:'Noto Serif Bengali',serif;font-size:clamp(30px,5vw,46px);line-height:1.2;color:#0b3d2e}
 .love h3 span{color:#c99a1a}
 .love p{max-width:720px;margin:14px auto;line-height:1.9;font-size:16px;color:#444}
-.hearts{font-size:30px;letter-spacing:8px}
-.nav{position:fixed;left:0;right:0;bottom:0;z-index:100;background:rgba(255,255,255,.97);border-top:1px solid #eee;display:flex;justify-content:center;gap:9px;padding:10px}
-.nav button{border:0;padding:12px 18px;border-radius:999px;font-weight:700;cursor:pointer;font-family:inherit}
-.btn-prev{background:#eee}
-.btn-next{background:#0b3d2e;color:#fff}
-.btn-all{background:#d4af37}
+.hearts{font-size:30px;letter-spacing:8px;animation:beat 1.4s ease-in-out infinite}
+@keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:100;background:rgba(255,255,255,.97);border-top:1px solid #eee;display:flex;justify-content:center;gap:9px;padding:10px;flex-wrap:wrap}
+.nav button{border:0;padding:12px 16px;border-radius:999px;font-weight:700;cursor:pointer;font-family:inherit}
+.btn-prev{background:#eee}.btn-next{background:#0b3d2e;color:#fff}.btn-all{background:#d4af37}.btn-fs{background:#111;color:#fff}
 .dots{display:flex;justify-content:center;gap:6px;padding:14px 0 80px}
-.dots i{width:8px;height:8px;border-radius:50%;background:#4a5a53;display:block;cursor:pointer}
+.dots i{width:8px;height:8px;border-radius:50%;background:#4a5a53;display:block;cursor:pointer;transition:.3s}
 .dots i.on{width:26px;border-radius:999px;background:#d4af37}
-.page{display:none}
-.page.active{display:block;animation:fade .4s ease}
-@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.page{display:none}.page.active{display:block;animation:fade .45s ease}
+@keyframes fade{from{opacity:0;transform:translateY(12px) scale(.99)}to{opacity:1;transform:translateY(0) scale(1)}}
 .footer{text-align:center;color:#cfe8da;font-size:13px;padding:0 0 80px}
 .kicker{font-size:12px;letter-spacing:2px;color:#8a6d00;font-weight:800}
 h3.sec{font-size:22px;line-height:1.4;margin:4px 0 12px}
 .note{background:#fff8d6;border:1px dashed #d4af37;border-radius:16px;padding:16px;line-height:1.8}
 .pill{display:inline-block;background:#eaf5ef;border:1px solid #cfe8da;padding:7px 11px;border-radius:999px;font-size:13px;font-weight:600;margin:4px 4px 0 0}
+.cover{background:linear-gradient(180deg,#0b3d2e 0%,#0f6a4d 70%,#14916a 100%);color:#fff;border-radius:26px;overflow:hidden;text-align:center;padding:36px 20px 28px;position:relative}
+.cover .small{letter-spacing:3px;font-size:12px;color:#f5d67b;font-weight:700}
+.cover h1{font-family:'Noto Serif Bengali',serif;font-size:clamp(36px,7vw,62px);line-height:1.1;margin:14px 0 10px}
+.cover h1 span{color:#f5d67b}
+.cover p{opacity:.92;line-height:1.8;max-width:680px;margin:0 auto}
+.cover-box{background:#fff;color:#12241d;border-radius:18px;padding:16px;margin:22px auto 0;max-width:720px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;text-align:center}
+@media(max-width:600px){.cover-box{grid-template-columns:1fr}}
+.cover-box b{font-size:26px;color:#0b3d2e;display:block}
+.cover-box small{color:#666}
+/* FULLSCREEN MODE - প্রোজেক্টর / টিভির জন্য বড় লেখা */
+:fullscreen{background:#06120d}
+:fullscreen .wrap{max-width:1200px;padding-top:20px}
+:fullscreen .hero h1{font-size:64px}
+:fullscreen .body{padding:32px}
+:fullscreen .big{font-size:21px;line-height:2}
+:fullscreen .item b{font-size:19px}
+:fullscreen .item small{font-size:16px}
+:fullscreen .list li{font-size:18px;padding:16px}
+:fullscreen .wave{height:150px}
+:fullscreen .wave h2{font-size:40px}
+:fullscreen .cover h1{font-size:72px}
 </style>
 </head>
 <body>
-<div class="topbar"><b>দাখিল পরীক্ষার্থী ২০২৭</b><span>আমাদের কথা</span></div>
+<div class="topbar"><b>দাখিল পরীক্ষার্থী ২০২৭</b><div class="right"><span>আমাদের কথা</span><button class="fs-btn" onclick="toggleFS()">⛶ Full Screen</button></div></div>
+<div class="progress" id="progress"></div>
 <div class="wrap">
 <div class="hero">
 <div class="badge">সবার জন্য সম্মান ও ভালোবাসা নিয়ে</div>
@@ -78,8 +109,19 @@ h3.sec{font-size:22px;line-height:1.4;margin:4px 0 12px}
 <p>আমরা ছোট মানুষ, কিন্তু স্বপ্ন বড়। এই পেজগুলোতে আমাদের মনের কথাগুলো গুছিয়ে বলা আছে।</p>
 </div>
 
-<!-- PAGE 1 -->
+<!-- COVER PAGE -->
 <section class="page active" data-page="1">
+<div class="cover">
+<div class="small">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ • দাখিল পরীক্ষার্থী ২০২৭</div>
+<h1>মাদ্রাসা<br><span>কোচিং প্ল্যান</span></h1>
+<p>আমাদের মনের কথা, আমাদের ১০০ দিনের টার্গেট, আর স্যারদের প্রতি আমাদের ভালোবাসা — সবকিছু এক জায়গায় গুছিয়ে দেওয়া আছে।</p>
+<div class="cover-box"><div><b>১২৮ দিন</b><small>হাতে সময় আছে</small></div><div><b>১০০ দিন</b><small>আমাদের টার্গেট</small></div><div><b>১৪ টি</b><small>মোট সাবজেক্ট</small></div></div>
+<p style="margin-top:18px;font-size:14px">👇 নিচে পরেরটা বাটনে চাপ দিয়ে দেখুন</p>
+</div>
+</section>
+
+<!-- PAGE 2 -->
+<section class="page" data-page="2">
 <div class="card"><div class="wave"><div class="num">০১</div><h2>আসসালামু আলাইকুম</h2><p>সম্মানিত স্যারদের প্রতি</p></div>
 <div class="body">
 <div class="big">আসসালামু আলাইকুম ওয়া রাহমাতুল্লাহ।<br><br>সম্মানিত <b>প্রিন্সিপাল স্যার, ভাইস প্রিন্সিপাল স্যার</b> এবং সকল শ্রদ্ধেয় শিক্ষকবৃন্দ — আপনাদের সবাইকে আমাদের পক্ষ থেকে আন্তরিক সালাম ও ভালোবাসা।<br><br>আমরা <b>দাখিল পরীক্ষার্থী ২০২৭ ব্যাচ</b>। আপনাদের সামনে আমাদের মনের কিছু কথা খুব নম্রভাবে তুলে ধরতে চাই।</div>
@@ -92,8 +134,8 @@ h3.sec{font-size:22px;line-height:1.4;margin:4px 0 12px}
 </div></div>
 </section>
 
-<!-- PAGE 2 -->
-<section class="page" data-page="2">
+<!-- PAGE 3 -->
+<section class="page" data-page="3">
 <div class="card"><div class="wave"><div class="num">০২</div><h2>আমরা কেমন ছাত্র?</h2><p>আমাদের সত্যি কথাটা</p></div>
 <div class="body">
 <p class="kicker">আমাদের পরিচয়</p><h3 class="sec">আমরা খুব ভালো ছাত্র না, আবার খুব খারাপও না — আমরা মাঝামাঝি।</h3>
@@ -107,8 +149,8 @@ h3.sec{font-size:22px;line-height:1.4;margin:4px 0 12px}
 </div></div>
 </section>
 
-<!-- PAGE 3 -->
-<section class="page" data-page="3">
+<!-- PAGE 4 -->
+<section class="page" data-page="4">
 <div class="card"><div class="wave"><div class="num">০৩</div><h2>আমাদের ১০ বছরের গল্প</h2><p>কেন আমরা পিছিয়ে গেলাম</p></div>
 <div class="body">
 <ul class="list">
@@ -121,8 +163,8 @@ h3.sec{font-size:22px;line-height:1.4;margin:4px 0 12px}
 </div></div>
 </section>
 
-<!-- PAGE 4 -->
-<section class="page" data-page="4">
+<!-- PAGE 5 -->
+<section class="page" data-page="5">
 <div class="card"><div class="wave"><div class="num">০৪</div><h2>আমাদের সাবজেক্ট</h2><p>মোট ১৪ টি সাবজেক্ট</p></div>
 <div class="body">
 <div class="subjects">
@@ -142,12 +184,12 @@ h3.sec{font-size:22px;line-height:1.4;margin:4px 0 12px}
 <div class="sub"><em>১৪</em>কৃষি শিক্ষা</div>
 </div>
 <br>
-<div class="note"><b>আমাদের অনুরোধ (উপদেশ নয়):</b><br><br>আমরা খুবই নগণ্য, জ্ঞানে অনেক ছোট। আপনারা আমাদের থেকে অনেক অভিজ্ঞ, অনেক দক্ষ। কামিল মাদ্রাসা হলেও আপনাদের স্যারদের নাম শোনা যায়।<br><br>সেই ক্ষেত্রে আপনারা অনেক অভিজ্ঞ এবং দক্ষ, কিন্তু কিছু সমস্যার কারণে আমাদের যেটা মনে হয় — সেটা আমরা নিচের পেজে খুব নম্রভাবে বলেছি।</div>
+<div class="note"><b>আমাদের অনুরোধ (উপদেশ নয়):</b><br><br>আমরা খুবই নগণ্য, জ্ঞানে অনেক ছোট। আপনারা আমাদের থেকে অনেক অভিজ্ঞ, অনেক দক্ষ। কামিল মাদ্রাসা হলেও আপনাদের স্যারদের নাম শোনা যায়।<br><br>সেই ক্ষেত্রে আপনারা অনেক অভিজ্ঞ এবং দক্ষ, কিন্তু কিছু সমস্যার কারণে আমাদের যেটা মনে হয় — সেটা আমরা পরের পেজে খুব নম্রভাবে বলেছি।</div>
 </div></div>
 </section>
 
-<!-- PAGE 5 -->
-<section class="page" data-page="5">
+<!-- PAGE 6 -->
+<section class="page" data-page="6">
 <div class="card"><div class="wave"><div class="num">০৫</div><h2>আমাদের পড়ার প্ল্যান</h2><p>১০০ দিনের টার্গেট</p></div>
 <div class="body">
 <div class="plan">
@@ -170,8 +212,8 @@ h3.sec{font-size:22px;line-height:1.4;margin:4px 0 12px}
 </div></div>
 </section>
 
-<!-- PAGE 6 -->
-<section class="page" data-page="6">
+<!-- PAGE 7 -->
+<section class="page" data-page="7">
 <div class="card"><div class="wave"><div class="num">০৬</div><h2>ক্ষমা প্রার্থনা</h2><p>ভুল হলে মাফ করে দিবেন</p></div>
 <div class="body">
 <div class="big">আমরা অত্যন্ত নগণ্য মানুষ।<br><br>এখানে বলতে বা লিখতে যদি কোনো ভুল হয়ে থাকে, দয়া করে আমাদের <b>ক্ষমা করবেন।</b><br><br>আমাদের ছোট্ট মনে যা মনে হয়েছিল, ততটুকুই আমরা বলেছি।<br>এর থেকে ভালো কিছু থাকলে আপনারা আমাদের জন্য সাজেশন করবেন, আমরা সেই অনুযায়ী সব কথা শুনবো।<br><br>আমাদের কোনো ভুল থাকলে অবশ্যই ক্ষমা করবেন।</div>
@@ -183,8 +225,8 @@ h3.sec{font-size:22px;line-height:1.4;margin:4px 0 12px}
 </div></div>
 </section>
 
-<!-- PAGE 7 -->
-<section class="page" data-page="7">
+<!-- PAGE 8 -->
+<section class="page" data-page="8">
 <div class="card"><div class="wave"><div class="num">০৭</div><h2>শেষ কথা</h2><p>মন থেকে</p></div>
 <div class="body">
 <div class="love">
@@ -198,22 +240,34 @@ h3.sec{font-size:22px;line-height:1.4;margin:4px 0 12px}
 </section>
 
 <div class="dots" id="dots"></div>
-<div class="footer">দাখিল পরীক্ষার্থী ২০২৭ • আমাদের কথা, আমাদের স্বপ্ন</div>
+<div class="footer">দাখিল পরীক্ষার্থী ২০২৭ • মাদ্রাসা কোচিং প্ল্যান</div>
 </div>
 
 <div class="nav">
 <button class="btn-prev" onclick="go(-1)">← আগেরটা</button>
 <button class="btn-all" onclick="showAll()">সব দেখি</button>
+<button class="btn-fs" onclick="toggleFS()">⛶ Full Screen</button>
 <button class="btn-next" onclick="go(1)">পরেরটা →</button>
 </div>
 
 <script>
-let cur=1,total=7;
+let cur=1,total=8;
 const dots=document.getElementById('dots');
+const prog=document.getElementById('progress');
 for(let i=1;i<=total;i++){let d=document.createElement('i');if(i==1)d.className='on';d.onclick=()=>show(i);dots.appendChild(d);}
-function show(n){cur=n;document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));let el=document.querySelector('[data-page="'+n+'"]');if(el)el.classList.add('active');document.querySelectorAll('#dots i').forEach((d,idx)=>d.className=idx==n-1?'on':'');window.scrollTo({top:0,behavior:'smooth'});}
+function show(n){cur=n;document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));let el=document.querySelector('[data-page="'+n+'"]');if(el)el.classList.add('active');document.querySelectorAll('#dots i').forEach((d,idx)=>d.className=idx==n-1?'on':'');prog.style.width=(n/total*100)+'%';window.scrollTo({top:0,behavior:'smooth'});}
 function go(d){let n=cur+d;if(n<1)n=total;if(n>total)n=1;show(n);}
 function showAll(){document.querySelectorAll('.page').forEach(p=>p.classList.add('active'));}
+function toggleFS(){
+  if(!document.fullscreenElement){document.documentElement.requestFullscreen().catch(e=>{alert('Full Screen হচ্ছে না, F11 চাপুন')});}
+  else{document.exitFullscreen();}
+}
+// কিবোর্ড দিয়ে চালানো - প্রোজেক্টরে খুব কাজে লাগবে
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){go(1)}
+  if(e.key==='ArrowLeft'){go(-1)}
+  if(e.key==='f'||e.key==='F'){toggleFS()}
+});
 </script>
 </body>
-    </html>
+               </html>
