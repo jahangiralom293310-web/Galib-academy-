@@ -7,85 +7,104 @@
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@600;700;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Hind Siliguri',sans-serif;background:#06120d;color:#12241d}
+body{font-family:'Hind Siliguri',sans-serif;background:#06120d;color:#12241d;overflow-x:hidden}
 .topbar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:rgba(6,18,13,.95);color:#fff;gap:8px}
 .topbar b{font-size:15px}
 .topbar .right{display:flex;gap:8px;align-items:center}
 .topbar span{background:#d4af37;color:#111;padding:6px 12px;border-radius:999px;font-size:12px;font-weight:700}
-.fs-btn{background:#fff;color:#0b3d2e;border:0;padding:8px 14px;border-radius:999px;font-weight:800;cursor:pointer;font-family:inherit;font-size:13px;box-shadow:0 4px 14px rgba(0,0,0,.25)}
-.fs-btn:hover{background:#f5d67b}
-.progress{position:fixed;top:52px;left:0;height:4px;background:#d4af37;z-index:101;width:12.5%;transition:.4s}
-.wrap{max-width:1050px;margin:0 auto;padding:78px 14px 20px}
+.fs-btn{background:#fff;color:#0b3d2e;border:0;padding:8px 14px;border-radius:999px;font-weight:800;cursor:pointer;font-family:inherit;font-size:13px}
+.progress{position:fixed;top:52px;left:0;height:4px;background:linear-gradient(90deg,#d4af37,#f5d67b,#d4af37);background-size:200% 100%;animation:shine 2s linear infinite;z-index:101;width:12.5%;transition:.5s}
+@keyframes shine{to{background-position:200% 0}}
+.wrap{max-width:1050px;margin:0 auto;padding:78px 14px 20px;position:relative}
 .hero{text-align:center;color:#fff;padding:14px 8px}
-.hero .badge{display:inline-block;background:rgba(212,175,55,.18);border:1px solid #d4af37;color:#f5d67b;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600;animation:float 3s ease-in-out infinite}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-.hero h1{font-family:'Noto Serif Bengali',serif;font-size:clamp(32px,6vw,56px);line-height:1.15;margin:14px 0 8px}
+.hero .badge{display:inline-block;background:rgba(212,175,55,.18);border:1px solid #d4af37;color:#f5d67b;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600;animation:floatY 3s ease-in-out infinite}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.hero h1{font-family:'Noto Serif Bengali',serif;font-size:clamp(32px,6vw,56px);line-height:1.15;margin:14px 0 8px;animation:fadeDown 0.8s ease}
 .hero h1 i{color:#f5d67b;font-style:normal}
-.hero p{opacity:.9;line-height:1.7;max-width:750px;margin:0 auto;font-size:16px}
-.card{background:#fffdf5;border-radius:26px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35);margin-top:20px}
+.hero p{opacity:.9;line-height:1.7;max-width:750px;margin:0 auto;font-size:16px;animation:fadeUp 0.8s .2s ease both}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.card{background:#fffdf5;border-radius:26px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35);margin-top:20px;position:relative}
 .wave{height:125px;background:linear-gradient(135deg,#0b3d2e,#0f6a4d 55%,#14916a);position:relative;overflow:hidden}
 .wave:after{content:"";position:absolute;left:-10%;right:-10%;bottom:-58px;height:110px;background:#fffdf5;border-radius:50% 50% 0 0}
-.wave h2{position:absolute;z-index:2;left:24px;top:20px;color:#fff;font-family:'Noto Serif Bengali',serif;font-size:clamp(24px,4vw,34px)}
-.wave p{position:absolute;z-index:2;left:24px;top:62px;color:#ffe9a8;font-size:14px;font-weight:600}
-.wave .num{position:absolute;right:20px;top:14px;z-index:2;background:#fff;color:#0b3d2e;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:20px;animation:pop .6s ease}
-@keyframes pop{from{transform:scale(.5);opacity:0}to{transform:scale(1);opacity:1}}
+.wave h2{position:absolute;z-index:2;left:24px;top:20px;color:#fff;font-family:'Noto Serif Bengali',serif;font-size:clamp(24px,4vw,34px);animation:slideLeft .6s ease}
+@keyframes slideLeft{from{opacity:0;transform:translateX(-30px)}to{opacity:1;transform:translateX(0)}}
+.wave p{position:absolute;z-index:2;left:24px;top:62px;color:#ffe9a8;font-size:14px;font-weight:600;animation:slideLeft .6s .15s ease both}
+.wave .num{position:absolute;right:20px;top:14px;z-index:2;background:#fff;color:#0b3d2e;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:20px;animation:spinIn .7s ease}
+@keyframes spinIn{from{transform:scale(0) rotate(-180deg);opacity:0}to{transform:scale(1) rotate(0);opacity:1}}
+/* ভাসমান বাবল */
+.bubble{position:absolute;width:14px;height:14px;background:rgba(255,255,255,.25);border-radius:50%;animation:bubbleUp 5s linear infinite;z-index:1}
+.bubble:nth-child(1){left:10%;animation-delay:0s}
+.bubble:nth-child(2){left:30%;animation-delay:1s;width:10px;height:10px}
+.bubble:nth-child(3){left:60%;animation-delay:2s;width:18px;height:18px}
+.bubble:nth-child(4){left:80%;animation-delay:.5s}
+@keyframes bubbleUp{0%{bottom:-20px;opacity:0;transform:translateX(0)}20%{opacity:1}100%{bottom:130px;opacity:0;transform:translateX(20px)}}
 .body{padding:22px 22px 26px}
 @media(max-width:700px){.body{padding:20px 15px}}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:13px}
 @media(max-width:700px){.grid2{grid-template-columns:1fr}}
 .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
 @media(max-width:700px){.grid3{grid-template-columns:1fr}}
-.item{background:#fff;border:1px solid #eee6c8;border-radius:18px;padding:16px;display:flex;gap:12px;animation:up .5s ease both}
-.item:nth-child(2){animation-delay:.1s}.item:nth-child(3){animation-delay:.2s}.item:nth-child(4){animation-delay:.3s}
-@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.item{background:#fff;border:1px solid #eee6c8;border-radius:18px;padding:16px;display:flex;gap:12px;animation:cardIn .6s ease both}
+.item:nth-child(1){animation-delay:.05s}.item:nth-child(2){animation-delay:.2s}.item:nth-child(3){animation-delay:.35s}.item:nth-child(4){animation-delay:.5s}
+@keyframes cardIn{from{opacity:0;transform:translateY(25px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+.item:hover{transform:translateY(-3px) scale(1.01);box-shadow:0 10px 25px rgba(0,0,0,.1);transition:.3s}
 .item b{display:block;font-size:16px;line-height:1.4}
 .item small{color:#666;line-height:1.6;font-size:14px}
-.icon{width:44px;height:44px;flex:0 0 44px;border-radius:12px;display:grid;place-items:center;font-size:22px;background:#0b3d2e;color:#fff}
+.icon{width:44px;height:44px;flex:0 0 44px;border-radius:12px;display:grid;place-items:center;font-size:22px;background:#0b3d2e;color:#fff;animation:wiggle 3s ease-in-out infinite}
+@keyframes wiggle{0%,100%{transform:rotate(0)}25%{transform:rotate(-6deg)}75%{transform:rotate(6deg)}}
 .icon.gold{background:#d4af37;color:#111}
-.big{background:linear-gradient(135deg,#0b3d2e,#127a58);color:#fff;border-radius:20px;padding:22px;line-height:1.85;font-size:17px;animation:up .5s ease}
+.big{background:linear-gradient(135deg,#0b3d2e,#127a58);color:#fff;border-radius:20px;padding:22px;line-height:1.85;font-size:17px;animation:cardIn .6s ease;position:relative;overflow:hidden}
+.big:after{content:"";position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);animation:shiny 3.5s ease-in-out infinite}
+@keyframes shiny{0%{left:-100%}60%,100%{left:120%}}
 .big b{color:#f5d67b}
 .list{list-style:none}
-.list li{background:#fff;border:1px solid #eee6c8;border-radius:14px;padding:13px 15px;margin-bottom:10px;display:flex;gap:12px;line-height:1.6;animation:up .5s ease both}
-.list li:nth-child(2){animation-delay:.1s}.list li:nth-child(3){animation-delay:.2s}.list li:nth-child(4){animation-delay:.3s}.list li:nth-child(5){animation-delay:.4s}.list li:nth-child(6){animation-delay:.5s}
-.list li span{width:30px;height:30px;flex:0 0 30px;background:#0b3d2e;color:#fff;border-radius:50%;display:grid;place-items:center;font-weight:700}
+.list li{background:#fff;border:1px solid #eee6c8;border-radius:14px;padding:13px 15px;margin-bottom:10px;display:flex;gap:12px;line-height:1.6;animation:slideRight .6s ease both}
+.list li:nth-child(1){animation-delay:.05s}.list li:nth-child(2){animation-delay:.15s}.list li:nth-child(3){animation-delay:.25s}.list li:nth-child(4){animation-delay:.35s}.list li:nth-child(5){animation-delay:.45s}.list li:nth-child(6){animation-delay:.55s}
+@keyframes slideRight{from{opacity:0;transform:translateX(-35px)}to{opacity:1;transform:translateX(0)}}
+.list li span{width:30px;height:30px;flex:0 0 30px;background:#0b3d2e;color:#fff;border-radius:50%;display:grid;place-items:center;font-weight:700;animation:spinIn .5s ease}
 .subjects{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
 @media(max-width:600px){.subjects{grid-template-columns:1fr}}
-.sub{background:#fff;border:1px solid #eee6c8;border-radius:14px;padding:13px;display:flex;gap:10px;align-items:center;font-weight:600;animation:up .4s ease both}
+.sub{background:#fff;border:1px solid #eee6c8;border-radius:14px;padding:13px;display:flex;gap:10px;align-items:center;font-weight:600;animation:popIn .5s ease both}
+.sub:nth-child(odd){animation-delay:.05s}.sub:nth-child(even){animation-delay:.15s}
+@keyframes popIn{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:scale(1)}}
 .sub em{font-style:normal;width:32px;height:32px;background:#fff3c4;border:1px solid #e8d27a;border-radius:50%;display:grid;place-items:center;flex:0 0 32px}
 .plan{display:grid;grid-template-columns:1.15fr .85fr;gap:15px}
 @media(max-width:750px){.plan{grid-template-columns:1fr}}
-.stat{background:#0b3d2e;color:#fff;border-radius:20px;padding:20px}
-.stat h3{font-size:42px;color:#f5d67b}
+.stat{background:#0b3d2e;color:#fff;border-radius:20px;padding:20px;animation:cardIn .6s .2s ease both}
+.stat h3{font-size:42px;color:#f5d67b;animation:countUp .8s ease}
 .stat p{opacity:.9;line-height:1.6;margin-top:6px}
 .love{text-align:center;padding:8px}
-.love h3{font-family:'Noto Serif Bengali',serif;font-size:clamp(30px,5vw,46px);line-height:1.2;color:#0b3d2e}
+.love h3{font-family:'Noto Serif Bengali',serif;font-size:clamp(30px,5vw,46px);line-height:1.2;color:#0b3d2e;animation:fadeDown .7s ease}
 .love h3 span{color:#c99a1a}
-.love p{max-width:720px;margin:14px auto;line-height:1.9;font-size:16px;color:#444}
-.hearts{font-size:30px;letter-spacing:8px;animation:beat 1.4s ease-in-out infinite}
-@keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+.love p{max-width:720px;margin:14px auto;line-height:1.9;font-size:16px;color:#444;animation:fadeUp .7s .2s ease both}
+.hearts{font-size:30px;letter-spacing:8px;animation:beat 1.2s ease-in-out infinite;display:inline-block}
+@keyframes beat{0%,100%{transform:scale(1)}30%{transform:scale(1.25) rotate(-4deg)}60%{transform:scale(1.1) rotate(4deg)}}
 .nav{position:fixed;left:0;right:0;bottom:0;z-index:100;background:rgba(255,255,255,.97);border-top:1px solid #eee;display:flex;justify-content:center;gap:9px;padding:10px;flex-wrap:wrap}
-.nav button{border:0;padding:12px 16px;border-radius:999px;font-weight:700;cursor:pointer;font-family:inherit}
-.btn-prev{background:#eee}.btn-next{background:#0b3d2e;color:#fff}.btn-all{background:#d4af37}.btn-fs{background:#111;color:#fff}
+.nav button{border:0;padding:12px 16px;border-radius:999px;font-weight:700;cursor:pointer;font-family:inherit;transition:.2s}
+.nav button:active{transform:scale(.92)}
+.btn-prev{background:#eee}.btn-next{background:#0b3d2e;color:#fff;animation:pulseBtn 2s infinite}
+@keyframes pulseBtn{0%,100%{box-shadow:0 0 0 0 rgba(11,61,46,.4)}50%{box-shadow:0 0 0 8px rgba(11,61,46,0)}}
+.btn-all{background:#d4af37}.btn-fs{background:#111;color:#fff}
 .dots{display:flex;justify-content:center;gap:6px;padding:14px 0 80px}
 .dots i{width:8px;height:8px;border-radius:50%;background:#4a5a53;display:block;cursor:pointer;transition:.3s}
 .dots i.on{width:26px;border-radius:999px;background:#d4af37}
-.page{display:none}.page.active{display:block;animation:fade .45s ease}
-@keyframes fade{from{opacity:0;transform:translateY(12px) scale(.99)}to{opacity:1;transform:translateY(0) scale(1)}}
+.page{display:none}.page.active{display:block;animation:pageIn .55s cubic-bezier(.2,.9,.3,1.2)}
+@keyframes pageIn{from{opacity:0;transform:translateX(45px) scale(.97)}to{opacity:1;transform:translateX(0) scale(1)}}
 .footer{text-align:center;color:#cfe8da;font-size:13px;padding:0 0 80px}
 .kicker{font-size:12px;letter-spacing:2px;color:#8a6d00;font-weight:800}
 h3.sec{font-size:22px;line-height:1.4;margin:4px 0 12px}
-.note{background:#fff8d6;border:1px dashed #d4af37;border-radius:16px;padding:16px;line-height:1.8}
-.pill{display:inline-block;background:#eaf5ef;border:1px solid #cfe8da;padding:7px 11px;border-radius:999px;font-size:13px;font-weight:600;margin:4px 4px 0 0}
+.note{background:#fff8d6;border:1px dashed #d4af37;border-radius:16px;padding:16px;line-height:1.8;animation:fadeUp .6s .3s ease both}
+.pill{display:inline-block;background:#eaf5ef;border:1px solid #cfe8da;padding:7px 11px;border-radius:999px;font-size:13px;font-weight:600;margin:4px 4px 0 0;animation:popIn .5s ease both}
 .cover{background:linear-gradient(180deg,#0b3d2e 0%,#0f6a4d 70%,#14916a 100%);color:#fff;border-radius:26px;overflow:hidden;text-align:center;padding:36px 20px 28px;position:relative}
 .cover .small{letter-spacing:3px;font-size:12px;color:#f5d67b;font-weight:700}
-.cover h1{font-family:'Noto Serif Bengali',serif;font-size:clamp(36px,7vw,62px);line-height:1.1;margin:14px 0 10px}
+.cover h1{font-family:'Noto Serif Bengali',serif;font-size:clamp(36px,7vw,62px);line-height:1.1;margin:14px 0 10px;animation:fadeDown .8s ease}
 .cover h1 span{color:#f5d67b}
-.cover p{opacity:.92;line-height:1.8;max-width:680px;margin:0 auto}
-.cover-box{background:#fff;color:#12241d;border-radius:18px;padding:16px;margin:22px auto 0;max-width:720px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;text-align:center}
+.cover p{opacity:.92;line-height:1.8;max-width:680px;margin:0 auto;animation:fadeUp .8s .2s ease both}
+.cover-box{background:#fff;color:#12241d;border-radius:18px;padding:16px;margin:22px auto 0;max-width:720px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;text-align:center;animation:cardIn .7s .3s ease both}
 @media(max-width:600px){.cover-box{grid-template-columns:1fr}}
 .cover-box b{font-size:26px;color:#0b3d2e;display:block}
 .cover-box small{color:#666}
-/* FULLSCREEN MODE - প্রোজেক্টর / টিভির জন্য বড় লেখা */
 :fullscreen{background:#06120d}
 :fullscreen .wrap{max-width:1200px;padding-top:20px}
 :fullscreen .hero h1{font-size:64px}
@@ -109,7 +128,6 @@ h3.sec{font-size:22px;line-height:1.4;margin:4px 0 12px}
 <p>আমরা ছোট মানুষ, কিন্তু স্বপ্ন বড়। এই পেজগুলোতে আমাদের মনের কথাগুলো গুছিয়ে বলা আছে।</p>
 </div>
 
-<!-- COVER PAGE -->
 <section class="page active" data-page="1">
 <div class="cover">
 <div class="small">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ • দাখিল পরীক্ষার্থী ২০২৭</div>
@@ -120,9 +138,8 @@ h3.sec{font-size:22px;line-height:1.4;margin:4px 0 12px}
 </div>
 </section>
 
-<!-- PAGE 2 -->
 <section class="page" data-page="2">
-<div class="card"><div class="wave"><div class="num">০১</div><h2>আসসালামু আলাইকুম</h2><p>সম্মানিত স্যারদের প্রতি</p></div>
+<div class="card"><div class="wave"><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span><div class="num">০১</div><h2>আসসালামু আলাইকুম</h2><p>সম্মানিত স্যারদের প্রতি</p></div>
 <div class="body">
 <div class="big">আসসালামু আলাইকুম ওয়া রাহমাতুল্লাহ।<br><br>সম্মানিত <b>প্রিন্সিপাল স্যার, ভাইস প্রিন্সিপাল স্যার</b> এবং সকল শ্রদ্ধেয় শিক্ষকবৃন্দ — আপনাদের সবাইকে আমাদের পক্ষ থেকে আন্তরিক সালাম ও ভালোবাসা।<br><br>আমরা <b>দাখিল পরীক্ষার্থী ২০২৭ ব্যাচ</b>। আপনাদের সামনে আমাদের মনের কিছু কথা খুব নম্রভাবে তুলে ধরতে চাই।</div>
 <br>
@@ -134,9 +151,8 @@ h3.sec{font-size:22px;line-height:1.4;margin:4px 0 12px}
 </div></div>
 </section>
 
-<!-- PAGE 3 -->
 <section class="page" data-page="3">
-<div class="card"><div class="wave"><div class="num">০২</div><h2>আমরা কেমন ছাত্র?</h2><p>আমাদের সত্যি কথাটা</p></div>
+<div class="card"><div class="wave"><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span><div class="num">০২</div><h2>আমরা কেমন ছাত্র?</h2><p>আমাদের সত্যি কথাটা</p></div>
 <div class="body">
 <p class="kicker">আমাদের পরিচয়</p><h3 class="sec">আমরা খুব ভালো ছাত্র না, আবার খুব খারাপও না — আমরা মাঝামাঝি।</h3>
 <div class="grid2">
@@ -149,9 +165,8 @@ h3.sec{font-size:22px;line-height:1.4;margin:4px 0 12px}
 </div></div>
 </section>
 
-<!-- PAGE 4 -->
 <section class="page" data-page="4">
-<div class="card"><div class="wave"><div class="num">০৩</div><h2>আমাদের ১০ বছরের গল্প</h2><p>কেন আমরা পিছিয়ে গেলাম</p></div>
+<div class="card"><div class="wave"><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span><div class="num">০৩</div><h2>আমাদের ১০ বছরের গল্প</h2><p>কেন আমরা পিছিয়ে গেলাম</p></div>
 <div class="body">
 <ul class="list">
 <li><span>১</span><div><b>ক্লাস ৪-৫ : করোনা ভাইরাস</b><br>তখন কারোই ঠিকমতো পড়াশোনা হয়নি। বেসিকটাই দুর্বল হয়ে গেছে।</div></li>
@@ -163,9 +178,8 @@ h3.sec{font-size:22px;line-height:1.4;margin:4px 0 12px}
 </div></div>
 </section>
 
-<!-- PAGE 5 -->
 <section class="page" data-page="5">
-<div class="card"><div class="wave"><div class="num">০৪</div><h2>আমাদের সাবজেক্ট</h2><p>মোট ১৪ টি সাবজেক্ট</p></div>
+<div class="card"><div class="wave"><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span><div class="num">০৪</div><h2>আমাদের সাবজেক্ট</h2><p>মোট ১৪ টি সাবজেক্ট</p></div>
 <div class="body">
 <div class="subjects">
 <div class="sub"><em>১</em>কোরআন মাজিদ ও তাজভিদ</div>
@@ -188,9 +202,8 @@ h3.sec{font-size:22px;line-height:1.4;margin:4px 0 12px}
 </div></div>
 </section>
 
-<!-- PAGE 6 -->
 <section class="page" data-page="6">
-<div class="card"><div class="wave"><div class="num">০৫</div><h2>আমাদের পড়ার প্ল্যান</h2><p>১০০ দিনের টার্গেট</p></div>
+<div class="card"><div class="wave"><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span><div class="num">০৫</div><h2>আমাদের পড়ার প্ল্যান</h2><p>১০০ দিনের টার্গেট</p></div>
 <div class="body">
 <div class="plan">
 <div>
@@ -212,9 +225,8 @@ h3.sec{font-size:22px;line-height:1.4;margin:4px 0 12px}
 </div></div>
 </section>
 
-<!-- PAGE 7 -->
 <section class="page" data-page="7">
-<div class="card"><div class="wave"><div class="num">০৬</div><h2>ক্ষমা প্রার্থনা</h2><p>ভুল হলে মাফ করে দিবেন</p></div>
+<div class="card"><div class="wave"><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span><div class="num">০৬</div><h2>ক্ষমা প্রার্থনা</h2><p>ভুল হলে মাফ করে দিবেন</p></div>
 <div class="body">
 <div class="big">আমরা অত্যন্ত নগণ্য মানুষ।<br><br>এখানে বলতে বা লিখতে যদি কোনো ভুল হয়ে থাকে, দয়া করে আমাদের <b>ক্ষমা করবেন।</b><br><br>আমাদের ছোট্ট মনে যা মনে হয়েছিল, ততটুকুই আমরা বলেছি।<br>এর থেকে ভালো কিছু থাকলে আপনারা আমাদের জন্য সাজেশন করবেন, আমরা সেই অনুযায়ী সব কথা শুনবো।<br><br>আমাদের কোনো ভুল থাকলে অবশ্যই ক্ষমা করবেন।</div>
 <br>
@@ -225,9 +237,8 @@ h3.sec{font-size:22px;line-height:1.4;margin:4px 0 12px}
 </div></div>
 </section>
 
-<!-- PAGE 8 -->
 <section class="page" data-page="8">
-<div class="card"><div class="wave"><div class="num">০৭</div><h2>শেষ কথা</h2><p>মন থেকে</p></div>
+<div class="card"><div class="wave"><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span><div class="num">০৭</div><h2>শেষ কথা</h2><p>মন থেকে</p></div>
 <div class="body">
 <div class="love">
 <div class="hearts">❤️ 💛 ❤️</div>
@@ -244,30 +255,4 @@ h3.sec{font-size:22px;line-height:1.4;margin:4px 0 12px}
 </div>
 
 <div class="nav">
-<button class="btn-prev" onclick="go(-1)">← আগেরটা</button>
-<button class="btn-all" onclick="showAll()">সব দেখি</button>
-<button class="btn-fs" onclick="toggleFS()">⛶ Full Screen</button>
-<button class="btn-next" onclick="go(1)">পরেরটা →</button>
-</div>
-
-<script>
-let cur=1,total=8;
-const dots=document.getElementById('dots');
-const prog=document.getElementById('progress');
-for(let i=1;i<=total;i++){let d=document.createElement('i');if(i==1)d.className='on';d.onclick=()=>show(i);dots.appendChild(d);}
-function show(n){cur=n;document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));let el=document.querySelector('[data-page="'+n+'"]');if(el)el.classList.add('active');document.querySelectorAll('#dots i').forEach((d,idx)=>d.className=idx==n-1?'on':'');prog.style.width=(n/total*100)+'%';window.scrollTo({top:0,behavior:'smooth'});}
-function go(d){let n=cur+d;if(n<1)n=total;if(n>total)n=1;show(n);}
-function showAll(){document.querySelectorAll('.page').forEach(p=>p.classList.add('active'));}
-function toggleFS(){
-  if(!document.fullscreenElement){document.documentElement.requestFullscreen().catch(e=>{alert('Full Screen হচ্ছে না, F11 চাপুন')});}
-  else{document.exitFullscreen();}
-}
-// কিবোর্ড দিয়ে চালানো - প্রোজেক্টরে খুব কাজে লাগবে
-document.addEventListener('keydown',e=>{
-  if(e.key==='ArrowRight'||e.key===' '){go(1)}
-  if(e.key==='ArrowLeft'){go(-1)}
-  if(e.key==='f'||e.key==='F'){toggleFS()}
-});
-</script>
-</body>
-               </html>
+<button class="bt
