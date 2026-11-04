@@ -8,172 +8,212 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Hind Siliguri',sans-serif;background:#06120d;color:#12241d;overflow-x:hidden}
-.topbar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:rgba(6,18,13,.95);color:#fff;gap:8px}
-.topbar b{font-size:16px}
-.topbar .right{display:flex;gap:8px;align-items:center}
-.topbar span{background:#d4af37;color:#111;padding:6px 12px;border-radius:999px;font-size:12px;font-weight:700}
-.fs-btn{background:#fff;color:#0b3d2e;border:0;padding:9px 15px;border-radius:999px;font-weight:800;cursor:pointer;font-family:inherit;font-size:13px}
-.progress{position:fixed;top:52px;left:0;height:4px;background:#d4af37;z-index:101;width:12.5%;transition:.5s}
+.topbar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:rgba(6,18,13,.95);color:#fff}
+.fs-btn{background:#fff;color:#0b3d2e;border:0;padding:10px 16px;border-radius:999px;font-weight:800;cursor:pointer;font-size:14px}
+.progress{position:fixed;top:52px;left:0;height:4px;background:#d4af37;z-index:101;width:12.5%}
 .wrap{max-width:1050px;margin:0 auto;padding:78px 14px 20px}
 .hero{text-align:center;color:#fff;padding:14px 8px}
-.hero .badge{display:inline-block;background:rgba(212,175,55,.18);border:1px solid #d4af37;color:#f5d67b;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600}
 .hero h1{font-family:'Noto Serif Bengali',serif;font-size:clamp(34px,6vw,58px);line-height:1.15;margin:14px 0 8px}
 .hero h1 i{color:#f5d67b;font-style:normal}
-.hero p{opacity:.9;line-height:1.7;max-width:750px;margin:0 auto;font-size:16px}
-.card{background:#fffdf5;border-radius:26px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35);margin-top:20px}
-.wave{height:125px;background:linear-gradient(135deg,#0b3d2e,#0f6a4d 55%,#14916a);position:relative;overflow:hidden}
+.card{background:#fffdf5;border-radius:26px;overflow:hidden;margin-top:20px}
+.wave{height:125px;background:linear-gradient(135deg,#0b3d2e,#0f6a4d);position:relative;overflow:hidden}
 .wave:after{content:"";position:absolute;left:-10%;right:-10%;bottom:-58px;height:110px;background:#fffdf5;border-radius:50% 50% 0 0}
-.wave h2{position:absolute;z-index:2;left:24px;top:20px;color:#fff;font-family:'Noto Serif Bengali',serif;font-size:clamp(24px,4vw,34px)}
-.wave p{position:absolute;z-index:2;left:24px;top:62px;color:#ffe9a8;font-size:14px;font-weight:600}
+.wave h2{position:absolute;z-index:2;left:24px;top:20px;color:#fff;font-family:'Noto Serif Bengali',serif;font-size:30px}
+.wave p{position:absolute;z-index:2;left:24px;top:62px;color:#ffe9a8;font-weight:600}
 .wave .num{position:absolute;right:20px;top:14px;z-index:2;background:#fff;color:#0b3d2e;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:20px}
-.body{padding:22px 22px 26px}
-@media(max-width:700px){.body{padding:20px 15px}}
+.body{padding:22px}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:13px}
 @media(max-width:700px){.grid2{grid-template-columns:1fr}}
 .item{background:#fff;border:1px solid #eee6c8;border-radius:18px;padding:16px;display:flex;gap:12px}
-.item b{display:block;font-size:16px;line-height:1.4}
-.item small{color:#666;line-height:1.6;font-size:14px}
 .icon{width:44px;height:44px;flex:0 0 44px;border-radius:12px;display:grid;place-items:center;font-size:22px;background:#0b3d2e;color:#fff}
 .icon.gold{background:#d4af37;color:#111}
 .big{background:linear-gradient(135deg,#0b3d2e,#127a58);color:#fff;border-radius:20px;padding:22px;line-height:1.9;font-size:17px}
 .big b{color:#f5d67b}
-.list{list-style:none}
-.list li{background:#fff;border:1px solid #eee6c8;border-radius:14px;padding:13px 15px;margin-bottom:10px;display:flex;gap:12px;line-height:1.6}
+.list{list-style:none}.list li{background:#fff;border:1px solid #eee6c8;border-radius:14px;padding:13px 15px;margin-bottom:10px;display:flex;gap:12px;line-height:1.6}
 .list li span{width:30px;height:30px;flex:0 0 30px;background:#0b3d2e;color:#fff;border-radius:50%;display:grid;place-items:center;font-weight:700}
 .subjects{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
 @media(max-width:600px){.subjects{grid-template-columns:1fr}}
 .sub{background:#fff;border:1px solid #eee6c8;border-radius:14px;padding:13px;display:flex;gap:10px;align-items:center;font-weight:600}
-.sub em{font-style:normal;width:32px;height:32px;background:#fff3c4;border:1px solid #e8d27a;border-radius:50%;display:grid;place-items:center;flex:0 0 32px}
+.sub em{font-style:normal;width:32px;height:32px;background:#fff3c4;border-radius:50%;display:grid;place-items:center;flex:0 0 32px}
 .plan{display:grid;grid-template-columns:1.15fr .85fr;gap:15px}
 @media(max-width:750px){.plan{grid-template-columns:1fr}}
-.stat{background:#0b3d2e;color:#fff;border-radius:20px;padding:20px}
-.stat h3{font-size:42px;color:#f5d67b}
-.stat p{opacity:.9;line-height:1.6;margin-top:6px}
-.love{text-align:center;padding:8px}
-.love h3{font-family:'Noto Serif Bengali',serif;font-size:clamp(30px,5vw,46px);line-height:1.2;color:#0b3d2e}
-.love h3 span{color:#c99a1a}
-.love p{max-width:720px;margin:14px auto;line-height:1.9;font-size:16px;color:#444}
-.hearts{font-size:32px;letter-spacing:8px;animation:beat 1.2s ease-in-out infinite;display:inline-block}
-@keyframes beat{0%,100%{transform:scale(1)}30%{transform:scale(1.25)}60%{transform:scale(1.1)}}
-.page-btns{display:flex;justify-content:space-between;gap:12px;margin-top:24px;flex-wrap:wrap}
-.page-btns button{border:0;padding:17px 24px;border-radius:999px;font-weight:800;cursor:pointer;font-family:inherit;font-size:17px;flex:1;min-width:150px}
-.page-btns button:active{transform:scale(.95)}
-.btn-prev2{background:#eee;color:#111}
-.btn-next2{background:#0b3d2e;color:#fff;font-size:19px;box-shadow:0 8px 20px rgba(11,61,46,.35)}
-.nav{position:fixed;left:0;right:0;bottom:0;z-index:200;background:rgba(255,255,255,.97);border-top:1px solid #eee;display:flex;justify-content:center;gap:9px;padding:10px;flex-wrap:wrap}
-.nav button{border:0;padding:12px 16px;border-radius:999px;font-weight:700;cursor:pointer;font-family:inherit}
+.stat{background:#0b3d2e;color:#fff;border-radius:20px;padding:20px}.stat h3{font-size:42px;color:#f5d67b}
+.love{text-align:center}.love h3{font-family:'Noto Serif Bengali',serif;font-size:38px;line-height:1.2;color:#0b3d2e}.love h3 span{color:#c99a1a}.love p{max-width:720px;margin:14px auto;line-height:1.9;color:#444}
+.hearts{font-size:32px;animation:beat 1.2s infinite;display:inline-block}
+@keyframes beat{0%,100%{transform:scale(1)}30%{transform:scale(1.25)}}
+.page-btns{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
+.page-btns button{border:0;padding:18px 24px;border-radius:999px;font-weight:800;cursor:pointer;font-family:inherit;font-size:18px;flex:1;min-width:150px}
+.btn-prev2{background:#eee}
+.btn-next2{background:#0b3d2e;color:#fff}
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:200;background:#fff;border-top:1px solid #eee;display:flex;justify-content:center;gap:9px;padding:10px;flex-wrap:wrap}
+.nav button{border:0;padding:13px 16px;border-radius:999px;font-weight:700;cursor:pointer;font-family:inherit;font-size:15px}
 .btn-prev{background:#eee}.btn-next{background:#0b3d2e;color:#fff}.btn-all{background:#d4af37}.btn-fs{background:#111;color:#fff}
-.dots{display:flex;justify-content:center;gap:6px;padding:14px 0 80px}
-.dots i{width:8px;height:8px;border-radius:50%;background:#4a5a53;display:block;cursor:pointer}
-.dots i.on{width:26px;border-radius:999px;background:#d4af37}
-.page{display:none}.page.active{display:block;animation:pageIn .5s ease}
-@keyframes pageIn{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}
-.footer{text-align:center;color:#cfe8da;font-size:13px;padding:0 0 80px}
-.kicker{font-size:12px;letter-spacing:2px;color:#8a6d00;font-weight:800}
-h3.sec{font-size:22px;line-height:1.4;margin:4px 0 12px}
+.dots{display:flex;justify-content:center;gap:6px;padding:14px 0 80px}.dots i{width:8px;height:8px;border-radius:50%;background:#4a5a53;display:block;cursor:pointer}.dots i.on{width:26px;border-radius:999px;background:#d4af37}
+.page{display:none}.page.active{display:block}
+.footer{text-align:center;color:#cfe8da;font-size:13px;padding:0 0 90px}
 .note{background:#fff8d6;border:1px dashed #d4af37;border-radius:16px;padding:16px;line-height:1.8}
 .pill{display:inline-block;background:#eaf5ef;border:1px solid #cfe8da;padding:7px 11px;border-radius:999px;font-size:13px;font-weight:600;margin:4px 4px 0 0}
-.cover{background:linear-gradient(180deg,#0b3d2e 0%,#0f6a4d 70%,#14916a 100%);color:#fff;border-radius:26px;overflow:hidden;text-align:center;padding:38px 20px 28px}
-.cover .small{letter-spacing:3px;font-size:12px;color:#f5d67b;font-weight:700}
-.cover h1{font-family:'Noto Serif Bengali',serif;font-size:clamp(38px,7vw,64px);line-height:1.1;margin:14px 0 10px}
-.cover h1 span{color:#f5d67b}
-.cover p{opacity:.92;line-height:1.8;max-width:680px;margin:0 auto}
-.cover-box{background:#fff;color:#12241d;border-radius:18px;padding:16px;margin:22px auto 0;max-width:720px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;text-align:center}
+.cover{background:linear-gradient(180deg,#0b3d2e,#14916a);color:#fff;border-radius:26px;text-align:center;padding:38px 20px 28px}
+.cover h1{font-family:'Noto Serif Bengali',serif;font-size:clamp(38px,7vw,64px);line-height:1.1;margin:14px 0 10px}.cover h1 span{color:#f5d67b}
+.cover-box{background:#fff;color:#12241d;border-radius:18px;padding:16px;margin:22px auto 0;max-width:720px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
 @media(max-width:600px){.cover-box{grid-template-columns:1fr}}
 .cover-box b{font-size:26px;color:#0b3d2e;display:block}
-.cover-box small{color:#666}
 .flowers{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:99;overflow:hidden}
-.flower{position:absolute;top:-50px;font-size:22px;animation:fall linear infinite;opacity:.95}
-@keyframes fall{0%{transform:translateY(-50px) rotate(0deg);opacity:0}10%{opacity:1}100%{transform:translateY(105vh) rotate(360deg);opacity:.9}}
+.flower{position:absolute;top:-50px;animation:fall linear infinite}
+@keyframes fall{0%{transform:translateY(-50px) rotate(0deg);opacity:0}10%{opacity:1}100%{transform:translateY(105vh) rotate(360deg)}}
 .f1{left:3%;animation-duration:7s;font-size:26px}.f2{left:12%;animation-duration:9s;animation-delay:1s;font-size:20px}.f3{left:22%;animation-duration:8s;animation-delay:2s;font-size:28px}.f4{left:32%;animation-duration:10s;animation-delay:.5s}.f5{left:42%;animation-duration:7.5s;animation-delay:1.5s;font-size:24px}.f6{left:52%;animation-duration:9.5s;animation-delay:2.5s}.f7{left:62%;animation-duration:8.5s;animation-delay:.8s;font-size:30px}.f8{left:72%;animation-duration:11s;animation-delay:1.8s}.f9{left:82%;animation-duration:7s;animation-delay:.2s;font-size:25px}.f10{left:90%;animation-duration:9s;animation-delay:2.8s}.f11{left:7%;animation-duration:12s;animation-delay:3.5s}.f12{left:95%;animation-duration:10s;animation-delay:3s;font-size:27px}
-:fullscreen{background:#06120d}
-:fullscreen .wrap{max-width:1200px;padding-top:20px}
-:fullscreen .big{font-size:21px;line-height:2}
-:fullscreen .wave{height:150px}
-:fullscreen .wave h2{font-size:40px}
 </style>
 </head>
 <body>
 <div class="flowers"><span class="flower f1">🌸</span><span class="flower f2">🌺</span><span class="flower f3">🌻</span><span class="flower f4">🌷</span><span class="flower f5">🌹</span><span class="flower f6">🏵️</span><span class="flower f7">🌸</span><span class="flower f8">🌼</span><span class="flower f9">🌺</span><span class="flower f10">🌷</span><span class="flower f11">🌻</span><span class="flower f12">🌹</span></div>
-<div class="topbar"><b>দাখিল পরীক্ষার্থী ২০২৭</b><div class="right"><span>আমাদের কথা</span><button class="fs-btn" onclick="toggleFS()">⛶ Full Screen</button></div></div>
+<div class="topbar"><b>দাখিল পরীক্ষার্থী ২০২৭</b><button class="fs-btn" id="fsTop">⛶ Full Screen</button></div>
 <div class="progress" id="progress"></div>
 <div class="wrap">
-<div class="hero"><div class="badge">সবার জন্য সম্মান ও ভালোবাসা নিয়ে</div><h1>আমাদের কথা,<br><i>আমাদের স্বপ্ন</i></h1><p>আমরা ছোট মানুষ, কিন্তু স্বপ্ন বড়। এই পেজগুলোতে আমাদের মনের কথাগুলো গুছিয়ে বলা আছে।</p></div>
+<div class="hero"><h1>আমাদের কথা,<br><i>আমাদের স্বপ্ন</i></h1><p>আমরা ছোট মানুষ, কিন্তু স্বপ্ন বড়।</p></div>
 
-<!-- COVER -->
 <section class="page active" data-page="1">
-<div class="cover"><div class="small">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ • দাখিল পরীক্ষার্থী ২০২৭</div><h1>মাদ্রাসা<br><span>কোচিং প্ল্যান</span></h1><p>আমাদের মনের কথা, আমাদের ১০০ দিনের টার্গেট, আর স্যারদের প্রতি আমাদের ভালোবাসা — সবকিছু এক জায়গায় গুছিয়ে দেওয়া আছে।</p><div class="cover-box"><div><b>১২৮ দিন</b><small>হাতে সময় আছে</small></div><div><b>১০০ দিন</b><small>আমাদের টার্গেট</small></div><div><b>১৪ টি</b><small>মোট সাবজেক্ট</small></div></div>
-<div class="page-btns" style="max-width:720px;margin:22px auto 0"><button class="btn-next2" onclick="go(1)">পরের পেজ দেখুন →</button></div>
+<div class="cover"><div>بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ • দাখিল ২০২৭</div><h1>মাদ্রাসা<br><span>কোচিং প্ল্যান</span></h1><p>আমাদের মনের কথা, আমাদের ১০০ দিনের টার্গেট, আর স্যারদের প্রতি ভালোবাসা।</p><div class="cover-box"><div><b>১২৮ দিন</b><small>হাতে সময়</small></div><div><b>১০০ দিন</b><small>টার্গেট</small></div><div><b>১৪ টি</b><small>সাবজেক্ট</small></div></div>
+<div class="page-btns" style="max-width:720px;margin:22px auto 0"><button class="btn-next2" data-next>পরের পেজ দেখুন →</button></div>
 </div>
 </section>
 
-<!-- PAGE 1 - সালাম -->
 <section class="page" data-page="2">
 <div class="card"><div class="wave"><div class="num">০১</div><h2>আসসালামু আলাইকুম</h2><p>সম্মানিত স্যারদের প্রতি</p></div>
 <div class="body"><div class="big">আসসালামু আলাইকুম ওয়া রাহমাতুল্লাহ।<br><br>সম্মানিত <b>প্রিন্সিপাল স্যার, ভাইস প্রিন্সিপাল স্যার</b> এবং সকল শ্রদ্ধেয় শিক্ষকবৃন্দ — আপনাদের সবাইকে আমাদের পক্ষ থেকে আন্তরিক সালাম ও ভালোবাসা।<br><br>আমরা <b>দাখিল পরীক্ষার্থী ২০২৭ ব্যাচ</b>। আপনাদের সামনে আমাদের মনের কিছু কথা খুব নম্রভাবে তুলে ধরতে চাই।</div><br>
-<div class="grid2"><div class="item"><div class="icon">🤲</div><div><b>আমরা কারা?</b><br><small>দাখিল ২০২৭ ব্যাচ, আপনাদেরই ছাত্র। আপনাদের দোয়া আর ভালোবাসা নিয়েই আমরা এগিয়ে যেতে চাই।</small></div></div><div class="item"><div class="icon gold">💛</div><div><b>কেন এই লেখা?</b><br><small>কোনো অভিযোগ না, কোনো উপদেশ না — শুধু আমাদের মনের কথা আর একটা ছোট অনুরোধ।</small></div></div></div><br><div><span class="pill">✦ সম্মান</span><span class="pill">✦ ভালোবাসা</span><span class="pill">✦ দোয়া</span><span class="pill">✦ চেষ্টা</span></div>
-<div class="page-btns"><button class="btn-prev2" onclick="go(-1)">← আগের পেজ</button><button class="btn-next2" onclick="go(1)">পরের পেজ →</button></div>
+<div class="grid2"><div class="item"><div class="icon">🤲</div><div><b>আমরা কারা?</b><br><small>দাখিল ২০২৭ ব্যাচ, আপনাদেরই ছাত্র।</small></div></div><div class="item"><div class="icon gold">💛</div><div><b>কেন এই লেখা?</b><br><small>কোনো অভিযোগ না — শুধু মনের কথা আর একটা ছোট অনুরোধ।</small></div></div></div><br><div><span class="pill">✦ সম্মান</span><span class="pill">✦ ভালোবাসা</span><span class="pill">✦ দোয়া</span><span class="pill">✦ চেষ্টা</span></div>
+<div class="page-btns"><button class="btn-prev2" data-prev>← আগের পেজ</button><button class="btn-next2" data-next>পরের পেজ →</button></div>
 </div></div>
 </section>
 
-<!-- PAGE 2 - কেমন ছাত্র -->
 <section class="page" data-page="3">
 <div class="card"><div class="wave"><div class="num">০২</div><h2>আমরা কেমন ছাত্র?</h2><p>আমাদের সত্যি কথাটা</p></div>
-<div class="body"><p class="kicker">আমাদের পরিচয়</p><h3 class="sec">আমরা খুব ভালো ছাত্র না, আবার খুব খারাপও না — আমরা মাঝামাঝি।</h3>
-<div class="grid2"><div class="item"><div class="icon">📚</div><div><b>পড়াশোনায় মাঝামাঝি</b><br><small>কেউ অনেক ভালো, কেউ একটু দুর্বল। কিন্তু সবাই চেষ্টা করতে চায়।</small></div></div><div class="item"><div class="icon gold">🎯</div><div><b>আমাদের ইচ্ছা</b><br><small>আমরা সবাই ভালো রেজাল্ট করতে চাই, মাদ্রাসার নাম উজ্জ্বল করতে চাই।</small></div></div><div class="item"><div class="icon">🤝</div><div><b>আমরা একসাথে</b><br><small>একজন পিছিয়ে গেলে আরেকজন টেনে তুলবো। কেউ একা না।</small></div></div><div class="item"><div class="icon gold">❤️</div><div><b>স্যারদের প্রতি</b><br><small>আপনারা আমাদেরকে অনেক ভালোবাসেন, এটা আমরা মন থেকে অনুভব করি।</small></div></div></div><br><div class="note"><b>সত্যি কথা:</b> আমাদের মধ্যে ঘাটতি আছে, এটা আমরা মানি। কিন্তু হাল ছেড়ে দিতে চাই না। একটু গাইড পেলে আমরা অনেক দূর যেতে পারবো ইনশাআল্লাহ।</div>
-<div class="page-btns"><button class="btn-prev2" onclick="go(-1)">← আগের পেজ</button><button class="btn-next2" onclick="go(1)">পরের পেজ →</button></div>
+<div class="body"><h3>আমরা খুব ভালো ছাত্র না, আবার খুব খারাপও না — আমরা মাঝামাঝি।</h3><br>
+<div class="grid2"><div class="item"><div class="icon">📚</div><div><b>পড়াশোনায় মাঝামাঝি</b><br><small>কেউ ভালো, কেউ একটু দুর্বল। কিন্তু সবাই চেষ্টা করতে চায়।</small></div></div><div class="item"><div class="icon gold">🎯</div><div><b>আমাদের ইচ্ছা</b><br><small>ভালো রেজাল্ট করতে চাই, মাদ্রাসার নাম উজ্জ্বল করতে চাই।</small></div></div><div class="item"><div class="icon">🤝</div><div><b>আমরা একসাথে</b><br><small>একজন পিছিয়ে গেলে আরেকজন টেনে তুলবো।</small></div></div><div class="item"><div class="icon gold">❤️</div><div><b>স্যারদের প্রতি</b><br><small>আপনারা আমাদেরকে অনেক ভালোবাসেন, এটা আমরা অনুভব করি।</small></div></div></div><br><div class="note"><b>সত্যি কথা:</b> ঘাটতি আছে, মানি। কিন্তু হাল ছেড়ে দিতে চাই না। একটু গাইড পেলে অনেক দূর যাবো ইনশাআল্লাহ।</div>
+<div class="page-btns"><button class="btn-prev2" data-prev>← আগের পেজ</button><button class="btn-next2" data-next>পরের পেজ →</button></div>
 </div></div>
 </section>
 
-<!-- PAGE 3 - ১০ বছরের গল্প -->
 <section class="page" data-page="4">
-<div class="card"><div class="wave"><div class="num">০৩</div><h2>আমাদের ১০ বছরের গল্প</h2><p>কেন আমরা পিছিয়ে গেলাম</p></div>
-<div class="body"><ul class="list"><li><span>১</span><div><b>ক্লাস ৪-৫ : করোনা ভাইরাস</b><br>তখন কারোই ঠিকমতো পড়াশোনা হয়নি। বেসিকটাই দুর্বল হয়ে গেছে।</div></li><li><span>২</span><div><b>ক্লাস ৭-৮ : নতুন কারিকুলাম + জুলাই আন্দোলন</b><br>বারবার সিস্টেম বদলেছে, ঠিকমতো ক্লাস হয়নি, মন বসেনি।</div></li><li><span>৩</span><div><b>ক্লাস ৯ : ৪ মাস লেটে বই</b><br>বই পেতে ৪ মাস লেট। ভালো ক্লাস হয়নি, ক্লাস ছাড়াই পরীক্ষা দিতে হয়েছে।</div></li><li><span>৪</span><div><b>এখন : ঘাটতি রয়ে গেছে</b><br>টেস্ট পরীক্ষায় সেটা টের পাওয়া যায়। অনেক কিছু এখনো বাকি।</div></li></ul><div class="big">সব মিলিয়ে আমরা অনেক <b>আত্মহারা হয়ে আছি।</b> কিন্তু এখনো সময় আছে, আমরা ঘুরে দাঁড়াতে চাই।</div>
-<div class="page-btns"><button class="btn-prev2" onclick="go(-1)">← আগের পেজ</button><button class="btn-next2" onclick="go(1)">পরের পেজ →</button></div>
+<div class="card"><div class="wave"><div class="num">০৩</div><h2>আমাদের ১০ বছরের গল্প</h2><p>কেন পিছিয়ে গেলাম</p></div>
+<div class="body"><ul class="list"><li><span>১</span><div><b>ক্লাস ৪-৫ : করোনা</b><br>ঠিকমতো পড়াশোনা হয়নি, বেসিক দুর্বল।</div></li><li><span>২</span><div><b>ক্লাস ৭-৮ : নতুন কারিকুলাম + জুলাই আন্দোলন</b><br>বারবার সিস্টেম বদলেছে।</div></li><li><span>৩</span><div><b>ক্লাস ৯ : ৪ মাস লেটে বই</b><br>ভালো ক্লাস হয়নি, ক্লাস ছাড়াই পরীক্ষা।</div></li><li><span>৪</span><div><b>এখন : ঘাটতি রয়ে গেছে</b><br>টেস্ট পরীক্ষায় টের পাওয়া যায়।</div></li></ul><div class="big">সব মিলিয়ে আমরা অনেক <b>আত্মহারা হয়ে আছি।</b> কিন্তু এখনো সময় আছে, ঘুরে দাঁড়াতে চাই।</div>
+<div class="page-btns"><button class="btn-prev2" data-prev>← আগের পেজ</button><button class="btn-next2" data-next>পরের পেজ →</button></div>
 </div></div>
 </section>
 
-<!-- PAGE 4 - সাবজেক্ট -->
 <section class="page" data-page="5">
-<div class="card"><div class="wave"><div class="num">০৪</div><h2>আমাদের সাবজেক্ট</h2><p>মোট ১৪ টি সাবজেক্ট</p></div>
-<div class="body"><div class="subjects"><div class="sub"><em>১</em>কোরআন মাজিদ ও তাজভিদ</div><div class="sub"><em>২</em>হাদিস শরীফ</div><div class="sub"><em>৩</em>আরবি ১ম পত্র</div><div class="sub"><em>৪</em>আরবি ২য় পত্র</div><div class="sub"><em>৫</em>আকাইদ ও ফিকহ</div><div class="sub"><em>৬</em>বাংলা ১ম পত্র</div><div class="sub"><em>৭</em>বাংলা ২য় পত্র</div><div class="sub"><em>৮</em>ইংরেজি ১ম পত্র</div><div class="sub"><em>৯</em>ইংরেজি ২য় পত্র</div><div class="sub"><em>১০</em>গণিত</div><div class="sub"><em>১১</em>ইসলামের ইতিহাস</div><div class="sub"><em>১২</em>তথ্য ও যোগাযোগ প্রযুক্তি</div><div class="sub"><em>১৩</em>অর্থনীতি / রসায়ন / জীব / উচ্চতর গণিত</div><div class="sub"><em>১৪</em>কৃষি শিক্ষা</div></div><br><div class="note"><b>আমাদের অনুরোধ (উপদেশ নয়):</b><br><br>আমরা খুবই নগণ্য, জ্ঞানে অনেক ছোট। আপনারা আমাদের থেকে অনেক অভিজ্ঞ, অনেক দক্ষ। কামিল মাদ্রাসা হলেও আপনাদের স্যারদের নাম শোনা যায়।<br><br>সেই ক্ষেত্রে আপনারা অনেক অভিজ্ঞ এবং দক্ষ, কিন্তু কিছু সমস্যার কারণে আমাদের যেটা মনে হয় — সেটা আমরা পরের পেজে খুব নম্রভাবে বলেছি।</div>
-<div class="page-btns"><button class="btn-prev2" onclick="go(-1)">← আগের পেজ</button><button class="btn-next2" onclick="go(1)">পরের পেজ →</button></div>
+<div class="card"><div class="wave"><div class="num">০৪</div><h2>আমাদের সাবজেক্ট</h2><p>মোট ১৪ টি</p></div>
+<div class="body"><div class="subjects"><div class="sub"><em>১</em>কোরআন মাজিদ ও তাজভিদ</div><div class="sub"><em>২</em>হাদিস শরীফ</div><div class="sub"><em>৩</em>আরবি ১ম পত্র</div><div class="sub"><em>৪</em>আরবি ২য় পত্র</div><div class="sub"><em>৫</em>আকাইদ ও ফিকহ</div><div class="sub"><em>৬</em>বাংলা ১ম পত্র</div><div class="sub"><em>৭</em>বাংলা ২য় পত্র</div><div class="sub"><em>৮</em>ইংরেজি ১ম পত্র</div><div class="sub"><em>৯</em>ইংরেজি ২য় পত্র</div><div class="sub"><em>১০</em>গণিত</div><div class="sub"><em>১১</em>ইসলামের ইতিহাস</div><div class="sub"><em>১২</em>তথ্য ও যোগাযোগ প্রযুক্তি</div><div class="sub"><em>১৩</em>অর্থনীতি / রসায়ন / জীব / উচ্চতর গণিত</div><div class="sub"><em>১৪</em>কৃষি শিক্ষা</div></div><br><div class="note"><b>আমাদের অনুরোধ (উপদেশ নয়):</b><br>আমরা খুবই নগণ্য, জ্ঞানে অনেক ছোট। আপনারা অনেক অভিজ্ঞ, অনেক দক্ষ।</div>
+<div class="page-btns"><button class="btn-prev2" data-prev>← আগের পেজ</button><button class="btn-next2" data-next>পরের পেজ →</button></div>
 </div></div>
 </section>
 
-<!-- PAGE 5 - প্ল্যান -->
 <section class="page" data-page="6">
 <div class="card"><div class="wave"><div class="num">০৫</div><h2>আমাদের পড়ার প্ল্যান</h2><p>১০০ দিনের টার্গেট</p></div>
-<div class="body"><div class="plan"><div><ul class="list"><li><span>১</span><div><b>সমস্যা:</b> একদিনে সব ক্লাস করলে একবারে সব বুঝতে পারি না।</div></li><li><span>২</span><div><b>সমাধান:</b> দিনে ১টাই ক্লাস করবো, কঠিন টপিক আগে শেষ করবো।</div></li><li><span>৩</span><div><b>হিসাব:</b> ১৪টা সাবজেক্ট, প্রতিটা সাবজেক্টে ৭-৮ দিন করে।</div></li><li><span>৪</span><div><b>নিয়ম:</b> কঠিন সাবজেক্টে টাইম বেশি, সহজ সাবজেক্টে টাইম কম।</div></li><li><span>৫</span><div><b>পরীক্ষা:</b> চ্যাপ্টার ওয়াইজ পরীক্ষা দিবো, প্রতিদিন যতটুকু পড়বো।</div></li><li><span>৬</span><div><b>ক্লাস টাইম:</b> সকাল ৯টা থেকে টানা ক্লাস করবো, মাঝে ২ বার বিরতি দিবো।</div></li></ul></div><div><div class="stat"><p>হাতে আছে</p><h3>১২৮ দিন</h3><p>আমরা নিবো ১০০ দিন</p><br><p style="border-top:1px solid rgba(255,255,255,.2);padding-top:12px">৯০-১০০ দিনের মধ্যে সব বই শেষ, কারণ কিছু কিছু আগেই পড়া আছে।</p></div><br><div class="note"><b>এরপর:</b> বাকি ১ মাস শুধু <b>রিভিশন ব্যাচ</b>।<br>এইভাবে গোছায়ে, ধীরে ধীরে শেষ করে আবার নতুন করে রিভিশনে যাবো। একবারে সব গোঁজামিলে ঢুকবো না।</div></div></div>
-<div class="page-btns"><button class="btn-prev2" onclick="go(-1)">← আগের পেজ</button><button class="btn-next2" onclick="go(1)">পরের পেজ →</button></div>
+<div class="body"><div class="plan"><div><ul class="list"><li><span>১</span><div><b>সমস্যা:</b> একদিনে সব ক্লাস করলে সব বুঝতে পারি না।</div></li><li><span>২</span><div><b>সমাধান:</b> দিনে ১টাই ক্লাস, কঠিন টপিক আগে।</div></li><li><span>৩</span><div><b>হিসাব:</b> ১৪টা সাবজেক্ট, প্রতিটা ৭-৮ দিন করে।</div></li><li><span>৪</span><div><b>নিয়ম:</b> কঠিনে টাইম বেশি, সহজে কম।</div></li><li><span>৫</span><div><b>পরীক্ষা:</b> চ্যাপ্টার ওয়াইজ পরীক্ষা।</div></li><li><span>৬</span><div><b>ক্লাস টাইম:</b> সকাল ৯টা থেকে, মাঝে ২ বার বিরতি।</div></li></ul></div><div><div class="stat"><p>হাতে আছে</p><h3>১২৮ দিন</h3><p>আমরা নিবো ১০০ দিন</p></div><br><div class="note"><b>এরপর:</b> বাকি ১ মাস শুধু <b>রিভিশন ব্যাচ</b>।</div></div></div>
+<div class="page-btns"><button class="btn-prev2" data-prev>← আগের পেজ</button><button class="btn-next2" data-next>পরের পেজ →</button></div>
 </div></div>
 </section>
 
-<!-- PAGE 6 - ক্ষমা -->
 <section class="page" data-page="7">
 <div class="card"><div class="wave"><div class="num">০৬</div><h2>ক্ষমা প্রার্থনা</h2><p>ভুল হলে মাফ করে দিবেন</p></div>
-<div class="body"><div class="big">আমরা অত্যন্ত নগণ্য মানুষ।<br><br>এখানে বলতে বা লিখতে যদি কোনো ভুল হয়ে থাকে, দয়া করে আমাদের <b>ক্ষমা করবেন।</b><br><br>আমাদের ছোট্ট মনে যা মনে হয়েছিল, ততটুকুই আমরা বলেছি।<br>এর থেকে ভালো কিছু থাকলে আপনারা আমাদের জন্য সাজেশন করবেন, আমরা সেই অনুযায়ী সব কথা শুনবো।<br><br>আমাদের কোনো ভুল থাকলে অবশ্যই ক্ষমা করবেন।</div><br><div class="grid2"><div class="item"><div class="icon">🤲</div><div><b>আমরা শুনবো</b><br><small>আপনারা যেভাবে বলবেন, আমরা সেভাবেই চলবো ইনশাআল্লাহ।</small></div></div><div class="item"><div class="icon gold">💛</div><div><b>আমরা মানবো</b><br><small>স্যারদের সিদ্ধান্তই আমাদের জন্য চূড়ান্ত।</small></div></div></div>
-<div class="page-btns"><button class="btn-prev2" onclick="go(-1)">← আগের পেজ</button><button class="btn-next2" onclick="go(1)">পরের পেজ →</button></div>
+<div class="body"><div class="big">আমরা অত্যন্ত নগণ্য মানুষ।<br><br>এখানে বলতে বা লিখতে যদি কোনো ভুল হয়ে থাকে, দয়া করে আমাদের <b>ক্ষমা করবেন।</b><br><br>আমাদের ছোট্ট মনে যা মনে হয়েছিল, ততটুকুই বলেছি। এর থেকে ভালো কিছু থাকলে সাজেশন করবেন, আমরা সেই অনুযায়ী শুনবো।</div><br><div class="grid2"><div class="item"><div class="icon">🤲</div><div><b>আমরা শুনবো</b><br><small>আপনারা যেভাবে বলবেন, সেভাবেই চলবো ইনশাআল্লাহ।</small></div></div><div class="item"><div class="icon gold">💛</div><div><b>আমরা মানবো</b><br><small>স্যারদের সিদ্ধান্তই চূড়ান্ত।</small></div></div></div>
+<div class="page-btns"><button class="btn-prev2" data-prev>← আগের পেজ</button><button class="btn-next2" data-next>পরের পেজ →</button></div>
 </div></div>
 </section>
 
-<!-- PAGE 7 - শেষ কথা -->
 <section class="page" data-page="8">
 <div class="card"><div class="wave"><div class="num">০৭</div><h2>শেষ কথা</h2><p>মন থেকে</p></div>
 <div class="body"><div class="love"><div class="hearts">❤️ 💛 ❤️</div><h3>We Finally Love<br><span>You So Much</span></h3><p>আমরা আপনাদেরকে অত্যন্ত মন থেকে ভালোবাসি এবং আপনারাও আমাদেরকে খুব ভালোবাসেন, আপনাদের ভালোবাসা আমরা পেয়েছি।<br><br>সুতরাং আমাদেরকে ক্ষমা দৃষ্টিতে দেখবেন এবং আমাদের ভুলগুলো ধরিয়ে দেবেন।</p><h3 style="font-size:26px">We Totally Love You ❤️</h3><p style="font-size:14px;color:#888">— দাখিল পরীক্ষার্থী ২০২৭ ব্যাচ —</p></div>
-<div class="page-btns"><button class="btn-prev2" onclick="go(-1)">← আগের পেজ</button><button class="btn-next2" onclick="show(1)">প্রথম পেজে যান ↺</button></div>
+<div class="page-btns"><button class="btn-prev2" data-prev>← আগের পেজ</button><button class="btn-next2" id="goFirst">প্রথম পেজে যান ↺</button></div>
 </div></div>
 </section>
 
 <div class="dots" id="dots"></div><div class="footer">দাখিল পরীক্ষার্থী ২০২৭ • মাদ্রাসা কোচিং প্ল্যান</div></div>
-<div class="nav"><button class="btn-prev" onclick="go(-1)">← আগেরটা</button><button class="btn-all" onclick="showAll()">সব দেখি</button><button class="btn-fs" onclick="toggleFS()">⛶ Full Screen</button><button class="btn-next" onclick="go(1)">পরেরটা →</button></div>
+
+<div class="nav">
+<button class="btn-prev" id="navPrev">← আগেরটা</button>
+<button class="btn-all" id="navAll">সব দেখি</button>
+<button class="btn-fs" id="fsBottom">⛶ Full Screen</button>
+<button class="btn-next" id="navNext">পরেরটা →</button>
+</div>
+
 <script>
-let cur=1,total=8;
-const dots=document.getElementById('dots');const prog=document.getElementById('progress');
-for(let i=1;i<=total;i++){let d=document.createElement('i');if(i==1)d.className='on';d.onclick=()=>show(i);dots.appendChild(d);}
-function show(n){cur=n;document.querySelectorAll('.page').forEach(p=>{p.classList.remove('active');p.style.display='none'});let el=document.querySelector('[data-page="'+n+'"]');if(el){el.style.display='block';void el.offsetWidth;el.classList.add('active')}document.querySelectorAll('#dots i').forEach((d,idx)=>d.className=idx==n-1?'on':'');prog.style.width=(n/total*100)+'%';window.scrollTo({top:0,behavior:'smooth'});}
-function go(d){let n=cur+d;if(n<1)n=total;if(n>total)n=1;show(n);}
-function showAll(){document.querySelectorAll('.page').forEach(p=>{p.classList.add('active');p.style.display='block'});}
-function toggleFS(){if(!document.fullscreenElement){document.documentElement.requestFullscreen().catch(e=>{alert('Full Screen হচ্ছে না, F11 চাপুন')});}else{document.exitFullscreen();}}
-document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' '){go(1)}if(e.key==='ArrowLeft'){go(-1)}if(e.key==='f'||e.key==='F'){toggleFS()}});
-</scr
+// --- এই অংশটা কাটা যাবে না, এটাই বাটন চালায় ---
+let cur = 1;
+const total = 8;
+const dotsEl = document.getElementById('dots');
+const prog = document.getElementById('progress');
+
+for(let i=1;i<=total;i++){
+  let d = document.createElement('i');
+  if(i===1) d.className='on';
+  d.addEventListener('click', function(){ show(i); });
+  dotsEl.appendChild(d);
+}
+
+function show(n){
+  cur = n;
+  document.querySelectorAll('.page').forEach(function(p){
+    p.classList.remove('active');
+    p.style.display='none';
+  });
+  let el = document.querySelector('[data-page="'+n+'"]');
+  if(el){ el.style.display='block'; el.classList.add('active'); }
+  document.querySelectorAll('#dots i').forEach(function(d,idx){
+    d.className = idx===n-1 ? 'on' : '';
+  });
+  prog.style.width = (n/total*100)+'%';
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function go(step){
+  let n = cur + step;
+  if(n<1) n=total;
+  if(n>total) n=1;
+  show(n);
+}
+
+function showAll(){
+  document.querySelectorAll('.page').forEach(function(p){
+    p.classList.add('active');
+    p.style.display='block';
+  });
+}
+
+function toggleFS(){
+  if(!document.fullscreenElement){
+    if(document.documentElement.requestFullscreen){
+      document.documentElement.requestFullscreen().catch(function(){
+        alert('ব্রাউজার Full Screen দিচ্ছে না, কিবোর্ডে F11 চাপুন');
+      });
+    } else {
+      alert('F11 চাপুন');
+    }
+  } else {
+    document.exitFullscreen();
+  }
+}
+
+// সব বাটনে ক্লিক লাগানো - এটাই আসল ফিক্স
+document.querySelectorAll('[data-next]').forEach(function(b){
+  b.addEventListener('click', function(){ go(1); });
+});
+document.querySelectorAll('[data-prev]').forEach(function(b){
+  b.addEventListener('click', function(){ go(-1); });
+});
+document.getElementById('navNext').addEventListener('click', function(){ go(1); });
+document.getElementById('navPrev').addEventListener('click', function(){ go(-1); });
+document.getElementById('navAll').addEventListener('click', showAll);
+document.getElementById('fsTop').addEventListener('click', toggleFS);
+document.getElementById('fsBottom').addEventListener('click', toggleFS);
+document.getElementById('goFirst').addEventListener('click', function(){ show(1); });
+
+// কিবোর্ড
+document.addEventListener('keydown', function(e){
+  if(e.key==='ArrowRight' || e.key===' '){ go(1); }
+  if(e.key==='ArrowLeft'){ go(-1); }
+  if(e.key==='f' || e.key==='F'){ toggleFS(); }
+});
+</script>
+</body>
+  </html>
