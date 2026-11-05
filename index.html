@@ -4,24 +4,24 @@
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Noto+Serif+Bengali:wght@700;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Hind Siliguri',sans-serif;background:#01010a;color:#12241d;overflow-x:hidden}
-.star{position:fixed;background:#fff;border-radius:50%;z-index:1;animation:tw 2s ease-in-out infinite;pointer-events:none;box-shadow:0 0 8px #fff}
-@keyframes tw{0%,100%{opacity:.3;transform:scale(.7)}50%{opacity:1;transform:scale(1.4)}}
+.star{position:fixed;background:#fff;border-radius:50%;z-index:1;pointer-events:none;animation:tw 2s infinite}
+@keyframes tw{0%,100%{opacity:.3}50%{opacity:1}}
 .float{animation:float 4s ease-in-out infinite}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-.topbar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:12px 14px;background:rgba(1,1,10,.9);color:#fff}
-.topbar b{font-size:15px}.fs-btn{background:#fff;border:0;padding:9px 14px;border-radius:999px;font-weight:800;cursor:pointer;font-family:inherit}
+.topbar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:12px 14px;background:#01010a;color:#fff}
+.fs-btn{background:#fff;border:0;padding:10px 16px;border-radius:999px;font-weight:800;cursor:pointer;font-size:15px}
 .progress{position:fixed;top:52px;left:0;height:4px;background:#d4af37;z-index:101}
 .wrap{max-width:950px;margin:0 auto;padding:76px 12px 20px;position:relative;z-index:5}
-.hero{text-align:center;color:#fff;text-shadow:0 0 18px #fff}.hero h1{font-family:'Noto Serif Bengali',serif;font-size:clamp(32px,6vw,52px);line-height:1.2}.hero h1 i{color:#f5d67b;font-style:normal}
-.card{background:#fffdf5;border-radius:24px;overflow:hidden;margin-top:18px;box-shadow:0 20px 50px rgba(0,0,0,.7);position:relative;z-index:5}
-.cover{background:linear-gradient(180deg,#04120c,#0b3d2e 60%,#14916a);color:#fff;border-radius:24px;text-align:center;padding:32px 18px 22px;box-shadow:0 20px 50px rgba(0,0,0,.7);position:relative;z-index:5}
+.hero{text-align:center;color:#fff}.hero h1{font-family:'Noto Serif Bengali',serif;font-size:clamp(32px,6vw,52px);line-height:1.2}.hero h1 i{color:#f5d67b;font-style:normal}
+.card{background:#fffdf5;border-radius:24px;overflow:hidden;margin-top:18px;position:relative;z-index:5;box-shadow:0 20px 50px rgba(0,0,0,.7)}
+.cover{background:linear-gradient(180deg,#04120c,#0b3d2e 60%,#14916a);color:#fff;border-radius:24px;text-align:center;padding:28px 16px 20px;position:relative;z-index:5}
 .cover h1{font-family:'Noto Serif Bengali',serif;font-size:clamp(36px,7vw,58px);line-height:1.1;margin:12px 0}.cover h1 span{color:#f5d67b}
-.cover-box{background:#fff;color:#12241d;border-radius:16px;padding:14px;margin:18px auto 0;max-width:680px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.cover-box{background:#fff;color:#12241d;border-radius:16px;padding:14px;margin:16px auto 0;max-width:680px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
 @media(max-width:600px){.cover-box{grid-template-columns:1fr}}
 .cover-box b{font-size:24px;color:#0b3d2e;display:block}
 .wave{height:118px;background:linear-gradient(135deg,#0b3d2e,#0f6a4d);position:relative;overflow:hidden}
 .wave:after{content:"";position:absolute;left:-10%;right:-10%;bottom:-55px;height:105px;background:#fffdf5;border-radius:50% 50% 0 0}
-.wave h2{position:absolute;z-index:3;left:22px;top:18px;color:#fff;font-family:'Noto Serif Bengali',serif;font-size:28px;text-shadow:0 2px 8px rgba(0,0,0,.4)}
+.wave h2{position:absolute;z-index:3;left:22px;top:18px;color:#fff;font-family:'Noto Serif Bengali',serif;font-size:28px}
 .wave p{position:absolute;z-index:3;left:22px;top:58px;color:#ffe9a8;font-weight:600}
 .num{position:absolute;right:18px;top:12px;z-index:3;background:#fff;color:#0b3d2e;width:50px;height:50px;border-radius:50%;display:grid;place-items:center;font-weight:800}
 .body{padding:20px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -36,63 +36,104 @@
 .sub{background:#fff;border:1px solid #eee6c8;border-radius:12px;padding:11px;font-weight:600}
 .pill{display:inline-block;background:#eaf5ef;border:1px solid #cfe8da;padding:6px 10px;border-radius:999px;font-size:13px;font-weight:600;margin:3px}
 .btns{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}.btns button{border:0;padding:16px;border-radius:999px;font-weight:800;cursor:pointer;font-family:inherit;font-size:16px;flex:1;min-width:140px}.b-prev{background:#eee}.b-next{background:#0b3d2e;color:#fff}
-.nav{position:fixed;left:0;right:0;bottom:0;z-index:200;background:#fff;border-top:1px solid #eee;display:flex;justify-content:center;gap:8px;padding:9px;flex-wrap:wrap}
-.nav button{border:0;padding:12px 15px;border-radius:999px;font-weight:700;cursor:pointer;font-family:inherit}.n-prev{background:#eee}.n-next{background:#0b3d2e;color:#fff}.n-all{background:#d4af37}
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:200;background:#fff;border-top:1px solid #eee;display:flex;justify-content:center;gap:8px;padding:9px}
+.nav button{border:0;padding:13px 18px;border-radius:999px;font-weight:700;cursor:pointer;font-family:inherit;font-size:15px}.n-prev{background:#eee}.n-next{background:#0b3d2e;color:#fff}.n-all{background:#d4af37}
 .dots{display:flex;justify-content:center;gap:6px;padding:12px 0}.dots i{width:8px;height:8px;border-radius:50%;background:#aaa;display:block;cursor:pointer}.dots i.on{width:24px;border-radius:999px;background:#d4af37}
-.page{display:none;position:relative}.page.active{display:block}.footer{text-align:center;color:#cfe8da;font-size:12px;padding:0 0 160px}
-.moon{position:absolute;top:14px;right:88px;width:50px;height:50px;background:#fff8c9;border-radius:50%;z-index:2;box-shadow:0 0 22px 9px rgba(255,244,150,.9),0 0 50px 22px rgba(255,244,150,.45);animation:moon 2.5s ease-in-out infinite}
-.moonC{position:absolute;top:18px;right:24px;width:62px;height:62px;background:#fff8c9;border-radius:50%;box-shadow:0 0 25px 10px rgba(255,244,150,.95),0 0 60px 28px rgba(255,244,150,.5);animation:moon 2.5s ease-in-out infinite}
-@keyframes moon{0%,100%{box-shadow:0 0 22px 9px rgba(255,244,150,.9),0 0 50px 22px rgba(255,244,150,.45)}50%{box-shadow:0 0 32px 15px rgba(255,244,150,1),0 0 70px 32px rgba(255,244,150,.6)}}
-.mini{margin-top:16px;background:#01010a;border-radius:16px;padding:12px;text-align:center;border:1px solid #2a2a5a}.mini span{display:inline-block;animation:tw 1.6s ease-in-out infinite;font-size:18px}.mini p{color:#ffe9a8;font-size:12px;margin-top:3px}
-.bh-wrap{position:fixed;left:0;right:0;bottom:46px;height:110px;z-index:150;pointer-events:none;display:flex;justify-content:center;align-items:center;overflow:visible}
-.bh-shadow{position:absolute;width:320px;height:90px;background:radial-gradient(ellipse at center,rgba(138,43,226,.55) 0%,rgba(124,0,255,.25) 45%,transparent 70%);border-radius:50%;filter:blur(8px)}
-.bh{position:relative;width:280px;height:72px;background:radial-gradient(ellipse at center,#000 0%,#000 38%,#1a0033 58%,#7b00ff 72%,transparent 74%);border-radius:50%;box-shadow:0 0 30px 12px rgba(138,43,226,.7),0 0 70px 30px rgba(124,0,255,.4);animation:bhPulse 3s ease-in-out infinite;z-index:2}
-@keyframes bhPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
-.bh-stars{position:absolute;inset:0;display:flex;justify-content:center;align-items:center;gap:14px;z-index:5}.bh-stars span{font-size:18px;animation:tw 1.3s ease-in-out infinite;text-shadow:0 0 10px #fff,0 0 18px #ffd700}
-.orbit{position:absolute;width:340px;height:88px;border:1px dashed rgba(255,255,255,.4);border-radius:50%;animation:spin 12s linear infinite;z-index:3}.planet{position:absolute;top:-6px;left:50%;width:12px;height:12px;background:#f5d67b;border-radius:50%;box-shadow:0 0 10px #f5d67b}
+.page{display:none;position:relative}.page.active{display:block}.footer{text-align:center;color:#cfe8da;font-size:12px;padding:0 0 170px}
+.moon{position:absolute;top:14px;right:88px;width:50px;height:50px;background:#fff8c9;border-radius:50%;z-index:2;box-shadow:0 0 22px 9px rgba(255,244,150,.9)}
+.moonC{position:absolute;top:18px;right:24px;width:62px;height:62px;background:#fff8c9;border-radius:50%;box-shadow:0 0 25px 10px rgba(255,244,150,.95)}
+.mini{margin-top:16px;background:#01010a;border-radius:16px;padding:12px;text-align:center}.mini p{color:#ffe9a8;font-size:12px;margin-top:3px}
+/* BLACK HOLE - এইবার ঠিক গোল, চ্যাপ্টা না */
+.bh-wrap{position:fixed;left:0;right:0;bottom:52px;height:100px;z-index:150;pointer-events:none;display:flex;justify-content:center;align-items:center}
+.bh{position:relative;width:240px;height:80px;background:#000;border-radius:50%;border:3px solid #7b00ff;box-shadow:0 0 25px 10px rgba(138,43,226,.8),0 0 60px 25px rgba(124,0,255,.4);display:flex;justify-content:center;align-items:center;overflow:hidden}
+.bh-inner{color:#f5d67b;font-size:11px;text-align:center;line-height:1.4;z-index:2}
+.bh-star-top{position:absolute;top:-14px;left:50%;transform:translateX(-50%);z-index:5;font-size:28px;animation:tw 1.2s infinite;text-shadow:0 0 15px #ffd700}
 @keyframes spin{to{transform:rotate(360deg)}}
-.bh-top-star{position:absolute;z-index:10;font-size:26px;animation:twBig 1.4s ease-in-out infinite;text-shadow:0 0 12px #fff,0 0 22px #ffd700,0 0 35px #ffaa00}
-.bh-top-star.star1{top:-2px;left:38%}.bh-top-star.star2{top:-2px;left:56%;animation-delay:.7s;font-size:22px}
-@keyframes twBig{0%,100%{opacity:.4;transform:scale(.75)}50%{opacity:1;transform:scale(1.35)}}
-.bh-label{position:absolute;bottom:5px;left:0;right:0;text-align:center;color:#f5d67b;font-size:11px;letter-spacing:1px;z-index:6;text-shadow:0 0 10px #a855f7}
 .flowers{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:99;overflow:hidden}
 .flower{position:absolute;top:-50px;animation:fall linear infinite}
 @keyframes fall{0%{transform:translateY(-50px) rotate(0deg);opacity:0}10%{opacity:1}100%{transform:translateY(105vh) rotate(360deg)}}
-.f1{left:3%;animation-duration:7s;font-size:26px}.f2{left:12%;animation-duration:9s;animation-delay:1s;font-size:20px}.f3{left:22%;animation-duration:8s;animation-delay:2s;font-size:28px}.f4{left:32%;animation-duration:10s;animation-delay:.5s}.f5{left:42%;animation-duration:7.5s;animation-delay:1.5s;font-size:24px}.f6{left:52%;animation-duration:9.5s;animation-delay:2.5s}.f7{left:62%;animation-duration:8.5s;animation-delay:.8s;font-size:30px}.f8{left:72%;animation-duration:11s;animation-delay:1.8s}.f9{left:82%;animation-duration:7s;animation-delay:.2s;font-size:25px}.f10{left:90%;animation-duration:9s;animation-delay:2.8s}
-.sun{position:absolute;top:-70px;left:50%;transform:translateX(-50%);width:380px;height:380px;background:radial-gradient(circle,rgba(255,240,150,.55) 0%,rgba(255,210,0,.28) 35%,rgba(255,150,0,.08) 60%,transparent 70%);border-radius:50%;filter:blur(8px);z-index:0;pointer-events:none;opacity:.6;animation:sunPulse 4s ease-in-out infinite}
-.sun-face{position:absolute;top:18px;left:50%;transform:translateX(-50%);width:55px;height:55px;background:radial-gradient(circle at 35% 35%,#fffec0,#ffdd00 60%,#ff9d00);border-radius:50%;box-shadow:0 0 18px 6px rgba(255,220,0,.6);z-index:0;font-size:28px;display:grid;place-items:center;opacity:.9}
-@keyframes sunPulse{0%,100%{opacity:.45}50%{opacity:.65}}
-.timer-box{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);border-radius:16px;padding:14px;margin:16px auto 0;max-width:680px}
-.timer-title{color:#f5d67b;font-weight:800;font-size:15px}
-.timer-title span{color:#000;background:#f5d67b;padding:3px 10px;border-radius:999px;font-size:13px}
+.f1{left:3%;animation-duration:7s;font-size:22px}.f2{left:15%;animation-duration:9s;animation-delay:1s}.f3{left:30%;animation-duration:8s;animation-delay:2s;font-size:24px}.f4{left:50%;animation-duration:10s;animation-delay:.5s}.f5{left:70%;animation-duration:7s;animation-delay:1.5s}.f6{left:85%;animation-duration:9s;animation-delay:2s}
+.sun{position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:340px;height:340px;background:radial-gradient(circle,rgba(255,240,150,.5) 0%,rgba(255,210,0,.25) 40%,transparent 70%);border-radius:50%;filter:blur(6px);z-index:0;pointer-events:none}
+.sun-face{position:absolute;top:16px;left:50%;transform:translateX(-50%);width:52px;height:52px;background:#ffdd00;border-radius:50%;box-shadow:0 0 18px 6px rgba(255,220,0,.7);z-index:0;font-size:26px;display:grid;place-items:center}
+.timer-box{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:16px;padding:14px;margin:16px auto 0;max-width:680px}
+.timer-title{color:#f5d67b;font-weight:800;font-size:15px}.timer-title span{color:#000;background:#f5d67b;padding:3px 10px;border-radius:999px}
 .timer-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-top:12px}
 @media(max-width:500px){.timer-grid{grid-template-columns:1fr 1fr}}
-.timer-cell{background:#fff;border-radius:12px;padding:10px 4px;color:#12241d}
-.timer-cell b{display:block;font-size:28px;line-height:1;color:#0b3d2e}
-.timer-cell small{font-weight:700;color:#666;font-size:12px}
+.timer-cell{background:#fff;border-radius:12px;padding:10px 4px}.timer-cell b{display:block;font-size:28px;color:#0b3d2e}.timer-cell small{font-weight:700;color:#666}
 .timer-sub{margin-top:10px;font-size:13px;color:#ffe9a8}
-.exam-badge{display:inline-block;background:#ff2d55;color:#fff;padding:6px 14px;border-radius:999px;font-weight:800;font-size:14px;margin-top:10px;box-shadow:0 0 15px rgba(255,45,85,.6);animation:float 2s ease-in-out infinite}
+.exam-badge{display:inline-block;background:#ff2d55;color:#fff;padding:7px 15px;border-radius:999px;font-weight:800;margin-top:10px}
+/* LAPTOP FULLSCREEN FIX */
+:fullscreen{background:#01010a}.fullscreen .wrap{max-width:1100px;padding-top:20px}.fullscreen .topbar{position:absolute}
 </style></head><body>
 <div id="stars"></div>
-<div class="flowers"><span class="flower f1">🌸</span><span class="flower f2">🌺</span><span class="flower f3">🌻</span><span class="flower f4">🌷</span><span class="flower f5">🌹</span><span class="flower f6">🏵️</span><span class="flower f7">🌸</span><span class="flower f8">🌼</span><span class="flower f9">🌺</span><span class="flower f10">🌷</span></div>
-<div class="bh-wrap"><div class="bh-shadow"></div><div class="bh-top-star star1">⭐</div><div class="bh-top-star star2">✦</div><div class="orbit"><div class="planet"></div></div><div class="bh"><div class="bh-stars"><span>✦</span><span>⭐</span><span>✧</span><span>🌟</span><span>✦</span><span>⭐</span></div><div class="bh-label">✦ ফুলবন ফাজিল মাদ্রাসা • BLACK HOLE ✦</div></div></div>
-<div class="topbar"><b>ফুলবন ফাজিল মাদ্রাসা</b><button type="button" class="fs-btn" onclick="toggleFS()">⛶ Full Screen</button></div>
+<div class="flowers"><span class="flower f1">🌸</span><span class="flower f2">🌺</span><span class="flower f3">🌻</span><span class="flower f4">🌷</span><span class="flower f5">🌹</span><span class="flower f6">🌸</span></div>
+
+<div class="bh-wrap"><div style="position:relative"><div class="bh-star-top">⭐</div><div class="bh"><div class="bh-inner">✦ ⭐ ✧ 🌟 ✦<br>✦ ফুলবন ফাজিল মাদ্রাসা • BLACK HOLE ✦</div></div></div></div>
+
+<div class="topbar"><b>ফুলবন ফাজিল মাদ্রাসা</b><button type="button" class="fs-btn" id="fsBtn">⛶ Full Screen</button></div>
 <div class="progress" id="prog"></div>
 <div class="wrap"><div class="hero"><h1>আমাদের কথা,<br><i>আমাদের স্বপ্ন</i></h1><p>ফুলবন ফাজিল মাদ্রাসা • দাখিল পরীক্ষার্থী ২০২৭</p></div>
 
 <section class="page active" data-page="1"><div class="sun"></div><div class="sun-face">🌞</div><div class="cover float"><div class="moonC"></div><div style="letter-spacing:3px;font-size:12px;color:#f5d67b">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div><h1>ফুলবন ফাজিল<br><span>মাদ্রাসা</span></h1><p>আমাদের মনের কথা, আমাদের ১০০ দিনের টার্গেট, আর স্যারদের প্রতি ভালোবাসা।</p>
 <div class="exam-badge">📝 দাখিল পরীক্ষা : ১৪ই মার্চ</div>
-<div class="timer-box"><div class="timer-title">⏳ পরীক্ষার বাকি আছে <span id="liveDayTop">-- দিন</span></div><div class="timer-grid"><div class="timer-cell"><b id="dDay">--</b><small>দিন</small></div><div class="timer-cell"><b id="dHour">--</b><small>ঘন্টা</small></div><div class="timer-cell"><b id="dMin">--</b><small>মিনিট</small></div><div class="timer-cell"><b id="dSec">--</b><small>সেকেন্ড</small></div></div><div class="timer-sub" id="timerSub">লোড হচ্ছে...</div></div>
-<div class="cover-box"><div><b id="coverDays">-- দিন</b><small>হাতে সময়</small></div><div><b>১০০ দিন</b><small>টার্গেট</small></div><div><b>১৪ টি</b><small>সাবজেক্ট</small></div></div><div class="btns" style="max-width:680px;margin:18px auto 0"><button type="button" class="b-next" onclick="go(2)">পরের পেজ দেখুন →</button></div><div class="mini"><span>✦</span><span>⭐</span><span>✧</span><span>🌟</span><span>✦</span><p>✦ ফুলবন ফাজিল মাদ্রাসা • রাতের আকাশ ✦</p></div></div></section>
+<div class="timer-box"><div class="timer-title">⏳ পরীক্ষার বাকি আছে <span id="liveDayTop">১২৯ দিন</span></div><div class="timer-grid"><div class="timer-cell"><b id="dDay">১২৯</b><small>দিন</small></div><div class="timer-cell"><b id="dHour">০</b><small>ঘন্টা</small></div><div class="timer-cell"><b id="dMin">০</b><small>মিনিট</small></div><div class="timer-cell"><b id="dSec">০</b><small>সেকেন্ড</small></div></div><div class="timer-sub" id="timerSub">১৪ই মার্চ, সকাল ৯টা • ১২৯ দিন বাকি</div></div>
+<div class="cover-box"><div><b id="coverDays">১২৯ দিন</b><small>হাতে সময়</small></div><div><b>১০০ দিন</b><small>টার্গেট</small></div><div><b>১৪ টি</b><small>সাবজেক্ট</small></div></div><div class="btns" style="max-width:680px;margin:18px auto 0"><button type="button" class="b-next" data-go="2">পরের পেজ দেখুন →</button></div><div class="mini"><p>✦ ফুলবন ফাজিল মাদ্রাসা • রাতের আকাশ ✦</p></div></div></section>
 
-<section class="page" data-page="2"><div class="sun"></div><div class="sun-face">🌞</div><div class="card float"><div class="wave"><div class="moon"></div><div class="num">০১</div><h2>আসসালামু আলাইকুম</h2><p>সম্মানিত স্যারদের প্রতি</p></div><div class="body"><div class="big">আসসালামু আলাইকুম ওয়া রাহমাতুল্লাহ।<br><br>সম্মানিত <b>প্রিন্সিপাল স্যার, ভাইস প্রিন্সিপাল স্যার</b> এবং সকল শিক্ষকবৃন্দ — আপনাদের সালাম ও ভালোবাসা।<br><br>আমরা <b>ফুলবন ফাজিল মাদ্রাসার দাখিল ২০২৭ ব্যাচ</b>। মনের কথা নম্রভাবে তুলে ধরতে চাই।</div><br><div class="grid2"><div class="item"><div class="icon">🤲</div><div><b>আমরা কারা?</b><br><small>দাখিল ২০২৭ ব্যাচ, আপনাদেরই ছাত্র।</small></div></div><div class="item"><div class="icon">💛</div><div><b>কেন এই লেখা?</b><br><small>অভিযোগ না — শুধু মনের কথা আর ছোট অনুরোধ।</small></div></div></div><br><span class="pill">✦ সম্মান</span><span class="pill">✦ ভালোবাসা</span><span class="pill">✦ দোয়া</span><span class="pill">✦ চেষ্টা</span><div class="btns"><button type="button" class="b-prev" onclick="go(1)">← আগের পেজ</button><button type="button" class="b-next" onclick="go(3)">পরের পেজ →</button></div><div class="mini"><span>✦</span><span>⭐</span><span>✧</span><span>🌟</span><p>🌙 চাঁদ মামা আলো দিচ্ছে • ফুলবন ফাজিল মাদ্রাসা 🌙</p></div></div></div></section>
+<section class="page" data-page="2"><div class="sun"></div><div class="sun-face">🌞</div><div class="card float"><div class="wave"><div class="moon"></div><div class="num">০১</div><h2>আসসালামু আলাইকুম</h2><p>সম্মানিত স্যারদের প্রতি</p></div><div class="body"><div class="big">আসসালামু আলাইকুম ওয়া রাহমাতুল্লাহ।<br><br>সম্মানিত <b>প্রিন্সিপাল স্যার, ভাইস প্রিন্সিপাল স্যার</b> এবং সকল শিক্ষকবৃন্দ — আপনাদের সালাম ও ভালোবাসা।<br><br>আমরা <b>ফুলবন ফাজিল মাদ্রাসার দাখিল ২০২৭ ব্যাচ</b>। মনের কথা নম্রভাবে তুলে ধরতে চাই।</div><br><div class="grid2"><div class="item"><div class="icon">🤲</div><div><b>আমরা কারা?</b><br><small>দাখিল ২০২৭ ব্যাচ, আপনাদেরই ছাত্র।</small></div></div><div class="item"><div class="icon">💛</div><div><b>কেন এই লেখা?</b><br><small>অভিযোগ না — শুধু মনের কথা আর ছোট অনুরোধ।</small></div></div></div><br><span class="pill">✦ সম্মান</span><span class="pill">✦ ভালোবাসা</span><span class="pill">✦ দোয়া</span><span class="pill">✦ চেষ্টা</span><div class="btns"><button type="button" class="b-prev" data-go="1">← আগের পেজ</button><button type="button" class="b-next" data-go="3">পরের পেজ →</button></div><div class="mini"><p>🌙 চাঁদ মামা আলো দিচ্ছে • ফুলবন ফাজিল মাদ্রাসা 🌙</p></div></div></div></section>
 
-<section class="page" data-page="3"><div class="sun"></div><div class="sun-face">🌞</div><div class="card float"><div class="wave"><div class="moon"></div><div class="num">০২</div><h2>আমরা কেমন ছাত্র?</h2><p>আমাদের সত্যি কথাটা</p></div><div class="body"><h3>খুব ভালো না, আবার খুব খারাপও না — আমরা মাঝামাঝি।</h3><br><div class="grid2"><div class="item"><div class="icon">📚</div><div><b>পড়াশোনায় মাঝামাঝি</b><br><small>কেউ ভালো, কেউ দুর্বল। সবাই চেষ্টা করতে চায়।</small></div></div><div class="item"><div class="icon">🎯</div><div><b>আমাদের ইচ্ছা</b><br><small>ভালো রেজাল্ট, মাদ্রাসার নাম উজ্জ্বল করতে চাই।</small></div></div><div class="item"><div class="icon">🤝</div><div><b>আমরা একসাথে</b><br><small>একজন পিছিয়ে গেলে আরেকজন টেনে তুলবো।</small></div></div><div class="item"><div class="icon">❤️</div><div><b>স্যারদের প্রতি</b><br><small>আপনারা আমাদের অনেক ভালোবাসেন, এটা অনুভব করি।</small></div></div></div><br><div class="note"><b>সত্যি কথা:</b> ঘাটতি আছে, মানি। কিন্তু হাল ছাড়তে চাই না। একটু গাইড পেলে অনেক দূর যাবো ইনশাআল্লাহ।</div><div class="btns"><button type="button" class="b-prev" onclick="go(2)">← আগের পেজ</button><button type="button" class="b-next" onclick="go(4)">পরের পেজ →</button></div><div class="mini"><span>⭐</span><span>✦</span><span>🌟</span><span>✧</span><p>✦ ফুলবন ফাজিল মাদ্রাসা ✦</p></div></div></div></section>
+<section class="page" data-page="3"><div class="sun"></div><div class="sun-face">🌞</div><div class="card float"><div class="wave"><div class="moon"></div><div class="num">০২</div><h2>আমরা কেমন ছাত্র?</h2><p>আমাদের সত্যি কথাটা</p></div><div class="body"><h3>খুব ভালো না, আবার খুব খারাপও না — আমরা মাঝামাঝি।</h3><br><div class="grid2"><div class="item"><div class="icon">📚</div><div><b>পড়াশোনায় মাঝামাঝি</b><br><small>কেউ ভালো, কেউ দুর্বল। সবাই চেষ্টা করতে চায়।</small></div></div><div class="item"><div class="icon">🎯</div><div><b>আমাদের ইচ্ছা</b><br><small>ভালো রেজাল্ট, মাদ্রাসার নাম উজ্জ্বল করতে চাই।</small></div></div><div class="item"><div class="icon">🤝</div><div><b>আমরা একসাথে</b><br><small>একজন পিছিয়ে গেলে আরেকজন টেনে তুলবো।</small></div></div><div class="item"><div class="icon">❤️</div><div><b>স্যারদের প্রতি</b><br><small>আপনারা আমাদের অনেক ভালোবাসেন, এটা অনুভব করি।</small></div></div></div><br><div class="note"><b>সত্যি কথা:</b> ঘাটতি আছে, মানি। কিন্তু হাল ছাড়তে চাই না। একটু গাইড পেলে অনেক দূর যাবো ইনশাআল্লাহ।</div><div class="btns"><button type="button" class="b-prev" data-go="2">← আগের পেজ</button><button type="button" class="b-next" data-go="4">পরের পেজ →</button></div><div class="mini"><p>✦ ফুলবন ফাজিল মাদ্রাসা ✦</p></div></div></div></section>
 
-<section class="page" data-page="4"><div class="sun"></div><div class="sun-face">🌞</div><div class="card float"><div class="wave"><div class="moon"></div><div class="num">০৩</div><h2>আমাদের ১০ বছরের গল্প</h2><p>কেন পিছিয়ে গেলাম</p></div><div class="body"><ul class="list"><li><span>১</span><div><b>ক্লাস ৪-৫ : করোনা</b><br>ঠিকমতো পড়া হয়নি, বেসিক দুর্বল।</div></li><li><span>২</span><div><b>ক্লাস ৭-৮ : নতুন কারিকুলাম + জুলাই আন্দোলন</b><br>বারবার সিস্টেম বদলেছে।</div></li><li><span>৩</span><div><b>ক্লাস ৯ : ৪ মাস লেটে বই</b><br>ভালো ক্লাস হয়নি, ক্লাস ছাড়াই পরীক্ষা।</div></li><li><span>৪</span><div><b>এখন : ঘাটতি রয়ে গেছে</b><br>টেস্ট পরীক্ষায় টের পাওয়া যায়।</div></li></ul><div class="big">সব মিলিয়ে আমরা অনেক <b>আত্মহারা হয়ে আছি।</b> কিন্তু এখনো সময় আছে, ঘুরে দাঁড়াতে চাই।</div><div class="btns"><button type="button" class="b-prev" onclick="go(3)">← আগের পেজ</button><button type="button" class="b-next" onclick="go(5)">পরের পেজ →</button></div><div class="mini"><span>✦</span><span>⭐</span><span>✧</span><span>🌟</span><p>🌙 চাঁদ মামা • ফুলবন ফাজিল মাদ্রাসা 🌙</p></div></div></div></section>
+<section class="page" data-page="4"><div class="sun"></div><div class="sun-face">🌞</div><div class="card float"><div class="wave"><div class="moon"></div><div class="num">০৩</div><h2>আমাদের ১০ বছরের গল্প</h2><p>কেন পিছিয়ে গেলাম</p></div><div class="body"><ul class="list"><li><span>১</span><div><b>ক্লাস ৪-৫ : করোনা</b><br>ঠিকমতো পড়া হয়নি, বেসিক দুর্বল।</div></li><li><span>২</span><div><b>ক্লাস ৭-৮ : নতুন কারিকুলাম + জুলাই আন্দোলন</b><br>বারবার সিস্টেম বদলেছে।</div></li><li><span>৩</span><div><b>ক্লাস ৯ : ৪ মাস লেটে বই</b><br>ভালো ক্লাস হয়নি, ক্লাস ছাড়াই পরীক্ষা।</div></li><li><span>৪</span><div><b>এখন : ঘাটতি রয়ে গেছে</b><br>টেস্ট পরীক্ষায় টের পাওয়া যায়।</div></li></ul><div class="big">সব মিলিয়ে আমরা অনেক <b>আত্মহারা হয়ে আছি।</b> কিন্তু এখনো সময় আছে, ঘুরে দাঁড়াতে চাই।</div><div class="btns"><button type="button" class="b-prev" data-go="3">← আগের পেজ</button><button type="button" class="b-next" data-go="5">পরের পেজ →</button></div><div class="mini"><p>🌙 চাঁদ মামা • ফুলবন ফাজিল মাদ্রাসা 🌙</p></div></div></div></section>
 
-<section class="page" data-page="5"><div class="sun"></div><div class="sun-face">🌞</div><div class="card float"><div class="wave"><div class="moon"></div><div class="num">০৪</div><h2>আমাদের সাবজেক্ট</h2><p>মোট ১৪ টি</p></div><div class="body"><div class="subs"><div class="sub">১. কোরআন মাজিদ ও তাজভিদ</div><div class="sub">২. হাদিস শরীফ</div><div class="sub">৩. আরবি ১ম পত্র</div><div class="sub">৪. আরবি ২য় পত্র</div><div class="sub">৫. আকাইদ ও ফিকহ</div><div class="sub">৬. বাংলা ১ম পত্র</div><div class="sub">৭. বাংলা ২য় পত্র</div><div class="sub">৮. ইংরেজি ১ম পত্র</div><div class="sub">৯. ইংরেজি ২য় পত্র</div><div class="sub">১০. গণিত</div><div class="sub">১১. ইসলামের ইতিহাস</div><div class="sub">১২. আইসিটি</div><div class="sub">১৩. বিজ্ঞান / অর্থনীতি</div><div class="sub">১৪. কৃষি শিক্ষা</div></div><br><div class="note"><b>আমাদের অনুরোধ (উপদেশ নয়):</b> আমরা খুবই নগণ্য, জ্ঞানে অনেক ছোট। আপনারা অনেক অভিজ্ঞ, অনেক দক্ষ।</div><div class="btns"><button type="button" class="b-prev" onclick="go(4)">← আগের পেজ</button><button type="button" class="b-next" onclick="go(6)">পরের পেজ →</button></div><div class="mini"><span>⭐</span><span>✦</span><span>🌟</span><span>✧</span><p>✦ ফুলবন ফাজিল মাদ্রাসা ✦</p></div></div></div></section>
+<section class="page" data-page="5"><div class="sun"></div><div class="sun-face">🌞</div><div class="card float"><div class="wave"><div class="moon"></div><div class="num">০৪</div><h2>আমাদের সাবজেক্ট</h2><p>মোট ১৪ টি</p></div><div class="body"><div class="subs"><div class="sub">১. কোরআন মাজিদ ও তাজভিদ</div><div class="sub">২. হাদিস শরীফ</div><div class="sub">৩. আরবি ১ম পত্র</div><div class="sub">৪. আরবি ২য় পত্র</div><div class="sub">৫. আকাইদ ও ফিকহ</div><div class="sub">৬. বাংলা ১ম পত্র</div><div class="sub">৭. বাংলা ২য় পত্র</div><div class="sub">৮. ইংরেজি ১ম পত্র</div><div class="sub">৯. ইংরেজি ২য় পত্র</div><div class="sub">১০. গণিত</div><div class="sub">১১. ইসলামের ইতিহাস</div><div class="sub">১২. আইসিটি</div><div class="sub">১৩. বিজ্ঞান / অর্থনীতি</div><div class="sub">১৪. কৃষি শিক্ষা</div></div><br><div class="note"><b>আমাদের অনুরোধ (উপদেশ নয়):</b> আমরা খুবই নগণ্য, জ্ঞানে অনেক ছোট। আপনারা অনেক অভিজ্ঞ, অনেক দক্ষ।</div><div class="btns"><button type="button" class="b-prev" data-go="4">← আগের পেজ</button><button type="button" class="b-next" data-go="6">পরের পেজ →</button></div><div class="mini"><p>✦ ফুলবন ফাজিল মাদ্রাসা ✦</p></div></div></div></section>
 
-<section class="page" data-page="6"><div class="sun"></div><div class="sun-face">🌞</div><div class="card float"><div class="wave"><div class="moon"></div><div class="num">০৫</div><h2>আমাদের পড়ার প্ল্যান</h2><p>১০০ দিনের টার্গেট</p></div><div class="body"><ul class="list"><li><span>১</span><div><b>সমস্যা:</b> একদিনে সব ক্লাস করলে সব বুঝি না।</div></li><li><span>২</span><div><b>সমাধান:</b> দিনে ১টাই ক্লাস, কঠিন টপিক আগে।</div></li><li><span>৩</span><div><b>হিসাব:</b> ১৪টা সাবজেক্ট, প্রতিটা ৭-৮ দিন করে।</div></li><li><span>৪</span><div><b>নিয়ম:</b> কঠিনে টাইম বেশি, সহজে কম।</div></li><li><span>৫</span><div><b>পরীক্ষা:</b> চ্যাপ্টার ওয়াইজ পরীক্ষা।</div></li><li><span>৬</span><div><b>ক্লাস টাইম:</b> সকাল ৯টা থেকে, মাঝে ২ বার বিরতি।</div></li></ul><div class="note"><b>হাতে <span id="planDays">-- দিন</span> - আমরা নিবো ১০০ দিন।</b> বাকি ১ মাস শুধু <b>রিভিশন ব্যাচ</b>।<br><b>পরীক্ষা:</b> ১৪ই মার্চ • <b>টাইমিং:</b> <span id="planTimer">-- দিন বাকি</span></div><div class="btns"><button type="button" class="b-prev" onclick="go(5)">← আগের পেজ</button><button type="button" class="b-next" onclick="go(7)">পরের পেজ →</button></div><div class="mini"><span>✦</span><span>⭐</span><span>✧</span><span>🌟</span><p>🌙 চাঁদ মামা আলো দিচ্ছে 🌙</p></div></div></div></section>
+<section class="page" data-page="6"><div class="sun"></div><div class="sun-face">🌞</div><div class="card float"><div class="wave"><div class="moon"></div><div class="num">০৫</div><h2>আমাদের পড়ার প্ল্যান</h2><p>১০০ দিনের টার্গেট</p></div><div class="body"><ul class="list"><li><span>১</span><div><b>সমস্যা:</b> একদিনে সব ক্লাস করলে সব বুঝি না।</div></li><li><span>২</span><div><b>সমাধান:</b> দিনে ১টাই ক্লাস, কঠিন টপিক আগে।</div></li><li><span>৩</span><div><b>হিসাব:</b> ১৪টা সাবজেক্ট, প্রতিটা ৭-৮ দিন করে।</div></li><li><span>৪</span><div><b>নিয়ম:</b> কঠিনে টাইম বেশি, সহজে কম।</div></li><li><span>৫</span><div><b>পরীক্ষা:</b> চ্যাপ্টার ওয়াইজ পরীক্ষা।</div></li><li><span>৬</span><div><b>ক্লাস টাইম:</b> সকাল ৯টা থেকে, মাঝে ২ বার বিরতি।</div></li></ul><div class="note"><b>হাতে <span id="planDays">১২৯ দিন</span> - আমরা নিবো ১০০ দিন।</b> বাকি ১ মাস শুধু <b>রিভিশন ব্যাচ</b>।<br><b>পরীক্ষা:</b> ১৪ই মার্চ • <b>টাইমিং:</b> <span id="planTimer">১২৯ দিন বাকি</span></div><div class="btns"><button type="button" class="b-prev" data-go="5">← আগের পেজ</button><button type="button" class="b-next" data-go="7">পরের পেজ →</button></div><div class="mini"><p>🌙 চাঁদ মামা আলো দিচ্ছে 🌙</p></div></div></div></section>
 
-<section class="page" data-page="7"><div class="sun"></div><div class="sun-face">🌞</div><div class="card float"><div class="wave"><div class="moon"></div><div class="num">০৬</div><h2>We Totally Love You</h2><p>স্যারদের জন্য</p></div><div class="body" style="text-align:center"><div style="font-size:32px;animation:float 1.2s infinite">❤️</div><h3 style="font-family:'Noto Serif Bengali',serif;font-size:34px;color:#0b3d2e;line-height:1.3">আপনারা আমাদের<br><span style="color:#c99a1a">সবচেয়ে আপন</span></h3><p style="max-width:680px;margin:12px auto;line-height:1.9;color:#444">আপনাদের কড়া কথা, আপনাদের বকা, আপনাদের ভালোবাসা — সবকিছুর পিছনে আমাদের 
+<section class="page" data-page="7"><div class="sun"></div><div class="sun-face">🌞</div><div class="card float"><div class="wave"><div class="moon"></div><div class="num">০৬</div><h2>We Totally Love You</h2><p>স্যারদের জন্য</p></div><div class="body" style="text-align:center"><div style="font-size:32px">❤️</div><h3 style="font-family:'Noto Serif Bengali',serif;font-size:34px;color:#0b3d2e;line-height:1.3">আপনারা আমাদের<br><span style="color:#c99a1a">সবচেয়ে আপন</span></h3><p style="max-width:680px;margin:12px auto;line-height:1.9;color:#444">আপনাদের কড়া কথা, আপনাদের বকা, আপনাদের ভালোবাসা — সবকিছুর পিছনে আমাদের ভালো চাওয়া আছে, এটা আমরা বুঝি।<br><br>আল্লাহ আমাদের সবাইকে কামিয়াব করুন, আমিন।</p><div style="background:#fff8d6;border:1px dashed #d4af37;border-radius:14px;padding:12px;max-width:520px;margin:0 auto"><b>⏳ পরীক্ষা ১৪ই মার্চ</b> • <span id="lastTimer">১২৯ দিন বাকি</span><br><small>সময় নষ্ট নয়, এখনই শুরু ইনশাআল্লাহ</small></div><div class="btns"><button type="button" class="b-prev" data-go="6">← আগের পেজ</button><button type="button" class="b-next" data-go="1">আবার শুরু থেকে ↺</button></div><div class="mini"><p>✦ ফুলবন ফাজিল মাদ্রাসা • দাখিল ২০২৭ ✦</p></div></div></div></section>
+
+<div class="dots" id="dots"></div><div class="footer">ফুলবন ফাজিল মাদ্রাসা • দাখিল ২০২৭</div></div>
+<div class="nav"><button type="button" class="n-prev" id="prevBtn">← আগের</button><button type="button" class="n-next" id="nextBtn">পরের →</button><button type="button" class="n-all" data-go="1">সব পেজ</button></div>
+
+<script>
+var cur=1, total=7;
+function go(n){
+  if(n<1) n=1; if(n>total) n=total; cur=n;
+  var pages=document.querySelectorAll('.page');
+  for(var i=0;i<pages.length;i++){
+    if(pages[i].getAttribute('data-page')==String(cur)) pages[i].classList.add('active');
+    else pages[i].classList.remove('active');
+  }
+  document.getElementById('prog').style.width=(cur/total*100)+'%';
+  var ds=document.querySelectorAll('.dots i');
+  for(var j=0;j<ds.length;j++){ if(j+1==cur) ds[j].classList.add('on'); else ds[j].classList.remove('on'); }
+  window.scrollTo(0,0);
+}
+function bn(n){
+  n=String(n); var m={'0':'০','1':'১','2':'২','3':'৩','4':'৪','5':'৫','6':'৬','7':'৭','8':'৮','9':'৯'};
+  var o=''; for(var i=0;i<n.length;i++) o+=m[n[i]]||n[i]; return o;
+}
+function updateTimer(){
+  try{
+    var target=new Date(2027,2,14,9,0,0);
+    var diff=target.getTime()-new Date().getTime();
+    if(diff<0) diff=0;
+    var days=Math.floor(diff/86400000);
+    var hours=Math.floor(diff/3600000)%24;
+    var mins=Math.floor(diff/60000)%60;
+    var secs=Math.floor(diff/1000)%60;
+    document.getElementById('dDay').textContent=bn(days);
+    document.getElementById('dHour').textContent=bn(hours);
+    document.getElementById('dMin').textContent=bn(mins);
+    document.getElementById('dSec').textContent=bn(secs);
+    document.getElementById('liveDayTop').textContent=bn(days)+' দিন';
+    document.getElementById('coverDays').textContent=bn(days)+' দিন';
+    document.getElementById('planDays').textContent=bn(days)+' দিন';
+    document.getElementById('planTimer').textContent=bn(days)+' দিন '+bn(hours)+' ঘন্টা বাকি';
+    document.getElementById('lastTimer').textContent=bn(days)+' দিন '+bn(hours)+' ঘন্টা '+bn(mins)+' মিনিট বাকি';
+    document.getElementById('timerSub').textContent='১৪ই মার্চ, সকাল ৯টা • '+bn(days)+' দিন '+bn(hours)+' ঘন্টা '+bn(mins)+' মিনিট '+bn(secs)+' সেকেন্ড বাকি';
+  }catch(e){}
+}
+// বাটন - সব বাটন একসাথে লাগানো, যাতে মিস না হয়
+var allBtns=document.querySelectorAll('[data-go]');
+for(var b=0;b<allBtns.length;b++){
+  (function(btn){ btn.addEventListener('click'
