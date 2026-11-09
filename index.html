@@ -2,107 +2,169 @@
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ফুলবন ফাজিল মাদ্রাসা</title>
-<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700;800&family=Noto+Serif+Bengali:wght@700;900&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ফুলবন ফাজিল মাদ্রাসা - গালিব একাডেমি</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Hind Siliguri',sans-serif;background:#020a18;color:#fff;overflow-x:hidden}
-.space{position:fixed;inset:0;z-index:0;background:radial-gradient(circle at 20% 20%,#0b3d2e 0%,#020a18 45%,#000 100%)}
-.star{position:absolute;background:#fff;border-radius:50%;animation:twinkle 1.8s infinite}
-@keyframes twinkle{0%,100%{opacity:.2}50%{opacity:1}}
-.flower{position:absolute;top:-40px;font-size:22px;animation:fall linear infinite}
-@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
-.top{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:rgba(1,1,10,.95);border-bottom:2px solid #f5d67b}
-.fsBtn{background:linear-gradient(45deg,#ff2d55,#ff9f00);border:0;color:#fff;padding:9px 13px;border-radius:999px;font-weight:800;cursor:pointer}
-.wrap{max-width:950px;margin:0 auto;padding:62px 12px 95px;position:relative;z-index:5}
-.page{display:none}.page.active{display:block}
-/* === তোমার চাওয়া ব্যানার - ছবির মতো, কোডের ভেতরেই === */
-.banner{border:4px solid #d4af37;border-radius:22px;overflow:hidden;box-shadow:0 15px 35px rgba(0,0,0,.6);background:radial-gradient(circle at 50% 30%,#1a4a3a,#020a18 70%);position:relative;text-align:center}
-.banner-frame{padding:14px 10px 12px}
-.banner-title{background:#0b3d2e;border:2px solid #f5d67b;border-radius:12px;display:inline-block;padding:8px 16px;font-family:'Noto Serif Bengali',serif;font-size:28px;line-height:1.2;color:#ffe9a8}
-.banner-scene{position:relative;margin:12px 4px 0;min-height:210px;border-radius:14px;overflow:hidden;background:radial-gradient(circle at 20% 20%,#2a6a4a,#020a18 70%)}
-.sun2{position:absolute;left:10px;top:10px;font-size:52px;filter:drop-shadow(0 0 18px #ffb300);animation:sunP 2.5s infinite}
-@keyframes sunP{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
-.moon2{position:absolute;right:10px;top:10px;font-size:44px;filter:drop-shadow(0 0 15px #fff8a0)}
-.scene-people{position:relative;z-index:2;padding-top:28px;font-size:64px;line-height:1;letter-spacing:2px}
-.scene-people span{display:inline-block;animation:floatY 3s infinite}
-.scene-people span:nth-child(2){animation-delay:.4s}
-.scene-people span:nth-child(3){animation-delay:.8s}
-@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-.scene-books{font-size:28px;margin-top:2px;letter-spacing:8px}
-.banner-text{padding:12px 10px 0}
-.banner-text h3{font-family:'Noto Serif Bengali',serif;font-size:16px;line-height:1.7;color:#fff}
-.banner-text h3 b{color:#ffe9a8}
-.banner-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;background:#0b3d2e;padding:14px;margin-top:12px}
-.banner-btns button{border:2px solid #f5d67b;border-radius:14px;padding:16px 8px;cursor:pointer;font-family:'Hind Siliguri',sans-serif;font-weight:800;font-size:17px}
-.btn-ssc{background:#fff;color:#0b3d2e}.btn-610{background:#f5d67b;color:#111}
-.btn-ssc small,.btn-610 small{display:block;font-size:12px;margin-top:4px}
-.cover{background:linear-gradient(180deg,#04120c,#0b3d2e 55%,#14916a);border-radius:24px;padding:22px 14px;text-align:center}
-.cover h1{font-family:'Noto Serif Bengali',serif;font-size:32px}.cover h1 span{color:#f5d67b}
-.card{background:#fffdf5;color:#111;border-radius:22px;overflow:hidden}
-.wave{height:92px;background:linear-gradient(135deg,#0b3d2e,#0f6a4d);position:relative}
-.wave h2{position:absolute;left:18px;top:14px;color:#fff;font-family:'Noto Serif Bengali',serif;font-size:24px}
-.wave p{position:absolute;left:18px;top:50px;color:#ffe9a8}
-.body{padding:16px}.item{background:#fff;border:1px solid #eee6c8;border-radius:14px;padding:12px;margin-bottom:10px;line-height:1.7}
-.big{background:#0b3d2e;color:#fff;border-radius:14px;padding:14px;line-height:1.8}.big b{color:#f5d67b}
-.note{background:#fff8d6;border:1px dashed #d4af37;border-radius:12px;padding:12px;line-height:1.8}
-.btns{display:flex;gap:10px;margin-top:14px}.btns button{border:0;padding:14px;border-radius:999px;font-weight:800;flex:1;cursor:pointer}
-.prv{background:#eee;color:#111}.nxt{background:#0b3d2e;color:#fff}.home-btn{background:#fff;color:#0b3d2e;border:0;padding:10px 16px;border-radius:999px;font-weight:800;cursor:pointer;margin-top:10px}
-.timer-box{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.4);border-radius:14px;padding:12px;margin:14px auto 0;max-width:680px}
-.timer-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-top:10px}.timer-cell{background:#fff;border-radius:10px;padding:8px;color:#111}.timer-cell b{display:block;font-size:26px;color:#0b3d2e}.timer-cell small{color:#666;font-weight:700}
-.exam-badge{display:inline-block;background:#ff2d55;color:#fff;padding:7px 14px;border-radius:999px;font-weight:800;margin-top:10px}
-.nav{position:fixed;left:0;right:0;bottom:0;z-index:1000;background:#fff;display:flex;justify-content:center;gap:6px;padding:10px 6px 12px;border-top:3px solid #f5d67b}
-.nav button{border:0;padding:11px 8px;border-radius:999px;font-weight:700;cursor:pointer;flex:1;max-width:160px;background:#eee;color:#111}
-.nav button.active{background:#0b3d2e;color:#fff}
-.marquee-fix{background:#ff2d55;color:#fff;padding:8px 10px;border-radius:999px;margin:10px 0;font-weight:700;font-size:13px;text-align:center}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Hind Siliguri',sans-serif;background:#f6f1e7;color:#222}
+.banner img{width:100%;display:block;border-bottom:4px solid #f5d67b}
+.top{background:#0b3d2e;color:#fff;padding:18px 14px;text-align:center}
+.top h1{margin:0;font-size:26px;color:#f5d67b}
+.top h2{margin:6px 0 0;font-size:17px;font-weight:400}
+.top p{margin:8px 0 0;font-size:14px;opacity:.9}
+.menu{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:14px;background:#fff;position:sticky;top:0;z-index:10}
+.menu button{border:0;padding:16px;border-radius:14px;font-weight:800;font-size:16px;cursor:pointer}
+#btnSSC{background:#0b3d2e;color:#fff}
+#btn610{background:#f5d67b;color:#111}
+#btnTeacher{background:#fff;color:#0b3d2e;border:2px solid #0b3d2e !important}
+#btnDream{background:#ff6b6b;color:#fff}
+.wrap{padding:12px}
+.card{background:#fff;padding:16px;border-radius:16px;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.card h3{margin:0 0 8px;color:#0b3d2e}
+.card p{line-height:1.7;margin:6px 0}
+.badge{display:inline-block;background:#fff3c4;padding:6px 12px;border-radius:20px;font-size:13px;font-weight:700;margin:3px}
+.subject{display:flex;justify-content:space-between;background:#f6f1e7;padding:12px;border-radius:12px;margin:7px 0}
+.subject b{color:#0b3d2e}
+.teacher{display:flex;gap:12px;background:#eef7f0;padding:12px;border-radius:12px;margin:8px 0}
+.teacher span{font-size:32px}
+.dream{background:#fff9db;border:2px dashed #f5d67b;padding:14px;border-radius:14px;text-align:center}
+.footer{background:#0b3d2e;color:#fff;text-align:center;padding:18px;font-size:14px}
+.hidden{display:none}
 </style>
 </head>
 <body>
-<div class="space" id="space"></div>
-<div class="top"><b>🌟 ফুলবন ফাজিল মাদ্রাসা</b><button class="fsBtn" id="fsBtn">⛶ ফুল স্ক্রিন</button></div>
+
+<!-- ===== ব্যানার - আসল ছবি ===== -->
+<div class="banner"><img src="banner.jpg"></div>
+
+<div class="top">
+<h1>ফুলবন ফাজিল মাদ্রাসা</h1>
+<h2>শিক্ষক ও শিক্ষার্থীদের মাধ্যমে পড়াশোনা নিয়ে আলোচনা</h2>
+<p>উদ্দেশ্য: স্কিলে সেরা হওয়া • উপস্থাপক: গালিব একাডেমি • ৯ নভেম্বর ২০২৬</p>
+<div style="margin-top:10px">
+<span class="badge">📚 দশম শ্রেণী • Class Ten</span>
+<span class="badge">🎓 SSC 2027</span>
+<span class="badge">✨ আমাদের মনের কথা</span>
+</div>
+</div>
+
+<!-- ===== বাটন ===== -->
+<div class="menu">
+<button id="btnSSC">🎓 SSC 2027</button>
+<button id="btn610">📚 Class 6-10</button>
+<button id="btnTeacher">👨‍🏫 শিক্ষকদের কথা</button>
+<button id="btnDream">💭 আমাদের স্বপ্ন</button>
+</div>
+
 <div class="wrap">
-<div class="page active" data-page="0">
-<div class="marquee-fix">🏆 অনন্য প্রতিভার উৎস • স্কিলে সেরা হবো 🏆</div>
-<div class="banner">
-<div class="banner-frame">
-<div class="banner-title">ফুলবন ফাজিল মাদ্রাসা</div>
-<div class="banner-scene">
-<div class="sun2">☀️</div><div class="moon2">🌙</div>
-<div class="scene-people"><span>👦</span><span>👨‍🏫</span><span>👧</span></div>
-<div class="scene-books">📖 📚 📖</div>
-<div style="font-size:13px;color:#ffe9a8;margin-top:6px">✨ তারা মিটমিট • ফুল ঝরছে • সূর্য-চাঁদের আলো ✨</div>
+
+<!-- ===== SSC 2027 ===== -->
+<div id="secSSC">
+<div class="card">
+<h3>🎓 SSC 2027 - আমাদের মনের কথা</h3>
+<p>আসসালামু আলাইকুম। আমরা দশম শ্রেণীর শিক্ষার্থী। আমাদের সামনে SSC পরীক্ষা। আমরা ভয় পাই না, আমরা প্রস্তুতি নিচ্ছি। প্রতিদিন একটু একটু করে পড়লেই আমরা ভালো রেজাল্ট করতে পারবো ইনশাআল্লাহ।</p>
+<p><b>আমাদের লক্ষ্য:</b> ভালো রেজাল্ট + ভালো মানুষ হওয়া। মোবাইলে সময় নষ্ট না করে, পড়ায় মন দেওয়া।</p>
 </div>
-<div class="banner-text">
-<h3>শিক্ষক ও শিক্ষার্থীদের মাধ্যমে পড়াশোনা নিয়ে আলোচনা<br><b>উদ্দেশ্য: স্কিলে সেরা হওয়া</b><br><b>আজকের ইভেন্ট: ৯ নভেম্বর ২০২৬</b></h3>
+
+<div class="card">
+<h3>📖 SSC 2027 - বিষয় অনুযায়ী প্রস্তুতি</h3>
+<div class="subject"><span>📖 বাংলা</span><b>গদ্য + পদ্য + ব্যাকরণ</b></div>
+<div class="subject"><span>📘 English</span><b>Grammar + Writing</b></div>
+<div class="subject"><span>➗ গণিত</span><b>সৃজনশীল + MCQ</b></div>
+<div class="subject"><span>🔬 বিজ্ঞান</span><b>পদার্থ + রসায়ন + জীব</b></div>
+<div class="subject"><span>🕌 ইসলাম শিক্ষা</span><b>কুরআন + হাদিস + ফিকহ</b></div>
+<div class="subject"><span>🌍 বাংলাদেশ ও বিশ্ব</span><b>ইতিহাস + ভূগোল</b></div>
+<div class="subject"><span>💻 ICT</span><b>কম্পিউটার + ইন্টারনেট</b></div>
+<p><b>আমাদের রুটিন:</b> সকাল - কঠিন বিষয়, বিকাল - রিভিশন, রাত - MCQ প্র্যাকটিস।</p>
+</div>
+
+<div class="card">
+<h3>✅ SSC তে ভালো করার ৫টি উপায়</h3>
+<p>১. প্রতিদিন ক্লাসের পড়া ক্লাসেই শেষ করা<br>
+২. শিক্ষককে প্রশ্ন করতে লজ্জা না পাওয়া<br>
+৩. বন্ধুদের সাথে গ্রুপ স্টাডি করা<br>
+৪. মোবাইল কম চালিয়ে বই বেশি পড়া<br>
+৫. নামাজ + মা-বাবার দোয়া নেওয়া</p>
 </div>
 </div>
-<div class="banner-btns">
-<button class="btn-ssc" id="btnSSC">🎓 SSC 2027<small>দাখিল ২০২৭ • ৭টা পেজ →</small></button>
-<button class="btn-610" id="btn610">📚 Class 6-10<small>৬ষ্ঠ - ১০ম শ্রেণী →</small></button>
+
+<!-- ===== CLASS 6-10 ===== -->
+<div id="sec610" class="hidden">
+<div class="card">
+<h3>📚 Class 6-10 - আমাদের মনের কথা</h3>
+<p>আমরা ছোট ক্লাস থেকে বড় হচ্ছি। এখন থেকেই যদি ভালো অভ্যাস করি, তাহলে SSC তে আমাদের কোনো ভয় থাকবে না। আমরা সবাই মিলে পড়বো, একসাথে এগিয়ে যাবো।</p>
+<p><b>আমাদের প্রতিজ্ঞা:</b> প্রতিদিন পড়বো, প্রতিদিন শিখবো।</p>
+</div>
+
+<div class="card">
+<h3>📚 Class 6-10 - ক্লাস অনুযায়ী</h3>
+<div class="subject"><span>Class 6</span><b>ভিত্তি মজবুত করা</b></div>
+<div class="subject"><span>Class 7</span><b>নিয়মিত পড়া + লেখা</b></div>
+<div class="subject"><span>Class 8</span><b>JSC প্রস্তুতি</b></div>
+<div class="subject"><span>Class 9</span><b>বিভাগ বাছাই + মনোযোগ</b></div>
+<div class="subject"><span>Class 10</span><b>SSC ফাইনাল প্রস্তুতি</b></div>
+</div>
+
+<div class="card">
+<h3>🌟 ছোটদের জন্য টিপস</h3>
+<p>• বইকে বন্ধু বানাও<br>
+• না বুঝলে বারবার শিক্ষককে জিজ্ঞেস করো<br>
+• খেলাধুলা + পড়াশোনা - দুইটাই দরকার<br>
+• বড়দের সম্মান করো, ছোটদের স্নেহ করো</p>
 </div>
 </div>
-<p style="text-align:center;margin-top:10px;color:#ffe9a8;font-size:13px">👆 বাটনে ক্লিক করো 👆</p>
+
+<!-- ===== শিক্ষকদের কথা ===== -->
+<div id="secTeacher" class="hidden">
+<div class="card">
+<h3>👨‍🏫 শিক্ষকদের কথা - আমাদের জন্য বার্তা</h3>
+<div class="teacher"><span>👨‍🏫</span><div><b>প্রধান শিক্ষক</b><br>তোমরা আমাদের গর্ব। মন দিয়ে পড়ো, তোমরাই আগামী দিনের আলো।</div></div>
+<div class="teacher"><span>📖</span><div><b>বাংলা শিক্ষক</b><br>বই পড়া মানে জ্ঞান বাড়ানো। প্রতিদিন ১ পৃষ্ঠা হলেও বই পড়ো।</div></div>
+<div class="teacher"><span>➗</span><div><b>গণিত শিক্ষক</b><br>গণিতে ভয় নাই, প্র্যাকটিস করলেই সহজ। প্রতিদিন ১০টা অংক করো।</div></div>
+<div class="teacher"><span>🕌</span><div><b>আরবি / ইসলাম শিক্ষক</b><br>আদব-আখলাক ঠিক রাখো। পড়াশোনার সাথে চরিত্রও গড়ো।</div></div>
 </div>
-<div class="page" data-page="1"><div class="cover"><h1>ফুলবন ফাজিল<br><span>মাদ্রাসা</span></h1><p style="margin-top:8px">আমাদের মনের কথা, আমাদের ১০০ দিনের টার্গেট, আর স্যারদের প্রতি ভালোবাসা।</p><div class="exam-badge">📝 দাখিল পরীক্ষা : ১৪ই মার্চ, সকাল ১০টা</div><div class="timer-box"><b style="color:#f5d67b">⏳ পরীক্ষা শুরু হতে বাকি</b><div class="timer-grid"><div class="timer-cell"><b id="dDay">--</b><small>দিন</small></div><div class="timer-cell"><b id="dHour">--</b><small>ঘন্টা</small></div><div class="timer-cell"><b id="dMin">--</b><small>মিনিট</small></div><div class="timer-cell"><b id="dSec">--</b><small>সেকেন্ড</small></div></div><div id="timerSub" style="margin-top:8px;font-size:13px;color:#ffe9a8">লোড হচ্ছে...</div></div><div class="btns"><button class="nxt" data-go="2">পরের পেজ দেখুন →</button></div><div style="text-align:center"><button class="home-btn" data-go="0">🏠 হোমে ফিরুন</button></div></div></div>
-<div class="page" data-page="2"><div class="card"><div class="wave"><h2>আসসালামু আলাইকুম</h2><p>সম্মানিত স্যারদের প্রতি</p></div><div class="body"><div class="big">আসসালামু আলাইকুম ওয়া রাহমাতুল্লাহ।<br><br>সম্মানিত <b>প্রিন্সিপাল স্যার, ভাইস প্রিন্সিপাল স্যার</b> এবং সকল শিক্ষকবৃন্দ — আপনাদের সালাম ও ভালোবাসা।<br><br>আমরা <b>ফুলবন ফাজিল মাদ্রাসার দাখিল ২০২৭ ব্যাচ</b>।</div><div class="item">🤲 <b>আমরা কারা?</b><br>দাখিল ২০২৭ ব্যাচ, আপনাদেরই ছাত্র।</div><div class="item">💛 <b>কেন এই লেখা?</b><br>অভিযোগ না — শুধু মনের কথা আর ছোট অনুরোধ।</div><div class="btns"><button class="prv" data-go="1">← আগের</button><button class="nxt" data-go="3">পরের →</button></div></div></div></div>
-<div class="page" data-page="3"><div class="card"><div class="wave"><h2>আমরা কেমন ছাত্র?</h2><p>আমাদের সত্যি কথাটা</p></div><div class="body"><div class="item">📚 <b>পড়াশোনায় মাঝামাঝি</b><br>কেউ ভালো, কেউ দুর্বল। সবাই চেষ্টা করতে চায়।</div><div class="item">🎯 <b>আমাদের ইচ্ছা</b><br>ভালো রেজাল্ট, মাদ্রাসার নাম উজ্জ্বল করতে চাই।</div><div class="item">🤝 <b>আমরা একসাথে</b><br>একজন পিছিয়ে গেলে আরেকজন টেনে তুলবো।</div><div class="note"><b>সত্যি কথা:</b> ঘাটতি আছে, মানি। কিন্তু হাল ছাড়তে চাই না।</div><div class="btns"><button class="prv" data-go="2">← আগের</button><button class="nxt" data-go="4">পরের →</button></div></div></div></div>
-<div class="page" data-page="4"><div class="card"><div class="wave"><h2>আমাদের ১০ বছরের গল্প</h2><p>কেন পিছিয়ে গেলাম</p></div><div class="body"><div class="item">১. <b>ক্লাস ৪-৫ : করোনা</b><br>ঠিকমতো পড়া হয়নি, বেসিক দুর্বল।</div><div class="item">২. <b>ক্লাস ৭-৮ : নতুন কারিকুলাম + জুলাই আন্দোলন</b><br>বারবার সিস্টেম বদলেছে।</div><div class="item">৩. <b>ক্লাস ৯ : ৪ মাস লেটে বই</b><br>ভালো ক্লাস হয়নি।</div><div class="big">সব মিলিয়ে আমরা অনেক <b>আত্মহারা হয়ে আছি।</b> কিন্তু এখনো সময় আছে।</div><div class="btns"><button class="prv" data-go="3">← আগের</button><button class="nxt" data-go="5">পরের →</button></div></div></div></div>
-<div class="page" data-page="5"><div class="card"><div class="wave"><h2>আমাদের সাবজেক্ট</h2><p>মোট ১৪ টি সাবজেক্ট</p></div><div class="body"><div class="note">১. কোরআন • ২. হাদিস • ৩. আরবি ১ম • ৪. আরবি ২য় • ৫. আকাইদ ও ফিকহ • ৬. বাংলা ১ম • ৭. বাংলা ২য় • ৮. ইংরেজি ১ম • ৯. ইংরেজি ২য় • ১০. গণিত • ১১. ইসলামের ইতিহাস • ১২. আইসিটি • ১৩. বিজ্ঞান / অর্থনীতি • ১৪. কৃষি শিক্ষা</div><div class="btns"><button class="prv" data-go="4">← আগের</button><button class="nxt" data-go="6">পরের →</button></div></div></div></div>
-<div class="page" data-page="6"><div class="card"><div class="wave"><h2>আমাদের পড়ার প্ল্যান</h2><p>১০০ দিনের টার্গেট</p></div><div class="body"><div class="item">১. <b>সমস্যা:</b> একদিনে সব ক্লাস করলে সব বুঝি না।</div><div class="item">২. <b>সমাধান:</b> দিনে ১টাই ক্লাস, কঠিন টপিক আগে।</div><div class="item">৩. <b>হিসাব:</b> ১৪টা সাবজেক্ট, প্রতিটা ৭-৮ দিন করে।</div><div class="item">৪. <b>পরীক্ষা:</b> চ্যাপ্টার ওয়াইজ পরীক্ষা নিলে ভালো হয়।</div><div class="note"><b>পরীক্ষা:</b> ১৪ই মার্চ সকাল ১০টা • <b id="planTimer">লোড হচ্ছে...</b></div><div class="btns"><button class="prv" data-go="5">← আগের</button><button class="nxt" data-go="7">পরের →</button></div></div></div></div>
-<div class="page" data-page="7"><div class="card"><div class="wave"><h2>আমরা আপনাদের ভালোবাসি</h2><p>স্যারদের জন্য</p></div><div class="body" style="text-align:center"><div style="font-size:32px">❤️</div><h3 style="font-size:30px;color:#0b3d2e">আপনারা আমাদের<br>সবচেয়ে আপন</h3><p style="margin:10px;line-height:1.8;color:#444">আপনাদের কড়া কথা, আপনাদের বকা, আপনাদের ভালোবাসা — সবকিছুর পিছনে আমাদের ভালো চাওয়া আছে।<br><br>আল্লাহ আমাদের সবাইকে কামিয়াব করুন, আমিন।</p><div class="btns"><button class="prv" data-go="6">← আগের</button><button class="nxt" data-go="0">🏠 হোম</button></div></div></div></div>
-<div class="page" data-page="101"><div class="cover"><h1>Class Six to Ten<br><span>ছোটদের পেজ</span></h1><p>আমরা ছোট, কিন্তু স্বপ্ন অনেক বড়।</p><div class="btns"><button class="nxt" data-go="102">পরের →</button></div><div style="text-align:center"><button class="home-btn" data-go="0">🏠 হোম</button></div></div></div>
-<div class="page" data-page="102"><div class="card"><div class="wave"><h2>আসসালামু আলাইকুম</h2><p>ছোটদের পক্ষ থেকে</p></div><div class="body"><div class="big">আসসালামু আলাইকুম স্যার।<br><br>আমরা <b>৬ষ্ঠ থেকে ১০ম শ্রেণীর ছাত্র-ছাত্রী</b>। আমরা এখন থেকে ভালো করে পড়তে চাই, যাতে দশম শ্রেণীতে গিয়ে পিছিয়ে না পড়ি।</div><div class="item">🌱 <b>আমরা শিখতে চাই</b><br>বেসিক থেকে শক্ত করে শিখতে চাই।</div><div class="btns"><button class="prv" data-go="101">← আগের</button><button class="nxt" data-go="103">পরের →</button></div></div></div></div>
-<div class="page" data-page="103"><div class="card"><div class="wave"><h2>আমাদের প্ল্যান</h2><p>৬ষ্ঠ - ১০ম শ্রেণী</p></div><div class="body"><div class="item">১. <b>প্রতিদিনের পড়া প্রতিদিন</b><br>জমিয়ে রাখবো না।</div><div class="item">২. <b>আরবি + ইংরেজি প্রতিদিন ৩০ মিনিট</b></div><div class="item">৩. <b>বড় ভাইদের দেখে শিখবো</b></div><div class="note"><b>স্বপ্ন:</b> দশম শ্রেণীতে উঠার আগেই রেডি থাকবো ইনশাআল্লাহ।</div><div class="btns"><button class="prv" data-go="102">← আগের</button><button class="nxt" data-go="0">🏠 হোম</button></div></div></div></div>
 </div>
-<div class="nav"><button id="nav0" class="active">🏠 হোম</button><button id="nav1">SSC 2027</button><button id="nav101">Class 6-10</button></div>
+
+<!-- ===== স্বপ্ন ===== -->
+<div id="secDream" class="hidden">
+<div class="card">
+<h3>💭 আমাদের স্বপ্ন - আমাদের মনের কথা</h3>
+<div class="dream">
+<h2>আমাদের স্বপ্ন ✨</h2>
+<p>আমরা ডাক্তার হতে চাই, ইঞ্জিনিয়ার হতে চাই, শিক্ষক হতে চাই, আলেম হতে চাই।<br><br>
+কিন্তু সবার আগে আমরা <b>ভালো মানুষ</b> হতে চাই।<br>
+মা-বাবার মুখে হাসি ফোটাতে চাই।<br>
+ফুলবন ফাজিল মাদ্রাসার নাম উজ্জ্বল করতে চাই।</p>
+<p><b>ইনশাআল্লাহ আমরা পারবো।</b></p>
+</div>
+</div>
+<div class="card">
+<h3>🙏 শেষ কথা</h3>
+<p>আমাদের এই প্রেজেন্টেশনটা শুধু প্রেজেন্টেশন না, এটা আমাদের মনের কথা। আমরা সবাই মিলে চেষ্টা করলে স্কিলে সেরা হতে পারবো। সবাই আমাদের জন্য দোয়া করবেন।</p>
+<p><b>- দশম শ্রেণী, ফুলবন ফাজিল মাদ্রাসা</b></p>
+</div>
+</div>
+
+</div>
+
+<div class="footer">
+<b>ফুলবন ফাজিল মাদ্রাসা • গালিব একাডেমি</b><br>
+শিক্ষক ও শিক্ষার্থীদের মাধ্যমে পড়াশোনা নিয়ে আলোচনা • ৯ নভেম্বর ২০২৬
+</div>
+
 <script>
-let cur=0;function go(n){cur=Number(n);document.querySelectorAll('.page').forEach(p=>{p.classList.toggle('active',p.getAttribute('data-page')==String(cur))});document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));if(cur===0)document.getElementById('nav0').classList.add('active');if(cur>=1&&cur<100)document.getElementById('nav1').classList.add('active');if(cur>=101)document.getElementById('nav101').classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
-document.getElementById('btnSSC').addEventListener('click',()=>go(1));document.getElementById('btn610').addEventListener('click',()=>go(101));document.getElementById('nav0').addEventListener('click',()=>go(0));document.getElementById('nav1').addEventListener('click',()=>go(1));document.getElementById('nav101').addEventListener('click',()=>go(101));document.querySelectorAll('[data-go]').forEach(b=>{b.addEventListener('click',()=>go(b.getAttribute('data-go')));});document.getElementById('fsBtn').addEventListener('click',()=>{if(!document.fullscreenElement)document.documentElement.requestFullscreen();else document.exitFullscreen();});
-function bn(n){n=String(n);let m={'0':'০','1':'১','2':'২','3':'৩','4':'৪','5':'৫','6':'৬','7':'৭','8':'৮','9':'৯'};let o='';for(let c of n)o+=m[c]||c;return o;}
-function updateTimer(){let target=new Date(2027,2,14,10,0,0);let diff=Math.max(0,target-new Date());let d=Math.floor(diff/86400000),h=Math.floor(diff/3600000)%24,mi=Math.floor(diff/60000)%60,s=Math.floor(diff/1000)%60;let el=document.getElementById('dDay');if(el){el.textContent=bn(d);document.getElementById('dHour').textContent=bn(h);document.getElementById('dMin').textContent=bn(mi);document.getElementById('dSec').textContent=bn(s);document.getElementById('timerSub').textContent='আর '+bn(d)+' দিন '+bn(h)+' ঘন্টা '+bn(mi)+' মিনিট '+bn(s)+' সেকেন্ড পর পরীক্ষা';let p=document.getElementById('planTimer');if(p)p.textContent=bn(d)+' দিন '+bn(h)+' ঘন্টা বাকি';}}
-updateTimer();setInterval(updateTimer,1000);
-let space=document.getElementById('space');for(let i=0;i<40;i++){let s=document.createElement('div');s.className='star';s.style.left=(Math.random()*100)+'vw';s.style.top=(Math.random()*100)+'vh';s.style.width=s.style.height=(1+Math.random()*3)+'px';s.style.animationDelay=(Math.random()*2)+'s';space.appendChild(s);}for(let i=0;i<12;i++){let f=document.createElement('div');f.className='flower';f.textContent=['🌸','🌺','🌻','🌷'][i%4];f.style.left=(Math.random()*100)+'vw';f.style.animationDuration=(6+Math.random()*6)+'s';space.appendChild(f);}go(0);
+function show(id){
+['secSSC','sec610','secTeacher','secDream'].forEach(function(x){
+document.getElementById(x).classList.add('hidden');
+});
+document.getElementById(id).classList.remove('hidden');
+window.scrollTo({top:350,behavior:'smooth'});
+}
+document.getElementById('btnSSC').onclick=function(){show('secSSC')};
+document.getElementById('btn610').onclick=function(){show('sec610')};
+document.getElementById('btnTeacher').onclick=function(){show('secTeacher')};
+document.getElementById('btnDream').onclick=function(){show('secDream')};
 </script>
+
 </body>
 </html>
